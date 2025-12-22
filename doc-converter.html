@@ -1,10 +1,13 @@
-  
-  <!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="en">
 <head>
+  <link rel="icon" href="favicon-16x16.png" type="image/x-icon">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document Converter</title>
+
+  <meta name="description" content="Document Converter is a free online tool to convert files between formats like PDF and TXT quickly and easily. Ideal for students and professionals.">
+
   <style>
     body {
       margin: 0;
@@ -17,20 +20,25 @@
       min-height: 100vh;
     }
 
+    .wrapper {
+      max-width: 520px;
+      width: 100%;
+      padding: 20px;
+    }
+
     .container {
       background-color: #fff;
       border-radius: 16px;
       box-shadow: 0 4px 12px rgba(0, 123, 255, 0.1);
       padding: 2rem;
-      max-width: 450px;
-      width: 100%;
       text-align: center;
     }
 
     h1 {
       color: #007BFF;
       margin-bottom: 1rem;
-      font-size: 1.8rem;
+      font-size: 1.9rem;
+      font-weight: bold;
     }
 
     input[type="file"],
@@ -58,7 +66,6 @@
       font-size: 1rem;
       cursor: pointer;
       margin-top: 1rem;
-      transition: background-color 0.3s;
     }
 
     .button:hover {
@@ -82,27 +89,79 @@
       display: inline-block;
     }
 
+    .description {
+      background: #ffffff;
+      margin-top: 25px;
+      padding: 20px;
+      border-radius: 14px;
+      box-shadow: 0 4px 10px rgba(0, 123, 255, 0.08);
+      line-height: 1.6;
+      font-size: 15px;
+    }
+
+    .description ul {
+      padding-left: 20px;
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 25px;
+      font-size: 14px;
+      color: #555;
+    }
+
+    footer span {
+      color: #007BFF;
+      font-weight: bold;
+    }
+
     @media (max-width: 600px) {
-      .container {
-        padding: 1rem;
-        margin: 1rem;
+      .container, .description {
+        padding: 1.2rem;
       }
     }
   </style>
 </head>
 <body>
-  <div class="container">
-    <h1>Document Converter</h1>
-    <input type="file" id="docInput" accept=".txt,.doc,.docx,.pdf" />
 
-    <label for="format">Convert to:</label>
-    <select id="format">
-      <option value="pdf">PDF</option>
-      <option value="txt">Text</option>
-    </select>
+  <div class="wrapper">
 
-    <button class="button" id="convertBtn" disabled>Convert</button>
-    <a id="downloadLink" download>Download Converted File</a>
+    <!-- TOOL -->
+    <div class="container">
+      <h1>Document Converter</h1>
+
+      <input type="file" id="docInput" accept=".txt,.doc,.docx,.pdf" />
+
+      <label for="format">Convert to:</label>
+      <select id="format">
+        <option value="pdf">PDF</option>
+        <option value="txt">Text</option>
+      </select>
+
+      <button class="button" id="convertBtn" disabled>Convert</button>
+      <a id="downloadLink" download>Download Converted File</a>
+    </div>
+
+    <!-- DESCRIPTION -->
+    <div class="description">
+      <p><strong>Document Converter</strong> is a fast and reliable online tool that allows you to convert files between different formats with ease. Whether you need to turn a text file into a PDF or convert documents for sharing, this tool simplifies the entire process.</p>
+
+      <p>This online document converter is ideal for:</p>
+      <ul>
+        <li>Students submitting assignments</li>
+        <li>Office professionals handling reports</li>
+        <li>Freelancers and remote workers</li>
+      </ul>
+
+      <p>Instead of installing heavy software, you can convert documents directly in your browser. This saves time, improves productivity, and ensures quick access across devices. With a simple interface and fast processing, you get accurate results in just a few clicks.</p>
+
+      <p><strong>Use this Document Converter for free online</strong> and convert your files instantly with no sign-up required.</p>
+    </div>
+
+    <footer>
+      Designed by <span>Tool Nest</span>
+    </footer>
+
   </div>
 
   <script>
@@ -164,8 +223,8 @@
       }
     });
   </script>
+
 </body>
 </html>
 
-  
   
