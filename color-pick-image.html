@@ -1,10 +1,12 @@
-  
-  <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Color Picker from Image</title>
+  <title>Color Picker from Image – Free Online Tool</title>
+  <meta name="description" content="Free online Color Picker from Image tool to select and identify colors from any uploaded image. Ideal for designers, developers, and content creators.">
+  <meta name="keywords" content="Color Picker from Image, pick color from image, image color extractor, HEX color picker, RGB color picker, online color tool">
+  
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -33,12 +35,14 @@
       height: auto;
       border: 1px solid #ccc;
       margin-bottom: 20px;
+      cursor: crosshair;
     }
 
     .color-info {
       display: flex;
       align-items: center;
       gap: 10px;
+      margin-bottom: 30px;
     }
 
     .color-box {
@@ -50,6 +54,49 @@
 
     .color-code {
       font-weight: bold;
+    }
+
+    /* Description Styles */
+    .tool-description {
+      max-width: 800px;
+      margin: 0 auto 30px;
+      background: #ffffff;
+      padding: 20px 25px;
+      border-radius: 12px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+      text-align: left;
+      line-height: 1.8;
+      color: #333;
+    }
+
+    .tool-description h3 {
+      color: #007bff;
+      margin-bottom: 12px;
+    }
+
+    .tool-description ul {
+      padding-left: 20px;
+    }
+
+    .tool-description li {
+      margin-bottom: 6px;
+    }
+
+    footer {
+      margin-top: 30px;
+      font-size: 14px;
+      color: #888;
+    }
+
+    footer a {
+      text-decoration: none;
+      color: #007bff;
+    }
+
+    @media (max-width: 500px) {
+      .tool-description, input[type="file"], canvas {
+        width: 90%;
+      }
     }
   </style>
 </head>
@@ -66,6 +113,28 @@
     <div class="color-code" id="colorCode">Click on image</div>
   </div>
 
+  <!-- SEO Description -->
+  <section class="tool-description">
+    <h3>Online Color Picker from Image</h3>
+    <p>
+      The <strong>Color Picker from Image</strong> is a free online tool that lets you pick and identify colors directly from any uploaded image. It is ideal for designers, developers, artists, and marketers who need precise color codes for websites, graphics, and digital projects.
+    </p>
+    <p>
+      This tool helps save time and improves productivity by allowing instant color extraction in multiple formats, ensuring your designs are accurate and visually consistent.
+    </p>
+    <ul>
+      <li>Pick exact colors from any uploaded image</li>
+      <li>Get color codes in HEX, RGB formats instantly</li>
+      <li>Perfect for graphic design, web development, and branding</li>
+      <li>Fast, user-friendly, and free online tool</li>
+    </ul>
+    <p><strong>Use our free Color Picker from Image now to select and copy colors instantly!</strong></p>
+  </section>
+
+  <footer>
+    <p>Designed by <a href="#" target="_blank">Tool NEST</a></p>
+  </footer>
+
   <script>
     const imageInput = document.getElementById("imageInput");
     const canvas = document.getElementById("canvas");
@@ -81,7 +150,7 @@
       reader.onload = function (e) {
         const img = new Image();
         img.onload = function () {
-          const scale = 300 / img.width; // scale to fit width
+          const scale = 300 / img.width;
           const scaledWidth = 300;
           const scaledHeight = img.height * scale;
 
@@ -117,5 +186,3 @@
 </body>
 </html>
 
-  
-  
