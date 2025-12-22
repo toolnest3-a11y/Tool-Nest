@@ -1,30 +1,38 @@
   
-  <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Contrast Checker</title>
+
+  <meta name="description" content="Contrast Checker is a free online tool to test color contrast ratios and check WCAG accessibility compliance for text and background colors." />
+
   <style>
     body {
       font-family: Arial, sans-serif;
       background: #f0faff;
       padding: 30px;
-      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      color: #333;
     }
 
     h2 {
       color: #007bff;
       margin-bottom: 20px;
+      text-align: center;
     }
 
     .checker-box {
       background: #ffffff;
-      border-radius: 10px;
+      border-radius: 12px;
       padding: 20px;
       max-width: 400px;
-      margin: auto;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      width: 100%;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      text-align: center;
     }
 
     .color-selectors {
@@ -40,6 +48,20 @@
       cursor: pointer;
     }
 
+    button {
+      padding: 8px 16px;
+      background-color: #007bff;
+      border: none;
+      border-radius: 8px;
+      color: #fff;
+      font-size: 14px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #0056b3;
+    }
+
     .preview-box {
       padding: 20px;
       margin-top: 15px;
@@ -52,7 +74,32 @@
       margin-top: 15px;
       font-size: 16px;
       font-weight: bold;
-      color: #333;
+    }
+
+    .description {
+      max-width: 700px;
+      background: #ffffff;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+      margin-top: 30px;
+      line-height: 1.6;
+      font-size: 15px;
+    }
+
+    .description ul {
+      padding-left: 20px;
+    }
+
+    footer {
+      margin-top: 30px;
+      font-size: 14px;
+      color: #555;
+    }
+
+    footer span {
+      color: #007bff;
+      font-weight: bold;
     }
   </style>
 </head>
@@ -60,6 +107,7 @@
 
   <h2>Contrast Checker Tool</h2>
 
+  <!-- TOOL -->
   <div class="checker-box">
     <div class="color-selectors">
       <label>Text Color</label><br />
@@ -76,6 +124,26 @@
     <div class="preview-box" id="previewText">Sample Text</div>
     <div class="contrast-result" id="contrastResult">Contrast Ratio: -</div>
   </div>
+
+  <!-- DESCRIPTION UNDER TOOL -->
+  <div class="description">
+    <p><strong>Contrast Checker</strong> is an easy-to-use online tool that helps you test color contrast and ensure your designs meet accessibility standards. It instantly calculates the contrast ratio between text and background colors and shows whether the combination passes WCAG guidelines.</p>
+
+    <p>This tool is ideal for:</p>
+    <ul>
+      <li>Web designers and UI/UX professionals</li>
+      <li>Developers building accessible websites</li>
+      <li>Graphic designers and content creators</li>
+    </ul>
+
+    <p>Instead of manually checking contrast ratios, this color contrast checker saves time, improves productivity, and helps you create readable, user-friendly designs for everyone.</p>
+
+    <p><strong>Use the Contrast Checker for free online</strong> and build accessible designs with confidence.</p>
+  </div>
+
+  <footer>
+    Designed by <span>Tool NEST</span>
+  </footer>
 
   <script>
     function luminance(r, g, b) {
@@ -94,10 +162,11 @@
         hex = hex.split('').map(c => c + c).join('');
       }
       const bigint = parseInt(hex, 16);
-      const r = (bigint >> 16) & 255;
-      const g = (bigint >> 8) & 255;
-      const b = bigint & 255;
-      return [r, g, b];
+      return [
+        (bigint >> 16) & 255,
+        (bigint >> 8) & 255,
+        bigint & 255
+      ];
     }
 
     function contrastRatio(hex1, hex2) {
@@ -127,5 +196,4 @@
 </body>
 </html>
 
-  
   
