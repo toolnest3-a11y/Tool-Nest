@@ -1,19 +1,25 @@
-  
   <!DOCTYPE html>
 <html lang="en">
 <head>
+  <link rel="icon" href="favicon-16x16.png" type="image/x-icon">
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Age Calculator</title>
+
+  <!-- SEO META TAGS -->
+  <title>Age Calculator – Calculate Your Age Online for Free</title>
+  <meta name="description" content="Free online Age calculator to calculate your exact age in years, months, and days. Fast, accurate, and easy age calculation tool for everyone.">
+  <meta name="keywords" content="age calculator, calculate age online, date of birth calculator, age calculation tool">
+  <meta name="robots" content="index, follow">
+
   <style>
     body {
       background: #f4f9ff;
       font-family: Arial, sans-serif;
       display: flex;
-      justify-content: center;
+      flex-direction: column;
       align-items: center;
-      height: 100vh;
       margin: 0;
+      padding: 40px 0;
     }
 
     .container {
@@ -61,6 +67,27 @@
       color: #333;
     }
 
+    /* SEO DESCRIPTION STYLING */
+    .tool-description {
+      max-width: 800px;
+      margin-top: 40px;
+      background: #ffffff;
+      padding: 25px;
+      border-radius: 12px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+      line-height: 1.8;
+      color: #333;
+    }
+
+    .tool-description h2 {
+      color: #007bff;
+      margin-bottom: 15px;
+    }
+
+    .tool-description ul {
+      padding-left: 20px;
+    }
+
     @media (max-width: 600px) {
       .container {
         padding: 20px;
@@ -68,8 +95,10 @@
     }
   </style>
 </head>
+
 <body>
 
+  <!-- TOOL -->
   <div class="container">
     <h1>Age Calculator</h1>
     <input type="date" id="dob" />
@@ -77,6 +106,38 @@
     <div id="result"></div>
   </div>
 
+  <!-- SEO DESCRIPTION (INSIDE BODY, AFTER TOOL) -->
+  <section class="tool-description">
+    <h2>Online Age Calculator</h2>
+
+    <p>
+      An <strong>Age calculator</strong> is a simple online tool that helps you
+      calculate your exact age in years, months, and days using your date of birth.
+      It provides instant and accurate results without manual calculations.
+    </p>
+
+    <p>
+      This online age calculator is useful for students, job applicants, parents,
+      teachers, and professionals who need precise age details for forms,
+      applications, exams, or official records.
+    </p>
+
+    <ul>
+      <li>Calculate age from date of birth</li>
+      <li>Shows age in years, months, and days</li>
+      <li>Fast and accurate age calculation</li>
+      <li>Free and easy to use</li>
+    </ul>
+
+    <p>
+      This free age calculator saves time, reduces errors, and improves productivity.
+      No registration or downloads are required.
+    </p>
+
+    <p><strong>Use the Age Calculator now and calculate your age online for free!</strong></p>
+  </section>
+
+  <!-- SCRIPT -->
   <script>
     function calculateAge() {
       const dob = document.getElementById("dob").value;
@@ -102,11 +163,13 @@
         ageMonths += 12;
       }
 
-      document.getElementById("result").innerText = `You are ${ageYears} years, ${ageMonths} months, and ${ageDays} days old.`;
+      document.getElementById("result").innerText =
+        `You are ${ageYears} years, ${ageMonths} months, and ${ageDays} days old.`;
     }
   </script>
 
 </body>
 </html>
+
 
   
