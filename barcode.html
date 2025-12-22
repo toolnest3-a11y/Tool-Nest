@@ -1,16 +1,21 @@
   
-  <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Barcode Generator</title>
+
+  <!-- SEO -->
+  <title>Barcode Generator – Create Barcodes Online for Free</title>
+  <meta name="description" content="Free online Barcode Generator to create barcodes instantly for products, inventory, and labels. Fast, accurate, and easy to use.">
+  <meta name="keywords" content="barcode generator, generate barcode online, free barcode generator, barcode maker">
+
   <style>
     body {
       font-family: Arial, sans-serif;
       background: #eef8ff;
       margin: 0;
-      padding: 20px;
+      padding: 30px 15px;
       text-align: center;
     }
 
@@ -25,6 +30,7 @@
 
     h2 {
       color: #007bff;
+      margin-bottom: 15px;
     }
 
     input[type="text"] {
@@ -64,18 +70,81 @@
     #downloadBtn:hover {
       background-color: #1e7e34;
     }
+
+    /* SEO DESCRIPTION STYLES */
+    .tool-description {
+      max-width: 800px;
+      margin: 40px auto 0;
+      background: #ffffff;
+      padding: 25px;
+      border-radius: 12px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+      text-align: left;
+      line-height: 1.8;
+      color: #333;
+    }
+
+    .tool-description h3 {
+      color: #007bff;
+      margin-bottom: 12px;
+    }
+
+    .tool-description ul {
+      padding-left: 20px;
+    }
+
+    .tool-description li {
+      margin-bottom: 6px;
+    }
   </style>
 </head>
+
 <body>
+
+  <!-- TOOL -->
   <div class="container">
     <h2>Barcode Generator</h2>
     <input type="text" id="barcodeText" placeholder="Enter text or number" />
     <button onclick="generateBarcode()">Generate Barcode</button>
+
     <div id="barcode">
       <svg id="barcodeSvg"></svg>
     </div>
+
     <button id="downloadBtn" onclick="downloadBarcode()">Download Barcode</button>
   </div>
+
+  <!-- SEO DESCRIPTION (AFTER TOOL, INSIDE BODY) -->
+  <section class="tool-description">
+    <h3>Online Barcode Generator</h3>
+
+    <p>
+      A <strong>Barcode Generator</strong> is an online tool that allows you to
+      create scannable barcodes instantly from text or numbers. It helps convert
+      data into barcodes that can be used for products, inventory management,
+      labels, and business operations.
+    </p>
+
+    <p>
+      This online barcode generator is ideal for small business owners, retailers,
+      warehouse managers, students, and developers who need quick and reliable
+      barcode creation without using complex software.
+    </p>
+
+    <ul>
+      <li>Create barcodes online in seconds</li>
+      <li>Supports common barcode formats</li>
+      <li>Improves product and inventory tracking</li>
+      <li>Free, fast, and easy to use</li>
+    </ul>
+
+    <p>
+      This free barcode generator saves time, reduces manual errors, and improves
+      productivity. No registration or installation is required.
+    </p>
+
+    <p><strong>Use the Barcode Generator now and create barcodes online for free!</strong></p>
+  </section>
 
   <!-- JsBarcode CDN -->
   <script src="https://cdn.jsdelivr.net/npm/jsbarcode@3.11.5/dist/JsBarcode.all.min.js"></script>
@@ -113,7 +182,9 @@
       link.click();
     }
   </script>
+
 </body>
 </html>
+
 
   
