@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-   <link rel="icon" href="favicon-16x16.png" type="image/x-icon">
+    <link rel="icon" href="favicon-16x16.png" type="image/x-icon">
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Color Picker from Image</title>
@@ -21,7 +21,7 @@
 
     h1 {
       color: #007bff;
-      margin-bottom: 10px;
+      margin-bottom: 15px;
     }
 
     .description {
@@ -30,6 +30,7 @@
       padding: 20px;
       border-radius: 10px;
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+      margin-top: 25px;
       margin-bottom: 25px;
       line-height: 1.6;
       font-size: 15px;
@@ -103,6 +104,19 @@
 
   <h1>Color Picker from Image</h1>
 
+  <!-- TOOL FIRST -->
+  <div class="tool-box">
+    <input type="file" id="imageInput" accept="image/*" />
+
+    <canvas id="canvas"></canvas>
+
+    <div class="color-info">
+      <div class="color-box" id="pickedColor"></div>
+      <div class="color-code" id="colorCode">Click on image</div>
+    </div>
+  </div>
+
+  <!-- DESCRIPTION BELOW THE TOOL -->
   <div class="description">
     <p><strong>Color Picker from Image</strong> is a free online tool that allows you to extract exact color codes from any image quickly and accurately. Simply upload an image and click anywhere to get instant HEX and RGB values.</p>
 
@@ -116,17 +130,6 @@
     <p>Instead of guessing colors or using complex software, this image color picker saves time, improves workflow efficiency, and ensures color consistency across your projects.</p>
 
     <p><strong>Use this Color Picker from Image tool online for free</strong> and extract colors effortlessly in seconds.</p>
-  </div>
-
-  <div class="tool-box">
-    <input type="file" id="imageInput" accept="image/*" />
-
-    <canvas id="canvas"></canvas>
-
-    <div class="color-info">
-      <div class="color-box" id="pickedColor"></div>
-      <div class="color-code" id="colorCode">Click on image</div>
-    </div>
   </div>
 
   <footer>
@@ -180,10 +183,6 @@
       }).join("");
     }
   </script>
-
-</body>
-</html>
-
 
 </body>
 </html>
