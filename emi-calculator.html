@@ -71,6 +71,32 @@
       line-height: 1.6;
     }
 
+    /* Description Section */
+    .description {
+      background: #ffffff;
+      margin-top: 25px;
+      padding: 25px;
+      border-radius: 16px;
+      box-shadow: 0 4px 12px rgba(0, 123, 255, 0.1);
+      font-size: 15px;
+      line-height: 1.7;
+    }
+
+    .description h2 {
+      color: #007bff;
+      margin-bottom: 12px;
+      font-size: 18px;
+    }
+
+    .description ul {
+      padding-left: 18px;
+      margin: 10px 0;
+    }
+
+    .description ul li {
+      margin-bottom: 6px;
+    }
+
     footer {
       text-align: center;
       margin-top: 25px;
@@ -86,112 +112,94 @@
 </head>
 <body>
 
-  <div class="wrapper">
+<div class="wrapper">
 
-    <div class="container">
-      <h1>Loan EMI Calculator</h1>
+  <div class="container">
+    <h1>Loan EMI Calculator</h1>
 
-      <!-- Currency Selector -->
-     <select id="currency">
-  <option value="₹">INR – Indian Rupee (₹)</option>
-  <option value="$">USD – US Dollar ($)</option>
-  <option value="€">EUR – Euro (€)</option>
-  <option value="£">GBP – British Pound (£)</option>
-  <option value="¥">JPY – Japanese Yen (¥)</option>
-  <option value="₩">KRW – South Korean Won (₩)</option>
-  <option value="₽">RUB – Russian Ruble (₽)</option>
-  <option value="₺">TRY – Turkish Lira (₺)</option>
-  <option value="₫">VND – Vietnamese Dong (₫)</option>
-  <option value="₪">ILS – Israeli Shekel (₪)</option>
-  <option value="₱">PHP – Philippine Peso (₱)</option>
-  <option value="฿">THB – Thai Baht (฿)</option>
-  <option value="₦">NGN – Nigerian Naira (₦)</option>
-  <option value="₲">PYG – Paraguayan Guarani (₲)</option>
-  <option value="₡">CRC – Costa Rican Colón (₡)</option>
-  <option value="₴">UAH – Ukrainian Hryvnia (₴)</option>
-  <option value="₸">KZT – Kazakhstani Tenge (₸)</option>
-  <option value="₼">AZN – Azerbaijani Manat (₼)</option>
-  <option value="₾">GEL – Georgian Lari (₾)</option>
-  <option value="zł">PLN – Polish Zloty (zł)</option>
-  <option value="Kč">CZK – Czech Koruna (Kč)</option>
-  <option value="Ft">HUF – Hungarian Forint (Ft)</option>
-  <option value="kr">SEK – Swedish Krona (kr)</option>
-  <option value="kr">NOK – Norwegian Krone (kr)</option>
-  <option value="kr">DKK – Danish Krone (kr)</option>
-  <option value="$">CAD – Canadian Dollar ($)</option>
-  <option value="$">AUD – Australian Dollar ($)</option>
-  <option value="$">NZD – New Zealand Dollar ($)</option>
-  <option value="$">SGD – Singapore Dollar ($)</option>
-  <option value="$">HKD – Hong Kong Dollar ($)</option>
-  <option value="₩">IDR – Indonesian Rupiah (Rp)</option>
-  <option value="₨">PKR – Pakistani Rupee (₨)</option>
-  <option value="৳">BDT – Bangladeshi Taka (৳)</option>
-  <option value="R">ZAR – South African Rand (R)</option>
-  <option value="د.إ">AED – UAE Dirham (د.إ)</option>
-</select>
+    <select id="currency">
+      <option value="₹">INR – Indian Rupee (₹)</option>
+      <option value="$">USD – US Dollar ($)</option>
+      <option value="€">EUR – Euro (€)</option>
+      <option value="£">GBP – British Pound (£)</option>
+      <option value="¥">JPY – Japanese Yen (¥)</option>
+      <option value="₩">KRW – South Korean Won (₩)</option>
+      <option value="₽">RUB – Russian Ruble (₽)</option>
+      <option value="₺">TRY – Turkish Lira (₺)</option>
+      <option value="₫">VND – Vietnamese Dong (₫)</option>
+      <option value="₪">ILS – Israeli Shekel (₪)</option>
+      <option value="₱">PHP – Philippine Peso (₱)</option>
+      <option value="฿">THB – Thai Baht (฿)</option>
+      <option value="₦">NGN – Nigerian Naira (₦)</option>
+      <option value="$">CAD – Canadian Dollar ($)</option>
+      <option value="$">AUD – Australian Dollar ($)</option>
+      <option value="د.إ">AED – UAE Dirham (د.إ)</option>
+    </select>
 
+    <input type="number" id="loanAmount" placeholder="Loan Amount" />
+    <input type="number" id="interestRate" placeholder="Annual Interest Rate (%)" />
+    <input type="number" id="loanTenure" placeholder="Loan Tenure (in months)" />
 
-      <input type="number" id="loanAmount" placeholder="Loan Amount" />
-      <input type="number" id="interestRate" placeholder="Annual Interest Rate (%)" />
-      <input type="number" id="loanTenure" placeholder="Loan Tenure (in months)" />
-
-      <button onclick="calculateEMI()">Calculate EMI</button>
-      <div class="result" id="result"></div>
-    </div>
-
-    <footer>
-      Designed by <span>Tool Nest</span>
-    </footer>
-
+    <button onclick="calculateEMI()">Calculate EMI</button>
+    <div class="result" id="result"></div>
   </div>
 
-  <script>
-    function calculateEMI() {
-      const loanAmount = parseFloat(document.getElementById("loanAmount").value);
-      const annualInterestRate = parseFloat(document.getElementById("interestRate").value);
-      const tenure = parseInt(document.getElementById("loanTenure").value);
-      const currency = document.getElementById("currency").value;
+  <!-- SEO Description -->
+  <div class="description">
+    <h2><strong>Loan EMI Calculator</strong></h2>
 
-      if (!loanAmount || !annualInterestRate || !tenure || loanAmount <= 0 || annualInterestRate <= 0 || tenure <= 0) {
-        document.getElementById("result").textContent = "Please enter valid inputs.";
-        return;
-      }
+    <p>
+      Loan EMI Calculator is an easy-to-use online tool that helps you calculate your monthly loan installments quickly and accurately. By entering the loan amount, interest rate, and repayment tenure, you can instantly view your EMI, total interest payable, and overall loan cost.
+    </p>
 
-      const monthlyInterestRate = annualInterestRate / 12 / 100;
-      const emi = (loanAmount * monthlyInterestRate * Math.pow(1 + monthlyInterestRate, tenure)) /
-                  (Math.pow(1 + monthlyInterestRate, tenure) - 1);
+    <p>This tool is ideal for:</p>
+    <ul>
+      <li>Individuals planning home, car, or personal loans</li>
+      <li>Financial planners and loan advisors</li>
+      <li>Anyone comparing different loan options</li>
+    </ul>
 
-      const totalPayment = emi * tenure;
-      const totalInterest = totalPayment - loanAmount;
+    <p>
+      Instead of using complex formulas or spreadsheets, this online loan calculator saves time and improves decision-making. It works directly in your browser, requires no registration, and is accessible on all devices.
+    </p>
 
-      document.getElementById("result").innerHTML = `
-        Monthly EMI: ${currency}${emi.toFixed(2)}<br/>
-        Total Interest: ${currency}${totalInterest.toFixed(2)}<br/>
-        Total Payment: ${currency}${totalPayment.toFixed(2)}
-      `;
+    <p>
+      Start using the <strong>Loan EMI Calculator</strong> today to plan your loans smarter. Try this free online tool now and calculate your EMI in seconds.
+    </p>
+  </div>
+
+  <footer>
+    Designed by <span>Tool Nest</span>
+  </footer>
+
+</div>
+
+<script>
+  function calculateEMI() {
+    const loanAmount = parseFloat(document.getElementById("loanAmount").value);
+    const annualInterestRate = parseFloat(document.getElementById("interestRate").value);
+    const tenure = parseInt(document.getElementById("loanTenure").value);
+    const currency = document.getElementById("currency").value;
+
+    if (!loanAmount || !annualInterestRate || !tenure || loanAmount <= 0 || annualInterestRate <= 0 || tenure <= 0) {
+      document.getElementById("result").textContent = "Please enter valid inputs.";
+      return;
     }
-  </script>
-  <!-- DESCRIPTION -->
-    <div class="description">
-      <p><strong>Loan EMI Calculator</strong> is a simple and reliable online tool that helps you calculate your monthly loan installments in seconds. By entering the loan amount, interest rate, and repayment tenure, you can instantly view your EMI, total interest payable, and overall loan cost.</p>
 
-      <p>This online EMI calculator is ideal for:</p>
-      <ul>
-        <li>Home, car, and personal loan borrowers</li>
-        <li>Financial planners and advisors</li>
-        <li>Anyone comparing multiple loan options</li>
-      </ul>
+    const monthlyInterestRate = annualInterestRate / 12 / 100;
+    const emi = (loanAmount * monthlyInterestRate * Math.pow(1 + monthlyInterestRate, tenure)) /
+                (Math.pow(1 + monthlyInterestRate, tenure) - 1);
 
-      <p>Instead of using complex formulas or spreadsheets, this tool saves time and improves financial planning. It allows you to test different values quickly and choose a loan plan that fits your budget.</p>
+    const totalPayment = emi * tenure;
+    const totalInterest = totalPayment - loanAmount;
 
-      <p><strong>Use this Loan EMI Calculator for free online</strong> and plan your loan repayments with confidence.</p>
-    </div>
+    document.getElementById("result").innerHTML = `
+      Monthly EMI: ${currency}${emi.toFixed(2)}<br/>
+      Total Interest: ${currency}${totalInterest.toFixed(2)}<br/>
+      Total Payment: ${currency}${totalPayment.toFixed(2)}
+    `;
+  }
+</script>
 
-    <footer>
-      Designed by <span>Tool Nest</span>
-    </footer>
-
-  </div>
 </body>
 </html>
-
