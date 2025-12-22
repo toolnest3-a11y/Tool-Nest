@@ -1,19 +1,24 @@
-  
-  <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
+   <link rel="icon" href="favicon-16x16.png" type="image/x-icon">
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>BMI Calculator</title>
+  
+  <!-- SEO Meta Tags -->
+  <title>BMI Calculator – Calculate Your Body Mass Index Online</title>
+  <meta name="description" content="Free online BMI Calculator to instantly calculate your Body Mass Index from weight and height. Understand your health category and improve fitness planning.">
+  <meta name="keywords" content="BMI calculator, body mass index calculator, calculate BMI online, health calculator, free BMI tool">
+
   <style>
     body {
       font-family: Arial, sans-serif;
       background: #f4faff;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
       margin: 0;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
 
     .container {
@@ -62,15 +67,45 @@
       font-size: 18px;
     }
 
+    /* SEO Description Styles */
+    .tool-description {
+      max-width: 800px;
+      margin: 30px auto 0;
+      background: #ffffff;
+      padding: 20px 25px;
+      border-radius: 12px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+      text-align: left;
+      line-height: 1.8;
+      color: #333;
+    }
+
+    .tool-description h3 {
+      color: #007bff;
+      margin-bottom: 12px;
+    }
+
+    .tool-description ul {
+      padding-left: 20px;
+    }
+
+    .tool-description li {
+      margin-bottom: 6px;
+    }
+
     @media (max-width: 500px) {
       .container {
         padding: 20px;
+      }
+      .tool-description {
+        padding: 15px 20px;
       }
     }
   </style>
 </head>
 <body>
 
+  <!-- TOOL -->
   <div class="container">
     <h1>BMI Calculator</h1>
     <input type="number" id="weight" placeholder="Enter your weight (kg)" />
@@ -78,6 +113,27 @@
     <button onclick="calculateBMI()">Calculate BMI</button>
     <div class="result" id="result"></div>
   </div>
+
+  <!-- SEO DESCRIPTION -->
+  <section class="tool-description">
+    <h3>Online BMI Calculator</h3>
+    <p>
+      A <strong>BMI Calculator</strong> is a fast and easy online tool that helps you calculate your Body Mass Index (BMI) using your weight and height. It provides insight into your health by showing whether you are underweight, normal weight, overweight, or obese.
+    </p>
+    <p>
+      This BMI Calculator is perfect for anyone who wants to monitor their health, fitness enthusiasts, diet planners, or healthcare professionals. Instead of manually calculating BMI, this tool gives accurate results instantly, saving time and effort.
+    </p>
+    <ul>
+      <li>Calculate BMI quickly from weight and height</li>
+      <li>Understand your body weight category</li>
+      <li>Plan fitness and diet routines more effectively</li>
+      <li>Free, easy-to-use, and accurate</li>
+    </ul>
+    <p>
+      Improve your health awareness and productivity by using this BMI Calculator. No registration or software is required.
+    </p>
+    <p><strong>Use our free online BMI Calculator now and check your BMI instantly!</strong></p>
+  </section>
 
   <script>
     function calculateBMI() {
@@ -107,5 +163,4 @@
 </body>
 </html>
 
-  
   
