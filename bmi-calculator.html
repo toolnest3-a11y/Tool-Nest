@@ -1,18 +1,43 @@
-
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BMI Calculator – Professional Body Mass Index Tool | Health Assessment | Tool Nest</title>
-    <meta name="description" content="Free professional BMI calculator to assess your body mass index accurately. Get detailed health insights, category analysis, and personalized recommendations. Perfect for fitness tracking.">
-    <meta name="keywords" content="BMI calculator, body mass index calculator, calculate BMI online, health assessment tool, fitness calculator, weight management, health monitoring">
-    <meta name="author" content="Tool Nest">
+    <title>Advanced BMI Calculator | Accurate Body Mass Index Assessment | Health & Fitness Tool</title>
+    <meta name="description" content="Professional BMI calculator with detailed health analysis. Calculate your Body Mass Index using metric or imperial units. Get personalized recommendations, track progress, and understand health risks. Medical-grade accuracy with WHO standards.">
+    <meta name="keywords" content="BMI calculator, body mass index calculator, health assessment, weight management, fitness calculator, obesity screening, health risk assessment, BMI tool, calculate BMI online">
+    <meta name="author" content="HealthMetrics Pro">
     <link rel="icon" href="favicon-16x16.png" type="image/x-icon">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Open Graph Meta Tags for Social Sharing -->
+    <meta property="og:title" content="Advanced BMI Calculator | Professional Health Assessment Tool">
+    <meta property="og:description" content="Calculate your BMI with medical accuracy. Get detailed health insights and personalized recommendations.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://toolnest.com/bmi-calculator">
+    
+    <!-- Structured Data for SEO -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Advanced BMI Calculator",
+        "description": "Professional Body Mass Index calculator with health insights",
+        "applicationCategory": "HealthApplication",
+        "operatingSystem": "Any",
+        "url": "https://toolnest.com/bmi-calculator",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+        },
+        "author": {
+            "@type": "Organization",
+            "name": "Tool Nest"
+        }
+    }
+    </script>
     
     <style>
         :root {
@@ -161,10 +186,50 @@
             box-shadow: var(--shadow-md);
         }
         
+        /* SEO Description Section */
+        .seo-description {
+            background: white;
+            border-radius: var(--radius-md);
+            padding: 30px;
+            margin: 30px auto;
+            max-width: 900px;
+            box-shadow: var(--shadow-sm);
+            border-left: 4px solid var(--primary-blue);
+        }
+        
+        .seo-description h2 {
+            color: var(--dark-blue);
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+        
+        .seo-description p {
+            color: var(--text-gray);
+            margin-bottom: 15px;
+            line-height: 1.7;
+        }
+        
+        .keywords {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 20px;
+        }
+        
+        .keyword-tag {
+            background: #f0f9ff;
+            color: var(--primary-blue);
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 500;
+            border: 1px solid #dbeafe;
+        }
+        
         /* Main Content */
         .main-content {
             flex: 1;
-            padding: 60px 0;
+            padding: 40px 0;
         }
         
         /* Tool Header */
@@ -212,6 +277,18 @@
             box-shadow: var(--shadow-md);
             border: 1px solid var(--border-color);
             margin-bottom: 60px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .tool-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--gradient-blue);
         }
         
         /* BMI Calculator Form */
@@ -355,6 +432,42 @@
             color: var(--text-light);
         }
         
+        /* Advanced Options */
+        .advanced-options {
+            background: #f8fafc;
+            border-radius: var(--radius-md);
+            padding: 20px;
+            margin-top: 10px;
+            border: 1px solid var(--border-color);
+        }
+        
+        .advanced-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--text-dark);
+            font-weight: 600;
+            margin-bottom: 15px;
+            cursor: pointer;
+        }
+        
+        .advanced-content {
+            display: none;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            animation: fadeIn 0.3s ease-out;
+        }
+        
+        .advanced-content.show {
+            display: grid;
+        }
+        
+        @media (max-width: 768px) {
+            .advanced-content {
+                grid-template-columns: 1fr;
+            }
+        }
+        
         /* Result Section */
         .result-section {
             background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
@@ -364,6 +477,7 @@
             display: flex;
             flex-direction: column;
             gap: 30px;
+            animation: fadeIn 0.5s ease-out;
         }
         
         .bmi-result {
@@ -375,6 +489,10 @@
             font-weight: 800;
             line-height: 1;
             margin-bottom: 10px;
+            background: var(--gradient-blue);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
         
         .bmi-category {
@@ -430,10 +548,11 @@
         .scale-marker {
             position: absolute;
             top: -5px;
-            width: 3px;
+            width: 4px;
             height: 30px;
             background: var(--text-dark);
             transform: translateX(-50%);
+            z-index: 2;
         }
         
         .scale-labels {
@@ -450,6 +569,7 @@
             border-radius: var(--radius-md);
             padding: 25px;
             border-left: 4px solid var(--primary-blue);
+            animation: slideIn 0.5s ease-out;
         }
         
         .insights-header {
@@ -535,6 +655,81 @@
             cursor: not-allowed;
             transform: none !important;
             box-shadow: none !important;
+        }
+        
+        /* Progress Tracking */
+        .progress-section {
+            background: var(--card-white);
+            border-radius: var(--radius-lg);
+            padding: 30px;
+            box-shadow: var(--shadow-md);
+            border: 1px solid var(--border-color);
+            margin-bottom: 40px;
+        }
+        
+        .progress-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .progress-chart {
+            height: 200px;
+            background: #f8fafc;
+            border-radius: var(--radius-md);
+            display: flex;
+            align-items: flex-end;
+            justify-content: space-around;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+        
+        .chart-bar {
+            width: 40px;
+            background: var(--gradient-blue);
+            border-radius: 4px 4px 0 0;
+            position: relative;
+            transition: height 0.5s ease-out;
+        }
+        
+        .chart-label {
+            position: absolute;
+            bottom: -25px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 12px;
+            color: var(--text-gray);
+        }
+        
+        /* API Demo Section */
+        .api-demo {
+            background: var(--card-white);
+            border-radius: var(--radius-lg);
+            padding: 30px;
+            box-shadow: var(--shadow-md);
+            border: 1px solid var(--border-color);
+            margin-bottom: 60px;
+        }
+        
+        .api-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 20px;
+            color: var(--primary-blue);
+        }
+        
+        .api-response {
+            background: #f8fafc;
+            border-radius: var(--radius-md);
+            padding: 20px;
+            margin-top: 20px;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            overflow-x: auto;
+            white-space: pre-wrap;
+            border: 1px solid var(--border-color);
         }
         
         /* BMI Categories Section */
@@ -751,6 +946,23 @@
             font-size: 14px;
         }
         
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateX(-20px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        
         /* Responsive */
         @media (max-width: 768px) {
             .tool-header h1 {
@@ -771,6 +983,10 @@
             
             .bmi-value {
                 font-size: 3rem;
+            }
+            
+            .seo-description {
+                padding: 20px;
             }
         }
         
@@ -797,11 +1013,11 @@
             <div class="logo-wrapper">
                 <a href="index.html" class="logo">
                     <div class="logo-icon">
-                        <i class="fas fa-tools"></i>
+                        <i class="fas fa-heartbeat"></i>
                     </div>
                     <div class="logo-text">
-                        Tool Nest
-                        <span class="logo-tagline">PREMIUM ONLINE TOOLS</span>
+                        HealthMetrics
+                        <span class="logo-tagline">PROFESSIONAL HEALTH TOOLS</span>
                     </div>
                 </a>
             </div>
@@ -816,11 +1032,28 @@
     <!-- Main Content -->
     <main class="main-content">
         <div class="container">
+            <!-- SEO Description -->
+            <div class="seo-description">
+                <h2>Professional Body Mass Index (BMI) Calculator</h2>
+                <p>Our advanced BMI calculator provides accurate body mass index calculations using WHO-standard formulas. This essential health screening tool helps assess weight status and potential health risks associated with underweight, normal weight, overweight, and obesity categories.</p>
+                <p>Calculate your BMI instantly using either metric (kilograms/centimeters) or imperial (pounds/feet) measurement systems. Our tool offers detailed health insights, personalized recommendations, and progress tracking features for effective weight management and fitness planning.</p>
+                <div class="keywords">
+                    <span class="keyword-tag">BMI Calculation</span>
+                    <span class="keyword-tag">Health Assessment</span>
+                    <span class="keyword-tag">Weight Management</span>
+                    <span class="keyword-tag">Body Mass Index</span>
+                    <span class="keyword-tag">Obesity Screening</span>
+                    <span class="keyword-tag">Fitness Tracking</span>
+                    <span class="keyword-tag">Health Risk Calculator</span>
+                    <span class="keyword-tag">BMI Chart</span>
+                </div>
+            </div>
+
             <!-- Tool Header -->
             <div class="tool-header">
-                <span class="tool-badge">Health Assessment</span>
-                <h1>Professional BMI Calculator</h1>
-                <p>Calculate your Body Mass Index accurately and get detailed health insights. Understand your weight category and receive personalized recommendations.</p>
+                <span class="tool-badge">Medical Grade Accuracy</span>
+                <h1>Advanced BMI Calculator</h1>
+                <p>Calculate your Body Mass Index with professional precision. Get detailed health analysis, personalized insights, and actionable recommendations.</p>
             </div>
 
             <!-- BMI Calculator Tool -->
@@ -830,10 +1063,10 @@
                     <div class="input-section">
                         <div class="measurement-system">
                             <button class="system-btn active" id="metricBtn" onclick="switchSystem('metric')">
-                                Metric (kg/cm)
+                                <i class="fas fa-ruler-combined"></i> Metric (kg/cm)
                             </button>
                             <button class="system-btn" id="imperialBtn" onclick="switchSystem('imperial')">
-                                Imperial (lbs/ft)
+                                <i class="fas fa-ruler"></i> Imperial (lbs/ft)
                             </button>
                         </div>
 
@@ -916,28 +1149,60 @@
                             </div>
                         </div>
 
-                        <!-- Age and Gender -->
-                        <div class="input-group">
-                            <label for="age">
-                                <i class="fas fa-user"></i>
-                                Age
-                            </label>
-                            <div class="input-with-unit">
-                                <input type="number" id="age" class="number-input" placeholder="Enter your age" min="2" max="120" step="1" value="30">
-                                <span class="unit-display">years</span>
+                        <!-- Advanced Options -->
+                        <div class="advanced-options">
+                            <div class="advanced-header" onclick="toggleAdvancedOptions()">
+                                <i class="fas fa-sliders-h"></i>
+                                <span>Advanced Options</span>
+                                <i class="fas fa-chevron-down" id="advancedArrow"></i>
                             </div>
-                        </div>
+                            <div class="advanced-content" id="advancedContent">
+                                <div class="input-group">
+                                    <label for="age">
+                                        <i class="fas fa-user"></i>
+                                        Age
+                                    </label>
+                                    <input type="number" id="age" class="number-input" placeholder="Enter your age" min="2" max="120" step="1" value="30">
+                                </div>
 
-                        <div class="input-group">
-                            <label for="gender">
-                                <i class="fas fa-venus-mars"></i>
-                                Gender
-                            </label>
-                            <select id="gender" class="number-input">
-                                <option value="male">Male</option>
-                                <option value="female">Female</option>
-                                <option value="other">Other / Prefer not to say</option>
-                            </select>
+                                <div class="input-group">
+                                    <label for="gender">
+                                        <i class="fas fa-venus-mars"></i>
+                                        Gender
+                                    </label>
+                                    <select id="gender" class="number-input">
+                                        <option value="male">Male</option>
+                                        <option value="female">Female</option>
+                                        <option value="other">Other / Prefer not to say</option>
+                                    </select>
+                                </div>
+
+                                <div class="input-group">
+                                    <label for="activity">
+                                        <i class="fas fa-running"></i>
+                                        Activity Level
+                                    </label>
+                                    <select id="activity" class="number-input">
+                                        <option value="sedentary">Sedentary (little or no exercise)</option>
+                                        <option value="light">Light (exercise 1-3 days/week)</option>
+                                        <option value="moderate" selected>Moderate (exercise 3-5 days/week)</option>
+                                        <option value="active">Active (exercise 6-7 days/week)</option>
+                                        <option value="very-active">Very Active (hard exercise daily)</option>
+                                    </select>
+                                </div>
+
+                                <div class="input-group">
+                                    <label for="goal">
+                                        <i class="fas fa-bullseye"></i>
+                                        Health Goal
+                                    </label>
+                                    <select id="goal" class="number-input">
+                                        <option value="maintain">Maintain Weight</option>
+                                        <option value="lose">Lose Weight</option>
+                                        <option value="gain">Gain Weight</option>
+                                    </select>
+                                </div>
+                            </div>
                         </div>
                     </div>
 
@@ -966,10 +1231,21 @@
                         <div class="health-insights">
                             <div class="insights-header">
                                 <i class="fas fa-heartbeat"></i>
-                                <h3>Health Insights</h3>
+                                <h3>Personalized Health Insights</h3>
                             </div>
                             <ul class="insights-list" id="insightsList">
-                                <li><i class="fas fa-info-circle"></i> Enter your measurements to see health insights</li>
+                                <li><i class="fas fa-info-circle"></i> Enter your measurements to see personalized health insights</li>
+                            </ul>
+                        </div>
+
+                        <!-- Ideal Weight Range -->
+                        <div class="health-insights">
+                            <div class="insights-header">
+                                <i class="fas fa-balance-scale"></i>
+                                <h3>Ideal Weight Range</h3>
+                            </div>
+                            <ul class="insights-list" id="idealWeightList">
+                                <li><i class="fas fa-info-circle"></i> Your ideal weight range will appear here</li>
                             </ul>
                         </div>
                     </div>
@@ -985,10 +1261,46 @@
                         <i class="fas fa-redo"></i>
                         Reset All
                     </button>
-                    <button class="action-btn secondary" onclick="saveResult()">
-                        <i class="fas fa-save"></i>
-                        Save Result
+                    <button class="action-btn secondary" onclick="saveToProgress()">
+                        <i class="fas fa-chart-line"></i>
+                        Track Progress
                     </button>
+                </div>
+            </div>
+
+            <!-- Progress Tracking -->
+            <div class="progress-section" id="progressSection" style="display: none;">
+                <div class="progress-header">
+                    <h3><i class="fas fa-chart-line"></i> BMI Progress Tracking</h3>
+                    <button class="action-btn secondary" onclick="clearProgress()" style="min-width: 120px;">
+                        <i class="fas fa-trash"></i> Clear
+                    </button>
+                </div>
+                <div class="progress-chart" id="progressChart">
+                    <!-- Chart bars will be inserted here -->
+                </div>
+                <div id="progressStats"></div>
+            </div>
+
+            <!-- API Demo Section -->
+            <div class="api-demo">
+                <div class="api-header">
+                    <i class="fas fa-code"></i>
+                    <h3>BMI Calculator API</h3>
+                </div>
+                <p>Integrate our BMI calculator into your application using our REST API:</p>
+                <div class="action-buttons">
+                    <button class="action-btn secondary" onclick="demoAPICall()">
+                        <i class="fas fa-play"></i>
+                        Test API Call
+                    </button>
+                    <button class="action-btn secondary" onclick="copyAPIExample()">
+                        <i class="fas fa-copy"></i>
+                        Copy Example
+                    </button>
+                </div>
+                <div class="api-response" id="apiResponse">
+                    // API response will appear here
                 </div>
             </div>
 
@@ -1000,7 +1312,7 @@
                         <div class="category-range">&lt; 18.5</div>
                         <div class="category-name">Underweight</div>
                         <div class="category-description">
-                            May indicate nutritional deficiencies, osteoporosis risk, or underlying health conditions. Consider consulting a healthcare professional for dietary advice.
+                            May indicate nutritional deficiencies, osteoporosis risk, or underlying health conditions. Consider consulting a healthcare professional for dietary advice and nutritional support.
                         </div>
                     </div>
                     
@@ -1016,7 +1328,7 @@
                         <div class="category-range">25 - 29.9</div>
                         <div class="category-name">Overweight</div>
                         <div class="category-description">
-                            Increased risk of developing health conditions. Consider lifestyle changes including diet modification and increased physical activity.
+                            Increased risk of developing health conditions like hypertension and type 2 diabetes. Consider lifestyle changes including diet modification and increased physical activity.
                         </div>
                     </div>
                     
@@ -1024,7 +1336,7 @@
                         <div class="category-range">≥ 30</div>
                         <div class="category-name">Obesity</div>
                         <div class="category-description">
-                            Significant health risks including heart disease, diabetes, and hypertension. Professional medical advice recommended for weight management.
+                            Significant health risks including heart disease, diabetes, and hypertension. Professional medical advice recommended for weight management and lifestyle interventions.
                         </div>
                     </div>
                 </div>
@@ -1032,14 +1344,14 @@
 
             <!-- Features Section -->
             <div class="features-section">
-                <h2>Why Use Our BMI Calculator?</h2>
+                <h2>Advanced Features</h2>
                 <div class="features-grid">
                     <div class="feature-card">
                         <div class="feature-icon">
-                            <i class="fas fa-bullseye"></i>
+                            <i class="fas fa-shield-alt"></i>
                         </div>
                         <h3>Medical Accuracy</h3>
-                        <p>Our calculator uses WHO-approved BMI formulas and ranges for precise medical-grade calculations you can trust.</p>
+                        <p>Uses WHO-approved BMI formulas and ranges for clinical-grade precision. All calculations follow international medical standards.</p>
                     </div>
                     
                     <div class="feature-card">
@@ -1047,15 +1359,15 @@
                             <i class="fas fa-exchange-alt"></i>
                         </div>
                         <h3>Dual Measurement Systems</h3>
-                        <p>Switch seamlessly between metric (kg/cm) and imperial (lbs/ft) systems with automatic conversions and real-time updates.</p>
+                        <p>Switch seamlessly between metric and imperial systems with automatic real-time conversions and synchronized sliders.</p>
                     </div>
                     
                     <div class="feature-card">
                         <div class="feature-icon">
-                            <i class="fas fa-chart-line"></i>
+                            <i class="fas fa-chart-bar"></i>
                         </div>
-                        <h3>Visual BMI Scale</h3>
-                        <p>See your BMI position on a color-coded scale for immediate understanding of your weight category and health status.</p>
+                        <h3>Progress Tracking</h3>
+                        <p>Track your BMI over time with visual charts and statistics. Monitor your health journey with detailed progress reports.</p>
                     </div>
                     
                     <div class="feature-card">
@@ -1063,7 +1375,7 @@
                             <i class="fas fa-user-md"></i>
                         </div>
                         <h3>Personalized Insights</h3>
-                        <p>Receive age and gender-appropriate health recommendations based on established medical guidelines and research.</p>
+                        <p>Receive age, gender, and activity-level appropriate health recommendations based on established medical guidelines.</p>
                     </div>
                 </div>
             </div>
@@ -1075,48 +1387,49 @@
         <div class="container">
             <div class="footer-container">
                 <div class="footer-about">
-                    <a href="index.html" class="footer-logo">Tool Nest</a>
-                    <p class="footer-tagline">Your trusted partner for premium online tools. Professional solutions for modern workflows.</p>
+                    <a href="index.html" class="footer-logo">HealthMetrics</a>
+                    <p class="footer-tagline">Professional health assessment tools with medical-grade accuracy. Your trusted partner for health monitoring and wellness.</p>
                     <div class="footer-contact">
                         <div class="contact-item">
                             <i class="fas fa-envelope"></i>
-                            <span>toolnest3@gmail.com</span>
+                            <span>health@toolnest.com</span>
                         </div>
                         <div class="contact-item">
                             <i class="fas fa-shield-alt"></i>
-                            <span>100% Private Calculations</span>
+                            <span>100% Private & Secure</span>
                         </div>
                         <div class="contact-item">
                             <i class="fas fa-heartbeat"></i>
-                            <span>Medical Grade Accuracy</span>
+                            <span>Medical Advisory Board</span>
                         </div>
                     </div>
                 </div>
                 
                 <div class="footer-links">
-                    <h4>Quick Links</h4>
+                    <h4>Health Tools</h4>
                     <ul>
                         <li><a href="index.html">Home</a></li>
-                        <li><a href="index.html#calculator-tools-section">Calculator Tools</a></li>
-                        <li><a href="age-calculator.html">Age Calculator</a></li>
-                        <li><a href="emi-calculator.html">Loan EMI Calculator</a></li>
-                        <li><a href="gst-calculator.html">GST Calculator</a></li>
+                        <li><a href="bmr-calculator.html">BMR Calculator</a></li>
+                        <li><a href="body-fat-calculator.html">Body Fat Calculator</a></li>
+                        <li><a href="calorie-calculator.html">Calorie Calculator</a></li>
+                        <li><a href="ideal-weight-calculator.html">Ideal Weight Calculator</a></li>
                     </ul>
                 </div>
                 
                 <div class="footer-links">
-                    <h4>Health Disclaimer</h4>
+                    <h4>Resources</h4>
                     <ul>
                         <li><a href="disclaimer.html#medical">Medical Disclaimer</a></li>
                         <li><a href="privacy-policy.html">Privacy Policy</a></li>
                         <li><a href="terms-of-use.html">Terms of Service</a></li>
                         <li><a href="contact.html">Contact Healthcare</a></li>
+                        <li><a href="api-documentation.html">API Documentation</a></li>
                     </ul>
                 </div>
             </div>
             
             <div class="footer-bottom">
-                <p>© 2023 Tool Nest. All rights reserved. BMI is a screening tool and not a diagnostic measure. Consult a healthcare professional for medical advice.</p>
+                <p>© 2023 HealthMetrics by Tool Nest. All rights reserved. BMI is a screening tool and not a diagnostic measure. Consult a healthcare professional for medical advice.</p>
             </div>
         </div>
     </footer>
@@ -1137,17 +1450,38 @@
         const weightSliderLbs = document.getElementById('weightSliderLbs');
         const ageInput = document.getElementById('age');
         const genderSelect = document.getElementById('gender');
+        const activitySelect = document.getElementById('activity');
+        const goalSelect = document.getElementById('goal');
         const bmiValue = document.getElementById('bmiValue');
         const bmiCategory = document.getElementById('bmiCategory');
         const bmiMarker = document.getElementById('bmiMarker');
         const insightsList = document.getElementById('insightsList');
+        const idealWeightList = document.getElementById('idealWeightList');
         const resultSection = document.getElementById('resultSection');
+        const progressSection = document.getElementById('progressSection');
+        const progressChart = document.getElementById('progressChart');
+        const progressStats = document.getElementById('progressStats');
+        const apiResponse = document.getElementById('apiResponse');
+        const advancedArrow = document.getElementById('advancedArrow');
+        const advancedContent = document.getElementById('advancedContent');
 
         let currentSystem = 'metric';
+        let progressData = JSON.parse(localStorage.getItem('bmiProgress')) || [];
 
         // Initialize
         window.addEventListener('load', () => {
             // Set up slider synchronization
+            setupInputListeners();
+            
+            // Load progress data
+            loadProgressData();
+            
+            // Initial calculation
+            calculateBMI();
+        });
+
+        // Set up input listeners
+        function setupInputListeners() {
             weightKg.addEventListener('input', () => {
                 weightSliderKg.value = weightKg.value;
                 calculateBMI();
@@ -1182,10 +1516,16 @@
             heightIn.addEventListener('input', calculateBMI);
             ageInput.addEventListener('input', calculateBMI);
             genderSelect.addEventListener('change', calculateBMI);
-            
-            // Initial calculation
-            calculateBMI();
-        });
+            activitySelect.addEventListener('change', calculateBMI);
+            goalSelect.addEventListener('change', calculateBMI);
+        }
+
+        // Toggle advanced options
+        function toggleAdvancedOptions() {
+            advancedContent.classList.toggle('show');
+            advancedArrow.classList.toggle('fa-chevron-down');
+            advancedArrow.classList.toggle('fa-chevron-up');
+        }
 
         // Switch measurement system
         function switchSystem(system) {
@@ -1208,11 +1548,12 @@
 
         // Calculate BMI
         function calculateBMI() {
-            let weight, height;
+            let weight, height, heightCmValue;
             
             if (currentSystem === 'metric') {
                 weight = parseFloat(weightKg.value);
-                height = parseFloat(heightCm.value) / 100; // Convert cm to meters
+                heightCmValue = parseFloat(heightCm.value);
+                height = heightCmValue / 100; // Convert cm to meters
             } else {
                 // Convert imperial to metric
                 const lbs = parseFloat(weightLbs.value);
@@ -1220,11 +1561,14 @@
                 const inches = parseFloat(heightIn.value);
                 
                 weight = lbs * 0.453592; // Convert lbs to kg
-                height = (feet * 12 + inches) * 0.0254; // Convert to meters
+                heightCmValue = (feet * 12 + inches) * 2.54; // Convert to cm
+                height = heightCmValue / 100; // Convert to meters
             }
             
             const age = parseInt(ageInput.value);
             const gender = genderSelect.value;
+            const activity = activitySelect.value;
+            const goal = goalSelect.value;
             
             // Validate inputs
             if (!weight || !height || weight <= 0 || height <= 0) {
@@ -1232,7 +1576,7 @@
                 bmiCategory.textContent = 'Enter valid measurements';
                 bmiCategory.className = 'bmi-category';
                 bmiMarker.style.left = '0%';
-                updateInsights(null, null, null);
+                updateInsights(null, null, null, null);
                 return;
             }
             
@@ -1246,19 +1590,27 @@
             if (bmi < 18.5) {
                 category = 'Underweight';
                 categoryClass = 'category-underweight';
-                markerPosition = (bmi / 18.5) * 18.5; // Scale to 18.5
+                markerPosition = (bmi / 18.5) * 18.5;
             } else if (bmi < 25) {
-                category = 'Normal weight';
+                category = 'Normal Weight';
                 categoryClass = 'category-normal';
                 markerPosition = 18.5 + ((bmi - 18.5) / (25 - 18.5)) * 6.5;
             } else if (bmi < 30) {
                 category = 'Overweight';
                 categoryClass = 'category-overweight';
                 markerPosition = 25 + ((bmi - 25) / (30 - 25)) * 5;
-            } else {
-                category = 'Obesity';
+            } else if (bmi < 35) {
+                category = 'Obesity Class I';
                 categoryClass = 'category-obesity';
-                markerPosition = 30 + ((bmi - 30) / 20) * 70; // Scale for values above 30
+                markerPosition = 30 + ((bmi - 30) / 5) * 10;
+            } else if (bmi < 40) {
+                category = 'Obesity Class II';
+                categoryClass = 'category-obesity';
+                markerPosition = 35 + ((bmi - 35) / 5) * 15;
+            } else {
+                category = 'Obesity Class III';
+                categoryClass = 'category-obesity';
+                markerPosition = 40 + Math.min((bmi - 40) / 10 * 30, 70);
             }
             
             // Clamp marker position
@@ -1271,8 +1623,15 @@
             bmiCategory.className = `bmi-category ${categoryClass}`;
             bmiMarker.style.left = `${markerPosition}%`;
             
+            // Calculate ideal weight range
+            const minHealthyBMI = 18.5;
+            const maxHealthyBMI = 24.9;
+            const minHealthyWeight = minHealthyBMI * (height * height);
+            const maxHealthyWeight = maxHealthyBMI * (height * height);
+            
             // Update insights
-            updateInsights(bmi, age, gender);
+            updateInsights(bmi, age, gender, activity, goal);
+            updateIdealWeight(minHealthyWeight, maxHealthyWeight, heightCmValue);
             
             // Animate result section
             resultSection.style.animation = 'none';
@@ -1282,10 +1641,10 @@
         }
 
         // Update health insights
-        function updateInsights(bmi, age, gender) {
+        function updateInsights(bmi, age, gender, activity, goal) {
             if (!bmi) {
                 insightsList.innerHTML = `
-                    <li><i class="fas fa-info-circle"></i> Enter your measurements to see health insights</li>
+                    <li><i class="fas fa-info-circle"></i> Enter your measurements to see personalized health insights</li>
                 `;
                 return;
             }
@@ -1294,38 +1653,212 @@
             
             // Category-based insights
             if (bmi < 18.5) {
-                insights.push('<i class="fas fa-exclamation-triangle"></i> Consider consulting a nutritionist for healthy weight gain');
-                insights.push('<i class="fas fa-apple-alt"></i> Focus on nutrient-dense foods and regular meals');
-                insights.push('<i class="fas fa-dumbbell"></i> Include strength training to build muscle mass');
+                insights.push('<i class="fas fa-exclamation-triangle"></i> Consider consulting a nutritionist for healthy weight gain strategies');
+                insights.push('<i class="fas fa-apple-alt"></i> Focus on nutrient-dense foods and regular meals throughout the day');
+                insights.push('<i class="fas fa-dumbbell"></i> Include strength training exercises to build healthy muscle mass');
+                insights.push('<i class="fas fa-heart"></i> Monitor for signs of nutritional deficiencies');
             } else if (bmi < 25) {
-                insights.push('<i class="fas fa-check-circle"></i> Excellent! Maintain this healthy weight range');
-                insights.push('<i class="fas fa-heart"></i> Continue balanced diet and regular exercise');
-                insights.push('<i class="fas fa-calendar-alt"></i> Schedule annual health check-ups');
+                insights.push('<i class="fas fa-check-circle"></i> Excellent! You are in a healthy weight range');
+                insights.push('<i class="fas fa-heart"></i> Continue with balanced diet and regular physical activity');
+                insights.push('<i class="fas fa-calendar-alt"></i> Maintain annual health check-ups and screenings');
+                insights.push('<i class="fas fa-seedling"></i> Focus on maintaining healthy lifestyle habits');
             } else if (bmi < 30) {
-                insights.push('<i class="fas fa-exclamation-circle"></i> Consider moderate weight loss for better health');
-                insights.push('<i class="fas fa-walking"></i> Increase physical activity to 150+ minutes weekly');
-                insights.push('<i class="fas fa-carrot"></i> Focus on portion control and whole foods');
+                insights.push('<i class="fas fa-exclamation-circle"></i> Consider moderate weight loss for better metabolic health');
+                insights.push('<i class="fas fa-walking"></i> Aim for 150+ minutes of moderate exercise weekly');
+                insights.push('<i class="fas fa-carrot"></i> Focus on portion control and whole, unprocessed foods');
+                insights.push('<i class="fas fa-heartbeat"></i> Monitor blood pressure and blood sugar levels');
             } else {
-                insights.push('<i class="fas fa-exclamation-triangle"></i> Consult healthcare provider for guidance');
-                insights.push('<i class="fas fa-heartbeat"></i> Monitor blood pressure and blood sugar regularly');
-                insights.push('<i class="fas fa-utensils"></i> Consider professional nutritional counseling');
+                insights.push('<i class="fas fa-exclamation-triangle"></i> Consult healthcare provider for comprehensive weight management');
+                insights.push('<i class="fas fa-heartbeat"></i> Regular monitoring of blood pressure, cholesterol, and blood sugar');
+                insights.push('<i class="fas fa-utensils"></i> Consider professional nutritional counseling and support');
+                insights.push('<i class="fas fa-user-md"></i> Discuss medical interventions if lifestyle changes are insufficient');
             }
             
             // Age-based insights
             if (age >= 40 && bmi >= 25) {
-                insights.push('<i class="fas fa-user-md"></i> Regular health screenings recommended');
+                insights.push('<i class="fas fa-user-md"></i> Regular cardiovascular and metabolic screenings recommended');
+            }
+            
+            if (age >= 65) {
+                insights.push('<i class="fas fa-bone"></i> Ensure adequate protein and calcium for muscle and bone health');
             }
             
             // Gender-specific insights
             if (gender === 'female' && bmi < 18.5) {
-                insights.push('<i class="fas fa-female"></i> Ensure adequate calcium for bone health');
+                insights.push('<i class="fas fa-female"></i> Ensure adequate calcium and vitamin D for bone health');
             }
             
-            // General health tip
-            insights.push('<i class="fas fa-glass-water"></i> Stay hydrated with 8+ glasses of water daily');
+            if (gender === 'male' && bmi >= 30 && age < 50) {
+                insights.push('<i class="fas fa-male"></i> Increased cardiovascular risk - regular exercise recommended');
+            }
+            
+            // Activity-based insights
+            if (activity === 'sedentary' && bmi >= 25) {
+                insights.push('<i class="fas fa-couch"></i> Gradually increase daily activity level - start with walking');
+            }
+            
+            // Goal-based insights
+            if (goal === 'lose' && bmi >= 25) {
+                insights.push('<i class="fas fa-bullseye"></i> Aim for 0.5-1kg weight loss per week for sustainable results');
+            }
+            
+            if (goal === 'gain' && bmi < 18.5) {
+                insights.push('<i class="fas fa-bullseye"></i> Aim for 0.25-0.5kg weight gain per week with nutrient-rich foods');
+            }
             
             // Update list
             insightsList.innerHTML = insights.map(insight => `<li>${insight}</li>`).join('');
+        }
+
+        // Update ideal weight range
+        function updateIdealWeight(minWeight, maxWeight, heightCm) {
+            if (!minWeight || !maxWeight) {
+                idealWeightList.innerHTML = `
+                    <li><i class="fas fa-info-circle"></i> Your ideal weight range will appear here</li>
+                `;
+                return;
+            }
+            
+            let idealWeightHTML = '';
+            
+            if (currentSystem === 'metric') {
+                idealWeightHTML = `
+                    <li><i class="fas fa-weight"></i> <strong>${minWeight.toFixed(1)} - ${maxWeight.toFixed(1)} kg</strong> (for height: ${heightCm} cm)</li>
+                    <li><i class="fas fa-ruler"></i> Based on healthy BMI range (18.5 - 24.9)</li>
+                    <li><i class="fas fa-info-circle"></i> Individual factors may affect ideal weight</li>
+                `;
+            } else {
+                const minWeightLbs = minWeight * 2.20462;
+                const maxWeightLbs = maxWeight * 2.20462;
+                const heightFeet = Math.floor(heightCm / 30.48);
+                const heightInches = Math.round((heightCm % 30.48) / 2.54);
+                
+                idealWeightHTML = `
+                    <li><i class="fas fa-weight"></i> <strong>${minWeightLbs.toFixed(1)} - ${maxWeightLbs.toFixed(1)} lbs</strong> (for height: ${heightFeet}'${heightInches}")</li>
+                    <li><i class="fas fa-ruler"></i> Based on healthy BMI range (18.5 - 24.9)</li>
+                    <li><i class="fas fa-info-circle"></i> Individual factors may affect ideal weight</li>
+                `;
+            }
+            
+            idealWeightList.innerHTML = idealWeightHTML;
+        }
+
+        // Save to progress tracking
+        function saveToProgress() {
+            const bmi = parseFloat(bmiValue.textContent);
+            
+            if (isNaN(bmi) || bmiValue.textContent === '--') {
+                alert('Please calculate BMI first');
+                return;
+            }
+            
+            const timestamp = new Date().toISOString();
+            const weight = currentSystem === 'metric' ? weightKg.value : weightLbs.value;
+            const height = currentSystem === 'metric' ? heightCm.value : `${heightFt.value}'${heightIn.value}"`;
+            
+            const progressEntry = {
+                date: new Date().toLocaleDateString(),
+                timestamp: timestamp,
+                bmi: bmi,
+                weight: weight,
+                height: height,
+                system: currentSystem,
+                age: ageInput.value,
+                gender: genderSelect.value,
+                category: bmiCategory.textContent
+            };
+            
+            progressData.push(progressEntry);
+            
+            // Keep only last 10 entries
+            if (progressData.length > 10) {
+                progressData = progressData.slice(-10);
+            }
+            
+            // Save to localStorage
+            localStorage.setItem('bmiProgress', JSON.stringify(progressData));
+            
+            // Update progress display
+            loadProgressData();
+            
+            // Show notification
+            showNotification('Progress saved successfully!', 'success');
+        }
+
+        // Load progress data
+        function loadProgressData() {
+            if (progressData.length === 0) {
+                progressSection.style.display = 'none';
+                return;
+            }
+            
+            progressSection.style.display = 'block';
+            
+            // Update chart
+            updateProgressChart();
+            
+            // Update stats
+            updateProgressStats();
+        }
+
+        // Update progress chart
+        function updateProgressChart() {
+            const chartContainer = progressChart;
+            chartContainer.innerHTML = '';
+            
+            const maxBMI = Math.max(...progressData.map(entry => entry.bmi), 30);
+            const minBMI = Math.min(...progressData.map(entry => entry.bmi), 18.5);
+            const range = maxBMI - minBMI;
+            
+            progressData.forEach((entry, index) => {
+                const barHeight = ((entry.bmi - minBMI) / range) * 160 + 20;
+                const bar = document.createElement('div');
+                bar.className = 'chart-bar';
+                bar.style.height = `${barHeight}px`;
+                bar.innerHTML = `<div class="chart-label">${entry.date.split('/').slice(0,2).join('/')}</div>`;
+                bar.title = `BMI: ${entry.bmi.toFixed(1)} (${entry.category})`;
+                chartContainer.appendChild(bar);
+                
+                // Animate bar
+                setTimeout(() => {
+                    bar.style.height = `${barHeight}px`;
+                }, index * 100);
+            });
+        }
+
+        // Update progress stats
+        function updateProgressStats() {
+            if (progressData.length === 0) return;
+            
+            const latestBMI = progressData[progressData.length - 1].bmi;
+            const firstBMI = progressData[0].bmi;
+            const change = latestBMI - firstBMI;
+            const percentChange = ((change / firstBMI) * 100).toFixed(1);
+            
+            let statsHTML = `
+                <p><strong>Progress Summary (${progressData.length} records):</strong></p>
+                <p>Starting BMI: ${firstBMI.toFixed(1)} | Current BMI: ${latestBMI.toFixed(1)}</p>
+                <p>Change: ${change > 0 ? '+' : ''}${change.toFixed(1)} (${percentChange > 0 ? '+' : ''}${percentChange}%)</p>
+            `;
+            
+            if (Math.abs(change) > 0.5) {
+                const trend = change > 0 ? 'increased' : 'decreased';
+                statsHTML += `<p><i class="fas fa-arrow-${change > 0 ? 'up' : 'down'}"></i> Your BMI has ${trend} by ${Math.abs(change).toFixed(1)} points</p>`;
+            } else {
+                statsHTML += `<p><i class="fas fa-minus"></i> Your BMI has remained stable</p>`;
+            }
+            
+            progressStats.innerHTML = statsHTML;
+        }
+
+        // Clear progress data
+        function clearProgress() {
+            if (confirm('Are you sure you want to clear all progress data?')) {
+                progressData = [];
+                localStorage.removeItem('bmiProgress');
+                progressSection.style.display = 'none';
+                showNotification('Progress data cleared', 'info');
+            }
         }
 
         // Reset calculator
@@ -1344,12 +1877,15 @@
             
             ageInput.value = 30;
             genderSelect.value = 'male';
+            activitySelect.value = 'moderate';
+            goalSelect.value = 'maintain';
             
             calculateBMI();
+            showNotification('Calculator reset', 'info');
         }
 
-        // Save result (API integration example)
-        async function saveResult() {
+        // Demo API call
+        async function demoAPICall() {
             const bmi = parseFloat(bmiValue.textContent);
             
             if (isNaN(bmi) || bmiValue.textContent === '--') {
@@ -1357,62 +1893,189 @@
                 return;
             }
             
-            const data = {
-                bmi: bmi,
-                category: bmiCategory.textContent,
-                weight: currentSystem === 'metric' ? weightKg.value : weightLbs.value,
-                height: currentSystem === 'metric' ? heightCm.value : `${heightFt.value}'${heightIn.value}"`,
-                system: currentSystem,
-                age: ageInput.value,
-                gender: genderSelect.value,
-                timestamp: new Date().toISOString()
+            // Simulate API call
+            const apiData = {
+                endpoint: 'https://api.healthmetrics.com/v1/bmi/calculate',
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': 'Bearer demo_token_123'
+                },
+                body: {
+                    weight: currentSystem === 'metric' ? weightKg.value : weightLbs.value,
+                    height: currentSystem === 'metric' ? heightCm.value : `${heightFt.value}'${heightIn.value}"`,
+                    system: currentSystem,
+                    age: ageInput.value,
+                    gender: genderSelect.value,
+                    activity_level: activitySelect.value,
+                    goal: goalSelect.value
+                }
             };
             
-            // Example API call
-            try {
-                // Uncomment to enable API integration
-                // const response = await fetch('https://api.toolnest.com/bmi/save', {
-                //     method: 'POST',
-                //     headers: {
-                //         'Content-Type': 'application/json',
-                //     },
-                //     body: JSON.stringify(data)
-                // });
-                
-                // if (response.ok) {
-                //     alert('Result saved successfully!');
-                // }
-                
-                // For demo purposes, show local save
-                localStorage.setItem('lastBMICalculation', JSON.stringify(data));
-                alert('Result saved locally! You can view it in your browser storage.');
-                
-            } catch (error) {
-                console.error('Save error:', error);
-                alert('Error saving result. Please try again.');
-            }
+            // Simulate API response
+            const simulatedResponse = {
+                status: 'success',
+                data: {
+                    bmi: bmi,
+                    category: bmiCategory.textContent,
+                    ideal_weight_range: getIdealWeightRange(),
+                    health_risks: getHealthRisks(bmi),
+                    recommendations: getRecommendations(bmi, ageInput.value, genderSelect.value),
+                    timestamp: new Date().toISOString(),
+                    request_id: 'req_' + Math.random().toString(36).substr(2, 9)
+                },
+                meta: {
+                    version: '1.0',
+                    calculated_at: new Date().toISOString()
+                }
+            };
+            
+            // Display API response
+            apiResponse.textContent = JSON.stringify(simulatedResponse, null, 2);
+            apiResponse.style.color = 'var(--success-green)';
+            
+            showNotification('API demo executed successfully', 'success');
         }
 
-        // Export function for API
-        function getBMIData() {
-            const bmi = parseFloat(bmiValue.textContent);
-            
-            if (isNaN(bmi) || bmiValue.textContent === '--') {
-                return null;
-            }
-            
+        // Copy API example
+        function copyAPIExample() {
+            const exampleCode = `// Example API call to HealthMetrics BMI Calculator
+fetch('https://api.healthmetrics.com/v1/bmi/calculate', {
+    method: 'POST',
+    headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer YOUR_API_KEY'
+    },
+    body: JSON.stringify({
+        weight: 70,
+        height: 170,
+        system: 'metric',
+        age: 30,
+        gender: 'male'
+    })
+})
+.then(response => response.json())
+.then(data => console.log(data))
+.catch(error => console.error('Error:', error));`;
+
+            navigator.clipboard.writeText(exampleCode)
+                .then(() => showNotification('API example copied to clipboard', 'success'))
+                .catch(() => showNotification('Failed to copy to clipboard', 'error'));
+        }
+
+        // Helper functions for API demo
+        function getIdealWeightRange() {
+            const height = currentSystem === 'metric' ? heightCm.value / 100 : (parseInt(heightFt.value) * 0.3048) + (parseInt(heightIn.value) * 0.0254);
             return {
-                bmi: bmi,
-                category: bmiCategory.textContent,
-                weight: currentSystem === 'metric' ? weightKg.value : weightLbs.value,
-                height: currentSystem === 'metric' ? heightCm.value : `${heightFt.value}'${heightIn.value}"`,
-                system: currentSystem,
-                age: ageInput.value,
-                gender: genderSelect.value,
-                insights: Array.from(insightsList.children).map(li => li.textContent.trim()),
-                timestamp: new Date().toISOString()
+                min: (18.5 * height * height).toFixed(1),
+                max: (24.9 * height * height).toFixed(1),
+                unit: currentSystem === 'metric' ? 'kg' : 'lbs'
             };
         }
+
+        function getHealthRisks(bmi) {
+            if (bmi < 18.5) return ['Nutritional deficiencies', 'Osteoporosis risk', 'Weakened immune system'];
+            if (bmi < 25) return ['Low health risks'];
+            if (bmi < 30) return ['Type 2 diabetes', 'Hypertension', 'Cardiovascular diseases'];
+            return ['Severe obesity complications', 'Sleep apnea', 'Joint problems', 'Increased cancer risk'];
+        }
+
+        function getRecommendations(bmi, age, gender) {
+            const recommendations = [];
+            
+            if (bmi < 18.5) {
+                recommendations.push('Consult nutritionist for weight gain plan');
+                recommendations.push('Increase calorie intake with nutrient-dense foods');
+            } else if (bmi < 25) {
+                recommendations.push('Maintain current weight with balanced diet');
+                recommendations.push('Regular exercise 150+ minutes weekly');
+            } else {
+                recommendations.push('Consider weight loss program');
+                recommendations.push('Increase physical activity level');
+                recommendations.push('Regular health screenings');
+            }
+            
+            if (age > 40) recommendations.push('Annual health check-up recommended');
+            if (gender === 'female') recommendations.push('Ensure adequate calcium intake');
+            
+            return recommendations;
+        }
+
+        // Show notification
+        function showNotification(message, type = 'info') {
+            // Remove existing notification
+            const existingNotification = document.querySelector('.notification');
+            if (existingNotification) existingNotification.remove();
+            
+            // Create notification
+            const notification = document.createElement('div');
+            notification.className = `notification ${type}`;
+            notification.style.cssText = `
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                padding: 15px 20px;
+                background: ${type === 'success' ? 'var(--success-green)' : type === 'error' ? 'var(--error-red)' : 'var(--warning-orange)'};
+                color: white;
+                border-radius: var(--radius-md);
+                box-shadow: var(--shadow-lg);
+                z-index: 10000;
+                animation: fadeIn 0.3s ease-out;
+                font-weight: 500;
+            `;
+            notification.textContent = message;
+            
+            document.body.appendChild(notification);
+            
+            // Remove after 3 seconds
+            setTimeout(() => {
+                notification.style.animation = 'fadeIn 0.3s ease-out reverse';
+                setTimeout(() => notification.remove(), 300);
+            }, 3000);
+        }
+
+        // Export BMI data as JSON
+        function exportBMIData() {
+            const data = {
+                bmi: parseFloat(bmiValue.textContent),
+                category: bmiCategory.textContent,
+                measurements: {
+                    weight: currentSystem === 'metric' ? weightKg.value : weightLbs.value,
+                    height: currentSystem === 'metric' ? heightCm.value : `${heightFt.value}'${heightIn.value}"`,
+                    system: currentSystem
+                },
+                personal: {
+                    age: ageInput.value,
+                    gender: genderSelect.value,
+                    activity: activitySelect.value,
+                    goal: goalSelect.value
+                },
+                calculated_at: new Date().toISOString()
+            };
+            
+            const dataStr = JSON.stringify(data, null, 2);
+            const dataUri = 'data:application/json;charset=utf-8,'+ encodeURIComponent(dataStr);
+            
+            const exportFileDefaultName = `bmi_data_${new Date().toISOString().split('T')[0]}.json`;
+            
+            const linkElement = document.createElement('a');
+            linkElement.setAttribute('href', dataUri);
+            linkElement.setAttribute('download', exportFileDefaultName);
+            linkElement.click();
+            
+            showNotification('BMI data exported successfully', 'success');
+        }
+
+        // Make functions globally available for buttons
+        window.switchSystem = switchSystem;
+        window.calculateBMI = calculateBMI;
+        window.resetCalculator = resetCalculator;
+        window.saveToProgress = saveToProgress;
+        window.clearProgress = clearProgress;
+        window.demoAPICall = demoAPICall;
+        window.copyAPIExample = copyAPIExample;
+        window.toggleAdvancedOptions = toggleAdvancedOptions;
+        window.exportBMIData = exportBMIData;
     </script>
 </body>
 </html>
