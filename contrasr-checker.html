@@ -1,200 +1,1831 @@
-  
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-   <link rel="icon" href="favicon-16x16.png" type="image/x-icon">
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Contrast Checker</title>
-
-  <meta name="description" content="Contrast Checker is a free online tool to test color contrast ratios and check WCAG accessibility compliance for text and background colors." />
-
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background: #f0faff;
-      padding: 30px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      color: #333;
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced Contrast Checker | WCAG Compliance Tool | Tool Nest</title>
+    <meta name="description" content="Professional contrast checker tool for testing WCAG compliance. Check color contrast ratios, accessibility levels, and get detailed recommendations for accessible design.">
+    <meta name="keywords" content="contrast checker, WCAG compliance, accessibility checker, color contrast tool, web accessibility, AA compliance, AAA compliance, color contrast ratio, accessibility testing, contrast analyzer">
+    <meta name="author" content="Tool Nest">
+    <link rel="icon" href="favicon-16x16.png" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Advanced Contrast Checker | WCAG Compliance Tool">
+    <meta property="og:description" content="Professional tool for testing color contrast ratios and WCAG accessibility compliance.">
+    <meta property="og:type" content="website">
+    
+    <!-- Structured Data for SEO -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Advanced Contrast Checker",
+        "description": "Professional tool for testing color contrast ratios and WCAG accessibility compliance",
+        "applicationCategory": "AccessibilityApplication",
+        "operatingSystem": "Any",
+        "url": "https://toolnest.com/contrast-checker",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+        }
     }
-
-    h2 {
-      color: #007bff;
-      margin-bottom: 20px;
-      text-align: center;
-    }
-
-    .checker-box {
-      background: #ffffff;
-      border-radius: 12px;
-      padding: 20px;
-      max-width: 400px;
-      width: 100%;
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-      text-align: center;
-    }
-
-    .color-selectors {
-      margin-bottom: 15px;
-    }
-
-    input[type="color"] {
-      margin: 10px;
-      width: 100px;
-      height: 50px;
-      border: none;
-      border-radius: 6px;
-      cursor: pointer;
-    }
-
-    button {
-      padding: 8px 16px;
-      background-color: #007bff;
-      border: none;
-      border-radius: 8px;
-      color: #fff;
-      font-size: 14px;
-      cursor: pointer;
-    }
-
-    button:hover {
-      background-color: #0056b3;
-    }
-
-    .preview-box {
-      padding: 20px;
-      margin-top: 15px;
-      border-radius: 10px;
-      font-size: 18px;
-      font-weight: bold;
-    }
-
-    .contrast-result {
-      margin-top: 15px;
-      font-size: 16px;
-      font-weight: bold;
-    }
-
-    .description {
-      max-width: 700px;
-      background: #ffffff;
-      padding: 20px;
-      border-radius: 12px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-      margin-top: 30px;
-      line-height: 1.6;
-      font-size: 15px;
-    }
-
-    .description ul {
-      padding-left: 20px;
-    }
-
-    footer {
-      margin-top: 30px;
-      font-size: 14px;
-      color: #555;
-    }
-
-    footer span {
-      color: #007bff;
-      font-weight: bold;
-    }
-  </style>
+    </script>
+    
+    <style>
+        :root {
+            /* Premium Color Palette */
+            --primary-blue: #1a56db;
+            --dark-blue: #1e3a8a;
+            --light-blue: #3b82f6;
+            --accent-blue: #60a5fa;
+            --gradient-blue: linear-gradient(135deg, #1a56db 0%, #3b82f6 100%);
+            --gradient-dark: linear-gradient(135deg, #1e3a8a 0%, #1a56db 100%);
+            --premium-gray: #f9fafb;
+            --card-white: #ffffff;
+            --text-dark: #111827;
+            --text-gray: #6b7280;
+            --text-light: #9ca3af;
+            --border-color: #e5e7eb;
+            --success-green: #10b981;
+            --warning-orange: #f59e0b;
+            --error-red: #ef4444;
+            --accessibility-teal: #06b6d4;
+            --contrast-purple: #8b5cf6;
+            --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.07), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --shadow-lg: 0 10px 25px -5px rgba(0, 0, 0, 0.08), 0 8px 10px -6px rgba(0, 0, 0, 0.04);
+            --shadow-xl: 0 20px 40px -15px rgba(0, 0, 0, 0.1);
+            --radius-sm: 8px;
+            --radius-md: 12px;
+            --radius-lg: 16px;
+            --radius-xl: 24px;
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--text-dark);
+            background: var(--premium-gray);
+            line-height: 1.6;
+            font-weight: 400;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            line-height: 1.2;
+            margin-bottom: 1rem;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Premium Header */
+        header {
+            background-color: var(--card-white);
+            box-shadow: var(--shadow-sm);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            padding: 18px 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .logo {
+            font-family: 'Poppins', sans-serif;
+            font-size: 28px;
+            font-weight: 800;
+            background: var(--gradient-blue);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-decoration: none;
+            letter-spacing: -0.5px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .logo-icon {
+            background: var(--gradient-blue);
+            width: 36px;
+            height: 36px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 18px;
+        }
+        
+        .logo-text {
+            display: flex;
+            flex-direction: column;
+            line-height: 1;
+        }
+        
+        .logo-tagline {
+            font-size: 11px;
+            font-weight: 500;
+            color: var(--text-gray);
+            margin-top: 2px;
+            letter-spacing: 0.5px;
+        }
+        
+        .back-btn {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--gradient-blue);
+            color: white;
+            padding: 10px 20px;
+            border-radius: var(--radius-md);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 14px;
+            transition: var(--transition);
+        }
+        
+        .back-btn:hover {
+            transform: translateX(-3px);
+            box-shadow: var(--shadow-md);
+        }
+        
+        /* SEO Description Section */
+        .seo-description {
+            background: white;
+            border-radius: var(--radius-md);
+            padding: 30px;
+            margin: 30px auto;
+            max-width: 900px;
+            box-shadow: var(--shadow-sm);
+            border-left: 4px solid var(--accessibility-teal);
+        }
+        
+        .seo-description h2 {
+            color: var(--dark-blue);
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+        
+        .seo-description p {
+            color: var(--text-gray);
+            margin-bottom: 15px;
+            line-height: 1.7;
+        }
+        
+        .keywords {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 20px;
+        }
+        
+        .keyword-tag {
+            background: #ecfeff;
+            color: var(--accessibility-teal);
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 500;
+            border: 1px solid #cffafe;
+        }
+        
+        /* Main Content */
+        .main-content {
+            flex: 1;
+            padding: 40px 0;
+        }
+        
+        /* Tool Header */
+        .tool-header {
+            text-align: center;
+            margin-bottom: 48px;
+        }
+        
+        .tool-badge {
+            display: inline-block;
+            background: var(--gradient-blue);
+            color: white;
+            padding: 8px 24px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 16px;
+            letter-spacing: 0.5px;
+        }
+        
+        .tool-header h1 {
+            font-size: 2.8rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 16px;
+            background: linear-gradient(135deg, var(--text-dark) 0%, var(--accessibility-teal) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .tool-header p {
+            color: var(--text-gray);
+            font-size: 1.1rem;
+            max-width: 700px;
+            margin: 0 auto;
+            font-weight: 400;
+        }
+        
+        /* Tool Container */
+        .tool-container {
+            background: var(--card-white);
+            border-radius: var(--radius-lg);
+            padding: 50px;
+            box-shadow: var(--shadow-md);
+            border: 1px solid var(--border-color);
+            margin-bottom: 60px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .tool-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--gradient-blue);
+        }
+        
+        /* Color Selection */
+        .color-selection {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        @media (max-width: 768px) {
+            .color-selection {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        .color-picker-box {
+            background: #f8fafc;
+            border-radius: var(--radius-md);
+            padding: 30px;
+            border: 1px solid var(--border-color);
+        }
+        
+        .color-picker-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 25px;
+            color: var(--text-dark);
+        }
+        
+        .color-picker-header i {
+            color: var(--contrast-purple);
+            font-size: 20px;
+        }
+        
+        .color-picker-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+        
+        .color-input-group {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            width: 100%;
+        }
+        
+        .color-input-label {
+            font-weight: 600;
+            color: var(--text-dark);
+            min-width: 100px;
+        }
+        
+        .color-input {
+            flex: 1;
+            padding: 12px 15px;
+            border: 2px solid var(--border-color);
+            border-radius: var(--radius-sm);
+            font-size: 16px;
+            font-family: 'Inter', sans-serif;
+            transition: var(--transition);
+        }
+        
+        .color-input:focus {
+            outline: none;
+            border-color: var(--contrast-purple);
+            box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.1);
+        }
+        
+        .color-swatch {
+            width: 60px;
+            height: 60px;
+            border-radius: var(--radius-sm);
+            border: 3px solid white;
+            box-shadow: var(--shadow-md);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        
+        .color-swatch:hover {
+            transform: scale(1.05);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        /* Contrast Preview */
+        .contrast-preview {
+            background: #f8fafc;
+            border-radius: var(--radius-md);
+            padding: 30px;
+            margin-bottom: 40px;
+            border: 1px solid var(--border-color);
+        }
+        
+        .preview-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 25px;
+            color: var(--text-dark);
+        }
+        
+        .preview-header i {
+            color: var(--accessibility-teal);
+            font-size: 20px;
+        }
+        
+        .preview-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .preview-card {
+            background: white;
+            border-radius: var(--radius-md);
+            padding: 25px;
+            border: 1px solid var(--border-color);
+            transition: var(--transition);
+        }
+        
+        .preview-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-md);
+        }
+        
+        .preview-title {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 15px;
+            color: var(--text-dark);
+            font-weight: 600;
+        }
+        
+        .preview-title i {
+            color: var(--contrast-purple);
+        }
+        
+        .preview-content {
+            padding: 20px;
+            border-radius: var(--radius-sm);
+            font-size: 16px;
+            line-height: 1.5;
+            margin-bottom: 15px;
+            min-height: 100px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 500;
+        }
+        
+        .preview-size {
+            font-size: 12px;
+            color: var(--text-gray);
+            text-align: center;
+        }
+        
+        /* Contrast Results */
+        .contrast-results {
+            background: #f8fafc;
+            border-radius: var(--radius-md);
+            padding: 30px;
+            margin-bottom: 40px;
+            border: 1px solid var(--border-color);
+        }
+        
+        .results-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 25px;
+            color: var(--text-dark);
+        }
+        
+        .results-header i {
+            color: var(--success-green);
+            font-size: 20px;
+        }
+        
+        .results-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .result-card {
+            background: white;
+            border-radius: var(--radius-sm);
+            padding: 25px;
+            border: 1px solid var(--border-color);
+            text-align: center;
+            transition: var(--transition);
+        }
+        
+        .result-card:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-md);
+        }
+        
+        .result-value {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 10px;
+            color: var(--text-dark);
+        }
+        
+        .result-label {
+            font-size: 14px;
+            color: var(--text-gray);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 10px;
+        }
+        
+        .result-status {
+            display: inline-block;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .status-pass {
+            background: #d1fae5;
+            color: #065f46;
+        }
+        
+        .status-fail {
+            background: #fee2e2;
+            color: #991b1b;
+        }
+        
+        .status-warning {
+            background: #fef3c7;
+            color: #92400e;
+        }
+        
+        /* WCAG Compliance */
+        .wcag-compliance {
+            background: #f8fafc;
+            border-radius: var(--radius-md);
+            padding: 30px;
+            margin-bottom: 40px;
+            border: 1px solid var(--border-color);
+        }
+        
+        .wcag-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 25px;
+            color: var(--text-dark);
+        }
+        
+        .wcag-header i {
+            color: var(--accessibility-teal);
+            font-size: 20px;
+        }
+        
+        .wcag-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+        }
+        
+        .wcag-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 15px;
+            background: white;
+            border-radius: var(--radius-sm);
+            border: 1px solid var(--border-color);
+        }
+        
+        .wcag-label {
+            color: var(--text-dark);
+            font-weight: 500;
+        }
+        
+        .wcag-status {
+            font-weight: 600;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        /* Recommendations */
+        .recommendations {
+            background: #f8fafc;
+            border-radius: var(--radius-md);
+            padding: 30px;
+            margin-bottom: 40px;
+            border: 1px solid var(--border-color);
+        }
+        
+        .recommendations-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 25px;
+            color: var(--text-dark);
+        }
+        
+        .recommendations-header i {
+            color: var(--warning-orange);
+            font-size: 20px;
+        }
+        
+        .recommendations-list {
+            list-style: none;
+        }
+        
+        .recommendations-list li {
+            padding: 12px 0;
+            border-bottom: 1px solid var(--border-color);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .recommendations-list li:last-child {
+            border-bottom: none;
+        }
+        
+        .recommendations-list i {
+            color: var(--warning-orange);
+        }
+        
+        /* Action Buttons */
+        .action-buttons {
+            display: flex;
+            gap: 16px;
+            margin-top: 40px;
+            flex-wrap: wrap;
+        }
+        
+        .action-btn {
+            flex: 1;
+            min-width: 180px;
+            padding: 18px 30px;
+            border-radius: var(--radius-md);
+            font-weight: 600;
+            font-size: 16px;
+            border: none;
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+        
+        .action-btn.primary {
+            background: var(--gradient-blue);
+            color: white;
+        }
+        
+        .action-btn.primary:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .action-btn.secondary {
+            background: var(--premium-gray);
+            color: var(--text-dark);
+            border: 2px solid var(--border-color);
+        }
+        
+        .action-btn.secondary:hover {
+            background: #f0f9ff;
+            border-color: var(--light-blue);
+            color: var(--primary-blue);
+        }
+        
+        .action-btn.teal {
+            background: linear-gradient(135deg, var(--accessibility-teal) 0%, #22d3ee 100%);
+            color: white;
+        }
+        
+        .action-btn.teal:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        /* API Demo Section */
+        .api-demo {
+            background: var(--card-white);
+            border-radius: var(--radius-lg);
+            padding: 30px;
+            box-shadow: var(--shadow-md);
+            border: 1px solid var(--border-color);
+            margin-bottom: 60px;
+        }
+        
+        .api-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 20px;
+            color: var(--primary-blue);
+        }
+        
+        .api-response {
+            background: #f8fafc;
+            border-radius: var(--radius-md);
+            padding: 20px;
+            margin-top: 20px;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            overflow-x: auto;
+            white-space: pre-wrap;
+            border: 1px solid var(--border-color);
+            max-height: 300px;
+            overflow-y: auto;
+        }
+        
+        /* Features Section */
+        .features-section {
+            background: var(--card-white);
+            border-radius: var(--radius-lg);
+            padding: 50px;
+            box-shadow: var(--shadow-md);
+            border: 1px solid var(--border-color);
+            margin-bottom: 60px;
+        }
+        
+        .features-section h2 {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 40px;
+            color: var(--text-dark);
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .feature-card {
+            background: var(--premium-gray);
+            border-radius: var(--radius-md);
+            padding: 30px;
+            border-left: 4px solid var(--accessibility-teal);
+            transition: var(--transition);
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-md);
+        }
+        
+        .feature-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #ecfeff 0%, #cffafe 100%);
+            border-radius: var(--radius-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            color: var(--accessibility-teal);
+            font-size: 24px;
+        }
+        
+        .feature-card h3 {
+            font-size: 1.2rem;
+            margin-bottom: 12px;
+            color: var(--text-dark);
+        }
+        
+        .feature-card p {
+            color: var(--text-gray);
+            font-size: 14px;
+            line-height: 1.6;
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--text-dark);
+            color: white;
+            padding: 60px 0 40px;
+            margin-top: auto;
+        }
+        
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 48px;
+            margin-bottom: 48px;
+        }
+        
+        .footer-logo {
+            font-family: 'Poppins', sans-serif;
+            font-size: 28px;
+            font-weight: 800;
+            color: white;
+            margin-bottom: 16px;
+            display: block;
+            text-decoration: none;
+        }
+        
+        .footer-tagline {
+            color: #9ca3af;
+            font-size: 14px;
+            line-height: 1.6;
+            margin-bottom: 24px;
+        }
+        
+        .footer-contact {
+            margin-top: 24px;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 16px;
+            color: #9ca3af;
+        }
+        
+        .contact-item i {
+            color: var(--accent-blue);
+        }
+        
+        .footer-links h4 {
+            font-size: 1.1rem;
+            margin-bottom: 24px;
+            color: white;
+        }
+        
+        .footer-links ul {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+        
+        .footer-links a {
+            color: #9ca3af;
+            text-decoration: none;
+            font-size: 14px;
+            transition: var(--transition);
+        }
+        
+        .footer-links a:hover {
+            color: white;
+            padding-left: 8px;
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 40px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #9ca3af;
+            font-size: 14px;
+        }
+        
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .tool-header h1 {
+                font-size: 2rem;
+            }
+            
+            .tool-container, .features-section {
+                padding: 30px;
+            }
+            
+            .action-buttons {
+                flex-direction: column;
+            }
+            
+            .action-btn {
+                width: 100%;
+            }
+            
+            .preview-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .results-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .seo-description {
+                padding: 20px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .tool-header h1 {
+                font-size: 1.8rem;
+            }
+            
+            .tool-container, .features-section {
+                padding: 20px;
+            }
+            
+            .color-input-group {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .color-input-label {
+                min-width: auto;
+            }
+        }
+    </style>
 </head>
+
 <body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <div class="logo-wrapper">
+                <a href="index.html" class="logo">
+                    <div class="logo-icon">
+                        <i class="fas fa-universal-access"></i>
+                    </div>
+                    <div class="logo-text">
+                        Tool Nest
+                        <span class="logo-tagline">ACCESSIBILITY TOOLS</span>
+                    </div>
+                </a>
+            </div>
+            
+            <a href="index.html" class="back-btn">
+                <i class="fas fa-arrow-left"></i>
+                Back to Tools
+            </a>
+        </div>
+    </header>
 
-  <h2>Contrast Checker Tool</h2>
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container">
+            <!-- SEO Description -->
+            <div class="seo-description">
+                <h2>Professional Contrast Checker Tool</h2>
+                <p>Our <strong>Advanced Contrast Checker</strong> is a comprehensive accessibility testing tool that helps designers, developers, and content creators ensure their designs meet WCAG 2.1 and 2.2 accessibility standards. Test color contrast ratios, get detailed compliance reports, and receive actionable recommendations for accessible design.</p>
+                <p>This essential tool helps you create inclusive designs that are readable and usable by everyone, including people with visual impairments. Perfect for web design, UI/UX development, brand guidelines, and accessibility audits.</p>
+                <div class="keywords">
+                    <span class="keyword-tag">Contrast Checker</span>
+                    <span class="keyword-tag">WCAG Compliance</span>
+                    <span class="keyword-tag">Accessibility Testing</span>
+                    <span class="keyword-tag">Color Contrast Ratio</span>
+                    <span class="keyword-tag">AA Compliance</span>
+                    <span class="keyword-tag">AAA Compliance</span>
+                    <span class="keyword-tag">Web Accessibility</span>
+                    <span class="keyword-tag">Accessibility Checker</span>
+                    <span class="keyword-tag">Color Accessibility</span>
+                    <span class="keyword-tag">Contrast Analyzer</span>
+                </div>
+            </div>
 
-  <!-- TOOL -->
-  <div class="checker-box">
-    <div class="color-selectors">
-      <label>Text Color</label><br />
-      <input type="color" id="textColor" value="#000000" />
-    </div>
+            <!-- Tool Header -->
+            <div class="tool-header">
+                <span class="tool-badge">WCAG Compliance</span>
+                <h1>Advanced Contrast Checker</h1>
+                <p>Test color contrast ratios, check WCAG compliance, and get detailed accessibility recommendations for your designs.</p>
+            </div>
 
-    <div class="color-selectors">
-      <label>Background Color</label><br />
-      <input type="color" id="bgColor" value="#ffffff" />
-    </div>
+            <!-- Contrast Checker -->
+            <div class="tool-container">
+                <!-- Color Selection -->
+                <div class="color-selection">
+                    <!-- Text Color -->
+                    <div class="color-picker-box">
+                        <div class="color-picker-header">
+                            <i class="fas fa-font"></i>
+                            <h3>Text Color</h3>
+                        </div>
+                        
+                        <div class="color-picker-container">
+                            <div class="color-swatch" id="textSwatch" style="background: #000000;"></div>
+                            
+                            <div class="color-input-group">
+                                <label class="color-input-label">
+                                    <i class="fas fa-hashtag"></i> HEX
+                                </label>
+                                <input type="text" id="textHex" class="color-input" value="#000000" placeholder="#000000" maxlength="7">
+                            </div>
+                            
+                            <div class="color-input-group">
+                                <label class="color-input-label">
+                                    <i class="fas fa-sliders-h"></i> RGB
+                                </label>
+                                <div style="display: flex; gap: 10px; flex: 1;">
+                                    <input type="number" id="textR" class="color-input" value="0" min="0" max="255" style="text-align: center;">
+                                    <input type="number" id="textG" class="color-input" value="0" min="0" max="255" style="text-align: center;">
+                                    <input type="number" id="textB" class="color-input" value="0" min="0" max="255" style="text-align: center;">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Background Color -->
+                    <div class="color-picker-box">
+                        <div class="color-picker-header">
+                            <i class="fas fa-square"></i>
+                            <h3>Background Color</h3>
+                        </div>
+                        
+                        <div class="color-picker-container">
+                            <div class="color-swatch" id="bgSwatch" style="background: #ffffff;"></div>
+                            
+                            <div class="color-input-group">
+                                <label class="color-input-label">
+                                    <i class="fas fa-hashtag"></i> HEX
+                                </label>
+                                <input type="text" id="bgHex" class="color-input" value="#ffffff" placeholder="#FFFFFF" maxlength="7">
+                            </div>
+                            
+                            <div class="color-input-group">
+                                <label class="color-input-label">
+                                    <i class="fas fa-sliders-h"></i> RGB
+                                </label>
+                                <div style="display: flex; gap: 10px; flex: 1;">
+                                    <input type="number" id="bgR" class="color-input" value="255" min="0" max="255" style="text-align: center;">
+                                    <input type="number" id="bgG" class="color-input" value="255" min="0" max="255" style="text-align: center;">
+                                    <input type="number" id="bgB" class="color-input" value="255" min="0" max="255" style="text-align: center;">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
-    <button onclick="checkContrast()">Check Contrast</button>
+                <!-- Contrast Preview -->
+                <div class="contrast-preview">
+                    <div class="preview-header">
+                        <i class="fas fa-eye"></i>
+                        <h3>Text Preview</h3>
+                    </div>
+                    
+                    <div class="preview-container">
+                        <!-- Normal Text -->
+                        <div class="preview-card">
+                            <div class="preview-title">
+                                <i class="fas fa-text-height"></i>
+                                <span>Normal Text (16px)</span>
+                            </div>
+                            <div class="preview-content" id="normalTextPreview">
+                                The quick brown fox jumps over the lazy dog.
+                            </div>
+                            <div class="preview-size">AA: 4.5:1 • AAA: 7:1</div>
+                        </div>
+                        
+                        <!-- Large Text -->
+                        <div class="preview-card">
+                            <div class="preview-title">
+                                <i class="fas fa-text-width"></i>
+                                <span>Large Text (24px)</span>
+                            </div>
+                            <div class="preview-content" id="largeTextPreview">
+                                The quick brown fox jumps over the lazy dog.
+                            </div>
+                            <div class="preview-size">AA: 3:1 • AAA: 4.5:1</div>
+                        </div>
+                        
+                        <!-- UI Components -->
+                        <div class="preview-card">
+                            <div class="preview-title">
+                                <i class="fas fa-mouse-pointer"></i>
+                                <span>UI Components</span>
+                            </div>
+                            <div class="preview-content" id="uiPreview">
+                                <div style="display: flex; gap: 10px; flex-wrap: wrap; justify-content: center;">
+                                    <div style="padding: 8px 16px; border-radius: 4px; background: currentColor;">Button</div>
+                                    <div style="padding: 8px 16px; border-radius: 4px; border: 2px solid currentColor;">Outline</div>
+                                </div>
+                            </div>
+                            <div class="preview-size">AA: 3:1</div>
+                        </div>
+                    </div>
+                </div>
 
-    <div class="preview-box" id="previewText">Sample Text</div>
-    <div class="contrast-result" id="contrastResult">Contrast Ratio: -</div>
-  </div>
+                <!-- Contrast Results -->
+                <div class="contrast-results">
+                    <div class="results-header">
+                        <i class="fas fa-chart-bar"></i>
+                        <h3>Contrast Analysis Results</h3>
+                    </div>
+                    
+                    <div class="results-grid">
+                        <!-- Contrast Ratio -->
+                        <div class="result-card">
+                            <div class="result-value" id="contrastRatio">21.00</div>
+                            <div class="result-label">Contrast Ratio</div>
+                            <div class="result-status status-pass">Excellent</div>
+                        </div>
+                        
+                        <!-- WCAG AA -->
+                        <div class="result-card">
+                            <div class="result-value" id="wcagAA">AAA</div>
+                            <div class="result-label">WCAG AA</div>
+                            <div class="result-status status-pass">Pass</div>
+                        </div>
+                        
+                        <!-- WCG AAA -->
+                        <div class="result-card">
+                            <div class="result-value" id="wcagAAA">AAA</div>
+                            <div class="result-label">WCAG AAA</div>
+                            <div class="result-status status-pass">Pass</div>
+                        </div>
+                        
+                        <!-- Accessibility Level -->
+                        <div class="result-card">
+                            <div class="result-value" id="accessibilityLevel">AAA</div>
+                            <div class="result-label">Accessibility</div>
+                            <div class="result-status status-pass">Excellent</div>
+                        </div>
+                    </div>
+                </div>
 
-  <!-- DESCRIPTION UNDER TOOL -->
-  <div class="description">
-    <p><strong>Contrast Checker</strong> is an easy-to-use online tool that helps you test color contrast and ensure your designs meet accessibility standards. It instantly calculates the contrast ratio between text and background colors and shows whether the combination passes WCAG guidelines.</p>
+                <!-- WCAG Compliance -->
+                <div class="wcag-compliance">
+                    <div class="wcag-header">
+                        <i class="fas fa-shield-alt"></i>
+                        <h3>WCAG 2.1 Compliance</h3>
+                    </div>
+                    
+                    <div class="wcag-grid">
+                        <div class="wcag-item">
+                            <span class="wcag-label">Normal Text (AA)</span>
+                            <span class="wcag-status status-pass" id="wcagNormalAA">PASS</span>
+                        </div>
+                        <div class="wcag-item">
+                            <span class="wcag-label">Normal Text (AAA)</span>
+                            <span class="wcag-status status-pass" id="wcagNormalAAA">PASS</span>
+                        </div>
+                        <div class="wcag-item">
+                            <span class="wcag-label">Large Text (AA)</span>
+                            <span class="wcag-status status-pass" id="wcagLargeAA">PASS</span>
+                        </div>
+                        <div class="wcag-item">
+                            <span class="wcag-label">Large Text (AAA)</span>
+                            <span class="wcag-status status-pass" id="wcagLargeAAA">PASS</span>
+                        </div>
+                        <div class="wcag-item">
+                            <span class="wcag-label">UI Components (AA)</span>
+                            <span class="wcag-status status-pass" id="wcagUIAA">PASS</span>
+                        </div>
+                        <div class="wcag-item">
+                            <span class="wcag-label">Graphics (AA)</span>
+                            <span class="wcag-status status-pass" id="wcagGraphicsAA">PASS</span>
+                        </div>
+                    </div>
+                </div>
 
-    <p>This tool is ideal for:</p>
-    <ul>
-      <li>Web designers and UI/UX professionals</li>
-      <li>Developers building accessible websites</li>
-      <li>Graphic designers and content creators</li>
-    </ul>
+                <!-- Recommendations -->
+                <div class="recommendations">
+                    <div class="recommendations-header">
+                        <i class="fas fa-lightbulb"></i>
+                        <h3>Accessibility Recommendations</h3>
+                    </div>
+                    
+                    <ul class="recommendations-list" id="recommendationsList">
+                        <li><i class="fas fa-check-circle"></i> Excellent contrast ratio for all text sizes</li>
+                        <li><i class="fas fa-check-circle"></i> Meets all WCAG 2.1 AA and AAA requirements</li>
+                        <li><i class="fas fa-check-circle"></i> Suitable for users with visual impairments</li>
+                        <li><i class="fas fa-check-circle"></i> Good for both web and mobile applications</li>
+                    </ul>
+                </div>
 
-    <p>Instead of manually checking contrast ratios, this color contrast checker saves time, improves productivity, and helps you create readable, user-friendly designs for everyone.</p>
+                <!-- Action Buttons -->
+                <div class="action-buttons">
+                    <button class="action-btn primary" onclick="checkContrast()">
+                        <i class="fas fa-search"></i>
+                        Check Contrast
+                    </button>
+                    <button class="action-btn teal" onclick="swapColors()">
+                        <i class="fas fa-exchange-alt"></i>
+                        Swap Colors
+                    </button>
+                    <button class="action-btn secondary" onclick="saveReport()">
+                        <i class="fas fa-download"></i>
+                        Download Report
+                    </button>
+                    <button class="action-btn secondary" onclick="randomColors()">
+                        <i class="fas fa-random"></i>
+                        Random Test
+                    </button>
+                </div>
+            </div>
 
-    <p><strong>Use the Contrast Checker for free online</strong> and build accessible designs with confidence.</p>
-  </div>
+            <!-- API Demo Section -->
+            <div class="api-demo">
+                <div class="api-header">
+                    <i class="fas fa-code"></i>
+                    <h3>Accessibility API</h3>
+                </div>
+                <p>Integrate our contrast checking capabilities into your application using our REST API:</p>
+                <div class="action-buttons">
+                    <button class="action-btn secondary" onclick="demoAPICall()">
+                        <i class="fas fa-play"></i>
+                        Test API Call
+                    </button>
+                    <button class="action-btn secondary" onclick="copyAPIExample()">
+                        <i class="fas fa-copy"></i>
+                        Copy Example
+                    </button>
+                </div>
+                <div class="api-response" id="apiResponse">
+// API response will appear here
+                </div>
+            </div>
 
-  <footer>
-    Designed by <span>Tool NEST</span>
-  </footer>
+            <!-- Features Section -->
+            <div class="features-section">
+                <h2>Why Choose Our Contrast Checker?</h2>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-balance-scale"></i>
+                        </div>
+                        <h3>WCAG 2.1 & 2.2 Compliant</h3>
+                        <p>Our checker follows the latest WCAG guidelines with accurate mathematical calculations for all contrast requirements.</p>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-eye"></i>
+                        </div>
+                        <h3>Real-Time Visual Preview</h3>
+                        <p>See how your text looks on different backgrounds with multiple size previews and UI component examples.</p>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-lightbulb"></i>
+                        </div>
+                        <h3>Smart Recommendations</h3>
+                        <p>Get actionable suggestions for improving contrast and meeting specific accessibility requirements.</p>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <h3>Professional Reports</h3>
+                        <p>Generate detailed accessibility reports with compliance scores and recommendations for your projects.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
 
-  <script>
-    function luminance(r, g, b) {
-      const a = [r, g, b].map(v => {
-        v /= 255;
-        return v <= 0.03928
-          ? v / 12.92
-          : Math.pow((v + 0.055) / 1.055, 2.4);
-      });
-      return a[0] * 0.2126 + a[1] * 0.7152 + a[2] * 0.0722;
-    }
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-about">
+                    <a href="index.html" class="footer-logo">Tool Nest</a>
+                    <p class="footer-tagline">Professional accessibility tools for inclusive design and development.</p>
+                    <div class="footer-contact">
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <span>toolnest3@gmail.com</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-universal-access"></i>
+                            <span>WCAG 2.1 & 2.2 Compliant</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-code"></i>
+                            <span>Developer API Available</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="footer-links">
+                    <h4>Accessibility Tools</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="color-blindness-simulator.html">Color Blindness Simulator</a></li>
+                        <li><a href="screen-reader-simulator.html">Screen Reader Simulator</a></li>
+                        <li><a href="font-size-checker.html">Font Size Checker</a></li>
+                        <li><a href="accessibility-audit.html">Accessibility Audit</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-links">
+                    <h4>Resources</h4>
+                    <ul>
+                        <li><a href="disclaimer.html">Accessibility Disclaimer</a></li>
+                        <li><a href="privacy-policy.html">Privacy Policy</a></li>
+                        <li><a href="terms-of-use.html">Terms of Service</a></li>
+                        <li><a href="accessibility-statement.html">Accessibility Statement</a></li>
+                        <li><a href="api-documentation.html">API Documentation</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>© 2023 Tool Nest. All rights reserved. This tool provides contrast checking for educational and design purposes. Always conduct comprehensive accessibility testing.</p>
+            </div>
+        </div>
+    </footer>
 
-    function getRGB(hex) {
-      hex = hex.replace('#', '');
-      if (hex.length === 3) {
-        hex = hex.split('').map(c => c + c).join('');
-      }
-      const bigint = parseInt(hex, 16);
-      return [
-        (bigint >> 16) & 255,
-        (bigint >> 8) & 255,
-        bigint & 255
-      ];
-    }
+    <script>
+        // DOM Elements
+        const textSwatch = document.getElementById('textSwatch');
+        const bgSwatch = document.getElementById('bgSwatch');
+        const textHex = document.getElementById('textHex');
+        const bgHex = document.getElementById('bgHex');
+        const textR = document.getElementById('textR');
+        const textG = document.getElementById('textG');
+        const textB = document.getElementById('textB');
+        const bgR = document.getElementById('bgR');
+        const bgG = document.getElementById('bgG');
+        const bgB = document.getElementById('bgB');
+        const normalTextPreview = document.getElementById('normalTextPreview');
+        const largeTextPreview = document.getElementById('largeTextPreview');
+        const uiPreview = document.getElementById('uiPreview');
+        const contrastRatio = document.getElementById('contrastRatio');
+        const wcagAA = document.getElementById('wcagAA');
+        const wcagAAA = document.getElementById('wcagAAA');
+        const accessibilityLevel = document.getElementById('accessibilityLevel');
+        const wcagNormalAA = document.getElementById('wcagNormalAA');
+        const wcagNormalAAA = document.getElementById('wcagNormalAAA');
+        const wcagLargeAA = document.getElementById('wcagLargeAA');
+        const wcagLargeAAA = document.getElementById('wcagLargeAAA');
+        const wcagUIAA = document.getElementById('wcagUIAA');
+        const wcagGraphicsAA = document.getElementById('wcagGraphicsAA');
+        const recommendationsList = document.getElementById('recommendationsList');
+        const apiResponse = document.getElementById('apiResponse');
 
-    function contrastRatio(hex1, hex2) {
-      const [r1, g1, b1] = getRGB(hex1);
-      const [r2, g2, b2] = getRGB(hex2);
-      const lum1 = luminance(r1, g1, b1);
-      const lum2 = luminance(r2, g2, b2);
-      const brightest = Math.max(lum1, lum2);
-      const darkest = Math.min(lum1, lum2);
-      return ((brightest + 0.05) / (darkest + 0.05)).toFixed(2);
-    }
+        // State variables
+        let currentTextColor = { r: 0, g: 0, b: 0 };
+        let currentBgColor = { r: 255, g: 255, b: 255 };
 
-    function checkContrast() {
-      const textColor = document.getElementById("textColor").value;
-      const bgColor = document.getElementById("bgColor").value;
+        // Initialize
+        window.addEventListener('load', () => {
+            // Set up event listeners
+            setupEventListeners();
+            
+            // Initial contrast check
+            checkContrast();
+        });
 
-      const ratio = contrastRatio(textColor, bgColor);
-      const result = document.getElementById("contrastResult");
-      const preview = document.getElementById("previewText");
+        // Set up event listeners
+        function setupEventListeners() {
+            // Text color inputs
+            textHex.addEventListener('input', () => {
+                const hex = textHex.value;
+                if (isValidHex(hex)) {
+                    const rgb = hexToRgb(hex);
+                    updateTextColor(rgb.r, rgb.g, rgb.b);
+                    checkContrast();
+                }
+            });
+            
+            textR.addEventListener('input', updateTextFromRGB);
+            textG.addEventListener('input', updateTextFromRGB);
+            textB.addEventListener('input', updateTextFromRGB);
+            
+            // Background color inputs
+            bgHex.addEventListener('input', () => {
+                const hex = bgHex.value;
+                if (isValidHex(hex)) {
+                    const rgb = hexToRgb(hex);
+                    updateBgColor(rgb.r, rgb.g, rgb.b);
+                    checkContrast();
+                }
+            });
+            
+            bgR.addEventListener('input', updateBgFromRGB);
+            bgG.addEventListener('input', updateBgFromRGB);
+            bgB.addEventListener('input', updateBgFromRGB);
+            
+            // Color swatch click to open color picker
+            textSwatch.addEventListener('click', () => {
+                textHex.focus();
+                // In a real implementation, you'd trigger a color picker
+                // For now, we'll just focus the HEX input
+            });
+            
+            bgSwatch.addEventListener('click', () => {
+                bgHex.focus();
+            });
+        }
 
-      preview.style.color = textColor;
-      preview.style.backgroundColor = bgColor;
-      result.textContent = `Contrast Ratio: ${ratio} (${ratio >= 4.5 ? "Pass" : "Fail"})`;
-    }
-  </script>
+        // Update text color from RGB inputs
+        function updateTextFromRGB() {
+            const r = parseInt(textR.value) || 0;
+            const g = parseInt(textG.value) || 0;
+            const b = parseInt(textB.value) || 0;
+            
+            if (r >= 0 && r <= 255 && g >= 0 && g <= 255 && b >= 0 && b <= 255) {
+                updateTextColor(r, g, b);
+                checkContrast();
+            }
+        }
 
+        // Update background color from RGB inputs
+        function updateBgFromRGB() {
+            const r = parseInt(bgR.value) || 0;
+            const g = parseInt(bgG.value) || 0;
+            const b = parseInt(bgB.value) || 0;
+            
+            if (r >= 0 && r <= 255 && g >= 0 && g <= 255 && b >= 0 && b <= 255) {
+                updateBgColor(r, g, b);
+                checkContrast();
+            }
+        }
+
+        // Update text color
+        function updateTextColor(r, g, b) {
+            currentTextColor = { r, g, b };
+            const hex = rgbToHex(r, g, b);
+            
+            textSwatch.style.backgroundColor = hex;
+            textHex.value = hex.toUpperCase();
+            textR.value = r;
+            textG.value = g;
+            textB.value = b;
+        }
+
+        // Update background color
+        function updateBgColor(r, g, b) {
+            currentBgColor = { r, g, b };
+            const hex = rgbToHex(r, g, b);
+            
+            bgSwatch.style.backgroundColor = hex;
+            bgHex.value = hex.toUpperCase();
+            bgR.value = r;
+            bgG.value = g;
+            bgB.value = b;
+        }
+
+        // Calculate relative luminance
+        function calculateLuminance(r, g, b) {
+            const rsRGB = r / 255;
+            const gsRGB = g / 255;
+            const bsRGB = b / 255;
+            
+            const rLinear = rsRGB <= 0.03928 ? rsRGB / 12.92 : Math.pow((rsRGB + 0.055) / 1.055, 2.4);
+            const gLinear = gsRGB <= 0.03928 ? gsRGB / 12.92 : Math.pow((gsRGB + 0.055) / 1.055, 2.4);
+            const bLinear = bsRGB <= 0.03928 ? bsRGB / 12.92 : Math.pow((bsRGB + 0.055) / 1.055, 2.4);
+            
+            return 0.2126 * rLinear + 0.7152 * gLinear + 0.0722 * bLinear;
+        }
+
+        // Calculate contrast ratio
+        function calculateContrastRatio(rgb1, rgb2) {
+            const lum1 = calculateLuminance(rgb1.r, rgb1.g, rgb1.b);
+            const lum2 = calculateLuminance(rgb2.r, rgb2.g, rgb2.b);
+            
+            const brightest = Math.max(lum1, lum2);
+            const darkest = Math.min(lum1, lum2);
+            
+            return (brightest + 0.05) / (darkest + 0.05);
+        }
+
+        // Check contrast and update UI
+        function checkContrast() {
+            const ratio = calculateContrastRatio(currentTextColor, currentBgColor);
+            const ratioFormatted = ratio.toFixed(2);
+            
+            // Update contrast ratio display
+            contrastRatio.textContent = ratioFormatted;
+            
+            // Update previews
+            const textHex = rgbToHex(currentTextColor.r, currentTextColor.g, currentTextColor.b);
+            const bgHex = rgbToHex(currentBgColor.r, currentBgColor.g, currentBgColor.b);
+            
+            normalTextPreview.style.color = textHex;
+            normalTextPreview.style.backgroundColor = bgHex;
+            
+            largeTextPreview.style.color = textHex;
+            largeTextPreview.style.backgroundColor = bgHex;
+            
+            uiPreview.style.color = textHex;
+            uiPreview.style.backgroundColor = bgHex;
+            
+            // Check WCAG compliance
+            const normalAACheck = ratio >= 4.5;
+            const normalAAACheck = ratio >= 7;
+            const largeAACheck = ratio >= 3;
+            const largeAAACheck = ratio >= 4.5;
+            const uiAACheck = ratio >= 3;
+            const graphicsAACheck = ratio >= 3;
+            
+            // Update WCAG AA
+            if (normalAACheck && largeAACheck && uiAACheck && graphicsAACheck) {
+                wcagAA.textContent = 'AA';
+                wcagAA.className = 'result-status status-pass';
+            } else {
+                wcagAA.textContent = 'FAIL';
+                wcagAA.className = 'result-status status-fail';
+            }
+            
+            // Update WCAG AAA
+            if (normalAAACheck && largeAAACheck) {
+                wcagAAA.textContent = 'AAA';
+                wcagAAA.className = 'result-status status-pass';
+            } else {
+                wcagAAA.textContent = 'AA';
+                wcagAAA.className = 'result-status status-warning';
+            }
+            
+            // Update accessibility level
+            if (ratio >= 7) {
+                accessibilityLevel.textContent = 'AAA';
+                accessibilityLevel.className = 'result-status status-pass';
+            } else if (ratio >= 4.5) {
+                accessibilityLevel.textContent = 'AA';
+                accessibilityLevel.className = 'result-status status-warning';
+            } else {
+                accessibilityLevel.textContent = 'FAIL';
+                accessibilityLevel.className = 'result-status status-fail';
+            }
+            
+            // Update WCAG compliance items
+            updateWcagStatus(wcagNormalAA, normalAACheck);
+            updateWcagStatus(wcagNormalAAA, normalAAACheck);
+            updateWcagStatus(wcagLargeAA, largeAACheck);
+            updateWcagStatus(wcagLargeAAA, largeAAACheck);
+            updateWcagStatus(wcagUIAA, uiAACheck);
+            updateWcagStatus(wcagGraphicsAA, graphicsAACheck);
+            
+            // Update recommendations
+            updateRecommendations(ratio);
+            
+            // Animate result cards
+            animateResults();
+            
+            showNotification('Contrast analysis complete!', 'success');
+        }
+
+        // Update WCAG status
+        function updateWcagStatus(element, passes) {
+            if (passes) {
+                element.textContent = 'PASS';
+                element.className = 'wcag-status status-pass';
+            } else {
+                element.textContent = 'FAIL';
+                element.className = 'wcag-status status-fail';
+            }
+        }
+
+        // Update recommendations
+        function updateRecommendations(ratio) {
+            let recommendations = [];
+            
+            if (ratio >= 7) {
+                recommendations = [
+                    '<i class="fas fa-check-circle"></i> Excellent contrast ratio for all text sizes',
+                    '<i class="fas fa-check-circle"></i> Meets all WCAG 2.1 AA and AAA requirements',
+                    '<i class="fas fa-check-circle"></i> Suitable for users with visual impairments',
+                    '<i class="fas fa-check-circle"></i> Good for both web and mobile applications'
+                ];
+            } else if (ratio >= 4.5) {
+                recommendations = [
+                    '<i class="fas fa-check-circle"></i> Good contrast ratio for normal text',
+                    '<i class="fas fa-exclamation-triangle"></i> Consider increasing contrast for AAA compliance',
+                    '<i class="fas fa-check-circle"></i> Meets WCAG 2.1 AA requirements',
+                    '<i class="fas fa-check-circle"></i> Suitable for most users'
+                ];
+            } else if (ratio >= 3) {
+                recommendations = [
+                    '<i class="fas fa-exclamation-triangle"></i> Minimum contrast for large text only',
+                    '<i class="fas fa-times-circle"></i> Does not meet normal text AA requirements',
+                    '<i class="fas fa-lightbulb"></i> Consider darkening text or lightening background',
+                    '<i class="fas fa-exclamation-triangle"></i> May be difficult for users with visual impairments'
+                ];
+            } else {
+                recommendations = [
+                    '<i class="fas fa-times-circle"></i> Insufficient contrast ratio',
+                    '<i class="fas fa-exclamation-triangle"></i> Does not meet WCAG 2.1 requirements',
+                    '<i class="fas fa-lightbulb"></i> Significantly adjust colors for accessibility',
+                    '<i class="fas fa-exclamation-triangle"></i> Not recommended for any text'
+                ];
+            }
+            
+            recommendationsList.innerHTML = recommendations.map(rec => `<li>${rec}</li>`).join('');
+        }
+
+        // Animate result cards
+        function animateResults() {
+            const resultCards = document.querySelectorAll('.result-card');
+            resultCards.forEach((card, index) => {
+                card.style.animation = 'none';
+                setTimeout(() => {
+                    card.style.animation = 'pulse 0.5s ease-out';
+                }, index * 100);
+            });
+        }
+
+        // Swap colors
+        function swapColors() {
+            const temp = currentTextColor;
+            currentTextColor = currentBgColor;
+            currentBgColor = temp;
+            
+            updateTextColor(currentTextColor.r, currentTextColor.g, currentTextColor.b);
+            updateBgColor(currentBgColor.r, currentBgColor.g, currentBgColor.b);
+            checkContrast();
+            
+            showNotification('Colors swapped!', 'info');
+        }
+
+        // Generate random colors
+        function randomColors() {
+            // Generate random text color (dark)
+            const textR = Math.floor(Math.random() * 128);
+            const textG = Math.floor(Math.random() * 128);
+            const textB = Math.floor(Math.random() * 128);
+            
+            // Generate random background color (light)
+            const bgR = Math.floor(Math.random() * 128) + 128;
+            const bgG = Math.floor(Math.random() * 128) + 128;
+            const bgB = Math.floor(Math.random() * 128) + 128;
+            
+            updateTextColor(textR, textG, textB);
+            updateBgColor(bgR, bgG, bgB);
+            checkContrast();
+            
+            showNotification('Random colors generated!', 'success');
+        }
+
+        // Save report
+        function saveReport() {
+            const reportData = {
+                textColor: {
+                    hex: rgbToHex(currentTextColor.r, currentTextColor.g, currentTextColor.b),
+                    rgb: currentTextColor
+                },
+                backgroundColor: {
+                    hex: rgbToHex(currentBgColor.r, currentBgColor.g, currentBgColor.b),
+                    rgb: currentBgColor
+                },
+                contrastRatio: parseFloat(contrastRatio.textContent),
+                wcagResults: {
+                    aa: wcagAA.textContent,
+                    aaa: wcagAAA.textContent,
+                    normalTextAA: wcagNormalAA.textContent === 'PASS',
+                    normalTextAAA: wcagNormalAAA.textContent === 'PASS',
+                    largeTextAA: wcagLargeAA.textContent === 'PASS',
+                    largeTextAAA: wcagLargeAAA.textContent === 'PASS',
+                    uiAA: wcagUIAA.textContent === 'PASS',
+                    graphicsAA: wcagGraphicsAA.textContent === 'PASS'
+                },
+                accessibilityLevel: accessibilityLevel.textContent,
+                recommendations: Array.from(recommendationsList.children).map(li => li.textContent.trim()),
+                generatedAt: new Date().toISOString(),
+                tool: 'Tool Nest Contrast Checker'
+            };
+            
+            const dataStr = JSON.stringify(reportData, null, 2);
+            const dataUri = 'data:application/json;charset=utf-8,'+ encodeURIComponent(dataStr);
+            
+            const exportFileDefaultName = `contrast-report-${new Date().toISOString().split('T')[0]}.json`;
+            
+            const linkElement = document.createElement('a');
+            linkElement.setAttribute('href', dataUri);
+            linkElement.setAttribute('download', exportFileDefaultName);
+            linkElement.click();
+            
+            showNotification('Report downloaded successfully!', 'success');
+        }
+
+        // Color conversion functions
+        function rgbToHex(r, g, b) {
+            return "#" + [r, g, b].map(x => {
+                const hex = x.toString(16);
+                return hex.length === 1 ? "0" + hex : hex;
+            }).join("");
+        }
+
+        function hexToRgb(hex) {
+            hex = hex.replace('#', '');
+            if (hex.length === 3) {
+                hex = hex.split('').map(c => c + c).join('');
+            }
+            
+            if (hex.length !== 6) return { r: 0, g: 0, b: 0 };
+            
+            return {
+                r: parseInt(hex.substring(0, 2), 16),
+                g: parseInt(hex.substring(2, 4), 16),
+                b: parseInt(hex.substring(4, 6), 16)
+            };
+        }
+
+        function isValidHex(hex) {
+            return /^#?([0-9A-F]{3}|[0-9A-F]{6})$/i.test(hex);
+        }
+
+        // Demo API call
+        function demoAPICall() {
+            const ratio = calculateContrastRatio(currentTextColor, currentBgColor);
+            
+            // Simulate API response
+            const simulatedResponse = {
+                status: "success",
+                data: {
+                    colors: {
+                        foreground: {
+                            hex: rgbToHex(currentTextColor.r, currentTextColor.g, currentTextColor.b),
+                            rgb: currentTextColor
+                        },
+                        background: {
+                            hex: rgbToHex(currentBgColor.r, currentBgColor.g, currentBgColor.b),
+                            rgb: currentBgColor
+                        }
+                    },
+                    contrast_analysis: {
+                        ratio: parseFloat(ratio.toFixed(2)),
+                        luminance_foreground: calculateLuminance(currentTextColor.r, currentTextColor.g, currentTextColor.b).toFixed(3),
+                        luminance_background: calculateLuminance(currentBgColor.r, currentBgColor.g, currentBgColor.b).toFixed(3)
+                    },
+                    wcag_compliance: {
+                        normal_text: {
+                            aa: ratio >= 4.5,
+                            aaa: ratio >= 7,
+                            required_ratio_aa: 4.5,
+                            required_ratio_aaa: 7
+                        },
+                        large_text: {
+                            aa: ratio >= 3,
+                            aaa: ratio >= 4.5,
+                            required_ratio_aa: 3,
+                            required_ratio_aaa: 4.5
+                        },
+                        ui_components: {
+                            aa: ratio >= 3,
+                            required_ratio: 3
+                        },
+                        graphics: {
+                            aa: ratio >= 3,
+                            required_ratio: 3
+                        }
+                    },
+                    accessibility_rating: ratio >= 7 ? "AAA" : (ratio >= 4.5 ? "AA" : "FAIL"),
+                    recommendations: Array.from(recommendationsList.children).map(li => li.textContent.trim()).slice(0, 3)
+                },
+                meta: {
+                    version: "1.0",
+                    timestamp: new Date().toISOString(),
+                    request_id: "req_" + Math.random().toString(36).substr(2, 9)
+                }
+            };
+            
+            // Display API response
+            apiResponse.textContent = JSON.stringify(simulatedResponse, null, 2);
+            apiResponse.style.color = 'var(--success-green)';
+            
+            showNotification('API demo executed successfully!', 'success');
+        }
+
+        // Copy API example
+        function copyAPIExample() {
+            const exampleCode = `// Example API call to Accessibility API
+fetch('https://api.toolnest.com/v1/accessibility/contrast', {
+    method: 'POST',
+    headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer YOUR_API_KEY'
+    },
+    body: JSON.stringify({
+        foreground: "#000000",
+        background: "#FFFFFF",
+        formats: ["hex", "rgb"],
+        options: {
+            include_wcag: true,
+            include_recommendations: true,
+            include_luminance: true
+        }
+    })
+})
+.then(response => response.json())
+.then(data => console.log(data))
+.catch(error => console.error('Error:', error));`;
+
+            navigator.clipboard.writeText(exampleCode)
+                .then(() => showNotification('API example copied to clipboard!', 'success'))
+                .catch(() => showNotification('Failed to copy to clipboard', 'error'));
+        }
+
+        // Show notification
+        function showNotification(message, type = 'info') {
+            // Remove existing notification
+            const existingNotification = document.querySelector('.notification');
+            if (existingNotification) existingNotification.remove();
+            
+            // Create notification
+            const notification = document.createElement('div');
+            notification.className = `notification ${type}`;
+            notification.style.cssText = `
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                padding: 15px 20px;
+                background: ${type === 'success' ? 'var(--success-green)' : type === 'error' ? 'var(--error-red)' : 'var(--warning-orange)'};
+                color: white;
+                border-radius: var(--radius-md);
+                box-shadow: var(--shadow-lg);
+                z-index: 10000;
+                animation: fadeIn 0.3s ease-out;
+                font-weight: 500;
+            `;
+            notification.textContent = message;
+            
+            document.body.appendChild(notification);
+            
+            // Remove after 3 seconds
+            setTimeout(() => {
+                notification.style.animation = 'fadeIn 0.3s ease-out reverse';
+                setTimeout(() => notification.remove(), 300);
+            }, 3000);
+        }
+
+        // Make functions globally available
+        window.checkContrast = checkContrast;
+        window.swapColors = swapColors;
+        window.saveReport = saveReport;
+        window.randomColors = randomColors;
+        window.demoAPICall = demoAPICall;
+        window.copyAPIExample = copyAPIExample;
+    </script>
 </body>
 </html>
 
-  
