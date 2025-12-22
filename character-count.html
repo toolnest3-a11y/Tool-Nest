@@ -1,9 +1,15 @@
-  
-
-  <!DOCTYPE html>
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-  <title>Word and Character Counter</title>
+   <link rel="icon" href="favicon-16x16.png" type="image/x-icon">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  
+  <!-- SEO Meta Tags -->
+  <title>Word & Character Counter – Free Online Text Tool</title>
+  <meta name="description" content="Free online Word & Character Counter to instantly count words, characters, and paragraphs. Perfect for writers, students, and professionals.">
+  <meta name="keywords" content="Word counter, Character counter, Count words online, Count characters, Free text tool">
+
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -16,6 +22,7 @@
 
     h2 {
       color: #007bff;
+      margin-bottom: 15px;
     }
 
     #textBox {
@@ -44,18 +51,55 @@
     }
 
     button:hover {
-      background: #0056b3;
+      background-color: #0056b3;
     }
 
     #output {
       margin-top: 15px;
       font-size: 18px;
+      text-align: center;
+    }
+
+    /* SEO Description Styles */
+    .tool-description {
+      max-width: 800px;
+      margin: 30px auto 0;
+      background: #ffffff;
+      padding: 20px 25px;
+      border-radius: 12px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+      text-align: left;
+      line-height: 1.8;
+      color: #333;
+    }
+
+    .tool-description h3 {
+      color: #007bff;
+      margin-bottom: 12px;
+    }
+
+    .tool-description ul {
+      padding-left: 20px;
+    }
+
+    .tool-description li {
+      margin-bottom: 6px;
+    }
+
+    @media (max-width: 500px) {
+      #textBox {
+        min-height: 100px;
+      }
+      .tool-description {
+        padding: 15px 20px;
+      }
     }
   </style>
 </head>
 <body>
 
-  <h2>Word and Character Counter</h2>
+  <!-- TOOL -->
+  <h2>Word & Character Counter</h2>
 
   <div id="textBox" contenteditable="true" placeholder="Enter your text here..."></div>
 
@@ -65,6 +109,24 @@
     <p><strong>Word Count:</strong> <span id="wordCount">0</span></p>
     <p><strong>Character Count:</strong> <span id="charCount">0</span></p>
   </div>
+
+  <!-- SEO DESCRIPTION -->
+  <section class="tool-description">
+    <h3>Online Word & Character Counter</h3>
+    <p>
+      A <strong>Word & Character Counter</strong> is a fast and easy online tool that helps you count the number of words, characters, and paragraphs in your text. It is ideal for writers, students, bloggers, and professionals who need to track text length quickly and accurately.
+    </p>
+    <p>
+      This tool saves time and improves productivity by providing instant results without manual counting. You can focus on your content while ensuring it meets word or character requirements.
+    </p>
+    <ul>
+      <li>Count words, characters, and paragraphs instantly</li>
+      <li>Perfect for essays, articles, social media posts, and documents</li>
+      <li>Free, fast, and user-friendly</li>
+      <li>Helps meet text length requirements easily</li>
+    </ul>
+    <p><strong>Use our free online Word & Character Counter now to manage your text efficiently!</strong></p>
+  </section>
 
   <script>
     function countText() {
@@ -80,5 +142,4 @@
 </body>
 </html>
 
-  
   
