@@ -1,8 +1,7 @@
-      
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-      <link rel="icon" href="favicon-16x16.png" type="image/x-icon">
+    <link rel="icon" href="favicon-16x16.png" type="image/x-icon">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tool Nest - Your Daily Tools, All in One Place</title>
@@ -72,6 +71,7 @@
             display: flex;
             list-style: none;
             gap: 25px;
+            position: relative;
         }
         
         nav ul li a {
@@ -79,10 +79,55 @@
             color: var(--text-dark);
             font-weight: 500;
             transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 5px;
         }
         
         nav ul li a:hover {
             color: var(--primary-blue);
+        }
+        
+        /* Dropdown Menu */
+        .dropdown {
+            position: relative;
+        }
+        
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background-color: var(--white);
+            min-width: 200px;
+            box-shadow: var(--shadow);
+            border-radius: var(--rounded);
+            z-index: 1000;
+            padding: 10px 0;
+        }
+        
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+        
+        .dropdown-content a {
+            padding: 10px 20px;
+            display: block;
+            color: var(--text-dark);
+            text-decoration: none;
+            transition: var(--transition);
+            white-space: nowrap;
+        }
+        
+        .dropdown-content a:hover {
+            background-color: var(--bg-gray);
+            color: var(--primary-blue);
+        }
+        
+        .dropdown-content a i {
+            margin-right: 8px;
+            width: 20px;
+            text-align: center;
         }
         
         .contact-email {
@@ -162,8 +207,25 @@
             align-items: center;
             justify-content: center;
             font-size: 24px;
+            cursor: pointer;
+            transition: var(--transition);
+            text-decoration: none;
+            color: var(--white);
         }
         
+        .tool-icon:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+            transform: translateY(-5px);
+        }
+        
+        .tool-icon span {
+            display: block;
+            font-size: 12px;
+            margin-top: 5px;
+            font-weight: 500;
+        }
+        
+        /* Rest of your CSS remains the same... */
         /* Search */
         .search-section {
             padding: 30px 0;
@@ -515,7 +577,19 @@
             <nav>
                 <ul>
                     <li><a href="#home">Home</a></li>
-                    <li><a href="#tools">Tools</a></li>
+                    <li class="dropdown">
+                        <a href="#tools">Tools <i class="fas fa-chevron-down"></i></a>
+                        <div class="dropdown-content">
+                            <a href="#image-tools-section"><i class="fas fa-image"></i> Image Tools</a>
+                            <a href="#document-tools-section"><i class="fas fa-file-alt"></i> Document Tools</a>
+                            <a href="#calculator-tools-section"><i class="fas fa-calculator"></i> Calculator Tools</a>
+                            <a href="#text-tools-section"><i class="fas fa-font"></i> Text Tools</a>
+                            <a href="#web-tools-section"><i class="fas fa-code"></i> Web/Developer Tools</a>
+                            <a href="#color-tools-section"><i class="fas fa-palette"></i> Color Tools</a>
+                            <a href="#seo-tools-section"><i class="fas fa-chart-line"></i> SEO & Marketing Tools</a>
+                            <a href="#utility-tools-section"><i class="fas fa-tools"></i> Utility Tools</a>
+                        </div>
+                    </li>
                     <li><a href="#contact">Contact</a></li>
                 </ul>
             </nav>
@@ -539,24 +613,30 @@
             <a href="#tools" class="cta-button">Explore Tools</a>
             
             <div class="tool-icons">
-                <div class="tool-icon">
+                <a href="#image-tools-section" class="tool-icon">
                     <i class="fas fa-image"></i>
-                </div>
-                <div class="tool-icon">
+                    <span>Image</span>
+                </a>
+                <a href="#document-tools-section" class="tool-icon">
                     <i class="fas fa-file-alt"></i>
-                </div>
-                <div class="tool-icon">
+                    <span>Document</span>
+                </a>
+                <a href="#calculator-tools-section" class="tool-icon">
                     <i class="fas fa-calculator"></i>
-                </div>
-                <div class="tool-icon">
+                    <span>Calculator</span>
+                </a>
+                <a href="#text-tools-section" class="tool-icon">
                     <i class="fas fa-font"></i>
-                </div>
-                <div class="tool-icon">
+                    <span>Text</span>
+                </a>
+                <a href="#web-tools-section" class="tool-icon">
                     <i class="fas fa-code"></i>
-                </div>
-                <div class="tool-icon">
-                    <i class="fas fa-video"></i>
-                </div>
+                    <span>Web</span>
+                </a>
+                <a href="#utility-tools-section" class="tool-icon">
+                    <i class="fas fa-tools"></i>
+                    <span>Utility</span>
+                </a>
             </div>
         </div>
     </section>
@@ -578,7 +658,7 @@
     </section>
     
     <!-- Image Tools Section -->
-    <section class="tools-section" id="tools">
+    <section class="tools-section" id="image-tools-section">
         <div class="container">
             <div class="section-header">
                 <h2>🖼 Image Tools</h2>
@@ -644,7 +724,7 @@
     </section>
     
     <!-- Document Tools Section -->
-    <section class="tools-section" style="background-color: #f1f5f9;">
+    <section class="tools-section" style="background-color: #f1f5f9;" id="document-tools-section">
         <div class="container">
             <div class="section-header">
                 <h2>📄 Document Tools</h2>
@@ -710,7 +790,7 @@
     </section>
     
     <!-- Calculator Tools Section -->
-    <section class="tools-section">
+    <section class="tools-section" id="calculator-tools-section">
         <div class="container">
             <div class="section-header">
                 <h2>🧮 Calculator Tools</h2>
@@ -776,7 +856,7 @@
     </section>
     
     <!-- Text Tools Section -->
-    <section class="tools-section" style="background-color: #f1f5f9;">
+    <section class="tools-section" style="background-color: #f1f5f9;" id="text-tools-section">
         <div class="container">
             <div class="section-header">
                 <h2>🔤 Text Tools</h2>
@@ -842,7 +922,7 @@
     </section>
 
     <!-- Web/Developer Tools Section -->
-    <section class="tools-section">
+    <section class="tools-section" id="web-tools-section">
         <div class="container">
             <div class="section-header">
                 <h2>🌐 Web/Developer Tools</h2>
@@ -908,7 +988,7 @@
     </section>
 
     <!-- Color Tools Section -->
-    <section class="tools-section" style="background-color: #f1f5f9;">
+    <section class="tools-section" style="background-color: #f1f5f9;" id="color-tools-section">
         <div class="container">
             <div class="section-header">
                 <h2>🎨 Color Tools</h2>
@@ -974,7 +1054,7 @@
     </section>
 
     <!-- SEO & Marketing Tools Section -->
-    <section class="tools-section" style="background-color: #f1f5f9;">
+    <section class="tools-section" style="background-color: #f1f5f9;" id="seo-tools-section">
         <div class="container">
             <div class="section-header">
                 <h2>🌍 SEO & Marketing Tools</h2>
@@ -1013,7 +1093,7 @@
     </section>
 
     <!-- Utility Tools Section -->
-    <section class="tools-section">
+    <section class="tools-section" id="utility-tools-section">
         <div class="container">
             <div class="section-header">
                 <h2>🛠️ Utility Tools</h2>
@@ -1113,7 +1193,16 @@
         // Mobile menu toggle functionality
         document.querySelector('.mobile-menu-btn').addEventListener('click', function() {
             const nav = document.querySelector('nav');
+            const dropdowns = document.querySelectorAll('.dropdown-content');
+            
             nav.style.display = nav.style.display === 'block' ? 'none' : 'block';
+            
+            // Hide dropdowns when mobile menu is toggled
+            if (nav.style.display === 'block') {
+                dropdowns.forEach(dropdown => {
+                    dropdown.style.display = 'none';
+                });
+            }
         });
         
         // Search functionality
@@ -1154,10 +1243,10 @@
                     const listItem = document.createElement('li');
                     const link = document.createElement('a');
                     link.href = '#' + card.closest('.tools-section').id;
-                    link.textContent = toolName;
+                    link.textContent = card.querySelector('h3').textContent;
                     link.onclick = function() {
                         // Scroll to the tool section
-                        card.scrollIntoView({ behavior: 'smooth' });
+                        card.closest('.tools-section').scrollIntoView({ behavior: 'smooth' });
                         // Highlight the card
                         card.style.boxShadow = '0 0 0 3px var(--primary-blue)';
                         setTimeout(() => {
@@ -1187,9 +1276,32 @@
                 document.getElementById('searchResults').style.display = 'none';
             }
         });
+        
+        // Close dropdowns when clicking outside on mobile
+        document.addEventListener('click', function(event) {
+            if (window.innerWidth <= 576) {
+                const dropdowns = document.querySelectorAll('.dropdown-content');
+                dropdowns.forEach(dropdown => {
+                    if (!event.target.closest('.dropdown')) {
+                        dropdown.style.display = 'none';
+                    }
+                });
+            }
+        });
+        
+        // Mobile dropdown toggle
+        if (window.innerWidth <= 576) {
+            const dropdownToggles = document.querySelectorAll('.dropdown > a');
+            dropdownToggles.forEach(toggle => {
+                toggle.addEventListener('click', function(e) {
+                    if (window.innerWidth <= 576) {
+                        e.preventDefault();
+                        const dropdown = this.nextElementSibling;
+                        dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
+                    }
+                });
+            });
+        }
     </script>
 </body>
 </html>
-
-  
-  
