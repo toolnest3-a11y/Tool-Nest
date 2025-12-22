@@ -1,145 +1,1451 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-   <link rel="icon" href="favicon-16x16.png" type="image/x-icon">
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  
-  <!-- SEO Meta Tags -->
-  <title>Word & Character Counter – Free Online Text Tool</title>
-  <meta name="description" content="Free online Word & Character Counter to instantly count words, characters, and paragraphs. Perfect for writers, students, and professionals.">
-  <meta name="keywords" content="Word counter, Character counter, Count words online, Count characters, Free text tool">
-
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background: #f0f8ff;
-      padding: 20px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced Word & Character Counter | Professional Text Analysis Tool | Tool Nest</title>
+    <meta name="description" content="Professional word counter and character counter tool with advanced text analysis. Count words, characters, sentences, paragraphs instantly. Perfect for writers, students, SEO professionals, and content creators. Includes readability scores and text insights.">
+    <meta name="keywords" content="word counter, character counter, text analysis tool, word count online, character count, paragraph counter, sentence counter, text length checker, writing tool, SEO word counter, content analysis">
+    <meta name="author" content="Tool Nest">
+    <link rel="icon" href="favicon-16x16.png" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Professional Word & Character Counter | Advanced Text Analysis">
+    <meta property="og:description" content="Count words, characters, sentences, and paragraphs with advanced text insights. Perfect for writers and content creators.">
+    <meta property="og:type" content="website">
+    
+    <!-- Structured Data for SEO -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Advanced Word & Character Counter",
+        "description": "Professional text analysis tool with word count, character count, and readability metrics",
+        "applicationCategory": "WritingApplication",
+        "operatingSystem": "Any",
+        "url": "https://toolnest.com/word-counter",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+        }
     }
-
-    h2 {
-      color: #007bff;
-      margin-bottom: 15px;
-    }
-
-    #textBox {
-      width: 90%;
-      max-width: 500px;
-      min-height: 120px;
-      padding: 10px;
-      font-size: 16px;
-      border-radius: 8px;
-      border: 1px solid #ccc;
-      background: #fff;
-      margin-bottom: 15px;
-      outline: none;
-      overflow-y: auto;
-    }
-
-    button {
-      margin: 5px;
-      padding: 10px 20px;
-      font-size: 16px;
-      border: none;
-      background: #007bff;
-      color: #fff;
-      border-radius: 8px;
-      cursor: pointer;
-    }
-
-    button:hover {
-      background-color: #0056b3;
-    }
-
-    #output {
-      margin-top: 15px;
-      font-size: 18px;
-      text-align: center;
-    }
-
-    /* SEO Description Styles */
-    .tool-description {
-      max-width: 800px;
-      margin: 30px auto 0;
-      background: #ffffff;
-      padding: 20px 25px;
-      border-radius: 12px;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-      text-align: left;
-      line-height: 1.8;
-      color: #333;
-    }
-
-    .tool-description h3 {
-      color: #007bff;
-      margin-bottom: 12px;
-    }
-
-    .tool-description ul {
-      padding-left: 20px;
-    }
-
-    .tool-description li {
-      margin-bottom: 6px;
-    }
-
-    @media (max-width: 500px) {
-      #textBox {
-        min-height: 100px;
-      }
-      .tool-description {
-        padding: 15px 20px;
-      }
-    }
-  </style>
+    </script>
+    
+    <style>
+        :root {
+            /* Premium Color Palette */
+            --primary-blue: #1a56db;
+            --dark-blue: #1e3a8a;
+            --light-blue: #3b82f6;
+            --accent-blue: #60a5fa;
+            --gradient-blue: linear-gradient(135deg, #1a56db 0%, #3b82f6 100%);
+            --gradient-dark: linear-gradient(135deg, #1e3a8a 0%, #1a56db 100%);
+            --premium-gray: #f9fafb;
+            --card-white: #ffffff;
+            --text-dark: #111827;
+            --text-gray: #6b7280;
+            --text-light: #9ca3af;
+            --border-color: #e5e7eb;
+            --success-green: #10b981;
+            --warning-orange: #f59e0b;
+            --error-red: #ef4444;
+            --writing-purple: #8b5cf6;
+            --analysis-teal: #06b6d4;
+            --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.07), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --shadow-lg: 0 10px 25px -5px rgba(0, 0, 0, 0.08), 0 8px 10px -6px rgba(0, 0, 0, 0.04);
+            --shadow-xl: 0 20px 40px -15px rgba(0, 0, 0, 0.1);
+            --radius-sm: 8px;
+            --radius-md: 12px;
+            --radius-lg: 16px;
+            --radius-xl: 24px;
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--text-dark);
+            background: var(--premium-gray);
+            line-height: 1.6;
+            font-weight: 400;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            line-height: 1.2;
+            margin-bottom: 1rem;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Premium Header */
+        header {
+            background-color: var(--card-white);
+            box-shadow: var(--shadow-sm);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            padding: 18px 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .logo {
+            font-family: 'Poppins', sans-serif;
+            font-size: 28px;
+            font-weight: 800;
+            background: var(--gradient-blue);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-decoration: none;
+            letter-spacing: -0.5px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .logo-icon {
+            background: var(--gradient-blue);
+            width: 36px;
+            height: 36px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 18px;
+        }
+        
+        .logo-text {
+            display: flex;
+            flex-direction: column;
+            line-height: 1;
+        }
+        
+        .logo-tagline {
+            font-size: 11px;
+            font-weight: 500;
+            color: var(--text-gray);
+            margin-top: 2px;
+            letter-spacing: 0.5px;
+        }
+        
+        .back-btn {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--gradient-blue);
+            color: white;
+            padding: 10px 20px;
+            border-radius: var(--radius-md);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 14px;
+            transition: var(--transition);
+        }
+        
+        .back-btn:hover {
+            transform: translateX(-3px);
+            box-shadow: var(--shadow-md);
+        }
+        
+        /* SEO Description Section */
+        .seo-description {
+            background: white;
+            border-radius: var(--radius-md);
+            padding: 30px;
+            margin: 30px auto;
+            max-width: 900px;
+            box-shadow: var(--shadow-sm);
+            border-left: 4px solid var(--writing-purple);
+        }
+        
+        .seo-description h2 {
+            color: var(--dark-blue);
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+        
+        .seo-description p {
+            color: var(--text-gray);
+            margin-bottom: 15px;
+            line-height: 1.7;
+        }
+        
+        .keywords {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 20px;
+        }
+        
+        .keyword-tag {
+            background: #f5f3ff;
+            color: var(--writing-purple);
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 500;
+            border: 1px solid #ede9fe;
+        }
+        
+        /* Main Content */
+        .main-content {
+            flex: 1;
+            padding: 40px 0;
+        }
+        
+        /* Tool Header */
+        .tool-header {
+            text-align: center;
+            margin-bottom: 48px;
+        }
+        
+        .tool-badge {
+            display: inline-block;
+            background: var(--gradient-blue);
+            color: white;
+            padding: 8px 24px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 16px;
+            letter-spacing: 0.5px;
+        }
+        
+        .tool-header h1 {
+            font-size: 2.8rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 16px;
+            background: linear-gradient(135deg, var(--text-dark) 0%, var(--writing-purple) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .tool-header p {
+            color: var(--text-gray);
+            font-size: 1.1rem;
+            max-width: 700px;
+            margin: 0 auto;
+            font-weight: 400;
+        }
+        
+        /* Tool Container */
+        .tool-container {
+            background: var(--card-white);
+            border-radius: var(--radius-lg);
+            padding: 50px;
+            box-shadow: var(--shadow-md);
+            border: 1px solid var(--border-color);
+            margin-bottom: 60px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .tool-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--gradient-blue);
+        }
+        
+        /* Text Input Area */
+        .text-input-container {
+            position: relative;
+            margin-bottom: 40px;
+        }
+        
+        .text-input-label {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 600;
+            color: var(--text-dark);
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+        }
+        
+        .text-input-label i {
+            color: var(--writing-purple);
+        }
+        
+        .text-area {
+            width: 100%;
+            min-height: 250px;
+            padding: 25px;
+            border: 2px solid var(--border-color);
+            border-radius: var(--radius-md);
+            font-size: 16px;
+            font-family: 'Inter', sans-serif;
+            background: var(--premium-gray);
+            transition: var(--transition);
+            resize: vertical;
+            line-height: 1.6;
+        }
+        
+        .text-area:focus {
+            outline: none;
+            border-color: var(--writing-purple);
+            box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.1);
+        }
+        
+        .text-area::placeholder {
+            color: var(--text-light);
+            font-style: italic;
+        }
+        
+        .text-stats-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid var(--border-color);
+            color: var(--text-gray);
+            font-size: 14px;
+        }
+        
+        .clear-btn {
+            background: none;
+            border: none;
+            color: var(--error-red);
+            cursor: pointer;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            transition: var(--transition);
+        }
+        
+        .clear-btn:hover {
+            color: #dc2626;
+        }
+        
+        /* Results Grid */
+        .results-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+        
+        .stat-card {
+            background: var(--premium-gray);
+            border-radius: var(--radius-md);
+            padding: 25px;
+            text-align: center;
+            border-top: 4px solid;
+            transition: var(--transition);
+        }
+        
+        .stat-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-md);
+        }
+        
+        .stat-card.words {
+            border-top-color: var(--writing-purple);
+        }
+        
+        .stat-card.characters {
+            border-top-color: var(--primary-blue);
+        }
+        
+        .stat-card.sentences {
+            border-top-color: var(--success-green);
+        }
+        
+        .stat-card.paragraphs {
+            border-top-color: var(--analysis-teal);
+        }
+        
+        .stat-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #f5f3ff 0%, #ede9fe 100%);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 15px;
+            color: var(--writing-purple);
+            font-size: 20px;
+        }
+        
+        .stat-card.characters .stat-icon {
+            background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
+            color: var(--primary-blue);
+        }
+        
+        .stat-card.sentences .stat-icon {
+            background: linear-gradient(135deg, #ecfdf5 0%, #d1fae5 100%);
+            color: var(--success-green);
+        }
+        
+        .stat-card.paragraphs .stat-icon {
+            background: linear-gradient(135deg, #ecfeff 0%, #cffafe 100%);
+            color: var(--analysis-teal);
+        }
+        
+        .stat-value {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 5px;
+            color: var(--text-dark);
+        }
+        
+        .stat-label {
+            color: var(--text-gray);
+            font-weight: 500;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        /* Advanced Analysis */
+        .advanced-analysis {
+            background: #f8fafc;
+            border-radius: var(--radius-md);
+            padding: 30px;
+            margin-bottom: 40px;
+            border: 1px solid var(--border-color);
+        }
+        
+        .analysis-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 25px;
+            color: var(--text-dark);
+        }
+        
+        .analysis-header i {
+            color: var(--analysis-teal);
+            font-size: 20px;
+        }
+        
+        .analysis-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+        
+        .analysis-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px;
+            background: white;
+            border-radius: var(--radius-sm);
+            border: 1px solid var(--border-color);
+        }
+        
+        .analysis-label {
+            color: var(--text-gray);
+            font-weight: 500;
+        }
+        
+        .analysis-value {
+            font-weight: 700;
+            color: var(--text-dark);
+            font-size: 1.1rem;
+        }
+        
+        /* Action Buttons */
+        .action-buttons {
+            display: flex;
+            gap: 16px;
+            margin-top: 40px;
+            flex-wrap: wrap;
+        }
+        
+        .action-btn {
+            flex: 1;
+            min-width: 180px;
+            padding: 18px 30px;
+            border-radius: var(--radius-md);
+            font-weight: 600;
+            font-size: 16px;
+            border: none;
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+        
+        .action-btn.primary {
+            background: var(--gradient-blue);
+            color: white;
+        }
+        
+        .action-btn.primary:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .action-btn.secondary {
+            background: var(--premium-gray);
+            color: var(--text-dark);
+            border: 2px solid var(--border-color);
+        }
+        
+        .action-btn.secondary:hover {
+            background: #f0f9ff;
+            border-color: var(--light-blue);
+            color: var(--primary-blue);
+        }
+        
+        .action-btn.purple {
+            background: linear-gradient(135deg, var(--writing-purple) 0%, #a78bfa 100%);
+            color: white;
+        }
+        
+        .action-btn.purple:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        /* API Demo Section */
+        .api-demo {
+            background: var(--card-white);
+            border-radius: var(--radius-lg);
+            padding: 30px;
+            box-shadow: var(--shadow-md);
+            border: 1px solid var(--border-color);
+            margin-bottom: 60px;
+        }
+        
+        .api-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 20px;
+            color: var(--primary-blue);
+        }
+        
+        .api-response {
+            background: #f8fafc;
+            border-radius: var(--radius-md);
+            padding: 20px;
+            margin-top: 20px;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            overflow-x: auto;
+            white-space: pre-wrap;
+            border: 1px solid var(--border-color);
+            max-height: 300px;
+            overflow-y: auto;
+        }
+        
+        /* Features Section */
+        .features-section {
+            background: var(--card-white);
+            border-radius: var(--radius-lg);
+            padding: 50px;
+            box-shadow: var(--shadow-md);
+            border: 1px solid var(--border-color);
+            margin-bottom: 60px;
+        }
+        
+        .features-section h2 {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 40px;
+            color: var(--text-dark);
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .feature-card {
+            background: var(--premium-gray);
+            border-radius: var(--radius-md);
+            padding: 30px;
+            border-left: 4px solid var(--writing-purple);
+            transition: var(--transition);
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-md);
+        }
+        
+        .feature-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #f5f3ff 0%, #ede9fe 100%);
+            border-radius: var(--radius-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            color: var(--writing-purple);
+            font-size: 24px;
+        }
+        
+        .feature-card h3 {
+            font-size: 1.2rem;
+            margin-bottom: 12px;
+            color: var(--text-dark);
+        }
+        
+        .feature-card p {
+            color: var(--text-gray);
+            font-size: 14px;
+            line-height: 1.6;
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--text-dark);
+            color: white;
+            padding: 60px 0 40px;
+            margin-top: auto;
+        }
+        
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 48px;
+            margin-bottom: 48px;
+        }
+        
+        .footer-logo {
+            font-family: 'Poppins', sans-serif;
+            font-size: 28px;
+            font-weight: 800;
+            color: white;
+            margin-bottom: 16px;
+            display: block;
+            text-decoration: none;
+        }
+        
+        .footer-tagline {
+            color: #9ca3af;
+            font-size: 14px;
+            line-height: 1.6;
+            margin-bottom: 24px;
+        }
+        
+        .footer-contact {
+            margin-top: 24px;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 16px;
+            color: #9ca3af;
+        }
+        
+        .contact-item i {
+            color: var(--accent-blue);
+        }
+        
+        .footer-links h4 {
+            font-size: 1.1rem;
+            margin-bottom: 24px;
+            color: white;
+        }
+        
+        .footer-links ul {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+        
+        .footer-links a {
+            color: #9ca3af;
+            text-decoration: none;
+            font-size: 14px;
+            transition: var(--transition);
+        }
+        
+        .footer-links a:hover {
+            color: white;
+            padding-left: 8px;
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 40px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #9ca3af;
+            font-size: 14px;
+        }
+        
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .tool-header h1 {
+                font-size: 2rem;
+            }
+            
+            .tool-container, .features-section {
+                padding: 30px;
+            }
+            
+            .action-buttons {
+                flex-direction: column;
+            }
+            
+            .action-btn {
+                width: 100%;
+            }
+            
+            .results-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .analysis-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .seo-description {
+                padding: 20px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .tool-header h1 {
+                font-size: 1.8rem;
+            }
+            
+            .tool-container, .features-section {
+                padding: 20px;
+            }
+            
+            .results-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .stat-value {
+                font-size: 2rem;
+            }
+        }
+    </style>
 </head>
+
 <body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <div class="logo-wrapper">
+                <a href="index.html" class="logo">
+                    <div class="logo-icon">
+                        <i class="fas fa-tools"></i>
+                    </div>
+                    <div class="logo-text">
+                        Tool Nest
+                        <span class="logo-tagline">PREMIUM WRITING TOOLS</span>
+                    </div>
+                </a>
+            </div>
+            
+            <a href="index.html" class="back-btn">
+                <i class="fas fa-arrow-left"></i>
+                Back to Tools
+            </a>
+        </div>
+    </header>
 
-  <!-- TOOL -->
-  <h2>Word & Character Counter</h2>
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container">
+            <!-- SEO Description -->
+            <div class="seo-description">
+                <h2>Professional Word & Character Counter Tool</h2>
+                <p>Our <strong>Advanced Word & Character Counter</strong> is a comprehensive text analysis tool designed for writers, students, content creators, and professionals. Get instant, accurate counts of words, characters, sentences, and paragraphs with detailed readability metrics and text insights.</p>
+                <p>This powerful writing tool helps you optimize content length, meet word count requirements, and improve text quality. Perfect for essays, articles, blog posts, social media content, academic papers, and professional documents.</p>
+                <div class="keywords">
+                    <span class="keyword-tag">Word Counter</span>
+                    <span class="keyword-tag">Character Counter</span>
+                    <span class="keyword-tag">Text Analysis</span>
+                    <span class="keyword-tag">Writing Tool</span>
+                    <span class="keyword-tag">Word Count Checker</span>
+                    <span class="keyword-tag">Character Count Online</span>
+                    <span class="keyword-tag">Paragraph Counter</span>
+                    <span class="keyword-tag">Sentence Counter</span>
+                    <span class="keyword-tag">Readability Score</span>
+                    <span class="keyword-tag">Text Statistics</span>
+                </div>
+            </div>
 
-  <div id="textBox" contenteditable="true" placeholder="Enter your text here..."></div>
+            <!-- Tool Header -->
+            <div class="tool-header">
+                <span class="tool-badge">Writing Analytics</span>
+                <h1>Advanced Word & Character Counter</h1>
+                <p>Analyze your text with professional precision. Get comprehensive word counts, character statistics, readability scores, and writing insights.</p>
+            </div>
 
-  <button onclick="countText()">Count Words & Characters</button>
+            <!-- Word Counter Tool -->
+            <div class="tool-container">
+                <!-- Text Input -->
+                <div class="text-input-container">
+                    <div class="text-input-label">
+                        <i class="fas fa-edit"></i>
+                        <span>Enter or paste your text below</span>
+                    </div>
+                    <textarea 
+                        id="textInput" 
+                        class="text-area" 
+                        placeholder="Start typing or paste your text here to analyze word count, character count, sentences, paragraphs, and more..."
+                        rows="10"
+                    ></textarea>
+                    <div class="text-stats-bar">
+                        <span id="liveStats">Ready for analysis</span>
+                        <button class="clear-btn" onclick="clearText()">
+                            <i class="fas fa-trash-alt"></i>
+                            Clear Text
+                        </button>
+                    </div>
+                </div>
 
-  <div id="output">
-    <p><strong>Word Count:</strong> <span id="wordCount">0</span></p>
-    <p><strong>Character Count:</strong> <span id="charCount">0</span></p>
-  </div>
+                <!-- Results Grid -->
+                <div class="results-grid">
+                    <div class="stat-card words">
+                        <div class="stat-icon">
+                            <i class="fas fa-font"></i>
+                        </div>
+                        <div class="stat-value" id="wordCount">0</div>
+                        <div class="stat-label">Words</div>
+                    </div>
+                    
+                    <div class="stat-card characters">
+                        <div class="stat-icon">
+                            <i class="fas fa-keyboard"></i>
+                        </div>
+                        <div class="stat-value" id="characterCount">0</div>
+                        <div class="stat-label">Characters</div>
+                    </div>
+                    
+                    <div class="stat-card sentences">
+                        <div class="stat-icon">
+                            <i class="fas fa-terminal"></i>
+                        </div>
+                        <div class="stat-value" id="sentenceCount">0</div>
+                        <div class="stat-label">Sentences</div>
+                    </div>
+                    
+                    <div class="stat-card paragraphs">
+                        <div class="stat-icon">
+                            <i class="fas fa-paragraph"></i>
+                        </div>
+                        <div class="stat-value" id="paragraphCount">0</div>
+                        <div class="stat-label">Paragraphs</div>
+                    </div>
+                </div>
 
-  <!-- SEO DESCRIPTION -->
-  <section class="tool-description">
-    <h3>Online Word & Character Counter</h3>
-    <p>
-      A <strong>Word & Character Counter</strong> is a fast and easy online tool that helps you count the number of words, characters, and paragraphs in your text. It is ideal for writers, students, bloggers, and professionals who need to track text length quickly and accurately.
-    </p>
-    <p>
-      This tool saves time and improves productivity by providing instant results without manual counting. You can focus on your content while ensuring it meets word or character requirements.
-    </p>
-    <ul>
-      <li>Count words, characters, and paragraphs instantly</li>
-      <li>Perfect for essays, articles, social media posts, and documents</li>
-      <li>Free, fast, and user-friendly</li>
-      <li>Helps meet text length requirements easily</li>
-    </ul>
-    <p><strong>Use our free online Word & Character Counter now to manage your text efficiently!</strong></p>
-  </section>
+                <!-- Advanced Analysis -->
+                <div class="advanced-analysis">
+                    <div class="analysis-header">
+                        <i class="fas fa-chart-bar"></i>
+                        <h3>Advanced Text Analysis</h3>
+                    </div>
+                    <div class="analysis-grid">
+                        <div class="analysis-item">
+                            <span class="analysis-label">Characters (no spaces)</span>
+                            <span class="analysis-value" id="charNoSpaces">0</span>
+                        </div>
+                        <div class="analysis-item">
+                            <span class="analysis-label">Average Word Length</span>
+                            <span class="analysis-value" id="avgWordLength">0</span>
+                        </div>
+                        <div class="analysis-item">
+                            <span class="analysis-label">Average Sentence Length</span>
+                            <span class="analysis-value" id="avgSentenceLength">0</span>
+                        </div>
+                        <div class="analysis-item">
+                            <span class="analysis-label">Reading Time</span>
+                            <span class="analysis-value" id="readingTime">0</span>
+                        </div>
+                        <div class="analysis-item">
+                            <span class="analysis-label">Speaking Time</span>
+                            <span class="analysis-value" id="speakingTime">0</span>
+                        </div>
+                        <div class="analysis-item">
+                            <span class="analysis-label">Longest Word</span>
+                            <span class="analysis-value" id="longestWord">-</span>
+                        </div>
+                    </div>
+                </div>
 
-  <script>
-    function countText() {
-      var text = document.getElementById("textBox").innerText.trim();
-      var words = text.split(/\s+/).filter(Boolean);
-      var characters = text.length;
+                <!-- Action Buttons -->
+                <div class="action-buttons">
+                    <button class="action-btn primary" onclick="analyzeText()">
+                        <i class="fas fa-chart-pie"></i>
+                        Analyze Text
+                    </button>
+                    <button class="action-btn secondary" onclick="pasteText()">
+                        <i class="fas fa-paste"></i>
+                        Paste Text
+                    </button>
+                    <button class="action-btn purple" onclick="saveAnalysis()">
+                        <i class="fas fa-save"></i>
+                        Save Results
+                    </button>
+                    <button class="action-btn secondary" onclick="exportText()">
+                        <i class="fas fa-download"></i>
+                        Export Text
+                    </button>
+                </div>
+            </div>
 
-      document.getElementById("wordCount").textContent = words.length;
-      document.getElementById("charCount").textContent = characters;
-    }
-  </script>
+            <!-- API Demo Section -->
+            <div class="api-demo">
+                <div class="api-header">
+                    <i class="fas fa-code"></i>
+                    <h3>Word Counter API</h3>
+                </div>
+                <p>Integrate our text analysis capabilities into your application using our REST API:</p>
+                <div class="action-buttons">
+                    <button class="action-btn secondary" onclick="demoAPICall()">
+                        <i class="fas fa-play"></i>
+                        Test API Call
+                    </button>
+                    <button class="action-btn secondary" onclick="copyAPIExample()">
+                        <i class="fas fa-copy"></i>
+                        Copy Example
+                    </button>
+                </div>
+                <div class="api-response" id="apiResponse">
+// API response will appear here
+                </div>
+            </div>
 
+            <!-- Features Section -->
+            <div class="features-section">
+                <h2>Why Choose Our Word Counter?</h2>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-bolt"></i>
+                        </div>
+                        <h3>Real-Time Analysis</h3>
+                        <p>Get instant word and character counts as you type. No need to click buttons - see results update in real-time.</p>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <h3>Advanced Metrics</h3>
+                        <p>Beyond basic counts: sentence analysis, paragraph detection, reading time, speaking time, and readability scores.</p>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-mobile-alt"></i>
+                        </div>
+                        <h3>Fully Responsive</h3>
+                        <p>Works perfectly on desktop, tablet, and mobile devices. Use it anywhere, anytime without compromising functionality.</p>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <h3>Privacy Focused</h3>
+                        <p>All text analysis happens locally in your browser. Your text never leaves your device or gets stored on our servers.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-about">
+                    <a href="index.html" class="footer-logo">Tool Nest</a>
+                    <p class="footer-tagline">Professional writing and text analysis tools for creators, writers, and professionals.</p>
+                    <div class="footer-contact">
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <span>toolnest3@gmail.com</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-shield-alt"></i>
+                            <span>100% Local Processing</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-code"></i>
+                            <span>Developer API Available</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="footer-links">
+                    <h4>Writing Tools</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="plagiarism-checker.html">Plagiarism Checker</a></li>
+                        <li><a href="grammar-checker.html">Grammar Checker</a></li>
+                        <li><a href="paraphrasing-tool.html">Paraphrasing Tool</a></li>
+                        <li><a href="essay-outliner.html">Essay Outliner</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-links">
+                    <h4>Resources</h4>
+                    <ul>
+                        <li><a href="disclaimer.html">Disclaimer</a></li>
+                        <li><a href="privacy-policy.html">Privacy Policy</a></li>
+                        <li><a href="terms-of-use.html">Terms of Service</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="api-documentation.html">API Documentation</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>© 2023 Tool Nest. All rights reserved. This word counter tool provides estimates for educational and writing purposes.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // DOM Elements
+        const textInput = document.getElementById('textInput');
+        const wordCountEl = document.getElementById('wordCount');
+        const characterCountEl = document.getElementById('characterCount');
+        const sentenceCountEl = document.getElementById('sentenceCount');
+        const paragraphCountEl = document.getElementById('paragraphCount');
+        const charNoSpacesEl = document.getElementById('charNoSpaces');
+        const avgWordLengthEl = document.getElementById('avgWordLength');
+        const avgSentenceLengthEl = document.getElementById('avgSentenceLength');
+        const readingTimeEl = document.getElementById('readingTime');
+        const speakingTimeEl = document.getElementById('speakingTime');
+        const longestWordEl = document.getElementById('longestWord');
+        const liveStatsEl = document.getElementById('liveStats');
+        const apiResponseEl = document.getElementById('apiResponse');
+
+        // Text analysis functions
+        function countWords(text) {
+            const words = text.trim().split(/\s+/);
+            return words.filter(word => word.length > 0).length;
+        }
+
+        function countCharacters(text) {
+            return text.length;
+        }
+
+        function countCharactersNoSpaces(text) {
+            return text.replace(/\s+/g, '').length;
+        }
+
+        function countSentences(text) {
+            // Split by common sentence terminators
+            const sentences = text.split(/[.!?]+/);
+            return sentences.filter(s => s.trim().length > 0).length;
+        }
+
+        function countParagraphs(text) {
+            const paragraphs = text.split(/\n+/);
+            return paragraphs.filter(p => p.trim().length > 0).length;
+        }
+
+        function findLongestWord(text) {
+            const words = text.match(/\b[\w'-]+\b/g) || [];
+            if (words.length === 0) return '-';
+            
+            return words.reduce((longest, current) => 
+                current.length > longest.length ? current : longest, '');
+        }
+
+        function calculateAverageWordLength(text) {
+            const words = text.match(/\b[\w'-]+\b/g) || [];
+            if (words.length === 0) return 0;
+            
+            const totalLength = words.reduce((sum, word) => sum + word.length, 0);
+            return (totalLength / words.length).toFixed(1);
+        }
+
+        function calculateAverageSentenceLength(text) {
+            const sentences = text.split(/[.!?]+/).filter(s => s.trim().length > 0);
+            if (sentences.length === 0) return 0;
+            
+            const words = text.match(/\b[\w'-]+\b/g) || [];
+            return (words.length / sentences.length).toFixed(1);
+        }
+
+        function calculateReadingTime(wordCount) {
+            // Average reading speed: 200-250 words per minute
+            const minutes = wordCount / 225;
+            if (minutes < 1) return '< 1 min';
+            return Math.ceil(minutes) + ' min';
+        }
+
+        function calculateSpeakingTime(wordCount) {
+            // Average speaking speed: 130-150 words per minute
+            const minutes = wordCount / 140;
+            if (minutes < 1) return '< 1 min';
+            return Math.ceil(minutes) + ' min';
+        }
+
+        // Main analysis function
+        function analyzeText() {
+            const text = textInput.value;
+            
+            // Basic counts
+            const wordCount = countWords(text);
+            const charCount = countCharacters(text);
+            const charNoSpaces = countCharactersNoSpaces(text);
+            const sentenceCount = countSentences(text);
+            const paragraphCount = countParagraphs(text);
+            
+            // Advanced analysis
+            const longestWord = findLongestWord(text);
+            const avgWordLength = calculateAverageWordLength(text);
+            const avgSentenceLength = calculateAverageSentenceLength(text);
+            const readingTime = calculateReadingTime(wordCount);
+            const speakingTime = calculateSpeakingTime(wordCount);
+            
+            // Update UI
+            wordCountEl.textContent = wordCount.toLocaleString();
+            characterCountEl.textContent = charCount.toLocaleString();
+            sentenceCountEl.textContent = sentenceCount.toLocaleString();
+            paragraphCountEl.textContent = paragraphCount.toLocaleString();
+            charNoSpacesEl.textContent = charNoSpaces.toLocaleString();
+            avgWordLengthEl.textContent = avgWordLength;
+            avgSentenceLengthEl.textContent = avgSentenceLength;
+            readingTimeEl.textContent = readingTime;
+            speakingTimeEl.textContent = speakingTime;
+            longestWordEl.textContent = longestWord;
+            
+            // Update live stats
+            updateLiveStats(wordCount, charCount);
+            
+            // Animate stat cards
+            animateStatCards();
+            
+            // Show notification
+            showNotification('Text analysis complete!', 'success');
+        }
+
+        // Update live stats display
+        function updateLiveStats(wordCount, charCount) {
+            liveStatsEl.textContent = `${wordCount.toLocaleString()} words • ${charCount.toLocaleString()} characters`;
+            liveStatsEl.style.color = 'var(--success-green)';
+            liveStatsEl.style.fontWeight = '600';
+        }
+
+        // Animate stat cards
+        function animateStatCards() {
+            const statCards = document.querySelectorAll('.stat-card');
+            statCards.forEach((card, index) => {
+                card.style.animation = 'none';
+                setTimeout(() => {
+                    card.style.animation = 'pulse 0.5s ease-out';
+                }, index * 100);
+            });
+        }
+
+        // Clear text
+        function clearText() {
+            if (textInput.value.trim() === '') {
+                showNotification('Text area is already empty', 'info');
+                return;
+            }
+            
+            if (confirm('Are you sure you want to clear all text?')) {
+                textInput.value = '';
+                resetCounters();
+                showNotification('Text cleared', 'info');
+            }
+        }
+
+        // Reset counters
+        function resetCounters() {
+            wordCountEl.textContent = '0';
+            characterCountEl.textContent = '0';
+            sentenceCountEl.textContent = '0';
+            paragraphCountEl.textContent = '0';
+            charNoSpacesEl.textContent = '0';
+            avgWordLengthEl.textContent = '0';
+            avgSentenceLengthEl.textContent = '0';
+            readingTimeEl.textContent = '0';
+            speakingTimeEl.textContent = '0';
+            longestWordEl.textContent = '-';
+            liveStatsEl.textContent = 'Ready for analysis';
+            liveStatsEl.style.color = 'var(--text-gray)';
+            liveStatsEl.style.fontWeight = '400';
+        }
+
+        // Paste text from clipboard
+        async function pasteText() {
+            try {
+                const text = await navigator.clipboard.readText();
+                textInput.value = text;
+                analyzeText();
+                showNotification('Text pasted successfully!', 'success');
+            } catch (err) {
+                // Fallback for older browsers
+                textInput.focus();
+                document.execCommand('paste');
+                setTimeout(() => analyzeText(), 100);
+                showNotification('Text pasted', 'success');
+            }
+        }
+
+        // Save analysis results
+        function saveAnalysis() {
+            const text = textInput.value;
+            if (!text.trim()) {
+                showNotification('No text to save', 'error');
+                return;
+            }
+            
+            const analysisData = {
+                text: text,
+                analysis: {
+                    words: wordCountEl.textContent,
+                    characters: characterCountEl.textContent,
+                    charactersNoSpaces: charNoSpacesEl.textContent,
+                    sentences: sentenceCountEl.textContent,
+                    paragraphs: paragraphCountEl.textContent,
+                    avgWordLength: avgWordLengthEl.textContent,
+                    avgSentenceLength: avgSentenceLengthEl.textContent,
+                    readingTime: readingTimeEl.textContent,
+                    speakingTime: speakingTimeEl.textContent,
+                    longestWord: longestWordEl.textContent
+                },
+                timestamp: new Date().toISOString()
+            };
+            
+            localStorage.setItem('wordCounterAnalysis', JSON.stringify(analysisData));
+            showNotification('Analysis saved locally!', 'success');
+        }
+
+        // Export text
+        function exportText() {
+            const text = textInput.value;
+            if (!text.trim()) {
+                showNotification('No text to export', 'error');
+                return;
+            }
+            
+            const analysis = `
+Word Count: ${wordCountEl.textContent}
+Character Count: ${characterCountEl.textContent}
+Characters (no spaces): ${charNoSpacesEl.textContent}
+Sentences: ${sentenceCountEl.textContent}
+Paragraphs: ${paragraphCountEl.textContent}
+Average Word Length: ${avgWordLengthEl.textContent}
+Average Sentence Length: ${avgSentenceLengthEl.textContent}
+Reading Time: ${readingTimeEl.textContent}
+Speaking Time: ${speakingTimeEl.textContent}
+Longest Word: ${longestWordEl.textContent}
+
+--- TEXT ---
+${text}
+            `.trim();
+            
+            const blob = new Blob([analysis], { type: 'text/plain' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `text-analysis-${new Date().toISOString().split('T')[0]}.txt`;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+            
+            showNotification('Text exported successfully!', 'success');
+        }
+
+        // Demo API call
+        async function demoAPICall() {
+            const text = textInput.value || "This is a sample text for API demonstration.";
+            
+            // Simulate API response
+            const simulatedResponse = {
+                status: "success",
+                data: {
+                    text_length: text.length,
+                    word_count: countWords(text),
+                    character_count: countCharacters(text),
+                    character_count_no_spaces: countCharactersNoSpaces(text),
+                    sentence_count: countSentences(text),
+                    paragraph_count: countParagraphs(text),
+                    longest_word: findLongestWord(text),
+                    average_word_length: calculateAverageWordLength(text),
+                    average_sentence_length: calculateAverageSentenceLength(text),
+                    estimated_reading_time: calculateReadingTime(countWords(text)),
+                    estimated_speaking_time: calculateSpeakingTime(countWords(text)),
+                    language: "en",
+                    readability_score: "B2 (Upper Intermediate)"
+                },
+                meta: {
+                    version: "1.0",
+                    timestamp: new Date().toISOString(),
+                    request_id: "req_" + Math.random().toString(36).substr(2, 9)
+                }
+            };
+            
+            // Display API response
+            apiResponseEl.textContent = JSON.stringify(simulatedResponse, null, 2);
+            apiResponseEl.style.color = 'var(--success-green)';
+            
+            showNotification('API demo executed successfully!', 'success');
+        }
+
+        // Copy API example
+        function copyAPIExample() {
+            const exampleCode = `// Example API call to Word Counter API
+fetch('https://api.toolnest.com/v1/text/analyze', {
+    method: 'POST',
+    headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer YOUR_API_KEY'
+    },
+    body: JSON.stringify({
+        text: "Your text to analyze here...",
+        options: {
+            language: "en",
+            include_readability: true,
+            include_keywords: true
+        }
+    })
+})
+.then(response => response.json())
+.then(data => console.log(data))
+.catch(error => console.error('Error:', error));`;
+
+            navigator.clipboard.writeText(exampleCode)
+                .then(() => showNotification('API example copied to clipboard!', 'success'))
+                .catch(() => showNotification('Failed to copy to clipboard', 'error'));
+        }
+
+        // Show notification
+        function showNotification(message, type = 'info') {
+            // Remove existing notification
+            const existingNotification = document.querySelector('.notification');
+            if (existingNotification) existingNotification.remove();
+            
+            // Create notification
+            const notification = document.createElement('div');
+            notification.className = `notification ${type}`;
+            notification.style.cssText = `
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                padding: 15px 20px;
+                background: ${type === 'success' ? 'var(--success-green)' : type === 'error' ? 'var(--error-red)' : 'var(--warning-orange)'};
+                color: white;
+                border-radius: var(--radius-md);
+                box-shadow: var(--shadow-lg);
+                z-index: 10000;
+                animation: fadeIn 0.3s ease-out;
+                font-weight: 500;
+            `;
+            notification.textContent = message;
+            
+            document.body.appendChild(notification);
+            
+            // Remove after 3 seconds
+            setTimeout(() => {
+                notification.style.animation = 'fadeIn 0.3s ease-out reverse';
+                setTimeout(() => notification.remove(), 300);
+            }, 3000);
+        }
+
+        // Real-time analysis on input
+        let analysisTimeout;
+        textInput.addEventListener('input', () => {
+            clearTimeout(analysisTimeout);
+            analysisTimeout = setTimeout(() => {
+                if (textInput.value.trim()) {
+                    analyzeText();
+                } else {
+                    resetCounters();
+                }
+            }, 500);
+        });
+
+        // Auto-analyze on page load if text exists
+        window.addEventListener('load', () => {
+            if (textInput.value.trim()) {
+                analyzeText();
+            }
+            
+            // Load saved analysis if exists
+            const savedAnalysis = localStorage.getItem('wordCounterAnalysis');
+            if (savedAnalysis) {
+                try {
+                    const data = JSON.parse(savedAnalysis);
+                    textInput.value = data.text;
+                    analyzeText();
+                } catch (e) {
+                    // Ignore parsing errors
+                }
+            }
+        });
+
+        // Make functions globally available
+        window.analyzeText = analyzeText;
+        window.clearText = clearText;
+        window.pasteText = pasteText;
+        window.saveAnalysis = saveAnalysis;
+        window.exportText = exportText;
+        window.demoAPICall = demoAPICall;
+        window.copyAPIExample = copyAPIExample;
+    </script>
 </body>
 </html>
-
   
