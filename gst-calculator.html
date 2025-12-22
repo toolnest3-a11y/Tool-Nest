@@ -1,10 +1,15 @@
   
-  <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
+  <link rel="icon" href="favicon-16x16.png" type="image/x-icon">
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
   <title>GST Calculator</title>
+
+  <meta name="description" content="GST Tax Calculator is a free online tool to calculate GST amount and total price instantly in multiple currencies.">
+
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -16,22 +21,31 @@
       margin: 0;
     }
 
+    .wrapper {
+      width: 100%;
+      max-width: 500px;
+      padding: 20px;
+    }
+
     .container {
       background: #fff;
       padding: 30px;
       border-radius: 16px;
       box-shadow: 0 4px 12px rgba(0, 123, 255, 0.15);
       text-align: center;
-      width: 90%;
-      max-width: 400px;
     }
 
-    h1 {
+    h1, .meta-title {
       color: #007bff;
+      font-weight: bold;
+    }
+
+    .meta-title {
+      font-size: 18px;
       margin-bottom: 20px;
     }
 
-    input {
+    input, select {
       width: 100%;
       padding: 10px;
       margin: 10px 0;
@@ -43,12 +57,11 @@
     button {
       background-color: #007bff;
       color: #fff;
-      padding: 12px 20px;
+      padding: 12px;
       border: none;
       font-size: 16px;
       border-radius: 10px;
       cursor: pointer;
-      margin-top: 10px;
       width: 100%;
     }
 
@@ -59,48 +72,99 @@
     .result {
       margin-top: 20px;
       font-weight: bold;
-      font-size: 18px;
+      font-size: 16px;
+      line-height: 1.6;
     }
 
-    @media (max-width: 500px) {
-      .container {
-        padding: 20px;
-      }
+    .description {
+      text-align: left;
+      margin-top: 25px;
+      font-size: 14px;
+      line-height: 1.7;
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 25px;
+      font-size: 14px;
+    }
+
+    footer span {
+      color: #007bff;
+      font-weight: bold;
     }
   </style>
 </head>
 <body>
 
+<div class="wrapper">
   <div class="container">
     <h1>GST Calculator</h1>
-    <input type="number" id="amount" placeholder="Enter Amount (₹)" />
+    <div class="meta-title">GST Tax Calculator</div>
+
+    <!-- Currency Selector -->
+    <select id="currency">
+      <option value="₹">INR – Indian Rupee (₹)</option>
+      <option value="$">USD – US Dollar ($)</option>
+      <option value="€">EUR – Euro (€)</option>
+      <option value="£">GBP – British Pound (£)</option>
+      <option value="¥">JPY – Japanese Yen (¥)</option>
+      <option value="₩">KRW – Korean Won (₩)</option>
+      <option value="₨">PKR – Pakistani Rupee (₨)</option>
+      <option value="৳">BDT – Bangladeshi Taka (৳)</option>
+      <option value="₺">TRY – Turkish Lira (₺)</option>
+      <option value="₦">NGN – Nigerian Naira (₦)</option>
+      <option value="R">ZAR – South African Rand (R)</option>
+      <option value="د.إ">AED – UAE Dirham (د.إ)</option>
+    </select>
+
+    <input type="number" id="amount" placeholder="Enter Amount" />
     <input type="number" id="gstRate" placeholder="GST Rate (%)" />
+
     <button onclick="calculateGST()">Calculate GST</button>
+
     <div class="result" id="result"></div>
+
+    <!-- SEO Description -->
+    <div class="description">
+      <p><strong>GST Tax Calculator</strong> helps you calculate GST quickly and accurately in multiple currencies. Enter the amount and GST rate to instantly see tax value and total cost.</p>
+
+      <ul>
+        <li>Business owners & freelancers</li>
+        <li>Students & accountants</li>
+        <li>Quick tax comparisons</li>
+      </ul>
+
+      <p>Use this <strong>free GST calculator online</strong> to save time and avoid errors.</p>
+    </div>
   </div>
 
-  <script>
-    function calculateGST() {
-      const amount = parseFloat(document.getElementById("amount").value);
-      const gstRate = parseFloat(document.getElementById("gstRate").value);
+  <footer>
+    Designed by <span>Tool Nest</span>
+  </footer>
+</div>
 
-      if (!amount || !gstRate || amount < 0 || gstRate < 0) {
-        document.getElementById("result").textContent = "Please enter valid values.";
-        return;
-      }
+<script>
+  function calculateGST() {
+    const amount = parseFloat(document.getElementById("amount").value);
+    const gstRate = parseFloat(document.getElementById("gstRate").value);
+    const currency = document.getElementById("currency").value;
 
-      const gstAmount = (amount * gstRate) / 100;
-      const totalAmount = amount + gstAmount;
-
-      document.getElementById("result").innerHTML = `
-        GST Amount: ₹${gstAmount.toFixed(2)}<br/>
-        Total Amount (Incl. GST): ₹${totalAmount.toFixed(2)}
-      `;
+    if (!amount || !gstRate || amount < 0 || gstRate < 0) {
+      document.getElementById("result").textContent = "Please enter valid values.";
+      return;
     }
-  </script>
+
+    const gstAmount = (amount * gstRate) / 100;
+    const totalAmount = amount + gstAmount;
+
+    document.getElementById("result").innerHTML = `
+      GST Amount: ${currency}${gstAmount.toFixed(2)}<br/>
+      Total Amount (Incl. GST): ${currency}${totalAmount.toFixed(2)}
+    `;
+  }
+</script>
 
 </body>
 </html>
 
-  
-  
