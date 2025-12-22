@@ -1,10 +1,13 @@
-  
-  <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
+  <link rel="icon" href="favicon-16x16.png" type="image/x-icon">
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Loan EMI Calculator</title>
+
+  <meta name="description" content="Loan EMI Calculator is a free online tool to calculate monthly EMIs, total interest, and repayment amount in multiple currencies.">
+
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -16,22 +19,27 @@
       margin: 0;
     }
 
+    .wrapper {
+      width: 100%;
+      max-width: 520px;
+      padding: 20px;
+    }
+
     .container {
       background: #fff;
       padding: 30px;
       border-radius: 16px;
       box-shadow: 0 4px 12px rgba(0, 123, 255, 0.15);
       text-align: center;
-      width: 90%;
-      max-width: 450px;
     }
 
     h1 {
       color: #007bff;
       margin-bottom: 20px;
+      font-weight: bold;
     }
 
-    input {
+    input, select {
       width: 100%;
       padding: 10px;
       margin: 10px 0;
@@ -59,25 +67,82 @@
     .result {
       margin-top: 20px;
       font-weight: bold;
-      font-size: 18px;
+      font-size: 16px;
+      line-height: 1.6;
     }
 
-    @media (max-width: 500px) {
-      .container {
-        padding: 20px;
-      }
+    footer {
+      text-align: center;
+      margin-top: 25px;
+      font-size: 14px;
+      color: #555;
+    }
+
+    footer span {
+      color: #007bff;
+      font-weight: bold;
     }
   </style>
 </head>
 <body>
 
-  <div class="container">
-    <h1>Loan EMI Calculator</h1>
-    <input type="number" id="loanAmount" placeholder="Loan Amount (₹)" />
-    <input type="number" id="interestRate" placeholder="Annual Interest Rate (%)" />
-    <input type="number" id="loanTenure" placeholder="Loan Tenure (in months)" />
-    <button onclick="calculateEMI()">Calculate EMI</button>
-    <div class="result" id="result"></div>
+  <div class="wrapper">
+
+    <div class="container">
+      <h1>Loan EMI Calculator</h1>
+
+      <!-- Currency Selector -->
+     <select id="currency">
+  <option value="₹">INR – Indian Rupee (₹)</option>
+  <option value="$">USD – US Dollar ($)</option>
+  <option value="€">EUR – Euro (€)</option>
+  <option value="£">GBP – British Pound (£)</option>
+  <option value="¥">JPY – Japanese Yen (¥)</option>
+  <option value="₩">KRW – South Korean Won (₩)</option>
+  <option value="₽">RUB – Russian Ruble (₽)</option>
+  <option value="₺">TRY – Turkish Lira (₺)</option>
+  <option value="₫">VND – Vietnamese Dong (₫)</option>
+  <option value="₪">ILS – Israeli Shekel (₪)</option>
+  <option value="₱">PHP – Philippine Peso (₱)</option>
+  <option value="฿">THB – Thai Baht (฿)</option>
+  <option value="₦">NGN – Nigerian Naira (₦)</option>
+  <option value="₲">PYG – Paraguayan Guarani (₲)</option>
+  <option value="₡">CRC – Costa Rican Colón (₡)</option>
+  <option value="₴">UAH – Ukrainian Hryvnia (₴)</option>
+  <option value="₸">KZT – Kazakhstani Tenge (₸)</option>
+  <option value="₼">AZN – Azerbaijani Manat (₼)</option>
+  <option value="₾">GEL – Georgian Lari (₾)</option>
+  <option value="zł">PLN – Polish Zloty (zł)</option>
+  <option value="Kč">CZK – Czech Koruna (Kč)</option>
+  <option value="Ft">HUF – Hungarian Forint (Ft)</option>
+  <option value="kr">SEK – Swedish Krona (kr)</option>
+  <option value="kr">NOK – Norwegian Krone (kr)</option>
+  <option value="kr">DKK – Danish Krone (kr)</option>
+  <option value="$">CAD – Canadian Dollar ($)</option>
+  <option value="$">AUD – Australian Dollar ($)</option>
+  <option value="$">NZD – New Zealand Dollar ($)</option>
+  <option value="$">SGD – Singapore Dollar ($)</option>
+  <option value="$">HKD – Hong Kong Dollar ($)</option>
+  <option value="₩">IDR – Indonesian Rupiah (Rp)</option>
+  <option value="₨">PKR – Pakistani Rupee (₨)</option>
+  <option value="৳">BDT – Bangladeshi Taka (৳)</option>
+  <option value="R">ZAR – South African Rand (R)</option>
+  <option value="د.إ">AED – UAE Dirham (د.إ)</option>
+</select>
+
+
+      <input type="number" id="loanAmount" placeholder="Loan Amount" />
+      <input type="number" id="interestRate" placeholder="Annual Interest Rate (%)" />
+      <input type="number" id="loanTenure" placeholder="Loan Tenure (in months)" />
+
+      <button onclick="calculateEMI()">Calculate EMI</button>
+      <div class="result" id="result"></div>
+    </div>
+
+    <footer>
+      Designed by <span>Tool Nest</span>
+    </footer>
+
   </div>
 
   <script>
@@ -85,6 +150,7 @@
       const loanAmount = parseFloat(document.getElementById("loanAmount").value);
       const annualInterestRate = parseFloat(document.getElementById("interestRate").value);
       const tenure = parseInt(document.getElementById("loanTenure").value);
+      const currency = document.getElementById("currency").value;
 
       if (!loanAmount || !annualInterestRate || !tenure || loanAmount <= 0 || annualInterestRate <= 0 || tenure <= 0) {
         document.getElementById("result").textContent = "Please enter valid inputs.";
@@ -99,9 +165,9 @@
       const totalInterest = totalPayment - loanAmount;
 
       document.getElementById("result").innerHTML = `
-        Monthly EMI: ₹${emi.toFixed(2)}<br/>
-        Total Interest: ₹${totalInterest.toFixed(2)}<br/>
-        Total Payment: ₹${totalPayment.toFixed(2)}
+        Monthly EMI: ${currency}${emi.toFixed(2)}<br/>
+        Total Interest: ${currency}${totalInterest.toFixed(2)}<br/>
+        Total Payment: ${currency}${totalPayment.toFixed(2)}
       `;
     }
   </script>
@@ -109,5 +175,3 @@
 </body>
 </html>
 
-  
-  
