@@ -1,35 +1,40 @@
   
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
+  <link rel="icon" href="favicon-16x16.png" type="image/x-icon">
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Gradient Generator</title>
+
+  <title>Free Gradient Generator – Create CSS Linear Gradients Online</title>
+  <meta name="description" content="Free gradient generator to create beautiful CSS linear gradients instantly. Generate, preview, and copy gradient code online.">
+
   <style>
     body {
       font-family: Arial, sans-serif;
       background: #f0f8ff;
       padding: 30px;
       text-align: center;
+      margin: 0;
     }
 
     h2 {
       color: #007bff;
       margin-bottom: 20px;
+      font-weight: bold;
     }
 
     .generator-box {
       background: #ffffff;
-      border-radius: 10px;
+      border-radius: 12px;
       padding: 20px;
-      max-width: 400px;
+      max-width: 420px;
       margin: auto;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      box-shadow: 0 4px 10px rgba(0, 123, 255, 0.15);
     }
 
     input[type="color"],
-    select,
-    input[type="text"] {
+    select {
       margin: 10px 5px;
       padding: 10px;
       font-size: 16px;
@@ -66,11 +71,46 @@
     button:hover {
       background-color: #0056b3;
     }
+
+    .description {
+      max-width: 700px;
+      margin: 30px auto 0;
+      background: #ffffff;
+      padding: 25px;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0, 123, 255, 0.1);
+      text-align: left;
+      line-height: 1.6;
+      font-size: 15px;
+    }
+
+    .description h3 {
+      color: #007bff;
+      margin-bottom: 10px;
+      font-weight: bold;
+      text-align: center;
+    }
+
+    .description ul {
+      padding-left: 20px;
+    }
+
+    footer {
+      margin-top: 25px;
+      font-size: 14px;
+      color: #555;
+    }
+
+    footer span {
+      color: #007bff;
+      font-weight: bold;
+    }
   </style>
 </head>
 <body>
 
-  <h2>CSS Gradient Generator</h2>
+  <!-- Meta Title Display -->
+  <h2><strong>Free Gradient Generator</strong></h2>
 
   <div class="generator-box">
     <div>
@@ -95,6 +135,34 @@
     <div class="css-output" id="cssCode">CSS Code: -</div>
   </div>
 
+  <!-- SEO Description -->
+  <div class="description">
+    <h3>About This Gradient Generator</h3>
+
+    <p>
+      <strong>Free gradient generator</strong> is a simple and powerful online tool that helps you create smooth and professional-looking CSS gradients in seconds. By choosing colors and directions, you can instantly generate linear gradients and preview them in real time.
+    </p>
+
+    <p>This tool is perfect for:</p>
+    <ul>
+      <li>Web designers and UI/UX designers</li>
+      <li>Frontend developers and beginners</li>
+      <li>Anyone creating backgrounds or visual designs</li>
+    </ul>
+
+    <p>
+      This linear gradient generator saves time by eliminating manual CSS coding and color testing. You can copy the generated CSS code instantly and apply it directly to your website or project. No downloads or registration are required.
+    </p>
+
+    <p>
+      Start using this free online gradient generator today and create beautiful gradients effortlessly.
+    </p>
+  </div>
+
+  <footer>
+    Designed by <span>Tool Nest</span>
+  </footer>
+
   <script>
     function generateGradient() {
       const color1 = document.getElementById("color1").value;
@@ -103,16 +171,11 @@
 
       const gradient = `linear-gradient(${direction}, ${color1}, ${color2})`;
 
-      const previewBox = document.getElementById("previewBox");
-      previewBox.style.background = gradient;
-
-      const cssOutput = document.getElementById("cssCode");
-      cssOutput.textContent = `background: ${gradient};`;
+      document.getElementById("previewBox").style.background = gradient;
+      document.getElementById("cssCode").textContent = `background: ${gradient};`;
     }
   </script>
 
 </body>
 </html>
- 
-  
-  
+
