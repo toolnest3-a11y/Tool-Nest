@@ -1,10 +1,12 @@
-  
-  <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Color Picker & Converter</title>
+
+  <meta name="description" content="Color Picker & Converter is a free online tool to pick colors and convert HEX, RGB, and other color formats instantly." />
+
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -13,6 +15,7 @@
       display: flex;
       flex-direction: column;
       align-items: center;
+      color: #333;
     }
 
     h2 {
@@ -25,7 +28,7 @@
       background: #ffffff;
       padding: 20px;
       border-radius: 12px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.05);
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
       max-width: 400px;
       width: 90%;
       text-align: center;
@@ -36,6 +39,7 @@
       height: 50px;
       border: none;
       margin-bottom: 15px;
+      cursor: pointer;
     }
 
     .color-code {
@@ -43,8 +47,9 @@
       padding: 10px;
       background: #e9f7ff;
       border-radius: 8px;
-      font-size: 16px;
+      font-size: 15px;
       word-break: break-word;
+      font-weight: bold;
     }
 
     .rgb-inputs {
@@ -64,7 +69,7 @@
     }
 
     button {
-      margin-top: 10px;
+      margin-top: 12px;
       padding: 8px 16px;
       background-color: #007bff;
       border: none;
@@ -84,12 +89,39 @@
       height: 40px;
       border-radius: 6px;
     }
+
+    .description {
+      max-width: 700px;
+      background: #ffffff;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+      margin-top: 30px;
+      line-height: 1.6;
+      font-size: 15px;
+    }
+
+    .description ul {
+      padding-left: 20px;
+    }
+
+    footer {
+      margin-top: 30px;
+      font-size: 14px;
+      color: #555;
+    }
+
+    footer span {
+      color: #007bff;
+      font-weight: bold;
+    }
   </style>
 </head>
 <body>
 
   <h2>Color Picker & Converter</h2>
 
+  <!-- TOOL -->
   <div class="picker-box">
     <input type="color" id="colorInput" />
 
@@ -106,6 +138,26 @@
 
     <div id="colorPreview"></div>
   </div>
+
+  <!-- DESCRIPTION UNDER TOOL -->
+  <div class="description">
+    <p><strong>Color Picker & Converter</strong> is a fast and easy online tool that lets you pick colors and instantly convert them into different formats. Select a color using the picker or enter RGB values to get accurate HEX and RGB codes in real time.</p>
+
+    <p>This tool is ideal for:</p>
+    <ul>
+      <li>Web designers and UI/UX professionals</li>
+      <li>Graphic designers and digital artists</li>
+      <li>Developers, marketers, and content creators</li>
+    </ul>
+
+    <p>Instead of switching between multiple tools, this color picker and converter saves time, improves productivity, and ensures color accuracy across all your projects.</p>
+
+    <p><strong>Use the Color Picker & Converter for free online</strong> and manage your colors faster and smarter.</p>
+  </div>
+
+  <footer>
+    Designed by <span>Tool NEST</span>
+  </footer>
 
   <script>
     const colorInput = document.getElementById('colorInput');
@@ -127,15 +179,16 @@
     function hexToRgb(hex) {
       hex = hex.replace('#', '');
       if (hex.length !== 6) return null;
-      const r = parseInt(hex.substring(0, 2), 16);
-      const g = parseInt(hex.substring(2, 4), 16);
-      const b = parseInt(hex.substring(4, 6), 16);
-      return { r, g, b };
+      return {
+        r: parseInt(hex.substring(0, 2), 16),
+        g: parseInt(hex.substring(2, 4), 16),
+        b: parseInt(hex.substring(4, 6), 16)
+      };
     }
 
     function componentToHex(c) {
       const hex = c.toString(16);
-      return hex.length == 1 ? "0" + hex : hex;
+      return hex.length === 1 ? "0" + hex : hex;
     }
 
     function convertRGBtoHex() {
@@ -159,5 +212,3 @@
 
 </body>
 </html>
-  
-  
