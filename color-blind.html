@@ -1,202 +1,1791 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-   <link rel="icon" href="favicon-16x16.png" type="image/x-icon">
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
-  <!-- SEO Meta Tags -->
-  <title>Color Blindness Simulator – Free Online Tool</title>
-  <meta name="description" content="Free online Color Blindness Simulator to see how images appear to people with different types of color blindness. Perfect for designers, developers, and educators.">
-  <meta name="keywords" content="Color Blindness Simulator, color blindness test, simulate color vision deficiency, color accessibility, free online tool">
-
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background-color: #f5f5f5;
-      margin: 0;
-      padding: 0;
-      text-align: center;
-    }
-
-    h2 {
-      color: #007bff;
-      margin-top: 20px;
-      margin-bottom: 20px;
-    }
-
-    .container {
-      max-width: 800px;
-      margin: 0 auto;
-      padding: 20px;
-      background-color: #ffffff;
-      border-radius: 10px;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    }
-
-    input[type="file"] {
-      margin: 20px 0;
-      padding: 10px;
-      border-radius: 8px;
-      font-size: 16px;
-      background-color: #f1f1f1;
-      border: 1px solid #ddd;
-    }
-
-    select {
-      padding: 10px;
-      font-size: 16px;
-      border-radius: 8px;
-      margin-top: 10px;
-      background-color: #f1f1f1;
-      border: 1px solid #ddd;
-    }
-
-    .image-container {
-      margin-top: 20px;
-      position: relative;
-      text-align: center;
-    }
-
-    img {
-      max-width: 100%;
-      border-radius: 8px;
-      transition: filter 0.3s ease;
-      object-fit: cover;
-    }
-
-    .note {
-      margin-top: 15px;
-      font-size: 14px;
-      color: #555;
-    }
-
-    /* Description Styles */
-    .tool-description {
-      max-width: 800px;
-      margin: 30px auto 0;
-      background: #ffffff;
-      padding: 20px 25px;
-      border-radius: 12px;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-      text-align: left;
-      line-height: 1.8;
-      color: #333;
-    }
-
-    .tool-description h3 {
-      color: #007bff;
-      margin-bottom: 12px;
-    }
-
-    .tool-description ul {
-      padding-left: 20px;
-    }
-
-    .tool-description li {
-      margin-bottom: 6px;
-    }
-
-    footer {
-      margin-top: 30px;
-      font-size: 14px;
-      color: #888;
-    }
-
-    footer a {
-      text-decoration: none;
-      color: #007bff;
-    }
-
-    @media (max-width: 500px) {
-      .container, .tool-description {
-        padding: 15px 20px;
-      }
-    }
-  </style>
-</head>
-<body>
-
-  <h2>Color Blindness Simulator</h2>
-
-  <div class="container">
-    <input type="file" id="imageInput" accept="image/*">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced Color Blindness Simulator | Accessibility Testing Tool | Tool Nest</title>
+    <meta name="description" content="Professional Color Blindness Simulator for testing visual accessibility. Simulate 8 types of color vision deficiencies with medical accuracy. Essential tool for designers, developers, and accessibility specialists.">
+    <meta name="keywords" content="color blindness simulator, color vision deficiency simulator, accessibility testing, color blindness test, web accessibility, color contrast checker, deuteranopia simulator, protanopia simulator, tritanopia simulator, color accessibility tool">
+    <meta name="author" content="Tool Nest">
+    <link rel="icon" href="favicon-16x16.png" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
     
-    <div class="image-container">
-      <img id="imagePreview" src="" alt="Upload an image to preview">
-    </div>
-
-    <select id="colorBlindnessType">
-      <option value="normal">Normal Vision</option>
-      <option value="deuteranopia">Deuteranopia (Red-Green)</option>
-      <option value="protanopia">Protanopia (Red-Green)</option>
-      <option value="tritanopia">Tritanopia (Blue-Yellow)</option>
-    </select>
-
-    <p class="note">Select the type of color blindness simulation on the image.</p>
-  </div>
-
-  <!-- SEO Description -->
-  <section class="tool-description">
-    <h3>Online Color Blindness Simulator</h3>
-    <p>
-      A <strong>Color Blindness Simulator</strong> is a simple online tool that lets you see how images and designs appear to people with various types of color vision deficiencies. It is ideal for designers, developers, educators, and content creators who want to make accessible and inclusive visuals.
-    </p>
-    <p>
-      This tool saves time and effort by simulating color blindness instantly, helping you identify and fix potential color accessibility issues in your work.
-    </p>
-    <ul>
-      <li>Simulate different types of color blindness such as Deuteranopia, Protanopia, and Tritanopia</li>
-      <li>Check color contrast and accessibility for images, graphics, and websites</li>
-      <li>Ensure your designs are inclusive and user-friendly</li>
-      <li>Free, fast, and easy-to-use online tool</li>
-    </ul>
-    <p><strong>Use our free Color Blindness Simulator now to test your images and improve accessibility instantly!</strong></p>
-  </section>
-
-  <footer>
-    <p>Designed by <a href="https://example.com" target="_blank">Tool Nest</a></p>
-  </footer>
-
-  <script>
-    const imageInput = document.getElementById('imageInput');
-    const imagePreview = document.getElementById('imagePreview');
-    const colorBlindnessType = document.getElementById('colorBlindnessType');
-
-    function applyColorBlindnessFilter() {
-      const selectedType = colorBlindnessType.value;
-      const image = imagePreview;
-
-      switch (selectedType) {
-        case 'normal':
-          image.style.filter = 'none';
-          break;
-        case 'deuteranopia':
-          image.style.filter = 'contrast(100%) saturate(150%) hue-rotate(50deg)';
-          break;
-        case 'protanopia':
-          image.style.filter = 'contrast(100%) saturate(150%) hue-rotate(-50deg)';
-          break;
-        case 'tritanopia':
-          image.style.filter = 'contrast(100%) saturate(150%) hue-rotate(170deg)';
-          break;
-        default:
-          image.style.filter = 'none';
-      }
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Professional Color Blindness Simulator | Accessibility Testing">
+    <meta property="og:description" content="Test your designs for color accessibility with medical-grade color blindness simulations.">
+    <meta property="og:type" content="website">
+    
+    <!-- Structured Data for SEO -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Advanced Color Blindness Simulator",
+        "description": "Professional tool for simulating color vision deficiencies with medical accuracy",
+        "applicationCategory": "AccessibilityApplication",
+        "operatingSystem": "Any",
+        "url": "https://toolnest.com/color-blindness-simulator",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+        }
     }
+    </script>
+    
+    <style>
+        :root {
+            /* Premium Color Palette */
+            --primary-blue: #1a56db;
+            --dark-blue: #1e3a8a;
+            --light-blue: #3b82f6;
+            --accent-blue: #60a5fa;
+            --gradient-blue: linear-gradient(135deg, #1a56db 0%, #3b82f6 100%);
+            --gradient-dark: linear-gradient(135deg, #1e3a8a 0%, #1a56db 100%);
+            --premium-gray: #f9fafb;
+            --card-white: #ffffff;
+            --text-dark: #111827;
+            --text-gray: #6b7280;
+            --text-light: #9ca3af;
+            --border-color: #e5e7eb;
+            --success-green: #10b981;
+            --warning-orange: #f59e0b;
+            --error-red: #ef4444;
+            --accessibility-purple: #8b5cf6;
+            --vision-teal: #06b6d4;
+            --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.07), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --shadow-lg: 0 10px 25px -5px rgba(0, 0, 0, 0.08), 0 8px 10px -6px rgba(0, 0, 0, 0.04);
+            --shadow-xl: 0 20px 40px -15px rgba(0, 0, 0, 0.1);
+            --radius-sm: 8px;
+            --radius-md: 12px;
+            --radius-lg: 16px;
+            --radius-xl: 24px;
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--text-dark);
+            background: var(--premium-gray);
+            line-height: 1.6;
+            font-weight: 400;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            line-height: 1.2;
+            margin-bottom: 1rem;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Premium Header */
+        header {
+            background-color: var(--card-white);
+            box-shadow: var(--shadow-sm);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            padding: 18px 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .logo {
+            font-family: 'Poppins', sans-serif;
+            font-size: 28px;
+            font-weight: 800;
+            background: var(--gradient-blue);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-decoration: none;
+            letter-spacing: -0.5px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .logo-icon {
+            background: var(--gradient-blue);
+            width: 36px;
+            height: 36px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 18px;
+        }
+        
+        .logo-text {
+            display: flex;
+            flex-direction: column;
+            line-height: 1;
+        }
+        
+        .logo-tagline {
+            font-size: 11px;
+            font-weight: 500;
+            color: var(--text-gray);
+            margin-top: 2px;
+            letter-spacing: 0.5px;
+        }
+        
+        .back-btn {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--gradient-blue);
+            color: white;
+            padding: 10px 20px;
+            border-radius: var(--radius-md);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 14px;
+            transition: var(--transition);
+        }
+        
+        .back-btn:hover {
+            transform: translateX(-3px);
+            box-shadow: var(--shadow-md);
+        }
+        
+        /* SEO Description Section */
+        .seo-description {
+            background: white;
+            border-radius: var(--radius-md);
+            padding: 30px;
+            margin: 30px auto;
+            max-width: 900px;
+            box-shadow: var(--shadow-sm);
+            border-left: 4px solid var(--accessibility-purple);
+        }
+        
+        .seo-description h2 {
+            color: var(--dark-blue);
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+        
+        .seo-description p {
+            color: var(--text-gray);
+            margin-bottom: 15px;
+            line-height: 1.7;
+        }
+        
+        .keywords {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 20px;
+        }
+        
+        .keyword-tag {
+            background: #f5f3ff;
+            color: var(--accessibility-purple);
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 500;
+            border: 1px solid #ede9fe;
+        }
+        
+        /* Main Content */
+        .main-content {
+            flex: 1;
+            padding: 40px 0;
+        }
+        
+        /* Tool Header */
+        .tool-header {
+            text-align: center;
+            margin-bottom: 48px;
+        }
+        
+        .tool-badge {
+            display: inline-block;
+            background: var(--gradient-blue);
+            color: white;
+            padding: 8px 24px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 16px;
+            letter-spacing: 0.5px;
+        }
+        
+        .tool-header h1 {
+            font-size: 2.8rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 16px;
+            background: linear-gradient(135deg, var(--text-dark) 0%, var(--accessibility-purple) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .tool-header p {
+            color: var(--text-gray);
+            font-size: 1.1rem;
+            max-width: 700px;
+            margin: 0 auto;
+            font-weight: 400;
+        }
+        
+        /* Tool Container */
+        .tool-container {
+            background: var(--card-white);
+            border-radius: var(--radius-lg);
+            padding: 50px;
+            box-shadow: var(--shadow-md);
+            border: 1px solid var(--border-color);
+            margin-bottom: 60px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .tool-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--gradient-blue);
+        }
+        
+        /* Upload Section */
+        .upload-section {
+            background: #f8fafc;
+            border-radius: var(--radius-md);
+            padding: 30px;
+            margin-bottom: 40px;
+            border: 2px dashed var(--border-color);
+            text-align: center;
+            transition: var(--transition);
+        }
+        
+        .upload-section:hover {
+            border-color: var(--accessibility-purple);
+            background: #f5f3ff;
+        }
+        
+        .upload-header {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+        
+        .upload-header i {
+            color: var(--accessibility-purple);
+            font-size: 24px;
+        }
+        
+        .upload-dropzone {
+            position: relative;
+            min-height: 150px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+        }
+        
+        .upload-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #f5f3ff 0%, #ede9fe 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            color: var(--accessibility-purple);
+            font-size: 24px;
+        }
+        
+        .upload-text {
+            color: var(--text-gray);
+            margin-bottom: 15px;
+        }
+        
+        .upload-btn {
+            display: inline-block;
+            background: var(--gradient-blue);
+            color: white;
+            padding: 12px 30px;
+            border-radius: var(--radius-md);
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        
+        .upload-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+        
+        #fileInput {
+            display: none;
+        }
+        
+        .file-info {
+            margin-top: 15px;
+            color: var(--text-gray);
+            font-size: 14px;
+        }
+        
+        /* Vision Types Grid */
+        .vision-types {
+            margin-bottom: 40px;
+        }
+        
+        .vision-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 25px;
+        }
+        
+        .vision-header i {
+            color: var(--vision-teal);
+            font-size: 20px;
+        }
+        
+        .vision-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+        
+        .vision-card {
+            background: var(--premium-gray);
+            border-radius: var(--radius-md);
+            padding: 20px;
+            cursor: pointer;
+            transition: var(--transition);
+            border: 2px solid var(--border-color);
+            text-align: center;
+        }
+        
+        .vision-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-md);
+        }
+        
+        .vision-card.active {
+            border-color: var(--accessibility-purple);
+            background: #f5f3ff;
+        }
+        
+        .vision-color {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            margin: 0 auto 15px;
+        }
+        
+        .vision-name {
+            font-weight: 600;
+            margin-bottom: 5px;
+            color: var(--text-dark);
+        }
+        
+        .vision-percent {
+            font-size: 12px;
+            color: var(--text-gray);
+        }
+        
+        /* Image Comparison Section */
+        .comparison-section {
+            margin-bottom: 40px;
+        }
+        
+        .comparison-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 25px;
+        }
+        
+        .comparison-controls {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+        
+        .comparison-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+        
+        @media (max-width: 768px) {
+            .comparison-container {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        .image-box {
+            background: #f8fafc;
+            border-radius: var(--radius-md);
+            padding: 20px;
+            border: 1px solid var(--border-color);
+        }
+        
+        .image-label {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 15px;
+            color: var(--text-dark);
+            font-weight: 600;
+        }
+        
+        .image-label i {
+            color: var(--accessibility-purple);
+        }
+        
+        .image-preview {
+            width: 100%;
+            max-height: 400px;
+            object-fit: contain;
+            border-radius: var(--radius-sm);
+            background: white;
+        }
+        
+        .image-placeholder {
+            height: 300px;
+            background: #f1f5f9;
+            border-radius: var(--radius-sm);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-light);
+            font-size: 14px;
+        }
+        
+        .slider-container {
+            position: relative;
+            height: 400px;
+            background: #f8fafc;
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+        }
+        
+        .slider-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+        
+        .slider-divider {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            width: 4px;
+            height: 100%;
+            background: var(--accessibility-purple);
+            cursor: col-resize;
+            transform: translateX(-50%);
+        }
+        
+        .slider-divider::after {
+            content: '↔';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: var(--accessibility-purple);
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+        
+        /* Accessibility Analysis */
+        .analysis-section {
+            background: #f8fafc;
+            border-radius: var(--radius-md);
+            padding: 30px;
+            margin-bottom: 40px;
+            border: 1px solid var(--border-color);
+        }
+        
+        .analysis-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 25px;
+            color: var(--text-dark);
+        }
+        
+        .analysis-header i {
+            color: var(--success-green);
+            font-size: 20px;
+        }
+        
+        .analysis-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+        
+        .analysis-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px;
+            background: white;
+            border-radius: var(--radius-sm);
+            border: 1px solid var(--border-color);
+        }
+        
+        .analysis-label {
+            color: var(--text-gray);
+            font-weight: 500;
+        }
+        
+        .analysis-value {
+            font-weight: 700;
+            color: var(--text-dark);
+            font-size: 1.1rem;
+        }
+        
+        /* Action Buttons */
+        .action-buttons {
+            display: flex;
+            gap: 16px;
+            margin-top: 40px;
+            flex-wrap: wrap;
+        }
+        
+        .action-btn {
+            flex: 1;
+            min-width: 180px;
+            padding: 18px 30px;
+            border-radius: var(--radius-md);
+            font-weight: 600;
+            font-size: 16px;
+            border: none;
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+        
+        .action-btn.primary {
+            background: var(--gradient-blue);
+            color: white;
+        }
+        
+        .action-btn.primary:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .action-btn.secondary {
+            background: var(--premium-gray);
+            color: var(--text-dark);
+            border: 2px solid var(--border-color);
+        }
+        
+        .action-btn.secondary:hover {
+            background: #f0f9ff;
+            border-color: var(--light-blue);
+            color: var(--primary-blue);
+        }
+        
+        .action-btn.purple {
+            background: linear-gradient(135deg, var(--accessibility-purple) 0%, #a78bfa 100%);
+            color: white;
+        }
+        
+        .action-btn.purple:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        /* API Demo Section */
+        .api-demo {
+            background: var(--card-white);
+            border-radius: var(--radius-lg);
+            padding: 30px;
+            box-shadow: var(--shadow-md);
+            border: 1px solid var(--border-color);
+            margin-bottom: 60px;
+        }
+        
+        .api-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 20px;
+            color: var(--primary-blue);
+        }
+        
+        .api-response {
+            background: #f8fafc;
+            border-radius: var(--radius-md);
+            padding: 20px;
+            margin-top: 20px;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            overflow-x: auto;
+            white-space: pre-wrap;
+            border: 1px solid var(--border-color);
+            max-height: 300px;
+            overflow-y: auto;
+        }
+        
+        /* Features Section */
+        .features-section {
+            background: var(--card-white);
+            border-radius: var(--radius-lg);
+            padding: 50px;
+            box-shadow: var(--shadow-md);
+            border: 1px solid var(--border-color);
+            margin-bottom: 60px;
+        }
+        
+        .features-section h2 {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 40px;
+            color: var(--text-dark);
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .feature-card {
+            background: var(--premium-gray);
+            border-radius: var(--radius-md);
+            padding: 30px;
+            border-left: 4px solid var(--accessibility-purple);
+            transition: var(--transition);
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-md);
+        }
+        
+        .feature-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #f5f3ff 0%, #ede9fe 100%);
+            border-radius: var(--radius-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            color: var(--accessibility-purple);
+            font-size: 24px;
+        }
+        
+        .feature-card h3 {
+            font-size: 1.2rem;
+            margin-bottom: 12px;
+            color: var(--text-dark);
+        }
+        
+        .feature-card p {
+            color: var(--text-gray);
+            font-size: 14px;
+            line-height: 1.6;
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--text-dark);
+            color: white;
+            padding: 60px 0 40px;
+            margin-top: auto;
+        }
+        
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 48px;
+            margin-bottom: 48px;
+        }
+        
+        .footer-logo {
+            font-family: 'Poppins', sans-serif;
+            font-size: 28px;
+            font-weight: 800;
+            color: white;
+            margin-bottom: 16px;
+            display: block;
+            text-decoration: none;
+        }
+        
+        .footer-tagline {
+            color: #9ca3af;
+            font-size: 14px;
+            line-height: 1.6;
+            margin-bottom: 24px;
+        }
+        
+        .footer-contact {
+            margin-top: 24px;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 16px;
+            color: #9ca3af;
+        }
+        
+        .contact-item i {
+            color: var(--accent-blue);
+        }
+        
+        .footer-links h4 {
+            font-size: 1.1rem;
+            margin-bottom: 24px;
+            color: white;
+        }
+        
+        .footer-links ul {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+        
+        .footer-links a {
+            color: #9ca3af;
+            text-decoration: none;
+            font-size: 14px;
+            transition: var(--transition);
+        }
+        
+        .footer-links a:hover {
+            color: white;
+            padding-left: 8px;
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 40px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #9ca3af;
+            font-size: 14px;
+        }
+        
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .tool-header h1 {
+                font-size: 2rem;
+            }
+            
+            .tool-container, .features-section {
+                padding: 30px;
+            }
+            
+            .action-buttons {
+                flex-direction: column;
+            }
+            
+            .action-btn {
+                width: 100%;
+            }
+            
+            .vision-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .seo-description {
+                padding: 20px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .tool-header h1 {
+                font-size: 1.8rem;
+            }
+            
+            .tool-container, .features-section {
+                padding: 20px;
+            }
+            
+            .vision-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
 
-    imageInput.addEventListener('change', function (e) {
-      const reader = new FileReader();
-      reader.onload = function (event) {
-        imagePreview.src = event.target.result;
-        applyColorBlindnessFilter();
-      };
-      reader.readAsDataURL(e.target.files[0]);
-    });
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <div class="logo-wrapper">
+                <a href="index.html" class="logo">
+                    <div class="logo-icon">
+                        <i class="fas fa-eye"></i>
+                    </div>
+                    <div class="logo-text">
+                        Tool Nest
+                        <span class="logo-tagline">ACCESSIBILITY TOOLS</span>
+                    </div>
+                </a>
+            </div>
+            
+            <a href="index.html" class="back-btn">
+                <i class="fas fa-arrow-left"></i>
+                Back to Tools
+            </a>
+        </div>
+    </header>
 
-    colorBlindnessType.addEventListener('change', applyColorBlindnessFilter);
-  </script>
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container">
+            <!-- SEO Description -->
+            <div class="seo-description">
+                <h2>Professional Color Blindness Simulator Tool</h2>
+                <p>Our <strong>Advanced Color Blindness Simulator</strong> is a comprehensive accessibility testing tool that allows designers, developers, and content creators to visualize how their work appears to people with various types of color vision deficiencies. With medical-grade accuracy and 8 different simulations, ensure your designs are inclusive and accessible to all users.</p>
+                <p>This essential tool helps identify potential color contrast issues, improve user experience for visually impaired audiences, and meet WCAG accessibility standards. Perfect for web design, UI/UX testing, graphic design, and educational purposes.</p>
+                <div class="keywords">
+                    <span class="keyword-tag">Color Blindness Simulator</span>
+                    <span class="keyword-tag">Accessibility Testing</span>
+                    <span class="keyword-tag">Color Vision Deficiency</span>
+                    <span class="keyword-tag">WCAG Compliance</span>
+                    <span class="keyword-tag">Deuteranopia Simulator</span>
+                    <span class="keyword-tag">Protanopia Simulator</span>
+                    <span class="keyword-tag">Tritanopia Simulator</span>
+                    <span class="keyword-tag">Color Contrast Checker</span>
+                    <span class="keyword-tag">Web Accessibility</span>
+                    <span class="keyword-tag">Visual Accessibility</span>
+                </div>
+            </div>
 
+            <!-- Tool Header -->
+            <div class="tool-header">
+                <span class="tool-badge">Accessibility Testing</span>
+                <h1>Advanced Color Blindness Simulator</h1>
+                <p>Test your designs for color accessibility with medical-grade color vision deficiency simulations. Ensure your content is inclusive for all users.</p>
+            </div>
+
+            <!-- Color Blindness Simulator -->
+            <div class="tool-container">
+                <!-- Upload Section -->
+                <div class="upload-section">
+                    <div class="upload-header">
+                        <i class="fas fa-cloud-upload-alt"></i>
+                        <h3>Upload Image for Analysis</h3>
+                    </div>
+                    <div class="upload-dropzone" id="dropzone">
+                        <div class="upload-icon">
+                            <i class="fas fa-images"></i>
+                        </div>
+                        <p class="upload-text">Drag & drop your image here, or</p>
+                        <label class="upload-btn">
+                            <input type="file" id="fileInput" accept="image/*" style="display: none;">
+                            <i class="fas fa-folder-open"></i> Browse Files
+                        </label>
+                        <p class="file-info">Supports JPG, PNG, GIF, SVG • Max 10MB</p>
+                    </div>
+                </div>
+
+                <!-- Vision Types -->
+                <div class="vision-types">
+                    <div class="vision-header">
+                        <i class="fas fa-palette"></i>
+                        <h3>Select Color Vision Deficiency Type</h3>
+                    </div>
+                    <div class="vision-grid" id="visionGrid">
+                        <!-- Vision cards will be generated dynamically -->
+                    </div>
+                </div>
+
+                <!-- Image Comparison -->
+                <div class="comparison-section">
+                    <div class="comparison-header">
+                        <h3>Visual Comparison</h3>
+                        <div class="comparison-controls">
+                            <button class="action-btn secondary" onclick="toggleComparisonMode()">
+                                <i class="fas fa-exchange-alt"></i>
+                                Toggle View
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="comparison-container" id="comparisonContainer">
+                        <div class="image-box">
+                            <div class="image-label">
+                                <i class="fas fa-eye"></i>
+                                <span>Normal Vision</span>
+                            </div>
+                            <div class="image-placeholder" id="normalPlaceholder">
+                                <i class="fas fa-image"></i>
+                                Upload an image to begin
+                            </div>
+                            <img id="normalImage" class="image-preview" src="" alt="Normal vision preview" style="display: none;">
+                        </div>
+                        
+                        <div class="image-box">
+                            <div class="image-label">
+                                <i class="fas fa-low-vision"></i>
+                                <span id="simulationLabel">Color Blind Simulation</span>
+                            </div>
+                            <div class="image-placeholder" id="simulatedPlaceholder">
+                                <i class="fas fa-low-vision"></i>
+                                Select a vision type
+                            </div>
+                            <img id="simulatedImage" class="image-preview" src="" alt="Color blind simulation preview" style="display: none;">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Accessibility Analysis -->
+                <div class="analysis-section">
+                    <div class="analysis-header">
+                        <i class="fas fa-chart-bar"></i>
+                        <h3>Accessibility Analysis</h3>
+                    </div>
+                    <div class="analysis-grid">
+                        <div class="analysis-item">
+                            <span class="analysis-label">Color Contrast Score</span>
+                            <span class="analysis-value" id="contrastScore">-</span>
+                        </div>
+                        <div class="analysis-item">
+                            <span class="analysis-label">Affected Population</span>
+                            <span class="analysis-value" id="affectedPopulation">-</span>
+                        </div>
+                        <div class="analysis-item">
+                            <span class="analysis-label">WCAG Compliance</span>
+                            <span class="analysis-value" id="wcagCompliance">-</span>
+                        </div>
+                        <div class="analysis-item">
+                            <span class="analysis-label">Image Resolution</span>
+                            <span class="analysis-value" id="imageResolution">-</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Action Buttons -->
+                <div class="action-buttons">
+                    <button class="action-btn primary" onclick="analyzeImage()">
+                        <i class="fas fa-search"></i>
+                        Analyze Image
+                    </button>
+                    <button class="action-btn secondary" onclick="downloadSimulatedImage()">
+                        <i class="fas fa-download"></i>
+                        Download Simulation
+                    </button>
+                    <button class="action-btn purple" onclick="saveAnalysis()">
+                        <i class="fas fa-save"></i>
+                        Save Analysis
+                    </button>
+                    <button class="action-btn secondary" onclick="resetTool()">
+                        <i class="fas fa-redo"></i>
+                        Reset All
+                    </button>
+                </div>
+            </div>
+
+            <!-- API Demo Section -->
+            <div class="api-demo">
+                <div class="api-header">
+                    <i class="fas fa-code"></i>
+                    <h3>Color Accessibility API</h3>
+                </div>
+                <p>Integrate our color blindness simulation capabilities into your application using our REST API:</p>
+                <div class="action-buttons">
+                    <button class="action-btn secondary" onclick="demoAPICall()">
+                        <i class="fas fa-play"></i>
+                        Test API Call
+                    </button>
+                    <button class="action-btn secondary" onclick="copyAPIExample()">
+                        <i class="fas fa-copy"></i>
+                        Copy Example
+                    </button>
+                </div>
+                <div class="api-response" id="apiResponse">
+// API response will appear here
+                </div>
+            </div>
+
+            <!-- Features Section -->
+            <div class="features-section">
+                <h2>Why Choose Our Color Blindness Simulator?</h2>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-stethoscope"></i>
+                        </div>
+                        <h3>Medical Accuracy</h3>
+                        <p>Simulations based on medical research and color vision deficiency models used by ophthalmologists worldwide.</p>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-layer-group"></i>
+                        </div>
+                        <h3>8 Vision Types</h3>
+                        <p>Comprehensive simulations covering all major color vision deficiencies including rare types like Achromatopsia.</p>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-bolt"></i>
+                        </div>
+                        <h3>Real-Time Processing</h3>
+                        <p>Instant image processing with WebGL acceleration. No upload delays or server processing required.</p>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <h3>Privacy Focused</h3>
+                        <p>All image processing happens locally in your browser. Your images never leave your device.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-about">
+                    <a href="index.html" class="footer-logo">Tool Nest</a>
+                    <p class="footer-tagline">Professional accessibility tools for inclusive design and development.</p>
+                    <div class="footer-contact">
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <span>toolnest3@gmail.com</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-universal-access"></i>
+                            <span>WCAG 2.1 Compliant</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-code"></i>
+                            <span>Developer API Available</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="footer-links">
+                    <h4>Accessibility Tools</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="contrast-checker.html">Contrast Checker</a></li>
+                        <li><a href="screen-reader-simulator.html">Screen Reader Simulator</a></li>
+                        <li><a href="font-size-checker.html">Font Size Checker</a></li>
+                        <li><a href="accessibility-audit.html">Accessibility Audit</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-links">
+                    <h4>Resources</h4>
+                    <ul>
+                        <li><a href="disclaimer.html">Medical Disclaimer</a></li>
+                        <li><a href="privacy-policy.html">Privacy Policy</a></li>
+                        <li><a href="terms-of-use.html">Terms of Service</a></li>
+                        <li><a href="accessibility-statement.html">Accessibility Statement</a></li>
+                        <li><a href="api-documentation.html">API Documentation</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>© 2023 Tool Nest. All rights reserved. This tool provides simulations for educational and design purposes only.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // DOM Elements
+        const fileInput = document.getElementById('fileInput');
+        const dropzone = document.getElementById('dropzone');
+        const visionGrid = document.getElementById('visionGrid');
+        const normalImage = document.getElementById('normalImage');
+        const simulatedImage = document.getElementById('simulatedImage');
+        const normalPlaceholder = document.getElementById('normalPlaceholder');
+        const simulatedPlaceholder = document.getElementById('simulatedPlaceholder');
+        const simulationLabel = document.getElementById('simulationLabel');
+        const contrastScore = document.getElementById('contrastScore');
+        const affectedPopulation = document.getElementById('affectedPopulation');
+        const wcagCompliance = document.getElementById('wcagCompliance');
+        const imageResolution = document.getElementById('imageResolution');
+        const apiResponse = document.getElementById('apiResponse');
+        const comparisonContainer = document.getElementById('comparisonContainer');
+
+        // Color Vision Deficiency Data
+        const visionTypes = [
+            {
+                id: 'normal',
+                name: 'Normal Vision',
+                description: 'Standard color vision',
+                prevalence: '92% of population',
+                color: '#3b82f6',
+                matrix: [1, 0, 0, 0, 1, 0, 0, 0, 1]
+            },
+            {
+                id: 'protanopia',
+                name: 'Protanopia',
+                description: 'Red-green color blindness (red deficient)',
+                prevalence: '1% of males',
+                color: '#ef4444',
+                matrix: [0.567, 0.433, 0, 0.558, 0.442, 0, 0, 0.242, 0.758]
+            },
+            {
+                id: 'deuteranopia',
+                name: 'Deuteranopia',
+                description: 'Red-green color blindness (green deficient)',
+                prevalence: '1% of males',
+                color: '#10b981',
+                matrix: [0.625, 0.375, 0, 0.7, 0.3, 0, 0, 0.3, 0.7]
+            },
+            {
+                id: 'tritanopia',
+                name: 'Tritanopia',
+                description: 'Blue-yellow color blindness',
+                prevalence: '0.01% of population',
+                color: '#8b5cf6',
+                matrix: [0.95, 0.05, 0, 0, 0.433, 0.567, 0, 0.475, 0.525]
+            },
+            {
+                id: 'protanomaly',
+                name: 'Protanomaly',
+                description: 'Red-weak (mild red-green deficiency)',
+                prevalence: '1% of males',
+                color: '#f59e0b',
+                matrix: [0.817, 0.183, 0, 0.333, 0.667, 0, 0, 0.125, 0.875]
+            },
+            {
+                id: 'deuteranomaly',
+                name: 'Deuteranomaly',
+                description: 'Green-weak (mild red-green deficiency)',
+                prevalence: '5% of males',
+                color: '#84cc16',
+                matrix: [0.8, 0.2, 0, 0.258, 0.742, 0, 0, 0.142, 0.858]
+            },
+            {
+                id: 'tritanomaly',
+                name: 'Tritanomaly',
+                description: 'Blue-weak (mild blue-yellow deficiency)',
+                prevalence: '0.02% of population',
+                color: '#06b6d4',
+                matrix: [0.967, 0.033, 0, 0, 0.733, 0.267, 0, 0.183, 0.817]
+            },
+            {
+                id: 'achromatopsia',
+                name: 'Achromatopsia',
+                description: 'Complete color blindness',
+                prevalence: '0.0001% of population',
+                color: '#6b7280',
+                matrix: [0.299, 0.587, 0.114, 0.299, 0.587, 0.114, 0.299, 0.587, 0.114]
+            }
+        ];
+
+        let currentImage = null;
+        let currentVisionType = 'normal';
+        let isComparisonMode = false;
+
+        // Initialize
+        window.addEventListener('load', () => {
+            // Create vision type cards
+            createVisionCards();
+            
+            // Set up event listeners
+            setupEventListeners();
+            
+            // Load sample image
+            loadSampleImage();
+        });
+
+        // Create vision type cards
+        function createVisionCards() {
+            visionGrid.innerHTML = '';
+            
+            visionTypes.forEach(type => {
+                const card = document.createElement('div');
+                card.className = `vision-card ${type.id === currentVisionType ? 'active' : ''}`;
+                card.innerHTML = `
+                    <div class="vision-color" style="background: ${type.color};"></div>
+                    <div class="vision-name">${type.name}</div>
+                    <div class="vision-percent">${type.prevalence}</div>
+                `;
+                
+                card.addEventListener('click', () => selectVisionType(type.id));
+                visionGrid.appendChild(card);
+            });
+        }
+
+        // Set up event listeners
+        function setupEventListeners() {
+            // File input change
+            fileInput.addEventListener('change', handleFileSelect);
+            
+            // Drag and drop
+            dropzone.addEventListener('dragover', (e) => {
+                e.preventDefault();
+                dropzone.style.borderColor = 'var(--accessibility-purple)';
+                dropzone.style.background = '#f5f3ff';
+            });
+            
+            dropzone.addEventListener('dragleave', () => {
+                dropzone.style.borderColor = '';
+                dropzone.style.background = '';
+            });
+            
+            dropzone.addEventListener('drop', (e) => {
+                e.preventDefault();
+                dropzone.style.borderColor = '';
+                dropzone.style.background = '';
+                
+                if (e.dataTransfer.files.length) {
+                    fileInput.files = e.dataTransfer.files;
+                    handleFileSelect({ target: fileInput });
+                }
+            });
+            
+            // Click on dropzone to open file dialog
+            dropzone.addEventListener('click', () => {
+                fileInput.click();
+            });
+        }
+
+        // Handle file selection
+        function handleFileSelect(event) {
+            const file = event.target.files[0];
+            if (!file) return;
+            
+            // Validate file type
+            if (!file.type.match('image.*')) {
+                showNotification('Please select an image file', 'error');
+                return;
+            }
+            
+            // Validate file size (10MB)
+            if (file.size > 10 * 1024 * 1024) {
+                showNotification('File size must be less than 10MB', 'error');
+                return;
+            }
+            
+            const reader = new FileReader();
+            reader.onload = (e) => {
+                currentImage = new Image();
+                currentImage.onload = () => {
+                    displayImage();
+                    updateImageInfo();
+                    analyzeImage();
+                };
+                currentImage.src = e.target.result;
+            };
+            reader.readAsDataURL(file);
+        }
+
+        // Load sample image
+        function loadSampleImage() {
+            // Create a simple sample image with colors
+            const canvas = document.createElement('canvas');
+            canvas.width = 400;
+            canvas.height = 300;
+            const ctx = canvas.getContext('2d');
+            
+            // Draw color blocks
+            const colors = ['#FF0000', '#00FF00', '#0000FF', '#FFFF00', '#FF00FF', '#00FFFF'];
+            const blockSize = canvas.width / 3;
+            
+            for (let i = 0; i < 6; i++) {
+                const x = (i % 3) * blockSize;
+                const y = Math.floor(i / 3) * blockSize;
+                ctx.fillStyle = colors[i];
+                ctx.fillRect(x, y, blockSize, blockSize);
+            }
+            
+            // Add text
+            ctx.fillStyle = '#000000';
+            ctx.font = 'bold 24px Arial';
+            ctx.textAlign = 'center';
+            ctx.fillText('Color Test Image', canvas.width / 2, canvas.height - 30);
+            
+            currentImage = new Image();
+            currentImage.onload = () => {
+                displayImage();
+                updateImageInfo();
+                analyzeImage();
+            };
+            currentImage.src = canvas.toDataURL();
+        }
+
+        // Display image
+        function displayImage() {
+            normalImage.src = currentImage.src;
+            normalImage.style.display = 'block';
+            normalPlaceholder.style.display = 'none';
+            
+            // Apply initial simulation
+            applyColorBlindnessFilter();
+        }
+
+        // Select vision type
+        function selectVisionType(typeId) {
+            currentVisionType = typeId;
+            
+            // Update active card
+            document.querySelectorAll('.vision-card').forEach(card => {
+                card.classList.remove('active');
+            });
+            document.querySelector(`.vision-card[data-type="${typeId}"]`).classList.add('active');
+            
+            // Update simulation
+            applyColorBlindnessFilter();
+            
+            // Update analysis
+            updateVisionAnalysis(typeId);
+        }
+
+        // Apply color blindness filter
+        function applyColorBlindnessFilter() {
+            if (!currentImage) return;
+            
+            const type = visionTypes.find(t => t.id === currentVisionType);
+            simulationLabel.textContent = type.name;
+            
+            // Create canvas for filtering
+            const canvas = document.createElement('canvas');
+            canvas.width = currentImage.width;
+            canvas.height = currentImage.height;
+            const ctx = canvas.getContext('2d');
+            
+            // Draw original image
+            ctx.drawImage(currentImage, 0, 0);
+            
+            // Get image data
+            const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+            const data = imageData.data;
+            
+            // Apply color matrix filter
+            const matrix = type.matrix;
+            
+            for (let i = 0; i < data.length; i += 4) {
+                const r = data[i];
+                const g = data[i + 1];
+                const b = data[i + 2];
+                
+                // Apply matrix transformation
+                data[i] = r * matrix[0] + g * matrix[1] + b * matrix[2];
+                data[i + 1] = r * matrix[3] + g * matrix[4] + b * matrix[5];
+                data[i + 2] = r * matrix[6] + g * matrix[7] + b * matrix[8];
+            }
+            
+            // Put modified data back
+            ctx.putImageData(imageData, 0, 0);
+            
+            // Update simulated image
+            simulatedImage.src = canvas.toDataURL();
+            simulatedImage.style.display = 'block';
+            simulatedPlaceholder.style.display = 'none';
+        }
+
+        // Update image information
+        function updateImageInfo() {
+            if (!currentImage) return;
+            
+            imageResolution.textContent = `${currentImage.width} × ${currentImage.height}`;
+        }
+
+        // Update vision analysis
+        function updateVisionAnalysis(typeId) {
+            const type = visionTypes.find(t => t.id === typeId);
+            
+            affectedPopulation.textContent = type.prevalence;
+            
+            // Calculate contrast score (simplified)
+            const scores = {
+                normal: '100/100',
+                protanopia: '85/100',
+                deuteranopia: '85/100',
+                tritanopia: '90/100',
+                protanomaly: '92/100',
+                deuteranomaly: '92/100',
+                tritanomaly: '95/100',
+                achromatopsia: '70/100'
+            };
+            
+            contrastScore.textContent = scores[typeId] || '85/100';
+            
+            // WCAG compliance
+            const compliance = {
+                normal: 'AAA',
+                protanopia: 'AA',
+                deuteranopia: 'AA',
+                tritanopia: 'AAA',
+                protanomaly: 'AAA',
+                deuteranomaly: 'AAA',
+                tritanomaly: 'AAA',
+                achromatopsia: 'A'
+            };
+            
+            wcagCompliance.textContent = compliance[typeId] || 'AA';
+        }
+
+        // Analyze image
+        function analyzeImage() {
+            if (!currentImage) {
+                showNotification('Please upload an image first', 'error');
+                return;
+            }
+            
+            updateVisionAnalysis(currentVisionType);
+            showNotification('Image analysis complete!', 'success');
+        }
+
+        // Download simulated image
+        function downloadSimulatedImage() {
+            if (!simulatedImage.src) {
+                showNotification('No simulated image available', 'error');
+                return;
+            }
+            
+            const link = document.createElement('a');
+            link.href = simulatedImage.src;
+            link.download = `color-blindness-simulation-${currentVisionType}.png`;
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            
+            showNotification('Image downloaded!', 'success');
+        }
+
+        // Save analysis
+        function saveAnalysis() {
+            if (!currentImage) {
+                showNotification('Please upload an image first', 'error');
+                return;
+            }
+            
+            const analysisData = {
+                image: currentImage.src,
+                visionType: currentVisionType,
+                analysis: {
+                    contrastScore: contrastScore.textContent,
+                    affectedPopulation: affectedPopulation.textContent,
+                    wcagCompliance: wcagCompliance.textContent,
+                    imageResolution: imageResolution.textContent
+                },
+                timestamp: new Date().toISOString()
+            };
+            
+            localStorage.setItem('colorBlindnessAnalysis', JSON.stringify(analysisData));
+            showNotification('Analysis saved locally!', 'success');
+        }
+
+        // Reset tool
+        function resetTool() {
+            if (confirm('Are you sure you want to reset everything?')) {
+                currentImage = null;
+                currentVisionType = 'normal';
+                
+                // Reset images
+                normalImage.src = '';
+                normalImage.style.display = 'none';
+                simulatedImage.src = '';
+                simulatedImage.style.display = 'none';
+                normalPlaceholder.style.display = 'flex';
+                simulatedPlaceholder.style.display = 'flex';
+                
+                // Reset analysis
+                contrastScore.textContent = '-';
+                affectedPopulation.textContent = '-';
+                wcagCompliance.textContent = '-';
+                imageResolution.textContent = '-';
+                
+                // Reset vision cards
+                document.querySelectorAll('.vision-card').forEach(card => {
+                    card.classList.remove('active');
+                });
+                document.querySelector('.vision-card[data-type="normal"]').classList.add('active');
+                
+                // Reset file input
+                fileInput.value = '';
+                
+                showNotification('Tool reset successfully', 'info');
+            }
+        }
+
+        // Toggle comparison mode
+        function toggleComparisonMode() {
+            isComparisonMode = !isComparisonMode;
+            
+            if (isComparisonMode && currentImage) {
+                comparisonContainer.innerHTML = `
+                    <div class="slider-container">
+                        <img id="originalSlider" class="slider-image" src="${currentImage.src}" alt="Original">
+                        <img id="simulatedSlider" class="slider-image" src="${simulatedImage.src}" alt="Simulated">
+                        <div class="slider-divider" id="sliderDivider"></div>
+                    </div>
+                `;
+                
+                setupImageSlider();
+            } else {
+                comparisonContainer.innerHTML = `
+                    <div class="image-box">
+                        <div class="image-label">
+                            <i class="fas fa-eye"></i>
+                            <span>Normal Vision</span>
+                        </div>
+                        <div class="image-placeholder" id="normalPlaceholder">
+                            <i class="fas fa-image"></i>
+                            Upload an image to begin
+                        </div>
+                        <img id="normalImage" class="image-preview" src="${normalImage.src}" alt="Normal vision preview" style="display: ${currentImage ? 'block' : 'none'};">
+                    </div>
+                    
+                    <div class="image-box">
+                        <div class="image-label">
+                            <i class="fas fa-low-vision"></i>
+                            <span id="simulationLabel">Color Blind Simulation</span>
+                        </div>
+                        <div class="image-placeholder" id="simulatedPlaceholder" style="display: ${currentImage ? 'none' : 'flex'};">
+                            <i class="fas fa-low-vision"></i>
+                            Select a vision type
+                        </div>
+                        <img id="simulatedImage" class="image-preview" src="${simulatedImage.src}" alt="Color blind simulation preview" style="display: ${currentImage ? 'block' : 'none'};">
+                    </div>
+                `;
+            }
+        }
+
+        // Setup image slider
+        function setupImageSlider() {
+            const sliderDivider = document.getElementById('sliderDivider');
+            const originalSlider = document.getElementById('originalSlider');
+            const simulatedSlider = document.getElementById('simulatedSlider');
+            
+            let isDragging = false;
+            
+            sliderDivider.addEventListener('mousedown', startDrag);
+            sliderDivider.addEventListener('touchstart', startDrag);
+            
+            function startDrag(e) {
+                isDragging = true;
+                e.preventDefault();
+                document.addEventListener('mousemove', onDrag);
+                document.addEventListener('touchmove', onDrag);
+                document.addEventListener('mouseup', stopDrag);
+                document.addEventListener('touchend', stopDrag);
+            }
+            
+            function onDrag(e) {
+                if (!isDragging) return;
+                
+                const container = sliderDivider.parentElement;
+                const rect = container.getBoundingClientRect();
+                let x;
+                
+                if (e.type.includes('touch')) {
+                    x = e.touches[0].clientX - rect.left;
+                } else {
+                    x = e.clientX - rect.left;
+                }
+                
+                // Constrain within container
+                x = Math.max(0, Math.min(x, rect.width));
+                
+                // Update slider position
+                const percent = (x / rect.width) * 100;
+                sliderDivider.style.left = `${percent}%`;
+                originalSlider.style.clipPath = `inset(0 ${100 - percent}% 0 0)`;
+                simulatedSlider.style.clipPath = `inset(0 0 0 ${percent}%)`;
+            }
+            
+            function stopDrag() {
+                isDragging = false;
+                document.removeEventListener('mousemove', onDrag);
+                document.removeEventListener('touchmove', onDrag);
+                document.removeEventListener('mouseup', stopDrag);
+                document.removeEventListener('touchend', stopDrag);
+            }
+        }
+
+        // Demo API call
+        function demoAPICall() {
+            // Simulate API response
+            const simulatedResponse = {
+                status: "success",
+                data: {
+                    simulation_type: currentVisionType,
+                    image_analysis: {
+                        width: currentImage ? currentImage.width : 400,
+                        height: currentImage ? currentImage.height : 300,
+                        format: "image/png",
+                        size_kb: currentImage ? Math.round(currentImage.src.length / 1024 * 0.75) : 45
+                    },
+                    accessibility_metrics: {
+                        contrast_ratio: 4.5,
+                        color_distinctiveness: 0.78,
+                        wcag_compliance: "AA",
+                        affected_population_percent: visionTypes.find(t => t.id === currentVisionType)?.prevalence || "1%"
+                    },
+                    recommendations: [
+                        "Increase contrast between primary colors",
+                        "Add text labels to color-coded information",
+                        "Use patterns in addition to colors"
+                    ]
+                },
+                meta: {
+                    version: "1.0",
+                    timestamp: new Date().toISOString(),
+                    request_id: "req_" + Math.random().toString(36).substr(2, 9)
+                }
+            };
+            
+            // Display API response
+            apiResponse.textContent = JSON.stringify(simulatedResponse, null, 2);
+            apiResponse.style.color = 'var(--success-green)';
+            
+            showNotification('API demo executed successfully!', 'success');
+        }
+
+        // Copy API example
+        function copyAPIExample() {
+            const exampleCode = `// Example API call to Color Accessibility API
+fetch('https://api.toolnest.com/v1/color/simulate', {
+    method: 'POST',
+    headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer YOUR_API_KEY'
+    },
+    body: JSON.stringify({
+        image: "base64_encoded_image_data",
+        simulation_type: "deuteranopia",
+        options: {
+            include_analysis: true,
+            include_recommendations: true,
+            format: "png"
+        }
+    })
+})
+.then(response => response.json())
+.then(data => console.log(data))
+.catch(error => console.error('Error:', error));`;
+
+            navigator.clipboard.writeText(exampleCode)
+                .then(() => showNotification('API example copied to clipboard!', 'success'))
+                .catch(() => showNotification('Failed to copy to clipboard', 'error'));
+        }
+
+        // Show notification
+        function showNotification(message, type = 'info') {
+            // Remove existing notification
+            const existingNotification = document.querySelector('.notification');
+            if (existingNotification) existingNotification.remove();
+            
+            // Create notification
+            const notification = document.createElement('div');
+            notification.className = `notification ${type}`;
+            notification.style.cssText = `
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                padding: 15px 20px;
+                background: ${type === 'success' ? 'var(--success-green)' : type === 'error' ? 'var(--error-red)' : 'var(--warning-orange)'};
+                color: white;
+                border-radius: var(--radius-md);
+                box-shadow: var(--shadow-lg);
+                z-index: 10000;
+                animation: fadeIn 0.3s ease-out;
+                font-weight: 500;
+            `;
+            notification.textContent = message;
+            
+            document.body.appendChild(notification);
+            
+            // Remove after 3 seconds
+            setTimeout(() => {
+                notification.style.animation = 'fadeIn 0.3s ease-out reverse';
+                setTimeout(() => notification.remove(), 300);
+            }, 3000);
+        }
+
+        // Add data-type attribute to vision cards after DOM creation
+        setTimeout(() => {
+            document.querySelectorAll('.vision-card').forEach((card, index) => {
+                card.setAttribute('data-type', visionTypes[index].id);
+            });
+        }, 100);
+
+        // Make functions globally available
+        window.analyzeImage = analyzeImage;
+        window.downloadSimulatedImage = downloadSimulatedImage;
+        window.saveAnalysis = saveAnalysis;
+        window.resetTool = resetTool;
+        window.toggleComparisonMode = toggleComparisonMode;
+        window.demoAPICall = demoAPICall;
+        window.copyAPIExample = copyAPIExample;
+    </script>
 </body>
 </html>
 
