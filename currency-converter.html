@@ -1,19 +1,21 @@
-  
-  <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Currency Converter</title>
+
+  <meta name="description" content="Currency Converter is a free online tool that helps you convert currencies quickly using accurate exchange rates. Ideal for travelers, businesses, and online shoppers." />
+
   <style>
     body {
       font-family: Arial, sans-serif;
       background: #f4faff;
+      padding: 30px;
       display: flex;
-      justify-content: center;
+      flex-direction: column;
       align-items: center;
-      height: 100vh;
-      margin: 0;
+      color: #333;
     }
 
     .container {
@@ -22,7 +24,7 @@
       border-radius: 16px;
       box-shadow: 0 4px 12px rgba(0, 123, 255, 0.15);
       text-align: center;
-      width: 90%;
+      width: 100%;
       max-width: 450px;
     }
 
@@ -60,24 +62,77 @@
       font-weight: bold;
       font-size: 18px;
     }
+
+    .meta-title {
+      margin-top: 30px;
+      font-size: 20px;
+      font-weight: bold;
+      color: #007bff;
+      text-align: center;
+    }
+
+    .description {
+      max-width: 700px;
+      background: #ffffff;
+      padding: 22px;
+      border-radius: 14px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+      margin-top: 15px;
+      line-height: 1.6;
+      font-size: 15px;
+    }
+
+    footer {
+      margin-top: 30px;
+      font-size: 14px;
+      color: #555;
+    }
+
+    footer span {
+      color: #007bff;
+      font-weight: bold;
+    }
   </style>
 </head>
 <body>
 
   <div class="container">
     <h1>Currency Converter</h1>
+
     <input type="number" id="amount" placeholder="Enter amount" />
-    
+
     <select id="fromCurrency">
       <option value="USD">USD - US Dollar</option>
-      <option value="INR">INR - Indian Rupee</option>
       <option value="EUR">EUR - Euro</option>
+      <option value="INR">INR - Indian Rupee</option>
+      <option value="GBP">GBP - British Pound</option>
+      <option value="JPY">JPY - Japanese Yen</option>
+      <option value="AUD">AUD - Australian Dollar</option>
+      <option value="CAD">CAD - Canadian Dollar</option>
+      <option value="CHF">CHF - Swiss Franc</option>
+      <option value="CNY">CNY - Chinese Yuan</option>
+      <option value="SGD">SGD - Singapore Dollar</option>
+      <option value="NZD">NZD - New Zealand Dollar</option>
+      <option value="ZAR">ZAR - South African Rand</option>
+      <option value="AED">AED - UAE Dirham</option>
+      <option value="SAR">SAR - Saudi Riyal</option>
     </select>
 
     <select id="toCurrency">
-      <option value="INR">INR - Indian Rupee</option>
       <option value="USD">USD - US Dollar</option>
       <option value="EUR">EUR - Euro</option>
+      <option value="INR">INR - Indian Rupee</option>
+      <option value="GBP">GBP - British Pound</option>
+      <option value="JPY">JPY - Japanese Yen</option>
+      <option value="AUD">AUD - Australian Dollar</option>
+      <option value="CAD">CAD - Canadian Dollar</option>
+      <option value="CHF">CHF - Swiss Franc</option>
+      <option value="CNY">CNY - Chinese Yuan</option>
+      <option value="SGD">SGD - Singapore Dollar</option>
+      <option value="NZD">NZD - New Zealand Dollar</option>
+      <option value="ZAR">ZAR - South African Rand</option>
+      <option value="AED">AED - UAE Dirham</option>
+      <option value="SAR">SAR - Saudi Riyal</option>
     </select>
 
     <button onclick="convertCurrency()">Convert</button>
@@ -85,12 +140,38 @@
     <div class="result" id="result"></div>
   </div>
 
+  <div class="meta-title">
+    <strong>Currency Converter – Fast & Accurate Online Exchange Tool</strong>
+  </div>
+
+ <div class="description">
+  <p><strong>Currency Converter</strong> is a fast and easy-to-use online tool that helps you convert money between multiple international currencies in seconds. Whether you are traveling, shopping online, running a business, or managing finances, this tool allows you to check exchange values instantly without any hassle.</p>
+
+  <p>This online currency conversion tool is ideal for:</p>
+  <ul>
+    <li>Travelers planning international trips</li>
+    <li>Freelancers and remote workers dealing with foreign payments</li>
+    <li>Online shoppers comparing global prices</li>
+    <li>Students and businesses working with international currencies</li>
+  </ul>
+
+  <p>With support for popular currencies like USD, EUR, INR, GBP, and many more, this exchange rate converter saves time, improves accuracy, and eliminates the need for manual calculations.</p>
+
+  <p><strong>Use this Currency Converter for free online</strong> and convert currencies quickly, accurately, and effortlessly anytime you need.</p>
+</div>
+
+
+  <footer>
+    Designed by <span>Tool Nest</span>
+  </footer>
+
   <script>
-    // Fixed exchange rates
     const exchangeRates = {
-      USD: { USD: 1, INR: 83.2, EUR: 0.92 },
-      INR: { USD: 0.012, INR: 1, EUR: 0.011 },
-      EUR: { USD: 1.09, INR: 90.5, EUR: 1 }
+      USD: { USD:1, EUR:0.92, INR:83.2, GBP:0.79, JPY:156, AUD:1.52, CAD:1.36, CHF:0.88, CNY:7.25, SGD:1.35, NZD:1.63, ZAR:18.7, AED:3.67, SAR:3.75 },
+      EUR: { USD:1.09, EUR:1, INR:90.5, GBP:0.86, JPY:169, AUD:1.65, CAD:1.48, CHF:0.95, CNY:7.9, SGD:1.47, NZD:1.77, ZAR:20.4, AED:4.0, SAR:4.09 },
+      INR: { USD:0.012, EUR:0.011, INR:1, GBP:0.0095, JPY:1.88, AUD:0.018, CAD:0.016, CHF:0.011, CNY:0.087, SGD:0.016, NZD:0.019, ZAR:0.22, AED:0.044, SAR:0.045 },
+      GBP: { USD:1.26, EUR:1.16, INR:105, GBP:1, JPY:196, AUD:1.92, CAD:1.72, CHF:1.11, CNY:9.15, SGD:1.71, NZD:2.06, ZAR:23.6, AED:4.63, SAR:4.72 },
+      JPY: { USD:0.0064, EUR:0.0059, INR:0.53, GBP:0.0051, JPY:1, AUD:0.0097, CAD:0.0087, CHF:0.0057, CNY:0.046, SGD:0.0087, NZD:0.0105, ZAR:0.12, AED:0.023, SAR:0.024 }
     };
 
     function convertCurrency() {
@@ -106,13 +187,14 @@
       const rate = exchangeRates[from][to];
       const convertedAmount = (amount * rate).toFixed(2);
 
-      document.getElementById("result").textContent = 
+      document.getElementById("result").textContent =
         `${amount} ${from} = ${convertedAmount} ${to}`;
     }
   </script>
 
 </body>
 </html>
+
 
   
   
