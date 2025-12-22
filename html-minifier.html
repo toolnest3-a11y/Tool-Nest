@@ -1,31 +1,51 @@
-  
-  <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
+  <link rel="icon" href="favicon-16x16.png" type="image/x-icon">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>HTML/CSS/JS Minifier Tool</title>
+  <title>HTML / CSS / JS Minifier Tool</title>
+
   <style>
     body {
       font-family: Arial, sans-serif;
       background: #f0f8ff;
-      padding: 20px;
+      padding: 30px;
       display: flex;
       flex-direction: column;
       align-items: center;
     }
 
-    h2 {
+    .meta-title {
       color: #007bff;
+      font-size: 26px;
+      font-weight: bold;
+      margin-bottom: 20px;
       text-align: center;
     }
 
+    .tool-box,
+    .description-box {
+      background: #ffffff;
+      border-radius: 12px;
+      padding: 20px;
+      max-width: 650px;
+      width: 100%;
+      box-shadow: 0 4px 10px rgba(0, 123, 255, 0.15);
+      margin-bottom: 25px;
+    }
+
+    h2 {
+      color: #007bff;
+      text-align: center;
+      margin-bottom: 15px;
+    }
+
     #textBox {
-      width: 90%;
-      max-width: 600px;
-      min-height: 150px;
-      padding: 10px;
-      font-size: 16px;
+      width: 100%;
+      min-height: 160px;
+      padding: 12px;
+      font-size: 15px;
       border-radius: 8px;
       border: 1px solid #ccc;
       background: #fff;
@@ -43,7 +63,6 @@
       color: white;
       border-radius: 8px;
       cursor: pointer;
-      margin-bottom: 15px;
     }
 
     button:hover {
@@ -51,38 +70,79 @@
     }
 
     #output {
-      font-size: 16px;
-      margin-top: 20px;
+      font-size: 15px;
+      margin-top: 15px;
       color: #333;
       white-space: pre-wrap;
     }
 
-    .input-label {
+    .description-box p {
+      color: #333;
+      line-height: 1.6;
       margin-bottom: 10px;
+    }
+
+    .description-box ul {
+      padding-left: 20px;
+      margin-bottom: 10px;
+    }
+
+    .description-box li {
+      margin-bottom: 6px;
+    }
+
+    .footer {
+      font-size: 14px;
+      color: #555;
+      margin-top: 10px;
     }
   </style>
 </head>
 <body>
 
-  <h2>HTML/CSS/JS Minifier Tool</h2>
+  <!-- Meta Title -->
+  <div class="meta-title">HTML / CSS / JS Code Minifier Online</div>
 
-  <div id="textBox" contenteditable="true" placeholder="Paste your HTML/CSS/JS code here..."></div>
+  <!-- Tool Box -->
+  <div class="tool-box">
+    <h2>HTML / CSS / JS Minifier Tool</h2>
 
-  <button onclick="minifyCode()">Minify Code</button>
+    <div id="textBox" contenteditable="true" placeholder="Paste your HTML, CSS, or JavaScript code here..."></div>
 
-  <div id="output"></div>
+    <button onclick="minifyCode()">Minify Code</button>
+
+    <div id="output"></div>
+  </div>
+
+  <!-- Description Box -->
+  <div class="description-box">
+    <p><strong>Code Minifier Online</strong> is a powerful and easy-to-use tool that helps you reduce the size of your HTML, CSS, and JavaScript files instantly. This tool removes unnecessary spaces, comments, and line breaks to produce clean and optimized code ready for production.</p>
+
+    <p>This free code minifier is ideal for:</p>
+    <ul>
+      <li>Web developers and designers</li>
+      <li>Website owners improving page speed</li>
+      <li>Students learning front-end development</li>
+    </ul>
+
+    <p>By using this online minification tool, you save time, improve website loading speed, and enhance overall performance. There is no need to install software or sign up — everything runs directly in your browser.</p>
+
+    <p>Use this free Code Minifier Online today to optimize your HTML, CSS, and JavaScript files quickly and efficiently.</p>
+  </div>
+
+  <div class="footer">Designed by <strong>Tool Nest</strong></div>
 
   <script>
     function minifyHTML(html) {
-      return html.replace(/\n/g, '').replace(/\s{2,}/g, ' ').replace(/<!--.*?-->/g, ''); // Remove whitespace and comments
+      return html.replace(/\n/g, '').replace(/\s{2,}/g, ' ').replace(/<!--.*?-->/g, '');
     }
 
     function minifyCSS(css) {
-      return css.replace(/\n/g, '').replace(/\s{2,}/g, ' ').replace(/\/\*.*?\*\//g, ''); // Remove whitespace and comments
+      return css.replace(/\n/g, '').replace(/\s{2,}/g, ' ').replace(/\/\*.*?\*\//g, '');
     }
 
     function minifyJS(js) {
-      return js.replace(/\n/g, '').replace(/\s{2,}/g, ' ').replace(/\/\/.*?\n/g, ''); // Remove whitespace and comments
+      return js.replace(/\n/g, '').replace(/\s{2,}/g, ' ').replace(/\/\/.*?\n/g, '');
     }
 
     function minifyCode() {
@@ -93,11 +153,11 @@
       }
 
       let minifiedCode = '';
-      if (content.startsWith('<!DOCTYPE html') || content.includes('<html>')) {
+      if (content.startsWith('<!DOCTYPE html') || content.includes('<html')) {
         minifiedCode = minifyHTML(content);
       } else if (content.includes('{') && content.includes('}')) {
         minifiedCode = minifyCSS(content);
-      } else if (content.includes('function') || content.includes('var')) {
+      } else {
         minifiedCode = minifyJS(content);
       }
 
@@ -108,5 +168,3 @@
 </body>
 </html>
 
-  
-  
