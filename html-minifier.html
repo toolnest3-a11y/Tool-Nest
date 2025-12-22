@@ -29,7 +29,6 @@
       --dark-color: #2b2d42;
       --light-color: #f8f9fa;
       --gray-color: #6c757d;
-      --code-bg: #1a1b26;
       --border-radius: 12px;
       --box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
       --box-shadow-hover: 0 15px 40px rgba(0, 0, 0, 0.12);
@@ -168,13 +167,11 @@
       border: 2px solid #e0e0e0;
       border-radius: 8px;
       color: var(--dark-color);
-      font-family: 'JetBrains Mono', 'Courier New', monospace;
+      font-family: 'Courier New', monospace;
       font-size: 14px;
       line-height: 1.5;
       resize: vertical;
       transition: var(--transition);
-      white-space: pre;
-      overflow-x: auto;
     }
 
     .code-input:focus {
@@ -604,16 +601,16 @@
           </div>
 
           <div class="code-container">
-            <textarea class="code-input" id="inputCode" placeholder="Paste your HTML, CSS, or JavaScript code here..." oninput="updateCharCount()"></textarea>
+            <textarea class="code-input" id="inputCode" placeholder="Paste your HTML, CSS, or JavaScript code here..."></textarea>
           </div>
 
           <div class="control-panel">
             <div class="option-group">
               <div class="option-label">Select Language</div>
               <div class="language-selector">
-                <div class="language-btn active" data-language="html" onclick="setLanguage('html')">HTML</div>
-                <div class="language-btn" data-language="css" onclick="setLanguage('css')">CSS</div>
-                <div class="language-btn" data-language="js" onclick="setLanguage('js')">JavaScript</div>
+                <div class="language-btn active" data-language="html">HTML</div>
+                <div class="language-btn" data-language="css">CSS</div>
+                <div class="language-btn" data-language="js">JavaScript</div>
               </div>
             </div>
 
@@ -648,11 +645,11 @@
             </div>
 
             <div class="action-buttons">
-              <button class="btn btn-primary" id="minifyBtn" onclick="minifyCode()">
+              <button class="btn btn-primary" id="minifyBtn">
                 <span class="minify-text">Minify Code</span>
                 <div class="loading-spinner"></div>
               </button>
-              <button class="btn btn-secondary" onclick="clearAll()">
+              <button class="btn btn-secondary" id="clearBtn">
                 <span>Clear All</span>
                 <span>🗑️</span>
               </button>
@@ -703,11 +700,11 @@
           </div>
 
           <div class="action-buttons">
-            <button class="btn btn-secondary" onclick="copyToClipboard()">
+            <button class="btn btn-secondary" id="copyBtn">
               <span>Copy to Clipboard</span>
               <span>📋</span>
             </button>
-            <button class="btn btn-secondary" onclick="downloadFile()">
+            <button class="btn btn-secondary" id="downloadBtn">
               <span>Download File</span>
               <span>💾</span>
             </button>
@@ -747,7 +744,7 @@
       <p>Our <span class="keyword-highlight">Code Minifier</span> is a comprehensive tool designed for web developers and performance engineers who need to optimize their code for production environments. By reducing file sizes through intelligent <span class="keyword-highlight">minification</span>, you can significantly improve website loading times and overall user experience.</p>
       
       <h3>What is Code Minification?</h3>
-      <p><span class="keyword-highlight">Code minification</span> is the process of removing unnecessary characters from source code without changing its functionality. This includes whitespace, comments, line breaks, and sometimes shortening variable names to reduce file size and improve download times.</p>
+      <p><span class="keyword-highhighlight">Code minification</span> is the process of removing unnecessary characters from source code without changing its functionality. This includes whitespace, comments, line breaks, and sometimes shortening variable names to reduce file size and improve download times.</p>
       
       <h3>Key Features of Our Advanced Code Minifier:</h3>
       <ul>
@@ -776,32 +773,100 @@
   <div class="notification" id="notification">Code copied to clipboard!</div>
 
   <script>
-    // Global variables
-    let currentLanguage = 'html';
-    let originalCode = '';
-    let minifiedCode = '';
+    // DOM Elements
+    const inputCode = document.getElementById('inputCode');
+    const outputCode = document.getElementById('outputCode');
+    const inputLanguageBadge = document.getElementById('inputLanguage');
+    const outputLanguageBadge = document.getElementById('outputLanguage');
+    const languageBtns = document.querySelectorAll('.language-btn');
+    const minifyBtn = document.getElementById('minifyBtn');
+    const clearBtn = document.getElementById('clearBtn');
+    const copyBtn = document.getElementById('copyBtn');
+    const downloadBtn = document.getElementById('downloadBtn');
+    const notification = document.getElementById('notification');
+    const inputCharCount = document.getElementById('inputCharCount');
+    const outputCharCount = document.getElementById('outputCharCount');
     
-    // Set language function
-    function setLanguage(lang) {
-      currentLanguage = lang;
+    // Stats Elements
+    const originalSize = document.getElementById('originalSize');
+    const minifiedSize = document.getElementById('minifiedSize');
+    const reductionPercent = document.getElementById('reductionPercent');
+    const processingTime = document.getElementById('processingTime');
+    const compressionFill = document.getElementById('compressionFill');
+    const compressionValue = document.getElementById('compressionValue');
+    
+    // Option Checkboxes
+    const removeWhitespace = document.getElementById('removeWhitespace');
+    const removeComments = document.getElementById('removeComments');
+    const removeLineBreaks = document.getElementById('removeLineBreaks');
+    const shortenVariables = document.getElementById('shortenVariables');
+    const optimizeSelectors = document.getElementById('optimizeSelectors');
+    const preserveImportant = document.getElementById('preserveImportant');
+
+    // State
+    let currentLanguage = 'html';
+
+    // Initialize
+    document.addEventListener('DOMContentLoaded', function() {
+      // Set up event listeners
+      setupEventListeners();
       
-      // Update active button
-      document.querySelectorAll('.language-btn').forEach(btn => {
-        btn.classList.remove('active');
-        if (btn.dataset.language === lang) {
-          btn.classList.add('active');
-        }
+      // Load example code
+      loadExampleCode();
+      
+      // Update character counts
+      updateCharCounts();
+    });
+
+    // Set up all event listeners
+    function setupEventListeners() {
+      // Language selection
+      languageBtns.forEach(btn => {
+        btn.addEventListener('click', function() {
+          // Remove active class from all buttons
+          languageBtns.forEach(b => b.classList.remove('active'));
+          
+          // Add active class to clicked button
+          this.classList.add('active');
+          
+          // Update language
+          currentLanguage = this.getAttribute('data-language');
+          
+          // Update language badges
+          inputLanguageBadge.textContent = currentLanguage.toUpperCase();
+          outputLanguageBadge.textContent = currentLanguage.toUpperCase();
+          
+          // Update placeholder
+          updatePlaceholder();
+        });
       });
-      
-      // Update badges
-      document.getElementById('inputLanguage').textContent = lang.toUpperCase();
-      document.getElementById('outputLanguage').textContent = lang.toUpperCase();
-      
-      // Update placeholder
-      const inputCode = document.getElementById('inputCode');
-      const outputCode = document.getElementById('outputCode');
-      
-      switch(lang) {
+
+      // Minify button
+      minifyBtn.addEventListener('click', minifyCode);
+
+      // Clear button
+      clearBtn.addEventListener('click', clearAll);
+
+      // Copy button
+      copyBtn.addEventListener('click', copyToClipboard);
+
+      // Download button
+      downloadBtn.addEventListener('click', downloadFile);
+
+      // Input code changes
+      inputCode.addEventListener('input', updateCharCounts);
+      outputCode.addEventListener('input', updateCharCounts);
+    }
+
+    // Update character counts
+    function updateCharCounts() {
+      inputCharCount.textContent = `${inputCode.value.length} characters`;
+      outputCharCount.textContent = `${outputCode.value.length} characters`;
+    }
+
+    // Update placeholder based on language
+    function updatePlaceholder() {
+      switch(currentLanguage) {
         case 'html':
           inputCode.placeholder = 'Paste your HTML code here...';
           outputCode.placeholder = 'Minified HTML will appear here...';
@@ -816,143 +881,273 @@
           break;
       }
     }
+
+    // Load example code
+    function loadExampleCode() {
+      const exampleCode = {
     
-    // Update character count
-    function updateCharCount() {
-      const input = document.getElementById('inputCode');
-      const output = document.getElementById('outputCode');
-      
-      document.getElementById('inputCharCount').textContent = `${input.value.length} characters`;
-      document.getElementById('outputCharCount').textContent = `${output.value.length} characters`;
+</head>
+<body>
+    <div class="container">
+        <h1>Welcome to Our Website</h1>
+        <p>This is an example paragraph with HTML code.</p>
+    </div>
+    <script>
+        // JavaScript comment
+        console.log("Hello, World!");
+   
+        css: `/* 
+ * CSS Stylesheet Example
+ * This is a multi-line comment
+ */
+
+/* Global Styles */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Arial', sans-serif;
+    background-color: #f5f5f5;
+}
+
+/* Navigation Styles */
+.navbar {
+    background: #333;
+    color: white;
+    padding: 15px 20px;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.button {
+    background: #007bff;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.button:hover {
+    background: #0056b3;
+}`,
+        js: `// JavaScript Example Code
+// This is a single line comment
+
+/*
+ * Multi-line comment
+ * Function to calculate sum
+ */
+function calculateSum(a, b) {
+    // Return the sum of two numbers
+    return a + b;
+}
+
+// Event listener for button click
+document.addEventListener('DOMContentLoaded', function() {
+    const button = document.getElementById('myButton');
+    
+    if (button) {
+        button.addEventListener('click', function() {
+            // Show alert when clicked
+            alert('Button clicked!');
+            
+            // Calculate sum
+            const result = calculateSum(5, 10);
+            console.log('Result:', result);
+        });
     }
-    
+});
+
+// Variable declarations
+let counter = 0;
+const maxCount = 100;
+const increment = 1;`
+      };
+
+      inputCode.value = exampleCode.html;
+      updateCharCounts();
+    }
+
     // Show notification
     function showNotification(message) {
-      const notification = document.getElementById('notification');
       notification.textContent = message;
       notification.classList.add('show');
       setTimeout(() => {
         notification.classList.remove('show');
       }, 2000);
     }
-    
+
     // Format file size
     function formatFileSize(bytes) {
       if (bytes < 1024) return bytes + ' B';
-      if (bytes < 1024 * 1024) return (bytes / 1024).toFixed(1) + ' KB';
-      return (bytes / (1024 * 1024)).toFixed(1) + ' MB';
+      if (bytes < 1024 * 1024) return (bytes / 1024).toFixed(2) + ' KB';
+      return (bytes / (1024 * 1024)).toFixed(2) + ' MB';
     }
-    
-    // Minify HTML function
-    function minifyHTML(code, options) {
+
+    // Minify HTML code
+    function minifyHTML(code) {
       let result = code;
       
-      if (options.removeComments) {
-        // Remove HTML comments but preserve conditional comments
+      // Get options
+      const removeCommentsOpt = removeComments.checked;
+      const removeWhitespaceOpt = removeWhitespace.checked;
+      const removeLineBreaksOpt = removeLineBreaks.checked;
+      const preserveImportantOpt = preserveImportant.checked;
+      
+      // Remove comments
+      if (removeCommentsOpt) {
+        // Remove HTML comments (but not conditional comments)
         result = result.replace(/<!--(?!\[if.*?\]>)(?!<!\[endif\]--).*?-->/gs, '');
       }
       
-      if (options.removeWhitespace) {
-        // Remove whitespace between tags
+      // Remove whitespace
+      if (removeWhitespaceOpt) {
+        // Remove spaces between tags
         result = result.replace(/>\s+</g, '><');
-        // Collapse multiple spaces to single space
-        result = result.replace(/\s+/g, ' ');
+        // Trim whitespace
+        result = result.trim();
       }
       
-      if (options.removeLineBreaks) {
+      // Remove line breaks
+      if (removeLineBreaksOpt) {
         result = result.replace(/\n/g, '');
         result = result.replace(/\r/g, '');
       }
       
-      return result.trim();
+      return result;
     }
-    
-    // Minify CSS function
-    function minifyCSS(code, options) {
+
+    // Minify CSS code
+    function minifyCSS(code) {
       let result = code;
       
-      if (options.removeComments) {
-        // Remove CSS comments
-        if (options.preserveImportant) {
-          // Preserve important comments (starting with /*!)
-          result = result.replace(/\/\*![\s\S]*?\*\//g, (match) => match);
+      // Get options
+      const removeCommentsOpt = removeComments.checked;
+      const removeWhitespaceOpt = removeWhitespace.checked;
+      const removeLineBreaksOpt = removeLineBreaks.checked;
+      const optimizeSelectorsOpt = optimizeSelectors.checked;
+      const preserveImportantOpt = preserveImportant.checked;
+      
+      // Remove comments
+      if (removeCommentsOpt) {
+        if (preserveImportantOpt) {
+          // Preserve important comments (/*! ... */)
+          const importantComments = [];
+          result = result.replace(/\/\*![\s\S]*?\*\//g, function(match) {
+            importantComments.push(match);
+            return `/*!COMMENT${importantComments.length - 1}*/`;
+          });
+          
+          // Remove regular comments
           result = result.replace(/\/\*[\s\S]*?\*\//g, '');
+          
+          // Restore important comments
+          importantComments.forEach((comment, index) => {
+            result = result.replace(`/*!COMMENT${index}*/`, comment);
+          });
         } else {
+          // Remove all comments
           result = result.replace(/\/\*[\s\S]*?\*\//g, '');
         }
       }
       
-      if (options.removeWhitespace) {
-        // Remove whitespace around special characters
+      // Remove whitespace
+      if (removeWhitespaceOpt) {
+        // Remove spaces around special characters
         result = result.replace(/\s*([{}:;,])\s*/g, '$1');
+        // Remove trailing semicolons before closing braces
         result = result.replace(/;}/g, '}');
       }
       
-      if (options.removeLineBreaks) {
-        result = result.replace(/\n/g, '');
-        result = result.replace(/\r/g, '');
-      }
-      
-      if (options.optimizeSelectors) {
-        // Simple selector optimization - remove unnecessary spaces
+      // Optimize selectors
+      if (optimizeSelectorsOpt) {
+        // Remove unnecessary spaces around combinators
         result = result.replace(/\s*>\s*/g, '>');
         result = result.replace(/\s*\+\s*/g, '+');
         result = result.replace(/\s*~\s*/g, '~');
       }
       
+      // Remove line breaks
+      if (removeLineBreaksOpt) {
+        result = result.replace(/\n/g, '');
+        result = result.replace(/\r/g, '');
+      }
+      
       return result.trim();
     }
-    
-    // Minify JavaScript function
-    function minifyJS(code, options) {
+
+    // Minify JavaScript code
+    function minifyJS(code) {
       let result = code;
       
-      if (options.removeComments) {
+      // Get options
+      const removeCommentsOpt = removeComments.checked;
+      const removeWhitespaceOpt = removeWhitespace.checked;
+      const removeLineBreaksOpt = removeLineBreaks.checked;
+      const shortenVariablesOpt = shortenVariables.checked;
+      const preserveImportantOpt = preserveImportant.checked;
+      
+      // Remove comments
+      if (removeCommentsOpt) {
         // Remove single line comments
         result = result.replace(/\/\/.*$/gm, '');
-        // Remove multi-line comments
-        if (options.preserveImportant) {
-          // Preserve important comments
-          result = result.replace(/\/\*![\s\S]*?\*\//g, (match) => match);
+        
+        if (preserveImportantOpt) {
+          // Preserve important comments (/*! ... */)
+          const importantComments = [];
+          result = result.replace(/\/\*![\s\S]*?\*\//g, function(match) {
+            importantComments.push(match);
+            return `/*!COMMENT${importantComments.length - 1}*/`;
+          });
+          
+          // Remove regular multi-line comments
           result = result.replace(/\/\*[\s\S]*?\*\//g, '');
+          
+          // Restore important comments
+          importantComments.forEach((comment, index) => {
+            result = result.replace(`/*!COMMENT${index}*/`, comment);
+          });
         } else {
+          // Remove all multi-line comments
           result = result.replace(/\/\*[\s\S]*?\*\//g, '');
         }
       }
       
-      if (options.removeWhitespace) {
-        // Remove extra whitespace
+      // Shorten variables (simple implementation)
+      if (shortenVariablesOpt) {
+        // This is a basic implementation - real minifiers would do more
+        result = result.replace(/\b(var|let|const)\s+([a-zA-Z_$][a-zA-Z0-9_$]*)\b/g, function(match, keyword, varname) {
+          if (varname.length > 8) {
+            return keyword + ' ' + varname.substring(0, 4);
+          }
+          return match;
+        });
+      }
+      
+      // Remove whitespace
+      if (removeWhitespaceOpt) {
+        // Remove extra spaces
         result = result.replace(/\s+/g, ' ');
       }
       
-      if (options.removeLineBreaks) {
+      // Remove line breaks
+      if (removeLineBreaksOpt) {
         result = result.replace(/\n/g, ' ');
         result = result.replace(/\r/g, ' ');
       }
       
-      if (options.shortenVariables) {
-        // Simple variable shortening (basic implementation)
-        const varMatches = result.match(/(var|let|const)\s+(\w+)/g);
-        if (varMatches) {
-          varMatches.forEach((match, index) => {
-            const shortened = match.replace(/(var|let|const)\s+(\w+)/, `$1 v${index}`);
-            result = result.replace(match, shortened);
-          });
-        }
-      }
-      
       return result.trim();
     }
-    
+
     // Main minify function
     function minifyCode() {
-      const inputCode = document.getElementById('inputCode');
-      const outputCode = document.getElementById('outputCode');
-      const minifyBtn = document.getElementById('minifyBtn');
+      const code = inputCode.value.trim();
       
-      originalCode = inputCode.value.trim();
-      
-      if (!originalCode) {
+      if (!code) {
         showNotification('Please enter some code to minify');
         return;
       }
@@ -960,32 +1155,22 @@
       // Show loading state
       minifyBtn.classList.add('minifying');
       
-      // Get options
-      const options = {
-        removeWhitespace: document.getElementById('removeWhitespace').checked,
-        removeComments: document.getElementById('removeComments').checked,
-        removeLineBreaks: document.getElementById('removeLineBreaks').checked,
-        optimizeSelectors: document.getElementById('optimizeSelectors').checked,
-        shortenVariables: document.getElementById('shortenVariables').checked,
-        preserveImportant: document.getElementById('preserveImportant').checked
-      };
-      
       // Start timing
       const startTime = performance.now();
       
-      // Process based on language
+      // Process based on current language
+      let minified = code;
+      
       switch(currentLanguage) {
         case 'html':
-          minifiedCode = minifyHTML(originalCode, options);
+          minified = minifyHTML(code);
           break;
         case 'css':
-          minifiedCode = minifyCSS(originalCode, options);
+          minified = minifyCSS(code);
           break;
         case 'js':
-          minifiedCode = minifyJS(originalCode, options);
+          minified = minifyJS(code);
           break;
-        default:
-          minifiedCode = originalCode;
       }
       
       // End timing
@@ -993,70 +1178,71 @@
       const processTime = Math.round(endTime - startTime);
       
       // Update output
-      outputCode.value = minifiedCode;
+      outputCode.value = minified;
       
       // Calculate stats
-      const originalSizeBytes = new Blob([originalCode]).size;
-      const minifiedSizeBytes = new Blob([minifiedCode]).size;
+      const originalSizeBytes = new Blob([code]).size;
+      const minifiedSizeBytes = new Blob([minified]).size;
       const reduction = originalSizeBytes > 0 
         ? ((originalSizeBytes - minifiedSizeBytes) / originalSizeBytes * 100).toFixed(1)
         : 0;
       
       // Update stats display
-      document.getElementById('originalSize').textContent = formatFileSize(originalSizeBytes);
-      document.getElementById('minifiedSize').textContent = formatFileSize(minifiedSizeBytes);
-      document.getElementById('reductionPercent').textContent = `${reduction}%`;
-      document.getElementById('processingTime').textContent = `${processTime}ms`;
+      originalSize.textContent = formatFileSize(originalSizeBytes);
+      minifiedSize.textContent = formatFileSize(minifiedSizeBytes);
+      reductionPercent.textContent = reduction + '%';
+      processingTime.textContent = processTime + 'ms';
       
-      // Update compression bar
-      const compressionFill = document.getElementById('compressionFill');
-      const compressionValue = document.getElementById('compressionValue');
+      // Update compression visualization
       const reductionWidth = Math.min(100, reduction);
-      compressionFill.style.width = `${reductionWidth}%`;
-      compressionValue.textContent = `${reduction}% reduction`;
+      compressionFill.style.width = reductionWidth + '%';
+      compressionValue.textContent = reduction + '% reduction';
       
       // Update character counts
-      updateCharCount();
+      updateCharCounts();
       
       // Remove loading state
       minifyBtn.classList.remove('minifying');
+      
+      // Show success notification
       showNotification('Code minified successfully!');
     }
-    
+
     // Copy to clipboard
     async function copyToClipboard() {
-      const outputCode = document.getElementById('outputCode');
+      const text = outputCode.value;
       
-      if (!outputCode.value.trim()) {
-        showNotification('No minified code to copy');
+      if (!text.trim()) {
+        showNotification('No code to copy');
         return;
       }
       
       try {
-        await navigator.clipboard.writeText(outputCode.value);
+        await navigator.clipboard.writeText(text);
         showNotification('Code copied to clipboard!');
       } catch (err) {
         // Fallback for older browsers
         outputCode.select();
+        outputCode.setSelectionRange(0, 99999);
         document.execCommand('copy');
         showNotification('Code copied to clipboard!');
       }
     }
-    
+
     // Download file
     function downloadFile() {
-      const outputCode = document.getElementById('outputCode');
+      const text = outputCode.value;
       
-      if (!outputCode.value.trim()) {
-        showNotification('No minified code to download');
+      if (!text.trim()) {
+        showNotification('No code to download');
         return;
       }
       
-      const blob = new Blob([outputCode.value], { type: 'text/plain' });
+      const blob = new Blob([text], { type: 'text/plain' });
       const url = URL.createObjectURL(blob);
       const a = document.createElement('a');
       a.href = url;
-      a.download = `minified.${currentLanguage}`;
+      a.download = 'minified.' + currentLanguage;
       document.body.appendChild(a);
       a.click();
       document.body.removeChild(a);
@@ -1064,70 +1250,27 @@
       
       showNotification('File downloaded successfully!');
     }
-    
+
     // Clear all
     function clearAll() {
-      document.getElementById('inputCode').value = '';
-      document.getElementById('outputCode').value = '';
+      inputCode.value = '';
+      outputCode.value = '';
       
       // Reset stats
-      document.getElementById('originalSize').textContent = '0 B';
-      document.getElementById('minifiedSize').textContent = '0 B';
-      document.getElementById('reductionPercent').textContent = '0%';
-      document.getElementById('processingTime').textContent = '0ms';
-      document.getElementById('compressionFill').style.width = '0%';
-      document.getElementById('compressionValue').textContent = '0% reduction';
+      originalSize.textContent = '0 B';
+      minifiedSize.textContent = '0 B';
+      reductionPercent.textContent = '0%';
+      processingTime.textContent = '0ms';
+      compressionFill.style.width = '0%';
+      compressionValue.textContent = '0% reduction';
       
-      updateCharCount();
+      // Update character counts
+      updateCharCounts();
+      
       showNotification('Cleared all content');
     }
-    
-    // Initialize with example code
-    function initializeExample() {
-      const exampleHTML = `<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Example Page</title>
-    <style>
-        /* CSS Comment */
-        body {
-            margin: 0;
-            padding: 20px;
-            font-family: Arial, sans-serif;
-        }
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-    </style>
-</head>
-<body>
-    <div class="container">
-        <h1>Welcome to Our Website</h1>
-        <p>This is an example paragraph.</p>
-    </div>
-    <script>
-        // JavaScript comment
-        const greeting = "Hello, World!";
-        console.log(greeting);
-    </script>
-</body>
-</html>`;
-      
-      document.getElementById('inputCode').value = exampleHTML;
-      updateCharCount();
-    }
-    
-    // Initialize on load
-    document.addEventListener('DOMContentLoaded', function() {
-      initializeExample();
-      updateCharCount();
-    });
   </script>
 
 </body>
 </html>
-
 
