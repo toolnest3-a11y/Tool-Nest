@@ -1,11 +1,15 @@
-  
-  
-  <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
+   <link rel="icon" href="favicon-16x16.png" type="image/x-icon">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Color Blindness Simulator</title>
+  
+  <!-- SEO Meta Tags -->
+  <title>Color Blindness Simulator – Free Online Tool</title>
+  <meta name="description" content="Free online Color Blindness Simulator to see how images appear to people with different types of color blindness. Perfect for designers, developers, and educators.">
+  <meta name="keywords" content="Color Blindness Simulator, color blindness test, simulate color vision deficiency, color accessibility, free online tool">
+
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -67,6 +71,32 @@
       color: #555;
     }
 
+    /* Description Styles */
+    .tool-description {
+      max-width: 800px;
+      margin: 30px auto 0;
+      background: #ffffff;
+      padding: 20px 25px;
+      border-radius: 12px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+      text-align: left;
+      line-height: 1.8;
+      color: #333;
+    }
+
+    .tool-description h3 {
+      color: #007bff;
+      margin-bottom: 12px;
+    }
+
+    .tool-description ul {
+      padding-left: 20px;
+    }
+
+    .tool-description li {
+      margin-bottom: 6px;
+    }
+
     footer {
       margin-top: 30px;
       font-size: 14px;
@@ -76,6 +106,12 @@
     footer a {
       text-decoration: none;
       color: #007bff;
+    }
+
+    @media (max-width: 500px) {
+      .container, .tool-description {
+        padding: 15px 20px;
+      }
     }
   </style>
 </head>
@@ -100,6 +136,24 @@
     <p class="note">Select the type of color blindness simulation on the image.</p>
   </div>
 
+  <!-- SEO Description -->
+  <section class="tool-description">
+    <h3>Online Color Blindness Simulator</h3>
+    <p>
+      A <strong>Color Blindness Simulator</strong> is a simple online tool that lets you see how images and designs appear to people with various types of color vision deficiencies. It is ideal for designers, developers, educators, and content creators who want to make accessible and inclusive visuals.
+    </p>
+    <p>
+      This tool saves time and effort by simulating color blindness instantly, helping you identify and fix potential color accessibility issues in your work.
+    </p>
+    <ul>
+      <li>Simulate different types of color blindness such as Deuteranopia, Protanopia, and Tritanopia</li>
+      <li>Check color contrast and accessibility for images, graphics, and websites</li>
+      <li>Ensure your designs are inclusive and user-friendly</li>
+      <li>Free, fast, and easy-to-use online tool</li>
+    </ul>
+    <p><strong>Use our free Color Blindness Simulator now to test your images and improve accessibility instantly!</strong></p>
+  </section>
+
   <footer>
     <p>Designed by <a href="https://example.com" target="_blank">YourName</a></p>
   </footer>
@@ -109,7 +163,6 @@
     const imagePreview = document.getElementById('imagePreview');
     const colorBlindnessType = document.getElementById('colorBlindnessType');
 
-    // Function to apply the color blindness filter using CSS
     function applyColorBlindnessFilter() {
       const selectedType = colorBlindnessType.value;
       const image = imagePreview;
@@ -132,22 +185,18 @@
       }
     }
 
-    // Preview the uploaded image
     imageInput.addEventListener('change', function (e) {
       const reader = new FileReader();
       reader.onload = function (event) {
         imagePreview.src = event.target.result;
-        applyColorBlindnessFilter();  // Apply filter immediately after image is uploaded
+        applyColorBlindnessFilter();
       };
       reader.readAsDataURL(e.target.files[0]);
     });
 
-    // Update filter on color blindness type change
     colorBlindnessType.addEventListener('change', applyColorBlindnessFilter);
   </script>
 
 </body>
 </html>
 
-  
-  
