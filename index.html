@@ -1,3 +1,6 @@
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,23 +15,27 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            /* Premium Color Palette */
-            --primary-blue: #1a56db;
-            --dark-blue: #1e3a8a;
-            --light-blue: #3b82f6;
-            --accent-blue: #60a5fa;
-            --gradient-blue: linear-gradient(135deg, #1a56db 0%, #3b82f6 100%);
-            --gradient-dark: linear-gradient(135deg, #1e3a8a 0%, #1a56db 100%);
-            --premium-gray: #f9fafb;
-            --card-white: #ffffff;
-            --text-dark: #111827;
-            --text-gray: #6b7280;
-            --text-light: #9ca3af;
-            --border-color: #e5e7eb;
-            --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.05);
-            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.07), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-            --shadow-lg: 0 10px 25px -5px rgba(0, 0, 0, 0.08), 0 8px 10px -6px rgba(0, 0, 0, 0.04);
-            --shadow-xl: 0 20px 40px -15px rgba(0, 0, 0, 0.1);
+            /* Premium Dark Theme Palette */
+            --primary-blue: #3b82f6;
+            --dark-blue: #1e40af;
+            --light-blue: #60a5fa;
+            --accent-blue: #93c5fd;
+            --gradient-blue: linear-gradient(135deg, #3b82f6 0%, #1e40af 100%);
+            --gradient-dark: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            --gradient-card: linear-gradient(145deg, #1e293b 0%, #0f172a 100%);
+            --bg-dark: #0f172a;
+            --bg-darker: #0a0f1c;
+            --bg-card: #1e293b;
+            --bg-card-hover: #334155;
+            --text-light: #f8fafc;
+            --text-gray: #cbd5e1;
+            --text-muted: #94a3b8;
+            --border-color: #334155;
+            --border-light: #475569;
+            --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.3);
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.4), 0 2px 4px -1px rgba(0, 0, 0, 0.3);
+            --shadow-lg: 0 10px 25px -5px rgba(0, 0, 0, 0.5), 0 8px 10px -6px rgba(0, 0, 0, 0.3);
+            --shadow-xl: 0 20px 40px -15px rgba(0, 0, 0, 0.6);
             --radius-sm: 8px;
             --radius-md: 12px;
             --radius-lg: 16px;
@@ -44,8 +51,8 @@
         
         body {
             font-family: 'Inter', sans-serif;
-            color: var(--text-dark);
-            background-color: var(--premium-gray);
+            color: var(--text-gray);
+            background-color: var(--bg-dark);
             line-height: 1.6;
             font-weight: 400;
             overflow-x: hidden;
@@ -56,6 +63,7 @@
             font-weight: 600;
             line-height: 1.2;
             margin-bottom: 1rem;
+            color: var(--text-light);
         }
         
         .container {
@@ -65,15 +73,17 @@
             padding: 0 20px;
         }
         
-        /* Premium Header */
+        /* Premium Dark Header */
         header {
-            background-color: var(--card-white);
-            box-shadow: var(--shadow-sm);
+            background-color: var(--bg-card);
+            box-shadow: var(--shadow-lg);
             position: sticky;
             top: 0;
             z-index: 1000;
             padding: 18px 0;
             border-bottom: 1px solid var(--border-color);
+            backdrop-filter: blur(10px);
+            background-color: rgba(30, 41, 59, 0.9);
         }
         
         .header-container {
@@ -124,7 +134,7 @@
         .logo-tagline {
             font-size: 11px;
             font-weight: 500;
-            color: var(--text-gray);
+            color: var(--text-muted);
             margin-top: 2px;
             letter-spacing: 0.5px;
         }
@@ -139,7 +149,7 @@
         
         nav ul li a {
             text-decoration: none;
-            color: var(--text-dark);
+            color: var(--text-gray);
             font-weight: 500;
             font-size: 15px;
             transition: var(--transition);
@@ -159,7 +169,7 @@
         }
         
         nav ul li a:hover {
-            color: var(--primary-blue);
+            color: var(--accent-blue);
         }
         
         nav ul li a:hover:after {
@@ -182,7 +192,7 @@
             position: absolute;
             top: 100%;
             left: 0;
-            background: var(--card-white);
+            background: var(--bg-card);
             min-width: 240px;
             box-shadow: var(--shadow-xl);
             border-radius: var(--radius-md);
@@ -206,15 +216,15 @@
             display: flex;
             align-items: center;
             gap: 12px;
-            color: var(--text-dark);
+            color: var(--text-gray);
             text-decoration: none;
             font-size: 14px;
             transition: var(--transition);
         }
         
         .dropdown-content a:hover {
-            background-color: #f8fafc;
-            color: var(--primary-blue);
+            background-color: var(--bg-card-hover);
+            color: var(--accent-blue);
             padding-left: 24px;
         }
         
@@ -257,10 +267,10 @@
             gap: 8px;
             font-size: 13px;
             color: var(--text-gray);
-            background: #f0f9ff;
+            background: rgba(16, 185, 129, 0.1);
             padding: 8px 12px;
             border-radius: var(--radius-md);
-            border: 1px solid #dbeafe;
+            border: 1px solid rgba(16, 185, 129, 0.2);
         }
         
         .trust-badge i {
@@ -279,10 +289,11 @@
             border-radius: var(--radius-md);
             align-items: center;
             justify-content: center;
-            background-color: #f0f9ff;
+            background-color: rgba(59, 130, 246, 0.1);
+            border: 1px solid rgba(59, 130, 246, 0.2);
         }
         
-        /* Premium Hero Section */
+        /* Premium Dark Hero Section */
         .hero {
             padding: 100px 0;
             background: var(--gradient-dark);
@@ -297,8 +308,9 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 100" preserveAspectRatio="none"><path d="M500,100L0,0h1000z" fill="rgba(255,255,255,0.05)"/></svg>') bottom center no-repeat;
-            background-size: 100% 100px;
+            background: 
+                radial-gradient(circle at 20% 80%, rgba(59, 130, 246, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(30, 64, 175, 0.1) 0%, transparent 50%);
         }
         
         .hero-content {
@@ -312,14 +324,14 @@
         .hero h1 {
             font-size: 3.5rem;
             font-weight: 700;
-            color: white;
+            color: var(--text-light);
             margin-bottom: 24px;
             line-height: 1.1;
         }
         
         .hero p {
             font-size: 1.2rem;
-            color: rgba(255, 255, 255, 0.9);
+            color: var(--text-gray);
             margin-bottom: 40px;
             max-width: 600px;
             margin-left: auto;
@@ -330,8 +342,8 @@
             display: inline-flex;
             align-items: center;
             gap: 12px;
-            background: white;
-            color: var(--primary-blue);
+            background: var(--gradient-blue);
+            color: white;
             padding: 16px 36px;
             border-radius: var(--radius-md);
             text-decoration: none;
@@ -358,33 +370,60 @@
         }
         
         .category-card {
-            background: rgba(255, 255, 255, 0.1);
+            background: rgba(30, 41, 59, 0.7);
             backdrop-filter: blur(10px);
             border-radius: var(--radius-lg);
             padding: 24px;
             width: 140px;
             text-align: center;
             text-decoration: none;
-            color: white;
+            color: var(--text-gray);
             transition: var(--transition);
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            border: 1px solid var(--border-color);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .category-card:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: var(--gradient-blue);
+            opacity: 0;
+            transition: var(--transition);
+            z-index: -1;
         }
         
         .category-card:hover {
-            background: rgba(255, 255, 255, 0.2);
+            color: white;
             transform: translateY(-5px);
+            border-color: var(--primary-blue);
+        }
+        
+        .category-card:hover:before {
+            opacity: 0.1;
         }
         
         .category-icon {
             width: 60px;
             height: 60px;
-            background: rgba(255, 255, 255, 0.15);
+            background: rgba(59, 130, 246, 0.1);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             margin: 0 auto 16px;
             font-size: 24px;
+            color: var(--light-blue);
+            transition: var(--transition);
+        }
+        
+        .category-card:hover .category-icon {
+            background: rgba(59, 130, 246, 0.2);
+            transform: scale(1.1);
         }
         
         .category-card span {
@@ -395,7 +434,7 @@
         
         /* Premium Stats */
         .stats-bar {
-            background: var(--card-white);
+            background: var(--bg-card);
             padding: 30px 0;
             border-bottom: 1px solid var(--border-color);
         }
@@ -422,7 +461,7 @@
         }
         
         .stat-label {
-            color: var(--text-gray);
+            color: var(--text-muted);
             font-size: 14px;
             font-weight: 500;
         }
@@ -430,7 +469,7 @@
         /* Premium Search */
         .search-section {
             padding: 60px 0;
-            background: var(--card-white);
+            background: var(--bg-dark);
         }
         
         .search-container {
@@ -449,13 +488,18 @@
             border-radius: var(--radius-lg);
             font-size: 16px;
             transition: var(--transition);
-            background: var(--premium-gray);
+            background: var(--bg-card);
+            color: var(--text-gray);
         }
         
         .search-input:focus {
             outline: none;
             border-color: var(--light-blue);
-            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
+        }
+        
+        .search-input::placeholder {
+            color: var(--text-muted);
         }
         
         .search-icon {
@@ -463,13 +507,13 @@
             left: 24px;
             top: 50%;
             transform: translateY(-50%);
-            color: var(--text-light);
+            color: var(--text-muted);
             font-size: 20px;
         }
         
         .search-results {
             display: none;
-            background: var(--card-white);
+            background: var(--bg-card);
             border-radius: var(--radius-md);
             box-shadow: var(--shadow-xl);
             padding: 20px;
@@ -479,10 +523,23 @@
         
         .search-results h3 {
             font-size: 16px;
-            color: var(--text-dark);
+            color: var(--text-light);
             margin-bottom: 16px;
             padding-bottom: 12px;
             border-bottom: 1px solid var(--border-color);
+        }
+        
+        .search-results ul {
+            list-style: none;
+        }
+        
+        .search-results li {
+            padding: 8px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        
+        .search-results li:last-child {
+            border-bottom: none;
         }
         
         /* Premium Tool Sections */
@@ -504,12 +561,13 @@
             font-size: 14px;
             font-weight: 600;
             margin-bottom: 16px;
+            box-shadow: var(--shadow-md);
         }
         
         .section-header h2 {
             font-size: 2.5rem;
             font-weight: 700;
-            color: var(--text-dark);
+            color: var(--text-light);
             margin-bottom: 16px;
         }
         
@@ -528,7 +586,7 @@
         }
         
         .tool-card {
-            background: var(--card-white);
+            background: var(--gradient-card);
             border-radius: var(--radius-lg);
             padding: 32px;
             box-shadow: var(--shadow-md);
@@ -553,6 +611,7 @@
         .tool-card:hover {
             transform: translateY(-5px);
             box-shadow: var(--shadow-xl);
+            border-color: var(--border-light);
         }
         
         .tool-card:hover:before {
@@ -562,13 +621,13 @@
         .tool-icon-wrapper {
             width: 64px;
             height: 64px;
-            background: linear-gradient(135deg, #f0f9ff 0%, #dbeafe 100%);
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.1) 0%, rgba(30, 64, 175, 0.1) 100%);
             border-radius: var(--radius-md);
             display: flex;
             align-items: center;
             justify-content: center;
             margin-bottom: 24px;
-            color: var(--primary-blue);
+            color: var(--light-blue);
             font-size: 28px;
         }
         
@@ -576,7 +635,7 @@
             font-size: 1.25rem;
             font-weight: 600;
             margin-bottom: 12px;
-            color: var(--text-dark);
+            color: var(--text-light);
         }
         
         .tool-card p {
@@ -598,6 +657,7 @@
             font-size: 14px;
             font-weight: 600;
             transition: var(--transition);
+            box-shadow: var(--shadow-sm);
         }
         
         .tool-button:hover {
@@ -607,16 +667,17 @@
         
         /* Alternate Section Backgrounds */
         .section-alt {
-            background: var(--premium-gray);
+            background: var(--bg-darker);
             border-top: 1px solid var(--border-color);
             border-bottom: 1px solid var(--border-color);
         }
         
         /* Premium Footer */
         footer {
-            background: var(--text-dark);
-            color: white;
+            background: var(--bg-darker);
+            color: var(--text-gray);
             padding: 80px 0 40px;
+            border-top: 1px solid var(--border-color);
         }
         
         .footer-container {
@@ -630,14 +691,17 @@
             font-family: 'Poppins', sans-serif;
             font-size: 28px;
             font-weight: 800;
-            color: white;
+            background: var(--gradient-blue);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
             margin-bottom: 16px;
             display: block;
             text-decoration: none;
         }
         
         .footer-tagline {
-            color: #9ca3af;
+            color: var(--text-muted);
             font-size: 14px;
             line-height: 1.6;
             margin-bottom: 24px;
@@ -652,7 +716,7 @@
             align-items: center;
             gap: 12px;
             margin-bottom: 16px;
-            color: #9ca3af;
+            color: var(--text-muted);
         }
         
         .contact-item i {
@@ -662,7 +726,7 @@
         .footer-links h4 {
             font-size: 1.1rem;
             margin-bottom: 24px;
-            color: white;
+            color: var(--text-light);
         }
         
         .footer-links ul {
@@ -674,22 +738,22 @@
         }
         
         .footer-links a {
-            color: #9ca3af;
+            color: var(--text-muted);
             text-decoration: none;
             font-size: 14px;
             transition: var(--transition);
         }
         
         .footer-links a:hover {
-            color: white;
+            color: var(--accent-blue);
             padding-left: 8px;
         }
         
         .footer-bottom {
             text-align: center;
             padding-top: 40px;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            color: #9ca3af;
+            border-top: 1px solid var(--border-color);
+            color: var(--text-muted);
             font-size: 14px;
         }
         
@@ -701,13 +765,13 @@
         }
         
         .footer-legal a {
-            color: #9ca3af;
+            color: var(--text-muted);
             text-decoration: none;
             transition: var(--transition);
         }
         
         .footer-legal a:hover {
-            color: white;
+            color: var(--accent-blue);
         }
         
         /* Responsive Design */
@@ -763,6 +827,11 @@
                 border: none;
                 padding: 0;
                 margin-top: 0;
+                background: rgba(30, 41, 59, 0.5);
+            }
+            
+            .dropdown-content a {
+                padding-left: 32px;
             }
             
             .contact-email {
@@ -793,6 +862,11 @@
             .tools-grid {
                 grid-template-columns: 1fr;
             }
+            
+            .footer-container {
+                grid-template-columns: 1fr;
+                gap: 32px;
+            }
         }
         
         @media (max-width: 480px) {
@@ -813,8 +887,13 @@
                 font-size: 1.5rem;
             }
             
-            .footer-container {
-                grid-template-columns: 1fr;
+            .tool-card {
+                padding: 24px;
+            }
+            
+            .footer-legal {
+                flex-direction: column;
+                gap: 12px;
             }
         }
         
@@ -839,6 +918,18 @@
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(20px); }
             to { opacity: 1; transform: translateY(0); }
+        }
+        
+        /* Glow effect for premium feel */
+        .glow {
+            box-shadow: 0 0 20px rgba(59, 130, 246, 0.2);
+        }
+        
+        /* Glass effect */
+        .glass {
+            background: rgba(30, 41, 59, 0.7);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
     </style>
 </head>
@@ -898,7 +989,7 @@
     <section class="hero" id="home">
         <div class="container">
             <div class="hero-content fade-in">
-                <h1>Professional Tools for Modern Work Flow</h1>
+                <h1>Professional Tools for Modern Professionals</h1>
                 <p>Convert, calculate, compress, and optimize your workflow with our premium suite of 50+ online tools. Fast, secure, and trusted by thousands.</p>
                 <a href="#tools" class="hero-cta">
                     <i class="fas fa-rocket"></i>
@@ -997,10 +1088,8 @@
         </div>
     </section>
     
-    <!-- Tool Sections (Your existing sections with updated IDs) -->
-    <!-- Note: I'm keeping your existing tool sections structure but they now have the premium styling -->
-    
-   <!-- Image Tools Section -->
+    <!-- Tool Sections -->
+    <!-- Image Tools Section -->
 <section class="tools-section" id="image-tools-section">
     <div class="container">
         <div class="section-header fade-in">
@@ -1761,7 +1850,13 @@
                     const link = document.createElement('a');
                     link.href = '#' + card.closest('.tools-section').id;
                     link.textContent = card.querySelector('h3').textContent;
-                    link.style.cssText = 'color: var(--primary-blue); text-decoration: none; display: block; padding: 8px 0;';
+                    link.style.cssText = 'color: var(--light-blue); text-decoration: none; display: block; padding: 8px 0; transition: var(--transition);';
+                    link.onmouseover = function() {
+                        this.style.color = 'var(--accent-blue)';
+                    };
+                    link.onmouseout = function() {
+                        this.style.color = 'var(--light-blue)';
+                    };
                     link.onclick = function(e) {
                         e.preventDefault();
                         // Scroll to the tool section
@@ -1770,7 +1865,7 @@
                             block: 'start'
                         });
                         // Highlight the card
-                        card.style.boxShadow = '0 0 0 3px rgba(59, 130, 246, 0.3)';
+                        card.style.boxShadow = '0 0 0 3px rgba(59, 130, 246, 0.5)';
                         setTimeout(() => {
                             card.style.boxShadow = '';
                         }, 2000);
@@ -1792,7 +1887,13 @@
                     const link = document.createElement('a');
                     link.href = category.getAttribute('href');
                     link.textContent = categoryName + ' Category';
-                    link.style.cssText = 'color: var(--primary-blue); text-decoration: none; display: block; padding: 8px 0;';
+                    link.style.cssText = 'color: var(--light-blue); text-decoration: none; display: block; padding: 8px 0; transition: var(--transition);';
+                    link.onmouseover = function() {
+                        this.style.color = 'var(--accent-blue)';
+                    };
+                    link.onmouseout = function() {
+                        this.style.color = 'var(--light-blue)';
+                    };
                     link.onclick = function(e) {
                         e.preventDefault();
                         const targetSection = document.querySelector(link.getAttribute('href'));
@@ -1815,7 +1916,7 @@
             } else {
                 const listItem = document.createElement('li');
                 listItem.textContent = 'No tools found. Try different keywords.';
-                listItem.style.color = 'var(--text-gray)';
+                listItem.style.color = 'var(--text-muted)';
                 listItem.style.padding = '8px 0';
                 resultsList.appendChild(listItem);
                 resultsContainer.style.display = 'block';
@@ -1888,7 +1989,19 @@
             
             setTimeout(updateCounter, 500);
         });
+        
+        // Add glow effect on scroll
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            if (window.scrollY > 50) {
+                header.classList.add('glow');
+            } else {
+                header.classList.remove('glow');
+            }
+        });
     </script>
 </body>
 </html>
+
+
 
