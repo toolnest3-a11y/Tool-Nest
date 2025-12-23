@@ -1,156 +1,662 @@
   
-  <!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Meta Tag Analyzer</title>
+  <title>Meta Tag Analyzer | Professional SEO Tool</title>
+  <meta name="description" content="Free meta tag analyzer tool for SEO optimization. Extract and analyze title, description, keywords, author, and charset meta tags from any website to improve search engine rankings.">
+  <meta name="keywords" content="meta tag analyzer, SEO tool, website analyzer, meta tags, SEO optimization, search engine optimization, meta description, meta keywords">
+  <meta name="author" content="Meta Tag Analyzer Tool">
+  <link rel="icon" href="favicon-16x16.png" type="image/x-icon">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      background-color: #f4f7fc;
+    :root {
+      --primary-blue: #007bff;
+      --dark-blue: #0056b3;
+      --light-blue: #e9f3ff;
+      --accent-blue: #4a9eff;
+      --dark-text: #333;
+      --light-text: #555;
+      --white: #ffffff;
+      --light-gray: #f8f9fa;
+      --border-radius: 10px;
+      --shadow: 0 6px 15px rgba(0, 0, 0, 0.08);
+      --transition: all 0.3s ease;
+    }
+
+    * {
       margin: 0;
       padding: 0;
-      text-align: center;
+      box-sizing: border-box;
     }
-    h2 {
-      color: #007bff;
-      margin-top: 20px;
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: var(--light-blue);
+      color: var(--dark-text);
+      line-height: 1.6;
+      padding: 0;
+      margin: 0;
     }
+
     .container {
-      max-width: 800px;
+      max-width: 1000px;
       margin: 0 auto;
       padding: 20px;
-      background-color: #ffffff;
-      border-radius: 10px;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     }
-    .input-box {
-      width: 100%;
-      padding: 10px;
-      margin: 10px 0;
-      border-radius: 8px;
-      border: 1px solid #ccc;
-      font-size: 16px;
-    }
-    button {
-      padding: 10px 20px;
-      background-color: #007bff;
+
+    header {
+      background: linear-gradient(135deg, var(--primary-blue), var(--dark-blue));
       color: white;
-      border-radius: 8px;
+      padding: 25px 0;
+      text-align: center;
+      border-radius: 0 0 20px 20px;
+      box-shadow: var(--shadow);
+      margin-bottom: 30px;
+    }
+
+    header h1 {
+      font-size: 2.5rem;
+      margin-bottom: 10px;
+      font-weight: 700;
+    }
+
+    header p {
+      font-size: 1.1rem;
+      opacity: 0.9;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    .tool-container {
+      background-color: var(--white);
+      border-radius: var(--border-radius);
+      box-shadow: var(--shadow);
+      padding: 30px;
+      margin-bottom: 30px;
+    }
+
+    .input-section {
+      margin-bottom: 25px;
+    }
+
+    .input-section label {
+      display: block;
+      font-weight: 600;
+      margin-bottom: 10px;
+      color: var(--dark-blue);
+      font-size: 1.1rem;
+    }
+
+    .input-wrapper {
+      display: flex;
+      gap: 10px;
+    }
+
+    .input-box {
+      flex: 1;
+      padding: 15px 20px;
+      border-radius: var(--border-radius);
+      border: 2px solid #ddd;
+      font-size: 16px;
+      transition: var(--transition);
+    }
+
+    .input-box:focus {
+      border-color: var(--primary-blue);
+      outline: none;
+      box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.2);
+    }
+
+    button {
+      padding: 15px 25px;
+      background-color: var(--primary-blue);
+      color: white;
+      border-radius: var(--border-radius);
       border: none;
       font-size: 16px;
+      font-weight: 600;
       cursor: pointer;
-      margin-top: 10px;
+      transition: var(--transition);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
     }
+
     button:hover {
-      background-color: #0056b3;
+      background-color: var(--dark-blue);
+      transform: translateY(-2px);
+      box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
     }
-    .result {
-      margin-top: 20px;
+
+    button:active {
+      transform: translateY(0);
+    }
+
+    button i {
       font-size: 18px;
-      color: #333;
     }
-    .result span {
-      font-weight: bold;
-      color: #007bff;
-    }
-    .note {
-      margin-top: 10px;
-      font-size: 14px;
-      color: #555;
-    }
-    footer {
+
+    .result-container {
       margin-top: 30px;
-      font-size: 14px;
-      color: #888;
+      display: none;
+      animation: fadeIn 0.5s ease;
     }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .result-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+      padding-bottom: 15px;
+      border-bottom: 2px solid var(--light-blue);
+    }
+
+    .result-header h3 {
+      color: var(--dark-blue);
+      font-size: 1.5rem;
+    }
+
+    .copy-btn {
+      padding: 8px 15px;
+      background-color: var(--light-blue);
+      color: var(--dark-blue);
+      font-size: 14px;
+    }
+
+    .copy-btn:hover {
+      background-color: var(--primary-blue);
+      color: white;
+    }
+
+    .meta-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 20px;
+      margin-bottom: 20px;
+    }
+
+    .meta-card {
+      background-color: var(--light-gray);
+      border-radius: var(--border-radius);
+      padding: 20px;
+      border-left: 5px solid var(--primary-blue);
+      transition: var(--transition);
+    }
+
+    .meta-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 15px rgba(0, 0, 0, 0.05);
+    }
+
+    .meta-label {
+      font-weight: 600;
+      color: var(--dark-blue);
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .meta-label i {
+      font-size: 18px;
+    }
+
+    .meta-value {
+      color: var(--light-text);
+      word-wrap: break-word;
+      line-height: 1.5;
+    }
+
+    .status {
+      font-weight: 600;
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 14px;
+      display: inline-block;
+      margin-top: 8px;
+    }
+
+    .status-good {
+      background-color: #d4edda;
+      color: #155724;
+    }
+
+    .status-ok {
+      background-color: #fff3cd;
+      color: #856404;
+    }
+
+    .status-poor {
+      background-color: #f8d7da;
+      color: #721c24;
+    }
+
+    .seo-section {
+      background-color: var(--white);
+      border-radius: var(--border-radius);
+      box-shadow: var(--shadow);
+      padding: 30px;
+      margin-bottom: 30px;
+    }
+
+    .seo-section h2 {
+      color: var(--dark-blue);
+      margin-bottom: 20px;
+      text-align: center;
+      font-size: 1.8rem;
+    }
+
+    .seo-content {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .seo-content p {
+      margin-bottom: 15px;
+      font-size: 1.05rem;
+    }
+
+    .keywords {
+      margin-top: 20px;
+      padding: 15px;
+      background-color: var(--light-blue);
+      border-radius: var(--border-radius);
+      border-left: 5px solid var(--accent-blue);
+    }
+
+    .keywords strong {
+      color: var(--dark-blue);
+    }
+
+    footer {
+      background-color: var(--dark-blue);
+      color: white;
+      padding: 25px 0;
+      text-align: center;
+      border-radius: 20px 20px 0 0;
+      margin-top: 40px;
+    }
+
     footer a {
+      color: white;
       text-decoration: none;
-      color: #007bff;
+      font-weight: 600;
+      transition: var(--transition);
+    }
+
+    footer a:hover {
+      color: #b3d4fc;
+      text-decoration: underline;
+    }
+
+    .loader {
+      display: none;
+      border: 5px solid var(--light-blue);
+      border-top: 5px solid var(--primary-blue);
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+      animation: spin 1s linear infinite;
+      margin: 20px auto;
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    .error-message {
+      background-color: #f8d7da;
+      color: #721c24;
+      padding: 15px;
+      border-radius: var(--border-radius);
+      margin-top: 20px;
+      display: none;
+    }
+
+    @media (max-width: 768px) {
+      .input-wrapper {
+        flex-direction: column;
+      }
+      
+      .meta-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      header h1 {
+        font-size: 2rem;
+      }
+      
+      .tool-container, .seo-section {
+        padding: 20px;
+      }
     }
   </style>
 </head>
 <body>
 
-  <h2>Meta Tag Analyzer</h2>
+  <header>
+    <div class="container">
+      <h1><i class="fas fa-search"></i> Meta Tag Analyzer</h1>
+      <p>Advanced SEO tool to extract and analyze meta tags from any website. Improve your search engine optimization with detailed meta tag insights.</p>
+    </div>
+  </header>
 
   <div class="container">
-    <label for="urlInput">Enter URL:</label>
-    <input type="text" id="urlInput" class="input-box" placeholder="Enter website URL" />
+    <div class="tool-container">
+      <div class="input-section">
+        <label for="urlInput"><i class="fas fa-link"></i> Enter Website URL</label>
+        <div class="input-wrapper">
+          <input type="text" id="urlInput" class="input-box" placeholder="https://example.com">
+          <button id="analyzeButton">
+            <i class="fas fa-search"></i> Analyze Meta Tags
+          </button>
+        </div>
+      </div>
 
-    <button id="analyzeButton">Analyze Meta Tags</button>
+      <div class="loader" id="loader"></div>
+      
+      <div class="error-message" id="errorMessage">
+        <strong>Error:</strong> <span id="errorText"></span>
+      </div>
 
-    <div id="resultContainer" class="result" style="display:none;">
-      <p><span>Title:</span> <span id="metaTitle">N/A</span></p>
-      <p><span>Description:</span> <span id="metaDescription">N/A</span></p>
-      <p><span>Keywords:</span> <span id="metaKeywords">N/A</span></p>
-      <p><span>Author:</span> <span id="metaAuthor">N/A</span></p>
-      <p><span>Charset:</span> <span id="metaCharset">N/A</span></p>
+      <div class="result-container" id="resultContainer">
+        <div class="result-header">
+          <h3><i class="fas fa-chart-bar"></i> Analysis Results</h3>
+          <button class="copy-btn" id="copyResults">
+            <i class="far fa-copy"></i> Copy Results
+          </button>
+        </div>
+        
+        <div class="meta-grid">
+          <div class="meta-card">
+            <div class="meta-label">
+              <i class="fas fa-heading"></i> Title Tag
+            </div>
+            <div class="meta-value" id="metaTitle">N/A</div>
+            <div class="status" id="titleStatus"></div>
+          </div>
+          
+          <div class="meta-card">
+            <div class="meta-label">
+              <i class="fas fa-align-left"></i> Description
+            </div>
+            <div class="meta-value" id="metaDescription">N/A</div>
+            <div class="status" id="descStatus"></div>
+          </div>
+          
+          <div class="meta-card">
+            <div class="meta-label">
+              <i class="fas fa-key"></i> Keywords
+            </div>
+            <div class="meta-value" id="metaKeywords">N/A</div>
+            <div class="status" id="keywordsStatus"></div>
+          </div>
+          
+          <div class="meta-card">
+            <div class="meta-label">
+              <i class="fas fa-user"></i> Author
+            </div>
+            <div class="meta-value" id="metaAuthor">N/A</div>
+          </div>
+          
+          <div class="meta-card">
+            <div class="meta-label">
+              <i class="fas fa-code"></i> Charset
+            </div>
+            <div class="meta-value" id="metaCharset">N/A</div>
+          </div>
+          
+          <div class="meta-card">
+            <div class="meta-label">
+              <i class="fas fa-eye"></i> Viewport
+            </div>
+            <div class="meta-value" id="metaViewport">N/A</div>
+          </div>
+        </div>
+      </div>
     </div>
 
-    <p class="note">This tool analyzes the meta tags of the provided URL and extracts key metadata.</p>
+    <div class="seo-section">
+      <h2><i class="fas fa-chart-line"></i> Why Meta Tags Are Essential for SEO</h2>
+      <div class="seo-content">
+        <p>Meta tags are HTML elements that provide information about a webpage to search engines and website visitors. Properly optimized meta tags significantly improve search engine rankings and click-through rates from search results.</p>
+        
+        <p>Our <strong>Meta Tag Analyzer</strong> tool helps you extract and analyze critical meta tags including title, description, keywords, author, and charset. This is essential for:</p>
+        
+        <ul style="margin-left: 20px; margin-bottom: 20px;">
+          <li><strong>SEO Optimization:</strong> Improving search engine visibility and rankings</li>
+          <li><strong>Competitor Analysis:</strong> Understanding how competitors structure their meta data</li>
+          <li><strong>Website Audits:</strong> Identifying missing or poorly optimized meta tags</li>
+          <li><strong>Click-Through Rate Improvement:</strong> Crafting compelling title and description tags</li>
+        </ul>
+        
+        <p>For optimal SEO performance, ensure your title tag is under 60 characters, your description is between 150-160 characters, and includes relevant keywords naturally.</p>
+        
+        <div class="keywords">
+          <strong>Primary SEO Keywords:</strong> meta tag analyzer, SEO tool, website analyzer, meta tags, SEO optimization, search engine optimization, meta description, meta keywords, title tag, charset, viewport, author tag, free SEO tool, website audit
+        </div>
+      </div>
+    </div>
   </div>
 
   <footer>
-    <p>Designed by <a href="https://example.com" target="_blank">YourName</a></p>
+    <div class="container">
+      <p>Designed by <a href="https://example.com" target="_blank">Meta Tag Analyzer Tool</a> | Advanced SEO Analysis Tool</p>
+      <p style="margin-top: 10px; font-size: 0.9rem; opacity: 0.8;">&copy; 2023 Meta Tag Analyzer. All rights reserved.</p>
+    </div>
   </footer>
 
   <script>
+    // DOM Elements
     const urlInput = document.getElementById('urlInput');
     const analyzeButton = document.getElementById('analyzeButton');
     const resultContainer = document.getElementById('resultContainer');
+    const loader = document.getElementById('loader');
+    const errorMessage = document.getElementById('errorMessage');
+    const errorText = document.getElementById('errorText');
+    const copyResultsButton = document.getElementById('copyResults');
+    
+    // Meta tag elements
     const metaTitle = document.getElementById('metaTitle');
     const metaDescription = document.getElementById('metaDescription');
     const metaKeywords = document.getElementById('metaKeywords');
     const metaAuthor = document.getElementById('metaAuthor');
     const metaCharset = document.getElementById('metaCharset');
-
-    // Function to fetch meta tags from the provided URL
+    const metaViewport = document.getElementById('metaViewport');
+    
+    // Status elements
+    const titleStatus = document.getElementById('titleStatus');
+    const descStatus = document.getElementById('descStatus');
+    const keywordsStatus = document.getElementById('keywordsStatus');
+    
+    // CORS proxy API (using a public proxy to avoid CORS issues)
+    const CORS_PROXY = "https://api.allorigins.win/raw?url=";
+    
+    // Function to show loader
+    function showLoader() {
+      loader.style.display = 'block';
+      resultContainer.style.display = 'none';
+      errorMessage.style.display = 'none';
+    }
+    
+    // Function to hide loader
+    function hideLoader() {
+      loader.style.display = 'none';
+    }
+    
+    // Function to show error
+    function showError(message) {
+      hideLoader();
+      errorText.textContent = message;
+      errorMessage.style.display = 'block';
+      resultContainer.style.display = 'none';
+    }
+    
+    // Function to analyze meta tags length and provide status
+    function analyzeMetaStatus(tag, type) {
+      if (!tag || tag === 'N/A') return '';
+      
+      if (type === 'title') {
+        if (tag.length <= 60) {
+          return '<span class="status status-good">Good (' + tag.length + ' chars)</span>';
+        } else if (tag.length <= 70) {
+          return '<span class="status status-ok">OK (' + tag.length + ' chars)</span>';
+        } else {
+          return '<span class="status status-poor">Too Long (' + tag.length + ' chars)</span>';
+        }
+      }
+      
+      if (type === 'description') {
+        if (tag.length >= 120 && tag.length <= 160) {
+          return '<span class="status status-good">Good (' + tag.length + ' chars)</span>';
+        } else if (tag.length >= 100 && tag.length <= 200) {
+          return '<span class="status status-ok">OK (' + tag.length + ' chars)</span>';
+        } else {
+          return '<span class="status status-poor">Not Optimal (' + tag.length + ' chars)</span>';
+        }
+      }
+      
+      if (type === 'keywords') {
+        const keywords = tag.split(',').map(k => k.trim()).filter(k => k);
+        if (keywords.length >= 3 && keywords.length <= 10) {
+          return '<span class="status status-good">Good (' + keywords.length + ' keywords)</span>';
+        } else if (keywords.length > 10) {
+          return '<span class="status status-poor">Too Many (' + keywords.length + ' keywords)</span>';
+        } else {
+          return '<span class="status status-ok">Limited (' + keywords.length + ' keywords)</span>';
+        }
+      }
+      
+      return '';
+    }
+    
+    // Function to fetch and parse meta tags from a URL
     async function fetchMetaTags(url) {
+      showLoader();
+      
       try {
-        // Fetch the webpage HTML
-        const response = await fetch(`https://api.allorigins.win/raw?url=${encodeURIComponent(url)}`);
+        // Validate URL format
+        if (!url.startsWith('http://') && !url.startsWith('https://')) {
+          url = 'https://' + url;
+        }
+        
+        // Use CORS proxy to fetch the HTML
+        const response = await fetch(CORS_PROXY + encodeURIComponent(url), {
+          headers: {
+            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36'
+          }
+        });
+        
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        
         const html = await response.text();
-
-        // Create a temporary DOM element to parse the HTML content
+        
+        // Parse the HTML
         const parser = new DOMParser();
         const doc = parser.parseFromString(html, 'text/html');
-
-        // Extract meta tag content
-        const title = doc.querySelector('title') ? doc.querySelector('title').innerText : 'N/A';
-        const description = doc.querySelector('meta[name="description"]') ? doc.querySelector('meta[name="description"]').getAttribute('content') : 'N/A';
-        const keywords = doc.querySelector('meta[name="keywords"]') ? doc.querySelector('meta[name="keywords"]').getAttribute('content') : 'N/A';
-        const author = doc.querySelector('meta[name="author"]') ? doc.querySelector('meta[name="author"]').getAttribute('content') : 'N/A';
-        const charset = doc.querySelector('meta[charset]') ? doc.querySelector('meta[charset]').getAttribute('charset') : 'N/A';
-
-        // Update the UI with the extracted values
+        
+        // Extract meta tags
+        const title = doc.querySelector('title') ? doc.querySelector('title').innerText.trim() : 'N/A';
+        const description = doc.querySelector('meta[name="description"]') ? 
+                            doc.querySelector('meta[name="description"]').getAttribute('content').trim() : 'N/A';
+        const keywords = doc.querySelector('meta[name="keywords"]') ? 
+                         doc.querySelector('meta[name="keywords"]').getAttribute('content').trim() : 'N/A';
+        const author = doc.querySelector('meta[name="author"]') ? 
+                       doc.querySelector('meta[name="author"]').getAttribute('content').trim() : 'N/A';
+        const charset = doc.querySelector('meta[charset]') ? 
+                        doc.querySelector('meta[charset]').getAttribute('charset') : 
+                        (doc.querySelector('meta[content*="charset"]') ? 'See content attribute' : 'N/A');
+        const viewport = doc.querySelector('meta[name="viewport"]') ? 
+                         doc.querySelector('meta[name="viewport"]').getAttribute('content') : 'N/A';
+        
+        // Update the UI with extracted values
         metaTitle.textContent = title;
         metaDescription.textContent = description;
         metaKeywords.textContent = keywords;
         metaAuthor.textContent = author;
         metaCharset.textContent = charset;
-
+        metaViewport.textContent = viewport;
+        
+        // Add status indicators
+        titleStatus.innerHTML = analyzeMetaStatus(title, 'title');
+        descStatus.innerHTML = analyzeMetaStatus(description, 'description');
+        keywordsStatus.innerHTML = analyzeMetaStatus(keywords, 'keywords');
+        
         // Show the result container
+        hideLoader();
         resultContainer.style.display = 'block';
+        
+        // Scroll to results
+        resultContainer.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        
       } catch (error) {
-        alert("Error: Unable to fetch meta tags. Please check the URL.");
+        console.error('Error fetching meta tags:', error);
+        showError('Unable to fetch meta tags. Please check the URL and try again. Error: ' + error.message);
       }
     }
-
-    // Event listener to trigger the analysis
+    
+    // Function to copy results to clipboard
+    function copyResultsToClipboard() {
+      const results = `
+Meta Tag Analysis Results:
+Title: ${metaTitle.textContent}
+Description: ${metaDescription.textContent}
+Keywords: ${metaKeywords.textContent}
+Author: ${metaAuthor.textContent}
+Charset: ${metaCharset.textContent}
+Viewport: ${metaViewport.textContent}
+      `.trim();
+      
+      navigator.clipboard.writeText(results)
+        .then(() => {
+          // Show temporary success message on button
+          const originalText = copyResultsButton.innerHTML;
+          copyResultsButton.innerHTML = '<i class="fas fa-check"></i> Copied!';
+          copyResultsButton.style.backgroundColor = '#28a745';
+          
+          setTimeout(() => {
+            copyResultsButton.innerHTML = originalText;
+            copyResultsButton.style.backgroundColor = '';
+          }, 2000);
+        })
+        .catch(err => {
+          console.error('Failed to copy: ', err);
+        });
+    }
+    
+    // Event listeners
     analyzeButton.addEventListener('click', () => {
       const url = urlInput.value.trim();
       if (url) {
         fetchMetaTags(url);
       } else {
-        alert('Please enter a valid URL.');
+        showError('Please enter a valid URL.');
       }
     });
+    
+    // Allow Enter key to trigger analysis
+    urlInput.addEventListener('keypress', (e) => {
+      if (e.key === 'Enter') {
+        analyzeButton.click();
+      }
+    });
+    
+    // Copy results button
+    copyResultsButton.addEventListener('click', copyResultsToClipboard);
+    
+    // Example URLs for quick testing
+    urlInput.value = 'https://example.com';
   </script>
-
 </body>
 </html>
-
-  
-  
