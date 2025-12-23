@@ -1,130 +1,684 @@
 
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-  <title>Advanced Code Minifier | Minify HTML, CSS, JavaScript Online | Professional Tool</title>
-
-  <meta name="description" content="Professional code minifier tool for web developers. Minify HTML, CSS, and JavaScript files with advanced options. Reduce file size, improve performance, and optimize websites instantly.">
-  <meta name="keywords" content="code minifier, HTML minifier, CSS minifier, JavaScript minifier, code optimization, web performance, file size reduction, minify code online, developer tools, web development tools, free minifier tool">
-  <meta name="author" content="Tool Nest">
-
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>HTML Minifier — Tool Nest</title>
+  <meta name="description" content="HTML Minifier online — remove whitespace, line breaks and comments to compress and optimize HTML. Fast, responsive HTML compressor and code minifier for developers and webmasters. Paste HTML, Minify, Copy Output, or use the optional API. Keywords: HTML minifier, HTML compressor, remove spaces, remove comments, minify HTML online, code minifier, responsive tool." />
   <link rel="icon" href="favicon-16x16.png" type="image/x-icon">
 
   <style>
-    /* ✅ CSS UNCHANGED */
-    /* (exact same styles as you provided) */
+    /* Theme colors */
+    :root{
+      --blue: #0d6efd;
+      --blue-600: #0b5ed7;
+      --bg: #ffffff;
+      --muted: #6c757d;
+      --card: #f8fbff;
+      --glass: rgba(13,110,253,0.06);
+      --success: #198754;
+      --danger: #dc3545;
+      --mono: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+      --radius: 12px;
+      --transition: 180ms ease;
+    }
+
+    /* Reset & body */
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      background: linear-gradient(180deg,#f6fbff 0%, #ffffff 100%);
+      color:#0b2545;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      padding:28px;
+    }
+
+    .shell{
+      max-width:1200px;
+      margin:0 auto;
+      padding:20px;
+    }
+
+    header.app-header{
+      display:flex;
+      gap:16px;
+      align-items:center;
+      margin-bottom:18px;
+    }
+    .logo {
+      background:var(--blue);
+      width:56px;
+      height:56px;
+      border-radius:10px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      color:white;
+      font-weight:700;
+      box-shadow: 0 6px 18px rgba(13,110,253,0.12);
+      flex:0 0 56px;
+    }
+    .title {
+      display:flex;
+      flex-direction:column;
+      gap:4px;
+    }
+    .title h1{
+      margin:0;
+      font-size:18px;
+      letter-spacing:-0.2px;
+    }
+    .title p{
+      margin:0;
+      color:var(--muted);
+      font-size:13px;
+    }
+
+    /* Card */
+    .card{
+      background:linear-gradient(180deg, rgba(255,255,255,0.9), rgba(248,251,255,0.9));
+      border-radius:var(--radius);
+      padding:18px;
+      box-shadow: 0 6px 30px rgba(20,45,80,0.06);
+      border:1px solid rgba(13,110,253,0.06);
+    }
+
+    /* Toolbar row */
+    .row{
+      display:flex;
+      gap:12px;
+      align-items:center;
+      justify-content:space-between;
+      margin-bottom:14px;
+      flex-wrap:wrap;
+    }
+
+    .controls{
+      display:flex;
+      gap:8px;
+      align-items:center;
+      flex-wrap:wrap;
+    }
+    .btn{
+      background:var(--blue);
+      color:white;
+      border:0;
+      padding:10px 12px;
+      border-radius:10px;
+      font-weight:600;
+      cursor:pointer;
+      display:inline-flex;
+      gap:8px;
+      align-items:center;
+      transition:transform var(--transition), box-shadow var(--transition);
+      box-shadow:0 6px 18px rgba(13,110,253,0.12);
+      font-size:14px;
+    }
+    .btn.secondary{
+      background:transparent;
+      color:var(--blue);
+      border:1px solid rgba(13,110,253,0.12);
+      box-shadow:none;
+      font-weight:600;
+    }
+    .btn.ghost{
+      background:transparent;
+      color:var(--muted);
+      border:1px dashed rgba(0,0,0,0.06);
+      padding:8px 10px;
+      font-weight:600;
+    }
+    .btn:active{ transform:translateY(1px) }
+
+    /* Layout */
+    .grid{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:16px;
+      margin-top:6px;
+    }
+
+    .panel{
+      display:flex;
+      flex-direction:column;
+      gap:10px;
+    }
+
+    .panel .panel-head{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:10px;
+    }
+    .panel h3{ margin:0; font-size:14px }
+    .muted{ color:var(--muted); font-size:13px }
+
+    /* textarea / code panes */
+    .editor{
+      background:linear-gradient(180deg,#ffffff, #fbfdff);
+      border-radius:10px;
+      border:1px solid rgba(13,110,253,0.04);
+      padding:10px;
+      min-height:260px;
+      display:flex;
+      flex-direction:column;
+      gap:8px;
+    }
+    textarea.input{
+      width:100%;
+      min-height:200px;
+      resize:vertical;
+      border-radius:8px;
+      border:1px solid rgba(11,37,69,0.06);
+      padding:12px 14px;
+      font-family:var(--mono);
+      font-size:13px;
+      line-height:1.45;
+      background:linear-gradient(180deg,#ffffff,#fbfdff);
+      color:#0b2545;
+      outline:none;
+      box-shadow:none;
+    }
+
+    pre.output{
+      width:100%;
+      min-height:200px;
+      padding:12px 14px;
+      background: #00122008;
+      border-radius:8px;
+      border:1px solid rgba(11,37,69,0.04);
+      font-family:var(--mono);
+      font-size:13px;
+      overflow:auto;
+      white-space:pre-wrap;
+      word-wrap:break-word;
+      color:#052238;
+    }
+
+    .statline{
+      display:flex;
+      gap:12px;
+      font-size:13px;
+      color:var(--muted);
+      align-items:center;
+      flex-wrap:wrap;
+    }
+    .badge{
+      background:var(--glass);
+      color:var(--blue);
+      padding:6px 8px;
+      border-radius:999px;
+      font-weight:700;
+      font-size:12px;
+    }
+
+    /* small controls inside panels */
+    .panel-actions{ display:flex; gap:8px; align-items:center; }
+    .small{
+      font-size:13px;
+      padding:8px 10px;
+      border-radius:8px;
+      border:1px solid rgba(11,37,69,0.04);
+      background:transparent;
+      cursor:pointer;
+    }
+
+    /* footer */
+    footer{
+      margin-top:18px;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:20px;
+      flex-wrap:wrap;
+    }
+    .help{
+      color:var(--muted);
+      font-size:13px;
+    }
+
+    /* responsive */
+    @media (max-width:900px){
+      .grid{ grid-template-columns:1fr; }
+      .logo{ width:48px; height:48px; flex:0 0 48px}
+    }
+
+    /* API toggle */
+    .api-panel{
+      display:flex;
+      gap:8px;
+      align-items:center;
+      background:linear-gradient(90deg, rgba(13,110,253,0.03), transparent);
+      padding:10px;
+      border-radius:10px;
+      border:1px solid rgba(13,110,253,0.04);
+    }
+    input[type="text"].api-url{
+      padding:8px 10px;
+      border-radius:8px;
+      border:1px solid rgba(11,37,69,0.06);
+      outline:none;
+      font-size:13px;
+      width:320px;
+      background:white;
+    }
+
+    .toast{
+      position:fixed;
+      right:20px;
+      bottom:20px;
+      background:#06273a;
+      color:#fff;
+      padding:12px 14px;
+      border-radius:10px;
+      box-shadow:0 10px 30px rgba(2, 6, 23, 0.3);
+      transform:translateY(10px);
+      opacity:0;
+      transition:opacity 220ms ease, transform 220ms ease;
+      z-index:9999;
+    }
+    .toast.show{ opacity:1; transform:translateY(0) }
+
+    /* small link / API sample */
+    .code-sample{
+      background:#0b1221;
+      color:#e6f6ff;
+      padding:12px;
+      border-radius:8px;
+      font-family:var(--mono);
+      font-size:12px;
+      overflow:auto;
+      max-width:100%;
+    }
+
   </style>
 </head>
-
 <body>
+  <div class="shell">
+    <header class="app-header">
+      <div class="logo" aria-hidden="true">TN</div>
+      <div class="title">
+        <h1>HTML Minifier</h1>
+        <p>Remove whitespace, line breaks and comments — fast, safe HTML compression for developers.</p>
+      </div>
+      <div style="margin-left:auto" class="muted">Bright blue • Responsive • Developer-friendly</div>
+    </header>
 
-<!-- ✅ HTML UNCHANGED -->
+    <div class="card" role="main" aria-labelledby="tool-title">
+      <div class="row">
+        <div class="controls">
+          <button class="btn" id="minifyBtn" title="Minify the HTML">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h10" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Minify
+          </button>
+          <button class="btn secondary" id="clearBtn" title="Clear input and output">
+            Clear
+          </button>
+          <button class="btn ghost" id="loadSampleBtn" title="Load sample HTML">
+            Load sample
+          </button>
+        </div>
 
-<script>
-/* ================= FIXED LOGIC ONLY ================= */
+        <div style="display:flex; gap:10px; align-items:center;">
+          <div class="api-panel" role="region" aria-label="API integration">
+            <label style="font-weight:600; color:var(--blue); font-size:13px; margin-right:6px;">API</label>
+            <input id="apiUrl" class="api-url" type="text" placeholder="Optional: https://example.com/minify" aria-label="API endpoint URL">
+            <button id="toggleApi" class="small" title="Use API to minify">Use API</button>
+          </div>
+        </div>
+      </div>
 
-// HTML Minifier
-function minifyHTML(code) {
-  let result = code;
+      <div class="grid" role="region" aria-label="Editors">
+        <section class="panel" aria-labelledby="original-heading">
+          <div class="panel-head">
+            <h3 id="original-heading">Original HTML</h3>
+            <div class="panel-actions">
+              <div class="statline">
+                <div class="badge" id="origCount">0 B</div>
+                <div class="muted">Paste or type your HTML here</div>
+              </div>
+            </div>
+          </div>
+          <div class="editor">
+            <textarea id="input" class="input" placeholder="Paste your HTML code here..."></textarea>
+            <div style="display:flex; justify-content:space-between; align-items:center;">
+              <div class="muted">Supports large documents — pre/code/textarea and scripts preserved while minifying.</div>
+              <div>
+                <button class="small" id="formatBtn" title="Quick pretty-format (basic)">&nbsp;Format&nbsp;</button>
+              </div>
+            </div>
+          </div>
+        </section>
 
-  if (removeComments.checked) {
-    if (preserveImportant.checked) {
-      result = result.replace(/<!--!(.*?)-->/gs, '<!--!$1-->');
-      result = result.replace(/<!--(?!\!)[\s\S]*?-->/g, '');
-    } else {
-      result = result.replace(/<!--[\s\S]*?-->/g, '');
+        <section class="panel" aria-labelledby="minified-heading">
+          <div class="panel-head">
+            <h3 id="minified-heading">Minified Output</h3>
+            <div class="panel-actions">
+              <div class="statline">
+                <div class="badge" id="minCount">0 B</div>
+                <div class="muted" id="savings">—</div>
+              </div>
+              <div style="display:flex; gap:8px;">
+                <button class="small" id="copyBtn" title="Copy minified output">Copy Output</button>
+                <button class="small" id="downloadBtn" title="Download as .html">Download</button>
+              </div>
+            </div>
+          </div>
+          <div class="editor">
+            <pre id="output" class="output" aria-live="polite" role="region"></pre>
+            <div style="display:flex; gap:8px; justify-content:space-between; align-items:center;">
+              <div class="muted">Compare original and minified sizes. Optionally call your server-side API for minification.</div>
+              <div class="muted" style="font-size:12px">Tool Nest • Advanced</div>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <footer>
+        <div class="help">
+          Tip: For best results, avoid minifying pages that rely on inline preformatted spacing unless you rely on the API that handles script/style minification. This tool preserves content inside &lt;pre&gt;, &lt;textarea&gt;, &lt;script&gt; and &lt;style&gt;.
+        </div>
+
+        <div style="display:flex; gap:12px; align-items:center;">
+          <div style="max-width:540px; text-align:right;">
+            <div style="font-size:12px; color:var(--muted)">API sample:</div>
+            <pre class="code-sample" aria-hidden="true">fetch('https://your-api.example/minify',{ method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify({ html: '...your html...' }) })
+  .then(r=>r.json()).then(r=>console.log(r.minified))</pre>
+          </div>
+        </div>
+      </footer>
+    </div>
+  </div>
+
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+  <script>
+    // Elements
+    const inputEl = document.getElementById('input');
+    const outputEl = document.getElementById('output');
+    const minifyBtn = document.getElementById('minifyBtn');
+    const clearBtn = document.getElementById('clearBtn');
+    const copyBtn = document.getElementById('copyBtn');
+    const loadSampleBtn = document.getElementById('loadSampleBtn');
+    const origCountEl = document.getElementById('origCount');
+    const minCountEl = document.getElementById('minCount');
+    const savingsEl = document.getElementById('savings');
+    const toast = document.getElementById('toast');
+    const apiUrlInput = document.getElementById('apiUrl');
+    const toggleApiBtn = document.getElementById('toggleApi');
+    const downloadBtn = document.getElementById('downloadBtn');
+    const formatBtn = document.getElementById('formatBtn');
+
+    let useApi = false;
+
+    // Utilities
+    function bytes(n){
+      if (n < 1024) return n + ' B';
+      if (n < 1024 * 1024) return (n/1024).toFixed(2) + ' KB';
+      return (n/1024/1024).toFixed(2) + ' MB';
     }
-  }
 
-  if (removeWhitespace.checked) {
-    result = result.replace(/>\s+</g, '><');
-  }
-
-  if (removeLineBreaks.checked) {
-    result = result.replace(/[\n\r]/g, '');
-  }
-
-  return result.trim();
-}
-
-// CSS Minifier
-function minifyCSS(code) {
-  let result = code;
-
-  if (removeComments.checked) {
-    if (preserveImportant.checked) {
-      const important = result.match(/\/\*![\s\S]*?\*\//g) || [];
-      result = result.replace(/\/\*[\s\S]*?\*\//g, '');
-      result = important.join('') + result;
-    } else {
-      result = result.replace(/\/\*[\s\S]*?\*\//g, '');
+    function showToast(msg, timeout=2200){
+      toast.textContent = msg;
+      toast.classList.add('show');
+      setTimeout(()=>toast.classList.remove('show'), timeout);
     }
-  }
 
-  if (removeWhitespace.checked) {
-    result = result.replace(/\s*([{}:;,])\s*/g, '$1');
-  }
+    // Sample HTML
+    const sampleHtml = `<!doctype html>
+<html>
+  <head>
+    <title>Sample</title>
+    <!-- This is a comment that will be removed -->
+    <style>
+      /* styles preserved */
+      body { font-family: Arial; }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1> Hello World </h1>
+      <p> This is a   sample   HTML. </p>
+      <pre>
+        Preformatted   spaces   are   preserved.
+      </pre>
+    </div>
+    <script>
+      // script content preserved
+      console.log('hello');
+    </script>
+  </body>
+</html>`;
 
-  if (optimizeSelectors.checked) {
-    result = result.replace(/\s*([>+~])\s*/g, '$1');
-  }
-
-  if (removeLineBreaks.checked) {
-    result = result.replace(/[\n\r]/g, '');
-  }
-
-  return result.trim();
-}
-
-// JavaScript Minifier
-function minifyJS(code) {
-  let result = code;
-
-  if (removeComments.checked) {
-    result = result.replace(/\/\/.*$/gm, '');
-    if (preserveImportant.checked) {
-      const important = result.match(/\/\*![\s\S]*?\*\//g) || [];
-      result = result.replace(/\/\*[\s\S]*?\*\//g, '');
-      result = important.join('') + result;
-    } else {
-      result = result.replace(/\/\*[\s\S]*?\*\//g, '');
+    // Placeholder mechanics to preserve sensitive blocks: <script>, <style>, <pre>, <textarea>
+    function extractBlocks(html){
+      const placeholders = [];
+      const rx = /<(script|style|pre|textarea)(\b[^>]*)>[\s\S]*?<\/\1>/gi;
+      let out = html.replace(rx, function(m){
+        const id = '___TN_BLOCK_' + placeholders.length + '___';
+        placeholders.push(m);
+        return id;
+      });
+      return {out, placeholders};
     }
-  }
+    function restoreBlocks(html, placeholders){
+      let res = html;
+      placeholders.forEach((p,i) => {
+        res = res.replace('___TN_BLOCK_' + i + '___', p);
+      });
+      return res;
+    }
 
-  if (removeWhitespace.checked) {
-    result = result.replace(/\s+/g, ' ');
-  }
+    // Minify function: removes comments (except conditional IE comments starting with [if),
+    // collapses whitespace between tags, trims leading/trailing spaces.
+    function minifyHtml(raw){
+      if (!raw) return '';
+      // 1) Extract protected blocks
+      const {out, placeholders} = extractBlocks(raw);
 
-  if (removeLineBreaks.checked) {
-    result = result.replace(/[\n\r]/g, ' ');
-  }
+      let s = out;
 
-  return result.trim();
-}
+      // 2) Remove html comments except conditional comments starting with [if
+      // Keep comments like <!--[if ... ]> ... <![endif]--> intact
+      s = s.replace(/<!--(?!(\s*\[if\b))[\s\S]*?-->/g, '');
 
-// Download Fix
-function downloadFile() {
-  const text = outputCode.value;
-  if (!text.trim()) return;
+      // 3) Collapse multiple whitespace (spaces, tabs, newlines) into single space
+      s = s.replace(/\s+/g, ' ');
 
-  const ext = currentLanguage === 'js' ? 'js' : currentLanguage;
-  const blob = new Blob([text], { type: 'text/plain' });
-  const url = URL.createObjectURL(blob);
+      // 4) Remove spaces between tags: > <  => ><
+      s = s.replace(/>\s+</g, '><');
 
-  const a = document.createElement('a');
-  a.href = url;
-  a.download = `minified.${ext}`;
-  document.body.appendChild(a);
-  a.click();
-  document.body.removeChild(a);
-  URL.revokeObjectURL(url);
-}
+      // 5) Trim
+      s = s.trim();
 
-</script>
+      // 6) Restore protected blocks (but we should trim internal leading/trailing newlines)
+      let restored = restoreBlocks(s, placeholders);
 
+      // When restoring, placeholders include original tags; ensure there's no accidental spacing issues around them
+      return restored;
+    }
+
+    // Basic pretty-format (very small, not a full formatter)
+    function basicFormat(html){
+      try{
+        // naive formatting using indentation for tags (not for all complex cases)
+        let formatted = '';
+        const reg = /(<\/?[^>]+>)/g;
+        const parts = html.split(reg).filter(Boolean);
+        let pad = 0;
+        parts.forEach(token => {
+          if (token.match(/^<\//)) {
+            pad = Math.max(pad - 1, 0);
+          }
+          const indent = '  '.repeat(pad);
+          formatted += indent + token.trim() + '\n';
+          if (token.match(/^<[^\/!][^>]*[^\/]>$/) && !token.includes('br') && !token.includes('img')) {
+            pad++;
+          }
+        });
+        return formatted.trim();
+      }catch(e){
+        return html;
+      }
+    }
+
+    // Update stats
+    function updateStats(orig, minified){
+      const oLen = new Blob([orig]).size;
+      const mLen = new Blob([minified]).size;
+      origCountEl.textContent = bytes(oLen);
+      minCountEl.textContent = bytes(mLen);
+      if (oLen > 0){
+        const saved = oLen - mLen;
+        const pct = Math.round((saved / oLen) * 100);
+        savingsEl.textContent = saved > 0 ? `Saved ${bytes(saved)} (${pct}%)` : 'No change';
+      } else {
+        savingsEl.textContent = '—';
+      }
+    }
+
+    // Event handlers
+    minifyBtn.addEventListener('click', async () => {
+      const raw = inputEl.value || '';
+      if (!raw.trim()){
+        showToast('Paste HTML to minify');
+        return;
+      }
+
+      if (useApi){
+        const endpoint = apiUrlInput.value.trim();
+        if (!endpoint){
+          showToast('Provide API URL or disable API');
+          return;
+        }
+        try{
+          minifyBtn.disabled = true;
+          minifyBtn.textContent = 'Minifying...';
+          // call provided API, expecting { minified: '...' } response
+          const resp = await fetch(endpoint, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ html: raw })
+          });
+          if (!resp.ok) throw new Error('API error: ' + resp.status);
+          const data = await resp.json();
+          if (typeof data.minified === 'string'){
+            outputEl.textContent = data.minified;
+            updateStats(raw, data.minified);
+            showToast('Minified via API');
+          } else {
+            // fallback to local minify if API doesn't return expected shape
+            const local = minifyHtml(raw);
+            outputEl.textContent = local;
+            updateStats(raw, local);
+            showToast('API responded but no minified result; used local minifier');
+          }
+        }catch(err){
+          // On error, fallback local minify and inform user
+          const local = minifyHtml(raw);
+          outputEl.textContent = local;
+          updateStats(raw, local);
+          showToast('API failed — used local minifier');
+        } finally {
+          minifyBtn.disabled = false;
+          minifyBtn.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h10" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg> Minify';
+        }
+      } else {
+        const minified = minifyHtml(raw);
+        outputEl.textContent = minified;
+        updateStats(raw, minified);
+        showToast('Minified locally');
+      }
+    });
+
+    clearBtn.addEventListener('click', () => {
+      inputEl.value = '';
+      outputEl.textContent = '';
+      updateStats('', '');
+      showToast('Cleared');
+    });
+
+    copyBtn.addEventListener('click', async () => {
+      const txt = outputEl.textContent || '';
+      if (!txt) { showToast('Nothing to copy'); return; }
+      try{
+        await navigator.clipboard.writeText(txt);
+        showToast('Minified output copied');
+      }catch(e){
+        // Fallback
+        const ta = document.createElement('textarea');
+        ta.value = txt;
+        document.body.appendChild(ta);
+        ta.select();
+        try{ document.execCommand('copy'); showToast('Copied'); }catch(e){ showToast('Copy failed'); }
+        ta.remove();
+      }
+    });
+
+    loadSampleBtn.addEventListener('click', () => {
+      inputEl.value = sampleHtml;
+      updateStats(sampleHtml, '');
+      showToast('Sample loaded');
+    });
+
+    toggleApiBtn.addEventListener('click', () => {
+      useApi = !useApi;
+      toggleApiBtn.style.background = useApi ? 'var(--blue)' : '';
+      toggleApiBtn.style.color = useApi ? '#fff' : '';
+      toggleApiBtn.textContent = useApi ? 'API: ON' : 'Use API';
+      showToast(useApi ? 'API enabled' : 'API disabled');
+    });
+
+    downloadBtn.addEventListener('click', () => {
+      const content = outputEl.textContent || '';
+      if (!content){ showToast('Nothing to download'); return; }
+      const blob = new Blob([content], {type: 'text/html;charset=utf-8'});
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'minified.html';
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+      URL.revokeObjectURL(url);
+      showToast('Downloaded minified.html');
+    });
+
+    formatBtn.addEventListener('click', () => {
+      const raw = inputEl.value || '';
+      if (!raw.trim()){ showToast('Nothing to format'); return; }
+      const formatted = basicFormat(raw);
+      inputEl.value = formatted;
+      showToast('Formatted (basic)');
+    });
+
+    // Update stats live for original input
+    inputEl.addEventListener('input', () => {
+      const raw = inputEl.value || '';
+      updateStats(raw, outputEl.textContent || '');
+    });
+
+    // Init default
+    updateStats('', '');
+
+    // Keyboard shortcut: Ctrl+Enter to minify
+    window.addEventListener('keydown', (e) => {
+      if ((e.ctrlKey || e.metaKey) && e.key === 'Enter'){
+        e.preventDefault();
+        minifyBtn.click();
+      }
+    });
+
+    // Accessibility: ensure focus outline
+    document.addEventListener('keyup', (e) => {
+      if (e.key === 'Tab') document.body.classList.add('show-focus');
+    });
+
+  </script>
 </body>
 </html>
 
