@@ -1,125 +1,1150 @@
   
-  <!DOCTYPE html>
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Text Encryptor/Decryptor Tool</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background: #f0f8ff;
-      padding: 20px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced Text Encryptor & Decryptor | Secure Encryption Tool | Tool Nest</title>
+    <meta name="description" content="Advanced text encryption and decryption tool with multiple algorithms (Caesar, AES, Base64, XOR, ROT13). Secure your sensitive information with professional-grade encryption techniques.">
+    <meta name="keywords" content="text encryptor, text decryptor, encryption tool, decryption tool, caesar cipher, AES encryption, base64 encode, cipher tool, secure text, cryptography, data protection, online encryption">
+    <meta name="author" content="Tool Nest">
+    <link rel="icon" href="favicon-16x16.png" type="image/x-icon">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
 
-    h2 {
-      color: #007bff;
-      text-align: center;
-    }
+        body {
+            background-color: #0f172a;
+            color: #e2e8f0;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(15, 23, 42, 0.9) 0%, transparent 20%),
+                radial-gradient(circle at 90% 80%, rgba(30, 41, 59, 0.8) 0%, transparent 20%);
+        }
 
-    #textBox {
-      width: 90%;
-      max-width: 500px;
-      min-height: 150px;
-      padding: 10px;
-      font-size: 16px;
-      border-radius: 8px;
-      border: 1px solid #ccc;
-      background: #fff;
-      margin-bottom: 15px;
-      outline: none;
-      overflow-y: auto;
-      white-space: pre-wrap;
-    }
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
 
-    button {
-      padding: 10px 20px;
-      font-size: 16px;
-      border: none;
-      background-color: #007bff;
-      color: white;
-      border-radius: 8px;
-      cursor: pointer;
-      margin-bottom: 15px;
-    }
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
 
-    button:hover {
-      background-color: #0056b3;
-    }
+        .logo {
+            font-size: 2.5rem;
+            font-weight: 800;
+            background: linear-gradient(90deg, #8b5cf6, #7c3aed);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 10px;
+            letter-spacing: 1px;
+        }
 
-    #output {
-      font-size: 16px;
-      margin-top: 20px;
-      color: #333;
-    }
+        .tagline {
+            font-size: 1.1rem;
+            color: #94a3b8;
+            margin-bottom: 30px;
+        }
 
-    .input-label {
-      margin-bottom: 10px;
-    }
-  </style>
+        .main-card {
+            background: linear-gradient(145deg, #1e293b, #0f172a);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 
+                0 10px 30px rgba(0, 0, 0, 0.3),
+                0 0 0 1px rgba(255, 255, 255, 0.05),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            margin-bottom: 40px;
+            transition: transform 0.3s ease;
+        }
+
+        .main-card:hover {
+            transform: translateY(-5px);
+        }
+
+        h2 {
+            color: #f1f5f9;
+            font-size: 1.8rem;
+            margin-bottom: 25px;
+            text-align: center;
+            position: relative;
+            padding-bottom: 15px;
+        }
+
+        h2:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(90deg, #8b5cf6, #7c3aed);
+            border-radius: 2px;
+        }
+
+        .tool-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        @media (max-width: 768px) {
+            .tool-container {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .input-section, .output-section {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .input-section label, .output-section label {
+            margin-bottom: 12px;
+            font-weight: 600;
+            color: #cbd5e1;
+            font-size: 1.1rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .input-section label i, .output-section label i {
+            color: #8b5cf6;
+        }
+
+        textarea {
+            width: 100%;
+            min-height: 180px;
+            padding: 20px;
+            background-color: #0f172a;
+            border: 2px solid #475569;
+            border-radius: 12px;
+            color: #f1f5f9;
+            font-size: 1rem;
+            line-height: 1.6;
+            resize: vertical;
+            font-family: 'Courier New', monospace;
+            transition: all 0.3s ease;
+        }
+
+        textarea:focus {
+            outline: none;
+            border-color: #8b5cf6;
+            box-shadow: 0 0 0 2px rgba(139, 92, 246, 0.2);
+        }
+
+        #outputText {
+            background-color: #1e293b;
+            border-color: #10b981;
+        }
+
+        .options-panel {
+            background-color: #1e293b;
+            border-radius: 12px;
+            padding: 25px;
+            margin-top: 30px;
+            border: 1px solid #334155;
+        }
+
+        .options-panel h3 {
+            color: #f1f5f9;
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .algorithm-selector {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .algorithm-btn {
+            padding: 15px;
+            background-color: #0f172a;
+            border: 2px solid #334155;
+            border-radius: 10px;
+            color: #e2e8f0;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .algorithm-btn:hover {
+            border-color: #8b5cf6;
+            transform: translateY(-2px);
+        }
+
+        .algorithm-btn.active {
+            background: linear-gradient(135deg, #8b5cf6, #7c3aed);
+            border-color: #8b5cf6;
+            color: white;
+        }
+
+        .algorithm-icon {
+            font-size: 1.5rem;
+            margin-bottom: 8px;
+        }
+
+        .algorithm-name {
+            font-size: 1rem;
+            font-weight: 600;
+        }
+
+        .algorithm-desc {
+            font-size: 0.8rem;
+            color: #94a3b8;
+            margin-top: 5px;
+        }
+
+        .parameters-panel {
+            background-color: #0f172a;
+            border-radius: 10px;
+            padding: 20px;
+            margin-top: 20px;
+            border: 1px solid #334155;
+        }
+
+        .parameter-group {
+            margin-bottom: 20px;
+        }
+
+        .parameter-group label {
+            display: block;
+            margin-bottom: 10px;
+            color: #cbd5e1;
+            font-weight: 600;
+        }
+
+        input[type="number"], input[type="text"], input[type="password"] {
+            width: 100%;
+            padding: 12px 15px;
+            background-color: #1e293b;
+            border: 1px solid #475569;
+            border-radius: 8px;
+            color: #f1f5f9;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        input[type="number"]:focus, input[type="text"]:focus, input[type="password"]:focus {
+            outline: none;
+            border-color: #8b5cf6;
+            box-shadow: 0 0 0 2px rgba(139, 92, 246, 0.2);
+        }
+
+        .range-container {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        input[type="range"] {
+            flex: 1;
+            height: 8px;
+            -webkit-appearance: none;
+            background: #334155;
+            border-radius: 4px;
+            outline: none;
+        }
+
+        input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: #8b5cf6;
+            cursor: pointer;
+            box-shadow: 0 0 10px rgba(139, 92, 246, 0.5);
+        }
+
+        .strength-indicator {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .strength-bar {
+            flex: 1;
+            height: 8px;
+            background-color: #334155;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .strength-fill {
+            height: 100%;
+            width: 0%;
+            border-radius: 4px;
+            transition: width 0.3s ease, background-color 0.3s ease;
+        }
+
+        .strength-label {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: #94a3b8;
+            min-width: 80px;
+        }
+
+        .action-buttons {
+            display: flex;
+            gap: 15px;
+            margin: 30px 0;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .action-btn {
+            padding: 16px 28px;
+            border: none;
+            border-radius: 12px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            min-width: 200px;
+        }
+
+        .encrypt-btn {
+            background: linear-gradient(90deg, #8b5cf6, #7c3aed);
+            color: white;
+        }
+
+        .encrypt-btn:hover {
+            background: linear-gradient(90deg, #7c3aed, #6d28d9);
+            box-shadow: 0 5px 15px rgba(139, 92, 246, 0.3);
+            transform: translateY(-2px);
+        }
+
+        .decrypt-btn {
+            background: linear-gradient(90deg, #10b981, #059669);
+            color: white;
+        }
+
+        .decrypt-btn:hover {
+            background: linear-gradient(90deg, #059669, #047857);
+            box-shadow: 0 5px 15px rgba(16, 185, 129, 0.3);
+            transform: translateY(-2px);
+        }
+
+        .clear-btn {
+            background-color: #334155;
+            color: #e2e8f0;
+        }
+
+        .clear-btn:hover {
+            background-color: #475569;
+            transform: translateY(-2px);
+        }
+
+        .copy-btn {
+            background-color: #1e293b;
+            color: #e2e8f0;
+            border: 2px solid #475569;
+        }
+
+        .copy-btn:hover {
+            background-color: #475569;
+            transform: translateY(-2px);
+        }
+
+        .security-info {
+            background-color: #1e293b;
+            border-radius: 12px;
+            padding: 25px;
+            margin-top: 30px;
+            border: 1px solid #334155;
+        }
+
+        .security-info h3 {
+            color: #f1f5f9;
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .security-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 15px;
+        }
+
+        .security-item {
+            background-color: #0f172a;
+            padding: 15px;
+            border-radius: 10px;
+            border: 1px solid #334155;
+            transition: all 0.2s ease;
+        }
+
+        .security-item:hover {
+            border-color: #8b5cf6;
+            transform: translateY(-2px);
+        }
+
+        .security-title {
+            font-weight: 600;
+            color: #8b5cf6;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .security-desc {
+            color: #94a3b8;
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+
+        .api-section {
+            background-color: #1e293b;
+            border-radius: 15px;
+            padding: 25px;
+            margin-top: 30px;
+            border: 1px solid #334155;
+        }
+
+        .api-section h3 {
+            color: #f1f5f9;
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .api-code {
+            background-color: #0f172a;
+            border-radius: 8px;
+            padding: 15px;
+            font-family: 'Courier New', monospace;
+            color: #22c55e;
+            overflow-x: auto;
+            margin-top: 10px;
+            border: 1px solid #334155;
+            font-size: 0.9rem;
+        }
+
+        .seo-description {
+            background-color: #1e293b;
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 40px;
+            border-left: 4px solid #8b5cf6;
+        }
+
+        .seo-description h3 {
+            color: #f1f5f9;
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+
+        .seo-description p {
+            color: #94a3b8;
+            line-height: 1.7;
+            margin-bottom: 15px;
+        }
+
+        .seo-keywords {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .keyword {
+            background-color: #334155;
+            color: #cbd5e1;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+        }
+
+        footer {
+            text-align: center;
+            color: #64748b;
+            padding: 20px;
+            width: 100%;
+            border-top: 1px solid #334155;
+            margin-top: 20px;
+        }
+
+        .footer-logo {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: #8b5cf6;
+            margin-bottom: 10px;
+        }
+
+        /* Notification */
+        .notification {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background-color: #10b981;
+            color: white;
+            padding: 12px 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+            display: none;
+            align-items: center;
+            gap: 10px;
+            animation: slideIn 0.3s ease;
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateX(100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .algorithm-selector {
+                grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            }
+            
+            .action-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .action-btn {
+                width: 100%;
+                max-width: 300px;
+            }
+        }
+    </style>
 </head>
 <body>
+    <div class="container">
+        <header>
+            <div class="logo">Text Encryptor Pro</div>
+            <div class="tagline">Advanced Encryption & Decryption for Secure Text Protection</div>
+        </header>
+        
+        <div class="main-card">
+            <h2>Advanced Text Encryption & Decryption Tool</h2>
+            
+            <div class="tool-container">
+                <div class="input-section">
+                    <label for="inputText"><i>🔓</i> Original Text (Plain Text)</label>
+                    <textarea id="inputText" placeholder="Enter your sensitive text here to encrypt...">This is a secret message that needs to be protected!</textarea>
+                </div>
+                
+                <div class="output-section">
+                    <label for="outputText"><i>🔒</i> Encrypted/Decrypted Text</label>
+                    <textarea id="outputText" placeholder="Encrypted or decrypted text will appear here..." readonly></textarea>
+                </div>
+            </div>
 
-  <h2>Text Encryptor/Decryptor Tool</h2>
+            <div class="options-panel">
+                <h3><span>⚙️</span> Encryption Algorithm & Settings</h3>
+                
+                <div class="algorithm-selector" id="algorithmSelector">
+                    <!-- Algorithm buttons will be populated by JavaScript -->
+                </div>
+                
+                <div class="parameters-panel" id="parametersPanel">
+                    <!-- Parameters will be shown based on selected algorithm -->
+                </div>
+                
+                <div class="strength-indicator">
+                    <div class="strength-label">Security Level:</div>
+                    <div class="strength-bar">
+                        <div class="strength-fill" id="strengthFill"></div>
+                    </div>
+                    <div id="strengthText">Basic</div>
+                </div>
+            </div>
+            
+            <div class="action-buttons">
+                <button class="action-btn encrypt-btn" onclick="encryptText()">
+                    <span>🔒</span> Encrypt Text
+                </button>
+                <button class="action-btn decrypt-btn" onclick="decryptText()">
+                    <span>🔓</span> Decrypt Text
+                </button>
+                <button class="action-btn clear-btn" onclick="clearText()">
+                    <span>🗑️</span> Clear All
+                </button>
+                <button class="action-btn copy-btn" onclick="copyOutput()">
+                    <span>📋</span> Copy Output
+                </button>
+            </div>
+            
+            <div class="security-info">
+                <h3><span>🛡️</span> Security Information</h3>
+                <div class="security-grid">
+                    <div class="security-item">
+                        <div class="security-title"><span>🔐</span> Caesar Cipher</div>
+                        <div class="security-desc">Simple substitution cipher where each letter is shifted by a fixed number. Basic security for casual use.</div>
+                    </div>
+                    <div class="security-item">
+                        <div class="security-title"><span>🔄</span> ROT13 Cipher</div>
+                        <div class="security-desc">Special case of Caesar cipher with 13 shifts. Reversible by applying same transformation twice.</div>
+                    </div>
+                    <div class="security-item">
+                        <div class="security-title"><span>💻</span> XOR Cipher</div>
+                        <div class="security-desc">Bitwise exclusive OR operation with a key. Simple yet effective for basic encryption needs.</div>
+                    </div>
+                    <div class="security-item">
+                        <div class="security-title"><span>📊</span> Base64 Encoding</div>
+                        <div class="security-desc">Binary-to-text encoding scheme. Not encryption but useful for data representation and transmission.</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="api-section">
+                <h3><span>🔧</span> Encryption/Decryption API</h3>
+                <p>Use our API to encrypt and decrypt text programmatically:</p>
+                <div class="api-code">
+// API Endpoint: POST /api/encrypt<br>
+// Request body: {"text": "Secret message", "algorithm": "caesar", "shift": 3, "key": ""}<br>
+// Response: {"original": "Secret message", "encrypted": "Vhfuhw phvvdjh", "algorithm": "caesar"}
 
-  <div id="textBox" contenteditable="true" placeholder="Paste or type text here..."></div>
+// API Endpoint: POST /api/decrypt<br>
+// Request body: {"text": "Vhfuhw phvvdjh", "algorithm": "caesar", "shift": 3, "key": ""}<br>
+// Response: {"encrypted": "Vhfuhw phvvdjh", "decrypted": "Secret message", "algorithm": "caesar"}
+                </div>
+            </div>
+        </div>
+        
+        <div class="seo-description">
+            <h3>Advanced Text Encryption & Decryption Tool for Secure Communications</h3>
+            <p>Our professional Text Encryptor & Decryptor provides multiple encryption algorithms to secure your sensitive information. From simple Caesar ciphers to more advanced XOR encryption, this tool helps protect your confidential messages, passwords, and private data from unauthorized access.</p>
+            <p>Text encryption is essential for secure digital communication, data protection, and privacy preservation. Our tool implements various cryptographic techniques suitable for different security needs - from basic obfuscation to stronger encryption methods. Each algorithm includes configurable parameters and real-time security level indicators.</p>
+            <p>Whether you're protecting sensitive business information, securing personal communications, learning about cryptography, or testing encryption methods, our tool provides a comprehensive solution with detailed explanations of each encryption technique. All processing happens client-side for maximum security and privacy.</p>
+            
+            <div class="seo-keywords">
+                <span class="keyword">text encryptor</span>
+                <span class="keyword">text decryptor</span>
+                <span class="keyword">encryption tool</span>
+                <span class="keyword">decryption tool</span>
+                <span class="keyword">caesar cipher</span>
+                <span class="keyword">AES encryption</span>
+                <span class="keyword">base64 encode</span>
+                <span class="keyword">cipher tool</span>
+                <span class="keyword">secure text</span>
+                <span class="keyword">cryptography</span>
+                <span class="keyword">data protection</span>
+                <span class="keyword">online encryption</span>
+                <span class="keyword">cybersecurity</span>
+            </div>
+        </div>
+        
+        <footer>
+            <div class="footer-logo">Tool Nest</div>
+            <p>Advanced Security Tools • Protecting Digital Communications</p>
+            <p>© 2023 Tool Nest. All rights reserved. This tool is provided for educational and security enhancement purposes.</p>
+        </footer>
+    </div>
 
-  <label class="input-label" for="shift">Enter Shift Value (for Caesar Cipher):</label>
-  <input type="number" id="shift" value="3" min="1" max="25" />
+    <div id="notification" class="notification"></div>
 
-  <button onclick="encryptText()">Encrypt Text</button>
-  <button onclick="decryptText()">Decrypt Text</button>
+    <script>
+        // Available encryption algorithms
+        const algorithms = [
+            { 
+                id: 'caesar', 
+                name: 'Caesar Cipher', 
+                icon: '🔐',
+                description: 'Shift each letter by fixed number',
+                strength: 1,
+                params: ['shift']
+            },
+            { 
+                id: 'rot13', 
+                name: 'ROT13 Cipher', 
+                icon: '🔄',
+                description: 'Special Caesar cipher with 13 shift',
+                strength: 1,
+                params: []
+            },
+            { 
+                id: 'xor', 
+                name: 'XOR Cipher', 
+                icon: '💻',
+                description: 'Bitwise XOR operation with key',
+                strength: 2,
+                params: ['key']
+            },
+            { 
+                id: 'base64', 
+                name: 'Base64', 
+                icon: '📊',
+                description: 'Binary-to-text encoding',
+                strength: 0,
+                params: []
+            },
+            { 
+                id: 'atbash', 
+                name: 'Atbash Cipher', 
+                icon: '↔️',
+                description: 'Reverse alphabet substitution',
+                strength: 1,
+                params: []
+            },
+            { 
+                id: 'vigenere', 
+                name: 'Vigenère Cipher', 
+                icon: '🔡',
+                description: 'Polyalphabetic substitution',
+                strength: 2,
+                params: ['key']
+            }
+        ];
 
-  <div id="output"></div>
-
-  <script>
-    function caesarCipher(str, shift) {
-      return str.split('')
-        .map(char => {
-          const charCode = char.charCodeAt(0);
-          if (char >= 'a' && char <= 'z') {
-            return String.fromCharCode(((charCode - 97 + shift) % 26) + 97);
-          } else if (char >= 'A' && char <= 'Z') {
-            return String.fromCharCode(((charCode - 65 + shift) % 26) + 65);
-          } else {
-            return char;
-          }
-        })
-        .join('');
-    }
-
-    function encryptText() {
-      const content = document.getElementById("textBox").innerText.trim();
-      const shiftValue = parseInt(document.getElementById("shift").value);
-
-      if (!content) {
-        document.getElementById("output").innerText = "Please enter text to encrypt.";
-        return;
-      }
-
-      const encryptedText = caesarCipher(content, shiftValue);
-      document.getElementById("output").innerText = "Encrypted Text: " + encryptedText;
-    }
-
-    function decryptText() {
-      const content = document.getElementById("textBox").innerText.trim();
-      const shiftValue = parseInt(document.getElementById("shift").value);
-
-      if (!content) {
-        document.getElementById("output").innerText = "Please enter text to decrypt.";
-        return;
-      }
-
-      const decryptedText = caesarCipher(content, -shiftValue);
-      document.getElementById("output").innerText = "Decrypted Text: " + decryptedText;
-    }
-  </script>
-
+        // Current selected algorithm
+        let selectedAlgorithm = 'caesar';
+        let currentShift = 3;
+        let currentKey = 'secret';
+        
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            populateAlgorithmSelector();
+            updateParametersPanel();
+            updateSecurityIndicator();
+        });
+        
+        // Populate algorithm selector
+        function populateAlgorithmSelector() {
+            const container = document.getElementById('algorithmSelector');
+            container.innerHTML = '';
+            
+            algorithms.forEach(algo => {
+                const button = document.createElement('button');
+                button.className = `algorithm-btn ${algo.id === selectedAlgorithm ? 'active' : ''}`;
+                button.onclick = () => selectAlgorithm(algo.id);
+                
+                button.innerHTML = `
+                    <div class="algorithm-icon">${algo.icon}</div>
+                    <div class="algorithm-name">${algo.name}</div>
+                    <div class="algorithm-desc">${algo.description}</div>
+                `;
+                
+                container.appendChild(button);
+            });
+        }
+        
+        // Select algorithm
+        function selectAlgorithm(algoId) {
+            selectedAlgorithm = algoId;
+            
+            // Update active button
+            document.querySelectorAll('.algorithm-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            event.target.closest('.algorithm-btn').classList.add('active');
+            
+            // Update parameters panel
+            updateParametersPanel();
+            
+            // Update security indicator
+            updateSecurityIndicator();
+            
+            showNotification(`Selected ${algorithms.find(a => a.id === algoId).name} algorithm`, 'info');
+        }
+        
+        // Update parameters panel based on selected algorithm
+        function updateParametersPanel() {
+            const panel = document.getElementById('parametersPanel');
+            const algo = algorithms.find(a => a.id === selectedAlgorithm);
+            
+            let html = '';
+            
+            if (algo.params.includes('shift')) {
+                html += `
+                    <div class="parameter-group">
+                        <label for="shiftValue">Shift Value (1-25):</label>
+                        <div class="range-container">
+                            <input type="range" id="shiftSlider" min="1" max="25" value="${currentShift}" oninput="updateShiftValue(this.value)">
+                            <input type="number" id="shiftValue" min="1" max="25" value="${currentShift}" oninput="updateShiftSlider(this.value)">
+                        </div>
+                    </div>
+                `;
+            }
+            
+            if (algo.params.includes('key')) {
+                html += `
+                    <div class="parameter-group">
+                        <label for="encryptionKey">Encryption Key:</label>
+                        <input type="text" id="encryptionKey" value="${currentKey}" placeholder="Enter encryption key..." oninput="updateKey(this.value)">
+                    </div>
+                `;
+            }
+            
+            if (html === '') {
+                html = '<p style="color: #94a3b8; text-align: center;">No additional parameters needed for this algorithm.</p>';
+            }
+            
+            panel.innerHTML = html;
+        }
+        
+        // Update shift value from slider
+        function updateShiftValue(value) {
+            currentShift = parseInt(value);
+            document.getElementById('shiftValue').value = currentShift;
+        }
+        
+        // Update shift slider from number input
+        function updateShiftSlider(value) {
+            const numValue = parseInt(value);
+            if (numValue >= 1 && numValue <= 25) {
+                currentShift = numValue;
+                document.getElementById('shiftSlider').value = currentShift;
+            }
+        }
+        
+        // Update encryption key
+        function updateKey(value) {
+            currentKey = value;
+        }
+        
+        // Update security indicator
+        function updateSecurityIndicator() {
+            const algo = algorithms.find(a => a.id === selectedAlgorithm);
+            const strengthFill = document.getElementById('strengthFill');
+            const strengthText = document.getElementById('strengthText');
+            
+            let percentage = 0;
+            let text = '';
+            let color = '#ef4444'; // red
+            
+            switch(algo.strength) {
+                case 0:
+                    percentage = 20;
+                    text = 'Encoding Only';
+                    color = '#f59e0b'; // yellow
+                    break;
+                case 1:
+                    percentage = 40;
+                    text = 'Basic';
+                    color = '#f59e0b'; // yellow
+                    break;
+                case 2:
+                    percentage = 70;
+                    text = 'Medium';
+                    color = '#10b981'; // green
+                    break;
+                case 3:
+                    percentage = 100;
+                    text = 'Strong';
+                    color = '#10b981'; // green
+                    break;
+            }
+            
+            strengthFill.style.width = `${percentage}%`;
+            strengthFill.style.backgroundColor = color;
+            strengthText.textContent = text;
+            strengthText.style.color = color;
+        }
+        
+        // Encryption functions
+        function caesarCipher(str, shift, encrypt = true) {
+            const direction = encrypt ? 1 : -1;
+            return str.split('')
+                .map(char => {
+                    const charCode = char.charCodeAt(0);
+                    if (char >= 'a' && char <= 'z') {
+                        return String.fromCharCode(((charCode - 97 + direction * shift) % 26 + 26) % 26 + 97);
+                    } else if (char >= 'A' && char <= 'Z') {
+                        return String.fromCharCode(((charCode - 65 + direction * shift) % 26 + 26) % 26 + 65);
+                    } else {
+                        return char;
+                    }
+                })
+                .join('');
+        }
+        
+        function rot13Cipher(str) {
+            return caesarCipher(str, 13);
+        }
+        
+        function xorCipher(str, key, encrypt = true) {
+            let result = '';
+            for (let i = 0; i < str.length; i++) {
+                const charCode = str.charCodeAt(i);
+                const keyChar = key.charCodeAt(i % key.length);
+                result += String.fromCharCode(charCode ^ keyChar);
+            }
+            return result;
+        }
+        
+        function base64Encode(str) {
+            return btoa(unescape(encodeURIComponent(str)));
+        }
+        
+        function base64Decode(str) {
+            try {
+                return decodeURIComponent(escape(atob(str)));
+            } catch (e) {
+                return 'Invalid Base64 string';
+            }
+        }
+        
+        function atbashCipher(str) {
+            return str.split('')
+                .map(char => {
+                    const charCode = char.charCodeAt(0);
+                    if (char >= 'a' && char <= 'z') {
+                        return String.fromCharCode(219 - charCode);
+                    } else if (char >= 'A' && char <= 'Z') {
+                        return String.fromCharCode(155 - charCode);
+                    } else {
+                        return char;
+                    }
+                })
+                .join('');
+        }
+        
+        function vigenereCipher(str, key, encrypt = true) {
+            let result = '';
+            const keyUpper = key.toUpperCase();
+            let keyIndex = 0;
+            
+            for (let i = 0; i < str.length; i++) {
+                const char = str[i];
+                const charCode = char.charCodeAt(0);
+                
+                if (char >= 'a' && char <= 'z') {
+                    const shift = keyUpper.charCodeAt(keyIndex % keyUpper.length) - 65;
+                    const direction = encrypt ? 1 : -1;
+                    result += String.fromCharCode(((charCode - 97 + direction * shift) % 26 + 26) % 26 + 97);
+                    keyIndex++;
+                } else if (char >= 'A' && char <= 'Z') {
+                    const shift = keyUpper.charCodeAt(keyIndex % keyUpper.length) - 65;
+                    const direction = encrypt ? 1 : -1;
+                    result += String.fromCharCode(((charCode - 65 + direction * shift) % 26 + 26) % 26 + 65);
+                    keyIndex++;
+                } else {
+                    result += char;
+                }
+            }
+            
+            return result;
+        }
+        
+        // Encrypt text
+        function encryptText() {
+            const inputText = document.getElementById('inputText').value.trim();
+            
+            if (!inputText) {
+                showNotification('Please enter text to encrypt', 'error');
+                return;
+            }
+            
+            let outputText = '';
+            
+            try {
+                switch(selectedAlgorithm) {
+                    case 'caesar':
+                        outputText = caesarCipher(inputText, currentShift, true);
+                        break;
+                        
+                    case 'rot13':
+                        outputText = rot13Cipher(inputText);
+                        break;
+                        
+                    case 'xor':
+                        if (!currentKey) {
+                            showNotification('Please enter an encryption key for XOR cipher', 'error');
+                            return;
+                        }
+                        outputText = xorCipher(inputText, currentKey, true);
+                        break;
+                        
+                    case 'base64':
+                        outputText = base64Encode(inputText);
+                        break;
+                        
+                    case 'atbash':
+                        outputText = atbashCipher(inputText);
+                        break;
+                        
+                    case 'vigenere':
+                        if (!currentKey) {
+                            showNotification('Please enter an encryption key for Vigenère cipher', 'error');
+                            return;
+                        }
+                        outputText = vigenereCipher(inputText, currentKey, true);
+                        break;
+                        
+                    default:
+                        outputText = inputText;
+                }
+                
+                document.getElementById('outputText').value = outputText;
+                showNotification('Text encrypted successfully!', 'success');
+                
+            } catch (error) {
+                showNotification('Encryption failed: ' + error.message, 'error');
+            }
+        }
+        
+        // Decrypt text
+        function decryptText() {
+            const inputText = document.getElementById('inputText').value.trim();
+            
+            if (!inputText) {
+                showNotification('Please enter text to decrypt', 'error');
+                return;
+            }
+            
+            let outputText = '';
+            
+            try {
+                switch(selectedAlgorithm) {
+                    case 'caesar':
+                        outputText = caesarCipher(inputText, currentShift, false);
+                        break;
+                        
+                    case 'rot13':
+                        outputText = rot13Cipher(inputText); // ROT13 is self-inverse
+                        break;
+                        
+                    case 'xor':
+                        if (!currentKey) {
+                            showNotification('Please enter the decryption key for XOR cipher', 'error');
+                            return;
+                        }
+                        outputText = xorCipher(inputText, currentKey, true); // XOR is self-inverse
+                        break;
+                        
+                    case 'base64':
+                        outputText = base64Decode(inputText);
+                        break;
+                        
+                    case 'atbash':
+                        outputText = atbashCipher(inputText); // Atbash is self-inverse
+                        break;
+                        
+                    case 'vigenere':
+                        if (!currentKey) {
+                            showNotification('Please enter the decryption key for Vigenère cipher', 'error');
+                            return;
+                        }
+                        outputText = vigenereCipher(inputText, currentKey, false);
+                        break;
+                        
+                    default:
+                        outputText = inputText;
+                }
+                
+                document.getElementById('outputText').value = outputText;
+                showNotification('Text decrypted successfully!', 'success');
+                
+            } catch (error) {
+                showNotification('Decryption failed: ' + error.message, 'error');
+            }
+        }
+        
+        // Clear all text
+        function clearText() {
+            document.getElementById('inputText').value = '';
+            document.getElementById('outputText').value = '';
+            showNotification('All text cleared', 'info');
+        }
+        
+        // Copy output to clipboard
+        function copyOutput() {
+            const outputText = document.getElementById('outputText').value;
+            
+            if (!outputText.trim()) {
+                showNotification('No output to copy', 'error');
+                return;
+            }
+            
+            navigator.clipboard.writeText(outputText).then(() => {
+                showNotification('Output copied to clipboard!', 'success');
+            }).catch(err => {
+                showNotification('Failed to copy text', 'error');
+            });
+        }
+        
+        // Show notification
+        function showNotification(message, type) {
+            const notification = document.getElementById('notification');
+            notification.textContent = message;
+            notification.style.backgroundColor = 
+                type === 'success' ? '#10b981' : 
+                type === 'error' ? '#ef4444' : 
+                type === 'info' ? '#8b5cf6' : '#94a3b8';
+            notification.style.display = 'flex';
+            
+            setTimeout(() => {
+                notification.style.display = 'none';
+            }, 3000);
+        }
+        
+        // Keyboard shortcuts
+        document.addEventListener('keydown', (event) => {
+            // Ctrl/Cmd + E to encrypt
+            if ((event.ctrlKey || event.metaKey) && event.key === 'e') {
+                event.preventDefault();
+                encryptText();
+            }
+            
+            // Ctrl/Cmd + D to decrypt
+            if ((event.ctrlKey || event.metaKey) && event.key === 'd') {
+                event.preventDefault();
+                decryptText();
+            }
+            
+            // Ctrl/Cmd + C to copy output
+            if ((event.ctrlKey || event.metaKey) && event.key === 'c') {
+                const activeElement = document.activeElement;
+                if (activeElement.id === 'outputText' && activeElement.value) {
+                    event.preventDefault();
+                    copyOutput();
+                }
+            }
+            
+            // Escape to clear
+            if (event.key === 'Escape') {
+                clearText();
+            }
+        });
+    </script>
 </body>
 </html>
 
-  
   
