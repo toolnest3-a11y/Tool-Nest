@@ -1,0 +1,364 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cookie Policy | Tool Nest</title>
+  <link rel="icon" href="favicon-16x16.png" type="image/x-icon">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root {
+      --primary-dark: #0a192f;
+      --secondary-dark: #112240;
+      --accent-blue: #3b82f6;
+      --light-blue: #60a5fa;
+      --text-primary: #f8fafc;
+      --text-secondary: #cbd5e1;
+      --border-color: #2d3748;
+      --gradient-bg: linear-gradient(135deg, #0a192f 0%, #112240 100%);
+      --border-radius: 8px;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      background: var(--gradient-bg);
+      color: var(--text-primary);
+      line-height: 1.6;
+      min-height: 100vh;
+      padding: 20px;
+    }
+
+    .cookie-container {
+      max-width: 1000px;
+      margin: 0 auto;
+      background: rgba(17, 34, 64, 0.8);
+      border-radius: var(--border-radius);
+      padding: 40px;
+      border: 1px solid var(--border-color);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    }
+
+    h1 {
+      color: var(--accent-blue);
+      text-align: center;
+      margin-bottom: 30px;
+      font-size: 2.5rem;
+      border-bottom: 2px solid var(--accent-blue);
+      padding-bottom: 15px;
+    }
+
+    h2 {
+      color: var(--light-blue);
+      margin: 25px 0 15px 0;
+      font-size: 1.4rem;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    h2 i {
+      font-size: 1.2rem;
+    }
+
+    h3 {
+      color: var(--light-blue);
+      margin: 20px 0 10px 0;
+      font-size: 1.2rem;
+      font-weight: 600;
+    }
+
+    p {
+      color: var(--text-secondary);
+      margin-bottom: 15px;
+      font-size: 1.05rem;
+    }
+
+    ul {
+      margin-left: 25px;
+      margin-bottom: 20px;
+    }
+
+    li {
+      color: var(--text-secondary);
+      margin-bottom: 8px;
+      position: relative;
+    }
+
+    li::before {
+      content: '•';
+      color: var(--accent-blue);
+      font-weight: bold;
+      display: inline-block;
+      width: 1em;
+      margin-left: -1em;
+    }
+
+    .info-box {
+      background: rgba(59, 130, 246, 0.1);
+      border-left: 3px solid var(--accent-blue);
+      padding: 15px;
+      border-radius: 5px;
+      margin: 20px 0;
+    }
+
+    .info-box p {
+      margin: 0;
+      color: var(--text-primary);
+    }
+
+    .info-box i {
+      color: var(--accent-blue);
+      margin-right: 10px;
+    }
+
+    .cookie-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 20px 0;
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 5px;
+      overflow: hidden;
+    }
+
+    .cookie-table th {
+      background: rgba(59, 130, 246, 0.2);
+      color: var(--text-primary);
+      padding: 12px;
+      text-align: left;
+      font-weight: 600;
+    }
+
+    .cookie-table td {
+      padding: 12px;
+      border-bottom: 1px solid var(--border-color);
+      color: var(--text-secondary);
+    }
+
+    .cookie-table tr:last-child td {
+      border-bottom: none;
+    }
+
+    .date {
+      text-align: center;
+      color: var(--text-secondary);
+      margin-bottom: 30px;
+      font-size: 0.9rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    .date i {
+      color: var(--accent-blue);
+    }
+
+    /* Footer */
+    footer {
+      margin-top: 40px;
+      text-align: center;
+      padding-top: 20px;
+      border-top: 1px solid var(--border-color);
+    }
+
+    .footer-logo {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 1.8rem;
+      font-weight: 700;
+      background: linear-gradient(135deg, var(--accent-blue), var(--light-blue));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      text-decoration: none;
+      margin-bottom: 15px;
+    }
+
+    .footer-logo i {
+      font-size: 1.8rem;
+    }
+
+    .copyright {
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+      margin-top: 10px;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .cookie-container {
+        padding: 20px;
+      }
+      
+      h1 {
+        font-size: 2rem;
+      }
+      
+      h2 {
+        font-size: 1.2rem;
+      }
+      
+      .cookie-table {
+        display: block;
+        overflow-x: auto;
+      }
+      
+      body {
+        padding: 10px;
+      }
+    }
+
+    /* Scrollbar */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: var(--secondary-dark);
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: var(--accent-blue);
+      border-radius: 4px;
+    }
+  </style>
+</head>
+<body>
+  <div class="cookie-container">
+    <h1>Cookie Policy</h1>
+    
+    <div class="date">
+      <i class="fas fa-calendar-alt"></i>
+      Last Updated: December 2023
+    </div>
+
+    <p>This Cookie Policy explains how Tool Nest ("we", "us", or "our") uses cookies and similar tracking technologies when you visit our website at toolnest.online and use our online tools and utilities.</p>
+
+    <div class="info-box">
+      <p><i class="fas fa-info-circle"></i> <strong>Cookie Consent:</strong> By using Tool Nest, you consent to the use of cookies as described in this policy. You can manage your cookie preferences at any time through your browser settings.</p>
+    </div>
+
+    <h2><i class="fas fa-cookie-bite"></i> What Are Cookies?</h2>
+    <p>Cookies are small text files that are placed on your device (computer, tablet, or mobile phone) when you visit websites. They are widely used to make websites work more efficiently and provide information to website owners.</p>
+
+    <h2><i class="fas fa-cogs"></i> Types of Cookies We Use</h2>
+    <p>We use the following categories of cookies on Tool Nest:</p>
+
+    <h3>1. Essential Cookies</h3>
+    <p>These cookies are necessary for the website to function and cannot be switched off in our systems. They are usually only set in response to actions made by you such as setting your privacy preferences or using specific tools.</p>
+
+    <h3>2. Performance Cookies</h3>
+    <p>These cookies allow us to count visits and traffic sources so we can measure and improve the performance of our site. They help us know which pages are the most and least popular and see how visitors move around the site.</p>
+
+    <h3>3. Functionality Cookies</h3>
+    <p>These cookies enable the website to provide enhanced functionality and personalization. They may be set by us or by third-party providers whose services we have added to our pages.</p>
+
+    <h3>4. Analytics Cookies</h3>
+    <p>These cookies help us understand how visitors interact with our website by collecting and reporting information anonymously.</p>
+
+    <h2><i class="fas fa-table"></i> Cookie Details</h2>
+    <p>Below is a detailed list of the cookies we use on Tool Nest:</p>
+
+    <table class="cookie-table">
+      <thead>
+        <tr>
+          <th>Cookie Name</th>
+          <th>Type</th>
+          <th>Purpose</th>
+          <th>Duration</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>session_cookie</td>
+          <td>Essential</td>
+          <td>Maintains your session while using our tools</td>
+          <td>Session</td>
+        </tr>
+        <tr>
+          <td>preferences</td>
+          <td>Functionality</td>
+          <td>Stores your tool preferences and settings</td>
+          <td>30 days</td>
+        </tr>
+        <tr>
+          <td>analytics_id</td>
+          <td>Performance</td>
+          <td>Anonymous tracking for website analytics</td>
+          <td>1 year</td>
+        </tr>
+        <tr>
+          <td>consent_status</td>
+          <td>Essential</td>
+          <td>Remembers your cookie consent choice</td>
+          <td>1 year</td>
+        </tr>
+        <tr>
+          <td>tool_settings</td>
+          <td>Functionality</td>
+          <td>Saves your custom tool configurations</td>
+          <td>7 days</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h2><i class="fas fa-user-cog"></i> Managing Cookies</h2>
+    <p>You have the right to decide whether to accept or reject cookies. You can exercise your cookie preferences by:</p>
+    
+    <ul>
+      <li><strong>Browser Settings:</strong> Most web browsers allow you to control cookies through their settings preferences. However, if you limit the ability of websites to set cookies, you may worsen your overall user experience.</li>
+      <li><strong>Cookie Consent Tool:</strong> You can withdraw your consent at any time by clearing your browser cookies.</li>
+      <li><strong>Third-Party Cookies:</strong> You can manage third-party advertising cookies through the relevant opt-out mechanisms.</li>
+    </ul>
+
+    <div class="info-box">
+      <p><i class="fas fa-exclamation-triangle"></i> <strong>Important:</strong> Blocking all cookies may affect your ability to use some features of Tool Nest. Essential cookies cannot be disabled as they are required for the basic functionality of our tools.</p>
+    </div>
+
+    <h2><i class="fas fa-shield-alt"></i> Third-Party Cookies</h2>
+    <p>Some third-party services that appear on our pages may set their own cookies. These third-party cookies are subject to the respective privacy policies of these external services, which may differ from our own. We have no control over these cookies.</p>
+
+    <ul>
+      <li><strong>Analytics Providers:</strong> We use analytics services to understand how our tools are used</li>
+      <li><strong>CDN Services:</strong> Content delivery networks may set cookies for performance</li>
+      <li><strong>Embedded Content:</strong> Some tools may use embedded content from other providers</li>
+    </ul>
+
+    <h2><i class="fas fa-sync-alt"></i> Updates to This Policy</h2>
+    <p>We may update this Cookie Policy from time to time to reflect changes in our practices or for other operational, legal, or regulatory reasons. We will notify you of any material changes by posting the new Cookie Policy on this page and updating the "Last Updated" date.</p>
+
+    <h2><i class="fas fa-envelope"></i> Contact Us</h2>
+    <p>If you have any questions about our use of cookies or this Cookie Policy, please contact us:</p>
+    <ul>
+      <li><strong>Email:</strong> privacy@toolnest.online</li>
+      <li><strong>Subject:</strong> Cookie Policy Inquiry</li>
+      <li><strong>Response Time:</strong> We aim to respond within 3-5 business days</li>
+    </ul>
+
+    <div class="info-box">
+      <p><i class="fas fa-handshake"></i> <strong>Your Consent:</strong> By continuing to use Tool Nest, you consent to our use of cookies as described in this policy. You can manage your preferences through your browser settings at any time.</p>
+    </div>
+
+    <footer>
+      <div class="footer-logo">
+        <i class="fas fa-tools"></i>
+        Tool Nest
+      </div>
+      <div class="copyright">
+        &copy; 2023 Tool Nest. All rights reserved.
+      </div>
+    </footer>
+  </div>
+</body>
+</html>
+
+
