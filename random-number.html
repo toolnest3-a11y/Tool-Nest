@@ -1,136 +1,655 @@
   
-  <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Password Generator</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Advanced Password Generator | Secure Random Password Creator</title>
+  <meta name="description" content="Generate strong, secure, and random passwords with our advanced password generator tool. Create custom passwords with uppercase, lowercase, numbers, and symbols. Enhance your online security with our free professional password creator.">
+  <meta name="keywords" content="password generator, secure password, random password, password creator, online security, strong password, password tool, cybersecurity">
+  <meta name="author" content="Tool Nest">
+  <link rel="icon" href="favicon-16x16.png" type="image/x-icon">
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      background: #eef8ff;
+    * {
       margin: 0;
       padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      background-color: #0f172a;
+      color: #e2e8f0;
+      min-height: 100vh;
       display: flex;
+      flex-direction: column;
       justify-content: center;
       align-items: center;
-      min-height: 100vh;
+      padding: 20px;
+      background-image: 
+        radial-gradient(circle at 10% 20%, rgba(15, 23, 42, 0.9) 0%, transparent 20%),
+        radial-gradient(circle at 90% 80%, rgba(30, 41, 59, 0.8) 0%, transparent 20%);
     }
 
     .container {
-      background: #fff;
-      padding: 25px;
-      border-radius: 12px;
-      box-shadow: 0 4px 12px rgba(0, 123, 255, 0.15);
-      max-width: 400px;
-      width: 90%;
+      width: 100%;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    header {
       text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .logo {
+      font-size: 2.5rem;
+      font-weight: 800;
+      background: linear-gradient(90deg, #3b82f6, #8b5cf6);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      margin-bottom: 10px;
+      letter-spacing: 1px;
+    }
+
+    .tagline {
+      font-size: 1.1rem;
+      color: #94a3b8;
+      margin-bottom: 30px;
+    }
+
+    .main-card {
+      background: linear-gradient(145deg, #1e293b, #0f172a);
+      border-radius: 20px;
+      padding: 40px;
+      box-shadow: 
+        0 10px 30px rgba(0, 0, 0, 0.3),
+        0 0 0 1px rgba(255, 255, 255, 0.05),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+      margin-bottom: 40px;
+      transition: transform 0.3s ease;
+    }
+
+    .main-card:hover {
+      transform: translateY(-5px);
     }
 
     h2 {
-      color: #007bff;
-      margin-bottom: 20px;
+      color: #f1f5f9;
+      font-size: 1.8rem;
+      margin-bottom: 25px;
+      text-align: center;
+      position: relative;
+      padding-bottom: 15px;
+    }
+
+    h2:after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 3px;
+      background: linear-gradient(90deg, #3b82f6, #8b5cf6);
+      border-radius: 2px;
+    }
+
+    .input-group {
+      margin-bottom: 25px;
+    }
+
+    .input-group label {
+      display: block;
+      margin-bottom: 10px;
+      font-weight: 600;
+      color: #cbd5e1;
+      font-size: 1.1rem;
+    }
+
+    .length-control {
+      display: flex;
+      align-items: center;
+      gap: 20px;
     }
 
     input[type="number"] {
+      width: 80px;
+      padding: 12px 15px;
+      background-color: #334155;
+      border: 1px solid #475569;
+      border-radius: 10px;
+      color: #f1f5f9;
+      font-size: 1.1rem;
+      font-weight: 600;
+      text-align: center;
+    }
+
+    input[type="number"]:focus {
+      outline: none;
+      border-color: #3b82f6;
+      box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.2);
+    }
+
+    .slider-container {
+      flex-grow: 1;
+    }
+
+    input[type="range"] {
       width: 100%;
-      padding: 10px;
-      font-size: 16px;
-      margin-top: 10px;
-      border: 1px solid #ccc;
-      border-radius: 8px;
+      height: 8px;
+      -webkit-appearance: none;
+      background: #334155;
+      border-radius: 4px;
+      outline: none;
     }
 
-    .options {
-      margin-top: 15px;
-      text-align: left;
+    input[type="range"]::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: #3b82f6;
+      cursor: pointer;
+      box-shadow: 0 0 10px rgba(59, 130, 246, 0.5);
     }
 
-    .options label {
-      display: block;
-      margin-bottom: 5px;
+    .options-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 15px;
+      margin-bottom: 30px;
     }
 
-    .outputBox {
-      margin-top: 20px;
-      font-size: 18px;
-      font-weight: bold;
-      background: #f4f4f4;
-      padding: 10px;
-      border-radius: 8px;
-      word-break: break-all;
+    .option-item {
+      display: flex;
+      align-items: center;
+      padding: 12px 15px;
+      background-color: #1e293b;
+      border-radius: 10px;
+      border: 1px solid #334155;
+      transition: all 0.2s ease;
+    }
+
+    .option-item:hover {
+      border-color: #3b82f6;
+      background-color: #1e293b;
+    }
+
+    .option-item input[type="checkbox"] {
+      width: 20px;
+      height: 20px;
+      margin-right: 12px;
+      accent-color: #3b82f6;
+      cursor: pointer;
+    }
+
+    .option-item label {
+      font-weight: 500;
+      color: #e2e8f0;
+      cursor: pointer;
+    }
+
+    .button-group {
+      display: flex;
+      gap: 15px;
+      margin-bottom: 30px;
     }
 
     button {
-      margin-top: 15px;
-      padding: 10px 20px;
-      background-color: #007bff;
-      color: white;
+      flex: 1;
+      padding: 16px 20px;
       border: none;
-      border-radius: 8px;
+      border-radius: 10px;
+      font-size: 1.1rem;
+      font-weight: 600;
       cursor: pointer;
-      font-size: 16px;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
     }
 
-    button:hover {
-      background-color: #0056b3;
+    .generate-btn {
+      background: linear-gradient(90deg, #3b82f6, #2563eb);
+      color: white;
+    }
+
+    .generate-btn:hover {
+      background: linear-gradient(90deg, #2563eb, #1d4ed8);
+      box-shadow: 0 5px 15px rgba(37, 99, 235, 0.3);
+    }
+
+    .copy-btn {
+      background-color: #334155;
+      color: #e2e8f0;
+    }
+
+    .copy-btn:hover {
+      background-color: #475569;
+    }
+
+    .password-output {
+      background-color: #0f172a;
+      border: 1px solid #334155;
+      border-radius: 10px;
+      padding: 20px;
+      margin-top: 20px;
+      position: relative;
+    }
+
+    .password-display {
+      font-size: 1.5rem;
+      font-weight: 600;
+      letter-spacing: 1px;
+      word-break: break-all;
+      padding-right: 50px;
+      color: #22c55e;
+      min-height: 36px;
+    }
+
+    .copy-icon {
+      position: absolute;
+      right: 20px;
+      top: 50%;
+      transform: translateY(-50%);
+      background-color: #334155;
+      border-radius: 8px;
+      padding: 8px;
+      cursor: pointer;
+      transition: background-color 0.2s;
+    }
+
+    .copy-icon:hover {
+      background-color: #475569;
+    }
+
+    .password-strength {
+      display: flex;
+      align-items: center;
+      margin-top: 15px;
+      gap: 10px;
+    }
+
+    .strength-label {
+      font-weight: 600;
+      color: #cbd5e1;
+    }
+
+    .strength-bar {
+      flex-grow: 1;
+      height: 8px;
+      background-color: #334155;
+      border-radius: 4px;
+      overflow: hidden;
+    }
+
+    .strength-fill {
+      height: 100%;
+      width: 0%;
+      border-radius: 4px;
+      transition: width 0.5s ease, background-color 0.5s ease;
+    }
+
+    .seo-description {
+      background-color: #1e293b;
+      border-radius: 15px;
+      padding: 30px;
+      margin-bottom: 40px;
+      border-left: 4px solid #3b82f6;
+    }
+
+    .seo-description h3 {
+      color: #f1f5f9;
+      font-size: 1.5rem;
+      margin-bottom: 15px;
+    }
+
+    .seo-description p {
+      color: #94a3b8;
+      line-height: 1.7;
+      margin-bottom: 15px;
+    }
+
+    .seo-keywords {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 20px;
+    }
+
+    .keyword {
+      background-color: #334155;
+      color: #cbd5e1;
+      padding: 5px 12px;
+      border-radius: 20px;
+      font-size: 0.9rem;
+    }
+
+    footer {
+      text-align: center;
+      color: #64748b;
+      padding: 20px;
+      width: 100%;
+      border-top: 1px solid #334155;
+      margin-top: 20px;
+    }
+
+    .footer-logo {
+      font-size: 1.8rem;
+      font-weight: 800;
+      color: #3b82f6;
+      margin-bottom: 10px;
+    }
+
+    .api-section {
+      background-color: #1e293b;
+      border-radius: 15px;
+      padding: 25px;
+      margin-top: 30px;
+      border: 1px solid #334155;
+    }
+
+    .api-section h3 {
+      color: #f1f5f9;
+      font-size: 1.3rem;
+      margin-bottom: 15px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .api-code {
+      background-color: #0f172a;
+      border-radius: 8px;
+      padding: 15px;
+      font-family: 'Courier New', monospace;
+      color: #22c55e;
+      overflow-x: auto;
+      margin-top: 10px;
+      border: 1px solid #334155;
+    }
+
+    @media (max-width: 768px) {
+      .main-card {
+        padding: 25px;
+      }
+      
+      .options-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .button-group {
+        flex-direction: column;
+      }
+      
+      .password-display {
+        font-size: 1.2rem;
+      }
     }
   </style>
 </head>
 <body>
   <div class="container">
-    <h2>Random Password Generator</h2>
-
-    <label for="length">Password Length</label>
-    <input type="number" id="length" min="4" max="50" value="12" />
-
-    <div class="options">
-      <label><input type="checkbox" id="includeUpper" checked /> Include Uppercase</label>
-      <label><input type="checkbox" id="includeLower" checked /> Include Lowercase</label>
-      <label><input type="checkbox" id="includeNumbers" checked /> Include Numbers</label>
-      <label><input type="checkbox" id="includeSymbols" checked /> Include Symbols</label>
+    <header>
+      <div class="logo">Password Generator Pro</div>
+      <div class="tagline">Create Strong, Secure & Random Passwords Instantly</div>
+    </header>
+    
+    <div class="main-card">
+      <h2>Advanced Password Generator</h2>
+      
+      <div class="input-group">
+        <label for="length">Password Length: <span id="lengthValue">12</span> characters</label>
+        <div class="length-control">
+          <input type="number" id="length" min="4" max="50" value="12" />
+          <div class="slider-container">
+            <input type="range" id="lengthSlider" min="4" max="50" value="12" />
+          </div>
+        </div>
+      </div>
+      
+      <div class="options-grid">
+        <div class="option-item">
+          <input type="checkbox" id="includeUpper" checked />
+          <label for="includeUpper">Uppercase Letters (A-Z)</label>
+        </div>
+        <div class="option-item">
+          <input type="checkbox" id="includeLower" checked />
+          <label for="includeLower">Lowercase Letters (a-z)</label>
+        </div>
+        <div class="option-item">
+          <input type="checkbox" id="includeNumbers" checked />
+          <label for="includeNumbers">Numbers (0-9)</label>
+        </div>
+        <div class="option-item">
+          <input type="checkbox" id="includeSymbols" checked />
+          <label for="includeSymbols">Symbols (!@#$%^&*)</label>
+        </div>
+      </div>
+      
+      <div class="button-group">
+        <button class="generate-btn" onclick="generatePassword()">
+          <span>🔐</span> Generate Password
+        </button>
+        <button class="copy-btn" onclick="copyPassword()">
+          <span>📋</span> Copy to Clipboard
+        </button>
+      </div>
+      
+      <div class="password-output">
+        <div class="password-display" id="passwordResult">Click "Generate Password" to create</div>
+        <div class="copy-icon" onclick="copyPassword()" title="Copy password">
+          <span>📋</span>
+        </div>
+        
+        <div class="password-strength">
+          <div class="strength-label">Password Strength:</div>
+          <div class="strength-bar">
+            <div class="strength-fill" id="strengthBar"></div>
+          </div>
+          <div id="strengthText">—</div>
+        </div>
+      </div>
+      
+      <div class="api-section">
+        <h3>🔧 Password Generator API</h3>
+        <p>Use our secure API to generate passwords programmatically:</p>
+        <div class="api-code">
+          // API Endpoint: POST /api/generate-password<br>
+          // Request body: {"length": 12, "uppercase": true, "lowercase": true, "numbers": true, "symbols": true}<br>
+          // Response: {"password": "G3n3r@t3dP@ss!", "strength": "strong"}
+        </div>
+      </div>
     </div>
-
-    <button onclick="generatePassword()">Generate Password</button>
-
-    <div class="outputBox" id="passwordResult"></div>
+    
+    <div class="seo-description">
+      <h3>Secure Password Generator - Create Strong Passwords Instantly</h3>
+      <p>Our advanced password generator tool helps you create strong, secure, and random passwords to protect your online accounts. With customizable options including uppercase and lowercase letters, numbers, and symbols, you can generate passwords that meet any security requirement.</p>
+      <p>Strong passwords are essential for protecting your personal information, financial data, and online identity from cyber threats. Our tool generates cryptographically secure passwords that are difficult to guess or brute-force, enhancing your digital security.</p>
+      <p>Whether you need passwords for email accounts, social media, banking, or corporate systems, our generator creates unique passwords that help prevent unauthorized access. Regularly updating passwords with strong, randomized combinations is a fundamental cybersecurity best practice.</p>
+      
+      <div class="seo-keywords">
+        <span class="keyword">password generator</span>
+        <span class="keyword">secure password</span>
+        <span class="keyword">random password</span>
+        <span class="keyword">password creator</span>
+        <span class="keyword">online security</span>
+        <span class="keyword">strong password</span>
+        <span class="keyword">password tool</span>
+        <span class="keyword">cybersecurity</span>
+        <span class="keyword">password manager</span>
+        <span class="keyword">encryption</span>
+      </div>
+    </div>
+    
+    <footer>
+      <div class="footer-logo">Tool Nest</div>
+      <p>Advanced Password Generator Tool • Creating Secure Digital Environments</p>
+      <p>© 2023 Tool Nest. All rights reserved. This tool is provided for educational and security enhancement purposes.</p>
+    </footer>
   </div>
 
   <script>
+    // Link the number input and slider
+    const lengthInput = document.getElementById('length');
+    const lengthSlider = document.getElementById('lengthSlider');
+    const lengthValue = document.getElementById('lengthValue');
+    
+    lengthInput.addEventListener('input', function() {
+      lengthSlider.value = this.value;
+      lengthValue.textContent = this.value;
+      if (document.getElementById('passwordResult').textContent !== 'Click "Generate Password" to create') {
+        generatePassword();
+      }
+    });
+    
+    lengthSlider.addEventListener('input', function() {
+      lengthInput.value = this.value;
+      lengthValue.textContent = this.value;
+      if (document.getElementById('passwordResult').textContent !== 'Click "Generate Password" to create') {
+        generatePassword();
+      }
+    });
+    
+    // Generate password function
     function generatePassword() {
-      const length = parseInt(document.getElementById("length").value);
-      const useUpper = document.getElementById("includeUpper").checked;
-      const useLower = document.getElementById("includeLower").checked;
-      const useNumbers = document.getElementById("includeNumbers").checked;
-      const useSymbols = document.getElementById("includeSymbols").checked;
-      const resultBox = document.getElementById("passwordResult");
-
-      const upper = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-      const lower = "abcdefghijklmnopqrstuvwxyz";
-      const numbers = "0123456789";
-      const symbols = "!@#$%^&*()_+[]{}|;:,.<>?";
-
-      let allChars = "";
+      const length = parseInt(lengthInput.value);
+      const useUpper = document.getElementById('includeUpper').checked;
+      const useLower = document.getElementById('includeLower').checked;
+      const useNumbers = document.getElementById('includeNumbers').checked;
+      const useSymbols = document.getElementById('includeSymbols').checked;
+      const resultBox = document.getElementById('passwordResult');
+      
+      const upper = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+      const lower = 'abcdefghijklmnopqrstuvwxyz';
+      const numbers = '0123456789';
+      const symbols = '!@#$%^&*()_+-=[]{}|;:,.<>?';
+      
+      let allChars = '';
       if (useUpper) allChars += upper;
       if (useLower) allChars += lower;
       if (useNumbers) allChars += numbers;
       if (useSymbols) allChars += symbols;
-
+      
       if (allChars.length === 0) {
-        resultBox.textContent = "Please select at least one option!";
+        resultBox.textContent = 'Please select at least one option!';
+        resultBox.style.color = '#ef4444';
+        updatePasswordStrength('');
         return;
       }
-
-      let password = "";
-      for (let i = 0; i < length; i++) {
-        password += allChars.charAt(Math.floor(Math.random() * allChars.length));
+      
+      // Ensure at least one character from each selected set is included
+      let password = '';
+      const selectedSets = [];
+      if (useUpper) {
+        selectedSets.push(upper);
+        password += upper.charAt(Math.floor(Math.random() * upper.length));
       }
-
+      if (useLower) {
+        selectedSets.push(lower);
+        password += lower.charAt(Math.floor(Math.random() * lower.length));
+      }
+      if (useNumbers) {
+        selectedSets.push(numbers);
+        password += numbers.charAt(Math.floor(Math.random() * numbers.length));
+      }
+      if (useSymbols) {
+        selectedSets.push(symbols);
+        password += symbols.charAt(Math.floor(Math.random() * symbols.length));
+      }
+      
+      // Fill the rest of the password
+      for (let i = password.length; i < length; i++) {
+        const randomSet = selectedSets[Math.floor(Math.random() * selectedSets.length)];
+        password += randomSet.charAt(Math.floor(Math.random() * randomSet.length));
+      }
+      
+      // Shuffle the password to randomize character positions
+      password = password.split('').sort(() => Math.random() - 0.5).join('');
+      
       resultBox.textContent = password;
+      resultBox.style.color = '#22c55e';
+      
+      // Update password strength indicator
+      updatePasswordStrength(password);
     }
+    
+    // Copy password to clipboard
+    function copyPassword() {
+      const passwordText = document.getElementById('passwordResult').textContent;
+      
+      if (!passwordText || passwordText === 'Click "Generate Password" to create' || passwordText === 'Please select at least one option!') {
+        alert('Please generate a password first!');
+        return;
+      }
+      
+      navigator.clipboard.writeText(passwordText).then(() => {
+        const originalText = document.querySelector('.copy-btn').innerHTML;
+        document.querySelector('.copy-btn').innerHTML = '<span>✓</span> Copied!';
+        document.querySelector('.copy-btn').style.backgroundColor = '#10b981';
+        
+        setTimeout(() => {
+          document.querySelector('.copy-btn').innerHTML = originalText;
+          document.querySelector('.copy-btn').style.backgroundColor = '';
+        }, 2000);
+      });
+    }
+    
+    // Calculate and update password strength
+    function updatePasswordStrength(password) {
+      let strength = 0;
+      const strengthBar = document.getElementById('strengthBar');
+      const strengthText = document.getElementById('strengthText');
+      
+      if (!password) {
+        strengthBar.style.width = '0%';
+        strengthBar.style.backgroundColor = '#94a3b8';
+        strengthText.textContent = '—';
+        return;
+      }
+      
+      // Length factor
+      if (password.length >= 8) strength += 1;
+      if (password.length >= 12) strength += 1;
+      if (password.length >= 16) strength += 1;
+      
+      // Character variety factor
+      const hasUpper = /[A-Z]/.test(password);
+      const hasLower = /[a-z]/.test(password);
+      const hasNumbers = /\d/.test(password);
+      const hasSymbols = /[^A-Za-z0-9]/.test(password);
+      
+      if (hasUpper) strength += 1;
+      if (hasLower) strength += 1;
+      if (hasNumbers) strength += 1;
+      if (hasSymbols) strength += 1;
+      
+      // Calculate percentage and set display
+      let percentage = (strength / 7) * 100;
+      let color = '#ef4444'; // red
+      let text = 'Weak';
+      
+      if (percentage >= 70) {
+        color = '#22c55e'; // green
+        text = 'Strong';
+      } else if (percentage >= 40) {
+        color = '#eab308'; // yellow
+        text = 'Moderate';
+      }
+      
+      strengthBar.style.width = `${percentage}%`;
+      strengthBar.style.backgroundColor = color;
+      strengthText.textContent = text;
+      strengthText.style.color = color;
+    }
+    
+    // Generate a password on page load
+    window.addEventListener('DOMContentLoaded', () => {
+      generatePassword();
+    });
   </script>
 </body>
 </html>
-
-  
-  
