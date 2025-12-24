@@ -1,686 +1,781 @@
 
-<!doctype html>
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>HTML Minifier — Tool Nest</title>
-  <meta name="description" content="HTML Minifier online — remove whitespace, line breaks and comments to compress and optimize HTML. Fast, responsive HTML compressor and code minifier for developers and webmasters. Paste HTML, Minify, Copy Output, or use the optional API. Keywords: HTML minifier, HTML compressor, remove spaces, remove comments, minify HTML online, code minifier, responsive tool." />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Code Minifier Tool | Minify HTML, CSS & JavaScript</title>
+  <meta name="description" content="Free online tool to minify HTML, CSS, and JavaScript code. Reduce file size, remove comments and whitespace, optimize website speed.">
+  <meta name="keywords" content="HTML minifier, CSS minifier, JavaScript minifier, code optimization, web performance">
   <link rel="icon" href="favicon-16x16.png" type="image/x-icon">
-
   <style>
-    /* Theme colors */
-    :root{
-      --blue: #0d6efd;
-      --blue-600: #0b5ed7;
-      --bg: #ffffff;
-      --muted: #6c757d;
-      --card: #f8fbff;
-      --glass: rgba(13,110,253,0.06);
-      --success: #198754;
-      --danger: #dc3545;
-      --mono: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
-      --radius: 12px;
-      --transition: 180ms ease;
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     }
 
-    /* Reset & body */
-    *{box-sizing:border-box}
-    html,body{height:100%}
-    body{
-      margin:0;
-      font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
-      background: linear-gradient(180deg,#f6fbff 0%, #ffffff 100%);
-      color:#0b2545;
-      -webkit-font-smoothing:antialiased;
-      -moz-osx-font-smoothing:grayscale;
-      padding:28px;
+    body {
+      background: linear-gradient(135deg, #0a192f 0%, #172a45 100%);
+      min-height: 100vh;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      color: #e6f1ff;
     }
 
-    .shell{
-      max-width:1200px;
-      margin:0 auto;
-      padding:20px;
+    .container {
+      width: 100%;
+      max-width: 1400px;
+      margin: 0 auto;
     }
 
-    header.app-header{
-      display:flex;
-      gap:16px;
-      align-items:center;
-      margin-bottom:18px;
-    }
-    .logo {
-      background:var(--blue);
-      width:56px;
-      height:56px;
-      border-radius:10px;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      color:white;
-      font-weight:700;
-      box-shadow: 0 6px 18px rgba(13,110,253,0.12);
-      flex:0 0 56px;
-    }
-    .title {
-      display:flex;
-      flex-direction:column;
-      gap:4px;
-    }
-    .title h1{
-      margin:0;
-      font-size:18px;
-      letter-spacing:-0.2px;
-    }
-    .title p{
-      margin:0;
-      color:var(--muted);
-      font-size:13px;
+    header {
+      text-align: center;
+      margin-bottom: 30px;
+      padding: 30px;
+      background: rgba(10, 25, 47, 0.9);
+      border-radius: 15px;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+      width: 100%;
+      border: 1px solid rgba(100, 255, 218, 0.1);
+      backdrop-filter: blur(10px);
     }
 
-    /* Card */
-    .card{
-      background:linear-gradient(180deg, rgba(255,255,255,0.9), rgba(248,251,255,0.9));
-      border-radius:var(--radius);
-      padding:18px;
-      box-shadow: 0 6px 30px rgba(20,45,80,0.06);
-      border:1px solid rgba(13,110,253,0.06);
+    h1 {
+      color: #64ffda;
+      margin-bottom: 15px;
+      font-size: 2.8rem;
+      background: linear-gradient(90deg, #64ffda, #4cc9f0);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-shadow: 0 0 20px rgba(100, 255, 218, 0.3);
     }
 
-    /* Toolbar row */
-    .row{
-      display:flex;
-      gap:12px;
-      align-items:center;
-      justify-content:space-between;
-      margin-bottom:14px;
-      flex-wrap:wrap;
+    .subtitle {
+      color: #a8b2d1;
+      font-size: 1.2rem;
+      line-height: 1.6;
+      max-width: 800px;
+      margin: 0 auto;
     }
 
-    .controls{
-      display:flex;
-      gap:8px;
-      align-items:center;
-      flex-wrap:wrap;
-    }
-    .btn{
-      background:var(--blue);
-      color:white;
-      border:0;
-      padding:10px 12px;
-      border-radius:10px;
-      font-weight:600;
-      cursor:pointer;
-      display:inline-flex;
-      gap:8px;
-      align-items:center;
-      transition:transform var(--transition), box-shadow var(--transition);
-      box-shadow:0 6px 18px rgba(13,110,253,0.12);
-      font-size:14px;
-    }
-    .btn.secondary{
-      background:transparent;
-      color:var(--blue);
-      border:1px solid rgba(13,110,253,0.12);
-      box-shadow:none;
-      font-weight:600;
-    }
-    .btn.ghost{
-      background:transparent;
-      color:var(--muted);
-      border:1px dashed rgba(0,0,0,0.06);
-      padding:8px 10px;
-      font-weight:600;
-    }
-    .btn:active{ transform:translateY(1px) }
-
-    /* Layout */
-    .grid{
-      display:grid;
-      grid-template-columns:1fr 1fr;
-      gap:16px;
-      margin-top:6px;
+    .description-box {
+      background: rgba(23, 42, 69, 0.8);
+      padding: 25px;
+      border-radius: 12px;
+      margin-bottom: 30px;
+      border-left: 4px solid #64ffda;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
     }
 
-    .panel{
-      display:flex;
-      flex-direction:column;
-      gap:10px;
+    .description-box h2 {
+      color: #64ffda;
+      margin-bottom: 15px;
+      font-size: 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 10px;
     }
 
-    .panel .panel-head{
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-      gap:10px;
-    }
-    .panel h3{ margin:0; font-size:14px }
-    .muted{ color:var(--muted); font-size:13px }
-
-    /* textarea / code panes */
-    .editor{
-      background:linear-gradient(180deg,#ffffff, #fbfdff);
-      border-radius:10px;
-      border:1px solid rgba(13,110,253,0.04);
-      padding:10px;
-      min-height:260px;
-      display:flex;
-      flex-direction:column;
-      gap:8px;
-    }
-    textarea.input{
-      width:100%;
-      min-height:200px;
-      resize:vertical;
-      border-radius:8px;
-      border:1px solid rgba(11,37,69,0.06);
-      padding:12px 14px;
-      font-family:var(--mono);
-      font-size:13px;
-      line-height:1.45;
-      background:linear-gradient(180deg,#ffffff,#fbfdff);
-      color:#0b2545;
-      outline:none;
-      box-shadow:none;
+    .description-box p {
+      color: #ccd6f6;
+      line-height: 1.7;
+      margin-bottom: 15px;
+      font-size: 1.05rem;
     }
 
-    pre.output{
-      width:100%;
-      min-height:200px;
-      padding:12px 14px;
-      background: #00122008;
-      border-radius:8px;
-      border:1px solid rgba(11,37,69,0.04);
-      font-family:var(--mono);
-      font-size:13px;
-      overflow:auto;
-      white-space:pre-wrap;
-      word-wrap:break-word;
-      color:#052238;
+    .description-box ul {
+      padding-left: 20px;
+      margin: 15px 0;
     }
 
-    .statline{
-      display:flex;
-      gap:12px;
-      font-size:13px;
-      color:var(--muted);
-      align-items:center;
-      flex-wrap:wrap;
-    }
-    .badge{
-      background:var(--glass);
-      color:var(--blue);
-      padding:6px 8px;
-      border-radius:999px;
-      font-weight:700;
-      font-size:12px;
+    .description-box li {
+      color: #ccd6f6;
+      margin-bottom: 8px;
+      position: relative;
+      padding-left: 10px;
     }
 
-    /* small controls inside panels */
-    .panel-actions{ display:flex; gap:8px; align-items:center; }
-    .small{
-      font-size:13px;
-      padding:8px 10px;
-      border-radius:8px;
-      border:1px solid rgba(11,37,69,0.04);
-      background:transparent;
-      cursor:pointer;
+    .description-box li:before {
+      content: "▸";
+      color: #64ffda;
+      position: absolute;
+      left: -15px;
     }
 
-    /* footer */
-    footer{
-      margin-top:18px;
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-      gap:20px;
-      flex-wrap:wrap;
-    }
-    .help{
-      color:var(--muted);
-      font-size:13px;
+    .main-content {
+      display: flex;
+      gap: 30px;
+      margin-bottom: 30px;
     }
 
-    /* responsive */
-    @media (max-width:900px){
-      .grid{ grid-template-columns:1fr; }
-      .logo{ width:48px; height:48px; flex:0 0 48px}
+    @media (max-width: 1024px) {
+      .main-content {
+        flex-direction: column;
+      }
     }
 
-    /* API toggle */
-    .api-panel{
-      display:flex;
-      gap:8px;
-      align-items:center;
-      background:linear-gradient(90deg, rgba(13,110,253,0.03), transparent);
-      padding:10px;
-      border-radius:10px;
-      border:1px solid rgba(13,110,253,0.04);
-    }
-    input[type="text"].api-url{
-      padding:8px 10px;
-      border-radius:8px;
-      border:1px solid rgba(11,37,69,0.06);
-      outline:none;
-      font-size:13px;
-      width:320px;
-      background:white;
+    .input-section, .output-section {
+      flex: 1;
+      background: rgba(23, 42, 69, 0.9);
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+      border: 1px solid rgba(100, 255, 218, 0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
 
-    .toast{
-      position:fixed;
-      right:20px;
-      bottom:20px;
-      background:#06273a;
-      color:#fff;
-      padding:12px 14px;
-      border-radius:10px;
-      box-shadow:0 10px 30px rgba(2, 6, 23, 0.3);
-      transform:translateY(10px);
-      opacity:0;
-      transition:opacity 220ms ease, transform 220ms ease;
-      z-index:9999;
-    }
-    .toast.show{ opacity:1; transform:translateY(0) }
-
-    /* small link / API sample */
-    .code-sample{
-      background:#0b1221;
-      color:#e6f6ff;
-      padding:12px;
-      border-radius:8px;
-      font-family:var(--mono);
-      font-size:12px;
-      overflow:auto;
-      max-width:100%;
+    .input-section:hover, .output-section:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
+      border-color: rgba(100, 255, 218, 0.2);
     }
 
+    .section-title {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      margin-bottom: 25px;
+      color: #64ffda;
+      font-size: 1.4rem;
+      padding-bottom: 15px;
+      border-bottom: 2px solid rgba(100, 255, 218, 0.2);
+    }
+
+    .section-title i {
+      color: #64ffda;
+      font-size: 1.2rem;
+      background: rgba(100, 255, 218, 0.1);
+      padding: 10px;
+      border-radius: 8px;
+    }
+
+    .code-type {
+      margin-bottom: 25px;
+    }
+
+    .code-type-buttons {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .type-btn {
+      padding: 10px 24px;
+      background: rgba(10, 25, 47, 0.7);
+      border: 1px solid rgba(100, 255, 218, 0.2);
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      color: #a8b2d1;
+      font-weight: 600;
+    }
+
+    .type-btn:hover {
+      background: rgba(100, 255, 218, 0.1);
+      color: #64ffda;
+      border-color: #64ffda;
+      transform: translateY(-2px);
+    }
+
+    .type-btn.active {
+      background: linear-gradient(135deg, #64ffda, #4cc9f0);
+      color: #0a192f;
+      border-color: #64ffda;
+      box-shadow: 0 4px 15px rgba(100, 255, 218, 0.3);
+    }
+
+    .code-area {
+      width: 100%;
+      height: 400px;
+      padding: 20px;
+      background: rgba(10, 25, 47, 0.7);
+      border: 2px solid rgba(100, 255, 218, 0.2);
+      border-radius: 10px;
+      font-family: 'Cascadia Code', 'Consolas', 'Monaco', monospace;
+      font-size: 15px;
+      resize: vertical;
+      outline: none;
+      color: #ccd6f6;
+      line-height: 1.5;
+    }
+
+    .code-area:focus {
+      border-color: #64ffda;
+      box-shadow: 0 0 0 3px rgba(100, 255, 218, 0.1);
+    }
+
+    #outputCode {
+      background: rgba(10, 25, 47, 0.8);
+    }
+
+    .stats {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 20px;
+      color: #8892b0;
+      font-size: 0.95rem;
+      padding: 12px 0;
+      border-top: 1px solid rgba(100, 255, 218, 0.1);
+    }
+
+    .action-buttons {
+      display: flex;
+      gap: 15px;
+      margin-top: 30px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      padding: 14px 28px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      transition: all 0.3s ease;
+      font-size: 1rem;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #64ffda, #4cc9f0);
+      color: #0a192f;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(100, 255, 218, 0.3);
+    }
+
+    .btn-secondary {
+      background: rgba(10, 25, 47, 0.7);
+      color: #64ffda;
+      border: 1px solid rgba(100, 255, 218, 0.3);
+    }
+
+    .btn-secondary:hover {
+      background: rgba(100, 255, 218, 0.1);
+      transform: translateY(-3px);
+      border-color: #64ffda;
+    }
+
+    .btn-success {
+      background: linear-gradient(135deg, #48bb78, #38a169);
+      color: white;
+    }
+
+    .btn-success:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(72, 187, 120, 0.3);
+    }
+
+    .api-section {
+      background: rgba(23, 42, 69, 0.9);
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+      margin-bottom: 30px;
+      border: 1px solid rgba(100, 255, 218, 0.1);
+    }
+
+    .api-code {
+      background: rgba(10, 25, 47, 0.7);
+      padding: 25px;
+      border-radius: 10px;
+      margin-top: 20px;
+      font-family: 'Cascadia Code', 'Consolas', monospace;
+      overflow-x: auto;
+      border: 1px solid rgba(100, 255, 218, 0.1);
+    }
+
+    .api-code pre {
+      color: #64ffda;
+      margin: 15px 0;
+      line-height: 1.6;
+    }
+
+    .api-code p {
+      color: #a8b2d1;
+      margin-bottom: 10px;
+    }
+
+    .api-code strong {
+      color: #64ffda;
+    }
+
+    footer {
+      text-align: center;
+      color: #8892b0;
+      padding: 25px;
+      width: 100%;
+      font-size: 0.95rem;
+      border-top: 1px solid rgba(100, 255, 218, 0.1);
+      margin-top: 20px;
+    }
+
+    .notification {
+      position: fixed;
+      bottom: 25px;
+      right: 25px;
+      background: linear-gradient(135deg, #48bb78, #38a169);
+      color: white;
+      padding: 18px 30px;
+      border-radius: 10px;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+      transform: translateY(100px) translateX(30px);
+      opacity: 0;
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      z-index: 1000;
+      max-width: 350px;
+      border-left: 5px solid #64ffda;
+    }
+
+    .notification.show {
+      transform: translateY(0) translateX(0);
+      opacity: 1;
+    }
+
+    .notification.error {
+      background: linear-gradient(135deg, #f56565, #e53e3e);
+    }
+
+    .stats span {
+      padding: 5px 12px;
+      background: rgba(10, 25, 47, 0.5);
+      border-radius: 6px;
+      border: 1px solid rgba(100, 255, 218, 0.1);
+    }
+
+    .stats span:first-child {
+      color: #4cc9f0;
+    }
+
+    .stats span:last-child {
+      color: #48bb78;
+    }
+
+    ::-webkit-scrollbar {
+      width: 10px;
+      height: 10px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: rgba(10, 25, 47, 0.5);
+      border-radius: 5px;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: linear-gradient(135deg, #64ffda, #4cc9f0);
+      border-radius: 5px;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background: linear-gradient(135deg, #4cc9f0, #64ffda);
+    }
   </style>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Cascadia+Code&display=swap" rel="stylesheet">
 </head>
 <body>
-  <div class="shell">
-    <header class="app-header">
-      <div class="logo" aria-hidden="true">TN</div>
-      <div class="title">
-        <h1>HTML Minifier</h1>
-        <p>Remove whitespace, line breaks and comments — fast, safe HTML compression for developers.</p>
-      </div>
-      <div style="margin-left:auto" class="muted">Bright blue • Responsive • Developer-friendly</div>
+  <div class="container">
+    <header>
+      <h1>Code Minifier Tool</h1>
+      <p class="subtitle">Optimize your website performance by minifying HTML, CSS, and JavaScript code with our advanced online tool</p>
     </header>
 
-    <div class="card" role="main" aria-labelledby="tool-title">
-      <div class="row">
-        <div class="controls">
-          <button class="btn" id="minifyBtn" title="Minify the HTML">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h10" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            Minify
-          </button>
-          <button class="btn secondary" id="clearBtn" title="Clear input and output">
-            Clear
-          </button>
-          <button class="btn ghost" id="loadSampleBtn" title="Load sample HTML">
-            Load sample
-          </button>
-        </div>
+    <div class="description-box">
+      <h2><i class="fas fa-info-circle"></i> About This Tool</h2>
+      <p>This <strong>Code Minifier Tool</strong> is designed to help web developers and website owners optimize their code for better performance. Minification reduces file sizes by removing unnecessary characters like whitespace, comments, and line breaks without affecting functionality.</p>
+      
+      <p><strong>Key Benefits:</strong></p>
+      <ul>
+        <li><strong>Faster Loading Times:</strong> Smaller file sizes mean quicker download and parsing times</li>
+        <li><strong>Improved SEO:</strong> Search engines favor faster-loading websites</li>
+        <li><strong>Reduced Bandwidth Usage:</strong> Save on hosting costs with smaller file sizes</li>
+        <li><strong>Better User Experience:</strong> Visitors appreciate fast, responsive websites</li>
+      </ul>
+      
+      <p>Our tool supports <strong>HTML, CSS, and JavaScript</strong> minification with real-time statistics showing character reduction and compression savings. All processing happens locally in your browser for maximum privacy and security.</p>
+    </div>
 
-        <div style="display:flex; gap:10px; align-items:center;">
-          <div class="api-panel" role="region" aria-label="API integration">
-            <label style="font-weight:600; color:var(--blue); font-size:13px; margin-right:6px;">API</label>
-            <input id="apiUrl" class="api-url" type="text" placeholder="Optional: https://example.com/minify" aria-label="API endpoint URL">
-            <button id="toggleApi" class="small" title="Use API to minify">Use API</button>
+    <div class="main-content">
+      <div class="input-section">
+        <div class="section-title">
+          <i class="fas fa-code"></i>
+          <h2>Input Code</h2>
+        </div>
+        
+        <div class="code-type">
+          <div class="code-type-buttons">
+            <button class="type-btn active" data-type="html">HTML</button>
+            <button class="type-btn" data-type="css">CSS</button>
+            <button class="type-btn" data-type="js">JavaScript</button>
           </div>
+        </div>
+        
+        <textarea id="inputCode" class="code-area" placeholder="Paste your code here..."></textarea>
+        
+        <div class="stats">
+          <span id="charCount">Characters: 0</span>
+          <span id="lineCount">Lines: 0</span>
+        </div>
+        
+        <div class="action-buttons">
+          <button class="btn btn-primary" id="minifyBtn">
+            <i class="fas fa-compress-alt"></i> Minify Code
+          </button>
+          <button class="btn btn-secondary" id="clearBtn">
+            <i class="fas fa-trash"></i> Clear
+          </button>
+          <button class="btn btn-secondary" id="sampleBtn">
+            <i class="fas fa-file-code"></i> Sample
+          </button>
         </div>
       </div>
-
-      <div class="grid" role="region" aria-label="Editors">
-        <section class="panel" aria-labelledby="original-heading">
-          <div class="panel-head">
-            <h3 id="original-heading">Original HTML</h3>
-            <div class="panel-actions">
-              <div class="statline">
-                <div class="badge" id="origCount">0 B</div>
-                <div class="muted">Paste or type your HTML here</div>
-              </div>
-            </div>
-          </div>
-          <div class="editor">
-            <textarea id="input" class="input" placeholder="Paste your HTML code here..."></textarea>
-            <div style="display:flex; justify-content:space-between; align-items:center;">
-              <div class="muted">Supports large documents — pre/code/textarea and scripts preserved while minifying.</div>
-              <div>
-                <button class="small" id="formatBtn" title="Quick pretty-format (basic)">&nbsp;Format&nbsp;</button>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <section class="panel" aria-labelledby="minified-heading">
-          <div class="panel-head">
-            <h3 id="minified-heading">Minified Output</h3>
-            <div class="panel-actions">
-              <div class="statline">
-                <div class="badge" id="minCount">0 B</div>
-                <div class="muted" id="savings">—</div>
-              </div>
-              <div style="display:flex; gap:8px;">
-                <button class="small" id="copyBtn" title="Copy minified output">Copy Output</button>
-                <button class="small" id="downloadBtn" title="Download as .html">Download</button>
-              </div>
-            </div>
-          </div>
-          <div class="editor">
-            <pre id="output" class="output" aria-live="polite" role="region"></pre>
-            <div style="display:flex; gap:8px; justify-content:space-between; align-items:center;">
-              <div class="muted">Compare original and minified sizes. Optionally call your server-side API for minification.</div>
-              <div class="muted" style="font-size:12px">Tool Nest • Advanced</div>
-            </div>
-          </div>
-        </section>
+      
+      <div class="output-section">
+        <div class="section-title">
+          <i class="fas fa-file-export"></i>
+          <h2>Minified Output</h2>
+        </div>
+        
+        <textarea id="outputCode" class="code-area" placeholder="Minified code will appear here..." readonly></textarea>
+        
+        <div class="stats">
+          <span id="outputCharCount">Characters: 0</span>
+          <span id="savingPercent">Savings: 0%</span>
+        </div>
+        
+        <div class="action-buttons">
+          <button class="btn btn-success" id="copyBtn">
+            <i class="far fa-copy"></i> Copy
+          </button>
+          <button class="btn btn-secondary" id="downloadBtn">
+            <i class="fas fa-download"></i> Download
+          </button>
+        </div>
       </div>
+    </div>
 
-      <footer>
-        <div class="help">
-          Tip: For best results, avoid minifying pages that rely on inline preformatted spacing unless you rely on the API that handles script/style minification. This tool preserves content inside &lt;pre&gt;, &lt;textarea&gt;, &lt;script&gt; and &lt;style&gt;.
-        </div>
-
-        <div style="display:flex; gap:12px; align-items:center;">
-          <div style="max-width:540px; text-align:right;">
-            <div style="font-size:12px; color:var(--muted)">API sample:</div>
-            <pre class="code-sample" aria-hidden="true">fetch('https://your-api.example/minify',{ method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify({ html: '...your html...' }) })
-  .then(r=>r.json()).then(r=>console.log(r.minified))</pre>
-          </div>
-        </div>
-      </footer>
+    <div class="api-section">
+      <div class="section-title">
+        <i class="fas fa-code"></i>
+        <h2>API Documentation</h2>
+      </div>
+      <p>Use our API to minify code programmatically:</p>
+      
+      <div class="api-code">
+        <p><strong>Endpoint:</strong> POST https://api.minifier.com/v1/minify</p>
+        <p><strong>Headers:</strong> Content-Type: application/json</p>
+        <p><strong>Request Body:</strong></p>
+        <pre>{
+  "code": "your code here",
+  "type": "html/css/js"
+}</pre>
+        <p><strong>Response:</strong></p>
+        <pre>{
+  "minified": "minified code",
+  "originalSize": 100,
+  "minifiedSize": 50,
+  "savings": "50%"
+}</pre>
+      </div>
     </div>
   </div>
 
-  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <footer>
+    <p>Code Minifier Tool &copy; 2023 | All code processed locally in your browser | Privacy guaranteed</p>
+  </footer>
+
+  <div id="notification" class="notification"></div>
 
   <script>
-    // Elements
-    const inputEl = document.getElementById('input');
-    const outputEl = document.getElementById('output');
+    // DOM Elements
+    const inputCode = document.getElementById('inputCode');
+    const outputCode = document.getElementById('outputCode');
     const minifyBtn = document.getElementById('minifyBtn');
     const clearBtn = document.getElementById('clearBtn');
     const copyBtn = document.getElementById('copyBtn');
-    const loadSampleBtn = document.getElementById('loadSampleBtn');
-    const origCountEl = document.getElementById('origCount');
-    const minCountEl = document.getElementById('minCount');
-    const savingsEl = document.getElementById('savings');
-    const toast = document.getElementById('toast');
-    const apiUrlInput = document.getElementById('apiUrl');
-    const toggleApiBtn = document.getElementById('toggleApi');
     const downloadBtn = document.getElementById('downloadBtn');
-    const formatBtn = document.getElementById('formatBtn');
-
-    let useApi = false;
-
-    // Utilities
-    function bytes(n){
-      if (n < 1024) return n + ' B';
-      if (n < 1024 * 1024) return (n/1024).toFixed(2) + ' KB';
-      return (n/1024/1024).toFixed(2) + ' MB';
-    }
-
-    function showToast(msg, timeout=2200){
-      toast.textContent = msg;
-      toast.classList.add('show');
-      setTimeout(()=>toast.classList.remove('show'), timeout);
-    }
-
-    // Sample HTML
-    const sampleHtml = `<!doctype html>
+    const sampleBtn = document.getElementById('sampleBtn');
+    const typeButtons = document.querySelectorAll('.type-btn');
+    
+    // Stats elements
+    const charCount = document.getElementById('charCount');
+    const lineCount = document.getElementById('lineCount');
+    const outputCharCount = document.getElementById('outputCharCount');
+    const savingPercent = document.getElementById('savingPercent');
+    const notification = document.getElementById('notification');
+    
+    let currentType = 'html';
+    
+    // Sample codes
+    const samples = {
+      html: `<!DOCTYPE html>
 <html>
-  <head>
-    <title>Sample</title>
-    <!-- This is a comment that will be removed -->
+<head>
+    <title>Sample Page</title>
     <style>
-      /* styles preserved */
-      body { font-family: Arial; }
+        body { margin: 0; padding: 20px; }
+        .container { max-width: 800px; }
     </style>
-  </head>
-  <body>
+</head>
+<body>
     <div class="container">
-      <h1> Hello World </h1>
-      <p> This is a   sample   HTML. </p>
-      <pre>
-        Preformatted   spaces   are   preserved.
-      </pre>
+        <h1>Hello World</h1>
+        <p>This is a sample HTML document.</p>
     </div>
     <script>
-      // script content preserved
-      console.log('hello');
-    </script>
-  </body>
-</html>`;
+        console.log('Page loaded');
+    <\/script>
+</body>
+</html>`,
+      
+      css: `/* Reset styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
-    // Placeholder mechanics to preserve sensitive blocks: <script>, <style>, <pre>, <textarea>
-    function extractBlocks(html){
-      const placeholders = [];
-      const rx = /<(script|style|pre|textarea)(\b[^>]*)>[\s\S]*?<\/\1>/gi;
-      let out = html.replace(rx, function(m){
-        const id = '___TN_BLOCK_' + placeholders.length + '___';
-        placeholders.push(m);
-        return id;
-      });
-      return {out, placeholders};
-    }
-    function restoreBlocks(html, placeholders){
-      let res = html;
-      placeholders.forEach((p,i) => {
-        res = res.replace('___TN_BLOCK_' + i + '___', p);
-      });
-      return res;
-    }
+/* Main container */
+.container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
 
-    // Minify function: removes comments (except conditional IE comments starting with [if),
-    // collapses whitespace between tags, trims leading/trailing spaces.
-    function minifyHtml(raw){
-      if (!raw) return '';
-      // 1) Extract protected blocks
-      const {out, placeholders} = extractBlocks(raw);
+/* Button styles */
+.btn {
+    padding: 10px 20px;
+    background: blue;
+    color: white;
+    border: none;
+    border-radius: 5px;
+}
 
-      let s = out;
+.btn:hover {
+    background: darkblue;
+}`,
+      
+      js: `// Calculate factorial
+function factorial(n) {
+    if (n === 0) return 1;
+    return n * factorial(n - 1);
+}
 
-      // 2) Remove html comments except conditional comments starting with [if
-      // Keep comments like <!--[if ... ]> ... <![endif]--> intact
-      s = s.replace(/<!--(?!(\s*\[if\b))[\s\S]*?-->/g, '');
-
-      // 3) Collapse multiple whitespace (spaces, tabs, newlines) into single space
-      s = s.replace(/\s+/g, ' ');
-
-      // 4) Remove spaces between tags: > <  => ><
-      s = s.replace(/>\s+</g, '><');
-
-      // 5) Trim
-      s = s.trim();
-
-      // 6) Restore protected blocks (but we should trim internal leading/trailing newlines)
-      let restored = restoreBlocks(s, placeholders);
-
-      // When restoring, placeholders include original tags; ensure there's no accidental spacing issues around them
-      return restored;
-    }
-
-    // Basic pretty-format (very small, not a full formatter)
-    function basicFormat(html){
-      try{
-        // naive formatting using indentation for tags (not for all complex cases)
-        let formatted = '';
-        const reg = /(<\/?[^>]+>)/g;
-        const parts = html.split(reg).filter(Boolean);
-        let pad = 0;
-        parts.forEach(token => {
-          if (token.match(/^<\//)) {
-            pad = Math.max(pad - 1, 0);
-          }
-          const indent = '  '.repeat(pad);
-          formatted += indent + token.trim() + '\n';
-          if (token.match(/^<[^\/!][^>]*[^\/]>$/) && !token.includes('br') && !token.includes('img')) {
-            pad++;
-          }
-        });
-        return formatted.trim();
-      }catch(e){
-        return html;
-      }
-    }
-
-    // Update stats
-    function updateStats(orig, minified){
-      const oLen = new Blob([orig]).size;
-      const mLen = new Blob([minified]).size;
-      origCountEl.textContent = bytes(oLen);
-      minCountEl.textContent = bytes(mLen);
-      if (oLen > 0){
-        const saved = oLen - mLen;
-        const pct = Math.round((saved / oLen) * 100);
-        savingsEl.textContent = saved > 0 ? `Saved ${bytes(saved)} (${pct}%)` : 'No change';
+// Event listener
+document.addEventListener('DOMContentLoaded', function() {
+    console.log('DOM loaded');
+    
+    const button = document.getElementById('myButton');
+    button.addEventListener('click', function() {
+        alert('Button clicked!');
+    });
+});`
+    };
+    
+    // Update statistics
+    function updateStats() {
+      const input = inputCode.value;
+      const output = outputCode.value;
+      
+      // Input stats
+      const chars = input.length;
+      const lines = input.split('\n').length;
+      charCount.textContent = `Characters: ${chars}`;
+      lineCount.textContent = `Lines: ${lines}`;
+      
+      // Output stats
+      const outputChars = output.length;
+      outputCharCount.textContent = `Characters: ${outputChars}`;
+      
+      // Calculate savings
+      if (chars > 0 && outputChars > 0) {
+        const savings = Math.round(100 - (outputChars / chars * 100));
+        savingPercent.textContent = `Savings: ${savings}%`;
       } else {
-        savingsEl.textContent = '—';
+        savingPercent.textContent = `Savings: 0%`;
       }
     }
-
-    // Event handlers
-    minifyBtn.addEventListener('click', async () => {
-      const raw = inputEl.value || '';
-      if (!raw.trim()){
-        showToast('Paste HTML to minify');
+    
+    // Show notification
+    function showNotification(message, isSuccess = true) {
+      notification.textContent = message;
+      notification.className = 'notification';
+      notification.classList.add(isSuccess ? 'show' : 'error');
+      
+      setTimeout(() => {
+        notification.classList.remove('show');
+      }, 3000);
+    }
+    
+    // Minify functions
+    function minifyHTML(code) {
+      return code
+        .replace(/<!--[\s\S]*?-->/g, '')
+        .replace(/\s+/g, ' ')
+        .replace(/>\s+</g, '><')
+        .trim();
+    }
+    
+    function minifyCSS(code) {
+      return code
+        .replace(/\/\*[\s\S]*?\*\//g, '')
+        .replace(/\s+/g, ' ')
+        .replace(/\s*{\s*/g, '{')
+        .replace(/\s*}\s*/g, '}')
+        .replace(/\s*;\s*/g, ';')
+        .replace(/\s*:\s*/g, ':')
+        .replace(/;}/g, '}')
+        .trim();
+    }
+    
+    function minifyJS(code) {
+      return code
+        .replace(/\/\/.*$/gm, '')
+        .replace(/\/\*[\s\S]*?\*\//g, '')
+        .replace(/\s+/g, ' ')
+        .replace(/\s*([=+\-*\/%&|^~!<>?]|&&|\|\|)\s*/g, '$1')
+        .replace(/\s*([{},;])\s*/g, '$1')
+        .replace(/;}/g, '}')
+        .trim();
+    }
+    
+    // Minify code
+    function minify() {
+      const code = inputCode.value.trim();
+      
+      if (!code) {
+        showNotification('Please enter some code first', false);
         return;
       }
-
-      if (useApi){
-        const endpoint = apiUrlInput.value.trim();
-        if (!endpoint){
-          showToast('Provide API URL or disable API');
-          return;
-        }
-        try{
-          minifyBtn.disabled = true;
-          minifyBtn.textContent = 'Minifying...';
-          // call provided API, expecting { minified: '...' } response
-          const resp = await fetch(endpoint, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ html: raw })
-          });
-          if (!resp.ok) throw new Error('API error: ' + resp.status);
-          const data = await resp.json();
-          if (typeof data.minified === 'string'){
-            outputEl.textContent = data.minified;
-            updateStats(raw, data.minified);
-            showToast('Minified via API');
-          } else {
-            // fallback to local minify if API doesn't return expected shape
-            const local = minifyHtml(raw);
-            outputEl.textContent = local;
-            updateStats(raw, local);
-            showToast('API responded but no minified result; used local minifier');
-          }
-        }catch(err){
-          // On error, fallback local minify and inform user
-          const local = minifyHtml(raw);
-          outputEl.textContent = local;
-          updateStats(raw, local);
-          showToast('API failed — used local minifier');
-        } finally {
-          minifyBtn.disabled = false;
-          minifyBtn.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h10" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg> Minify';
-        }
-      } else {
-        const minified = minifyHtml(raw);
-        outputEl.textContent = minified;
-        updateStats(raw, minified);
-        showToast('Minified locally');
+      
+      let result = '';
+      
+      switch(currentType) {
+        case 'html':
+          result = minifyHTML(code);
+          break;
+        case 'css':
+          result = minifyCSS(code);
+          break;
+        case 'js':
+          result = minifyJS(code);
+          break;
       }
-    });
-
-    clearBtn.addEventListener('click', () => {
-      inputEl.value = '';
-      outputEl.textContent = '';
-      updateStats('', '');
-      showToast('Cleared');
-    });
-
-    copyBtn.addEventListener('click', async () => {
-      const txt = outputEl.textContent || '';
-      if (!txt) { showToast('Nothing to copy'); return; }
-      try{
-        await navigator.clipboard.writeText(txt);
-        showToast('Minified output copied');
-      }catch(e){
-        // Fallback
-        const ta = document.createElement('textarea');
-        ta.value = txt;
-        document.body.appendChild(ta);
-        ta.select();
-        try{ document.execCommand('copy'); showToast('Copied'); }catch(e){ showToast('Copy failed'); }
-        ta.remove();
+      
+      outputCode.value = result;
+      updateStats();
+      showNotification('Code minified successfully!');
+    }
+    
+    // Copy to clipboard
+    function copyToClipboard() {
+      if (!outputCode.value.trim()) {
+        showNotification('No code to copy', false);
+        return;
       }
-    });
-
-    loadSampleBtn.addEventListener('click', () => {
-      inputEl.value = sampleHtml;
-      updateStats(sampleHtml, '');
-      showToast('Sample loaded');
-    });
-
-    toggleApiBtn.addEventListener('click', () => {
-      useApi = !useApi;
-      toggleApiBtn.style.background = useApi ? 'var(--blue)' : '';
-      toggleApiBtn.style.color = useApi ? '#fff' : '';
-      toggleApiBtn.textContent = useApi ? 'API: ON' : 'Use API';
-      showToast(useApi ? 'API enabled' : 'API disabled');
-    });
-
-    downloadBtn.addEventListener('click', () => {
-      const content = outputEl.textContent || '';
-      if (!content){ showToast('Nothing to download'); return; }
-      const blob = new Blob([content], {type: 'text/html;charset=utf-8'});
+      
+      outputCode.select();
+      document.execCommand('copy');
+      showNotification('Code copied to clipboard!');
+    }
+    
+    // Download code
+    function download() {
+      if (!outputCode.value.trim()) {
+        showNotification('No code to download', false);
+        return;
+      }
+      
+      const blob = new Blob([outputCode.value], { type: 'text/plain' });
       const url = URL.createObjectURL(blob);
       const a = document.createElement('a');
+      
       a.href = url;
-      a.download = 'minified.html';
+      a.download = `minified-code.${currentType}`;
       document.body.appendChild(a);
       a.click();
-      a.remove();
+      document.body.removeChild(a);
       URL.revokeObjectURL(url);
-      showToast('Downloaded minified.html');
+      
+      showNotification('File downloaded!');
+    }
+    
+    // Clear all
+    function clearAll() {
+      inputCode.value = '';
+      outputCode.value = '';
+      updateStats();
+      showNotification('All cleared');
+    }
+    
+    // Load sample
+    function loadSample() {
+      inputCode.value = samples[currentType];
+      outputCode.value = '';
+      updateStats();
+      showNotification(`Sample ${currentType.toUpperCase()} code loaded`);
+    }
+    
+    // Set active type
+    function setType(type) {
+      currentType = type;
+      
+      typeButtons.forEach(btn => {
+        if (btn.dataset.type === type) {
+          btn.classList.add('active');
+        } else {
+          btn.classList.remove('active');
+        }
+      });
+      
+      // Update placeholder
+      inputCode.placeholder = `Paste your ${type.toUpperCase()} code here...`;
+    }
+    
+    // Event Listeners
+    inputCode.addEventListener('input', updateStats);
+    minifyBtn.addEventListener('click', minify);
+    copyBtn.addEventListener('click', copyToClipboard);
+    downloadBtn.addEventListener('click', download);
+    clearBtn.addEventListener('click', clearAll);
+    sampleBtn.addEventListener('click', loadSample);
+    
+    typeButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        setType(btn.dataset.type);
+      });
     });
-
-    formatBtn.addEventListener('click', () => {
-      const raw = inputEl.value || '';
-      if (!raw.trim()){ showToast('Nothing to format'); return; }
-      const formatted = basicFormat(raw);
-      inputEl.value = formatted;
-      showToast('Formatted (basic)');
-    });
-
-    // Update stats live for original input
-    inputEl.addEventListener('input', () => {
-      const raw = inputEl.value || '';
-      updateStats(raw, outputEl.textContent || '');
-    });
-
-    // Init default
-    updateStats('', '');
-
-    // Keyboard shortcut: Ctrl+Enter to minify
-    window.addEventListener('keydown', (e) => {
-      if ((e.ctrlKey || e.metaKey) && e.key === 'Enter'){
+    
+    // Initialize
+    updateStats();
+    setType('html');
+    
+    // Add keyboard shortcuts
+    document.addEventListener('keydown', (e) => {
+      if ((e.ctrlKey || e.metaKey) && e.key === 'Enter') {
         e.preventDefault();
-        minifyBtn.click();
+        minify();
+      }
+      if ((e.ctrlKey || e.metaKey) && e.key === 'c' && outputCode.value) {
+        e.preventDefault();
+        copyToClipboard();
+      }
+      if ((e.ctrlKey || e.metaKey) && e.key === 'l') {
+        e.preventDefault();
+        clearAll();
       }
     });
-
-    // Accessibility: ensure focus outline
-    document.addEventListener('keyup', (e) => {
-      if (e.key === 'Tab') document.body.classList.add('show-focus');
-    });
-
   </script>
 </body>
 </html>
-
-
 
