@@ -1,0 +1,656 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Support | Tool Nest - Get Help & Assistance</title>
+  <link rel="icon" href="favicon-16x16.png" type="image/x-icon">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root {
+      --primary-dark: #0a192f;
+      --secondary-dark: #112240;
+      --accent-blue: #3b82f6;
+      --light-blue: #60a5fa;
+      --text-primary: #f8fafc;
+      --text-secondary: #cbd5e1;
+      --border-color: #2d3748;
+      --gradient-bg: linear-gradient(135deg, #0a192f 0%, #112240 100%);
+      --border-radius: 8px;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      background: var(--gradient-bg);
+      color: var(--text-primary);
+      line-height: 1.6;
+      min-height: 100vh;
+      padding: 20px;
+    }
+
+    .support-container {
+      max-width: 1000px;
+      margin: 0 auto;
+      background: rgba(17, 34, 64, 0.8);
+      border-radius: var(--border-radius);
+      padding: 40px;
+      border: 1px solid var(--border-color);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    }
+
+    h1 {
+      color: var(--accent-blue);
+      text-align: center;
+      margin-bottom: 30px;
+      font-size: 2.5rem;
+      border-bottom: 2px solid var(--accent-blue);
+      padding-bottom: 15px;
+    }
+
+    h2 {
+      color: var(--light-blue);
+      margin: 30px 0 20px 0;
+      font-size: 1.4rem;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    h2 i {
+      font-size: 1.2rem;
+    }
+
+    h3 {
+      color: var(--light-blue);
+      margin: 25px 0 15px 0;
+      font-size: 1.2rem;
+      font-weight: 600;
+    }
+
+    p {
+      color: var(--text-secondary);
+      margin-bottom: 15px;
+      font-size: 1.05rem;
+    }
+
+    ul {
+      margin-left: 25px;
+      margin-bottom: 25px;
+    }
+
+    li {
+      color: var(--text-secondary);
+      margin-bottom: 8px;
+      position: relative;
+    }
+
+    li::before {
+      content: '•';
+      color: var(--accent-blue);
+      font-weight: bold;
+      display: inline-block;
+      width: 1em;
+      margin-left: -1em;
+    }
+
+    .help-box {
+      background: rgba(59, 130, 246, 0.1);
+      border-left: 3px solid var(--accent-blue);
+      padding: 20px;
+      border-radius: 5px;
+      margin: 25px 0;
+    }
+
+    .help-box p {
+      margin: 0;
+      color: var(--text-primary);
+      font-size: 1.1rem;
+    }
+
+    .help-box i {
+      color: var(--accent-blue);
+      margin-right: 10px;
+      font-size: 1.2rem;
+    }
+
+    .support-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 25px;
+      margin: 30px 0;
+    }
+
+    .support-card {
+      background: rgba(255, 255, 255, 0.05);
+      padding: 25px;
+      border-radius: 8px;
+      border: 1px solid var(--border-color);
+      transition: transform 0.3s;
+    }
+
+    .support-card:hover {
+      transform: translateY(-5px);
+      border-color: var(--accent-blue);
+      box-shadow: 0 10px 20px rgba(59, 130, 246, 0.1);
+    }
+
+    .support-icon {
+      width: 60px;
+      height: 60px;
+      background: linear-gradient(135deg, var(--accent-blue), var(--light-blue));
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 15px;
+      font-size: 1.5rem;
+    }
+
+    .support-card h3 {
+      color: var(--accent-blue);
+      margin: 10px 0;
+      font-size: 1.2rem;
+    }
+
+    .faq-container {
+      margin: 30px 0;
+    }
+
+    .faq-item {
+      background: rgba(255, 255, 255, 0.03);
+      margin-bottom: 15px;
+      border-radius: 6px;
+      overflow: hidden;
+      border: 1px solid var(--border-color);
+    }
+
+    .faq-question {
+      padding: 20px;
+      background: rgba(59, 130, 246, 0.05);
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .faq-question:hover {
+      background: rgba(59, 130, 246, 0.1);
+    }
+
+    .faq-question h4 {
+      color: var(--text-primary);
+      font-size: 1.1rem;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .faq-question i {
+      color: var(--accent-blue);
+    }
+
+    .faq-answer {
+      padding: 0 20px;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease, padding 0.3s ease;
+    }
+
+    .faq-item.active .faq-answer {
+      padding: 20px;
+      max-height: 500px;
+    }
+
+    .contact-form {
+      margin: 30px 0;
+      background: rgba(255, 255, 255, 0.03);
+      padding: 30px;
+      border-radius: 8px;
+      border: 1px solid var(--border-color);
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    .form-group label {
+      display: block;
+      color: var(--text-primary);
+      margin-bottom: 8px;
+      font-weight: 600;
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      padding: 12px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--border-color);
+      border-radius: 6px;
+      color: var(--text-primary);
+      font-size: 1rem;
+    }
+
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      outline: none;
+      border-color: var(--accent-blue);
+    }
+
+    .submit-btn {
+      background: linear-gradient(135deg, var(--accent-blue), var(--light-blue));
+      color: white;
+      border: none;
+      padding: 15px 30px;
+      border-radius: 6px;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: transform 0.3s;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .submit-btn:hover {
+      transform: translateY(-2px);
+    }
+
+    .issue-categories {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 15px;
+      margin: 20px 0;
+    }
+
+    .issue-category {
+      background: rgba(255, 255, 255, 0.03);
+      padding: 15px;
+      border-radius: 6px;
+      border: 1px solid var(--border-color);
+      text-align: center;
+    }
+
+    .issue-category i {
+      color: var(--accent-blue);
+      font-size: 1.5rem;
+      margin-bottom: 10px;
+    }
+
+    /* Footer */
+    footer {
+      margin-top: 40px;
+      text-align: center;
+      padding-top: 20px;
+      border-top: 1px solid var(--border-color);
+    }
+
+    .footer-logo {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 1.8rem;
+      font-weight: 700;
+      background: linear-gradient(135deg, var(--accent-blue), var(--light-blue));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      text-decoration: none;
+      margin-bottom: 15px;
+    }
+
+    .footer-logo i {
+      font-size: 1.8rem;
+    }
+
+    .contact-info {
+      color: var(--text-secondary);
+      margin: 15px 0;
+    }
+
+    .contact-email {
+      color: var(--accent-blue);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1.1rem;
+    }
+
+    .contact-email:hover {
+      text-decoration: underline;
+    }
+
+    .copyright {
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+      margin-top: 10px;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .support-container {
+        padding: 20px;
+      }
+      
+      h1 {
+        font-size: 2rem;
+      }
+      
+      h2 {
+        font-size: 1.2rem;
+      }
+      
+      .support-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .contact-form {
+        padding: 20px;
+      }
+      
+      body {
+        padding: 10px;
+      }
+      
+      .support-card {
+        padding: 20px;
+      }
+    }
+
+    /* Scrollbar */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: var(--secondary-dark);
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: var(--accent-blue);
+      border-radius: 4px;
+    }
+  </style>
+</head>
+<body>
+  <div class="support-container">
+    <h1>Support Center</h1>
+
+    <div class="help-box">
+      <p><i class="fas fa-hands-helping"></i> <strong>Welcome to Tool Nest Support!</strong> We're here to help you get the most out of our online tools. Find answers to common questions or contact us directly for assistance.</p>
+    </div>
+
+    <h2><i class="fas fa-question-circle"></i> Quick Help</h2>
+    <p>Choose from our most common support categories to find the help you need:</p>
+
+    <div class="support-grid">
+      <div class="support-card">
+        <div class="support-icon">
+          <i class="fas fa-tools"></i>
+        </div>
+        <h3>Tool Issues</h3>
+        <p>Having trouble with a specific tool? Get help with functionality, accuracy, or usage questions for any of our utilities.</p>
+        <ul>
+          <li>Tool not working correctly</li>
+          <li>Inaccurate results</li>
+          <li>Feature questions</li>
+          <li>Usage instructions</li>
+        </ul>
+      </div>
+      
+      <div class="support-card">
+        <div class="support-icon">
+          <i class="fas fa-laptop"></i>
+        </div>
+        <h3>Technical Problems</h3>
+        <p>Experiencing technical difficulties? Find solutions for browser compatibility, loading issues, or display problems.</p>
+        <ul>
+          <li>Browser compatibility</li>
+          <li>Loading errors</li>
+          <li>Display issues</li>
+          <li>Performance problems</li>
+        </ul>
+      </div>
+      
+      <div class="support-card">
+        <div class="support-icon">
+          <i class="fas fa-lightbulb"></i>
+        </div>
+        <h3>Feature Requests</h3>
+        <p>Have an idea for a new tool or improvement? We welcome suggestions to make Tool Nest even better.</p>
+        <ul>
+          <li>New tool suggestions</li>
+          <li>Feature enhancements</li>
+          <li>UI improvements</li>
+          <li>Tool categories</li>
+        </ul>
+      </div>
+    </div>
+
+    <h2><i class="fas fa-comments"></i> Frequently Asked Questions</h2>
+    <p>Browse our most commonly asked questions for quick answers:</p>
+
+    <div class="faq-container">
+      <div class="faq-item">
+        <div class="faq-question">
+          <h4><i class="far fa-question-circle"></i> Are Tool Nest tools really free?</h4>
+          <i class="fas fa-chevron-down"></i>
+        </div>
+        <div class="faq-answer">
+          <p><strong>Yes, completely free!</strong> All tools on Tool Nest are 100% free to use without any hidden costs, subscriptions, or premium tiers. We believe in providing accessible tools to everyone.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">
+          <h4><i class="far fa-question-circle"></i> Do I need to create an account to use the tools?</h4>
+          <i class="fas fa-chevron-down"></i>
+        </div>
+        <div class="faq-answer">
+          <p><strong>No account required!</strong> You can use all our tools instantly without registration. Your privacy is important to us, and we minimize data collection wherever possible.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">
+          <h4><i class="far fa-question-circle"></i> How accurate are the tool results?</h4>
+          <i class="fas fa-chevron-down"></i>
+        </div>
+        <div class="faq-answer">
+          <p>We strive for maximum accuracy in all our tools. However, we recommend using our tools for general purposes and verifying critical results through official channels when necessary. Report any inaccuracies to help us improve.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">
+          <h4><i class="far fa-question-circle"></i> Can I use Tool Nest on mobile devices?</h4>
+          <i class="fas fa-chevron-down"></i>
+        </div>
+        <div class="faq-answer">
+          <p><strong>Absolutely!</strong> Tool Nest is fully responsive and works perfectly on smartphones, tablets, and desktops. All tools are optimized for touch interaction and smaller screens.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">
+          <h4><i class="far fa-question-circle"></i> How often are new tools added?</h4>
+          <i class="fas fa-chevron-down"></i>
+        </div>
+        <div class="faq-answer">
+          <p>We regularly add new tools based on user requests and emerging needs. Typically, we add 2-3 new tools each month. You can suggest tools you'd like to see through our contact form!</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">
+          <h4><i class="far fa-question-circle"></i> Is my data safe when using Tool Nest?</h4>
+          <i class="fas fa-chevron-down"></i>
+        </div>
+        <div class="faq-answer">
+          <p><strong>Yes, your data is secure.</strong> Most tools process data locally in your browser. We don't store personal information, and all connections are encrypted. Read our Privacy Policy for detailed information.</p>
+        </div>
+      </div>
+    </div>
+
+    <h2><i class="fas fa-wrench"></i> Common Issues & Solutions</h2>
+    <p>Quick fixes for common problems:</p>
+
+    <div class="issue-categories">
+      <div class="issue-category">
+        <i class="fas fa-browser"></i>
+        <h4>Browser Issues</h4>
+        <p>Clear cache & cookies, update browser</p>
+      </div>
+      
+      <div class="issue-category">
+        <i class="fas fa-wifi"></i>
+        <h4>Connection Problems</h4>
+        <p>Check internet, refresh page</p>
+      </div>
+      
+      <div class="issue-category">
+        <i class="fas fa-mobile"></i>
+        <h4>Mobile Problems</h4>
+        <p>Rotate device, close other apps</p>
+      </div>
+      
+      <div class="issue-category">
+        <i class="fas fa-bolt"></i>
+        <h4>Slow Performance</h4>
+        <p>Close tabs, clear browser data</p>
+      </div>
+    </div>
+
+    <h2><i class="fas fa-envelope"></i> Contact Support</h2>
+    <p>Can't find what you're looking for? Contact us directly and we'll get back to you as soon as possible.</p>
+
+    <div class="contact-form">
+      <div class="help-box">
+        <p><i class="fas fa-envelope"></i> <strong>Direct Email:</strong> For quickest response, email us directly at <a href="mailto:toolnest3@gmail.com" class="contact-email">toolnest3@gmail.com</a></p>
+      </div>
+
+      <div class="form-group">
+        <label for="name">Your Name</label>
+        <input type="text" id="name" placeholder="Enter your name">
+      </div>
+
+      <div class="form-group">
+        <label for="email">Email Address</label>
+        <input type="email" id="email" placeholder="Enter your email">
+      </div>
+
+      <div class="form-group">
+        <label for="issueType">Issue Type</label>
+        <select id="issueType">
+          <option value="">Select issue type</option>
+          <option value="tool">Tool Problem</option>
+          <option value="technical">Technical Issue</option>
+          <option value="feature">Feature Request</option>
+          <option value="account">Account Issue</option>
+          <option value="privacy">Privacy Concern</option>
+          <option value="other">Other</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="message">Message</label>
+        <textarea id="message" rows="6" placeholder="Describe your issue or question in detail..."></textarea>
+      </div>
+
+      <button class="submit-btn" onclick="submitSupportRequest()">
+        <i class="fas fa-paper-plane"></i> Send Message
+      </button>
+    </div>
+
+    <div class="help-box">
+      <p><i class="fas fa-clock"></i> <strong>Response Time:</strong> We typically respond to support inquiries within 24-48 hours during business days. For urgent matters, please mention "URGENT" in your email subject.</p>
+    </div>
+
+    <h2><i class="fas fa-book"></i> Documentation & Guides</h2>
+    <p>Explore our resources for additional help:</p>
+    
+    <ul>
+      <li><strong>User Guides:</strong> Detailed instructions for each tool category</li>
+      <li><strong>Video Tutorials:</strong> Visual guides for complex tools</li>
+      <li><strong>Tool Tips:</strong> Hidden features and shortcuts</li>
+      <li><strong>Best Practices:</strong> How to get the most from our tools</li>
+    </ul>
+
+    <footer>
+      <div class="footer-logo">
+        <i class="fas fa-tools"></i>
+        Tool Nest
+      </div>
+      
+      <div class="contact-info">
+        <p>Need immediate assistance? Email us directly:</p>
+        <p><a href="mailto:toolnest3@gmail.com" class="contact-email">toolnest3@gmail.com</a></p>
+      </div>
+      
+      <div class="copyright">
+        &copy; 2023 Tool Nest. All rights reserved.<br>
+        We're here to help you succeed with our tools.
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    // FAQ Accordion Functionality
+    document.querySelectorAll('.faq-question').forEach(question => {
+      question.addEventListener('click', () => {
+        const faqItem = question.parentElement;
+        faqItem.classList.toggle('active');
+        
+        // Close other FAQs
+        document.querySelectorAll('.faq-item').forEach(item => {
+          if (item !== faqItem) {
+            item.classList.remove('active');
+          }
+        });
+      });
+    });
+
+    // Support Form Submission
+    function submitSupportRequest() {
+      const name = document.getElementById('name').value;
+      const email = document.getElementById('email').value;
+      const issueType = document.getElementById('issueType').value;
+      const message = document.getElementById('message').value;
+      
+      if (!name || !email || !issueType || !message) {
+        alert('Please fill in all fields before submitting.');
+        return;
+      }
+      
+      // In a real implementation, this would send to a server
+      // For now, we'll simulate success
+      const mailtoLink = `mailto:toolnest3@gmail.com?subject=Support Request: ${issueType}&body=Name: ${name}%0AEmail: ${email}%0AIssue Type: ${issueType}%0A%0AMessage:%0A${message}`;
+      
+      window.location.href = mailtoLink;
+      
+      // Show success message
+      setTimeout(() => {
+        alert('Thank you for your message! We will respond within 24-48 hours.');
+        document.getElementById('name').value = '';
+        document.getElementById('email').value = '';
+        document.getElementById('issueType').value = '';
+        document.getElementById('message').value = '';
+      }, 1000);
+    }
+
+    // Auto-open first FAQ
+    document.querySelector('.faq-item').classList.add('active');
+  </script>
+</body>
+</html>
+
+
