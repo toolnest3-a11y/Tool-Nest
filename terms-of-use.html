@@ -1,64 +1,279 @@
   
-  
-  <!DOCTYPE html>
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Terms and Conditions</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Terms and Conditions | Tool Nest</title>
+  <link rel="icon" href="favicon-16x16.png" type="image/x-icon">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
-    body { font-family: Arial, sans-serif; padding: 20px; line-height: 1.6; }
-    h1 { color: #333; }
+    :root {
+      --primary-dark: #0a192f;
+      --secondary-dark: #112240;
+      --accent-blue: #3b82f6;
+      --light-blue: #60a5fa;
+      --text-primary: #f8fafc;
+      --text-secondary: #cbd5e1;
+      --border-color: #2d3748;
+      --gradient-bg: linear-gradient(135deg, #0a192f 0%, #112240 100%);
+      --border-radius: 8px;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      background: var(--gradient-bg);
+      color: var(--text-primary);
+      line-height: 1.6;
+      min-height: 100vh;
+      padding: 20px;
+    }
+
+    .terms-container {
+      max-width: 1000px;
+      margin: 0 auto;
+      background: rgba(17, 34, 64, 0.8);
+      border-radius: var(--border-radius);
+      padding: 40px;
+      border: 1px solid var(--border-color);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    }
+
+    h1 {
+      color: var(--accent-blue);
+      text-align: center;
+      margin-bottom: 30px;
+      font-size: 2.5rem;
+      border-bottom: 2px solid var(--accent-blue);
+      padding-bottom: 15px;
+    }
+
+    h2 {
+      color: var(--light-blue);
+      margin: 25px 0 15px 0;
+      font-size: 1.4rem;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    h2 i {
+      font-size: 1.2rem;
+    }
+
+    p {
+      color: var(--text-secondary);
+      margin-bottom: 15px;
+      font-size: 1.05rem;
+    }
+
+    ul {
+      margin-left: 25px;
+      margin-bottom: 20px;
+    }
+
+    li {
+      color: var(--text-secondary);
+      margin-bottom: 8px;
+      position: relative;
+    }
+
+    li::before {
+      content: '•';
+      color: var(--accent-blue);
+      font-weight: bold;
+      display: inline-block;
+      width: 1em;
+      margin-left: -1em;
+    }
+
+    .notice-box {
+      background: rgba(59, 130, 246, 0.1);
+      border-left: 3px solid var(--accent-blue);
+      padding: 15px;
+      border-radius: 5px;
+      margin: 20px 0;
+    }
+
+    .notice-box p {
+      margin: 0;
+      color: var(--text-primary);
+    }
+
+    .notice-box i {
+      color: var(--accent-blue);
+      margin-right: 10px;
+    }
+
+    .date {
+      text-align: center;
+      color: var(--text-secondary);
+      margin-bottom: 30px;
+      font-size: 0.9rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    .date i {
+      color: var(--accent-blue);
+    }
+
+    /* Footer */
+    footer {
+      margin-top: 40px;
+      text-align: center;
+      padding-top: 20px;
+      border-top: 1px solid var(--border-color);
+    }
+
+    .footer-logo {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 1.8rem;
+      font-weight: 700;
+      background: linear-gradient(135deg, var(--accent-blue), var(--light-blue));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      text-decoration: none;
+      margin-bottom: 15px;
+    }
+
+    .footer-logo i {
+      font-size: 1.8rem;
+    }
+
+    .copyright {
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+      margin-top: 10px;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .terms-container {
+        padding: 20px;
+      }
+      
+      h1 {
+        font-size: 2rem;
+      }
+      
+      h2 {
+        font-size: 1.2rem;
+      }
+      
+      body {
+        padding: 10px;
+      }
+    }
+
+    /* Scrollbar */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: var(--secondary-dark);
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: var(--accent-blue);
+      border-radius: 4px;
+    }
   </style>
 </head>
 <body>
-  <h1>Terms and Conditions</h1>
-  <p>Welcome to Tool-Nest.online. By accessing or using this website, you agree to comply with and be bound by these Terms of Use. If you do not agree with any part of these terms, please do not use our multi-tool website and online utilities.
+  <div class="terms-container">
+    <h1>Terms and Conditions</h1>
+    
+    <div class="date">
+      <i class="fas fa-calendar-alt"></i>
+      Last Updated: December 2023
+    </div>
 
-<h2>Use of Website</h2> 
+    <p>Welcome to Tool Nest. By accessing or using this website, you agree to comply with and be bound by these Terms of Use. If you do not agree with any part of these terms, please do not use our multi-tool website and online utilities.</p>
 
-ToolNest.online provides free online tools, including calculators, converters, generators, text tools, and productivity utilities for general informational and practical use. You agree to use this website lawfully, responsibly, and for legitimate purposes only.
+    <h2><i class="fas fa-globe"></i> Use of Website</h2>
+    <p>
+      Tool Nest provides free online tools, including calculators, converters, generators, text tools, and productivity utilities for general informational and practical use. You agree to use this website lawfully, responsibly, and for legitimate purposes only.
+    </p>
 
-<h2>Intellectual Property Rights</h2> 
+    <h2><i class="fas fa-copyright"></i> Intellectual Property Rights</h2>
+    <p>
+      All content, design, tools, code, logos, text, and graphics available on Tool Nest are the intellectual property of Tool Nest unless otherwise stated. You may not copy, reproduce, distribute, modify, or republish any part of the website without prior written permission.
+    </p>
 
-All content, design, tools, code, logos, text, and graphics available on ToolNest.online are the intellectual property of ToolNest unless otherwise stated. You may not copy, reproduce, distribute, modify, or republish any part of the website without prior written permission.
+    <h2><i class="fas fa-user-shield"></i> User Responsibilities</h2>
+    <p>
+      By using Tool Nest, you agree:
+    </p>
+    <ul>
+      <li>Not to misuse, abuse, or disrupt website functionality</li>
+      <li>Not to attempt unauthorized access to systems or servers</li>
+      <li>Not to use tools for illegal, harmful, or malicious activities</li>
+    </ul>
+    <p>Any violation may result in restricted access or permanent banning.</p>
 
-<h2>User Responsibilities</h2> 
+    <h2><i class="fas fa-check-circle"></i> Accuracy of Tools and Information</h2>
+    <p>
+      While we strive to provide accurate, fast, and reliable online tools, Tool Nest does not guarantee that results are error-free or suitable for every purpose. All tools are provided on an "as is" and "as available" basis.
+    </p>
 
-By using ToolNest.online, you agree:
+    <div class="notice-box">
+      <p><i class="fas fa-exclamation-triangle"></i> <strong>Disclaimer:</strong> All tools are for informational purposes only. We recommend verifying important results with professional sources when necessary.</p>
+    </div>
 
-Not to misuse, abuse, or disrupt website functionality
+    <h2><i class="fas fa-balance-scale"></i> Limitation of Liability</h2>
+    <p>
+      Tool Nest shall not be held liable for any direct, indirect, incidental, or consequential damages arising from the use or inability to use our web-based tools and utilities.
+    </p>
 
-Not to attempt unauthorized access to systems or servers
+    <h2><i class="fas fa-external-link-alt"></i> Third-Party Links and Services</h2>
+    <p>
+      Our website may contain links to third-party websites or services. Tool Nest is not responsible for the content, policies, or practices of external sites.
+    </p>
 
-Not to use tools for illegal, harmful, or malicious activities
+    <h2><i class="fas fa-sync-alt"></i> Modifications to Terms</h2>
+    <p>
+      We reserve the right to update or modify these Terms of Use at any time without prior notice. Continued use of Tool Nest constitutes acceptance of the updated terms.
+    </p>
 
-Any violation may result in restricted access or permanent banning.
+    <h2><i class="fas fa-ban"></i> Termination</h2>
+    <p>
+      We may suspend or terminate access to Tool Nest at any time if these terms are violated or if misuse of the website is detected.
+    </p>
 
-<h2>Accuracy of Tools and Information</h2> 
-While we strive to provide accurate, fast, and reliable online tools, Tool-Nest.online does not guarantee that results are error-free or suitable for every purpose. All tools are provided on an “as is” and “as available” basis.
+    <h2><i class="fas fa-gavel"></i> Governing Law</h2>
+    <p>
+      These Terms of Use shall be governed and interpreted in accordance with applicable laws.
+    </p>
 
-<h2>Limitation of Liability</h2> 
+    <div class="notice-box">
+      <p><i class="fas fa-handshake"></i> <strong>Agreement:</strong> By using Tool Nest, you acknowledge that you have read, understood, and agree to be bound by these Terms and Conditions.</p>
+    </div>
 
-ToolNest.online shall not be held liable for any direct, indirect, incidental, or consequential damages arising from the use or inability to use our web-based tools and utilities.
-
-<h2>Third-Party Links and Services</h2> 
-
-Our website may contain links to third-party websites or services. Tool-Nest.online is not responsible for the content, policies, or practices of external sites.
-
-<h2>Modifications to Terms</h2> 
-
-We reserve the right to update or modify these Terms of Use at any time without prior notice. Continued use of ToolNest.online constitutes acceptance of the updated terms.
-
-<h2>Termination</h2> 
-
-We may suspend or terminate access to ToolNest.online at any time if these terms are violated or if misuse of the website is detected.
-
-<h2>Governing Law</h2> 
-
-These Terms of Use shall be governed and interpreted in accordance with applicable laws.</p>
+    <footer>
+      <div class="footer-logo">
+        <i class="fas fa-tools"></i>
+        Tool Nest
+      </div>
+      <div class="copyright">
+        &copy; 2023 Tool Nest. All rights reserved.
+      </div>
+    </footer>
+  </div>
 </body>
 </html>
 
-  
-   
+
