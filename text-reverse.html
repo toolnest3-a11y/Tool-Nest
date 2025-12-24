@@ -1,83 +1,1136 @@
   
-  <!DOCTYPE html>
-<html>
+
+
+<!DOCTYPE html>
+<html lang="en">
 <head>
-  <title>Text Reversal Tool</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background: #f0f8ff;
-      padding: 20px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced Text Reversal Tool | Reverse String & Text Manipulation | Tool Nest</title>
+    <meta name="description" content="Advanced text reversal tool with multiple reversal modes: character reversal, word reversal, line reversal, and palindrome detection. Perfect for developers, writers, and data analysts.">
+    <meta name="keywords" content="text reversal tool, reverse text, string reversal, text manipulator, reverse words, reverse characters, palindrome checker, text processing, string manipulation, online text tool">
+    <meta name="author" content="Tool Nest">
+    <link rel="icon" href="favicon-16x16.png" type="image/x-icon">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
 
-    h2 {
-      color: #007bff;
-      text-align: center;
-    }
+        body {
+            background-color: #0f172a;
+            color: #e2e8f0;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(15, 23, 42, 0.9) 0%, transparent 20%),
+                radial-gradient(circle at 90% 80%, rgba(30, 41, 59, 0.8) 0%, transparent 20%);
+        }
 
-    #textBox {
-      width: 90%;
-      max-width: 500px;
-      min-height: 150px;
-      padding: 10px;
-      font-size: 16px;
-      border-radius: 8px;
-      border: 1px solid #ccc;
-      background: #fff;
-      margin-bottom: 15px;
-      outline: none;
-      overflow-y: auto;
-      white-space: pre-wrap;
-    }
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
 
-    button {
-      padding: 10px 20px;
-      font-size: 16px;
-      border: none;
-      background-color: #007bff;
-      color: white;
-      border-radius: 8px;
-      cursor: pointer;
-      margin-bottom: 15px;
-    }
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
 
-    button:hover {
-      background-color: #0056b3;
-    }
+        .logo {
+            font-size: 2.5rem;
+            font-weight: 800;
+            background: linear-gradient(90deg, #3b82f6, #1d4ed8);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 10px;
+            letter-spacing: 1px;
+        }
 
-    #output {
-      font-size: 16px;
-      margin-top: 20px;
-      color: #333;
-    }
-  </style>
+        .tagline {
+            font-size: 1.1rem;
+            color: #94a3b8;
+            margin-bottom: 30px;
+        }
+
+        .main-card {
+            background: linear-gradient(145deg, #1e293b, #0f172a);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 
+                0 10px 30px rgba(0, 0, 0, 0.3),
+                0 0 0 1px rgba(255, 255, 255, 0.05),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            margin-bottom: 40px;
+            transition: transform 0.3s ease;
+        }
+
+        .main-card:hover {
+            transform: translateY(-5px);
+        }
+
+        h2 {
+            color: #f1f5f9;
+            font-size: 1.8rem;
+            margin-bottom: 25px;
+            text-align: center;
+            position: relative;
+            padding-bottom: 15px;
+        }
+
+        h2:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(90deg, #3b82f6, #1d4ed8);
+            border-radius: 2px;
+        }
+
+        .tool-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        @media (max-width: 768px) {
+            .tool-container {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .input-section, .output-section {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .input-section label, .output-section label {
+            margin-bottom: 12px;
+            font-weight: 600;
+            color: #cbd5e1;
+            font-size: 1.1rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .input-section label i, .output-section label i {
+            color: #3b82f6;
+        }
+
+        textarea {
+            width: 100%;
+            min-height: 180px;
+            padding: 20px;
+            background-color: #0f172a;
+            border: 2px solid #475569;
+            border-radius: 12px;
+            color: #f1f5f9;
+            font-size: 1rem;
+            line-height: 1.6;
+            resize: vertical;
+            font-family: 'Segoe UI', sans-serif;
+            transition: all 0.3s ease;
+        }
+
+        textarea:focus {
+            outline: none;
+            border-color: #3b82f6;
+            box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.2);
+        }
+
+        #outputText {
+            background-color: #1e293b;
+            border-color: #10b981;
+        }
+
+        .text-stats {
+            display: flex;
+            gap: 20px;
+            margin-top: 15px;
+            flex-wrap: wrap;
+        }
+
+        .stat-item {
+            display: flex;
+            flex-direction: column;
+            background-color: #1e293b;
+            padding: 10px 15px;
+            border-radius: 8px;
+            border: 1px solid #334155;
+            min-width: 120px;
+        }
+
+        .stat-label {
+            font-size: 0.85rem;
+            color: #94a3b8;
+            margin-bottom: 5px;
+        }
+
+        .stat-value {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #3b82f6;
+        }
+
+        .reversal-modes {
+            background-color: #1e293b;
+            border-radius: 12px;
+            padding: 25px;
+            margin-top: 30px;
+            border: 1px solid #334155;
+        }
+
+        .reversal-modes h3 {
+            color: #f1f5f9;
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .mode-selector {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .mode-btn {
+            padding: 15px;
+            background-color: #0f172a;
+            border: 2px solid #334155;
+            border-radius: 10px;
+            color: #e2e8f0;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .mode-btn:hover {
+            border-color: #3b82f6;
+            transform: translateY(-2px);
+        }
+
+        .mode-btn.active {
+            background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+            border-color: #3b82f6;
+            color: white;
+        }
+
+        .mode-icon {
+            font-size: 1.5rem;
+            margin-bottom: 8px;
+        }
+
+        .mode-name {
+            font-size: 1rem;
+            font-weight: 600;
+        }
+
+        .mode-desc {
+            font-size: 0.8rem;
+            color: #94a3b8;
+            margin-top: 5px;
+        }
+
+        .options-panel {
+            background-color: #0f172a;
+            border-radius: 10px;
+            padding: 20px;
+            margin-top: 20px;
+            border: 1px solid #334155;
+        }
+
+        .option-group {
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .option-group label {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: #cbd5e1;
+            font-weight: 500;
+            cursor: pointer;
+        }
+
+        input[type="checkbox"] {
+            width: 18px;
+            height: 18px;
+            accent-color: #3b82f6;
+            cursor: pointer;
+        }
+
+        .action-buttons {
+            display: flex;
+            gap: 15px;
+            margin: 30px 0;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .action-btn {
+            padding: 16px 28px;
+            border: none;
+            border-radius: 12px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            min-width: 180px;
+        }
+
+        .reverse-btn {
+            background: linear-gradient(90deg, #3b82f6, #1d4ed8);
+            color: white;
+        }
+
+        .reverse-btn:hover {
+            background: linear-gradient(90deg, #1d4ed8, #1e40af);
+            box-shadow: 0 5px 15px rgba(59, 130, 246, 0.3);
+            transform: translateY(-2px);
+        }
+
+        .clear-btn {
+            background-color: #334155;
+            color: #e2e8f0;
+        }
+
+        .clear-btn:hover {
+            background-color: #475569;
+            transform: translateY(-2px);
+        }
+
+        .copy-btn {
+            background-color: #1e293b;
+            color: #e2e8f0;
+            border: 2px solid #475569;
+        }
+
+        .copy-btn:hover {
+            background-color: #475569;
+            transform: translateY(-2px);
+        }
+
+        .analysis-panel {
+            background-color: #1e293b;
+            border-radius: 12px;
+            padding: 25px;
+            margin-top: 30px;
+            border: 1px solid #334155;
+        }
+
+        .analysis-panel h3 {
+            color: #f1f5f9;
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .analysis-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 15px;
+        }
+
+        .analysis-item {
+            background-color: #0f172a;
+            padding: 15px;
+            border-radius: 10px;
+            border: 1px solid #334155;
+            transition: all 0.2s ease;
+        }
+
+        .analysis-item:hover {
+            border-color: #3b82f6;
+            transform: translateY(-2px);
+        }
+
+        .analysis-title {
+            font-weight: 600;
+            color: #3b82f6;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .analysis-value {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #f1f5f9;
+            margin-bottom: 5px;
+        }
+
+        .analysis-desc {
+            color: #94a3b8;
+            font-size: 0.85rem;
+            line-height: 1.4;
+        }
+
+        .palindrome-status {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 15px;
+            border-radius: 8px;
+            margin-top: 10px;
+            font-weight: 600;
+        }
+
+        .palindrome-status.true {
+            background-color: rgba(16, 185, 129, 0.1);
+            color: #10b981;
+            border-left: 4px solid #10b981;
+        }
+
+        .palindrome-status.false {
+            background-color: rgba(239, 68, 68, 0.1);
+            color: #ef4444;
+            border-left: 4px solid #ef4444;
+        }
+
+        .api-section {
+            background-color: #1e293b;
+            border-radius: 15px;
+            padding: 25px;
+            margin-top: 30px;
+            border: 1px solid #334155;
+        }
+
+        .api-section h3 {
+            color: #f1f5f9;
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .api-code {
+            background-color: #0f172a;
+            border-radius: 8px;
+            padding: 15px;
+            font-family: 'Courier New', monospace;
+            color: #22c55e;
+            overflow-x: auto;
+            margin-top: 10px;
+            border: 1px solid #334155;
+            font-size: 0.9rem;
+        }
+
+        .seo-description {
+            background-color: #1e293b;
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 40px;
+            border-left: 4px solid #3b82f6;
+        }
+
+        .seo-description h3 {
+            color: #f1f5f9;
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+
+        .seo-description p {
+            color: #94a3b8;
+            line-height: 1.7;
+            margin-bottom: 15px;
+        }
+
+        .seo-keywords {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .keyword {
+            background-color: #334155;
+            color: #cbd5e1;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+        }
+
+        footer {
+            text-align: center;
+            color: #64748b;
+            padding: 20px;
+            width: 100%;
+            border-top: 1px solid #334155;
+            margin-top: 20px;
+        }
+
+        .footer-logo {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: #3b82f6;
+            margin-bottom: 10px;
+        }
+
+        /* Notification */
+        .notification {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background-color: #10b981;
+            color: white;
+            padding: 12px 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+            display: none;
+            align-items: center;
+            gap: 10px;
+            animation: slideIn 0.3s ease;
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateX(100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .mode-selector {
+                grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            }
+            
+            .action-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .action-btn {
+                width: 100%;
+                max-width: 300px;
+            }
+        }
+    </style>
 </head>
 <body>
+    <div class="container">
+        <header>
+            <div class="logo">Text Reversal Pro</div>
+            <div class="tagline">Advanced Text Manipulation & String Reversal Tool</div>
+        </header>
+        
+        <div class="main-card">
+            <h2>Advanced Text Reversal Tool</h2>
+            
+            <div class="tool-container">
+                <div class="input-section">
+                    <label for="inputText"><i>📝</i> Input Text</label>
+                    <textarea id="inputText" placeholder="Enter or paste your text here to reverse...">Hello World! This is an example text for the reversal tool.</textarea>
+                    
+                    <div class="text-stats">
+                        <div class="stat-item">
+                            <div class="stat-label">Characters</div>
+                            <div class="stat-value" id="charCount">0</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-label">Words</div>
+                            <div class="stat-value" id="wordCount">0</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-label">Lines</div>
+                            <div class="stat-value" id="lineCount">0</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-label">Sentences</div>
+                            <div class="stat-value" id="sentenceCount">0</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="output-section">
+                    <label for="outputText"><i>🔄</i> Reversed Text Output</label>
+                    <textarea id="outputText" placeholder="Reversed text will appear here..." readonly></textarea>
+                </div>
+            </div>
 
-  <h2>Text Reversal Tool</h2>
+            <div class="reversal-modes">
+                <h3><span>⚙️</span> Reversal Modes</h3>
+                
+                <div class="mode-selector" id="modeSelector">
+                    <!-- Mode buttons will be populated by JavaScript -->
+                </div>
+                
+                <div class="options-panel" id="optionsPanel">
+                    <!-- Options will be shown based on selected mode -->
+                </div>
+            </div>
+            
+            <div class="action-buttons">
+                <button class="action-btn reverse-btn" onclick="reverseText()">
+                    <span>🔄</span> Reverse Text
+                </button>
+                <button class="action-btn clear-btn" onclick="clearText()">
+                    <span>🗑️</span> Clear All
+                </button>
+                <button class="action-btn copy-btn" onclick="copyOutput()">
+                    <span>📋</span> Copy Output
+                </button>
+            </div>
+            
+            <div class="analysis-panel">
+                <h3><span>📊</span> Text Analysis</h3>
+                <div class="analysis-grid">
+                    <div class="analysis-item">
+                        <div class="analysis-title"><span>🔤</span> Original Text</div>
+                        <div class="analysis-value" id="originalPreview">-</div>
+                        <div class="analysis-desc">First 30 characters of input text</div>
+                    </div>
+                    <div class="analysis-item">
+                        <div class="analysis-title"><span>🔃</span> Reversed Text</div>
+                        <div class="analysis-value" id="reversedPreview">-</div>
+                        <div class="analysis-desc">First 30 characters of reversed text</div>
+                    </div>
+                    <div class="analysis-item">
+                        <div class="analysis-title"><span>📏</span> Reversal Ratio</div>
+                        <div class="analysis-value" id="reversalRatio">0%</div>
+                        <div class="analysis-desc">Percentage of reversible characters</div>
+                    </div>
+                    <div class="analysis-item">
+                        <div class="analysis-title"><span>✨</span> Palindrome Check</div>
+                        <div id="palindromeContainer">
+                            <!-- Palindrome status will be inserted here -->
+                        </div>
+                        <div class="analysis-desc">Whether text reads same forwards & backwards</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="api-section">
+                <h3><span>🔧</span> Text Reversal API</h3>
+                <p>Use our API to reverse text programmatically:</p>
+                <div class="api-code">
+// API Endpoint: POST /api/reverse-text<br>
+// Request body: {"text": "Hello World", "mode": "characters", "options": {"preserveSpacing": true, "preserveCase": true}}<br>
+// Response: {"original": "Hello World", "reversed": "dlroW olleH", "mode": "characters", "palindrome": false}
+                </div>
+            </div>
+        </div>
+        
+        <div class="seo-description">
+            <h3>Advanced Text Reversal Tool for String Manipulation</h3>
+            <p>Our professional Text Reversal Tool provides comprehensive text manipulation capabilities with multiple reversal modes. Reverse characters, words, lines, or entire paragraphs with customizable options to preserve spacing, case, and punctuation. Perfect for developers, writers, data analysts, and anyone working with text processing.</p>
+            <p>Text reversal is essential for various applications including data obfuscation, encoding/decoding, palindrome detection, string manipulation in programming, and creative text transformations. Our tool handles complex text structures while providing detailed analytics about the reversal process, including palindrome detection and reversal efficiency metrics.</p>
+            <p>Whether you're testing algorithms, creating encoded messages, analyzing text patterns, or simply exploring creative text transformations, our advanced reversal tool provides the precision and flexibility you need. The intuitive interface with real-time previews and detailed statistics ensures accurate results for all your text manipulation requirements.</p>
+            
+            <div class="seo-keywords">
+                <span class="keyword">text reversal tool</span>
+                <span class="keyword">reverse text</span>
+                <span class="keyword">string reversal</span>
+                <span class="keyword">text manipulator</span>
+                <span class="keyword">reverse words</span>
+                <span class="keyword">reverse characters</span>
+                <span class="keyword">palindrome checker</span>
+                <span class="keyword">text processing</span>
+                <span class="keyword">string manipulation</span>
+                <span class="keyword">online text tool</span>
+                <span class="keyword">data transformation</span>
+                <span class="keyword">text analysis</span>
+            </div>
+        </div>
+        
+        <footer>
+            <div class="footer-logo">Tool Nest</div>
+            <p>Advanced Text Processing Tools • Powering Creative Text Manipulation</p>
+            <p>© 2023 Tool Nest. All rights reserved. This tool is provided for educational and professional use.</p>
+        </footer>
+    </div>
 
-  <div id="textBox" contenteditable="true" placeholder="Paste or type text here..."></div>
+    <div id="notification" class="notification"></div>
 
-  <button onclick="reverseText()">Reverse Text</button>
+    <script>
+        // Available reversal modes
+        const reversalModes = [
+            { 
+                id: 'characters', 
+                name: 'Character Reversal', 
+                icon: '🔤',
+                description: 'Reverse order of all characters',
+                options: ['preserveSpacing', 'preserveCase', 'ignorePunctuation']
+            },
+            { 
+                id: 'words', 
+                name: 'Word Reversal', 
+                icon: '📝',
+                description: 'Reverse order of words only',
+                options: ['preserveWordOrder', 'preservePunctuation']
+            },
+            { 
+                id: 'lines', 
+                name: 'Line Reversal', 
+                icon: '📄',
+                description: 'Reverse order of lines',
+                options: ['trimLines', 'preserveEmptyLines']
+            },
+            { 
+                id: 'sentences', 
+                name: 'Sentence Reversal', 
+                icon: '🔠',
+                description: 'Reverse order of sentences',
+                options: ['preservePunctuation', 'capitalizeFirst']
+            },
+            { 
+                id: 'mirror', 
+                name: 'Mirror Text', 
+                icon: '🪞',
+                description: 'Create mirror reflection',
+                options: ['verticalMirror', 'horizontalMirror']
+            },
+            { 
+                id: 'palindrome', 
+                name: 'Palindrome Creator', 
+                icon: '✨',
+                description: 'Create palindrome from text',
+                options: ['includeOriginal', 'mirrorMode']
+            }
+        ];
 
-  <div id="output"></div>
-
-  <script>
-    function reverseText() {
-      var content = document.getElementById("textBox").innerText.trim();
-      
-      // Reverse the input text
-      var reversedText = content.split('').reverse().join('');
-      
-      document.getElementById("output").innerText = "Reversed Text: " + reversedText;
-    }
-  </script>
-
+        // Current selected mode and options
+        let selectedMode = 'characters';
+        let options = {
+            preserveSpacing: true,
+            preserveCase: true,
+            ignorePunctuation: false,
+            preserveWordOrder: false,
+            preservePunctuation: true,
+            trimLines: true,
+            preserveEmptyLines: false,
+            capitalizeFirst: true,
+            verticalMirror: true,
+            horizontalMirror: false,
+            includeOriginal: true,
+            mirrorMode: 'full'
+        };
+        
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            populateModeSelector();
+            updateOptionsPanel();
+            updateTextStats();
+            updateAnalysis();
+            
+            // Auto-update stats on input
+            document.getElementById('inputText').addEventListener('input', () => {
+                updateTextStats();
+                updateAnalysis();
+            });
+        });
+        
+        // Populate mode selector
+        function populateModeSelector() {
+            const container = document.getElementById('modeSelector');
+            container.innerHTML = '';
+            
+            reversalModes.forEach(mode => {
+                const button = document.createElement('button');
+                button.className = `mode-btn ${mode.id === selectedMode ? 'active' : ''}`;
+                button.onclick = () => selectMode(mode.id);
+                
+                button.innerHTML = `
+                    <div class="mode-icon">${mode.icon}</div>
+                    <div class="mode-name">${mode.name}</div>
+                    <div class="mode-desc">${mode.description}</div>
+                `;
+                
+                container.appendChild(button);
+            });
+        }
+        
+        // Select mode
+        function selectMode(modeId) {
+            selectedMode = modeId;
+            
+            // Update active button
+            document.querySelectorAll('.mode-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            event.target.closest('.mode-btn').classList.add('active');
+            
+            // Update options panel
+            updateOptionsPanel();
+            
+            showNotification(`Selected ${reversalModes.find(m => m.id === modeId).name} mode`, 'info');
+        }
+        
+        // Update options panel based on selected mode
+        function updateOptionsPanel() {
+            const panel = document.getElementById('optionsPanel');
+            const mode = reversalModes.find(m => m.id === selectedMode);
+            
+            let html = '<div style="margin-bottom: 15px; color: #94a3b8; font-size: 0.9rem;">Customize reversal options:</div>';
+            
+            mode.options.forEach(option => {
+                const optionName = getOptionDisplayName(option);
+                const isChecked = options[option];
+                
+                html += `
+                    <div class="option-group">
+                        <label>
+                            <input type="checkbox" ${isChecked ? 'checked' : ''} 
+                                   onchange="toggleOption('${option}', this.checked)">
+                            ${optionName}
+                        </label>
+                    </div>
+                `;
+            });
+            
+            panel.innerHTML = html;
+        }
+        
+        // Get display name for option
+        function getOptionDisplayName(optionKey) {
+            const names = {
+                preserveSpacing: 'Preserve spacing',
+                preserveCase: 'Preserve case',
+                ignorePunctuation: 'Ignore punctuation',
+                preserveWordOrder: 'Keep word order',
+                preservePunctuation: 'Preserve punctuation',
+                trimLines: 'Trim lines',
+                preserveEmptyLines: 'Keep empty lines',
+                capitalizeFirst: 'Capitalize first letter',
+                verticalMirror: 'Vertical mirror',
+                horizontalMirror: 'Horizontal mirror',
+                includeOriginal: 'Include original text',
+                mirrorMode: 'Full mirror mode'
+            };
+            
+            return names[optionKey] || optionKey;
+        }
+        
+        // Toggle option
+        function toggleOption(option, isChecked) {
+            options[option] = isChecked;
+        }
+        
+        // Update text statistics
+        function updateTextStats() {
+            const text = document.getElementById('inputText').value;
+            
+            // Character count
+            document.getElementById('charCount').textContent = text.length;
+            
+            // Word count (split by whitespace and filter empty strings)
+            const words = text.trim().split(/\s+/).filter(word => word.length > 0);
+            document.getElementById('wordCount').textContent = words.length;
+            
+            // Line count
+            const lines = text.split('\n');
+            document.getElementById('lineCount').textContent = lines.length;
+            
+            // Sentence count (simple detection)
+            const sentences = text.split(/[.!?]+/).filter(sentence => sentence.trim().length > 0);
+            document.getElementById('sentenceCount').textContent = sentences.length;
+        }
+        
+        // Update analysis panel
+        function updateAnalysis() {
+            const text = document.getElementById('inputText').value;
+            const reversed = reverseByMode(text, selectedMode, options);
+            
+            // Original preview
+            const originalPreview = text.length > 30 ? text.substring(0, 30) + '...' : text;
+            document.getElementById('originalPreview').textContent = originalPreview || '-';
+            
+            // Reversed preview
+            const reversedPreview = reversed.length > 30 ? reversed.substring(0, 30) + '...' : reversed;
+            document.getElementById('reversedPreview').textContent = reversedPreview || '-';
+            
+            // Reversal ratio
+            const reversibleChars = text.replace(/[^a-zA-Z0-9]/g, '').length;
+            const totalChars = text.length;
+            const ratio = totalChars > 0 ? Math.round((reversibleChars / totalChars) * 100) : 0;
+            document.getElementById('reversalRatio').textContent = `${ratio}%`;
+            
+            // Palindrome check
+            const isPalindrome = checkPalindrome(text);
+            updatePalindromeStatus(isPalindrome);
+        }
+        
+        // Update palindrome status display
+        function updatePalindromeStatus(isPalindrome) {
+            const container = document.getElementById('palindromeContainer');
+            
+            let html = '';
+            if (isPalindrome) {
+                html = `
+                    <div class="palindrome-status true">
+                        <span>✅</span> This text is a palindrome!
+                    </div>
+                `;
+            } else {
+                html = `
+                    <div class="palindrome-status false">
+                        <span>❌</span> Not a palindrome
+                    </div>
+                `;
+            }
+            
+            container.innerHTML = html;
+        }
+        
+        // Check if text is palindrome
+        function checkPalindrome(text) {
+            const cleanText = text.toLowerCase().replace(/[^a-z0-9]/g, '');
+            if (cleanText.length < 2) return false;
+            
+            const reversed = cleanText.split('').reverse().join('');
+            return cleanText === reversed;
+        }
+        
+        // Reverse text based on selected mode and options
+        function reverseByMode(text, mode, opts) {
+            if (!text.trim()) return '';
+            
+            switch(mode) {
+                case 'characters':
+                    return reverseCharacters(text, opts);
+                    
+                case 'words':
+                    return reverseWords(text, opts);
+                    
+                case 'lines':
+                    return reverseLines(text, opts);
+                    
+                case 'sentences':
+                    return reverseSentences(text, opts);
+                    
+                case 'mirror':
+                    return createMirrorText(text, opts);
+                    
+                case 'palindrome':
+                    return createPalindrome(text, opts);
+                    
+                default:
+                    return text.split('').reverse().join('');
+            }
+        }
+        
+        // Character reversal with options
+        function reverseCharacters(text, opts) {
+            if (opts.ignorePunctuation) {
+                const letters = text.match(/[a-zA-Z]/g) || [];
+                const reversedLetters = letters.reverse();
+                let result = text;
+                
+                // Replace letters with reversed ones
+                let letterIndex = 0;
+                result = result.replace(/[a-zA-Z]/g, () => {
+                    return reversedLetters[letterIndex++];
+                });
+                
+                return result;
+            }
+            
+            return text.split('').reverse().join('');
+        }
+        
+        // Word reversal with options
+        function reverseWords(text, opts) {
+            const words = text.split(/\s+/);
+            
+            if (opts.preserveWordOrder) {
+                // Reverse characters within each word but keep word order
+                return words.map(word => reverseCharacters(word, opts)).join(' ');
+            } else {
+                // Reverse order of words
+                return words.reverse().join(' ');
+            }
+        }
+        
+        // Line reversal with options
+        function reverseLines(text, opts) {
+            let lines = text.split('\n');
+            
+            if (opts.trimLines) {
+                lines = lines.map(line => line.trim());
+            }
+            
+            if (!opts.preserveEmptyLines) {
+                lines = lines.filter(line => line.length > 0);
+            }
+            
+            return lines.reverse().join('\n');
+        }
+        
+        // Sentence reversal with options
+        function reverseSentences(text, opts) {
+            const sentences = text.split(/[.!?]+/).filter(s => s.trim().length > 0);
+            const reversed = sentences.reverse();
+            
+            let result = reversed.join('. ');
+            
+            if (opts.capitalizeFirst && result.length > 0) {
+                result = result.charAt(0).toUpperCase() + result.slice(1);
+            }
+            
+            return result;
+        }
+        
+        // Create mirror text
+        function createMirrorText(text, opts) {
+            let result = text;
+            
+            if (opts.verticalMirror) {
+                result = result.split('').reverse().join('');
+            }
+            
+            if (opts.horizontalMirror) {
+                // Simple horizontal mirror simulation
+                const mirrorMap = {
+                    'a': 'ɐ', 'b': 'q', 'c': 'ɔ', 'd': 'p', 'e': 'ǝ',
+                    'f': 'ɟ', 'g': 'ƃ', 'h': 'ɥ', 'i': 'ᴉ', 'j': 'ɾ',
+                    'k': 'ʞ', 'l': 'l', 'm': 'ɯ', 'n': 'u', 'o': 'o',
+                    'p': 'd', 'q': 'b', 'r': 'ɹ', 's': 's', 't': 'ʇ',
+                    'u': 'n', 'v': 'ʌ', 'w': 'ʍ', 'x': 'x', 'y': 'ʎ',
+                    'z': 'z', 'A': '∀', 'B': 'q', 'C': 'Ɔ', 'D': 'p',
+                    'E': 'Ǝ', 'F': 'Ⅎ', 'G': 'פ', 'H': 'H', 'I': 'I',
+                    'J': 'ſ', 'K': 'ʞ', 'L': '˥', 'M': 'W', 'N': 'N',
+                    'O': 'O', 'P': 'Ԁ', 'Q': 'Q', 'R': 'ɹ', 'S': 'S',
+                    'T': '┴', 'U': '∩', 'V': 'Λ', 'W': 'M', 'X': 'X',
+                    'Y': '⅄', 'Z': 'Z'
+                };
+                
+                result = result.split('').map(char => mirrorMap[char] || char).join('');
+            }
+            
+            return result;
+        }
+        
+        // Create palindrome
+        function createPalindrome(text, opts) {
+            const cleanText = text.toLowerCase().replace(/[^a-z0-9]/g, '');
+            if (cleanText.length === 0) return '';
+            
+            let palindrome = cleanText + cleanText.split('').reverse().slice(1).join('');
+            
+            if (opts.includeOriginal) {
+                return text + ' | ' + palindrome;
+            }
+            
+            return palindrome;
+        }
+        
+        // Main reverse function
+        function reverseText() {
+            const inputText = document.getElementById('inputText').value;
+            
+            if (!inputText.trim()) {
+                showNotification('Please enter text to reverse', 'error');
+                return;
+            }
+            
+            const reversedText = reverseByMode(inputText, selectedMode, options);
+            document.getElementById('outputText').value = reversedText;
+            
+            updateAnalysis();
+            showNotification('Text reversed successfully!', 'success');
+        }
+        
+        // Clear all text
+        function clearText() {
+            document.getElementById('inputText').value = '';
+            document.getElementById('outputText').value = '';
+            updateTextStats();
+            updateAnalysis();
+            showNotification('All text cleared', 'info');
+        }
+        
+        // Copy output to clipboard
+        function copyOutput() {
+            const outputText = document.getElementById('outputText').value;
+            
+            if (!outputText.trim()) {
+                showNotification('No output to copy', 'error');
+                return;
+            }
+            
+            navigator.clipboard.writeText(outputText).then(() => {
+                showNotification('Output copied to clipboard!', 'success');
+            }).catch(err => {
+                showNotification('Failed to copy text', 'error');
+            });
+        }
+        
+        // Show notification
+        function showNotification(message, type) {
+            const notification = document.getElementById('notification');
+            notification.textContent = message;
+            notification.style.backgroundColor = 
+                type === 'success' ? '#10b981' : 
+                type === 'error' ? '#ef4444' : 
+                type === 'info' ? '#3b82f6' : '#94a3b8';
+            notification.style.display = 'flex';
+            
+            setTimeout(() => {
+                notification.style.display = 'none';
+            }, 3000);
+        }
+        
+        // Keyboard shortcuts
+        document.addEventListener('keydown', (event) => {
+            // Ctrl/Cmd + R to reverse
+            if ((event.ctrlKey || event.metaKey) && event.key === 'r') {
+                event.preventDefault();
+                reverseText();
+            }
+            
+            // Ctrl/Cmd + C to copy output
+            if ((event.ctrlKey || event.metaKey) && event.key === 'c') {
+                const activeElement = document.activeElement;
+                if (activeElement.id === 'outputText' && activeElement.value) {
+                    event.preventDefault();
+                    copyOutput();
+                }
+            }
+            
+            // Escape to clear
+            if (event.key === 'Escape') {
+                clearText();
+            }
+        });
+    </script>
 </body>
 </html>
 
-  
-  
+
+ 
