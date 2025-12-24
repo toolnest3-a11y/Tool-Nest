@@ -1,0 +1,376 @@
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Security Policy | Tool Nest</title>
+  <link rel="icon" href="favicon-16x16.png" type="image/x-icon">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root {
+      --primary-dark: #0a192f;
+      --secondary-dark: #112240;
+      --accent-blue: #3b82f6;
+      --light-blue: #60a5fa;
+      --text-primary: #f8fafc;
+      --text-secondary: #cbd5e1;
+      --border-color: #2d3748;
+      --gradient-bg: linear-gradient(135deg, #0a192f 0%, #112240 100%);
+      --border-radius: 8px;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      background: var(--gradient-bg);
+      color: var(--text-primary);
+      line-height: 1.6;
+      min-height: 100vh;
+      padding: 20px;
+    }
+
+    .security-container {
+      max-width: 1000px;
+      margin: 0 auto;
+      background: rgba(17, 34, 64, 0.8);
+      border-radius: var(--border-radius);
+      padding: 40px;
+      border: 1px solid var(--border-color);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    }
+
+    h1 {
+      color: var(--accent-blue);
+      text-align: center;
+      margin-bottom: 30px;
+      font-size: 2.5rem;
+      border-bottom: 2px solid var(--accent-blue);
+      padding-bottom: 15px;
+    }
+
+    h2 {
+      color: var(--light-blue);
+      margin: 25px 0 15px 0;
+      font-size: 1.4rem;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    h2 i {
+      font-size: 1.2rem;
+    }
+
+    h3 {
+      color: var(--light-blue);
+      margin: 20px 0 10px 0;
+      font-size: 1.2rem;
+      font-weight: 600;
+    }
+
+    p {
+      color: var(--text-secondary);
+      margin-bottom: 15px;
+      font-size: 1.05rem;
+    }
+
+    ul {
+      margin-left: 25px;
+      margin-bottom: 20px;
+    }
+
+    li {
+      color: var(--text-secondary);
+      margin-bottom: 8px;
+      position: relative;
+    }
+
+    li::before {
+      content: '•';
+      color: var(--accent-blue);
+      font-weight: bold;
+      display: inline-block;
+      width: 1em;
+      margin-left: -1em;
+    }
+
+    .security-box {
+      background: rgba(59, 130, 246, 0.1);
+      border-left: 3px solid var(--accent-blue);
+      padding: 15px;
+      border-radius: 5px;
+      margin: 20px 0;
+    }
+
+    .security-box p {
+      margin: 0;
+      color: var(--text-primary);
+    }
+
+    .security-box i {
+      color: var(--accent-blue);
+      margin-right: 10px;
+    }
+
+    .measures-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px;
+      margin: 20px 0;
+    }
+
+    .measure-card {
+      background: rgba(255, 255, 255, 0.05);
+      padding: 20px;
+      border-radius: 8px;
+      border: 1px solid var(--border-color);
+      transition: transform 0.3s;
+    }
+
+    .measure-card:hover {
+      transform: translateY(-5px);
+      border-color: var(--accent-blue);
+    }
+
+    .measure-card h4 {
+      color: var(--accent-blue);
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .date {
+      text-align: center;
+      color: var(--text-secondary);
+      margin-bottom: 30px;
+      font-size: 0.9rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    .date i {
+      color: var(--accent-blue);
+    }
+
+    /* Footer */
+    footer {
+      margin-top: 40px;
+      text-align: center;
+      padding-top: 20px;
+      border-top: 1px solid var(--border-color);
+    }
+
+    .footer-logo {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 1.8rem;
+      font-weight: 700;
+      background: linear-gradient(135deg, var(--accent-blue), var(--light-blue));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      text-decoration: none;
+      margin-bottom: 15px;
+    }
+
+    .footer-logo i {
+      font-size: 1.8rem;
+    }
+
+    .copyright {
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+      margin-top: 10px;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .security-container {
+        padding: 20px;
+      }
+      
+      h1 {
+        font-size: 2rem;
+      }
+      
+      h2 {
+        font-size: 1.2rem;
+      }
+      
+      .measures-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      body {
+        padding: 10px;
+      }
+    }
+
+    /* Scrollbar */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: var(--secondary-dark);
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: var(--accent-blue);
+      border-radius: 4px;
+    }
+  </style>
+</head>
+<body>
+  <div class="security-container">
+    <h1>Security Policy</h1>
+    
+    <div class="date">
+      <i class="fas fa-calendar-alt"></i>
+      Last Updated: December 2023
+    </div>
+
+    <p>At Tool Nest, we take the security of our platform and your data very seriously. This Security Policy outlines our commitment to maintaining a secure environment for all users of our online tools and utilities.</p>
+
+    <div class="security-box">
+      <p><i class="fas fa-shield-alt"></i> <strong>Our Commitment:</strong> We implement industry-standard security measures to protect your data and ensure a safe user experience. Security is integrated into every aspect of our platform.</p>
+    </div>
+
+    <h2><i class="fas fa-lock"></i> Data Protection Measures</h2>
+    <p>We employ multiple layers of security to protect your information and ensure the integrity of our services:</p>
+
+    <div class="measures-grid">
+      <div class="measure-card">
+        <h4><i class="fas fa-lock"></i> Encryption</h4>
+        <p>All data transmission to and from Tool Nest is encrypted using SSL/TLS protocols. We enforce HTTPS across our entire platform to protect data in transit.</p>
+      </div>
+      
+      <div class="measure-card">
+        <h4><i class="fas fa-server"></i> Secure Infrastructure</h4>
+        <p>Our servers are hosted on secure, reputable cloud platforms with regular security updates, firewalls, and intrusion detection systems.</p>
+      </div>
+      
+      <div class="measure-card">
+        <h4><i class="fas fa-sync-alt"></i> Regular Updates</h4>
+        <p>We maintain our software stack with the latest security patches and updates to protect against known vulnerabilities.</p>
+      </div>
+      
+      <div class="measure-card">
+        <h4><i class="fas fa-eye"></i> Monitoring</h4>
+        <p>Continuous security monitoring and logging help us detect and respond to potential threats in real-time.</p>
+      </div>
+    </div>
+
+    <h2><i class="fas fa-database"></i> Data Handling & Storage</h2>
+    <p>Our approach to data handling prioritizes security and privacy:</p>
+    
+    <ul>
+      <li><strong>Minimal Data Collection:</strong> We only collect essential data necessary for tool functionality</li>
+      <li><strong>No Personal Data Storage:</strong> We do not store personally identifiable information unless explicitly provided by users for specific tools</li>
+      <li><strong>Anonymous Usage Data:</strong> Analytics data is anonymized and aggregated</li>
+      <li><strong>Secure Data Processing:</strong> All data processing occurs in secure, controlled environments</li>
+      <li><strong>Regular Data Purging:</strong> Temporary data is automatically purged after reasonable periods</li>
+    </ul>
+
+    <h2><i class="fas fa-user-shield"></i> User Account Security</h2>
+    <p>For any features requiring user accounts, we implement strong security measures:</p>
+    
+    <div class="security-box">
+      <p><i class="fas fa-info-circle"></i> <strong>Note:</strong> Most Tool Nest features do not require user accounts. For any account-based features, we implement additional security layers.</p>
+    </div>
+
+    <ul>
+      <li><strong>Password Protection:</strong> Strong password requirements and encryption</li>
+      <li><strong>Session Management:</strong> Secure session handling with automatic timeouts</li>
+      <li><strong>Access Controls:</strong> Role-based access controls for different user types</li>
+      <li><strong>Login Monitoring:</strong> Monitoring for suspicious login attempts</li>
+    </ul>
+
+    <h2><i class="fas fa-bug"></i> Vulnerability Management</h2>
+    <p>We maintain a proactive approach to identifying and addressing security vulnerabilities:</p>
+    
+    <ul>
+      <li><strong>Regular Security Audits:</strong> Periodic security assessments of our platform</li>
+      <li><strong>Vulnerability Scanning:</strong> Automated scanning for common security issues</li>
+      <li><strong>Third-Party Assessments:</strong> Independent security reviews when necessary</li>
+      <li><strong>Responsible Disclosure:</strong> We welcome security researchers to report vulnerabilities responsibly</li>
+    </ul>
+
+    <h2><i class="fas fa-exclamation-triangle"></i> Security Incident Response</h2>
+    <p>In the unlikely event of a security incident, we have established response procedures:</p>
+    
+    <ul>
+      <li><strong>Incident Detection:</strong> 24/7 monitoring for security incidents</li>
+      <li><strong>Rapid Response:</strong> Dedicated team ready to respond to security issues</li>
+      <li><strong>Containment & Analysis:</strong> Isolate affected systems and analyze impact</li>
+      <li><strong>Communication:</strong> Transparent communication with affected users when required</li>
+      <li><strong>Recovery & Prevention:</strong> Restore services and implement preventive measures</li>
+    </ul>
+
+    <h2><i class="fas fa-handshake"></i> Third-Party Security</h2>
+    <p>We carefully vet third-party services and implement security measures for integrations:</p>
+    
+    <ul>
+      <li><strong>Vendor Assessment:</strong> Security evaluation of third-party providers</li>
+      <li><strong>Limited Access:</strong> Minimal necessary permissions for third-party services</li>
+      <li><strong>API Security:</strong> Secure implementation of third-party APIs</li>
+      <li><strong>Regular Review:</strong> Ongoing assessment of third-party security practices</li>
+    </ul>
+
+    <h2><i class="fas fa-user-check"></i> User Responsibilities</h2>
+    <p>While we work to secure our platform, users also play a role in security:</p>
+    
+    <ul>
+      <li>Use strong, unique passwords for any account features</li>
+      <li>Keep your browser and operating system updated</li>
+      <li>Use antivirus and security software on your devices</li>
+      <li>Avoid using public computers for sensitive operations</li>
+      <li>Report any suspicious activity immediately</li>
+    </ul>
+
+    <div class="security-box">
+      <p><i class="fas fa-bell"></i> <strong>Reporting Security Issues:</strong> If you discover a security vulnerability or suspect unauthorized access, please report it immediately to security@toolnest.online. We investigate all reports promptly and confidentially.</p>
+    </div>
+
+    <h2><i class="fas fa-sync-alt"></i> Policy Updates</h2>
+    <p>This Security Policy may be updated periodically to reflect changes in our security practices, technological developments, or regulatory requirements. We will notify users of significant changes through our website or email notifications.</p>
+
+    <h2><i class="fas fa-envelope"></i> Contact Security Team</h2>
+    <p>For security-related inquiries or to report security concerns:</p>
+    <ul>
+      <li><strong>Security Email:</strong> security@toolnest.online</li>
+      <li><strong>Encryption:</strong> PGP encryption available upon request</li>
+      <li><strong>Response Time:</strong> Critical issues addressed within 24 hours</li>
+      <li><strong>Confidentiality:</strong> All security reports handled with strict confidentiality</li>
+    </ul>
+
+    <div class="security-box">
+      <p><i class="fas fa-check-circle"></i> <strong>Continuous Improvement:</strong> We continuously evaluate and enhance our security measures to protect against evolving threats and provide you with a safe, reliable platform for all your online tool needs.</p>
+    </div>
+
+    <footer>
+      <div class="footer-logo">
+        <i class="fas fa-tools"></i>
+        Tool Nest
+      </div>
+      <div class="copyright">
+        &copy; 2023 Tool Nest. All rights reserved. | Secure Online Tools Platform
+      </div>
+    </footer>
+  </div>
+</body>
+</html>
+
+
