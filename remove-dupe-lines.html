@@ -807,19 +807,7 @@
     // Load sample data on click if empty
     document.getElementById('inputText').addEventListener('click', function() {
       if (this.value.trim() === '') {
-        this.value = `Apple
-Banana
-Apple
-Orange
-Banana
-Grape
-Apple
-Orange
-Mango
-Banana
-Apple
-Grape
-Orange`;
+        this.value = ``;
         removeDuplicates();
       }
     });
