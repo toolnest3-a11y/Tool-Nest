@@ -1,145 +1,143 @@
-  <!DOCTYPE html>
+
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Base64 Encoder/Decoder – Professional Encoding Tool | Encode & Decode Text/Files | Tool Nest</title>
-    <meta name="description" content="Free online Base64 Encoder/Decoder for professionals. Encode text, files, and binary data to Base64 and decode back instantly. Perfect for developers, APIs, and data transmission.">
-    <meta name="keywords" content="Base64 encoder, Base64 decoder, encode to Base64, decode Base64, Base64 converter, data encoding, binary to text, file encoding, web development tools">
+    <title>Base64 Encoder/Decoder - Secure Online Tool | Encode & Decode Files, Text | Tool Nest</title>
+    <meta name="description" content="Professional Base64 Encoder & Decoder tool for developers. Encode text, files, images to Base64 and decode Base64 strings securely. Fast, reliable, and 100% client-side processing.">
+    <meta name="keywords" content="Base64 encoder, Base64 decoder, encode to Base64, decode Base64, online Base64 tool, file to Base64, Base64 to text, data encoding, web development tools, secure encoding">
     <meta name="author" content="Tool Nest">
     <link rel="icon" href="favicon-16x16.png" type="image/x-icon">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Open Graph Tags for Better SEO -->
+    <meta property="og:title" content="Base64 Encoder/Decoder - Professional Online Tool | Tool Nest">
+    <meta property="og:description" content="Encode and decode Base64 data instantly. Supports text, files, URLs. 100% secure client-side processing.">
+    <meta property="og:type" content="website">
     
     <style>
         :root {
-            /* Premium Color Palette */
-            --primary-blue: #1a56db;
-            --dark-blue: #1e3a8a;
-            --light-blue: #3b82f6;
-            --accent-blue: #60a5fa;
-            --gradient-blue: linear-gradient(135deg, #1a56db 0%, #3b82f6 100%);
-            --gradient-dark: linear-gradient(135deg, #1e3a8a 0%, #1a56db 100%);
-            --premium-gray: #f9fafb;
-            --card-white: #ffffff;
-            --text-dark: #111827;
-            --text-gray: #6b7280;
-            --text-light: #9ca3af;
-            --border-color: #e5e7eb;
-            --success-green: #10b981;
-            --warning-orange: #f59e0b;
-            --error-red: #ef4444;
-            --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.05);
-            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.07), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-            --shadow-lg: 0 10px 25px -5px rgba(0, 0, 0, 0.08), 0 8px 10px -6px rgba(0, 0, 0, 0.04);
-            --shadow-xl: 0 20px 40px -15px rgba(0, 0, 0, 0.1);
+            /* Dark Theme Colors */
+            --primary-color: #3b82f6;
+            --primary-dark: #1d4ed8;
+            --secondary-color: #10b981;
+            --accent-color: #8b5cf6;
+            --dark-bg: #0f172a;
+            --darker-bg: #0a0f1c;
+            --card-bg: #1e293b;
+            --card-hover: #2d3748;
+            --text-primary: #f1f5f9;
+            --text-secondary: #94a3b8;
+            --text-muted: #64748b;
+            --border-color: #334155;
+            --success-color: #10b981;
+            --warning-color: #f59e0b;
+            --error-color: #ef4444;
+            --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.3);
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.4);
+            --shadow-lg: 0 10px 25px -5px rgba(0, 0, 0, 0.5);
+            --shadow-xl: 0 20px 40px -15px rgba(0, 0, 0, 0.6);
             --radius-sm: 8px;
             --radius-md: 12px;
             --radius-lg: 16px;
             --radius-xl: 24px;
             --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
-        
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-        
+
         body {
             font-family: 'Inter', sans-serif;
-            color: var(--text-dark);
-            background: var(--premium-gray);
+            background-color: var(--dark-bg);
+            color: var(--text-primary);
             line-height: 1.6;
-            font-weight: 400;
             min-height: 100vh;
             display: flex;
             flex-direction: column;
         }
-        
+
         h1, h2, h3, h4, h5, h6 {
             font-family: 'Poppins', sans-serif;
             font-weight: 600;
-            line-height: 1.2;
-            margin-bottom: 1rem;
+            line-height: 1.3;
         }
-        
+
         .container {
             width: 100%;
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 20px;
         }
-        
-        /* Premium Header */
-        header {
-            background-color: var(--card-white);
-            box-shadow: var(--shadow-sm);
+
+        /* Header */
+        .header {
+            background: var(--darker-bg);
+            border-bottom: 1px solid var(--border-color);
+            padding: 18px 0;
             position: sticky;
             top: 0;
             z-index: 1000;
-            padding: 18px 0;
-            border-bottom: 1px solid var(--border-color);
         }
-        
-        .header-container {
+
+        .header-content {
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
-        
-        .logo-wrapper {
+
+        .logo {
             display: flex;
             align-items: center;
             gap: 12px;
-        }
-        
-        .logo {
-            font-family: 'Poppins', sans-serif;
-            font-size: 28px;
-            font-weight: 800;
-            background: var(--gradient-blue);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
             text-decoration: none;
-            letter-spacing: -0.5px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
         }
-        
+
         .logo-icon {
-            background: var(--gradient-blue);
-            width: 36px;
-            height: 36px;
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
             border-radius: 10px;
             display: flex;
             align-items: center;
             justify-content: center;
             color: white;
-            font-size: 18px;
+            font-size: 20px;
         }
-        
+
         .logo-text {
             display: flex;
             flex-direction: column;
-            line-height: 1;
         }
-        
-        .logo-tagline {
+
+        .logo-title {
+            font-family: 'Poppins', sans-serif;
+            font-size: 24px;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .logo-subtitle {
             font-size: 11px;
-            font-weight: 500;
-            color: var(--text-gray);
-            margin-top: 2px;
+            color: var(--text-muted);
             letter-spacing: 0.5px;
+            margin-top: 2px;
         }
-        
+
         .back-btn {
             display: flex;
             align-items: center;
             gap: 8px;
-            background: var(--gradient-blue);
+            background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
             color: white;
             padding: 10px 20px;
             border-radius: var(--radius-md);
@@ -148,216 +146,288 @@
             font-size: 14px;
             transition: var(--transition);
         }
-        
+
         .back-btn:hover {
-            transform: translateX(-3px);
+            transform: translateY(-2px);
             box-shadow: var(--shadow-md);
         }
-        
+
         /* Main Content */
         .main-content {
             flex: 1;
             padding: 60px 0;
         }
-        
+
         /* Tool Header */
         .tool-header {
             text-align: center;
-            margin-bottom: 48px;
+            margin-bottom: 50px;
         }
-        
+
         .tool-badge {
             display: inline-block;
-            background: var(--gradient-blue);
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
             color: white;
             padding: 8px 24px;
             border-radius: 20px;
             font-size: 14px;
             font-weight: 600;
-            margin-bottom: 16px;
+            margin-bottom: 20px;
             letter-spacing: 0.5px;
         }
-        
-        .tool-header h1 {
-            font-size: 2.8rem;
+
+        .tool-title {
+            font-size: 3rem;
             font-weight: 700;
-            color: var(--text-dark);
-            margin-bottom: 16px;
-            background: linear-gradient(135deg, var(--text-dark) 0%, var(--primary-blue) 100%);
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, var(--text-primary), var(--primary-color));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
         }
-        
-        .tool-header p {
-            color: var(--text-gray);
+
+        .tool-description {
             font-size: 1.1rem;
-            max-width: 700px;
-            margin: 0 auto;
-            font-weight: 400;
+            color: var(--text-secondary);
+            max-width: 800px;
+            margin: 0 auto 30px;
         }
-        
+
+        /* SEO Description */
+        .seo-description {
+            background: var(--card-bg);
+            border-radius: var(--radius-md);
+            padding: 25px;
+            margin-bottom: 40px;
+            border-left: 4px solid var(--primary-color);
+        }
+
+        .seo-description h2 {
+            color: var(--text-primary);
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+        }
+
+        .seo-description p {
+            color: var(--text-secondary);
+            font-size: 1rem;
+            line-height: 1.7;
+        }
+
+        .seo-keywords {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .keyword {
+            background: rgba(59, 130, 246, 0.1);
+            color: var(--primary-color);
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+
         /* Tool Container */
         .tool-container {
-            background: var(--card-white);
+            background: var(--card-bg);
             border-radius: var(--radius-lg);
-            padding: 50px;
-            box-shadow: var(--shadow-md);
+            padding: 40px;
+            box-shadow: var(--shadow-xl);
+            margin-bottom: 50px;
             border: 1px solid var(--border-color);
-            margin-bottom: 60px;
         }
-        
-        /* Encoding Options */
-        .encoding-options {
+
+        /* Mode Selector */
+        .mode-selector {
             display: flex;
-            gap: 20px;
+            gap: 15px;
             margin-bottom: 30px;
             flex-wrap: wrap;
         }
-        
-        .option-tab {
+
+        .mode-btn {
             flex: 1;
-            min-width: 200px;
-            padding: 20px;
-            background: var(--premium-gray);
+            min-width: 150px;
+            padding: 18px;
+            background: var(--darker-bg);
             border: 2px solid var(--border-color);
             border-radius: var(--radius-md);
             cursor: pointer;
             transition: var(--transition);
             text-align: center;
         }
-        
-        .option-tab:hover {
-            border-color: var(--light-blue);
-            background: #f0f9ff;
+
+        .mode-btn:hover {
+            border-color: var(--primary-color);
+            transform: translateY(-2px);
         }
-        
-        .option-tab.active {
-            background: var(--gradient-blue);
-            color: white;
-            border-color: var(--primary-blue);
+
+        .mode-btn.active {
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.2), rgba(139, 92, 246, 0.2));
+            border-color: var(--primary-color);
         }
-        
-        .option-tab.active i {
-            color: white;
+
+        .mode-btn i {
+            font-size: 28px;
+            color: var(--primary-color);
+            margin-bottom: 10px;
         }
-        
-        .option-tab i {
-            font-size: 32px;
-            color: var(--primary-blue);
-            margin-bottom: 12px;
-        }
-        
-        .option-tab h3 {
+
+        .mode-btn h3 {
             font-size: 1.1rem;
-            margin-bottom: 8px;
+            margin-bottom: 5px;
         }
-        
-        .option-tab p {
-            font-size: 13px;
-            color: var(--text-gray);
+
+        .mode-btn p {
+            font-size: 0.85rem;
+            color: var(--text-muted);
         }
-        
-        .option-tab.active p {
-            color: rgba(255, 255, 255, 0.9);
-        }
-        
+
         /* Input/Output Areas */
-        .io-container {
+        .io-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 30px;
             margin-bottom: 30px;
         }
-        
+
         @media (max-width: 768px) {
-            .io-container {
+            .io-grid {
                 grid-template-columns: 1fr;
             }
         }
-        
-        .io-box {
+
+        .io-section {
             display: flex;
             flex-direction: column;
-            gap: 12px;
+            gap: 15px;
         }
-        
-        .io-box label {
-            font-weight: 600;
-            color: var(--text-dark);
-            font-size: 1rem;
+
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .section-header h3 {
             display: flex;
             align-items: center;
             gap: 10px;
+            font-size: 1.1rem;
         }
-        
-        .io-box label i {
-            color: var(--primary-blue);
+
+        .section-header i {
+            color: var(--primary-color);
         }
-        
-        .io-box textarea {
+
+        .action-buttons {
+            display: flex;
+            gap: 10px;
+        }
+
+        .action-btn {
+            padding: 8px 16px;
+            background: var(--darker-bg);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-sm);
+            color: var(--text-secondary);
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .action-btn:hover {
+            background: var(--card-hover);
+            color: var(--text-primary);
+        }
+
+        .textarea-container {
+            position: relative;
+            flex: 1;
+        }
+
+        textarea {
             width: 100%;
-            min-height: 200px;
-            padding: 20px;
+            height: 250px;
+            background: var(--darker-bg);
             border: 2px solid var(--border-color);
             border-radius: var(--radius-md);
-            font-size: 14px;
+            color: var(--text-primary);
             font-family: 'Monaco', 'Courier New', monospace;
-            background: var(--premium-gray);
+            font-size: 14px;
+            padding: 20px;
             resize: vertical;
             transition: var(--transition);
-            line-height: 1.5;
         }
-        
-        .io-box textarea:focus {
+
+        textarea:focus {
             outline: none;
-            border-color: var(--primary-blue);
-            box-shadow: 0 0 0 3px rgba(26, 86, 219, 0.1);
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
         }
-        
+
+        textarea::placeholder {
+            color: var(--text-muted);
+        }
+
+        .char-count {
+            position: absolute;
+            bottom: 10px;
+            right: 15px;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            background: rgba(15, 23, 42, 0.9);
+            padding: 2px 8px;
+            border-radius: 10px;
+        }
+
+        /* File Upload Area */
         .file-upload-area {
-            border: 2px dashed var(--border-color);
+            border: 3px dashed var(--border-color);
             border-radius: var(--radius-md);
-            padding: 40px 20px;
+            padding: 50px 20px;
             text-align: center;
             cursor: pointer;
-            background: var(--premium-gray);
             transition: var(--transition);
+            background: var(--darker-bg);
         }
-        
+
         .file-upload-area:hover {
-            border-color: var(--primary-blue);
-            background: #f0f9ff;
+            border-color: var(--primary-color);
+            background: rgba(59, 130, 246, 0.05);
         }
-        
+
         .file-upload-area.dragover {
-            border-color: var(--success-green);
-            background: #f0fdf4;
+            border-color: var(--success-color);
+            background: rgba(16, 185, 129, 0.05);
         }
-        
-        .file-upload-icon {
+
+        .upload-icon {
             font-size: 48px;
-            color: var(--light-blue);
-            margin-bottom: 16px;
-        }
-        
-        .file-upload-text h3 {
-            font-size: 1.2rem;
-            margin-bottom: 8px;
-            color: var(--text-dark);
-        }
-        
-        .file-upload-text p {
-            color: var(--text-gray);
-            font-size: 14px;
+            color: var(--primary-color);
             margin-bottom: 20px;
         }
-        
+
+        .upload-text h3 {
+            margin-bottom: 10px;
+        }
+
+        .upload-text p {
+            color: var(--text-muted);
+            margin-bottom: 25px;
+        }
+
         .file-input-wrapper {
             position: relative;
             display: inline-block;
         }
-        
+
         .file-input {
             position: absolute;
             left: 0;
@@ -367,40 +437,42 @@
             opacity: 0;
             cursor: pointer;
         }
-        
+
         .upload-btn {
-            background: var(--gradient-blue);
+            background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
             color: white;
             padding: 12px 30px;
             border-radius: var(--radius-md);
             font-weight: 600;
-            font-size: 15px;
             border: none;
             cursor: pointer;
             transition: var(--transition);
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
         }
-        
+
         .upload-btn:hover {
             transform: translateY(-2px);
             box-shadow: var(--shadow-md);
         }
-        
+
         .file-info {
-            margin-top: 15px;
-            font-size: 14px;
-            color: var(--text-gray);
+            margin-top: 20px;
+            font-size: 0.9rem;
+            color: var(--text-muted);
         }
-        
-        /* Action Buttons */
-        .action-buttons {
+
+        /* Main Action Buttons */
+        .main-actions {
             display: flex;
-            gap: 16px;
+            gap: 20px;
             justify-content: center;
-            margin-top: 40px;
+            margin: 40px 0 30px;
             flex-wrap: wrap;
         }
-        
-        .action-btn {
+
+        .main-btn {
             padding: 18px 40px;
             border-radius: var(--radius-md);
             font-weight: 600;
@@ -411,372 +483,384 @@
             display: flex;
             align-items: center;
             gap: 12px;
-            min-width: 200px;
+            min-width: 220px;
             justify-content: center;
         }
-        
-        .action-btn.primary {
-            background: var(--gradient-blue);
+
+        .main-btn.encode {
+            background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
             color: white;
         }
-        
-        .action-btn.primary:hover {
+
+        .main-btn.encode:hover {
             transform: translateY(-3px);
             box-shadow: var(--shadow-lg);
         }
-        
-        .action-btn.secondary {
-            background: var(--premium-gray);
-            color: var(--text-dark);
+
+        .main-btn.decode {
+            background: linear-gradient(135deg, var(--secondary-color), #0da271);
+            color: white;
+        }
+
+        .main-btn.decode:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .main-btn.reset {
+            background: var(--darker-bg);
+            color: var(--text-primary);
             border: 2px solid var(--border-color);
         }
-        
-        .action-btn.secondary:hover {
-            background: #f0f9ff;
-            border-color: var(--light-blue);
-            color: var(--primary-blue);
+
+        .main-btn.reset:hover {
+            background: var(--card-hover);
+            border-color: var(--primary-color);
         }
-        
-        .action-btn.success {
-            background: var(--success-green);
-            color: white;
-        }
-        
-        .action-btn.success:hover {
-            background: #0da271;
-            transform: translateY(-3px);
-            box-shadow: var(--shadow-lg);
-        }
-        
-        .action-btn:disabled {
-            opacity: 0.5;
-            cursor: not-allowed;
-            transform: none !important;
-            box-shadow: none !important;
-        }
-        
-        /* Output Stats */
-        .output-stats {
-            background: var(--premium-gray);
+
+        /* Statistics */
+        .stats-container {
+            background: var(--darker-bg);
             border-radius: var(--radius-md);
-            padding: 20px;
-            margin-top: 30px;
+            padding: 25px;
             border: 1px solid var(--border-color);
         }
-        
+
         .stats-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 15px;
+            gap: 20px;
         }
-        
+
         .stat-item {
             display: flex;
             flex-direction: column;
-            gap: 5px;
+            gap: 8px;
         }
-        
+
         .stat-label {
-            font-size: 12px;
-            color: var(--text-gray);
+            font-size: 0.85rem;
+            color: var(--text-muted);
             text-transform: uppercase;
             letter-spacing: 0.5px;
         }
-        
+
         .stat-value {
-            font-size: 1.2rem;
-            color: var(--text-dark);
+            font-size: 1.4rem;
             font-weight: 600;
+            color: var(--text-primary);
             font-family: 'Monaco', 'Courier New', monospace;
         }
-        
-        /* Encoding Types Section */
-        .encoding-types {
-            background: var(--card-white);
+
+        /* API Section */
+        .api-section {
+            background: var(--card-bg);
             border-radius: var(--radius-lg);
-            padding: 50px;
-            box-shadow: var(--shadow-md);
+            padding: 40px;
+            margin-bottom: 50px;
             border: 1px solid var(--border-color);
-            margin-bottom: 60px;
         }
-        
-        .encoding-types h2 {
+
+        .api-header {
             text-align: center;
-            font-size: 2rem;
             margin-bottom: 40px;
-            color: var(--text-dark);
         }
-        
-        .types-grid {
+
+        .api-header h2 {
+            font-size: 2rem;
+            margin-bottom: 15px;
+        }
+
+        .api-header p {
+            color: var(--text-secondary);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .api-code {
+            background: var(--darker-bg);
+            border-radius: var(--radius-md);
+            padding: 25px;
+            margin: 25px 0;
+            border: 1px solid var(--border-color);
+            overflow-x: auto;
+        }
+
+        .api-code pre {
+            color: var(--text-primary);
+            font-family: 'Monaco', 'Courier New', monospace;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
+        .code-comment {
+            color: var(--text-muted);
+        }
+
+        .code-keyword {
+            color: #ff79c6;
+        }
+
+        .code-string {
+            color: #f1fa8c;
+        }
+
+        .code-function {
+            color: #50fa7b;
+        }
+
+        .api-endpoints {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 25px;
+            margin-top: 30px;
         }
-        
-        .type-card {
-            background: var(--premium-gray);
+
+        .endpoint-card {
+            background: var(--darker-bg);
             border-radius: var(--radius-md);
             padding: 25px;
-            transition: var(--transition);
             border: 1px solid var(--border-color);
+            transition: var(--transition);
         }
-        
-        .type-card:hover {
+
+        .endpoint-card:hover {
             transform: translateY(-3px);
-            box-shadow: var(--shadow-md);
+            border-color: var(--primary-color);
         }
-        
-        .type-card h3 {
-            font-size: 1.1rem;
-            margin-bottom: 10px;
-            color: var(--text-dark);
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        
-        .type-card h3 i {
-            color: var(--primary-blue);
-        }
-        
-        .type-card p {
-            color: var(--text-gray);
-            font-size: 14px;
-            line-height: 1.5;
+
+        .endpoint-method {
+            display: inline-block;
+            padding: 6px 12px;
+            border-radius: var(--radius-sm);
+            font-weight: 600;
+            font-size: 0.85rem;
             margin-bottom: 15px;
         }
-        
-        .type-meta {
-            display: flex;
-            justify-content: space-between;
-            font-size: 12px;
-            color: var(--text-light);
+
+        .endpoint-method.get {
+            background: rgba(16, 185, 129, 0.1);
+            color: var(--success-color);
         }
-        
-        /* Features Section */
-        .features-section {
-            background: var(--card-white);
-            border-radius: var(--radius-lg);
-            padding: 50px;
-            box-shadow: var(--shadow-md);
-            border: 1px solid var(--border-color);
-            margin-bottom: 60px;
+
+        .endpoint-method.post {
+            background: rgba(59, 130, 246, 0.1);
+            color: var(--primary-color);
         }
-        
-        .features-section h2 {
-            text-align: center;
-            font-size: 2rem;
-            margin-bottom: 40px;
-            color: var(--text-dark);
+
+        .endpoint-url {
+            font-family: 'Monaco', 'Courier New', monospace;
+            color: var(--text-primary);
+            margin-bottom: 15px;
+            word-break: break-all;
         }
-        
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
+
+        .endpoint-desc {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
         }
-        
-        .feature-card {
-            background: var(--premium-gray);
-            border-radius: var(--radius-md);
-            padding: 30px;
-            border-left: 4px solid var(--primary-blue);
-            transition: var(--transition);
-        }
-        
-        .feature-card:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--shadow-md);
-        }
-        
-        .feature-icon {
-            width: 60px;
-            height: 60px;
-            background: linear-gradient(135deg, #f0f9ff 0%, #dbeafe 100%);
-            border-radius: var(--radius-md);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 20px;
-            color: var(--primary-blue);
-            font-size: 24px;
-        }
-        
-        .feature-card h3 {
-            font-size: 1.2rem;
-            margin-bottom: 12px;
-            color: var(--text-dark);
-        }
-        
-        .feature-card p {
-            color: var(--text-gray);
-            font-size: 14px;
-            line-height: 1.6;
-        }
-        
+
         /* Footer */
-        footer {
-            background: var(--text-dark);
-            color: white;
+        .footer {
+            background: var(--darker-bg);
             padding: 60px 0 40px;
+            border-top: 1px solid var(--border-color);
             margin-top: auto;
         }
-        
-        .footer-container {
+
+        .footer-content {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 48px;
-            margin-bottom: 48px;
+            gap: 50px;
+            margin-bottom: 50px;
         }
-        
+
         .footer-logo {
-            font-family: 'Poppins', sans-serif;
-            font-size: 28px;
-            font-weight: 800;
-            color: white;
-            margin-bottom: 16px;
-            display: block;
-            text-decoration: none;
+            text-align: center;
+            margin-bottom: 30px;
         }
-        
+
+        .footer-logo .logo-title {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
         .footer-tagline {
-            color: #9ca3af;
-            font-size: 14px;
-            line-height: 1.6;
-            margin-bottom: 24px;
+            color: var(--text-muted);
+            font-size: 1rem;
+            max-width: 500px;
+            margin: 0 auto;
         }
-        
-        .footer-contact {
-            margin-top: 24px;
-        }
-        
-        .contact-item {
+
+        .footer-links {
             display: flex;
+            flex-direction: column;
             align-items: center;
-            gap: 12px;
-            margin-bottom: 16px;
-            color: #9ca3af;
         }
-        
-        .contact-item i {
-            color: var(--accent-blue);
-        }
-        
+
         .footer-links h4 {
-            font-size: 1.1rem;
-            margin-bottom: 24px;
-            color: white;
+            color: var(--text-primary);
+            margin-bottom: 25px;
+            font-size: 1.2rem;
         }
-        
+
         .footer-links ul {
             list-style: none;
+            text-align: center;
         }
-        
+
         .footer-links li {
             margin-bottom: 12px;
         }
-        
+
         .footer-links a {
-            color: #9ca3af;
+            color: var(--text-secondary);
             text-decoration: none;
-            font-size: 14px;
+            font-size: 0.95rem;
             transition: var(--transition);
         }
-        
+
         .footer-links a:hover {
-            color: white;
-            padding-left: 8px;
+            color: var(--primary-color);
+            padding-left: 5px;
         }
-        
+
         .footer-bottom {
             text-align: center;
             padding-top: 40px;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            color: #9ca3af;
-            font-size: 14px;
+            border-top: 1px solid var(--border-color);
+            color: var(--text-muted);
+            font-size: 0.9rem;
         }
-        
-        /* Responsive */
+
+        .copyright {
+            margin-bottom: 20px;
+        }
+
+        .footer-company {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        /* Responsive Design */
         @media (max-width: 768px) {
-            .tool-header h1 {
-                font-size: 2rem;
+            .tool-title {
+                font-size: 2.2rem;
             }
             
-            .tool-container, .encoding-types, .features-section {
-                padding: 30px;
+            .tool-container, .api-section {
+                padding: 25px;
             }
             
-            .encoding-options {
+            .main-actions {
                 flex-direction: column;
             }
             
-            .action-buttons {
-                flex-direction: column;
-            }
-            
-            .action-btn {
+            .main-btn {
                 width: 100%;
             }
         }
-        
+
         @media (max-width: 480px) {
-            .tool-header h1 {
+            .tool-title {
                 font-size: 1.8rem;
             }
             
-            .tool-container, .encoding-types, .features-section {
+            .tool-container, .api-section {
                 padding: 20px;
             }
+            
+            .mode-selector {
+                flex-direction: column;
+            }
         }
-        
+
         /* Loading Animation */
         .loading {
+            display: none;
             text-align: center;
-            padding: 40px;
+            padding: 30px;
         }
-        
+
+        .loading.active {
+            display: block;
+        }
+
         .loading i {
             font-size: 40px;
-            color: var(--primary-blue);
+            color: var(--primary-color);
             animation: spin 1s linear infinite;
         }
-        
+
         @keyframes spin {
             to { transform: rotate(360deg); }
         }
-        
-        /* Code Highlight */
-        .base64-highlight {
-            color: #d33682;
-            font-weight: 600;
+
+        /* Notification */
+        .notification {
+            position: fixed;
+            top: 100px;
+            right: 20px;
+            padding: 15px 25px;
+            border-radius: var(--radius-md);
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            box-shadow: var(--shadow-lg);
+            z-index: 1001;
+            transform: translateX(150%);
+            transition: transform 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            max-width: 400px;
         }
-        
-        .text-highlight {
-            color: #2aa198;
-            font-weight: 600;
+
+        .notification.show {
+            transform: translateX(0);
+        }
+
+        .notification.success {
+            border-left: 4px solid var(--success-color);
+        }
+
+        .notification.error {
+            border-left: 4px solid var(--error-color);
+        }
+
+        .notification i {
+            font-size: 20px;
+        }
+
+        .notification.success i {
+            color: var(--success-color);
+        }
+
+        .notification.error i {
+            color: var(--error-color);
         }
     </style>
 </head>
 
 <body>
     <!-- Header -->
-    <header>
-        <div class="container header-container">
-            <div class="logo-wrapper">
-                <a href="index.html" class="logo">
-                    <div class="logo-icon">
-                        <i class="fas fa-tools"></i>
-                    </div>
-                    <div class="logo-text">
-                        Tool Nest
-                        <span class="logo-tagline">PREMIUM ONLINE TOOLS</span>
-                    </div>
-                </a>
-            </div>
+    <header class="header">
+        <div class="container header-content">
+            <a href="index.html" class="logo">
+                <div class="logo-icon">
+                    <i class="fas fa-code"></i>
+                </div>
+                <div class="logo-text">
+                    <div class="logo-title">Tool Nest</div>
+                    <div class="logo-subtitle">DEVELOPER TOOLS</div>
+                </div>
+            </a>
             
             <a href="index.html" class="back-btn">
                 <i class="fas fa-arrow-left"></i>
-                Back to Tools
+                All Tools
             </a>
         </div>
     </header>
@@ -786,73 +870,115 @@
         <div class="container">
             <!-- Tool Header -->
             <div class="tool-header">
-                <span class="tool-badge">Professional Encoding</span>
-                <h1>Base64 Encoder/Decoder</h1>
-                <p>Encode text and files to Base64 format or decode Base64 data back to original form instantly. Perfect for developers, APIs, and secure data transmission.</p>
+                <span class="tool-badge">PROFESSIONAL TOOL</span>
+                <h1 class="tool-title">Base64 Encoder / Decoder</h1>
+                <p class="tool-description">Encode and decode Base64 data instantly with our secure, client-side tool. Perfect for developers working with APIs, data transmission, and file encoding.</p>
             </div>
 
-            <!-- Base64 Tool -->
+            <!-- SEO Description -->
+            <div class="seo-description">
+                <h2>Professional Base64 Encoding & Decoding Tool</h2>
+                <p>
+                    Our advanced Base64 Encoder/Decoder provides secure, real-time conversion between text, files, and Base64 format. 
+                    This essential tool for developers handles data encoding for APIs, email attachments, and binary data transmission. 
+                    With 100% client-side processing, your data never leaves your browser, ensuring complete privacy and security. 
+                    Perfect for web development, data analysis, and secure file sharing applications.
+                </p>
+                <div class="seo-keywords">
+                    <span class="keyword">Base64 Encoder</span>
+                    <span class="keyword">Base64 Decoder</span>
+                    <span class="keyword">File to Base64</span>
+                    <span class="keyword">Text Encoding</span>
+                    <span class="keyword">Data Conversion</span>
+                    <span class="keyword">Secure Encoding</span>
+                    <span class="keyword">Developer Tools</span>
+                    <span class="keyword">API Data Encoding</span>
+                </div>
+            </div>
+
+            <!-- Main Tool -->
             <div class="tool-container">
-                <!-- Encoding Options -->
-                <div class="encoding-options">
-                    <div class="option-tab active" id="textTab" onclick="switchTab('text')">
+                <!-- Mode Selector -->
+                <div class="mode-selector">
+                    <div class="mode-btn active" onclick="switchMode('text')">
                         <i class="fas fa-font"></i>
-                        <h3>Text Encoding</h3>
+                        <h3>Text</h3>
                         <p>Encode/decode plain text</p>
                     </div>
-                    <div class="option-tab" id="fileTab" onclick="switchTab('file')">
+                    <div class="mode-btn" onclick="switchMode('file')">
                         <i class="fas fa-file"></i>
-                        <h3>File Encoding</h3>
-                        <p>Encode/decode files</p>
+                        <h3>File</h3>
+                        <p>Upload and encode files</p>
                     </div>
-                    <div class="option-tab" id="urlTab" onclick="switchTab('url')">
+                    <div class="mode-btn" onclick="switchMode('url')">
                         <i class="fas fa-link"></i>
-                        <h3>URL Encoding</h3>
+                        <h3>URL</h3>
                         <p>Encode/decode URLs</p>
                     </div>
                 </div>
 
-                <!-- Text Encoding Interface (Default) -->
-                <div class="io-container" id="textInterface">
-                    <div class="io-box">
-                        <label for="inputText"><i class="fas fa-keyboard"></i> Input Text</label>
-                        <textarea id="inputText" placeholder="Enter text to encode or Base64 to decode..." 
-                                  oninput="updateStats()">Hello Tool Nest! This is a sample text for Base64 encoding demonstration.</textarea>
-                        <div class="input-actions">
-                            <button class="upload-btn" onclick="clearInput()">
-                                <i class="fas fa-trash"></i>
-                                Clear Input
-                            </button>
+                <!-- Text Mode -->
+                <div class="io-grid" id="textMode">
+                    <div class="io-section">
+                        <div class="section-header">
+                            <h3><i class="fas fa-keyboard"></i> Input Text</h3>
+                            <div class="action-buttons">
+                                <button class="action-btn" onclick="clearInput()">
+                                    <i class="fas fa-trash"></i> Clear
+                                </button>
+                                <button class="action-btn" onclick="pasteText()">
+                                    <i class="fas fa-paste"></i> Paste
+                                </button>
+                            </div>
+                        </div>
+                        <div class="textarea-container">
+                            <textarea id="inputText" placeholder="Enter text to encode or Base64 string to decode..." 
+                                      oninput="updateCharCount()">Hello Tool Nest! This is a sample text for Base64 encoding demonstration.</textarea>
+                            <div class="char-count" id="inputCharCount">0 characters</div>
                         </div>
                     </div>
                     
-                    <div class="io-box">
-                        <label for="outputText"><i class="fas fa-code"></i> Output Base64</label>
-                        <textarea id="outputText" placeholder="Encoded/Decoded result will appear here..." readonly></textarea>
-                        <div class="input-actions">
-                            <button class="upload-btn" onclick="copyOutput()">
-                                <i class="fas fa-copy"></i>
-                                Copy Output
-                            </button>
+                    <div class="io-section">
+                        <div class="section-header">
+                            <h3><i class="fas fa-code"></i> Output Base64</h3>
+                            <div class="action-buttons">
+                                <button class="action-btn" onclick="copyOutput()">
+                                    <i class="fas fa-copy"></i> Copy
+                                </button>
+                                <button class="action-btn" onclick="saveOutput()">
+                                    <i class="fas fa-download"></i> Save
+                                </button>
+                            </div>
+                        </div>
+                        <div class="textarea-container">
+                            <textarea id="outputText" placeholder="Encoded or decoded result will appear here..." readonly></textarea>
+                            <div class="char-count" id="outputCharCount">0 characters</div>
                         </div>
                     </div>
                 </div>
 
-                <!-- File Encoding Interface (Hidden) -->
-                <div class="io-container" id="fileInterface" style="display: none;">
-                    <div class="io-box">
-                        <label><i class="fas fa-upload"></i> Upload File</label>
-                        <div class="file-upload-area" id="fileUploadArea">
-                            <div class="file-upload-icon">
-                                <i class="fas fa-file-upload"></i>
+                <!-- File Mode -->
+                <div class="io-grid" id="fileMode" style="display: none;">
+                    <div class="io-section">
+                        <div class="section-header">
+                            <h3><i class="fas fa-upload"></i> File Upload</h3>
+                            <div class="action-buttons">
+                                <button class="action-btn" onclick="clearFile()">
+                                    <i class="fas fa-trash"></i> Clear
+                                </button>
                             </div>
-                            <div class="file-upload-text">
+                        </div>
+                        <div class="file-upload-area" id="dropArea">
+                            <div class="upload-icon">
+                                <i class="fas fa-cloud-upload-alt"></i>
+                            </div>
+                            <div class="upload-text">
                                 <h3>Drag & Drop Your File</h3>
-                                <p>or click to browse files</p>
+                                <p>or click to browse files (Max 10MB)</p>
                                 <div class="file-input-wrapper">
                                     <button class="upload-btn">
                                         <i class="fas fa-folder-open"></i>
-                                        Select File
+                                        Choose File
                                     </button>
                                     <input type="file" id="fileInput" class="file-input" />
                                 </div>
@@ -861,49 +987,76 @@
                         </div>
                     </div>
                     
-                    <div class="io-box">
-                        <label><i class="fas fa-file-code"></i> Base64 Result</label>
-                        <textarea id="fileOutput" placeholder="Base64 encoded file data will appear here..." readonly></textarea>
-                        <div class="input-actions">
-                            <button class="upload-btn" onclick="copyFileOutput()">
-                                <i class="fas fa-copy"></i>
-                                Copy Base64
-                            </button>
+                    <div class="io-section">
+                        <div class="section-header">
+                            <h3><i class="fas fa-file-code"></i> Base64 Result</h3>
+                            <div class="action-buttons">
+                                <button class="action-btn" onclick="copyFileOutput()">
+                                    <i class="fas fa-copy"></i> Copy
+                                </button>
+                                <button class="action-btn" onclick="downloadFile()">
+                                    <i class="fas fa-download"></i> Download
+                                </button>
+                            </div>
+                        </div>
+                        <div class="textarea-container">
+                            <textarea id="fileOutput" placeholder="Base64 encoded file data will appear here..." readonly></textarea>
+                            <div class="char-count" id="fileCharCount">0 characters</div>
                         </div>
                     </div>
                 </div>
 
-                <!-- URL Encoding Interface (Hidden) -->
-                <div class="io-container" id="urlInterface" style="display: none;">
-                    <div class="io-box">
-                        <label for="urlInput"><i class="fas fa-link"></i> URL Input</label>
+                <!-- URL Mode -->
+                <div class="io-grid" id="urlMode" style="display: none;">
+                    <div class="io-section">
+                        <div class="section-header">
+                            <h3><i class="fas fa-link"></i> URL Input</h3>
+                            <div class="action-buttons">
+                                <button class="action-btn" onclick="clearUrl()">
+                                    <i class="fas fa-trash"></i> Clear
+                                </button>
+                            </div>
+                        </div>
                         <textarea id="urlInput" placeholder="Enter URL to encode or Base64 URL to decode...">https://toolnest.com/base64-encoder-decoder</textarea>
                     </div>
                     
-                    <div class="io-box">
-                        <label for="urlOutput"><i class="fas fa-external-link-alt"></i> Encoded/Decoded URL</label>
+                    <div class="io-section">
+                        <div class="section-header">
+                            <h3><i class="fas fa-external-link-alt"></i> Encoded/Decoded URL</h3>
+                            <div class="action-buttons">
+                                <button class="action-btn" onclick="copyUrlOutput()">
+                                    <i class="fas fa-copy"></i> Copy
+                                </button>
+                            </div>
+                        </div>
                         <textarea id="urlOutput" placeholder="URL encoding result will appear here..." readonly></textarea>
                     </div>
                 </div>
 
-                <!-- Action Buttons -->
-                <div class="action-buttons">
-                    <button class="action-btn primary" onclick="encodeBase64()">
+                <!-- Loading -->
+                <div class="loading" id="loading">
+                    <i class="fas fa-spinner"></i>
+                    <p>Processing...</p>
+                </div>
+
+                <!-- Main Actions -->
+                <div class="main-actions">
+                    <button class="main-btn encode" onclick="encodeData()">
                         <i class="fas fa-lock"></i>
                         Encode to Base64
                     </button>
-                    <button class="action-btn success" onclick="decodeBase64()">
+                    <button class="main-btn decode" onclick="decodeData()">
                         <i class="fas fa-unlock"></i>
-                        Decode from Base64
+                        Decode Base64
                     </button>
-                    <button class="action-btn secondary" onclick="resetTool()">
+                    <button class="main-btn reset" onclick="resetAll()">
                         <i class="fas fa-redo"></i>
                         Reset All
                     </button>
                 </div>
 
-                <!-- Output Statistics -->
-                <div class="output-stats" id="outputStats">
+                <!-- Statistics -->
+                <div class="stats-container">
                     <div class="stats-grid">
                         <div class="stat-item">
                             <div class="stat-label">Input Size</div>
@@ -914,193 +1067,208 @@
                             <div class="stat-value" id="outputSize">0 bytes</div>
                         </div>
                         <div class="stat-item">
-                            <div class="stat-label">Encoding Ratio</div>
-                            <div class="stat-value" id="encodingRatio">0%</div>
+                            <div class="stat-label">Processing Time</div>
+                            <div class="stat-value" id="procTime">0 ms</div>
                         </div>
                         <div class="stat-item">
-                            <div class="stat-label">Processing Time</div>
-                            <div class="stat-value" id="processingTime">0ms</div>
+                            <div class="stat-label">Encoding Ratio</div>
+                            <div class="stat-value" id="encodingRatio">1:1</div>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <!-- Encoding Types Section -->
-            <div class="encoding-types">
-                <h2>Base64 Encoding Standards</h2>
-                <div class="types-grid">
-                    <div class="type-card">
-                        <h3><i class="fas fa-file-code"></i> Standard Base64</h3>
-                        <p>Most common encoding using A-Z, a-z, 0-9, +, / and = padding. Used in MIME email, XML, JSON, and HTTP headers.</p>
-                        <div class="type-meta">
-                            <span>Character Set: 64</span>
-                            <span>Padding: =</span>
-                        </div>
-                    </div>
-                    
-                    <div class="type-card">
-                        <h3><i class="fas fa-file-alt"></i> Base64URL</h3>
-                        <p>URL-safe variant using - and _ instead of + and /. No padding with = characters. Perfect for URLs and filenames.</p>
-                        <div class="type-meta">
-                            <span>URL Safe: Yes</span>
-                            <span>Padding: None</span>
-                        </div>
-                    </div>
-                    
-                    <div class="type-card">
-                        <h3><i class="fas fa-file-archive"></i> MIME Base64</h3>
-                        <p>Email attachment encoding with line breaks every 76 characters. Used for email attachments and MIME types.</p>
-                        <div class="type-meta">
-                            <span>Line Length: 76</span>
-                            <span>Format: MIME</span>
-                        </div>
-                    </div>
+            <!-- API Section -->
+            <div class="api-section">
+                <div class="api-header">
+                    <h2>Base64 API Integration</h2>
+                    <p>Integrate Base64 encoding/decoding directly into your applications with our REST API.</p>
                 </div>
-            </div>
 
-            <!-- Features Section -->
-            <div class="features-section">
-                <h2>Why Use Our Base64 Tool?</h2>
-                <div class="features-grid">
-                    <div class="feature-card">
-                        <div class="feature-icon">
-                            <i class="fas fa-bolt"></i>
-                        </div>
-                        <h3>Instant Processing</h3>
-                        <p>Encode or decode data in milliseconds with our optimized JavaScript engine. Real-time results with no delays.</p>
+                <div class="api-code">
+                    <pre>
+<span class="code-comment">// JavaScript API Example</span>
+<span class="code-keyword">const</span> <span class="code-function">encodeWithAPI</span> = <span class="code-keyword">async</span> (text) => {
+    <span class="code-keyword">const</span> response = <span class="code-keyword">await</span> fetch(<span class="code-string">'https://api.toolnest.com/v1/base64/encode'</span>, {
+        method: <span class="code-string">'POST'</span>,
+        headers: {
+            <span class="code-string">'Content-Type'</span>: <span class="code-string">'application/json'</span>,
+            <span class="code-string">'Authorization'</span>: <span class="code-string">'Bearer YOUR_API_KEY'</span>
+        },
+        body: JSON.stringify({ data: text })
+    });
+    
+    <span class="code-keyword">return</span> <span class="code-keyword">await</span> response.json();
+};
+
+<span class="code-comment">// Usage</span>
+<span class="code-keyword">const</span> encoded = <span class="code-keyword">await</span> <span class="code-function">encodeWithAPI</span>(<span class="code-string">'Hello World'</span>);
+console.<span class="code-function">log</span>(encoded.result); <span class="code-comment">// SGVsbG8gV29ybGQ=</span></pre>
+                </div>
+
+                <div class="api-endpoints">
+                    <div class="endpoint-card">
+                        <div class="endpoint-method post">POST</div>
+                        <div class="endpoint-url">https://api.toolnest.com/v1/base64/encode</div>
+                        <p class="endpoint-desc">Encode text or binary data to Base64 format. Supports JSON and form-data requests.</p>
                     </div>
                     
-                    <div class="feature-card">
-                        <div class="feature-icon">
-                            <i class="fas fa-shield-alt"></i>
-                        </div>
-                        <h3>Complete Privacy</h3>
-                        <p>All processing happens locally in your browser. Your data never leaves your device, ensuring 100% privacy and security.</p>
+                    <div class="endpoint-card">
+                        <div class="endpoint-method post">POST</div>
+                        <div class="endpoint-url">https://api.toolnest.com/v1/base64/decode</div>
+                        <p class="endpoint-desc">Decode Base64 strings back to original format. Returns text or binary data.</p>
                     </div>
                     
-                    <div class="feature-card">
-                        <div class="feature-icon">
-                            <i class="fas fa-file-upload"></i>
-                        </div>
-                        <h3>File Support</h3>
-                        <p>Encode any file type to Base64 and decode back. Perfect for embedding images, documents, and binaries in web applications.</p>
-                    </div>
-                    
-                    <div class="feature-card">
-                        <div class="feature-icon">
-                            <i class="fas fa-chart-bar"></i>
-                        </div>
-                        <h3>Detailed Analytics</h3>
-                        <p>Get comprehensive statistics including size changes, encoding ratios, and processing times for optimization.</p>
+                    <div class="endpoint-card">
+                        <div class="endpoint-method get">GET</div>
+                        <div class="endpoint-url">https://api.toolnest.com/v1/base64/validate/{data}</div>
+                        <p class="endpoint-desc">Validate if a string is properly Base64 encoded. Returns validation result.</p>
                     </div>
                 </div>
             </div>
         </div>
     </main>
 
+    <!-- Notification -->
+    <div class="notification" id="notification">
+        <i class="fas fa-check-circle"></i>
+        <span id="notificationText">Operation completed successfully!</span>
+    </div>
+
     <!-- Footer -->
-    <footer>
+    <footer class="footer">
         <div class="container">
-            <div class="footer-container">
-                <div class="footer-about">
-                    <a href="index.html" class="footer-logo">Tool Nest</a>
-                    <p class="footer-tagline">Your trusted partner for premium online tools. Professional solutions for modern workflows.</p>
-                    <div class="footer-contact">
-                        <div class="contact-item">
-                            <i class="fas fa-envelope"></i>
-                            <span>toolnest3@gmail.com</span>
-                        </div>
-                        <div class="contact-item">
-                            <i class="fas fa-shield-alt"></i>
-                            <span>100% Secure & Private</span>
-                        </div>
-                        <div class="contact-item">
-                            <i class="fas fa-bolt"></i>
-                            <span>Instant Encoding/Decoding</span>
-                        </div>
-                    </div>
+            <div class="footer-logo">
+                <div class="logo-title">Tool Nest</div>
+                <p class="footer-tagline">Professional online tools for developers, designers, and creators. Secure, reliable, and always free.</p>
+            </div>
+            
+            <div class="footer-content">
+                <div class="footer-links">
+                    <h4>Developer Tools</h4>
+                    <ul>
+                        <li><a href="base64.html">Base64 Encoder/Decoder</a></li>
+                        <li><a href="json-formatter.html">JSON Formatter</a></li>
+                        <li><a href="url-encoder.html">URL Encoder/Decoder</a></li>
+                        <li><a href="html-minifier.html">HTML Minifier</a></li>
+                        <li><a href="css-validator.html">CSS Validator</a></li>
+                    </ul>
                 </div>
                 
                 <div class="footer-links">
-                    <h4>Quick Links</h4>
+                    <h4>Resources</h4>
                     <ul>
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="index.html#web-tools-section">Developer Tools</a></li>
-                        <li><a href="url.html">URL Encoder/Decoder</a></li>
-                        <li><a href="json-formatter.html">JSON Formatter</a></li>
-                        <li><a href="html-minifier.html">HTML Minifier</a></li>
+                        <li><a href="documentation.html">API Documentation</a></li>
+                        <li><a href="tutorials.html">Tutorials</a></li>
+                        <li><a href="blog.html">Blog</a></li>
+                        <li><a href="changelog.html">Changelog</a></li>
+                        <li><a href="support.html">Support</a></li>
                     </ul>
                 </div>
                 
                 <div class="footer-links">
                     <h4>Legal</h4>
                     <ul>
-                        <li><a href="privacy-policy.html">Privacy Policy</a></li>
-                        <li><a href="terms-of-use.html">Terms of Service</a></li>
+                        <li><a href="privacy.html">Privacy Policy</a></li>
+                        <li><a href="terms.html">Terms of Service</a></li>
                         <li><a href="cookies.html">Cookie Policy</a></li>
-                        <li><a href="disclaimer.html">Disclaimer</a></li>
+                        <li><a href="security.html">Security</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
                     </ul>
                 </div>
             </div>
             
             <div class="footer-bottom">
-                <p>© 2023 Tool Nest. All rights reserved. Premium online tools for professionals.</p>
+                <div class="copyright">
+                    © 2023 Tool Nest. All rights reserved.
+                </div>
+                <div class="footer-company">
+                    Tool Nest
+                </div>
             </div>
         </div>
     </footer>
 
     <script>
         // DOM Elements
+        const textMode = document.getElementById('textMode');
+        const fileMode = document.getElementById('fileMode');
+        const urlMode = document.getElementById('urlMode');
         const inputText = document.getElementById('inputText');
         const outputText = document.getElementById('outputText');
         const fileInput = document.getElementById('fileInput');
         const fileOutput = document.getElementById('fileOutput');
         const fileInfo = document.getElementById('fileInfo');
-        const fileUploadArea = document.getElementById('fileUploadArea');
+        const dropArea = document.getElementById('dropArea');
         const urlInput = document.getElementById('urlInput');
         const urlOutput = document.getElementById('urlOutput');
+        const loading = document.getElementById('loading');
+        const notification = document.getElementById('notification');
+        const notificationText = document.getElementById('notificationText');
+        
+        // Statistics elements
         const inputSize = document.getElementById('inputSize');
         const outputSize = document.getElementById('outputSize');
+        const procTime = document.getElementById('procTime');
         const encodingRatio = document.getElementById('encodingRatio');
-        const processingTime = document.getElementById('processingTime');
-        const outputStats = document.getElementById('outputStats');
-
-        let currentTab = 'text';
+        const inputCharCount = document.getElementById('inputCharCount');
+        const outputCharCount = document.getElementById('outputCharCount');
+        const fileCharCount = document.getElementById('fileCharCount');
+        
+        let currentMode = 'text';
         let currentFile = null;
-
-        // Switch between tabs
-        function switchTab(tab) {
-            currentTab = tab;
+        
+        // Mode switching
+        function switchMode(mode) {
+            currentMode = mode;
             
-            // Update tab UI
-            document.querySelectorAll('.option-tab').forEach(t => t.classList.remove('active'));
-            document.getElementById(`${tab}Tab`).classList.add('active');
+            // Update mode buttons
+            document.querySelectorAll('.mode-btn').forEach(btn => btn.classList.remove('active'));
+            event.currentTarget.classList.add('active');
             
-            // Show/hide interfaces
-            document.getElementById('textInterface').style.display = tab === 'text' ? 'grid' : 'none';
-            document.getElementById('fileInterface').style.display = tab === 'file' ? 'grid' : 'none';
-            document.getElementById('urlInterface').style.display = tab === 'url' ? 'grid' : 'none';
+            // Show/hide modes
+            textMode.style.display = mode === 'text' ? 'grid' : 'none';
+            fileMode.style.display = mode === 'file' ? 'grid' : 'none';
+            urlMode.style.display = mode === 'url' ? 'grid' : 'none';
             
-            // Reset stats
             resetStats();
         }
-
+        
+        // Update character count
+        function updateCharCount() {
+            const inputLength = inputText.value.length;
+            inputCharCount.textContent = `${inputLength} characters`;
+            
+            const outputLength = outputText.value.length;
+            outputCharCount.textContent = `${outputLength} characters`;
+            
+            const fileLength = fileOutput.value.length;
+            fileCharCount.textContent = `${fileLength} characters`;
+            
+            // Update statistics
+            updateStats();
+        }
+        
         // Update statistics
         function updateStats() {
-            const input = inputText.value;
-            const inputBytes = new Blob([input]).size;
-            inputSize.textContent = formatBytes(inputBytes);
-            
-            // Update output if exists
-            if (outputText.value) {
-                const outputBytes = new Blob([outputText.value]).size;
+            if (currentMode === 'text') {
+                const input = inputText.value;
+                const output = outputText.value;
+                
+                const inputBytes = new Blob([input]).size;
+                const outputBytes = new Blob([output]).size;
+                
+                inputSize.textContent = formatBytes(inputBytes);
                 outputSize.textContent = formatBytes(outputBytes);
-                const ratio = ((outputBytes / inputBytes) * 100).toFixed(1);
-                encodingRatio.textContent = `${ratio}%`;
+                
+                if (inputBytes > 0) {
+                    const ratio = (outputBytes / inputBytes).toFixed(2);
+                    encodingRatio.textContent = `1:${ratio}`;
+                }
             }
         }
-
-        // Format bytes to human readable
+        
+        // Format bytes
         function formatBytes(bytes) {
             if (bytes === 0) return '0 bytes';
             const k = 1024;
@@ -1108,36 +1276,57 @@
             const i = Math.floor(Math.log(bytes) / Math.log(k));
             return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
         }
-
+        
         // Reset statistics
         function resetStats() {
             inputSize.textContent = '0 bytes';
             outputSize.textContent = '0 bytes';
-            encodingRatio.textContent = '0%';
-            processingTime.textContent = '0ms';
+            procTime.textContent = '0 ms';
+            encodingRatio.textContent = '1:1';
         }
-
-        // Encode to Base64
-        function encodeBase64() {
+        
+        // Show notification
+        function showNotification(message, type = 'success') {
+            notificationText.textContent = message;
+            notification.className = `notification ${type}`;
+            notification.classList.add('show');
+            
+            setTimeout(() => {
+                notification.classList.remove('show');
+            }, 3000);
+        }
+        
+        // Encode data
+        async function encodeData() {
             const startTime = performance.now();
             
             try {
-                if (currentTab === 'text') {
+                loading.classList.add('active');
+                
+                if (currentMode === 'text') {
                     const text = inputText.value.trim();
                     if (!text) {
-                        alert('Please enter text to encode');
+                        showNotification('Please enter text to encode', 'error');
                         return;
                     }
                     
-                    const encoded = btoa(unescape(encodeURIComponent(text)));
+                    const encoded = btoa(encodeURIComponent(text).replace(/%([0-9A-F]{2})/g, (match, p1) => {
+                        return String.fromCharCode('0x' + p1);
+                    }));
+                    
                     outputText.value = encoded;
+                    updateCharCount();
                     
-                    // Highlight in output
-                    highlightBase64(encoded);
+                    showNotification('Text encoded successfully!');
                     
-                } else if (currentTab === 'file') {
+                } else if (currentMode === 'file') {
                     if (!currentFile) {
-                        alert('Please select a file first');
+                        showNotification('Please select a file first', 'error');
+                        return;
+                    }
+                    
+                    if (currentFile.size > 10 * 1024 * 1024) {
+                        showNotification('File size exceeds 10MB limit', 'error');
                         return;
                     }
                     
@@ -1145,238 +1334,332 @@
                     reader.onload = function(e) {
                         const base64 = e.target.result.split(',')[1];
                         fileOutput.value = base64;
-                        highlightBase64(base64);
+                        updateCharCount();
                         
                         const endTime = performance.now();
-                        processingTime.textContent = `${Math.round(endTime - startTime)}ms`;
+                        procTime.textContent = `${Math.round(endTime - startTime)} ms`;
+                        loading.classList.remove('active');
+                        
+                        showNotification('File encoded successfully!');
                     };
                     reader.readAsDataURL(currentFile);
                     
-                } else if (currentTab === 'url') {
+                } else if (currentMode === 'url') {
                     const url = urlInput.value.trim();
                     if (!url) {
-                        alert('Please enter a URL');
+                        showNotification('Please enter a URL', 'error');
                         return;
                     }
                     
-                    const encoded = btoa(unescape(encodeURIComponent(url)));
+                    const encoded = btoa(encodeURIComponent(url));
                     urlOutput.value = encoded;
-                    highlightBase64(encoded);
+                    
+                    showNotification('URL encoded successfully!');
                 }
                 
                 const endTime = performance.now();
-                processingTime.textContent = `${Math.round(endTime - startTime)}ms`;
+                procTime.textContent = `${Math.round(endTime - startTime)} ms`;
                 updateStats();
                 
             } catch (error) {
                 console.error('Encoding error:', error);
-                alert('Error encoding data. Please check your input.');
+                showNotification('Error encoding data', 'error');
+            } finally {
+                loading.classList.remove('active');
             }
         }
-
-        // Decode from Base64
-        function decodeBase64() {
+        
+        // Decode data
+        async function decodeData() {
             const startTime = performance.now();
             
             try {
-                if (currentTab === 'text') {
+                loading.classList.add('active');
+                
+                if (currentMode === 'text') {
                     const base64 = inputText.value.trim();
                     if (!base64) {
-                        alert('Please enter Base64 to decode');
-                        return;
-                    }
-                    
-                    const decoded = decodeURIComponent(escape(atob(base64)));
-                    outputText.value = decoded;
-                    
-                    // Highlight in output
-                    highlightText(decoded);
-                    
-                } else if (currentTab === 'file') {
-                    const base64 = fileOutput.value.trim();
-                    if (!base64) {
-                        alert('Please encode a file first');
+                        showNotification('Please enter Base64 to decode', 'error');
                         return;
                     }
                     
                     try {
-                        // Try to decode and show as text if possible
-                        const decoded = decodeURIComponent(escape(atob(base64)));
-                        fileOutput.value = decoded;
-                        highlightText(decoded);
+                        const decoded = decodeURIComponent(atob(base64).split('').map(c => {
+                            return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+                        }).join(''));
+                        
+                        outputText.value = decoded;
+                        updateCharCount();
+                        
+                        showNotification('Base64 decoded successfully!');
                     } catch (e) {
-                        // If it's binary data, show info
-                        fileOutput.value = '[Binary Data - Use download instead]';
+                        showNotification('Invalid Base64 string', 'error');
                     }
                     
-                } else if (currentTab === 'url') {
-                    const base64 = urlInput.value.trim();
+                } else if (currentMode === 'file') {
+                    const base64 = fileOutput.value.trim();
                     if (!base64) {
-                        alert('Please enter Base64 URL to decode');
+                        showNotification('Please encode a file first', 'error');
                         return;
                     }
                     
-                    const decoded = decodeURIComponent(escape(atob(base64)));
-                    urlOutput.value = decoded;
-                    highlightText(decoded);
+                    try {
+                        const binaryString = atob(base64);
+                        const bytes = new Uint8Array(binaryString.length);
+                        for (let i = 0; i < binaryString.length; i++) {
+                            bytes[i] = binaryString.charCodeAt(i);
+                        }
+                        
+                        const blob = new Blob([bytes], { type: 'application/octet-stream' });
+                        const url = URL.createObjectURL(blob);
+                        
+                        const a = document.createElement('a');
+                        a.href = url;
+                        a.download = 'decoded_file.bin';
+                        document.body.appendChild(a);
+                        a.click();
+                        document.body.removeChild(a);
+                        URL.revokeObjectURL(url);
+                        
+                        showNotification('File downloaded successfully!');
+                    } catch (e) {
+                        showNotification('Invalid Base64 file data', 'error');
+                    }
+                    
+                } else if (currentMode === 'url') {
+                    const base64 = urlInput.value.trim();
+                    if (!base64) {
+                        showNotification('Please enter Base64 URL to decode', 'error');
+                        return;
+                    }
+                    
+                    try {
+                        const decoded = decodeURIComponent(atob(base64));
+                        urlOutput.value = decoded;
+                        
+                        showNotification('URL decoded successfully!');
+                    } catch (e) {
+                        showNotification('Invalid Base64 URL', 'error');
+                    }
                 }
                 
                 const endTime = performance.now();
-                processingTime.textContent = `${Math.round(endTime - startTime)}ms`;
+                procTime.textContent = `${Math.round(endTime - startTime)} ms`;
                 updateStats();
                 
             } catch (error) {
                 console.error('Decoding error:', error);
-                alert('Error decoding data. Please check if it\'s valid Base64.');
+                showNotification('Error decoding data', 'error');
+            } finally {
+                loading.classList.remove('active');
             }
         }
-
-        // Highlight Base64 in output
-        function highlightBase64(text) {
-            // This is a simple highlight - in a real app you might use a proper syntax highlighter
-            outputText.style.fontFamily = "'Monaco', 'Courier New', monospace";
-            outputText.style.color = '#d33682';
-        }
-
-        // Highlight text in output
-        function highlightText(text) {
-            outputText.style.fontFamily = "'Inter', sans-serif";
-            outputText.style.color = '#2aa198';
-        }
-
-        // File upload handling
-        fileInput.addEventListener('change', handleFileUpload);
         
-        // Drag and drop for files
-        fileUploadArea.addEventListener('dragover', (e) => {
+        // File handling
+        fileInput.addEventListener('change', handleFileSelect);
+        
+        // Drag and drop
+        dropArea.addEventListener('dragover', (e) => {
             e.preventDefault();
-            fileUploadArea.classList.add('dragover');
+            dropArea.classList.add('dragover');
         });
-
-        fileUploadArea.addEventListener('dragleave', () => {
-            fileUploadArea.classList.remove('dragover');
+        
+        dropArea.addEventListener('dragleave', () => {
+            dropArea.classList.remove('dragover');
         });
-
-        fileUploadArea.addEventListener('drop', (e) => {
+        
+        dropArea.addEventListener('drop', (e) => {
             e.preventDefault();
-            fileUploadArea.classList.remove('dragover');
+            dropArea.classList.remove('dragover');
+            
             const file = e.dataTransfer.files[0];
             if (file) {
-                handleFileSelection(file);
+                handleFile(file);
             }
         });
-
-        function handleFileUpload(e) {
+        
+        function handleFileSelect(e) {
             const file = e.target.files[0];
             if (file) {
-                handleFileSelection(file);
+                handleFile(file);
             }
         }
-
-        function handleFileSelection(file) {
+        
+        function handleFile(file) {
             currentFile = file;
-            fileInfo.textContent = `✓ ${file.name} (${formatBytes(file.size)})`;
+            fileInfo.textContent = `${file.name} (${formatBytes(file.size)})`;
             fileInfo.style.color = '#10b981';
-            fileOutput.value = ''; // Clear previous output
+            fileOutput.value = '';
         }
-
-        // Copy output to clipboard
+        
+        // Copy functions
         function copyOutput() {
             const text = outputText.value;
             if (!text) {
-                alert('No output to copy');
+                showNotification('No output to copy', 'error');
                 return;
             }
             
             navigator.clipboard.writeText(text)
-                .then(() => {
-                    alert('Copied to clipboard!');
-                })
+                .then(() => showNotification('Copied to clipboard!'))
                 .catch(err => {
                     console.error('Copy error:', err);
-                    alert('Failed to copy to clipboard');
+                    showNotification('Failed to copy', 'error');
                 });
         }
-
+        
         function copyFileOutput() {
             const text = fileOutput.value;
             if (!text) {
-                alert('No output to copy');
+                showNotification('No output to copy', 'error');
                 return;
             }
             
             navigator.clipboard.writeText(text)
-                .then(() => {
-                    alert('Copied to clipboard!');
-                })
+                .then(() => showNotification('Copied to clipboard!'))
                 .catch(err => {
                     console.error('Copy error:', err);
-                    alert('Failed to copy to clipboard');
+                    showNotification('Failed to copy', 'error');
                 });
         }
-
-        // Clear input
+        
+        function copyUrlOutput() {
+            const text = urlOutput.value;
+            if (!text) {
+                showNotification('No output to copy', 'error');
+                return;
+            }
+            
+            navigator.clipboard.writeText(text)
+                .then(() => showNotification('Copied to clipboard!'))
+                .catch(err => {
+                    console.error('Copy error:', err);
+                    showNotification('Failed to copy', 'error');
+                });
+        }
+        
+        // Clear functions
         function clearInput() {
             inputText.value = '';
             outputText.value = '';
+            updateCharCount();
             resetStats();
+            showNotification('Input cleared');
         }
-
-        // Reset entire tool
-        function resetTool() {
-            inputText.value = '';
-            outputText.value = '';
+        
+        function clearFile() {
             fileInput.value = '';
             fileOutput.value = '';
             fileInfo.textContent = 'No file selected';
             fileInfo.style.color = '';
-            urlInput.value = 'https://toolnest.com/base64-encoder-decoder';
-            urlOutput.value = '';
             currentFile = null;
-            resetStats();
+            updateCharCount();
+            showNotification('File cleared');
         }
-
-        // API Integration Example
-        async function saveToAPI(data, type) {
-            // Example API endpoint - you can implement this on your backend
-            const apiUrl = 'https://api.toolnest.com/base64/save';
-            
-            const payload = {
-                data: data,
-                type: type,
-                timestamp: new Date().toISOString(),
-                tab: currentTab
-            };
-            
+        
+        function clearUrl() {
+            urlInput.value = '';
+            urlOutput.value = '';
+            showNotification('URL cleared');
+        }
+        
+        // Reset all
+        function resetAll() {
+            clearInput();
+            clearFile();
+            clearUrl();
+            switchMode('text');
+            showNotification('All data reset');
+        }
+        
+        // Paste text
+        async function pasteText() {
             try {
-                const response = await fetch(apiUrl, {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify(payload)
-                });
-                
-                if (response.ok) {
-                    console.log('Data saved to API');
-                    return await response.json();
-                }
-            } catch (error) {
-                console.error('API Error:', error);
+                const text = await navigator.clipboard.readText();
+                inputText.value = text;
+                updateCharCount();
+                showNotification('Text pasted from clipboard');
+            } catch (err) {
+                console.error('Paste error:', err);
+                showNotification('Failed to paste from clipboard', 'error');
             }
         }
-
+        
+        // Save output
+        function saveOutput() {
+            const text = outputText.value;
+            if (!text) {
+                showNotification('No output to save', 'error');
+                return;
+            }
+            
+            const blob = new Blob([text], { type: 'text/plain' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'base64_output.txt';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+            
+            showNotification('Output saved as file');
+        }
+        
+        // Download file
+        function downloadFile() {
+            const base64 = fileOutput.value;
+            if (!base64) {
+                showNotification('No file data to download', 'error');
+                return;
+            }
+            
+            const binaryString = atob(base64);
+            const bytes = new Uint8Array(binaryString.length);
+            for (let i = 0; i < binaryString.length; i++) {
+                bytes[i] = binaryString.charCodeAt(i);
+            }
+            
+            const blob = new Blob([bytes], { type: 'application/octet-stream' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = currentFile ? `decoded_${currentFile.name}` : 'decoded_file.bin';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+            
+            showNotification('File downloaded');
+        }
+        
         // Initialize
         window.addEventListener('load', () => {
-            // Set example text
-            inputText.value = 'Hello Tool Nest! This is a sample text for Base64 encoding demonstration.';
-            updateStats();
+            updateCharCount();
+            inputText.focus();
             
-            // Add event listeners for real-time updates
-            inputText.addEventListener('input', updateStats);
+            // Example API call (commented out for demo)
+            /*
+            async function testAPI() {
+                const response = await fetch('https://api.toolnest.com/v1/base64/encode', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        data: 'Test API integration',
+                        format: 'standard'
+                    })
+                });
+                
+                const result = await response.json();
+                console.log('API Test:', result);
+            }
+            */
         });
     </script>
 </body>
 </html>
+
 
 
