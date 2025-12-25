@@ -1,1171 +1,1837 @@
 
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <link rel="icon" href="favicon-16x16.png" type="image/x-icon">
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  
-  <title>Advanced CSS Gradient Generator | Create Beautiful Gradients Online | Free Tool</title>
-  
-  <meta name="description" content="Professional CSS gradient generator with advanced controls. Create linear, radial, and conic gradients with multiple color stops, angles, and effects. Export CSS, SCSS, and Tailwind code.">
-  <meta name="keywords" content="CSS gradient generator, linear gradient generator, CSS gradient maker, background gradient generator, color gradient tool, gradient creator, CSS gradient code, web design tool, UI gradient generator, color palette generator">
-  <meta name="author" content="Tool Nest">
-  
-  <!-- Open Graph Tags -->
-  <meta property="og:title" content="Advanced CSS Gradient Generator | Free Professional Design Tool">
-  <meta property="og:description" content="Create stunning CSS gradients with our advanced generator. Multiple color stops, gradient types, and export options for web designers.">
-  <meta property="og:type" content="website">
-
-  <style>
-    :root {
-      --primary-color: #4361ee;
-      --primary-dark: #3a56d4;
-      --secondary-color: #7209b7;
-      --accent-color: #4cc9f0;
-      --success-color: #38b000;
-      --dark-color: #2b2d42;
-      --light-color: #f8f9fa;
-      --gray-color: #6c757d;
-      --border-radius: 12px;
-      --box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-      --box-shadow-hover: 0 15px 40px rgba(0, 0, 0, 0.12);
-      --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-    }
-
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    body {
-      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
-      background: linear-gradient(135deg, #f5f7fa 0%, #e4edf5 100%);
-      color: var(--dark-color);
-      line-height: 1.6;
-      min-height: 100vh;
-      padding: 20px;
-    }
-
-    .wrapper {
-      max-width: 1200px;
-      width: 100%;
-      margin: 0 auto;
-    }
-
-    .header {
-      text-align: center;
-      margin-bottom: 40px;
-      padding: 20px;
-    }
-
-    .logo {
-      font-size: 2.8rem;
-      font-weight: 800;
-      background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      margin-bottom: 10px;
-    }
-
-    .tagline {
-      color: var(--gray-color);
-      font-size: 1.2rem;
-      font-weight: 400;
-    }
-
-    .container {
-      background: white;
-      border-radius: var(--border-radius);
-      box-shadow: var(--box-shadow);
-      padding: 40px;
-      margin-bottom: 40px;
-      transition: var(--transition);
-    }
-
-    h1 {
-      font-size: 2.4rem;
-      color: var(--dark-color);
-      margin-bottom: 10px;
-      text-align: center;
-      font-weight: 700;
-    }
-
-    .subtitle {
-      text-align: center;
-      color: var(--gray-color);
-      margin-bottom: 40px;
-      font-size: 1.1rem;
-    }
-
-    /* Generator Layout */
-    .generator-layout {
-      display: grid;
-      grid-template-columns: 1fr 1.5fr;
-      gap: 40px;
-      margin-bottom: 40px;
-    }
-
-    @media (max-width: 1024px) {
-      .generator-layout {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    /* Controls Panel */
-    .controls-panel {
-      background: var(--light-color);
-      border-radius: var(--border-radius);
-      padding: 30px;
-    }
-
-    .control-group {
-      margin-bottom: 25px;
-    }
-
-    .control-label {
-      display: block;
-      font-weight: 600;
-      color: var(--dark-color);
-      margin-bottom: 10px;
-      font-size: 0.95rem;
-    }
-
-    .gradient-type-selector {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 10px;
-      margin-bottom: 20px;
-    }
-
-    .gradient-type-btn {
-      padding: 12px;
-      border: 2px solid #e0e0e0;
-      border-radius: var(--border-radius);
-      background: white;
-      cursor: pointer;
-      transition: var(--transition);
-      text-align: center;
-      font-weight: 600;
-    }
-
-    .gradient-type-btn:hover {
-      border-color: var(--primary-color);
-      color: var(--primary-color);
-    }
-
-    .gradient-type-btn.active {
-      background: var(--primary-color);
-      color: white;
-      border-color: var(--primary-color);
-    }
-
-    .color-picker-group {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
-      gap: 15px;
-      margin-bottom: 20px;
-    }
-
-    .color-picker-item {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 8px;
-    }
-
-    .color-picker {
-      width: 60px;
-      height: 60px;
-      border: 2px solid #e0e0e0;
-      border-radius: 50%;
-      cursor: pointer;
-      transition: var(--transition);
-    }
-
-    .color-picker:hover {
-      transform: scale(1.1);
-      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-    }
-
-    .color-input {
-      width: 100%;
-      padding: 8px;
-      border: 2px solid #e0e0e0;
-      border-radius: var(--border-radius);
-      text-align: center;
-      font-family: monospace;
-    }
-
-    .add-color-btn {
-      width: 100%;
-      padding: 12px;
-      background: #f8f9fa;
-      border: 2px dashed #e0e0e0;
-      border-radius: var(--border-radius);
-      color: var(--gray-color);
-      cursor: pointer;
-      transition: var(--transition);
-    }
-
-    .add-color-btn:hover {
-      background: var(--primary-color);
-      color: white;
-      border-style: solid;
-    }
-
-    .slider-container {
-      margin: 20px 0;
-    }
-
-    .slider {
-      width: 100%;
-      height: 6px;
-      -webkit-appearance: none;
-      background: linear-gradient(to right, #e0e0e0, var(--primary-color));
-      border-radius: 3px;
-      outline: none;
-    }
-
-    .slider::-webkit-slider-thumb {
-      -webkit-appearance: none;
-      width: 20px;
-      height: 20px;
-      background: white;
-      border: 2px solid var(--primary-color);
-      border-radius: 50%;
-      cursor: pointer;
-      transition: var(--transition);
-    }
-
-    .slider::-webkit-slider-thumb:hover {
-      transform: scale(1.2);
-      box-shadow: 0 0 0 4px rgba(67, 97, 238, 0.1);
-    }
-
-    .slider-value {
-      text-align: center;
-      margin-top: 8px;
-      font-weight: 600;
-      color: var(--dark-color);
-    }
-
-    .control-buttons {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 15px;
-      margin-top: 30px;
-    }
-
-    .btn {
-      padding: 14px;
-      border: none;
-      border-radius: var(--border-radius);
-      font-weight: 600;
-      cursor: pointer;
-      transition: var(--transition);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-    }
-
-    .btn-primary {
-      background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-      color: white;
-    }
-
-    .btn-primary:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 10px 25px rgba(67, 97, 238, 0.3);
-    }
-
-    .btn-secondary {
-      background: var(--light-color);
-      color: var(--dark-color);
-      border: 2px solid #e0e0e0;
-    }
-
-    .btn-secondary:hover {
-      background: #e9ecef;
-      transform: translateY(-2px);
-    }
-
-    /* Preview Panel */
-    .preview-panel {
-      background: var(--light-color);
-      border-radius: var(--border-radius);
-      padding: 30px;
-      display: flex;
-      flex-direction: column;
-      gap: 30px;
-    }
-
-    .gradient-preview {
-      flex: 1;
-      border-radius: var(--border-radius);
-      background: linear-gradient(135deg, #ff7f50, #1e90ff);
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-      min-height: 250px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      overflow: hidden;
-    }
-
-    .preview-text {
-      color: white;
-      font-size: 1.5rem;
-      font-weight: 700;
-      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-      padding: 20px;
-      background: rgba(0, 0, 0, 0.2);
-      border-radius: var(--border-radius);
-      backdrop-filter: blur(10px);
-    }
-
-    .code-output {
-      background: var(--dark-color);
-      border-radius: var(--border-radius);
-      padding: 25px;
-      font-family: 'Courier New', monospace;
-      color: #f8f9fa;
-      overflow-x: auto;
-    }
-
-    .code-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 15px;
-    }
-
-    .code-title {
-      font-size: 1.1rem;
-      font-weight: 600;
-      color: var(--accent-color);
-    }
-
-    .copy-btn {
-      background: var(--primary-color);
-      color: white;
-      border: none;
-      padding: 8px 16px;
-      border-radius: 6px;
-      cursor: pointer;
-      transition: var(--transition);
-      font-size: 0.9rem;
-    }
-
-    .copy-btn:hover {
-      background: var(--primary-dark);
-    }
-
-    .code-content {
-      font-size: 0.95rem;
-      line-height: 1.5;
-    }
-
-    .presets-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-      gap: 15px;
-      margin-top: 20px;
-    }
-
-    .preset-item {
-      height: 80px;
-      border-radius: var(--border-radius);
-      cursor: pointer;
-      transition: var(--transition);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .preset-item:hover {
-      transform: translateY(-5px);
-      box-shadow: var(--box-shadow-hover);
-    }
-
-    .preset-name {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      background: rgba(0, 0, 0, 0.7);
-      color: white;
-      padding: 8px;
-      font-size: 0.85rem;
-      text-align: center;
-    }
-
-    /* Gradient Examples */
-    .examples-section {
-      margin-top: 40px;
-    }
-
-    .examples-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-      gap: 20px;
-      margin-top: 20px;
-    }
-
-    .example-card {
-      background: white;
-      border-radius: var(--border-radius);
-      overflow: hidden;
-      box-shadow: var(--box-shadow);
-      transition: var(--transition);
-    }
-
-    .example-card:hover {
-      transform: translateY(-5px);
-      box-shadow: var(--box-shadow-hover);
-    }
-
-    .example-preview {
-      height: 150px;
-      width: 100%;
-    }
-
-    .example-info {
-      padding: 20px;
-    }
-
-    .example-name {
-      font-weight: 700;
-      margin-bottom: 10px;
-      color: var(--dark-color);
-    }
-
-    .example-code {
-      font-family: monospace;
-      font-size: 0.85rem;
-      color: var(--gray-color);
-      background: #f8f9fa;
-      padding: 10px;
-      border-radius: 6px;
-      margin-top: 10px;
-    }
-
-    /* Description Section */
-    .description {
-      background: white;
-      border-radius: var(--border-radius);
-      padding: 40px;
-      box-shadow: var(--box-shadow);
-      margin-bottom: 30px;
-    }
-
-    .description h2 {
-      color: var(--dark-color);
-      font-size: 1.8rem;
-      margin-bottom: 25px;
-      font-weight: 700;
-    }
-
-    .description h3 {
-      color: var(--dark-color);
-      font-size: 1.4rem;
-      margin: 25px 0 15px;
-      font-weight: 600;
-    }
-
-    .description p {
-      margin-bottom: 20px;
-      font-size: 1.05rem;
-      line-height: 1.7;
-    }
-
-    .description ul {
-      padding-left: 25px;
-      margin-bottom: 20px;
-    }
-
-    .description li {
-      margin-bottom: 10px;
-      position: relative;
-      padding-left: 10px;
-    }
-
-    .description li:before {
-      content: "•";
-      color: var(--primary-color);
-      font-weight: bold;
-      position: absolute;
-      left: -15px;
-    }
-
-    .keyword-highlight {
-      background: linear-gradient(120deg, rgba(67, 97, 238, 0.1) 0%, rgba(114, 9, 183, 0.1) 100%);
-      padding: 2px 6px;
-      border-radius: 4px;
-      font-weight: 600;
-    }
-
-    footer {
-      text-align: center;
-      padding: 30px;
-      color: var(--gray-color);
-      font-size: 0.95rem;
-    }
-
-    .footer-brand {
-      font-size: 1.5rem;
-      font-weight: 800;
-      background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      margin-bottom: 10px;
-    }
-
-    @media (max-width: 768px) {
-      .container {
-        padding: 25px;
-      }
-      
-      .generator-layout {
-        gap: 20px;
-      }
-      
-      h1 {
-        font-size: 1.8rem;
-      }
-      
-      .gradient-type-selector {
-        grid-template-columns: repeat(2, 1fr);
-      }
-    }
-
-    @media (max-width: 480px) {
-      body {
-        padding: 10px;
-      }
-      
-      .container, .description {
-        padding: 20px;
-      }
-      
-      .control-buttons {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    /* Animation for gradient preview */
-    @keyframes gradientShift {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
-    }
-
-    .animated-gradient {
-      background-size: 200% 200%;
-      animation: gradientShift 5s ease infinite;
-    }
-
-    /* Notification */
-    .notification {
-      position: fixed;
-      top: 20px;
-      right: 20px;
-      background: var(--success-color);
-      color: white;
-      padding: 15px 25px;
-      border-radius: var(--border-radius);
-      box-shadow: var(--box-shadow);
-      transform: translateX(150%);
-      transition: transform 0.3s ease;
-      z-index: 1000;
-    }
-
-    .notification.show {
-      transform: translateX(0);
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced CSS Gradient Generator | Create Beautiful Gradients Online | Free Tool</title>
+    <meta name="description" content="Professional CSS gradient generator with advanced controls. Create linear, radial, and conic gradients with multiple color stops, angles, and effects. Export CSS, SCSS, and Tailwind code.">
+    <meta name="keywords" content="CSS gradient generator, linear gradient generator, CSS gradient maker, background gradient generator, color gradient tool, gradient creator, CSS gradient code, web design tool, UI gradient generator, color palette generator">
+    <meta name="author" content="Tool Nest">
+    <link rel="icon" href="favicon-16x16.png" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            /* Dark Theme Premium Color Palette */
+            --primary-blue: #3b82f6;
+            --dark-blue: #1e40af;
+            --light-blue: #60a5fa;
+            --accent-blue: #93c5fd;
+            --purple: #8b5cf6;
+            --pink: #ec4899;
+            --gradient-blue: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+            --gradient-purple: linear-gradient(135deg, #8b5cf6 0%, #ec4899 100%);
+            --gradient-dark: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+            --bg-dark: #0f172a;
+            --card-dark: #1e293b;
+            --card-darker: #1e293b;
+            --text-light: #f8fafc;
+            --text-gray: #94a3b8;
+            --text-dark: #cbd5e1;
+            --border-color: #334155;
+            --success-green: #10b981;
+            --warning-orange: #f59e0b;
+            --error-red: #ef4444;
+            --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.3);
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.4), 0 2px 4px -1px rgba(0, 0, 0, 0.3);
+            --shadow-lg: 0 10px 25px -5px rgba(0, 0, 0, 0.5), 0 8px 10px -6px rgba(0, 0, 0, 0.4);
+            --shadow-xl: 0 20px 40px -15px rgba(0, 0, 0, 0.6);
+            --radius-sm: 8px;
+            --radius-md: 12px;
+            --radius-lg: 16px;
+            --radius-xl: 24px;
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--text-dark);
+            background: var(--bg-dark);
+            line-height: 1.6;
+            font-weight: 400;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            line-height: 1.2;
+            margin-bottom: 1rem;
+            color: var(--text-light);
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Premium Header */
+        header {
+            background: var(--gradient-dark);
+            box-shadow: var(--shadow-lg);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            padding: 18px 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .logo {
+            font-family: 'Poppins', sans-serif;
+            font-size: 28px;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--accent-blue) 0%, var(--primary-blue) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-decoration: none;
+            letter-spacing: -0.5px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .logo-icon {
+            background: var(--gradient-blue);
+            width: 36px;
+            height: 36px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 18px;
+        }
+        
+        .logo-text {
+            display: flex;
+            flex-direction: column;
+            line-height: 1;
+        }
+        
+        .logo-tagline {
+            font-size: 11px;
+            font-weight: 500;
+            color: var(--accent-blue);
+            margin-top: 2px;
+            letter-spacing: 0.5px;
+        }
+        
+        .back-btn {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--gradient-blue);
+            color: white;
+            padding: 10px 20px;
+            border-radius: var(--radius-md);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 14px;
+            transition: var(--transition);
+        }
+        
+        .back-btn:hover {
+            transform: translateX(-3px);
+            box-shadow: var(--shadow-md);
+        }
+        
+        /* Main Content */
+        .main-content {
+            flex: 1;
+            padding: 60px 0;
+        }
+        
+        /* Tool Header */
+        .tool-header {
+            text-align: center;
+            margin-bottom: 48px;
+        }
+        
+        .tool-badge {
+            display: inline-block;
+            background: var(--gradient-blue);
+            color: white;
+            padding: 8px 24px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 16px;
+            letter-spacing: 0.5px;
+        }
+        
+        .tool-header h1 {
+            font-size: 2.8rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--accent-blue) 0%, var(--primary-blue) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 16px;
+        }
+        
+        .tool-header p {
+            color: var(--text-gray);
+            font-size: 1.1rem;
+            max-width: 700px;
+            margin: 0 auto;
+            font-weight: 400;
+        }
+        
+        /* Generator Container */
+        .generator-container {
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+        
+        @media (max-width: 992px) {
+            .generator-container {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        /* Controls Panel */
+        .controls-panel {
+            background: var(--card-dark);
+            border-radius: var(--radius-lg);
+            padding: 40px;
+            box-shadow: var(--shadow-md);
+            border: 1px solid var(--border-color);
+        }
+        
+        .controls-panel h2 {
+            font-size: 1.5rem;
+            margin-bottom: 30px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .controls-panel h2 i {
+            color: var(--primary-blue);
+        }
+        
+        .control-group {
+            margin-bottom: 30px;
+        }
+        
+        .control-label {
+            display: block;
+            font-weight: 600;
+            color: var(--text-light);
+            margin-bottom: 12px;
+            font-size: 0.95rem;
+        }
+        
+        .gradient-type-selector {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+        
+        .type-btn {
+            padding: 14px;
+            border: 2px solid var(--border-color);
+            border-radius: var(--radius-md);
+            background: rgba(15, 23, 42, 0.7);
+            color: var(--text-gray);
+            cursor: pointer;
+            transition: var(--transition);
+            text-align: center;
+            font-weight: 600;
+            font-size: 14px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .type-btn:hover {
+            border-color: var(--primary-blue);
+            color: var(--primary-blue);
+            transform: translateY(-2px);
+        }
+        
+        .type-btn.active {
+            background: var(--gradient-blue);
+            color: white;
+            border-color: var(--primary-blue);
+        }
+        
+        .type-btn i {
+            font-size: 20px;
+        }
+        
+        .color-picker-group {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        
+        .color-picker-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .color-picker {
+            width: 50px;
+            height: 50px;
+            border: 3px solid var(--border-color);
+            border-radius: 50%;
+            cursor: pointer;
+            transition: var(--transition);
+            background: transparent;
+        }
+        
+        .color-picker:hover {
+            transform: scale(1.1);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            border-color: var(--primary-blue);
+        }
+        
+        .color-input {
+            width: 100%;
+            padding: 10px;
+            border: 2px solid var(--border-color);
+            border-radius: var(--radius-sm);
+            background: rgba(15, 23, 42, 0.7);
+            color: var(--text-dark);
+            text-align: center;
+            font-family: monospace;
+            font-size: 14px;
+        }
+        
+        .position-slider {
+            width: 100%;
+            height: 6px;
+            -webkit-appearance: none;
+            background: var(--border-color);
+            border-radius: 3px;
+            outline: none;
+            margin-top: 5px;
+        }
+        
+        .position-slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 18px;
+            height: 18px;
+            background: var(--primary-blue);
+            border-radius: 50%;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        
+        .position-slider::-webkit-slider-thumb:hover {
+            background: var(--light-blue);
+            transform: scale(1.2);
+        }
+        
+        .add-color-btn {
+            width: 100%;
+            padding: 14px;
+            background: rgba(15, 23, 42, 0.7);
+            border: 2px dashed var(--border-color);
+            border-radius: var(--radius-md);
+            color: var(--text-gray);
+            cursor: pointer;
+            transition: var(--transition);
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+        
+        .add-color-btn:hover {
+            background: var(--gradient-blue);
+            color: white;
+            border-style: solid;
+            border-color: var(--primary-blue);
+        }
+        
+        .slider-container {
+            margin: 20px 0;
+        }
+        
+        .slider {
+            width: 100%;
+            height: 6px;
+            -webkit-appearance: none;
+            background: linear-gradient(to right, var(--border-color), var(--primary-blue));
+            border-radius: 3px;
+            outline: none;
+        }
+        
+        .slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 22px;
+            height: 22px;
+            background: white;
+            border: 3px solid var(--primary-blue);
+            border-radius: 50%;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        
+        .slider::-webkit-slider-thumb:hover {
+            transform: scale(1.2);
+            box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.2);
+        }
+        
+        .slider-value {
+            text-align: center;
+            margin-top: 8px;
+            font-weight: 600;
+            color: var(--text-light);
+            background: rgba(15, 23, 42, 0.7);
+            padding: 6px 12px;
+            border-radius: var(--radius-sm);
+            display: inline-block;
+        }
+        
+        .control-buttons {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin-top: 30px;
+        }
+        
+        .btn {
+            padding: 16px;
+            border: none;
+            border-radius: var(--radius-md);
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            font-size: 15px;
+        }
+        
+        .btn-primary {
+            background: var(--gradient-blue);
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-lg);
+            background: var(--gradient-purple);
+        }
+        
+        .btn-secondary {
+            background: rgba(15, 23, 42, 0.7);
+            color: var(--text-dark);
+            border: 2px solid var(--border-color);
+        }
+        
+        .btn-secondary:hover {
+            background: rgba(59, 130, 246, 0.1);
+            border-color: var(--light-blue);
+            color: var(--primary-blue);
+        }
+        
+        .select-control {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid var(--border-color);
+            border-radius: var(--radius-sm);
+            background: rgba(15, 23, 42, 0.7);
+            color: var(--text-dark);
+            font-size: 14px;
+            cursor: pointer;
+        }
+        
+        .select-control:focus {
+            outline: none;
+            border-color: var(--primary-blue);
+        }
+        
+        /* Preview Panel */
+        .preview-panel {
+            background: var(--card-dark);
+            border-radius: var(--radius-lg);
+            padding: 40px;
+            box-shadow: var(--shadow-md);
+            border: 1px solid var(--border-color);
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+        
+        .preview-panel h2 {
+            font-size: 1.5rem;
+            margin-bottom: 0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .preview-panel h2 i {
+            color: var(--primary-blue);
+        }
+        
+        .gradient-preview {
+            flex: 1;
+            border-radius: var(--radius-lg);
+            background: linear-gradient(135deg, #ff7f50, #1e90ff);
+            box-shadow: var(--shadow-lg);
+            min-height: 250px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            position: relative;
+            border: 2px solid var(--border-color);
+        }
+        
+        .gradient-preview.animated {
+            animation: gradientShift 3s ease infinite;
+            background-size: 200% 200%;
+        }
+        
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        .preview-text {
+            color: white;
+            font-size: 1.8rem;
+            font-weight: 700;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+            padding: 20px 30px;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: var(--radius-md);
+            backdrop-filter: blur(10px);
+            text-align: center;
+        }
+        
+        .code-output {
+            background: rgba(15, 23, 42, 0.7);
+            border-radius: var(--radius-md);
+            padding: 25px;
+            font-family: 'Courier New', monospace;
+            color: #f8f9fa;
+            overflow-x: auto;
+            border: 1px solid var(--border-color);
+        }
+        
+        .code-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        
+        .code-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--accent-blue);
+        }
+        
+        .copy-btn {
+            background: var(--gradient-blue);
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: var(--radius-sm);
+            cursor: pointer;
+            transition: var(--transition);
+            font-size: 14px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        
+        .copy-btn:hover {
+            background: var(--gradient-purple);
+            transform: translateY(-2px);
+        }
+        
+        .code-content {
+            font-size: 14px;
+            line-height: 1.6;
+            color: #e2e8f0;
+        }
+        
+        .presets-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+            gap: 15px;
+            margin-top: 15px;
+        }
+        
+        .preset-item {
+            height: 80px;
+            border-radius: var(--radius-md);
+            cursor: pointer;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+            border: 2px solid var(--border-color);
+        }
+        
+        .preset-item:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--primary-blue);
+        }
+        
+        .preset-name {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 6px;
+            font-size: 12px;
+            text-align: center;
+            font-weight: 500;
+        }
+        
+        /* Examples Section */
+        .examples-section {
+            background: var(--card-dark);
+            border-radius: var(--radius-lg);
+            padding: 50px;
+            box-shadow: var(--shadow-md);
+            border: 1px solid var(--border-color);
+            margin-bottom: 60px;
+        }
+        
+        .examples-section h2 {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 40px;
+            background: linear-gradient(135deg, var(--accent-blue) 0%, var(--primary-blue) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .examples-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 30px;
+        }
+        
+        .example-card {
+            background: rgba(30, 41, 59, 0.7);
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+            transition: var(--transition);
+            border: 1px solid var(--border-color);
+        }
+        
+        .example-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--primary-blue);
+        }
+        
+        .example-preview {
+            height: 150px;
+            width: 100%;
+        }
+        
+        .example-info {
+            padding: 20px;
+        }
+        
+        .example-name {
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: var(--text-light);
+            font-size: 1.1rem;
+        }
+        
+        .example-code {
+            font-family: monospace;
+            font-size: 13px;
+            color: var(--text-gray);
+            background: rgba(15, 23, 42, 0.7);
+            padding: 10px;
+            border-radius: 6px;
+            margin-top: 10px;
+            overflow-x: auto;
+        }
+        
+        /* SEO Description Section */
+        .seo-description {
+            background: var(--card-dark);
+            border-radius: var(--radius-lg);
+            padding: 50px;
+            box-shadow: var(--shadow-md);
+            border: 1px solid var(--border-color);
+            margin-bottom: 60px;
+        }
+        
+        .seo-description h2 {
+            font-size: 1.8rem;
+            margin-bottom: 30px;
+            text-align: center;
+            background: linear-gradient(135deg, var(--accent-blue) 0%, var(--primary-blue) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .seo-content {
+            color: var(--text-gray);
+            line-height: 1.8;
+            font-size: 16px;
+        }
+        
+        .seo-content h3 {
+            color: var(--text-light);
+            margin: 25px 0 15px;
+            font-size: 1.3rem;
+        }
+        
+        .seo-content p {
+            margin-bottom: 20px;
+        }
+        
+        .keyword-highlight {
+            color: var(--accent-blue);
+            font-weight: 600;
+            background: rgba(59, 130, 246, 0.1);
+            padding: 2px 8px;
+            border-radius: 4px;
+            border-left: 3px solid var(--primary-blue);
+        }
+        
+        .seo-content ul {
+            padding-left: 25px;
+            margin-bottom: 20px;
+        }
+        
+        .seo-content li {
+            margin-bottom: 12px;
+            position: relative;
+            padding-left: 10px;
+            color: var(--text-gray);
+        }
+        
+        .seo-content li:before {
+            content: "▸";
+            color: var(--primary-blue);
+            font-weight: bold;
+            position: absolute;
+            left: -15px;
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--gradient-dark);
+            color: white;
+            padding: 60px 0 40px;
+            margin-top: auto;
+        }
+        
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 48px;
+            margin-bottom: 48px;
+        }
+        
+        .footer-brand {
+            text-align: center;
+            grid-column: 1 / -1;
+            margin-bottom: 20px;
+        }
+        
+        .footer-logo {
+            font-family: 'Poppins', sans-serif;
+            font-size: 32px;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--accent-blue) 0%, var(--primary-blue) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-decoration: none;
+            display: inline-block;
+            margin-bottom: 16px;
+        }
+        
+        .footer-tagline {
+            color: var(--accent-blue);
+            font-size: 14px;
+            line-height: 1.6;
+            margin-bottom: 24px;
+        }
+        
+        .footer-contact {
+            margin-top: 24px;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 16px;
+            color: var(--text-gray);
+            justify-content: center;
+        }
+        
+        .contact-item i {
+            color: var(--accent-blue);
+        }
+        
+        .footer-links h4 {
+            font-size: 1.1rem;
+            margin-bottom: 24px;
+            color: var(--text-light);
+            text-align: center;
+        }
+        
+        .footer-links ul {
+            list-style: none;
+            text-align: center;
+        }
+        
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+        
+        .footer-links a {
+            color: var(--text-gray);
+            text-decoration: none;
+            font-size: 14px;
+            transition: var(--transition);
+        }
+        
+        .footer-links a:hover {
+            color: white;
+            padding-left: 8px;
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 40px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--text-gray);
+            font-size: 14px;
+        }
+        
+        /* Loading Overlay */
+        .loading-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(15, 23, 42, 0.95);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 2000;
+        }
+        
+        .loading-spinner {
+            width: 60px;
+            height: 60px;
+            border: 4px solid var(--border-color);
+            border-top-color: var(--primary-blue);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+        
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        
+        /* Alert */
+        .alert {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            padding: 16px 24px;
+            border-radius: var(--radius-md);
+            background: var(--card-dark);
+            box-shadow: var(--shadow-lg);
+            border-left: 4px solid var(--primary-blue);
+            display: none;
+            align-items: center;
+            gap: 12px;
+            z-index: 3000;
+            animation: slideIn 0.3s ease-out;
+            color: var(--text-light);
+        }
+        
+        @keyframes slideIn {
+            from { transform: translateX(100%); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+        
+        .alert.success {
+            border-left-color: var(--success-green);
+        }
+        
+        .alert.error {
+            border-left-color: var(--error-red);
+        }
+        
+        .alert-icon {
+            font-size: 20px;
+        }
+        
+        .alert.success .alert-icon {
+            color: var(--success-green);
+        }
+        
+        .alert.error .alert-icon {
+            color: var(--error-red);
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .tool-header h1 {
+                font-size: 2rem;
+            }
+            
+            .controls-panel, .preview-panel, .examples-section, .seo-description {
+                padding: 30px;
+            }
+            
+            .control-buttons {
+                grid-template-columns: 1fr;
+            }
+            
+            .gradient-type-selector {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .generator-container {
+                gap: 20px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .tool-header h1 {
+                font-size: 1.8rem;
+            }
+            
+            .controls-panel, .preview-panel, .examples-section, .seo-description {
+                padding: 20px;
+            }
+            
+            .gradient-type-selector {
+                grid-template-columns: 1fr;
+            }
+            
+            .color-picker-group {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .header-container {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .back-btn {
+                width: 100%;
+                justify-content: center;
+            }
+            
+            .examples-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .presets-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
 </head>
 <body>
-
-  <div class="wrapper">
-    
     <!-- Header -->
-    <div class="header">
-      <div class="logo">Gradient Generator</div>
-      <div class="tagline">Create Stunning CSS Gradients Instantly</div>
-    </div>
-
-    <!-- Main Generator -->
-    <div class="container">
-      <h1>Advanced CSS Gradient Creator</h1>
-      <p class="subtitle">Design professional gradients with multiple color stops, angles, and effects</p>
-      
-      <div class="generator-layout">
-        
-        <!-- Controls Panel -->
-        <div class="controls-panel">
-          <div class="control-group">
-            <label class="control-label">Gradient Type</label>
-            <div class="gradient-type-selector">
-              <div class="gradient-type-btn active" data-type="linear">Linear</div>
-              <div class="gradient-type-btn" data-type="radial">Radial</div>
-              <div class="gradient-type-btn" data-type="conic">Conic</div>
+    <header>
+        <div class="container header-container">
+            <div class="logo-wrapper">
+                <a href="index.html" class="logo">
+                    <div class="logo-icon">
+                        <i class="fas fa-palette"></i>
+                    </div>
+                    <div class="logo-text">
+                        Tool Nest
+                        <span class="logo-tagline">PREMIUM DESIGN TOOLS</span>
+                    </div>
+                </a>
             </div>
-          </div>
-
-          <div class="control-group">
-            <label class="control-label">Color Stops</label>
-            <div class="color-picker-group" id="colorPickers">
-              <!-- Color pickers will be added dynamically -->
-            </div>
-            <button class="add-color-btn" id="addColorBtn">+ Add Color</button>
-          </div>
-
-          <div class="control-group">
-            <label class="control-label">Angle: <span id="angleValue">135</span>°</label>
-            <div class="slider-container">
-              <input type="range" min="0" max="360" value="135" class="slider" id="angleSlider">
-            </div>
-          </div>
-
-          <div class="control-group">
-            <label class="control-label">Blend Mode</label>
-            <select id="blendMode" class="color-input" style="width: 100%; padding: 12px;">
-              <option value="normal">Normal</option>
-              <option value="multiply">Multiply</option>
-              <option value="screen">Screen</option>
-              <option value="overlay">Overlay</option>
-              <option value="darken">Darken</option>
-              <option value="lighten">Lighten</option>
-            </select>
-          </div>
-
-          <div class="control-group">
-            <label class="control-label">Effects</label>
-            <div style="display: flex; gap: 10px;">
-              <button class="btn-secondary" style="flex: 1;" id="animateBtn">Animate Gradient</button>
-              <button class="btn-secondary" style="flex: 1;" id="randomBtn">Randomize</button>
-            </div>
-          </div>
-
-          <div class="control-buttons">
-            <button class="btn btn-primary" id="generateBtn">
-              <span>Generate Gradient</span>
-              <span>🎨</span>
-            </button>
-            <button class="btn btn-secondary" id="resetBtn">
-              <span>Reset</span>
-              <span>↺</span>
-            </button>
-          </div>
+            
+            <a href="index.html" class="back-btn">
+                <i class="fas fa-arrow-left"></i>
+                Back to Tools
+            </a>
         </div>
+    </header>
 
-        <!-- Preview Panel -->
-        <div class="preview-panel">
-          <div class="gradient-preview" id="gradientPreview">
-            <div class="preview-text" id="previewText">Your Gradient Preview</div>
-          </div>
-
-          <div class="code-output">
-            <div class="code-header">
-              <div class="code-title">CSS Code</div>
-              <button class="copy-btn" id="copyCssBtn">Copy CSS</button>
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container">
+            <!-- Tool Header -->
+            <div class="tool-header">
+                <span class="tool-badge">Professional Tool</span>
+                <h1>Advanced CSS Gradient Generator</h1>
+                <p>Create stunning CSS gradients with our advanced generator. Multiple color stops, gradient types, and real-time preview.</p>
             </div>
-            <pre class="code-content" id="cssCode">background: linear-gradient(135deg, #ff7f50, #1e90ff);</pre>
-          </div>
 
-          <div class="code-output">
-            <div class="code-header">
-              <div class="code-title">Tailwind CSS</div>
-              <button class="copy-btn" id="copyTailwindBtn">Copy</button>
-            </div>
-            <pre class="code-content" id="tailwindCode">bg-gradient-to-r from-[#ff7f50] to-[#1e90ff]</pre>
-          </div>
+            <!-- Generator Container -->
+            <div class="generator-container">
+                <!-- Controls Panel -->
+                <div class="controls-panel">
+                    <h2><i class="fas fa-sliders-h"></i> Gradient Controls</h2>
+                    
+                    <div class="control-group">
+                        <label class="control-label">Gradient Type</label>
+                        <div class="gradient-type-selector">
+                            <div class="type-btn active" data-type="linear">
+                                <i class="fas fa-arrow-right"></i>
+                                Linear
+                            </div>
+                            <div class="type-btn" data-type="radial">
+                                <i class="fas fa-circle"></i>
+                                Radial
+                            </div>
+                            <div class="type-btn" data-type="conic">
+                                <i class="fas fa-sync-alt"></i>
+                                Conic
+                            </div>
+                        </div>
+                    </div>
 
-          <div>
-            <label class="control-label">Popular Presets</label>
-            <div class="presets-grid" id="presetsGrid">
-              <!-- Presets will be added dynamically -->
+                    <div class="control-group">
+                        <label class="control-label">Color Stops</label>
+                        <div class="color-picker-group" id="colorPickers">
+                            <!-- Color pickers will be added dynamically -->
+                        </div>
+                        <button class="add-color-btn" id="addColorBtn">
+                            <i class="fas fa-plus"></i>
+                            Add Color Stop
+                        </button>
+                    </div>
+
+                    <div class="control-group">
+                        <label class="control-label">Angle: <span class="slider-value" id="angleValue">135°</span></label>
+                        <div class="slider-container">
+                            <input type="range" min="0" max="360" value="135" class="slider" id="angleSlider">
+                        </div>
+                    </div>
+
+                    <div class="control-group">
+                        <label class="control-label">Blend Mode</label>
+                        <select id="blendMode" class="select-control">
+                            <option value="normal">Normal</option>
+                            <option value="multiply">Multiply</option>
+                            <option value="screen">Screen</option>
+                            <option value="overlay">Overlay</option>
+                            <option value="darken">Darken</option>
+                            <option value="lighten">Lighten</option>
+                            <option value="color-dodge">Color Dodge</option>
+                            <option value="color-burn">Color Burn</option>
+                        </select>
+                    </div>
+
+                    <div class="control-group">
+                        <label class="control-label">Effects & Options</label>
+                        <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+                            <button class="btn-secondary" id="animateBtn" style="flex: 1;">
+                                <i class="fas fa-play"></i>
+                                Animate
+                            </button>
+                            <button class="btn-secondary" id="randomBtn" style="flex: 1;">
+                                <i class="fas fa-random"></i>
+                                Random
+                            </button>
+                            <button class="btn-secondary" id="reverseBtn" style="flex: 1;">
+                                <i class="fas fa-exchange-alt"></i>
+                                Reverse
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="control-buttons">
+                        <button class="btn btn-primary" id="generateBtn">
+                            <i class="fas fa-magic"></i>
+                            Generate Gradient
+                        </button>
+                        <button class="btn btn-secondary" id="resetBtn">
+                            <i class="fas fa-redo"></i>
+                            Reset All
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Preview Panel -->
+                <div class="preview-panel">
+                    <h2><i class="fas fa-eye"></i> Live Preview</h2>
+                    
+                    <div class="gradient-preview" id="gradientPreview">
+                        <div class="preview-text" id="previewText">Your Gradient Preview</div>
+                    </div>
+
+                    <div class="code-output">
+                        <div class="code-header">
+                            <div class="code-title">CSS Code</div>
+                            <button class="copy-btn" id="copyCssBtn">
+                                <i class="far fa-copy"></i>
+                                Copy CSS
+                            </button>
+                        </div>
+                        <pre class="code-content" id="cssCode">background: linear-gradient(135deg, #ff7f50, #1e90ff);</pre>
+                    </div>
+
+                    <div class="code-output">
+                        <div class="code-header">
+                            <div class="code-title">Tailwind CSS</div>
+                            <button class="copy-btn" id="copyTailwindBtn">
+                                <i class="far fa-copy"></i>
+                                Copy
+                            </button>
+                        </div>
+                        <pre class="code-content" id="tailwindCode">bg-gradient-to-r from-[#ff7f50] to-[#1e90ff]</pre>
+                    </div>
+
+                    <div>
+                        <label class="control-label">Popular Presets</label>
+                        <div class="presets-grid" id="presetsGrid">
+                            <!-- Presets will be added dynamically -->
+                        </div>
+                    </div>
+                </div>
             </div>
-          </div>
+
+            <!-- Gradient Examples -->
+            <div class="examples-section">
+                <h2>Inspiration Gallery</h2>
+                <div class="examples-grid" id="examplesGrid">
+                    <!-- Examples will be added dynamically -->
+                </div>
+            </div>
+
+            <!-- SEO Description Section -->
+            <div class="seo-description">
+                <h2>Professional CSS Gradient Generator - Create Stunning Web Backgrounds</h2>
+                
+                <div class="seo-content">
+                    <p>Our <span class="keyword-highlight">Advanced CSS Gradient Generator</span> is a comprehensive tool designed for web designers, UI/UX professionals, and developers who need to create beautiful, performant gradients for modern web applications. Unlike basic gradient tools, our professional generator supports <span class="keyword-highlight">linear gradients</span>, <span class="keyword-highlight">radial gradients</span>, and <span class="keyword-highlight">conic gradients</span> with unlimited color stops, custom angles, and advanced effects.</p>
+                    
+                    <h3>Why Choose Our Professional Gradient Generator?</h3>
+                    <p>As a <span class="keyword-highlight">professional gradient tool</span>, we offer features that set us apart from basic generators:</p>
+                    <ul>
+                        <li><strong>Multiple Gradient Types:</strong> Create linear, radial, and conic gradients with precise control over direction and shape</li>
+                        <li><strong>Unlimited Color Stops:</strong> Add as many colors as needed with percentage-based positioning for complete creative freedom</li>
+                        <li><strong>Real-time Preview:</strong> See your gradient update instantly as you adjust colors, angles, and effects</li>
+                        <li><strong>Cross-Format Export:</strong> Generate code for CSS, Tailwind CSS, SCSS, and JavaScript frameworks</li>
+                        <li><strong>Advanced Effects:</strong> Apply blend modes, animation effects, and transparency controls</li>
+                        <li><strong>Professional Presets:</strong> Access curated gradient collections for different design styles and industries</li>
+                    </ul>
+                    
+                    <h3>Applications of CSS Gradients in Modern Web Design</h3>
+                    <p><span class="keyword-highlight">CSS gradients</span> are essential in modern web design for creating visually appealing backgrounds, buttons, text effects, data visualizations, and UI components. They provide smooth color transitions that enhance user experience and create depth without using large image files that slow down page load times.</p>
+                    
+                    <h3>How to Use Our Advanced Gradient Generator</h3>
+                    <ol>
+                        <li>Select your gradient type (linear, radial, or conic) based on your design needs</li>
+                        <li>Add color stops by clicking the color pickers or using the "Add Color Stop" button</li>
+                        <li>Adjust the angle, direction, and position of each color stop using the sliders</li>
+                        <li>Experiment with blend modes for unique color interactions and visual effects</li>
+                        <li>Preview your gradient in real-time and make adjustments as needed</li>
+                        <li>Copy the generated code in your preferred format (CSS, Tailwind, etc.)</li>
+                        <li>Apply the gradient to your website, application, or design project</li>
+                    </ol>
+                    
+                    <h3>Technical Features and Capabilities</h3>
+                    <ul>
+                        <li><strong>Linear Gradients:</strong> Create smooth transitions along a straight line with custom angles from 0-360 degrees</li>
+                        <li><strong>Radial Gradients:</strong> Generate circular gradients with customizable shape, size, and position</li>
+                        <li><strong>Conic Gradients:</strong> Create angular gradients that rotate around a center point for modern UI effects</li>
+                        <li><strong>Color Stop Control:</strong> Precise percentage-based positioning of each color with individual sliders</li>
+                        <li><strong>Opacity Support:</strong> Use rgba() or hsla() colors for transparent gradients and overlay effects</li>
+                        <li><strong>CSS Variables:</strong> Generate code with CSS custom properties for easy theming and dynamic updates</li>
+                        <li><strong>Animation Ready:</strong> Create animated gradients for dynamic backgrounds and hover effects</li>
+                    </ul>
+                    
+                    <h3>Professional Design Features</h3>
+                    <p>Our generator includes advanced features like <span class="keyword-highlight">gradient animation</span> for dynamic backgrounds, <span class="keyword-highlight">blend modes</span> for complex color interactions, and <span class="keyword-highlight">preset libraries</span> for quick inspiration. These tools are essential for creating modern, responsive web designs that perform well across all devices.</p>
+                    
+                    <h3>Optimization Tips for Web Developers</h3>
+                    <p>For optimal performance and accessibility, consider these best practices:</p>
+                    <ul>
+                        <li>Use CSS gradients instead of background images for faster loading times and better performance</li>
+                        <li>Limit complex gradients on mobile devices to ensure smooth scrolling and interactions</li>
+                        <li>Test gradient visibility on different screen brightness levels and in various lighting conditions</li>
+                        <li>Ensure sufficient color contrast for accessibility compliance (WCAG 2.1 standards)</li>
+                        <li>Use CSS variables for gradients to enable easy theme switching and dynamic updates</li>
+                        <li>Consider fallback solid colors for browsers that don't support advanced gradient features</li>
+                    </ul>
+                    
+                    <h3>API Integration for Advanced Use Cases</h3>
+                    <p>For developers and teams needing programmatic access, our gradient generator offers API integration for:</p>
+                    <ul>
+                        <li><strong>Batch Gradient Generation:</strong> Create multiple gradients programmatically for design systems</li>
+                        <li><strong>Dynamic Gradient Creation:</strong> Generate gradients based on user preferences or data inputs</li>
+                        <li><strong>Theme Management:</strong> Create and manage gradient libraries for consistent brand styling</li>
+                        <li><strong>Real-time Collaboration:</strong> Share and collaborate on gradient designs with team members</li>
+                    </ul>
+                    
+                    <p>Whether you're designing a <span class="keyword-highlight">website background</span>, <span class="keyword-highlight">button hover effects</span>, <span class="keyword-highlight">text gradients</span>, <span class="keyword-highlight">data visualization</span> elements, or <span class="keyword-highlight">UI components</span>, our professional gradient generator provides all the tools you need. Start creating beautiful, performant gradients today - no design experience required!</p>
+                </div>
+            </div>
         </div>
-      </div>
+    </main>
 
-      <!-- Gradient Examples -->
-      <div class="examples-section">
-        <h2 style="text-align: center; margin-bottom: 30px;">Inspiration Gallery</h2>
-        <div class="examples-grid" id="examplesGrid">
-          <!-- Examples will be added dynamically -->
-        </div>
-      </div>
-    </div>
-
-    <!-- SEO Optimized Description -->
-    <div class="description">
-      <h2>Professional CSS Gradient Generator for Modern Web Design</h2>
-      
-      <p>Our <span class="keyword-highlight">CSS Gradient Generator</span> is a comprehensive tool designed for web designers, UI/UX professionals, and developers who need to create stunning gradients quickly and efficiently. Unlike basic gradient tools, our advanced generator supports <span class="keyword-highlight">linear gradients</span>, <span class="keyword-highlight">radial gradients</span>, and <span class="keyword-highlight">conic gradients</span> with multiple color stops and custom blend modes.</p>
-      
-      <h3>What Makes Our Gradient Generator Different?</h3>
-      <ul>
-        <li><strong>Multiple Gradient Types:</strong> Create linear, radial, and conic gradients with precise control</li>
-        <li><strong>Unlimited Color Stops:</strong> Add as many colors as you need with percentage-based positioning</li>
-        <li><strong>Real-time Preview:</strong> See your gradient update instantly as you make changes</li>
-        <li><strong>Cross-Format Export:</strong> Get CSS, SCSS, Tailwind CSS, and JavaScript code formats</li>
-        <li><strong>Professional Presets:</strong> Access curated gradient collections for different design styles</li>
-        <li><strong>Advanced Effects:</strong> Apply blend modes, animation, and transparency effects</li>
-      </ul>
-      
-      <h3>Common Applications of CSS Gradients</h3>
-      <p><span class="keyword-highlight">CSS gradients</span> are essential in modern web design for creating visually appealing backgrounds, buttons, text effects, and UI components. They provide smooth color transitions that enhance user experience and create depth without using large image files.</p>
-      
-      <h3>How to Use the Advanced Gradient Generator:</h3>
-      <ol>
-        <li>Select your gradient type (linear, radial, or conic)</li>
-        <li>Add color stops by clicking the color pickers or using the "Add Color" button</li>
-        <li>Adjust the angle or direction using the slider or input field</li>
-        <li>Experiment with blend modes for unique color interactions</li>
-        <li>Preview your gradient in real-time and adjust as needed</li>
-        <li>Copy the generated code in your preferred format (CSS, Tailwind, etc.)</li>
-        <li>Apply the gradient to your website or project</li>
-      </ol>
-      
-      <h3>Technical Features and Capabilities:</h3>
-      <ul>
-        <li><strong>Linear Gradients:</strong> Create smooth transitions along a straight line with custom angles</li>
-        <li><strong>Radial Gradients:</strong> Generate circular gradients with customizable shape and size</li>
-        <li><strong>Conic Gradients:</strong> Create angular gradients that rotate around a center point</li>
-        <li><strong>Color Stops Control:</strong> Precise percentage-based positioning of each color</li>
-        <li><strong>Opacity Support:</strong> Use rgba or hsla colors for transparent gradients</li>
-        <li><strong>CSS Variables:</strong> Generate code with CSS custom properties for easy theming</li>
-      </ul>
-      
-      <p><strong>Professional Design Features:</strong> Our generator includes advanced features like <span class="keyword-highlight">gradient animation</span> (for dynamic backgrounds), <span class="keyword-highlight">blend modes</span> (for complex color interactions), and <span class="keyword-highlight">preset libraries</span> (for quick inspiration). These tools are essential for creating modern, responsive web designs.</p>
-      
-      <h3>Optimization Tips for Web Developers:</h3>
-      <p>For optimal performance, consider these best practices:</p>
-      <ul>
-        <li>Use gradients instead of images for faster loading times</li>
-        <li>Limit complex gradients on mobile devices for better performance</li>
-        <li>Test gradient visibility on different screen brightness levels</li>
-        <li>Ensure sufficient color contrast for accessibility compliance</li>
-        <li>Use CSS variables for gradients to enable easy theme switching</li>
-      </ul>
-      
-      <p>Whether you're designing a <span class="keyword-highlight">website background</span>, <span class="keyword-highlight">button hover effects</span>, <span class="keyword-highlight">text gradients</span>, or <span class="keyword-highlight">data visualization</span> elements, our professional gradient generator provides all the tools you need. Start creating beautiful, performant gradients today - no design experience required!</p>
-    </div>
-
+    <!-- Footer -->
     <footer>
-      <div class="footer-brand">Tool Nest</div>
-      <div>Professional Design Tools for Creative Professionals</div>
-      <div style="margin-top: 10px; font-size: 0.85rem; opacity: 0.7;">
-        © 2024 Gradient Generator. All design tools are free to use for personal and commercial projects.
-      </div>
+        <div class="container">
+            <div class="footer-brand">
+                <a href="index.html" class="footer-logo">Tool Nest</a>
+                <p class="footer-tagline">Premium Design Tools for Creative Professionals</p>
+                <div class="footer-contact">
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <span>toolnest3@gmail.com</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-shield-alt"></i>
+                        <span>100% Secure & Browser-Based</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-bolt"></i>
+                        <span>Real-time Processing</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-container">
+                <div class="footer-links">
+                    <h4>Design Tools</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="index.html#design-tools-section">All Design Tools</a></li>
+                        <li><a href="color-picker.html">Color Picker</a></li>
+                        <li><a href="box-shadow-generator.html">Shadow Generator</a></li>
+                        <li><a href="border-radius.html">Border Radius</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-links">
+                    <h4>Resources</h4>
+                    <ul>
+                        <li><a href="gradient-examples.html">Gradient Examples</a></li>
+                        <li><a href="css-gradient-guide.html">CSS Gradient Guide</a></li>
+                        <li><a href="web-design-tools.html">Web Design Tools</a></li>
+                        <li><a href="color-palettes.html">Color Palettes</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-links">
+                    <h4>Legal</h4>
+                    <ul>
+                        <li><a href="privacy-policy.html">Privacy Policy</a></li>
+                        <li><a href="terms-of-use.html">Terms of Service</a></li>
+                        <li><a href="cookies.html">Cookie Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>© 2024 Tool Nest. All rights reserved. Professional design tools for modern web development.</p>
+            </div>
+        </div>
     </footer>
 
-  </div>
+    <!-- Loading Overlay -->
+    <div class="loading-overlay" id="loadingOverlay">
+        <div class="loading-spinner"></div>
+    </div>
 
-  <!-- Notification -->
-  <div class="notification" id="notification">Code copied to clipboard!</div>
+    <!-- Alert -->
+    <div class="alert" id="alert">
+        <i class="fas fa-info-circle alert-icon"></i>
+        <span id="alertMessage">This is an alert message</span>
+    </div>
 
-  <script>
-    // DOM Elements
-    const gradientPreview = document.getElementById('gradientPreview');
-    const previewText = document.getElementById('previewText');
-    const cssCode = document.getElementById('cssCode');
-    const tailwindCode = document.getElementById('tailwindCode');
-    const colorPickers = document.getElementById('colorPickers');
-    const addColorBtn = document.getElementById('addColorBtn');
-    const angleSlider = document.getElementById('angleSlider');
-    const angleValue = document.getElementById('angleValue');
-    const generateBtn = document.getElementById('generateBtn');
-    const resetBtn = document.getElementById('resetBtn');
-    const copyCssBtn = document.getElementById('copyCssBtn');
-    const copyTailwindBtn = document.getElementById('copyTailwindBtn');
-    const animateBtn = document.getElementById('animateBtn');
-    const randomBtn = document.getElementById('randomBtn');
-    const blendMode = document.getElementById('blendMode');
-    const presetsGrid = document.getElementById('presetsGrid');
-    const examplesGrid = document.getElementById('examplesGrid');
-    const gradientTypeBtns = document.querySelectorAll('.gradient-type-btn');
-    const notification = document.getElementById('notification');
+    <script>
+        // DOM Elements
+        const gradientPreview = document.getElementById('gradientPreview');
+        const previewText = document.getElementById('previewText');
+        const cssCode = document.getElementById('cssCode');
+        const tailwindCode = document.getElementById('tailwindCode');
+        const colorPickers = document.getElementById('colorPickers');
+        const addColorBtn = document.getElementById('addColorBtn');
+        const angleSlider = document.getElementById('angleSlider');
+        const angleValue = document.getElementById('angleValue');
+        const generateBtn = document.getElementById('generateBtn');
+        const resetBtn = document.getElementById('resetBtn');
+        const copyCssBtn = document.getElementById('copyCssBtn');
+        const copyTailwindBtn = document.getElementById('copyTailwindBtn');
+        const animateBtn = document.getElementById('animateBtn');
+        const randomBtn = document.getElementById('randomBtn');
+        const reverseBtn = document.getElementById('reverseBtn');
+        const blendMode = document.getElementById('blendMode');
+        const presetsGrid = document.getElementById('presetsGrid');
+        const examplesGrid = document.getElementById('examplesGrid');
+        const gradientTypeBtns = document.querySelectorAll('.type-btn');
+        const alert = document.getElementById('alert');
+        const alertMessage = document.getElementById('alertMessage');
+        const loadingOverlay = document.getElementById('loadingOverlay');
 
-    // State
-    let colors = [
-      { hex: '#ff7f50', position: 0 },
-      { hex: '#1e90ff', position: 100 }
-    ];
-    let currentGradientType = 'linear';
-    let currentAngle = 135;
-    let isAnimated = false;
-
-    // Popular gradient presets
-    const presets = [
-      { name: 'Sunset', colors: ['#ff7e5f', '#feb47b'] },
-      { name: 'Ocean', colors: ['#2193b0', '#6dd5ed'] },
-      { name: 'Mint', colors: ['#56ab2f', '#a8e063'] },
-      { name: 'Berry', colors: ['#8a2387', '#f27121'] },
-      { name: 'Midnight', colors: ['#0f0c29', '#302b63'] },
-      { name: 'Coral', colors: ['#ff9966', '#ff5e62'] },
-      { name: 'Forest', colors: ['#56ccf2', '#2f80ed'] },
-      { name: 'Cotton Candy', colors: ['#ffafbd', '#ffc3a0'] }
-    ];
-
-    // Example gradients
-    const examples = [
-      {
-        name: 'Modern Sunset',
-        colors: ['#ff7e5f', '#feb47b'],
-        angle: 135,
-        type: 'linear'
-      },
-      {
-        name: 'Deep Ocean',
-        colors: ['#2193b0', '#6dd5ed', '#2193b0'],
-        angle: 90,
-        type: 'linear'
-      },
-      {
-        name: 'Radial Glow',
-        colors: ['#667eea', '#764ba2'],
-        angle: 0,
-        type: 'radial'
-      },
-      {
-        name: 'Conic Rainbow',
-        colors: ['#ff0000', '#ffff00', '#00ff00', '#00ffff', '#0000ff', '#ff00ff', '#ff0000'],
-        angle: 0,
-        type: 'conic'
-      },
-      {
-        name: 'UI Button',
-        colors: ['#667eea', '#764ba2'],
-        angle: 90,
-        type: 'linear'
-      },
-      {
-        name: 'Dark Theme',
-        colors: ['#232526', '#414345'],
-        angle: 135,
-        type: 'linear'
-      }
-    ];
-
-    // Initialize
-    function init() {
-      renderColorPickers();
-      renderPresets();
-      renderExamples();
-      updateGradient();
-      setupEventListeners();
-    }
-
-    // Render color pickers
-    function renderColorPickers() {
-      colorPickers.innerHTML = '';
-      colors.forEach((color, index) => {
-        const colorItem = document.createElement('div');
-        colorItem.className = 'color-picker-item';
-        colorItem.innerHTML = `
-          <input type="color" 
-                 class="color-picker" 
-                 value="${color.hex}"
-                 data-index="${index}"
-                 style="background: ${color.hex}">
-          <input type="text" 
-                 class="color-input"
-                 value="${color.hex}"
-                 data-index="${index}"
-                 maxlength="7">
-          <div style="font-size: 0.8rem; color: var(--gray-color);">
-            ${color.position}%
-          </div>
-        `;
-        colorPickers.appendChild(colorItem);
-      });
-    }
-
-    // Render presets
-    function renderPresets() {
-      presetsGrid.innerHTML = '';
-      presets.forEach(preset => {
-        const presetItem = document.createElement('div');
-        presetItem.className = 'preset-item';
-        presetItem.style.background = `linear-gradient(135deg, ${preset.colors[0]}, ${preset.colors[1]})`;
-        presetItem.innerHTML = `<div class="preset-name">${preset.name}</div>`;
-        presetItem.addEventListener('click', () => {
-          colors = preset.colors.map((color, index) => ({
-            hex: color,
-            position: index === 0 ? 0 : 100
-          }));
-          renderColorPickers();
-          updateGradient();
-        });
-        presetsGrid.appendChild(presetItem);
-      });
-    }
-
-    // Render examples
-    function renderExamples() {
-      examplesGrid.innerHTML = '';
-      examples.forEach(example => {
-        const exampleCard = document.createElement('div');
-        exampleCard.className = 'example-card';
-        exampleCard.innerHTML = `
-          <div class="example-preview" style="background: ${getGradientCss(example)};"></div>
-          <div class="example-info">
-            <div class="example-name">${example.name}</div>
-            <div class="example-code">${getGradientCss(example)}</div>
-          </div>
-        `;
-        exampleCard.addEventListener('click', () => {
-          colors = example.colors.map((color, index) => ({
-            hex: color,
-            position: (index / (example.colors.length - 1)) * 100
-          }));
-          currentGradientType = example.type;
-          currentAngle = example.angle;
-          angleSlider.value = example.angle;
-          angleValue.textContent = example.angle;
-          
-          // Update active gradient type button
-          gradientTypeBtns.forEach(btn => btn.classList.remove('active'));
-          document.querySelector(`[data-type="${example.type}"]`).classList.add('active');
-          
-          renderColorPickers();
-          updateGradient();
-        });
-        examplesGrid.appendChild(exampleCard);
-      });
-    }
-
-    // Get gradient CSS
-    function getGradientCss(config = null) {
-      const type = config?.type || currentGradientType;
-      const gradColors = config?.colors || colors.map(c => c.hex);
-      const angle = config?.angle || currentAngle;
-      
-      const colorStops = gradColors.map((color, index) => {
-        if (config) {
-          return color;
-        }
-        return `${color} ${colors[index].position}%`;
-      }).join(', ');
-      
-      switch(type) {
-        case 'radial':
-          return `radial-gradient(circle, ${colorStops})`;
-        case 'conic':
-          return `conic-gradient(from ${angle}deg, ${colorStops})`;
-        default:
-          return `linear-gradient(${angle}deg, ${colorStops})`;
-      }
-    }
-
-    // Update gradient preview
-    function updateGradient() {
-      const gradientCss = getGradientCss();
-      gradientPreview.style.background = gradientCss;
-      gradientPreview.style.backgroundBlendMode = blendMode.value;
-      
-      if (isAnimated) {
-        gradientPreview.classList.add('animated-gradient');
-        gradientPreview.style.backgroundSize = '200% 200%';
-      } else {
-        gradientPreview.classList.remove('animated-gradient');
-        gradientPreview.style.backgroundSize = '100% 100%';
-      }
-      
-      updateCodeOutput();
-    }
-
-    // Update code output
-    function updateCodeOutput() {
-      const gradientCss = getGradientCss();
-      cssCode.textContent = `background: ${gradientCss};`;
-      
-      // Generate Tailwind CSS
-      if (colors.length === 2) {
-        tailwindCode.textContent = `bg-gradient-to-r from-[${colors[0].hex}] to-[${colors[1].hex}]`;
-      } else {
-        tailwindCode.textContent = `/* Complex gradient - use CSS instead */\nbackground: ${gradientCss};`;
-      }
-      
-      // Update preview text color based on gradient brightness
-      updateTextColor();
-    }
-
-    // Update text color based on background brightness
-    function updateTextColor() {
-      // Simple brightness calculation
-      const firstColor = colors[0].hex;
-      const r = parseInt(firstColor.slice(1, 3), 16);
-      const g = parseInt(firstColor.slice(3, 5), 16);
-      const b = parseInt(firstColor.slice(5, 7), 16);
-      const brightness = (r * 299 + g * 587 + b * 114) / 1000;
-      
-      previewText.style.color = brightness > 128 ? '#000000' : '#ffffff';
-      previewText.style.textShadow = brightness > 128 
-        ? '2px 2px 4px rgba(255, 255, 255, 0.5)' 
-        : '2px 2px 4px rgba(0, 0, 0, 0.5)';
-    }
-
-    // Show notification
-    function showNotification(message) {
-      notification.textContent = message;
-      notification.classList.add('show');
-      setTimeout(() => {
-        notification.classList.remove('show');
-      }, 2000);
-    }
-
-    // Copy to clipboard
-    async function copyToClipboard(text) {
-      try {
-        await navigator.clipboard.writeText(text);
-        showNotification('Code copied to clipboard!');
-      } catch (err) {
-        console.error('Failed to copy: ', err);
-        showNotification('Failed to copy to clipboard');
-      }
-    }
-
-    // Random color generator
-    function getRandomColor() {
-      const letters = '0123456789ABCDEF';
-      let color = '#';
-      for (let i = 0; i < 6; i++) {
-        color += letters[Math.floor(Math.random() * 16)];
-      }
-      return color;
-    }
-
-    // Setup event listeners
-    function setupEventListeners() {
-      // Color picker changes
-      colorPickers.addEventListener('change', (e) => {
-        if (e.target.type === 'color') {
-          const index = parseInt(e.target.dataset.index);
-          colors[index].hex = e.target.value;
-          e.target.nextElementSibling.value = e.target.value;
-        } else if (e.target.type === 'text') {
-          const index = parseInt(e.target.dataset.index);
-          const value = e.target.value;
-          if (/^#[0-9A-F]{6}$/i.test(value)) {
-            colors[index].hex = value.toUpperCase();
-            e.target.previousElementSibling.value = value;
-          }
-        }
-        updateGradient();
-      });
-
-      // Add color button
-      addColorBtn.addEventListener('click', () => {
-        if (colors.length < 6) {
-          const newPosition = colors.length === 0 ? 0 : 100;
-          colors.push({
-            hex: getRandomColor(),
-            position: newPosition
-          });
-          renderColorPickers();
-          updateGradient();
-        }
-      });
-
-      // Angle slider
-      angleSlider.addEventListener('input', () => {
-        currentAngle = parseInt(angleSlider.value);
-        angleValue.textContent = currentAngle;
-        updateGradient();
-      });
-
-      // Gradient type buttons
-      gradientTypeBtns.forEach(btn => {
-        btn.addEventListener('click', () => {
-          gradientTypeBtns.forEach(b => b.classList.remove('active'));
-          btn.classList.add('active');
-          currentGradientType = btn.dataset.type;
-          updateGradient();
-        });
-      });
-
-      // Generate button
-      generateBtn.addEventListener('click', updateGradient);
-
-      // Reset button
-      resetBtn.addEventListener('click', () => {
-        colors = [
-          { hex: '#ff7f50', position: 0 },
-          { hex: '#1e90ff', position: 100 }
+        // State
+        let colors = [
+            { hex: '#ff7f50', position: 0 },
+            { hex: '#1e90ff', position: 100 }
         ];
-        currentAngle = 135;
-        angleSlider.value = 135;
-        angleValue.textContent = '135';
-        currentGradientType = 'linear';
-        gradientTypeBtns.forEach(btn => {
-          btn.classList.remove('active');
-          if (btn.dataset.type === 'linear') btn.classList.add('active');
-        });
-        isAnimated = false;
-        blendMode.value = 'normal';
-        renderColorPickers();
-        updateGradient();
-      });
+        let currentGradientType = 'linear';
+        let currentAngle = 135;
+        let isAnimated = false;
 
-      // Copy buttons
-      copyCssBtn.addEventListener('click', () => copyToClipboard(cssCode.textContent));
-      copyTailwindBtn.addEventListener('click', () => copyToClipboard(tailwindCode.textContent));
+        // Popular gradient presets
+        const presets = [
+            { name: 'Sunset', colors: ['#ff7e5f', '#feb47b'], type: 'linear', angle: 135 },
+            { name: 'Ocean', colors: ['#2193b0', '#6dd5ed'], type: 'linear', angle: 90 },
+            { name: 'Mint', colors: ['#56ab2f', '#a8e063'], type: 'linear', angle: 120 },
+            { name: 'Berry', colors: ['#8a2387', '#f27121'], type: 'linear', angle: 45 },
+            { name: 'Midnight', colors: ['#0f0c29', '#302b63'], type: 'linear', angle: 135 },
+            { name: 'Coral', colors: ['#ff9966', '#ff5e62'], type: 'linear', angle: 90 },
+            { name: 'Forest', colors: ['#56ccf2', '#2f80ed'], type: 'linear', angle: 135 },
+            { name: 'Radial Glow', colors: ['#667eea', '#764ba2'], type: 'radial', angle: 0 }
+        ];
 
-      // Animate button
-      animateBtn.addEventListener('click', () => {
-        isAnimated = !isAnimated;
-        animateBtn.textContent = isAnimated ? 'Stop Animation' : 'Animate Gradient';
-        updateGradient();
-      });
+        // Example gradients
+        const examples = [
+            {
+                name: 'Modern Sunset',
+                colors: ['#ff7e5f', '#feb47b'],
+                angle: 135,
+                type: 'linear'
+            },
+            {
+                name: 'Deep Ocean',
+                colors: ['#2193b0', '#6dd5ed', '#2193b0'],
+                angle: 90,
+                type: 'linear'
+            },
+            {
+                name: 'Radial Glow',
+                colors: ['#667eea', '#764ba2'],
+                angle: 0,
+                type: 'radial'
+            },
+            {
+                name: 'Conic Rainbow',
+                colors: ['#ff0000', '#ffff00', '#00ff00', '#00ffff', '#0000ff', '#ff00ff', '#ff0000'],
+                angle: 0,
+                type: 'conic'
+            },
+            {
+                name: 'UI Button Gradient',
+                colors: ['#667eea', '#764ba2'],
+                angle: 90,
+                type: 'linear'
+            },
+            {
+                name: 'Dark Theme',
+                colors: ['#232526', '#414345'],
+                angle: 135,
+                type: 'linear'
+            }
+        ];
 
-      // Random button
-      randomBtn.addEventListener('click', () => {
-        colors = Array.from({ length: Math.floor(Math.random() * 3) + 2 }, (_, i) => ({
-          hex: getRandomColor(),
-          position: Math.round((i / (Math.floor(Math.random() * 3) + 1)) * 100)
-        }));
-        currentAngle = Math.floor(Math.random() * 360);
-        angleSlider.value = currentAngle;
-        angleValue.textContent = currentAngle;
-        renderColorPickers();
-        updateGradient();
-      });
+        // Initialize
+        function init() {
+            renderColorPickers();
+            renderPresets();
+            renderExamples();
+            updateGradient();
+            setupEventListeners();
+            showAlert('Gradient Generator Ready! Start creating beautiful gradients.', 'success');
+        }
 
-      // Blend mode
-      blendMode.addEventListener('change', updateGradient);
-    }
+        // Show alert
+        function showAlert(message, type = 'info') {
+            alertMessage.textContent = message;
+            alert.className = `alert ${type}`;
+            alert.style.display = 'flex';
+            
+            setTimeout(() => {
+                alert.style.display = 'none';
+            }, 4000);
+        }
 
-    // API Integration Example (commented out - for production use)
-    /*
-    async function saveGradientAPI(gradientData) {
-      const response = await fetch('https://api.your-service.com/save-gradient', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          colors: gradientData.colors,
-          type: gradientData.type,
-          angle: gradientData.angle,
-          blendMode: gradientData.blendMode
-        })
-      });
-      
-      if (response.ok) {
-        const data = await response.json();
-        return data.id; // Return saved gradient ID
-      }
-      throw new Error('Failed to save gradient');
-    }
-    */
+        // Show loading
+        function showLoading() {
+            loadingOverlay.style.display = 'flex';
+        }
 
-    // Initialize on load
-    document.addEventListener('DOMContentLoaded', init);
-  </script>
+        // Hide loading
+        function hideLoading() {
+            loadingOverlay.style.display = 'none';
+        }
 
+        // Render color pickers
+        function renderColorPickers() {
+            colorPickers.innerHTML = '';
+            colors.forEach((color, index) => {
+                const colorItem = document.createElement('div');
+                colorItem.className = 'color-picker-item';
+                colorItem.innerHTML = `
+                    <input type="color" 
+                           class="color-picker" 
+                           value="${color.hex}"
+                           data-index="${index}"
+                           style="background: ${color.hex}; border-color: ${color.hex}">
+                    <input type="text" 
+                           class="color-input"
+                           value="${color.hex}"
+                           data-index="${index}"
+                           maxlength="7"
+                           placeholder="#000000">
+                    <input type="range" 
+                           min="0" 
+                           max="100" 
+                           value="${color.position}"
+                           class="position-slider"
+                           data-index="${index}">
+                    <div style="font-size: 0.8rem; color: var(--text-gray);">
+                        Position: ${color.position}%
+                    </div>
+                `;
+                colorPickers.appendChild(colorItem);
+            });
+        }
+
+        // Render presets
+        function renderPresets() {
+            presetsGrid.innerHTML = '';
+            presets.forEach(preset => {
+                const presetItem = document.createElement('div');
+                presetItem.className = 'preset-item';
+                const gradient = getGradientCss({ colors: preset.colors, type: preset.type, angle: preset.angle });
+                presetItem.style.background = gradient;
+                presetItem.innerHTML = `<div class="preset-name">${preset.name}</div>`;
+                presetItem.addEventListener('click', () => {
+                    colors = preset.colors.map((color, index) => ({
+                        hex: color,
+                        position: index === 0 ? 0 : 100
+                    }));
+                    currentGradientType = preset.type;
+                    currentAngle = preset.angle;
+                    angleSlider.value = preset.angle;
+                    angleValue.textContent = `${preset.angle}°`;
+                    
+                    gradientTypeBtns.forEach(btn => btn.classList.remove('active'));
+                    document.querySelector(`[data-type="${preset.type}"]`).classList.add('active');
+                    
+                    renderColorPickers();
+                    updateGradient();
+                    showAlert(`Applied "${preset.name}" preset`, 'success');
+                });
+                presetsGrid.appendChild(presetItem);
+            });
+        }
+
+        // Render examples
+        function renderExamples() {
+            examplesGrid.innerHTML = '';
+            examples.forEach(example => {
+                const exampleCard = document.createElement('div');
+                exampleCard.className = 'example-card';
+                const gradientCss = getGradientCss(example);
+                exampleCard.innerHTML = `
+                    <div class="example-preview" style="background: ${gradientCss};"></div>
+                    <div class="example-info">
+                        <div class="example-name">${example.name}</div>
+                        <div class="example-code">${gradientCss}</div>
+                    </div>
+                `;
+                exampleCard.addEventListener('click', () => {
+                    colors = example.colors.map((color, index) => ({
+                        hex: color,
+                        position: (index / (example.colors.length - 1)) * 100
+                    }));
+                    currentGradientType = example.type;
+                    currentAngle = example.angle;
+                    angleSlider.value = example.angle;
+                    angleValue.textContent = `${example.angle}°`;
+                    
+                    gradientTypeBtns.forEach(btn => btn.classList.remove('active'));
+                    document.querySelector(`[data-type="${example.type}"]`).classList.add('active');
+                    
+                    renderColorPickers();
+                    updateGradient();
+                    showAlert(`Loaded "${example.name}" example`, 'success');
+                });
+                examplesGrid.appendChild(exampleCard);
+            });
+        }
+
+        // Get gradient CSS
+        function getGradientCss(config = null) {
+            const type = config?.type || currentGradientType;
+            const gradColors = config?.colors || colors.map(c => c.hex);
+            const angle = config?.angle || currentAngle;
+            
+            const colorStops = gradColors.map((color, index) => {
+                if (config) {
+                    const position = (index / (gradColors.length - 1)) * 100;
+                    return `${color} ${position}%`;
+                }
+                return `${color} ${colors[index].position}%`;
+            }).join(', ');
+            
+            switch(type) {
+                case 'radial':
+                    return `radial-gradient(circle at center, ${colorStops})`;
+                case 'conic':
+                    return `conic-gradient(from ${angle}deg, ${colorStops})`;
+                default:
+                    return `linear-gradient(${angle}deg, ${colorStops})`;
+            }
+        }
+
+        // Update gradient preview
+        function updateGradient() {
+            const gradientCss = getGradientCss();
+            gradientPreview.style.background = gradientCss;
+            gradientPreview.style.backgroundBlendMode = blendMode.value;
+            
+            if (isAnimated) {
+                gradientPreview.classList.add('animated');
+            } else {
+                gradientPreview.classList.remove('animated');
+            }
+            
+            updateCodeOutput();
+            updatePreviewTextColor();
+        }
+
+        // Update code output
+        function updateCodeOutput() {
+            const gradientCss = getGradientCss();
+            cssCode.textContent = `background: ${gradientCss};\nbackground-blend-mode: ${blendMode.value};`;
+            
+            // Generate Tailwind CSS
+            if (colors.length === 2 && currentGradientType === 'linear') {
+                const angleClass = getTailwindAngle(currentAngle);
+                tailwindCode.textContent = `${angleClass} from-[${colors[0].hex}] to-[${colors[1].hex}]`;
+            } else {
+                tailwindCode.textContent = `/* Complex gradient - use custom CSS */\n${cssCode.textContent}`;
+            }
+        }
+
+        // Get Tailwind angle class
+        function getTailwindAngle(angle) {
+            const angles = {
+                0: 'bg-gradient-to-r',
+                45: 'bg-gradient-to-tr',
+                90: 'bg-gradient-to-t',
+                135: 'bg-gradient-to-tl',
+                180: 'bg-gradient-to-l',
+                225: 'bg-gradient-to-bl',
+                270: 'bg-gradient-to-b',
+                315: 'bg-gradient-to-br'
+            };
+            
+            // Find closest angle
+            const closest = Object.keys(angles).reduce((prev, curr) => {
+                return Math.abs(curr - angle) < Math.abs(prev - angle) ? curr : prev;
+            });
+            
+            return angles[closest] || 'bg-gradient-to-r';
+        }
+
+        // Update preview text color based on background brightness
+        function updatePreviewTextColor() {
+            // Simple brightness calculation from first color
+            const firstColor = colors[0].hex;
+            const r = parseInt(firstColor.slice(1, 3), 16);
+            const g = parseInt(firstColor.slice(3, 5), 16);
+            const b = parseInt(firstColor.slice(5, 7), 16);
+            const brightness = (r * 299 + g * 587 + b * 114) / 1000;
+            
+            previewText.style.color = brightness > 128 ? '#000000' : '#ffffff';
+            previewText.style.textShadow = brightness > 128 
+                ? '2px 2px 4px rgba(255, 255, 255, 0.5)' 
+                : '2px 2px 4px rgba(0, 0, 0, 0.5)';
+        }
+
+        // Copy to clipboard
+        async function copyToClipboard(text, type = 'CSS') {
+            try {
+                await navigator.clipboard.writeText(text);
+                showAlert(`${type} code copied to clipboard!`, 'success');
+            } catch (err) {
+                console.error('Failed to copy: ', err);
+                showAlert('Failed to copy to clipboard', 'error');
+            }
+        }
+
+        // Random color generator
+        function getRandomColor() {
+            const letters = '0123456789ABCDEF';
+            let color = '#';
+            for (let i = 0; i < 6; i++) {
+                color += letters[Math.floor(Math.random() * 16)];
+            }
+            return color;
+        }
+
+        // Setup event listeners
+        function setupEventListeners() {
+            // Color picker changes
+            colorPickers.addEventListener('change', (e) => {
+                if (e.target.type === 'color') {
+                    const index = parseInt(e.target.dataset.index);
+                    colors[index].hex = e.target.value;
+                    e.target.nextElementSibling.value = e.target.value;
+                    e.target.style.borderColor = e.target.value;
+                } else if (e.target.type === 'text') {
+                    const index = parseInt(e.target.dataset.index);
+                    const value = e.target.value;
+                    if (/^#[0-9A-F]{6}$/i.test(value)) {
+                        colors[index].hex = value.toUpperCase();
+                        e.target.previousElementSibling.value = value;
+                        e.target.previousElementSibling.style.borderColor = value;
+                    }
+                }
+                updateGradient();
+            });
+
+            // Position slider changes
+            colorPickers.addEventListener('input', (e) => {
+                if (e.target.type === 'range') {
+                    const index = parseInt(e.target.dataset.index);
+                    colors[index].position = parseInt(e.target.value);
+                    e.target.nextElementSibling.textContent = `Position: ${e.target.value}%`;
+                    updateGradient();
+                }
+            });
+
+            // Add color button
+            addColorBtn.addEventListener('click', () => {
+                if (colors.length < 8) {
+                    const newColor = getRandomColor();
+                    const newPosition = colors.length === 0 ? 0 : 
+                                      colors.length === 1 ? 100 : 
+                                      Math.round(colors[colors.length - 1].position + (100 - colors[colors.length - 1].position) / 2);
+                    
+                    colors.push({
+                        hex: newColor,
+                        position: newPosition
+                    });
+                    renderColorPickers();
+                    updateGradient();
+                    showAlert('New color stop added', 'success');
+                } else {
+                    showAlert('Maximum 8 color stops allowed', 'error');
+                }
+            });
+
+            // Angle slider
+            angleSlider.addEventListener('input', () => {
+                currentAngle = parseInt(angleSlider.value);
+                angleValue.textContent = `${currentAngle}°`;
+                updateGradient();
+            });
+
+            // Gradient type buttons
+            gradientTypeBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    gradientTypeBtns.forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                    currentGradientType = btn.dataset.type;
+                    updateGradient();
+                });
+            });
+
+            // Generate button
+            generateBtn.addEventListener('click', () => {
+                showLoading();
+                setTimeout(() => {
+                    updateGradient();
+                    hideLoading();
+                    showAlert('Gradient updated successfully!', 'success');
+                }, 300);
+            });
+
+            // Reset button
+            resetBtn.addEventListener('click', () => {
+                colors = [
+                    { hex: '#ff7f50', position: 0 },
+                    { hex: '#1e90ff', position: 100 }
+                ];
+                currentAngle = 135;
+                angleSlider.value = 135;
+                angleValue.textContent = '135°';
+                currentGradientType = 'linear';
+                isAnimated = false;
+                blendMode.value = 'normal';
+                
+                gradientTypeBtns.forEach(btn => {
+                    btn.classList.remove('active');
+                    if (btn.dataset.type === 'linear') btn.classList.add('active');
+                });
+                
+                animateBtn.innerHTML = '<i class="fas fa-play"></i> Animate';
+                
+                renderColorPickers();
+                updateGradient();
+                showAlert('All settings reset to default', 'info');
+            });
+
+            // Copy buttons
+            copyCssBtn.addEventListener('click', () => copyToClipboard(cssCode.textContent, 'CSS'));
+            copyTailwindBtn.addEventListener('click', () => copyToClipboard(tailwindCode.textContent, 'Tailwind CSS'));
+
+            // Animate button
+            animateBtn.addEventListener('click', () => {
+                isAnimated = !isAnimated;
+                animateBtn.innerHTML = isAnimated 
+                    ? '<i class="fas fa-stop"></i> Stop Animation' 
+                    : '<i class="fas fa-play"></i> Animate';
+                updateGradient();
+                showAlert(isAnimated ? 'Gradient animation started' : 'Gradient animation stopped', 'success');
+            });
+
+            // Random button
+            randomBtn.addEventListener('click', () => {
+                colors = Array.from({ length: Math.floor(Math.random() * 4) + 2 }, (_, i) => ({
+                    hex: getRandomColor(),
+                    position: Math.round((i / (Math.floor(Math.random() * 3) + 1)) * 100)
+                }));
+                currentAngle = Math.floor(Math.random() * 360);
+                angleSlider.value = currentAngle;
+                angleValue.textContent = `${currentAngle}°`;
+                
+                // Random gradient type
+                const types = ['linear', 'radial', 'conic'];
+                currentGradientType = types[Math.floor(Math.random() * types.length)];
+                
+                gradientTypeBtns.forEach(btn => {
+                    btn.classList.remove('active');
+                    if (btn.dataset.type === currentGradientType) btn.classList.add('active');
+                });
+                
+                renderColorPickers();
+                updateGradient();
+                showAlert('Random gradient generated!', 'success');
+            });
+
+            // Reverse button
+            reverseBtn.addEventListener('click', () => {
+                colors.reverse();
+                colors.forEach((color, index) => {
+                    color.position = (index / (colors.length - 1)) * 100;
+                });
+                renderColorPickers();
+                updateGradient();
+                showAlert('Gradient colors reversed', 'success');
+            });
+
+            // Blend mode
+            blendMode.addEventListener('change', updateGradient);
+        }
+
+        // API Integration (commented out for production use)
+        /*
+        class GradientAPI {
+            constructor(baseURL = 'https://api.toolnest.com/v1') {
+                this.baseURL = baseURL;
+            }
+
+            async saveGradient(gradientData) {
+                const response = await fetch(`${this.baseURL}/gradients`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${this.apiKey}`
+                    },
+                    body: JSON.stringify({
+                        name: gradientData.name,
+                        colors: gradientData.colors,
+                        type: gradientData.type,
+                        angle: gradientData.angle,
+                        blendMode: gradientData.blendMode,
+                        isAnimated: gradientData.isAnimated
+                    })
+                });
+                
+                if (!response.ok) throw new Error('Failed to save gradient');
+                return await response.json();
+            }
+
+            async getGradient(id) {
+                const response = await fetch(`${this.baseURL}/gradients/${id}`);
+                if (!response.ok) throw new Error('Failed to fetch gradient');
+                return await response.json();
+            }
+
+            async listGradients(limit = 20, offset = 0) {
+                const response = await fetch(`${this.baseURL}/gradients?limit=${limit}&offset=${offset}`);
+                if (!response.ok) throw new Error('Failed to fetch gradients');
+                return await response.json();
+            }
+
+            async deleteGradient(id) {
+                const response = await fetch(`${this.baseURL}/gradients/${id}`, {
+                    method: 'DELETE',
+                    headers: {
+                        'Authorization': `Bearer ${this.apiKey}`
+                    }
+                });
+                if (!response.ok) throw new Error('Failed to delete gradient');
+                return true;
+            }
+        }
+        */
+
+        // Initialize on load
+        document.addEventListener('DOMContentLoaded', init);
+    </script>
 </body>
 </html>
+
+
+
 
