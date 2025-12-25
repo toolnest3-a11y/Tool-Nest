@@ -1,1267 +1,1264 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Barcode Generator – Create Professional Barcodes Online | Free Barcode Maker | Tool Nest</title>
-    <meta name="description" content="Free online barcode generator to create professional barcodes instantly. Generate CODE128, EAN13, UPC, QR codes for products, inventory, and business use. No registration required.">
-    <meta name="keywords" content="barcode generator, generate barcode online, free barcode maker, barcode creator, QR code generator, inventory barcodes, product barcodes, barcode scanner">
-    <meta name="author" content="Tool Nest">
-    <link rel="icon" href="favicon-16x16.png" type="image/x-icon">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
-    
-    <style>
-        :root {
-            /* Premium Color Palette */
-            --primary-blue: #1a56db;
-            --dark-blue: #1e3a8a;
-            --light-blue: #3b82f6;
-            --accent-blue: #60a5fa;
-            --gradient-blue: linear-gradient(135deg, #1a56db 0%, #3b82f6 100%);
-            --gradient-dark: linear-gradient(135deg, #1e3a8a 0%, #1a56db 100%);
-            --premium-gray: #f9fafb;
-            --card-white: #ffffff;
-            --text-dark: #111827;
-            --text-gray: #6b7280;
-            --text-light: #9ca3af;
-            --border-color: #e5e7eb;
-            --success-green: #10b981;
-            --warning-orange: #f59e0b;
-            --error-red: #ef4444;
-            --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.05);
-            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.07), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-            --shadow-lg: 0 10px 25px -5px rgba(0, 0, 0, 0.08), 0 8px 10px -6px rgba(0, 0, 0, 0.04);
-            --shadow-xl: 0 20px 40px -15px rgba(0, 0, 0, 0.1);
-            --radius-sm: 8px;
-            --radius-md: 12px;
-            --radius-lg: 16px;
-            --radius-xl: 24px;
-            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        body {
-            font-family: 'Inter', sans-serif;
-            color: var(--text-dark);
-            background: var(--premium-gray);
-            line-height: 1.6;
-            font-weight: 400;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-        }
-        
-        h1, h2, h3, h4, h5, h6 {
-            font-family: 'Poppins', sans-serif;
-            font-weight: 600;
-            line-height: 1.2;
-            margin-bottom: 1rem;
-        }
-        
-        .container {
-            width: 100%;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-        
-        /* Premium Header */
-        header {
-            background-color: var(--card-white);
-            box-shadow: var(--shadow-sm);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            padding: 18px 0;
-            border-bottom: 1px solid var(--border-color);
-        }
-        
-        .header-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        
-        .logo-wrapper {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-        
-        .logo {
-            font-family: 'Poppins', sans-serif;
-            font-size: 28px;
-            font-weight: 800;
-            background: var(--gradient-blue);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            text-decoration: none;
-            letter-spacing: -0.5px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-        
-        .logo-icon {
-            background: var(--gradient-blue);
-            width: 36px;
-            height: 36px;
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 18px;
-        }
-        
-        .logo-text {
-            display: flex;
-            flex-direction: column;
-            line-height: 1;
-        }
-        
-        .logo-tagline {
-            font-size: 11px;
-            font-weight: 500;
-            color: var(--text-gray);
-            margin-top: 2px;
-            letter-spacing: 0.5px;
-        }
-        
-        .back-btn {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            background: var(--gradient-blue);
-            color: white;
-            padding: 10px 20px;
-            border-radius: var(--radius-md);
-            text-decoration: none;
-            font-weight: 500;
-            font-size: 14px;
-            transition: var(--transition);
-        }
-        
-        .back-btn:hover {
-            transform: translateX(-3px);
-            box-shadow: var(--shadow-md);
-        }
-        
-        /* Main Content */
-        .main-content {
-            flex: 1;
-            padding: 60px 0;
-        }
-        
-        /* Tool Header */
-        .tool-header {
-            text-align: center;
-            margin-bottom: 48px;
-        }
-        
-        .tool-badge {
-            display: inline-block;
-            background: var(--gradient-blue);
-            color: white;
-            padding: 8px 24px;
-            border-radius: 20px;
-            font-size: 14px;
-            font-weight: 600;
-            margin-bottom: 16px;
-            letter-spacing: 0.5px;
-        }
-        
-        .tool-header h1 {
-            font-size: 2.8rem;
-            font-weight: 700;
-            color: var(--text-dark);
-            margin-bottom: 16px;
-            background: linear-gradient(135deg, var(--text-dark) 0%, var(--primary-blue) 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-        
-        .tool-header p {
-            color: var(--text-gray);
-            font-size: 1.1rem;
-            max-width: 700px;
-            margin: 0 auto;
-            font-weight: 400;
-        }
-        
-        /* Tool Container */
-        .tool-container {
-            background: var(--card-white);
-            border-radius: var(--radius-lg);
-            padding: 50px;
-            box-shadow: var(--shadow-md);
-            border: 1px solid var(--border-color);
-            margin-bottom: 60px;
-        }
-        
-        .barcode-form {
-            display: flex;
-            flex-direction: column;
-            gap: 30px;
-        }
-        
-        .input-group {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-        }
-        
-        .input-group label {
-            font-weight: 600;
-            color: var(--text-dark);
-            font-size: 1rem;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        
-        .input-group label i {
-            color: var(--primary-blue);
-        }
-        
-        .text-input {
-            width: 100%;
-            padding: 16px 20px;
-            border: 2px solid var(--border-color);
-            border-radius: var(--radius-md);
-            font-size: 16px;
-            font-family: 'Inter', sans-serif;
-            background: var(--premium-gray);
-            transition: var(--transition);
-        }
-        
-        .text-input:focus {
-            outline: none;
-            border-color: var(--primary-blue);
-            box-shadow: 0 0 0 3px rgba(26, 86, 219, 0.1);
-        }
-        
-        .input-hint {
-            color: var(--text-light);
-            font-size: 14px;
-            margin-top: 5px;
-            font-style: italic;
-        }
-        
-        /* Barcode Options */
-        .barcode-options {
-            background: var(--premium-gray);
-            border-radius: var(--radius-md);
-            padding: 30px;
-            border: 1px solid var(--border-color);
-        }
-        
-        .options-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-            margin-top: 20px;
-        }
-        
-        .option-group {
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-        }
-        
-        .option-group label {
-            font-weight: 500;
-            color: var(--text-dark);
-            font-size: 0.9rem;
-        }
-        
-        .select-input, .color-input, .range-input {
-            padding: 12px 16px;
-            border: 1px solid var(--border-color);
-            border-radius: var(--radius-sm);
-            background: white;
-            font-family: 'Inter', sans-serif;
-            transition: var(--transition);
-        }
-        
-        .select-input:focus, .color-input:focus, .range-input:focus {
-            outline: none;
-            border-color: var(--primary-blue);
-        }
-        
-        .range-input {
-            width: 100%;
-        }
-        
-        .range-values {
-            display: flex;
-            justify-content: space-between;
-            font-size: 12px;
-            color: var(--text-light);
-        }
-        
-        .color-preview {
-            width: 30px;
-            height: 30px;
-            border-radius: var(--radius-sm);
-            border: 1px solid var(--border-color);
-            margin-left: 10px;
-        }
-        
-        /* Barcode Preview */
-        .barcode-preview {
-            background: white;
-            border: 2px solid var(--border-color);
-            border-radius: var(--radius-md);
-            padding: 40px;
-            margin-top: 30px;
-            display: none;
-            text-align: center;
-            animation: fadeIn 0.5s ease-out;
-        }
-        
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        
-        .barcode-svg-container {
-            margin: 20px 0;
-            padding: 20px;
-            background: white;
-            border-radius: var(--radius-sm);
-            border: 1px solid var(--border-color);
-            overflow: auto;
-        }
-        
-        .preview-info {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background: var(--premium-gray);
-            padding: 15px 20px;
-            border-radius: var(--radius-sm);
-            margin-top: 20px;
-        }
-        
-        .info-item {
-            display: flex;
-            flex-direction: column;
-            gap: 5px;
-        }
-        
-        .info-label {
-            font-size: 12px;
-            color: var(--text-gray);
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-        
-        .info-value {
-            font-size: 14px;
-            color: var(--text-dark);
-            font-weight: 600;
-        }
-        
-        /* Action Buttons */
-        .action-buttons {
-            display: flex;
-            gap: 16px;
-            margin-top: 40px;
-            flex-wrap: wrap;
-        }
-        
-        .action-btn {
-            flex: 1;
-            min-width: 180px;
-            padding: 18px 30px;
-            border-radius: var(--radius-md);
-            font-weight: 600;
-            font-size: 16px;
-            border: none;
-            cursor: pointer;
-            transition: var(--transition);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-        }
-        
-        .action-btn.primary {
-            background: var(--gradient-blue);
-            color: white;
-        }
-        
-        .action-btn.primary:hover {
-            transform: translateY(-3px);
-            box-shadow: var(--shadow-lg);
-        }
-        
-        .action-btn.secondary {
-            background: var(--premium-gray);
-            color: var(--text-dark);
-            border: 2px solid var(--border-color);
-        }
-        
-        .action-btn.secondary:hover {
-            background: #f0f9ff;
-            border-color: var(--light-blue);
-            color: var(--primary-blue);
-        }
-        
-        .action-btn.success {
-            background: var(--success-green);
-            color: white;
-        }
-        
-        .action-btn.success:hover {
-            background: #0da271;
-            transform: translateY(-3px);
-            box-shadow: var(--shadow-lg);
-        }
-        
-        .action-btn:disabled {
-            opacity: 0.5;
-            cursor: not-allowed;
-            transform: none !important;
-            box-shadow: none !important;
-        }
-        
-        /* Features Section */
-        .features-section {
-            background: var(--card-white);
-            border-radius: var(--radius-lg);
-            padding: 50px;
-            box-shadow: var(--shadow-md);
-            border: 1px solid var(--border-color);
-            margin-bottom: 60px;
-        }
-        
-        .features-section h2 {
-            text-align: center;
-            font-size: 2rem;
-            margin-bottom: 40px;
-            color: var(--text-dark);
-        }
-        
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-        }
-        
-        .feature-card {
-            background: var(--premium-gray);
-            border-radius: var(--radius-md);
-            padding: 30px;
-            border-left: 4px solid var(--primary-blue);
-            transition: var(--transition);
-        }
-        
-        .feature-card:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--shadow-md);
-        }
-        
-        .feature-icon {
-            width: 60px;
-            height: 60px;
-            background: linear-gradient(135deg, #f0f9ff 0%, #dbeafe 100%);
-            border-radius: var(--radius-md);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 20px;
-            color: var(--primary-blue);
-            font-size: 24px;
-        }
-        
-        .feature-card h3 {
-            font-size: 1.2rem;
-            margin-bottom: 12px;
-            color: var(--text-dark);
-        }
-        
-        .feature-card p {
-            color: var(--text-gray);
-            font-size: 14px;
-            line-height: 1.6;
-        }
-        
-        /* Barcode Types Grid */
-        .types-section {
-            background: var(--card-white);
-            border-radius: var(--radius-lg);
-            padding: 50px;
-            box-shadow: var(--shadow-md);
-            border: 1px solid var(--border-color);
-            margin-bottom: 60px;
-        }
-        
-        .types-section h2 {
-            text-align: center;
-            font-size: 2rem;
-            margin-bottom: 40px;
-            color: var(--text-dark);
-        }
-        
-        .types-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 25px;
-        }
-        
-        .type-card {
-            background: var(--premium-gray);
-            border-radius: var(--radius-md);
-            padding: 25px;
-            transition: var(--transition);
-            border: 1px solid var(--border-color);
-        }
-        
-        .type-card:hover {
-            transform: translateY(-3px);
-            box-shadow: var(--shadow-md);
-        }
-        
-        .type-card h3 {
-            font-size: 1.1rem;
-            margin-bottom: 10px;
-            color: var(--text-dark);
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        
-        .type-card h3 i {
-            color: var(--primary-blue);
-        }
-        
-        .type-card p {
-            color: var(--text-gray);
-            font-size: 13px;
-            line-height: 1.5;
-            margin-bottom: 15px;
-        }
-        
-        .type-meta {
-            display: flex;
-            justify-content: space-between;
-            font-size: 12px;
-            color: var(--text-light);
-        }
-        
-        /* Footer */
-        footer {
-            background: var(--text-dark);
-            color: white;
-            padding: 60px 0 40px;
-            margin-top: auto;
-        }
-        
-        .footer-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 48px;
-            margin-bottom: 48px;
-        }
-        
-        .footer-logo {
-            font-family: 'Poppins', sans-serif;
-            font-size: 28px;
-            font-weight: 800;
-            color: white;
-            margin-bottom: 16px;
-            display: block;
-            text-decoration: none;
-        }
-        
-        .footer-tagline {
-            color: #9ca3af;
-            font-size: 14px;
-            line-height: 1.6;
-            margin-bottom: 24px;
-        }
-        
-        .footer-contact {
-            margin-top: 24px;
-        }
-        
-        .contact-item {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            margin-bottom: 16px;
-            color: #9ca3af;
-        }
-        
-        .contact-item i {
-            color: var(--accent-blue);
-        }
-        
-        .footer-links h4 {
-            font-size: 1.1rem;
-            margin-bottom: 24px;
-            color: white;
-        }
-        
-        .footer-links ul {
-            list-style: none;
-        }
-        
-        .footer-links li {
-            margin-bottom: 12px;
-        }
-        
-        .footer-links a {
-            color: #9ca3af;
-            text-decoration: none;
-            font-size: 14px;
-            transition: var(--transition);
-        }
-        
-        .footer-links a:hover {
-            color: white;
-            padding-left: 8px;
-        }
-        
-        .footer-bottom {
-            text-align: center;
-            padding-top: 40px;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            color: #9ca3af;
-            font-size: 14px;
-        }
-        
-        /* Responsive */
-        @media (max-width: 768px) {
-            .tool-header h1 {
-                font-size: 2rem;
-            }
-            
-            .tool-container, .features-section, .types-section {
-                padding: 30px;
-            }
-            
-            .action-buttons {
-                flex-direction: column;
-            }
-            
-            .action-btn {
-                width: 100%;
-            }
-            
-            .options-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .preview-info {
-                flex-direction: column;
-                gap: 15px;
-                align-items: flex-start;
-            }
-        }
-        
-        @media (max-width: 480px) {
-            .tool-header h1 {
-                font-size: 1.8rem;
-            }
-            
-            .tool-container, .features-section, .types-section {
-                padding: 20px;
-            }
-            
-            .barcode-options {
-                padding: 20px;
-            }
-        }
-        
-        /* Loading Animation */
-        .loading {
-            text-align: center;
-            padding: 40px;
-        }
-        
-        .loading i {
-            font-size: 40px;
-            color: var(--primary-blue);
-            animation: spin 1s linear infinite;
-        }
-        
-        @keyframes spin {
-            to { transform: rotate(360deg); }
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="Advanced barcode generator tool to create professional barcodes in multiple formats including CODE128, EAN13, UPC, QR codes. Customize colors, sizes, and export options for inventory, products, and business use.">
+  <title>Advanced Barcode Generator | Tool Nest</title>
+  <link rel="icon" href="favicon-16x16.png" type="image/x-icon">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root {
+      --primary: #3498db;
+      --primary-dark: #2980b9;
+      --secondary: #2c3e50;
+      --dark-bg: #121a24;
+      --dark-card: #1a2332;
+      --dark-border: #2c3e50;
+      --text-light: #ecf0f1;
+      --text-muted: #bdc3c7;
+      --success: #27ae60;
+      --warning: #f39c12;
+      --info: #3498db;
+      --danger: #e74c3c;
+      --shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+      --radius: 12px;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: var(--dark-bg);
+      color: var(--text-light);
+      line-height: 1.6;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .container {
+      max-width: 1200px;
+      width: 100%;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* Header */
+    header {
+      background-color: var(--secondary);
+      padding: 25px 0;
+      box-shadow: var(--shadow);
+      border-bottom: 1px solid var(--dark-border);
+    }
+
+    .header-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo-icon {
+      color: var(--primary);
+      font-size: 28px;
+    }
+
+    .logo-text h1 {
+      font-size: 26px;
+      font-weight: 700;
+    }
+
+    .logo-text span {
+      color: var(--primary);
+    }
+
+    .tagline {
+      color: var(--text-muted);
+      font-size: 14px;
+      font-weight: 400;
+    }
+
+    /* Main Content */
+    main {
+      flex: 1;
+      padding: 40px 0;
+    }
+
+    .tool-title {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .tool-title h2 {
+      font-size: 36px;
+      color: var(--text-light);
+      margin-bottom: 10px;
+    }
+
+    .tool-title p {
+      color: var(--text-muted);
+      font-size: 18px;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    .tool-container {
+      background-color: var(--dark-card);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 30px;
+      margin-bottom: 40px;
+      border: 1px solid var(--dark-border);
+    }
+
+    /* Generator Controls */
+    .generator-controls {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 25px;
+      margin-bottom: 30px;
+    }
+
+    .input-group {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .input-group label {
+      font-weight: 600;
+      color: var(--text-light);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .text-input {
+      width: 100%;
+      padding: 14px 20px;
+      background-color: rgba(0, 0, 0, 0.2);
+      border: 2px solid var(--dark-border);
+      border-radius: 8px;
+      font-size: 16px;
+      color: var(--text-light);
+      transition: border 0.3s;
+    }
+
+    .text-input:focus {
+      outline: none;
+      border-color: var(--primary);
+    }
+
+    .input-hint {
+      font-size: 14px;
+      color: var(--text-muted);
+      font-style: italic;
+    }
+
+    /* Barcode Format Options */
+    .format-options {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 15px;
+      margin: 25px 0;
+    }
+
+    .format-card {
+      background-color: rgba(0, 0, 0, 0.2);
+      border: 2px solid var(--dark-border);
+      border-radius: 8px;
+      padding: 20px;
+      cursor: pointer;
+      transition: all 0.3s;
+      text-align: center;
+    }
+
+    .format-card:hover {
+      border-color: var(--primary);
+      transform: translateY(-2px);
+    }
+
+    .format-card.active {
+      border-color: var(--primary);
+      background-color: rgba(52, 152, 219, 0.1);
+    }
+
+    .format-icon {
+      font-size: 32px;
+      color: var(--primary);
+      margin-bottom: 10px;
+    }
+
+    .format-name {
+      font-weight: 600;
+      color: var(--text-light);
+      margin-bottom: 5px;
+    }
+
+    .format-desc {
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    /* Customization Options */
+    .customization-options {
+      background-color: rgba(0, 0, 0, 0.2);
+      border-radius: 8px;
+      padding: 25px;
+      margin: 25px 0;
+      border: 1px solid var(--dark-border);
+    }
+
+    .options-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+    }
+
+    .option-group {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .option-group label {
+      font-weight: 500;
+      color: var(--text-light);
+      font-size: 14px;
+    }
+
+    .select-input, .range-input {
+      padding: 10px 15px;
+      background-color: rgba(0, 0, 0, 0.3);
+      border: 1px solid var(--dark-border);
+      border-radius: 6px;
+      color: var(--text-light);
+      font-family: inherit;
+    }
+
+    .range-input {
+      width: 100%;
+    }
+
+    .range-values {
+      display: flex;
+      justify-content: space-between;
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    .color-input-wrapper {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .color-input {
+      width: 50px;
+      height: 40px;
+      padding: 0;
+      border: none;
+      background: transparent;
+      cursor: pointer;
+    }
+
+    /* Action Buttons */
+    .action-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+      margin-top: 30px;
+      justify-content: center;
+    }
+
+    .btn {
+      padding: 14px 28px;
+      font-size: 16px;
+      font-weight: 600;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.3s;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      min-width: 160px;
+      justify-content: center;
+    }
+
+    .btn-primary {
+      background-color: var(--primary);
+      color: white;
+    }
+
+    .btn-primary:hover {
+      background-color: var(--primary-dark);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(52, 152, 219, 0.3);
+    }
+
+    .btn-secondary {
+      background-color: var(--secondary);
+      color: white;
+    }
+
+    .btn-secondary:hover {
+      background-color: #34495e;
+      transform: translateY(-2px);
+    }
+
+    .btn-success {
+      background-color: var(--success);
+      color: white;
+    }
+
+    .btn-success:hover {
+      background-color: #219653;
+      transform: translateY(-2px);
+    }
+
+    /* Barcode Preview */
+    .barcode-preview {
+      margin-top: 40px;
+      display: none;
+    }
+
+    .preview-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+      padding-bottom: 15px;
+      border-bottom: 2px solid var(--dark-border);
+    }
+
+    .preview-header h3 {
+      font-size: 24px;
+      color: var(--text-light);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .preview-container {
+      background-color: white;
+      border-radius: 8px;
+      padding: 40px;
+      text-align: center;
+      margin-bottom: 30px;
+      border: 2px solid var(--dark-border);
+    }
+
+    #barcodeDisplay {
+      max-width: 100%;
+      height: auto;
+      margin: 0 auto;
+    }
+
+    .preview-stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+      margin-top: 30px;
+    }
+
+    .stat-card {
+      background-color: rgba(0, 0, 0, 0.2);
+      border-radius: 8px;
+      padding: 20px;
+      border-left: 4px solid var(--primary);
+    }
+
+    .stat-label {
+      font-size: 14px;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 10px;
+    }
+
+    .stat-value {
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--text-light);
+    }
+
+    /* Export Options */
+    .export-options {
+      margin-top: 40px;
+      padding-top: 30px;
+      border-top: 2px solid var(--dark-border);
+    }
+
+    .export-options h4 {
+      font-size: 20px;
+      margin-bottom: 20px;
+      color: var(--text-light);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .export-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+    }
+
+    .export-btn {
+      padding: 12px 24px;
+      background-color: rgba(0, 0, 0, 0.2);
+      border: 1px solid var(--dark-border);
+      border-radius: 6px;
+      color: var(--text-light);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.3s;
+    }
+
+    .export-btn:hover {
+      background-color: rgba(52, 152, 219, 0.1);
+      border-color: var(--primary);
+      color: var(--primary);
+    }
+
+    /* API Section */
+    .api-section {
+      background-color: var(--dark-card);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 30px;
+      margin-bottom: 40px;
+      border: 1px solid var(--dark-border);
+    }
+
+    .api-section h3 {
+      font-size: 24px;
+      margin-bottom: 20px;
+      color: var(--primary);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .api-info {
+      background-color: rgba(0, 0, 0, 0.2);
+      border-radius: 8px;
+      padding: 20px;
+      font-family: 'Consolas', 'Monaco', monospace;
+      font-size: 15px;
+      color: var(--text-muted);
+      margin-bottom: 20px;
+      overflow-x: auto;
+    }
+
+    .api-endpoints {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 20px;
+    }
+
+    .api-endpoint {
+      background-color: rgba(0, 0, 0, 0.2);
+      border-radius: 8px;
+      padding: 20px;
+      border-left: 4px solid var(--primary);
+    }
+
+    .api-endpoint h4 {
+      font-size: 18px;
+      margin-bottom: 10px;
+      color: var(--text-light);
+    }
+
+    .api-endpoint code {
+      display: block;
+      background-color: rgba(0, 0, 0, 0.4);
+      padding: 10px;
+      border-radius: 4px;
+      margin-bottom: 10px;
+      color: var(--warning);
+    }
+
+    /* SEO Description */
+    .seo-description {
+      background-color: var(--dark-card);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 30px;
+      margin-bottom: 40px;
+      border: 1px solid var(--dark-border);
+    }
+
+    .seo-description h3 {
+      font-size: 24px;
+      margin-bottom: 20px;
+      color: var(--primary);
+    }
+
+    .seo-content {
+      line-height: 1.8;
+      color: var(--text-muted);
+    }
+
+    .seo-content p {
+      margin-bottom: 15px;
+    }
+
+    .keywords {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 20px;
+    }
+
+    .keyword-tag {
+      background-color: rgba(52, 152, 219, 0.1);
+      color: var(--primary);
+      padding: 6px 12px;
+      border-radius: 20px;
+      font-size: 14px;
+    }
+
+    /* Footer */
+    footer {
+      background-color: var(--secondary);
+      padding: 30px 0;
+      text-align: center;
+      border-top: 1px solid var(--dark-border);
+      margin-top: auto;
+    }
+
+    .footer-content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .footer-logo {
+      font-size: 24px;
+      font-weight: 700;
+      color: var(--text-light);
+    }
+
+    .footer-logo span {
+      color: var(--primary);
+    }
+
+    .copyright {
+      color: var(--text-muted);
+      font-size: 14px;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .header-content {
+        flex-direction: column;
+        gap: 15px;
+        text-align: center;
+      }
+      
+      .tool-title h2 {
+        font-size: 28px;
+      }
+      
+      .tool-title p {
+        font-size: 16px;
+      }
+      
+      .generator-controls {
+        grid-template-columns: 1fr;
+      }
+      
+      .format-options {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      
+      .action-buttons {
+        flex-direction: column;
+        align-items: stretch;
+      }
+      
+      .btn {
+        width: 100%;
+      }
+      
+      .api-endpoints {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .format-options {
+        grid-template-columns: 1fr;
+      }
+      
+      .options-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .tool-container {
+        padding: 20px;
+      }
+    }
+
+    /* Animation for barcode generation */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .fade-in {
+      animation: fadeIn 0.5s ease-out;
+    }
+
+    /* Loading animation */
+    .loading {
+      text-align: center;
+      padding: 40px;
+    }
+
+    .loading i {
+      font-size: 40px;
+      color: var(--primary);
+      animation: spin 1s linear infinite;
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+  </style>
 </head>
-
 <body>
-    <!-- Header -->
-    <header>
-        <div class="container header-container">
-            <div class="logo-wrapper">
-                <a href="index.html" class="logo">
-                    <div class="logo-icon">
-                        <i class="fas fa-tools"></i>
-                    </div>
-                    <div class="logo-text">
-                        Tool Nest
-                        <span class="logo-tagline">PREMIUM ONLINE TOOLS</span>
-                    </div>
-                </a>
+  <header>
+    <div class="container header-content">
+      <div class="logo">
+        <div class="logo-icon">
+          <i class="fas fa-barcode"></i>
+        </div>
+        <div class="logo-text">
+          <h1>Tool <span>Nest</span></h1>
+          <div class="tagline">Advanced Developer Utilities</div>
+        </div>
+      </div>
+      <div class="header-info">
+        <div class="info-text">
+          <i class="fas fa-bolt"></i> Instant Generation
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <div class="tool-title">
+      <h2>Advanced Barcode Generator</h2>
+      <p>Create professional barcodes in multiple formats instantly. Customize colors, sizes, and export options for your business needs.</p>
+    </div>
+
+    <div class="tool-container">
+      <div class="generator-controls">
+        <div class="input-group">
+          <label for="barcodeData"><i class="fas fa-pencil-alt"></i> Barcode Data</label>
+          <input type="text" id="barcodeData" class="text-input" placeholder="Enter text, numbers, or product code..." value="PRODUCT-00123">
+          <div class="input-hint">Enter the data you want to encode in the barcode</div>
+        </div>
+
+        <div class="input-group">
+          <label for="barcodeLabel"><i class="fas fa-tag"></i> Display Label (Optional)</label>
+          <input type="text" id="barcodeLabel" class="text-input" placeholder="Optional text to display below barcode">
+          <div class="input-hint">Leave empty to use barcode data as label</div>
+        </div>
+      </div>
+
+      <!-- Barcode Format Selection -->
+      <div class="format-options">
+        <div class="format-card active" data-format="CODE128">
+          <div class="format-icon">
+            <i class="fas fa-qrcode"></i>
+          </div>
+          <div class="format-name">CODE128</div>
+          <div class="format-desc">Universal format</div>
+        </div>
+        
+        <div class="format-card" data-format="EAN13">
+          <div class="format-icon">
+            <i class="fas fa-shopping-cart"></i>
+          </div>
+          <div class="format-name">EAN-13</div>
+          <div class="format-desc">Retail products</div>
+        </div>
+        
+        <div class="format-card" data-format="UPC">
+          <div class="format-icon">
+            <i class="fas fa-tag"></i>
+          </div>
+          <div class="format-name">UPC</div>
+          <div class="format-desc">US products</div>
+        </div>
+        
+        <div class="format-card" data-format="CODE39">
+          <div class="format-icon">
+            <i class="fas fa-industry"></i>
+          </div>
+          <div class="format-name">CODE39</div>
+          <div class="format-desc">Industrial use</div>
+        </div>
+        
+        <div class="format-card" data-format="ITF14">
+          <div class="format-icon">
+            <i class="fas fa-box"></i>
+          </div>
+          <div class="format-name">ITF-14</div>
+          <div class="format-desc">Shipping containers</div>
+        </div>
+        
+        <div class="format-card" data-format="pharmacode">
+          <div class="format-icon">
+            <i class="fas fa-pills"></i>
+          </div>
+          <div class="format-name">Pharmacode</div>
+          <div class="format-desc">Pharmaceuticals</div>
+        </div>
+      </div>
+
+      <!-- Customization Options -->
+      <div class="customization-options">
+        <h4 style="margin-bottom: 20px; color: var(--text-light);">
+          <i class="fas fa-palette"></i> Customization Options
+        </h4>
+        
+        <div class="options-grid">
+          <div class="option-group">
+            <label for="barcodeColor">Barcode Color</label>
+            <div class="color-input-wrapper">
+              <input type="color" id="barcodeColor" value="#000000" class="color-input">
+              <span id="colorValue">#000000</span>
             </div>
-            
-            <a href="index.html" class="back-btn">
-                <i class="fas fa-arrow-left"></i>
-                Back to Tools
+          </div>
+          
+          <div class="option-group">
+            <label for="barcodeWidth">Line Width</label>
+            <input type="range" id="barcodeWidth" min="1" max="5" value="2" step="0.5" class="range-input">
+            <div class="range-values">
+              <span>Thin</span>
+              <span id="widthValue">2px</span>
+              <span>Thick</span>
+            </div>
+          </div>
+          
+          <div class="option-group">
+            <label for="barcodeHeight">Height</label>
+            <input type="range" id="barcodeHeight" min="50" max="200" value="100" step="10" class="range-input">
+            <div class="range-values">
+              <span>50px</span>
+              <span id="heightValue">100px</span>
+              <span>200px</span>
+            </div>
+          </div>
+          
+          <div class="option-group">
+            <label for="fontSize">Label Size</label>
+            <select id="fontSize" class="select-input">
+              <option value="14">Small</option>
+              <option value="18" selected>Medium</option>
+              <option value="22">Large</option>
+              <option value="26">Extra Large</option>
+            </select>
+          </div>
+          
+          <div class="option-group">
+            <label for="bgColor">Background Color</label>
+            <div class="color-input-wrapper">
+              <input type="color" id="bgColor" value="#ffffff" class="color-input">
+              <span id="bgColorValue">#FFFFFF</span>
+            </div>
+          </div>
+          
+          <div class="option-group">
+            <label for="showLabel">Show Label</label>
+            <select id="showLabel" class="select-input">
+              <option value="true" selected>Yes</option>
+              <option value="false">No</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <!-- Action Buttons -->
+      <div class="action-buttons">
+        <button class="btn btn-primary" onclick="generateBarcode()">
+          <i class="fas fa-bolt"></i> Generate Barcode
+        </button>
+        <button class="btn btn-secondary" onclick="resetGenerator()">
+          <i class="fas fa-redo"></i> Reset
+        </button>
+        <button class="btn btn-success" onclick="batchGenerate()">
+          <i class="fas fa-layer-group"></i> Batch Generate
+        </button>
+      </div>
+
+      <!-- Barcode Preview -->
+      <div class="barcode-preview fade-in" id="barcodePreview">
+        <div class="preview-header">
+          <h3><i class="fas fa-eye"></i> Barcode Preview</h3>
+          <button class="btn btn-secondary" onclick="copyBarcode()">
+            <i class="far fa-copy"></i> Copy SVG
+          </button>
+        </div>
+
+        <div class="preview-container">
+          <div id="barcodeDisplay">
+            <!-- Barcode will be rendered here -->
+          </div>
+        </div>
+
+        <!-- Barcode Statistics -->
+        <div class="preview-stats">
+          <div class="stat-card">
+            <div class="stat-label">Format</div>
+            <div class="stat-value" id="statFormat">CODE128</div>
+          </div>
+          
+          <div class="stat-card">
+            <div class="stat-label">Data Length</div>
+            <div class="stat-value" id="statLength">11 characters</div>
+          </div>
+          
+          <div class="stat-card">
+            <div class="stat-label">Generation Time</div>
+            <div class="stat-value" id="statTime">0ms</div>
+          </div>
+          
+          <div class="stat-card">
+            <div class="stat-label">Scannable</div>
+            <div class="stat-value" id="statScannable">Yes</div>
+          </div>
+        </div>
+
+        <!-- Export Options -->
+        <div class="export-options">
+          <h4><i class="fas fa-download"></i> Export Options</h4>
+          <div class="export-buttons">
+            <a href="#" class="export-btn" onclick="exportBarcode('svg')">
+              <i class="fas fa-file-code"></i> SVG
             </a>
+            <a href="#" class="export-btn" onclick="exportBarcode('png')">
+              <i class="fas fa-file-image"></i> PNG
+            </a>
+            <a href="#" class="export-btn" onclick="exportBarcode('jpg')">
+              <i class="fas fa-file-image"></i> JPG
+            </a>
+            <a href="#" class="export-btn" onclick="exportBarcode('pdf')">
+              <i class="fas fa-file-pdf"></i> PDF
+            </a>
+          </div>
         </div>
-    </header>
 
-    <!-- Main Content -->
-    <main class="main-content">
-        <div class="container">
-            <!-- Tool Header -->
-            <div class="tool-header">
-                <span class="tool-badge">Professional Tool</span>
-                <h1>Advanced Barcode Generator</h1>
-                <p>Create professional barcodes instantly for products, inventory, and business use. Supports multiple barcode formats with customization options.</p>
-            </div>
-
-            <!-- Barcode Generator Tool -->
-            <div class="tool-container">
-                <form class="barcode-form" id="barcodeForm">
-                    <div class="input-group">
-                        <label for="barcodeText">
-                            <i class="fas fa-barcode"></i>
-                            Enter Barcode Data
-                        </label>
-                        <input type="text" id="barcodeText" class="text-input" placeholder="Enter product code, serial number, or text" required />
-                        <div class="input-hint">Enter numbers, letters, or alphanumeric data for barcode generation</div>
-                    </div>
-
-                    <!-- Barcode Options -->
-                    <div class="barcode-options">
-                        <label>
-                            <i class="fas fa-cog"></i>
-                            Barcode Settings
-                        </label>
-                        
-                        <div class="options-grid">
-                            <div class="option-group">
-                                <label for="barcodeType">Barcode Format</label>
-                                <select id="barcodeType" class="select-input">
-                                    <option value="CODE128">CODE128 (Universal)</option>
-                                    <option value="EAN13">EAN-13 (Products)</option>
-                                    <option value="EAN8">EAN-8 (Small Products)</option>
-                                    <option value="UPC">UPC (US Products)</option>
-                                    <option value="CODE39">CODE39 (Logistics)</option>
-                                    <option value="ITF14">ITF-14 (Cartons)</option>
-                                    <option value="MSI">MSI (Warehouse)</option>
-                                    <option value="pharmacode">Pharmacode (Pharmaceuticals)</option>
-                                </select>
-                            </div>
-                            
-                            <div class="option-group">
-                                <label for="lineColor">Barcode Color</label>
-                                <div style="display: flex; align-items: center;">
-                                    <input type="color" id="lineColor" class="color-input" value="#000000" style="flex: 1;">
-                                    <div class="color-preview" id="colorPreview"></div>
-                                </div>
-                            </div>
-                            
-                            <div class="option-group">
-                                <label for="width">Line Width</label>
-                                <input type="range" id="width" class="range-input" min="1" max="5" value="2" step="0.5">
-                                <div class="range-values">
-                                    <span>Thin</span>
-                                    <span id="widthValue">2px</span>
-                                    <span>Thick</span>
-                                </div>
-                            </div>
-                            
-                            <div class="option-group">
-                                <label for="height">Barcode Height</label>
-                                <input type="range" id="height" class="range-input" min="50" max="200" value="100" step="10">
-                                <div class="range-values">
-                                    <span>50px</span>
-                                    <span id="heightValue">100px</span>
-                                    <span>200px</span>
-                                </div>
-                            </div>
-                            
-                            <div class="option-group">
-                                <label for="displayValue">Show Text</label>
-                                <select id="displayValue" class="select-input">
-                                    <option value="true">Yes</option>
-                                    <option value="false">No</option>
-                                </select>
-                            </div>
-                            
-                            <div class="option-group">
-                                <label for="fontSize">Text Size</label>
-                                <select id="fontSize" class="select-input">
-                                    <option value="16">Small (16px)</option>
-                                    <option value="20" selected>Medium (20px)</option>
-                                    <option value="24">Large (24px)</option>
-                                    <option value="28">Extra Large (28px)</option>
-                                </select>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Action Buttons -->
-                    <div class="action-buttons">
-                        <button type="submit" class="action-btn primary">
-                            <i class="fas fa-bolt"></i>
-                            Generate Barcode
-                        </button>
-                        <button type="button" class="action-btn secondary" onclick="resetGenerator()">
-                            <i class="fas fa-redo"></i>
-                            Reset Settings
-                        </button>
-                    </div>
-                </form>
-
-                <!-- Barcode Preview -->
-                <div class="barcode-preview" id="barcodePreview">
-                    <h3><i class="fas fa-eye"></i> Barcode Preview</h3>
-                    
-                    <div class="barcode-svg-container">
-                        <svg id="barcodeSvg"></svg>
-                    </div>
-                    
-                    <div class="preview-info">
-                        <div class="info-item">
-                            <div class="info-label">Format</div>
-                            <div class="info-value" id="previewFormat">CODE128</div>
-                        </div>
-                        <div class="info-item">
-                            <div class="info-label">Data Length</div>
-                            <div class="info-value" id="previewLength">0 characters</div>
-                        </div>
-                        <div class="info-item">
-                            <div class="info-label">Generation Time</div>
-                            <div class="info-value" id="previewTime">0ms</div>
-                        </div>
-                        <div class="info-item">
-                            <div class="info-label">Scannable</div>
-                            <div class="info-value" id="previewScannable">Yes</div>
-                        </div>
-                    </div>
-                    
-                    <div class="action-buttons" style="margin-top: 30px;">
-                        <button type="button" class="action-btn success" onclick="downloadBarcode('svg')">
-                            <i class="fas fa-download"></i>
-                            Download SVG
-                        </button>
-                        <button type="button" class="action-btn success" onclick="downloadBarcode('png')">
-                            <i class="fas fa-download"></i>
-                            Download PNG
-                        </button>
-                        <button type="button" class="action-btn secondary" onclick="copyBarcode()">
-                            <i class="fas fa-copy"></i>
-                            Copy SVG Code
-                        </button>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Barcode Types Section -->
-            <div class="types-section">
-                <h2>Supported Barcode Formats</h2>
-                <div class="types-grid">
-                    <div class="type-card">
-                        <h3><i class="fas fa-qrcode"></i> CODE128</h3>
-                        <p>Universal barcode format supporting all 128 ASCII characters. Ideal for logistics, shipping, and general purpose use.</p>
-                        <div class="type-meta">
-                            <span>Characters: 128</span>
-                            <span>Type: Alphanumeric</span>
-                        </div>
-                    </div>
-                    
-                    <div class="type-card">
-                        <h3><i class="fas fa-shopping-cart"></i> EAN-13</h3>
-                        <p>International standard for retail products. Used globally for product identification and point-of-sale systems.</p>
-                        <div class="type-meta">
-                            <span>Digits: 13</span>
-                            <span>Type: Numeric</span>
-                        </div>
-                    </div>
-                    
-                    <div class="type-card">
-                        <h3><i class="fas fa-tag"></i> UPC</h3>
-                        <p>North American standard for retail products. Widely used in United States and Canada for consumer goods.</p>
-                        <div class="type-meta">
-                            <span>Digits: 12</span>
-                            <span>Type: Numeric</span>
-                        </div>
-                    </div>
-                    
-                    <div class="type-card">
-                        <h3><i class="fas fa-industry"></i> CODE39</h3>
-                        <p>Industrial barcode format supporting letters and numbers. Common in automotive and government applications.</p>
-                        <div class="type-meta">
-                            <span>Characters: 43</span>
-                            <span>Type: Alphanumeric</span>
-                        </div>
-                    </div>
-                    
-                    <div class="type-card">
-                        <h3><i class="fas fa-box"></i> ITF-14</h3>
-                        <p>Shipping container barcode for carton-level identification. Used in logistics and supply chain management.</p>
-                        <div class="type-meta">
-                            <span>Digits: 14</span>
-                            <span>Type: Numeric</span>
-                        </div>
-                    </div>
-                    
-                    <div class="type-card">
-                        <h3><i class="fas fa-pills"></i> Pharmacode</h3>
-                        <p>Pharmaceutical tracking barcode for medicine packaging. Designed for high-speed scanning in healthcare.</p>
-                        <div class="type-meta">
-                            <span>Digits: 1-6</span>
-                            <span>Type: Numeric</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Features Section -->
-            <div class="features-section">
-                <h2>Why Choose Our Barcode Generator?</h2>
-                <div class="features-grid">
-                    <div class="feature-card">
-                        <div class="feature-icon">
-                            <i class="fas fa-bolt"></i>
-                        </div>
-                        <h3>Instant Generation</h3>
-                        <p>Create scannable barcodes in milliseconds with our optimized JavaScript engine. No waiting, no delays.</p>
-                    </div>
-                    
-                    <div class="feature-card">
-                        <div class="feature-icon">
-                            <i class="fas fa-palette"></i>
-                        </div>
-                        <h3>Full Customization</h3>
-                        <p>Customize colors, sizes, and formats to match your brand. Multiple export options including SVG and PNG.</p>
-                    </div>
-                    
-                    <div class="feature-card">
-                        <div class="feature-icon">
-                            <i class="fas fa-shield-alt"></i>
-                        </div>
-                        <h3>Complete Privacy</h3>
-                        <p>All processing happens locally in your browser. Your data never leaves your device, ensuring 100% privacy.</p>
-                    </div>
-                    
-                    <div class="feature-card">
-                        <div class="feature-icon">
-                            <i class="fas fa-mobile-alt"></i>
-                        </div>
-                        <h3>Mobile Optimized</h3>
-                        <p>Generate barcodes on any device. Perfect for inventory management in warehouses or retail environments.</p>
-                    </div>
-                </div>
-            </div>
+        <div style="margin-top: 30px; text-align: center; color: var(--text-muted); font-size: 14px;">
+          <i class="fas fa-info-circle"></i> Generated barcode can be scanned by standard barcode scanners
         </div>
-    </main>
+      </div>
+    </div>
 
-    <!-- Footer -->
-    <footer>
-        <div class="container">
-            <div class="footer-container">
-                <div class="footer-about">
-                    <a href="index.html" class="footer-logo">Tool Nest</a>
-                    <p class="footer-tagline">Your trusted partner for premium online tools. Professional solutions for modern workflows.</p>
-                    <div class="footer-contact">
-                        <div class="contact-item">
-                            <i class="fas fa-envelope"></i>
-                            <span>toolnest3@gmail.com</span>
-                        </div>
-                        <div class="contact-item">
-                            <i class="fas fa-shield-alt"></i>
-                            <span>100% Secure & Private</span>
-                        </div>
-                        <div class="contact-item">
-                            <i class="fas fa-bolt"></i>
-                            <span>Instant Barcode Generation</span>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="footer-links">
-                    <h4>Quick Links</h4>
-                    <ul>
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="index.html#utility-tools-section">Utility Tools</a></li>
-                        <li><a href="qr.html">QR Code Generator</a></li>
-                        <li><a href="uuid.html">UUID Generator</a></li>
-                        <li><a href="random-number.html">Random Generator</a></li>
-                    </ul>
-                </div>
-                
-                <div class="footer-links">
-                    <h4>Legal</h4>
-                    <ul>
-                        <li><a href="privacy-policy.html">Privacy Policy</a></li>
-                        <li><a href="terms-of-use.html">Terms of Service</a></li>
-                        <li><a href="cookies.html">Cookie Policy</a></li>
-                        <li><a href="disclaimer.html">Disclaimer</a></li>
-                    </ul>
-                </div>
-            </div>
-            
-            <div class="footer-bottom">
-                <p>© 2023 Tool Nest. All rights reserved. Premium online tools for professionals.</p>
-            </div>
+    <div class="api-section">
+      <h3><i class="fas fa-code-branch"></i> Barcode Generator API</h3>
+      <p style="margin-bottom: 15px; color: var(--text-muted);">Integrate barcode generation into your applications with our REST API:</p>
+      
+      <div class="api-info">
+        Base URL: <strong>https://api.toolnest.com/v1/barcode/</strong><br>
+        Authentication: <strong>API Key required (free tier available)</strong><br>
+        Rate Limit: <strong>1000 requests/hour (free tier)</strong>
+      </div>
+      
+      <div class="api-endpoints">
+        <div class="api-endpoint">
+          <h4>Generate Single Barcode</h4>
+          <code>POST /generate</code>
+          <p>Generate a barcode with specified data, format, and customization options.</p>
+          <p><strong>Parameters:</strong> data (string), format (string), color (hex), width (int), height (int)</p>
         </div>
-    </footer>
+        
+        <div class="api-endpoint">
+          <h4>Batch Generation</h4>
+          <code>POST /generate/batch</code>
+          <p>Generate multiple barcodes in a single request with different data.</p>
+          <p><strong>Parameters:</strong> items (array of objects), format (string)</p>
+        </div>
+        
+        <div class="api-endpoint">
+          <h4>Validate Barcode Data</h4>
+          <code>POST /validate</code>
+          <p>Validate if data is suitable for specific barcode format.</p>
+          <p><strong>Parameters:</strong> data (string), format (string)</p>
+        </div>
+      </div>
+    </div>
 
-    <!-- Scripts -->
-    <script src="https://cdn.jsdelivr.net/npm/jsbarcode@3.11.5/dist/JsBarcode.all.min.js"></script>
-    <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
-    
-    <script>
-        // DOM Elements
-        const form = document.getElementById('barcodeForm');
-        const barcodeText = document.getElementById('barcodeText');
-        const barcodeType = document.getElementById('barcodeType');
-        const lineColor = document.getElementById('lineColor');
-        const colorPreview = document.getElementById('colorPreview');
-        const widthInput = document.getElementById('width');
-        const heightInput = document.getElementById('height');
-        const displayValue = document.getElementById('displayValue');
-        const fontSize = document.getElementById('fontSize');
-        const widthValue = document.getElementById('widthValue');
-        const heightValue = document.getElementById('heightValue');
-        const barcodePreview = document.getElementById('barcodePreview');
-        const barcodeSvg = document.getElementById('barcodeSvg');
-        const previewFormat = document.getElementById('previewFormat');
-        const previewLength = document.getElementById('previewLength');
-        const previewTime = document.getElementById('previewTime');
-        const previewScannable = document.getElementById('previewScannable');
+    <div class="seo-description">
+      <h3><i class="fas fa-search"></i> About This Advanced Barcode Generator</h3>
+      <div class="seo-content">
+        <p>Our <strong>advanced barcode generator tool</strong> is an essential utility for businesses, retailers, inventory managers, and logistics professionals who need to create professional barcodes quickly and efficiently. Unlike basic barcode generators, our tool supports multiple industry-standard formats including CODE128, EAN13, UPC, CODE39, ITF-14, and Pharmacode, with full customization options for colors, sizes, and display settings.</p>
+        
+        <p>For <strong>retail businesses and e-commerce</strong>, this tool helps create product barcodes for inventory management, point-of-sale systems, and online stores. The EAN-13 and UPC formats are specifically designed for retail products and are recognized globally by scanning systems. Our generator ensures proper formatting and validation according to international standards.</p>
+        
+        <p>For <strong>warehouse and logistics operations</strong>, the CODE128 and ITF-14 formats provide robust encoding for shipping labels, package tracking, and inventory control. The tool includes validation checks to ensure generated barcodes are scannable by standard industrial scanners, reducing errors in supply chain management.</p>
+        
+        <p>All barcode generation happens locally in your browser, ensuring complete <strong>privacy and security</strong> for sensitive product data. The tool offers multiple export formats (SVG, PNG, JPG, PDF) for integration with design software, printing systems, and digital documents. Whether you're labeling products, tracking inventory, or creating shipping labels, this barcode generator provides professional-grade results with enterprise-level features.</p>
+        
+        <div class="keywords">
+          <span class="keyword-tag">barcode generator</span>
+          <span class="keyword-tag">barcode creator</span>
+          <span class="keyword-tag">barcode maker</span>
+          <span class="keyword-tag">EAN-13 generator</span>
+          <span class="keyword-tag">UPC barcode</span>
+          <span class="keyword-tag">CODE128 generator</span>
+          <span class="keyword-tag">inventory barcodes</span>
+          <span class="keyword-tag">product barcode</span>
+          <span class="keyword-tag">barcode printing</span>
+          <span class="keyword-tag">retail barcodes</span>
+          <span class="keyword-tag">logistics barcodes</span>
+          <span class="keyword-tag">barcode scanner</span>
+        </div>
+      </div>
+    </div>
+  </main>
 
-        // Initialize
-        window.addEventListener('load', () => {
-            updateColorPreview();
-            updateRangeValues();
-            
-            // Set example data
-            barcodeText.value = "PRODUCT-12345";
-        });
+  <footer>
+    <div class="container footer-content">
+      <div class="footer-logo">Tool <span>Nest</span></div>
+      <div class="copyright">
+        &copy; <span id="currentYear"></span> Tool Nest. All rights reserved. | Advanced Developer Utilities
+      </div>
+      <div class="footer-links">
+        <a href="#" style="color: var(--text-muted); margin: 0 10px; text-decoration: none;">Privacy Policy</a> | 
+        <a href="#" style="color: var(--text-muted); margin: 0 10px; text-decoration: none;">Terms of Service</a> | 
+        <a href="#" style="color: var(--text-muted); margin: 0 10px; text-decoration: none;">Contact</a>
+      </div>
+    </div>
+  </footer>
 
-        // Update color preview
-        function updateColorPreview() {
-            colorPreview.style.backgroundColor = lineColor.value;
+  <!-- JsBarcode Library -->
+  <script src="https://cdn.jsdelivr.net/npm/jsbarcode@3.11.5/dist/JsBarcode.all.min.js"></script>
+  
+  <!-- html2canvas for PNG/JPG export -->
+  <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+  
+  <!-- jsPDF for PDF export -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+  <script>
+    // Set current year in footer
+    document.getElementById('currentYear').textContent = new Date().getFullYear();
+
+    // Initialize variables
+    let currentFormat = 'CODE128';
+    let generatedBarcode = null;
+
+    // Format selection
+    document.querySelectorAll('.format-card').forEach(card => {
+      card.addEventListener('click', function() {
+        document.querySelectorAll('.format-card').forEach(c => c.classList.remove('active'));
+        this.classList.add('active');
+        currentFormat = this.dataset.format;
+        updateFormatInfo();
+      });
+    });
+
+    // Update format info
+    function updateFormatInfo() {
+      const formatInfo = {
+        'CODE128': { desc: 'Universal barcode format supporting all 128 ASCII characters', maxLength: 255 },
+        'EAN13': { desc: 'International product barcode (13 digits)', maxLength: 13 },
+        'UPC': { desc: 'North American product barcode (12 digits)', maxLength: 12 },
+        'CODE39': { desc: 'Industrial barcode (letters, numbers, symbols)', maxLength: 255 },
+        'ITF14': { desc: 'Shipping container barcode (14 digits)', maxLength: 14 },
+        'pharmacode': { desc: 'Pharmaceutical tracking barcode (1-6 digits)', maxLength: 6 }
+      };
+      
+      const info = formatInfo[currentFormat];
+      document.getElementById('formatInfo').textContent = info.desc;
+    }
+
+    // Update color value display
+    document.getElementById('barcodeColor').addEventListener('input', function() {
+      document.getElementById('colorValue').textContent = this.value.toUpperCase();
+    });
+
+    document.getElementById('bgColor').addEventListener('input', function() {
+      document.getElementById('bgColorValue').textContent = this.value.toUpperCase();
+    });
+
+    // Update range value displays
+    document.getElementById('barcodeWidth').addEventListener('input', function() {
+      document.getElementById('widthValue').textContent = this.value + 'px';
+    });
+
+    document.getElementById('barcodeHeight').addEventListener('input', function() {
+      document.getElementById('heightValue').textContent = this.value + 'px';
+    });
+
+    // Generate barcode
+    function generateBarcode() {
+      const data = document.getElementById('barcodeData').value.trim();
+      const label = document.getElementById('barcodeLabel').value.trim() || data;
+      const color = document.getElementById('barcodeColor').value;
+      const width = parseFloat(document.getElementById('barcodeWidth').value);
+      const height = parseInt(document.getElementById('barcodeHeight').value);
+      const fontSize = parseInt(document.getElementById('fontSize').value);
+      const bgColor = document.getElementById('bgColor').value;
+      const showLabel = document.getElementById('showLabel').value === 'true';
+
+      if (!data) {
+        alert('Please enter barcode data');
+        return;
+      }
+
+      const startTime = performance.now();
+      
+      try {
+        // Validate data for selected format
+        if (!validateBarcodeData(data, currentFormat)) {
+          alert(`Invalid data for ${currentFormat} format. Please check the format requirements.`);
+          return;
         }
 
-        // Update range values display
-        function updateRangeValues() {
-            widthValue.textContent = `${widthInput.value}px`;
-            heightValue.textContent = `${heightInput.value}px`;
-        }
-
-        // Reset generator
-        function resetGenerator() {
-            form.reset();
-            barcodePreview.style.display = 'none';
-            barcodeText.value = "PRODUCT-12345";
-            updateColorPreview();
-            updateRangeValues();
-        }
-
+        // Clear previous barcode
+        const display = document.getElementById('barcodeDisplay');
+        display.innerHTML = '';
+        
+        // Create SVG element
+        const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+        svg.setAttribute('id', 'generatedBarcode');
+        
+        // Append to display
+        display.appendChild(svg);
+        
         // Generate barcode
-        function generateBarcode() {
-            const text = barcodeText.value.trim();
-            
-            if (!text) {
-                alert('Please enter barcode data');
-                return;
-            }
-
-            const startTime = performance.now();
-            
-            try {
-                // Clear previous barcode
-                barcodeSvg.innerHTML = '';
-                
-                // Generate new barcode
-                JsBarcode(barcodeSvg, text, {
-                    format: barcodeType.value,
-                    lineColor: lineColor.value,
-                    width: parseFloat(widthInput.value),
-                    height: parseInt(heightInput.value),
-                    displayValue: displayValue.value === 'true',
-                    fontSize: parseInt(fontSize.value),
-                    background: '#ffffff',
-                    margin: 10,
-                    textMargin: 5
-                });
-                
-                const endTime = performance.now();
-                const generationTime = Math.round(endTime - startTime);
-                
-                // Update preview info
-                previewFormat.textContent = barcodeType.value;
-                previewLength.textContent = `${text.length} characters`;
-                previewTime.textContent = `${generationTime}ms`;
-                previewScannable.textContent = validateBarcodeFormat(text, barcodeType.value) ? 'Yes' : 'Check format';
-                
-                // Show preview
-                barcodePreview.style.display = 'block';
-                
-                // Scroll to preview
-                barcodePreview.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                
-            } catch (error) {
-                alert('Error generating barcode: ' + error.message);
-                console.error('Barcode generation error:', error);
-            }
-        }
-
-        // Validate barcode format
-        function validateBarcodeFormat(text, format) {
-            const textStr = text.toString();
-            
-            switch(format) {
-                case 'EAN13':
-                case 'EAN8':
-                case 'UPC':
-                case 'ITF14':
-                    return /^\d+$/.test(textStr);
-                case 'CODE39':
-                    return /^[A-Z0-9\s\-\.\$\+\/%]+$/i.test(textStr);
-                case 'pharmacode':
-                    const num = parseInt(textStr);
-                    return num >= 1 && num <= 131070;
-                default:
-                    return true; // CODE128 supports all characters
-            }
-        }
-
-        // Download barcode
-        async function downloadBarcode(format) {
-            if (!barcodeSvg.innerHTML) {
-                alert('Please generate a barcode first');
-                return;
-            }
-
-            try {
-                if (format === 'svg') {
-                    // Download SVG
-                    const serializer = new XMLSerializer();
-                    const source = serializer.serializeToString(barcodeSvg);
-                    const blob = new Blob([source], { type: "image/svg+xml;charset=utf-8" });
-                    const url = URL.createObjectURL(blob);
-
-                    const link = document.createElement("a");
-                    link.href = url;
-                    link.download = `barcode-${Date.now()}.svg`;
-                    document.body.appendChild(link);
-                    link.click();
-                    document.body.removeChild(link);
-                    URL.revokeObjectURL(url);
-                    
-                } else if (format === 'png') {
-                    // Download PNG using html2canvas
-                    const canvas = await html2canvas(barcodeSvg, {
-                        backgroundColor: '#ffffff',
-                        scale: 2 // Higher resolution
-                    });
-                    
-                    const url = canvas.toDataURL('image/png');
-                    const link = document.createElement("a");
-                    link.href = url;
-                    link.download = `barcode-${Date.now()}.png`;
-                    document.body.appendChild(link);
-                    link.click();
-                    document.body.removeChild(link);
-                }
-                
-            } catch (error) {
-                console.error('Download error:', error);
-                alert('Error downloading barcode. Please try again.');
-            }
-        }
-
-        // Copy SVG code
-        function copyBarcode() {
-            if (!barcodeSvg.innerHTML) {
-                alert('Please generate a barcode first');
-                return;
-            }
-
-            const serializer = new XMLSerializer();
-            const source = serializer.serializeToString(barcodeSvg);
-            
-            navigator.clipboard.writeText(source)
-                .then(() => {
-                    alert('SVG code copied to clipboard!');
-                })
-                .catch(err => {
-                    console.error('Copy error:', err);
-                    alert('Failed to copy SVG code');
-                });
-        }
-
-        // API Integration Example
-        async function saveBarcodeToAPI(barcodeData) {
-            // Example API endpoint - you can implement this on your backend
-            const apiUrl = 'https://api.toolnest.com/barcode/save';
-            
-            const data = {
-                text: barcodeText.value,
-                format: barcodeType.value,
-                color: lineColor.value,
-                width: widthInput.value,
-                height: heightInput.value,
-                timestamp: new Date().toISOString()
-            };
-            
-            try {
-                const response = await fetch(apiUrl, {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify(data)
-                });
-                
-                if (response.ok) {
-                    console.log('Barcode saved to API');
-                    return await response.json();
-                }
-            } catch (error) {
-                console.error('API Error:', error);
-            }
-        }
-
-        // Event Listeners
-        form.addEventListener('submit', (e) => {
-            e.preventDefault();
-            generateBarcode();
+        JsBarcode('#generatedBarcode', data, {
+          format: currentFormat,
+          lineColor: color,
+          width: width,
+          height: height,
+          displayValue: showLabel,
+          text: showLabel ? label : '',
+          fontOptions: 'bold',
+          fontSize: fontSize,
+          background: bgColor,
+          margin: 10
         });
 
-        lineColor.addEventListener('input', updateColorPreview);
-        widthInput.addEventListener('input', updateRangeValues);
-        heightInput.addEventListener('input', updateRangeValues);
+        const endTime = performance.now();
+        const generationTime = Math.round(endTime - startTime);
+        
+        // Update statistics
+        document.getElementById('statFormat').textContent = currentFormat;
+        document.getElementById('statLength').textContent = `${data.length} characters`;
+        document.getElementById('statTime').textContent = `${generationTime}ms`;
+        document.getElementById('statScannable').textContent = 'Yes';
+        
+        // Store generated barcode reference
+        generatedBarcode = svg;
+        
+        // Show preview
+        document.getElementById('barcodePreview').style.display = 'block';
+        
+        // Scroll to preview
+        document.getElementById('barcodePreview').scrollIntoView({ behavior: 'smooth' });
+        
+      } catch (error) {
+        console.error('Barcode generation error:', error);
+        alert('Error generating barcode: ' + error.message);
+      }
+    }
 
-        // Example data presets
-        document.addEventListener('click', (e) => {
-            if (e.target.classList.contains('example-data')) {
-                barcodeText.value = e.target.dataset.value;
-                generateBarcode();
-            }
+    // Validate barcode data for selected format
+    function validateBarcodeData(data, format) {
+      switch(format) {
+        case 'EAN13':
+          return /^\d{13}$/.test(data);
+        case 'UPC':
+          return /^\d{12}$/.test(data);
+        case 'ITF14':
+          return /^\d{14}$/.test(data);
+        case 'pharmacode':
+          const num = parseInt(data);
+          return !isNaN(num) && num >= 1 && num <= 131070;
+        case 'CODE39':
+          return /^[A-Z0-9\-\s\.\$\+\/%]+$/i.test(data);
+        default: // CODE128
+          return data.length > 0 && data.length <= 255;
+      }
+    }
+
+    // Reset generator
+    function resetGenerator() {
+      document.getElementById('barcodeData').value = 'PRODUCT-00123';
+      document.getElementById('barcodeLabel').value = '';
+      document.getElementById('barcodeColor').value = '#000000';
+      document.getElementById('colorValue').textContent = '#000000';
+      document.getElementById('barcodeWidth').value = 2;
+      document.getElementById('widthValue').textContent = '2px';
+      document.getElementById('barcodeHeight').value = 100;
+      document.getElementById('heightValue').textContent = '100px';
+      document.getElementById('fontSize').value = '18';
+      document.getElementById('bgColor').value = '#ffffff';
+      document.getElementById('bgColorValue').textContent = '#FFFFFF';
+      document.getElementById('showLabel').value = 'true';
+      
+      document.getElementById('barcodePreview').style.display = 'none';
+    }
+
+    // Batch generate (example)
+    function batchGenerate() {
+      const count = prompt('How many barcodes to generate?', '5');
+      if (count && parseInt(count) > 0 && parseInt(count) <= 50) {
+        alert(`Batch generation for ${count} barcodes would be available in the API version.`);
+      }
+    }
+
+    // Copy SVG to clipboard
+    function copyBarcode() {
+      if (!generatedBarcode) {
+        alert('Please generate a barcode first');
+        return;
+      }
+
+      const serializer = new XMLSerializer();
+      const svgString = serializer.serializeToString(generatedBarcode);
+      
+      navigator.clipboard.writeText(svgString)
+        .then(() => {
+          alert('SVG code copied to clipboard!');
+        })
+        .catch(err => {
+          console.error('Copy error:', err);
+          alert('Failed to copy SVG code');
         });
-    </script>
+    }
+
+    // Export barcode in different formats
+    async function exportBarcode(format) {
+      if (!generatedBarcode) {
+        alert('Please generate a barcode first');
+        return;
+      }
+
+      try {
+        switch(format) {
+          case 'svg':
+            exportAsSVG();
+            break;
+          case 'png':
+            await exportAsPNG();
+            break;
+          case 'jpg':
+            await exportAsJPG();
+            break;
+          case 'pdf':
+            await exportAsPDF();
+            break;
+        }
+      } catch (error) {
+        console.error('Export error:', error);
+        alert('Error exporting barcode: ' + error.message);
+      }
+    }
+
+    // Export as SVG
+    function exportAsSVG() {
+      const serializer = new XMLSerializer();
+      const svgString = serializer.serializeToString(generatedBarcode);
+      const blob = new Blob([svgString], { type: 'image/svg+xml' });
+      const url = URL.createObjectURL(blob);
+      
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `barcode-${Date.now()}.svg`;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+    }
+
+    // Export as PNG
+    async function exportAsPNG() {
+      const canvas = await html2canvas(generatedBarcode.parentElement, {
+        backgroundColor: document.getElementById('bgColor').value,
+        scale: 2
+      });
+      
+      const url = canvas.toDataURL('image/png');
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `barcode-${Date.now()}.png`;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+    }
+
+    // Export as JPG
+    async function exportAsJPG() {
+      const canvas = await html2canvas(generatedBarcode.parentElement, {
+        backgroundColor: document.getElementById('bgColor').value,
+        scale: 2
+      });
+      
+      const url = canvas.toDataURL('image/jpeg', 0.9);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `barcode-${Date.now()}.jpg`;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+    }
+
+    // Export as PDF
+    async function exportAsPDF() {
+      const canvas = await html2canvas(generatedBarcode.parentElement, {
+        backgroundColor: document.getElementById('bgColor').value,
+        scale: 2
+      });
+      
+      const { jsPDF } = window.jspdf;
+      const pdf = new jsPDF({
+        orientation: 'portrait',
+        unit: 'mm',
+        format: 'a4'
+      });
+      
+      const imgData = canvas.toDataURL('image/jpeg', 0.9);
+      const imgWidth = 100;
+      const imgHeight = (canvas.height * imgWidth) / canvas.width;
+      
+      pdf.addImage(imgData, 'JPEG', (210 - imgWidth) / 2, 50, imgWidth, imgHeight);
+      pdf.text('Generated Barcode', 105, 30, { align: 'center' });
+      pdf.text(`Format: ${currentFormat}`, 105, 160, { align: 'center' });
+      pdf.text(`Data: ${document.getElementById('barcodeData').value}`, 105, 165, { align: 'center' });
+      pdf.text(`Generated: ${new Date().toLocaleString()}`, 105, 170, { align: 'center' });
+      pdf.text('Tool Nest - Advanced Barcode Generator', 105, 280, { align: 'center' });
+      
+      pdf.save(`barcode-${Date.now()}.pdf`);
+    }
+
+    // Initialize format info
+    updateFormatInfo();
+  </script>
 </body>
 </html>
+
 
