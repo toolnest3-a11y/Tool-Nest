@@ -1,4 +1,5 @@
 
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -37,28 +38,30 @@
     
     <style>
         :root {
-            /* Premium Color Palette */
-            --primary-blue: #1a56db;
-            --dark-blue: #1e3a8a;
-            --light-blue: #3b82f6;
-            --accent-blue: #60a5fa;
-            --gradient-blue: linear-gradient(135deg, #1a56db 0%, #3b82f6 100%);
-            --gradient-dark: linear-gradient(135deg, #1e3a8a 0%, #1a56db 100%);
-            --premium-gray: #f9fafb;
-            --card-white: #ffffff;
-            --text-dark: #111827;
-            --text-gray: #6b7280;
-            --text-light: #9ca3af;
-            --border-color: #e5e7eb;
+            /* Dark Theme Color Palette */
+            --primary-blue: #3b82f6;
+            --dark-blue: #1e40af;
+            --light-blue: #60a5fa;
+            --accent-blue: #93c5fd;
+            --gradient-blue: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+            --gradient-dark: linear-gradient(135deg, #1e3a8a 0%, #0f172a 100%);
+            --premium-dark: #0f172a;
+            --card-dark: #1e293b;
+            --card-darker: #0f172a;
+            --text-light: #f8fafc;
+            --text-gray: #cbd5e1;
+            --text-dark: #94a3b8;
+            --border-color: #334155;
+            --border-light: #475569;
             --success-green: #10b981;
             --warning-orange: #f59e0b;
             --error-red: #ef4444;
             --design-purple: #8b5cf6;
             --harmony-teal: #06b6d4;
-            --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.05);
-            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.07), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-            --shadow-lg: 0 10px 25px -5px rgba(0, 0, 0, 0.08), 0 8px 10px -6px rgba(0, 0, 0, 0.04);
-            --shadow-xl: 0 20px 40px -15px rgba(0, 0, 0, 0.1);
+            --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.3);
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.4), 0 2px 4px -1px rgba(0, 0, 0, 0.3);
+            --shadow-lg: 0 10px 25px -5px rgba(0, 0, 0, 0.5), 0 8px 10px -6px rgba(0, 0, 0, 0.2);
+            --shadow-xl: 0 20px 40px -15px rgba(0, 0, 0, 0.6);
             --radius-sm: 8px;
             --radius-md: 12px;
             --radius-lg: 16px;
@@ -74,8 +77,8 @@
         
         body {
             font-family: 'Inter', sans-serif;
-            color: var(--text-dark);
-            background: var(--premium-gray);
+            color: var(--text-light);
+            background: var(--premium-dark);
             line-height: 1.6;
             font-weight: 400;
             min-height: 100vh;
@@ -88,6 +91,7 @@
             font-weight: 600;
             line-height: 1.2;
             margin-bottom: 1rem;
+            color: var(--text-light);
         }
         
         .container {
@@ -99,8 +103,8 @@
         
         /* Premium Header */
         header {
-            background-color: var(--card-white);
-            box-shadow: var(--shadow-sm);
+            background-color: var(--card-darker);
+            box-shadow: var(--shadow-lg);
             position: sticky;
             top: 0;
             z-index: 1000;
@@ -173,51 +177,13 @@
             font-weight: 500;
             font-size: 14px;
             transition: var(--transition);
+            border: none;
+            cursor: pointer;
         }
         
         .back-btn:hover {
             transform: translateX(-3px);
             box-shadow: var(--shadow-md);
-        }
-        
-        /* SEO Description Section */
-        .seo-description {
-            background: white;
-            border-radius: var(--radius-md);
-            padding: 30px;
-            margin: 30px auto;
-            max-width: 900px;
-            box-shadow: var(--shadow-sm);
-            border-left: 4px solid var(--design-purple);
-        }
-        
-        .seo-description h2 {
-            color: var(--dark-blue);
-            font-size: 1.5rem;
-            margin-bottom: 15px;
-        }
-        
-        .seo-description p {
-            color: var(--text-gray);
-            margin-bottom: 15px;
-            line-height: 1.7;
-        }
-        
-        .keywords {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            margin-top: 20px;
-        }
-        
-        .keyword-tag {
-            background: #f5f3ff;
-            color: var(--design-purple);
-            padding: 6px 12px;
-            border-radius: 20px;
-            font-size: 13px;
-            font-weight: 500;
-            border: 1px solid #ede9fe;
         }
         
         /* Main Content */
@@ -242,14 +208,14 @@
             font-weight: 600;
             margin-bottom: 16px;
             letter-spacing: 0.5px;
+            box-shadow: var(--shadow-md);
         }
         
         .tool-header h1 {
             font-size: 2.8rem;
             font-weight: 700;
-            color: var(--text-dark);
             margin-bottom: 16px;
-            background: linear-gradient(135deg, var(--text-dark) 0%, var(--design-purple) 100%);
+            background: linear-gradient(135deg, var(--text-light) 0%, var(--design-purple) 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -265,10 +231,10 @@
         
         /* Tool Container */
         .tool-container {
-            background: var(--card-white);
+            background: var(--card-dark);
             border-radius: var(--radius-lg);
-            padding: 50px;
-            box-shadow: var(--shadow-md);
+            padding: 40px;
+            box-shadow: var(--shadow-xl);
             border: 1px solid var(--border-color);
             margin-bottom: 60px;
             position: relative;
@@ -296,12 +262,13 @@
         @media (max-width: 768px) {
             .color-selection {
                 grid-template-columns: 1fr;
+                gap: 30px;
             }
         }
         
         /* Color Picker Section */
         .picker-section {
-            background: #f8fafc;
+            background: var(--card-darker);
             border-radius: var(--radius-md);
             padding: 30px;
             border: 1px solid var(--border-color);
@@ -312,7 +279,7 @@
             align-items: center;
             gap: 12px;
             margin-bottom: 25px;
-            color: var(--text-dark);
+            color: var(--text-light);
         }
         
         .picker-header i {
@@ -327,40 +294,52 @@
             gap: 25px;
         }
         
-        .color-wheel {
+        .color-wheel-container {
             position: relative;
-            width: 200px;
-            height: 200px;
-            border-radius: 50%;
-            background: conic-gradient(
-                red, yellow, lime, aqua, blue, magenta, red
-            );
-            border: 8px solid white;
-            box-shadow: var(--shadow-lg);
-            cursor: crosshair;
-            overflow: hidden;
+            width: 250px;
+            height: 250px;
         }
         
-        .color-wheel::after {
-            content: '';
-            position: absolute;
-            width: 40px;
-            height: 40px;
-            background: white;
+        .color-wheel {
+            width: 100%;
+            height: 100%;
             border-radius: 50%;
-            border: 3px solid var(--text-dark);
+            background: conic-gradient(
+                from 0deg,
+                #ff0000 0deg,
+                #ffff00 60deg,
+                #00ff00 120deg,
+                #00ffff 180deg,
+                #0000ff 240deg,
+                #ff00ff 300deg,
+                #ff0000 360deg
+            );
+            border: 10px solid var(--card-dark);
+            box-shadow: var(--shadow-lg);
+            cursor: crosshair;
+            position: relative;
+        }
+        
+        .wheel-center {
+            position: absolute;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
+            width: 50px;
+            height: 50px;
+            background: var(--card-dark);
+            border-radius: 50%;
+            border: 4px solid var(--border-color);
         }
         
         .picker-indicator {
             position: absolute;
-            width: 16px;
-            height: 16px;
-            background: white;
+            width: 20px;
+            height: 20px;
+            background: var(--text-light);
             border-radius: 50%;
-            border: 3px solid var(--text-dark);
+            border: 3px solid var(--card-dark);
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
             transform: translate(-50%, -50%);
             pointer-events: none;
             z-index: 2;
@@ -381,8 +360,11 @@
         
         .color-input-label {
             font-weight: 600;
-            color: var(--text-dark);
+            color: var(--text-light);
             min-width: 80px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
         }
         
         .color-input {
@@ -393,17 +375,19 @@
             font-size: 16px;
             font-family: 'Inter', sans-serif;
             transition: var(--transition);
+            background: var(--card-dark);
+            color: var(--text-light);
         }
         
         .color-input:focus {
             outline: none;
             border-color: var(--design-purple);
-            box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.1);
+            box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.2);
         }
         
         /* Color Preview Section */
         .preview-section {
-            background: #f8fafc;
+            background: var(--card-darker);
             border-radius: var(--radius-md);
             padding: 30px;
             border: 1px solid var(--border-color);
@@ -414,7 +398,7 @@
             align-items: center;
             gap: 12px;
             margin-bottom: 25px;
-            color: var(--text-dark);
+            color: var(--text-light);
         }
         
         .preview-header i {
@@ -427,13 +411,13 @@
             height: 150px;
             border-radius: var(--radius-md);
             margin-bottom: 25px;
-            border: 3px solid white;
+            border: 3px solid var(--card-dark);
             box-shadow: var(--shadow-md);
             transition: var(--transition);
         }
         
         .color-values {
-            background: white;
+            background: var(--card-dark);
             border-radius: var(--radius-sm);
             padding: 20px;
             border: 1px solid var(--border-color);
@@ -443,7 +427,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 10px 0;
+            padding: 12px 0;
             border-bottom: 1px solid var(--border-color);
         }
         
@@ -453,7 +437,7 @@
         
         .color-format {
             font-weight: 600;
-            color: var(--text-dark);
+            color: var(--text-light);
             display: flex;
             align-items: center;
             gap: 8px;
@@ -462,20 +446,21 @@
         .color-value {
             font-family: 'Courier New', monospace;
             font-weight: 600;
-            color: var(--text-dark);
+            color: var(--text-light);
             cursor: pointer;
-            padding: 5px 10px;
+            padding: 6px 12px;
             border-radius: var(--radius-sm);
             transition: var(--transition);
+            background: rgba(255, 255, 255, 0.05);
         }
         
         .color-value:hover {
-            background: #f0f9ff;
+            background: rgba(59, 130, 246, 0.2);
         }
         
         /* Color Converter */
         .converter-section {
-            background: #f8fafc;
+            background: var(--card-darker);
             border-radius: var(--radius-md);
             padding: 30px;
             margin-bottom: 40px;
@@ -487,7 +472,7 @@
             align-items: center;
             gap: 12px;
             margin-bottom: 25px;
-            color: var(--text-dark);
+            color: var(--text-light);
         }
         
         .converter-header i {
@@ -497,51 +482,59 @@
         
         .converter-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
         }
         
         .converter-input-group {
-            background: white;
+            background: var(--card-dark);
             border-radius: var(--radius-sm);
-            padding: 20px;
+            padding: 25px;
             border: 1px solid var(--border-color);
+            transition: var(--transition);
+        }
+        
+        .converter-input-group:hover {
+            border-color: var(--border-light);
+            transform: translateY(-2px);
         }
         
         .converter-label {
             display: flex;
             align-items: center;
             gap: 8px;
-            margin-bottom: 10px;
+            margin-bottom: 15px;
             font-weight: 600;
-            color: var(--text-dark);
+            color: var(--text-light);
         }
         
         .converter-inputs {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(60px, 1fr));
-            gap: 10px;
+            grid-template-columns: repeat(auto-fit, minmax(70px, 1fr));
+            gap: 12px;
         }
         
         .converter-input {
-            padding: 10px;
+            padding: 12px;
             border: 2px solid var(--border-color);
             border-radius: var(--radius-sm);
             font-size: 14px;
             text-align: center;
             font-family: 'Inter', sans-serif;
             transition: var(--transition);
+            background: var(--card-darker);
+            color: var(--text-light);
         }
         
         .converter-input:focus {
             outline: none;
             border-color: var(--design-purple);
-            box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.1);
+            box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.2);
         }
         
         /* Color Harmonies */
         .harmonies-section {
-            background: #f8fafc;
+            background: var(--card-darker);
             border-radius: var(--radius-md);
             padding: 30px;
             margin-bottom: 40px;
@@ -553,7 +546,7 @@
             align-items: center;
             gap: 12px;
             margin-bottom: 25px;
-            color: var(--text-dark);
+            color: var(--text-light);
         }
         
         .harmonies-header i {
@@ -563,19 +556,20 @@
         
         .harmony-controls {
             display: flex;
-            gap: 15px;
+            gap: 12px;
             margin-bottom: 25px;
             flex-wrap: wrap;
         }
         
         .harmony-btn {
             padding: 10px 20px;
-            background: white;
+            background: var(--card-dark);
             border: 2px solid var(--border-color);
             border-radius: var(--radius-sm);
             font-weight: 500;
             cursor: pointer;
             transition: var(--transition);
+            color: var(--text-gray);
         }
         
         .harmony-btn.active {
@@ -585,19 +579,19 @@
         }
         
         .harmony-btn:hover:not(.active) {
-            background: #f0f9ff;
+            background: rgba(59, 130, 246, 0.1);
             border-color: var(--light-blue);
-            color: var(--primary-blue);
+            color: var(--light-blue);
         }
         
         .harmony-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 15px;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: 20px;
         }
         
         .harmony-color {
-            background: white;
+            background: var(--card-dark);
             border-radius: var(--radius-sm);
             overflow: hidden;
             border: 1px solid var(--border-color);
@@ -607,15 +601,17 @@
         .harmony-color:hover {
             transform: translateY(-5px);
             box-shadow: var(--shadow-md);
+            border-color: var(--border-light);
         }
         
         .harmony-swatch {
-            height: 80px;
+            height: 90px;
             cursor: pointer;
+            position: relative;
         }
         
         .harmony-info {
-            padding: 12px;
+            padding: 15px;
             text-align: center;
         }
         
@@ -623,7 +619,7 @@
             font-family: 'Courier New', monospace;
             font-weight: 600;
             margin-bottom: 4px;
-            color: var(--text-dark);
+            color: var(--text-light);
         }
         
         .harmony-name {
@@ -633,7 +629,7 @@
         
         /* Color Accessibility */
         .accessibility-section {
-            background: #f8fafc;
+            background: var(--card-darker);
             border-radius: var(--radius-md);
             padding: 30px;
             margin-bottom: 40px;
@@ -645,7 +641,7 @@
             align-items: center;
             gap: 12px;
             margin-bottom: 25px;
-            color: var(--text-dark);
+            color: var(--text-light);
         }
         
         .accessibility-header i {
@@ -655,7 +651,7 @@
         
         .accessibility-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
             gap: 20px;
         }
         
@@ -663,20 +659,29 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 15px;
-            background: white;
+            padding: 18px;
+            background: var(--card-dark);
             border-radius: var(--radius-sm);
             border: 1px solid var(--border-color);
+            transition: var(--transition);
+        }
+        
+        .accessibility-item:hover {
+            border-color: var(--border-light);
+            transform: translateY(-2px);
         }
         
         .accessibility-label {
             color: var(--text-gray);
             font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 8px;
         }
         
         .accessibility-value {
             font-weight: 700;
-            color: var(--text-dark);
+            color: var(--text-light);
             font-size: 1.1rem;
         }
         
@@ -715,15 +720,15 @@
         }
         
         .action-btn.secondary {
-            background: var(--premium-gray);
-            color: var(--text-dark);
+            background: var(--card-dark);
+            color: var(--text-light);
             border: 2px solid var(--border-color);
         }
         
         .action-btn.secondary:hover {
-            background: #f0f9ff;
+            background: rgba(59, 130, 246, 0.1);
             border-color: var(--light-blue);
-            color: var(--primary-blue);
+            color: var(--light-blue);
         }
         
         .action-btn.purple {
@@ -738,7 +743,7 @@
         
         /* API Demo Section */
         .api-demo {
-            background: var(--card-white);
+            background: var(--card-dark);
             border-radius: var(--radius-lg);
             padding: 30px;
             box-shadow: var(--shadow-md);
@@ -755,7 +760,7 @@
         }
         
         .api-response {
-            background: #f8fafc;
+            background: var(--card-darker);
             border-radius: var(--radius-md);
             padding: 20px;
             margin-top: 20px;
@@ -766,11 +771,12 @@
             border: 1px solid var(--border-color);
             max-height: 300px;
             overflow-y: auto;
+            color: var(--success-green);
         }
         
         /* Features Section */
         .features-section {
-            background: var(--card-white);
+            background: var(--card-dark);
             border-radius: var(--radius-lg);
             padding: 50px;
             box-shadow: var(--shadow-md);
@@ -782,7 +788,7 @@
             text-align: center;
             font-size: 2rem;
             margin-bottom: 40px;
-            color: var(--text-dark);
+            color: var(--text-light);
         }
         
         .features-grid {
@@ -792,7 +798,7 @@
         }
         
         .feature-card {
-            background: var(--premium-gray);
+            background: var(--card-darker);
             border-radius: var(--radius-md);
             padding: 30px;
             border-left: 4px solid var(--design-purple);
@@ -802,12 +808,13 @@
         .feature-card:hover {
             transform: translateY(-5px);
             box-shadow: var(--shadow-md);
+            border-left-color: var(--light-blue);
         }
         
         .feature-icon {
             width: 60px;
             height: 60px;
-            background: linear-gradient(135deg, #f5f3ff 0%, #ede9fe 100%);
+            background: linear-gradient(135deg, rgba(139, 92, 246, 0.1) 0%, rgba(139, 92, 246, 0.2) 100%);
             border-radius: var(--radius-md);
             display: flex;
             align-items: center;
@@ -820,7 +827,7 @@
         .feature-card h3 {
             font-size: 1.2rem;
             margin-bottom: 12px;
-            color: var(--text-dark);
+            color: var(--text-light);
         }
         
         .feature-card p {
@@ -829,12 +836,53 @@
             line-height: 1.6;
         }
         
+        /* SEO Description Section */
+        .seo-description {
+            background: var(--card-dark);
+            border-radius: var(--radius-md);
+            padding: 30px;
+            margin: 30px auto;
+            max-width: 900px;
+            box-shadow: var(--shadow-sm);
+            border-left: 4px solid var(--design-purple);
+        }
+        
+        .seo-description h2 {
+            color: var(--text-light);
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+        
+        .seo-description p {
+            color: var(--text-gray);
+            margin-bottom: 15px;
+            line-height: 1.7;
+        }
+        
+        .keywords {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 20px;
+        }
+        
+        .keyword-tag {
+            background: rgba(139, 92, 246, 0.1);
+            color: var(--design-purple);
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 500;
+            border: 1px solid rgba(139, 92, 246, 0.2);
+        }
+        
         /* Footer */
         footer {
-            background: var(--text-dark);
-            color: white;
+            background: var(--card-darker);
+            color: var(--text-light);
             padding: 60px 0 40px;
             margin-top: auto;
+            border-top: 1px solid var(--border-color);
         }
         
         .footer-container {
@@ -848,17 +896,20 @@
             font-family: 'Poppins', sans-serif;
             font-size: 28px;
             font-weight: 800;
-            color: white;
+            color: var(--text-light);
             margin-bottom: 16px;
             display: block;
             text-decoration: none;
+            text-align: center;
+            width: 100%;
         }
         
         .footer-tagline {
-            color: #9ca3af;
+            color: var(--text-gray);
             font-size: 14px;
             line-height: 1.6;
             margin-bottom: 24px;
+            text-align: center;
         }
         
         .footer-contact {
@@ -870,7 +921,7 @@
             align-items: center;
             gap: 12px;
             margin-bottom: 16px;
-            color: #9ca3af;
+            color: var(--text-gray);
         }
         
         .contact-item i {
@@ -880,7 +931,7 @@
         .footer-links h4 {
             font-size: 1.1rem;
             margin-bottom: 24px;
-            color: white;
+            color: var(--text-light);
         }
         
         .footer-links ul {
@@ -892,23 +943,37 @@
         }
         
         .footer-links a {
-            color: #9ca3af;
+            color: var(--text-gray);
             text-decoration: none;
             font-size: 14px;
             transition: var(--transition);
         }
         
         .footer-links a:hover {
-            color: white;
+            color: var(--text-light);
             padding-left: 8px;
         }
         
         .footer-bottom {
             text-align: center;
             padding-top: 40px;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            color: #9ca3af;
+            border-top: 1px solid var(--border-color);
+            color: var(--text-gray);
             font-size: 14px;
+        }
+        
+        .site-name {
+            font-family: 'Poppins', sans-serif;
+            font-size: 24px;
+            font-weight: 800;
+            color: var(--text-light);
+            margin-bottom: 20px;
+            background: var(--gradient-blue);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-align: center;
+            width: 100%;
         }
         
         /* Animations */
@@ -930,7 +995,7 @@
             }
             
             .tool-container, .features-section {
-                padding: 30px;
+                padding: 20px;
             }
             
             .action-buttons {
@@ -952,6 +1017,15 @@
             .seo-description {
                 padding: 20px;
             }
+            
+            .features-section {
+                padding: 30px;
+            }
+            
+            .color-wheel-container {
+                width: 200px;
+                height: 200px;
+            }
         }
         
         @media (max-width: 480px) {
@@ -960,7 +1034,7 @@
             }
             
             .tool-container, .features-section {
-                padding: 20px;
+                padding: 15px;
             }
             
             .harmony-grid {
@@ -970,6 +1044,60 @@
             .harmony-controls {
                 flex-direction: column;
             }
+            
+            .harmony-btn {
+                width: 100%;
+            }
+            
+            .accessibility-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .color-wheel-container {
+                width: 180px;
+                height: 180px;
+            }
+            
+            .footer-container {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            
+            .footer-links ul {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .contact-item {
+                justify-content: center;
+            }
+        }
+        
+        /* Notification */
+        .notification {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            padding: 15px 20px;
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow-lg);
+            z-index: 10000;
+            animation: fadeIn 0.3s ease-out;
+            font-weight: 500;
+            color: white;
+        }
+        
+        .notification.success {
+            background: var(--success-green);
+        }
+        
+        .notification.error {
+            background: var(--error-red);
+        }
+        
+        .notification.info {
+            background: var(--warning-orange);
         }
     </style>
 </head>
@@ -990,38 +1118,19 @@
                 </a>
             </div>
             
-            <a href="index.html" class="back-btn">
+            <button class="back-btn" onclick="window.location.href='index.html'">
                 <i class="fas fa-arrow-left"></i>
                 Back to Tools
-            </a>
+            </button>
         </div>
     </header>
 
     <!-- Main Content -->
     <main class="main-content">
         <div class="container">
-            <!-- SEO Description -->
-            <div class="seo-description">
-                <h2>Professional Color Picker & Converter Tool</h2>
-                <p>Our <strong>Advanced Color Picker & Converter</strong> is a comprehensive color management tool that allows designers, developers, and creators to pick, convert, and analyze colors across multiple formats. Convert instantly between HEX, RGB, HSL, CMYK with precision and generate harmonious color schemes.</p>
-                <p>This essential design tool helps maintain color consistency across projects, ensures accessibility compliance, and creates beautiful color harmonies. Perfect for web design, UI/UX development, branding, digital art, and print design.</p>
-                <div class="keywords">
-                    <span class="keyword-tag">Color Picker</span>
-                    <span class="keyword-tag">Color Converter</span>
-                    <span class="keyword-tag">HEX to RGB</span>
-                    <span class="keyword-tag">RGB to HEX</span>
-                    <span class="keyword-tag">HSL Converter</span>
-                    <span class="keyword-tag">CMYK Converter</span>
-                    <span class="keyword-tag">Color Harmony</span>
-                    <span class="keyword-tag">Color Scheme Generator</span>
-                    <span class="keyword-tag">Web Color Tool</span>
-                    <span class="keyword-tag">Design Color Picker</span>
-                </div>
-            </div>
-
             <!-- Tool Header -->
             <div class="tool-header">
-                <span class="tool-badge">Color Management</span>
+                <span class="tool-badge">Professional Color Tool</span>
                 <h1>Advanced Color Picker & Converter</h1>
                 <p>Pick colors, convert between formats, generate harmonies, and analyze accessibility—all in one professional tool.</p>
             </div>
@@ -1038,7 +1147,10 @@
                         </div>
                         
                         <div class="color-picker-container">
-                            <div class="color-wheel" id="colorWheel">
+                            <div class="color-wheel-container">
+                                <div class="color-wheel" id="colorWheel">
+                                    <div class="wheel-center"></div>
+                                </div>
                                 <div class="picker-indicator" id="pickerIndicator"></div>
                             </div>
                             
@@ -1181,19 +1293,31 @@
                     
                     <div class="accessibility-grid">
                         <div class="accessibility-item">
-                            <span class="accessibility-label">Contrast Ratio</span>
+                            <span class="accessibility-label">
+                                <i class="fas fa-balance-scale"></i>
+                                Contrast Ratio
+                            </span>
                             <span class="accessibility-value" id="contrastRatio">4.5:1</span>
                         </div>
                         <div class="accessibility-item">
-                            <span class="accessibility-label">WCAG Level</span>
+                            <span class="accessibility-label">
+                                <i class="fas fa-shield-alt"></i>
+                                WCAG Level
+                            </span>
                             <span class="accessibility-value" id="wcagLevel">AA</span>
                         </div>
                         <div class="accessibility-item">
-                            <span class="accessibility-label">Luminance</span>
+                            <span class="accessibility-label">
+                                <i class="fas fa-sun"></i>
+                                Luminance
+                            </span>
                             <span class="accessibility-value" id="luminance">0.55</span>
                         </div>
                         <div class="accessibility-item">
-                            <span class="accessibility-label">Readability</span>
+                            <span class="accessibility-label">
+                                <i class="fas fa-eye"></i>
+                                Readability
+                            </span>
                             <span class="accessibility-value" id="readability">Good</span>
                         </div>
                     </div>
@@ -1226,7 +1350,7 @@
                     <i class="fas fa-code"></i>
                     <h3>Color Conversion API</h3>
                 </div>
-                <p>Integrate our color conversion capabilities into your application using our REST API:</p>
+                <p style="color: var(--text-gray);">Integrate our color conversion capabilities into your application using our REST API:</p>
                 <div class="action-buttons">
                     <button class="action-btn secondary" onclick="demoAPICall()">
                         <i class="fas fa-play"></i>
@@ -1279,20 +1403,48 @@
                     </div>
                 </div>
             </div>
+
+            <!-- SEO Description -->
+            <div class="seo-description">
+                <h2>Professional Color Picker & Converter Tool - Advanced Color Management</h2>
+                <p><strong>Tool Nest's Advanced Color Picker & Converter</strong> is a comprehensive color management solution designed for professional designers, developers, and creators. This sophisticated tool enables precise color selection, instant conversion between multiple color formats (HEX, RGB, HSL, CMYK), and automatic generation of harmonious color schemes for any project.</p>
+                
+                <p>Our color picker features an intuitive interactive color wheel, real-time format conversion, and advanced accessibility analysis that ensures your color choices meet WCAG standards. The tool generates complementary, analogous, triadic, tetradic, and monochromatic color harmonies to help you create visually appealing and balanced color palettes for web design, UI/UX interfaces, branding materials, and digital artwork.</p>
+                
+                <p>With local browser processing for complete privacy, professional-grade color algorithms, and export capabilities for seamless integration with design workflows, Tool Nest's Color Picker & Converter is the ultimate solution for modern color management needs. Perfect for web developers, graphic designers, UI/UX professionals, and anyone working with color in digital projects.</p>
+                
+                <div class="keywords">
+                    <span class="keyword-tag">Color Picker</span>
+                    <span class="keyword-tag">Color Converter</span>
+                    <span class="keyword-tag">HEX to RGB</span>
+                    <span class="keyword-tag">RGB to HEX</span>
+                    <span class="keyword-tag">HSL Converter</span>
+                    <span class="keyword-tag">CMYK Converter</span>
+                    <span class="keyword-tag">Color Harmony</span>
+                    <span class="keyword-tag">Color Scheme Generator</span>
+                    <span class="keyword-tag">Web Color Tool</span>
+                    <span class="keyword-tag">Design Color Picker</span>
+                    <span class="keyword-tag">Online Color Picker</span>
+                    <span class="keyword-tag">Color Format Converter</span>
+                    <span class="keyword-tag">Professional Color Tool</span>
+                    <span class="keyword-tag">Color Wheel Picker</span>
+                    <span class="keyword-tag">Accessibility Checker</span>
+                </div>
+            </div>
         </div>
     </main>
 
     <!-- Footer -->
     <footer>
         <div class="container">
+            <div class="site-name">Tool Nest</div>
             <div class="footer-container">
                 <div class="footer-about">
-                    <a href="index.html" class="footer-logo">Tool Nest</a>
-                    <p class="footer-tagline">Professional color and design tools for creators, designers, and developers.</p>
+                    <p class="footer-tagline">Professional color and design tools for creators, designers, and developers. Premium tools for modern design workflows.</p>
                     <div class="footer-contact">
                         <div class="contact-item">
                             <i class="fas fa-envelope"></i>
-                            <span>toolnest3@gmail.com</span>
+                            <span>contact@toolnest.com</span>
                         </div>
                         <div class="contact-item">
                             <i class="fas fa-palette"></i>
@@ -1329,7 +1481,7 @@
             </div>
             
             <div class="footer-bottom">
-                <p>© 2023 Tool Nest. All rights reserved. All color tools are provided for design and educational purposes.</p>
+                <p>© 2024 Tool Nest. All rights reserved. All color tools are provided for design and educational purposes. Professional design tools for modern creators.</p>
             </div>
         </div>
     </footer>
@@ -1367,16 +1519,9 @@
 
         // Initialize
         window.addEventListener('load', () => {
-            // Set up event listeners
             setupEventListeners();
-            
-            // Initialize color wheel
             setupColorWheel();
-            
-            // Initialize with default color
             updateColor(currentColor.r, currentColor.g, currentColor.b);
-            
-            // Generate harmonies
             generateHarmonies();
         });
 
@@ -1410,13 +1555,13 @@
         // Set up color wheel
         function setupColorWheel() {
             const wheelCtx = colorWheel.getContext('2d');
-            const size = 200;
+            const size = 250;
             const center = size / 2;
-            const radius = size / 2 - 8;
+            const radius = size / 2 - 5;
             
             // Draw color wheel
             for (let angle = 0; angle < 360; angle++) {
-                const startAngle = (angle - 2) * Math.PI / 180;
+                const startAngle = (angle - 1) * Math.PI / 180;
                 const endAngle = angle * Math.PI / 180;
                 
                 wheelCtx.beginPath();
@@ -1425,32 +1570,32 @@
                 wheelCtx.closePath();
                 
                 const gradient = wheelCtx.createRadialGradient(
-                    center, center, 0,
+                    center, center, 20,
                     center, center, radius
                 );
                 
                 const hue = angle / 360;
                 const rgb = hslToRgb(hue, 1, 0.5);
-                gradient.addColorStop(0, 'white');
+                gradient.addColorStop(0, 'rgba(255, 255, 255, 0.3)');
                 gradient.addColorStop(1, `rgb(${rgb.r}, ${rgb.g}, ${rgb.b})`);
                 
                 wheelCtx.fillStyle = gradient;
                 wheelCtx.fill();
             }
             
-            // Add black/white gradient in center
-            const centerGradient = wheelCtx.createRadialGradient(
-                center, center, 0,
-                center, center, 40
-            );
-            centerGradient.addColorStop(0, 'black');
-            centerGradient.addColorStop(1, 'transparent');
-            wheelCtx.fillStyle = centerGradient;
-            wheelCtx.fill();
-            
             // Add click/touch events
             colorWheel.addEventListener('mousedown', startColorSelection);
             colorWheel.addEventListener('touchstart', startColorSelection);
+            
+            // Set initial indicator position
+            const hsl = rgbToHsl(currentColor.r, currentColor.g, currentColor.b);
+            const angle = (hsl.h / 360) * 2 * Math.PI;
+            const distance = hsl.s * (radius - 20) + 20;
+            const x = center + Math.cos(angle) * distance;
+            const y = center + Math.sin(angle) * distance;
+            
+            pickerIndicator.style.left = `${x}px`;
+            pickerIndicator.style.top = `${y}px`;
         }
 
         // Start color selection
@@ -1492,9 +1637,9 @@
             const dx = x - center;
             const dy = y - center;
             const distance = Math.sqrt(dx * dx + dy * dy);
-            const radius = colorWheel.width / 2 - 8;
+            const maxRadius = colorWheel.width / 2 - 5;
             
-            if (distance <= radius) {
+            if (distance <= maxRadius) {
                 // Calculate angle
                 let angle = Math.atan2(dy, dx);
                 if (angle < 0) angle += 2 * Math.PI;
@@ -1503,7 +1648,7 @@
                 const hue = angle / (2 * Math.PI);
                 
                 // Calculate saturation (0-1 based on distance from center)
-                const saturation = Math.min(distance / radius, 1);
+                const saturation = Math.min(Math.max((distance - 20) / (maxRadius - 20), 0), 1);
                 
                 // Calculate lightness (0.5 for full color wheel)
                 const lightness = 0.5;
@@ -1595,8 +1740,24 @@
             // Update accessibility
             updateAccessibility(r, g, b);
             
+            // Update color wheel indicator
+            updateColorWheelIndicator(hsl.h, hsl.s);
+            
             // Generate harmonies
             generateHarmonies();
+        }
+
+        // Update color wheel indicator position
+        function updateColorWheelIndicator(hue, saturation) {
+            const center = colorWheel.width / 2;
+            const maxRadius = center - 5;
+            const angle = (hue / 360) * 2 * Math.PI;
+            const distance = saturation * (maxRadius - 20) + 20;
+            const x = center + Math.cos(angle) * distance;
+            const y = center + Math.sin(angle) * distance;
+            
+            pickerIndicator.style.left = `${x}px`;
+            pickerIndicator.style.top = `${y}px`;
         }
 
         // Generate color harmonies
@@ -1692,7 +1853,7 @@
             const colors = [];
             
             for (let i = -2; i <= 2; i++) {
-                const newLightness = Math.max(0, Math.min(1, hsl.l + (i * 0.2)));
+                const newLightness = Math.max(0.1, Math.min(0.9, hsl.l + (i * 0.2)));
                 const newRgb = hslToRgb(hsl.h / 360, hsl.s, newLightness);
                 colors.push(newRgb);
             }
@@ -1703,16 +1864,16 @@
         // Update accessibility analysis
         function updateAccessibility(r, g, b) {
             // Calculate relative luminance
-            const luminance = calculateLuminance(r, g, b);
+            const lum = calculateLuminance(r, g, b);
             
             // Calculate contrast ratio with white
             const whiteLuminance = 1;
-            const contrast = (Math.max(luminance, whiteLuminance) + 0.05) / (Math.min(luminance, whiteLuminance) + 0.05);
+            const contrast = (Math.max(lum, whiteLuminance) + 0.05) / (Math.min(lum, whiteLuminance) + 0.05);
             
             // Update UI
             contrastRatio.textContent = contrast.toFixed(2) + ':1';
             wcagLevel.textContent = contrast >= 4.5 ? 'AA' : (contrast >= 3 ? 'A' : 'Fail');
-            luminance.textContent = luminance.toFixed(2);
+            luminance.textContent = lum.toFixed(2);
             readability.textContent = contrast >= 7 ? 'Excellent' : (contrast >= 4.5 ? 'Good' : 'Poor');
         }
 
@@ -1920,7 +2081,6 @@ CMYK: ${cmykValue.textContent}
 
         // Demo API call
         function demoAPICall() {
-            // Simulate API response
             const simulatedResponse = {
                 status: "success",
                 data: {
@@ -1951,7 +2111,6 @@ CMYK: ${cmykValue.textContent}
                 }
             };
             
-            // Display API response
             apiResponse.textContent = JSON.stringify(simulatedResponse, null, 2);
             apiResponse.style.color = 'var(--success-green)';
             
@@ -1960,7 +2119,7 @@ CMYK: ${cmykValue.textContent}
 
         // Copy API example
         function copyAPIExample() {
-            const exampleCode = `// Example API call to Color Conversion API
+            const exampleCode = `// Example API call to Tool Nest Color Conversion API
 fetch('https://api.toolnest.com/v1/color/convert', {
     method: 'POST',
     headers: {
@@ -1988,11 +2147,9 @@ fetch('https://api.toolnest.com/v1/color/convert', {
 
         // Show notification
         function showNotification(message, type = 'info') {
-            // Remove existing notification
             const existingNotification = document.querySelector('.notification');
             if (existingNotification) existingNotification.remove();
             
-            // Create notification
             const notification = document.createElement('div');
             notification.className = `notification ${type}`;
             notification.style.cssText = `
@@ -2012,7 +2169,6 @@ fetch('https://api.toolnest.com/v1/color/convert', {
             
             document.body.appendChild(notification);
             
-            // Remove after 3 seconds
             setTimeout(() => {
                 notification.style.animation = 'fadeIn 0.3s ease-out reverse';
                 setTimeout(() => notification.remove(), 300);
@@ -2033,4 +2189,5 @@ fetch('https://api.toolnest.com/v1/color/convert', {
     </script>
 </body>
 </html>
+
 
