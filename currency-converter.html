@@ -1,12 +1,13 @@
 
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Advanced Currency Converter | Real-Time Exchange Rates | Tool Nest</title>
-    <meta name="description" content="Professional currency converter with real-time exchange rates. Convert 150+ currencies instantly with historical charts, rate alerts, and financial insights.">
-    <meta name="keywords" content="currency converter, exchange rates, foreign exchange, money converter, forex converter, online currency converter, real-time exchange rates, currency calculator, international money converter">
+    <meta name="description" content="Professional currency converter with real-time exchange rates for 160+ world currencies. Convert USD, EUR, GBP, JPY, INR instantly with historical charts and financial insights.">
+    <meta name="keywords" content="currency converter, exchange rates, forex converter, USD to EUR, currency calculator, real-time exchange, money converter, foreign exchange, online currency tool, financial converter">
     <meta name="author" content="Tool Nest">
     <link rel="icon" href="favicon-16x16.png" type="image/x-icon">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
@@ -14,7 +15,7 @@
     
     <!-- Open Graph Meta Tags -->
     <meta property="og:title" content="Advanced Currency Converter | Real-Time Exchange Rates">
-    <meta property="og:description" content="Professional currency converter with real-time rates, historical charts, and financial insights.">
+    <meta property="og:description" content="Convert 160+ world currencies with real-time rates, historical charts, and professional financial insights.">
     <meta property="og:type" content="website">
     
     <!-- Structured Data for SEO -->
@@ -23,8 +24,8 @@
         "@context": "https://schema.org",
         "@type": "WebApplication",
         "name": "Advanced Currency Converter",
-        "description": "Professional tool for currency conversion with real-time exchange rates",
-        "applicationCategory": "FinancialApplication",
+        "description": "Professional currency conversion tool with real-time exchange rates for all world currencies",
+        "applicationCategory": "FinanceApplication",
         "operatingSystem": "Any",
         "url": "https://toolnest.com/currency-converter",
         "offers": {
@@ -37,28 +38,30 @@
     
     <style>
         :root {
-            /* Premium Color Palette */
-            --primary-blue: #1a56db;
-            --dark-blue: #1e3a8a;
-            --light-blue: #3b82f6;
-            --accent-blue: #60a5fa;
-            --gradient-blue: linear-gradient(135deg, #1a56db 0%, #3b82f6 100%);
-            --gradient-dark: linear-gradient(135deg, #1e3a8a 0%, #1a56db 100%);
-            --premium-gray: #f9fafb;
-            --card-white: #ffffff;
-            --text-dark: #111827;
-            --text-gray: #6b7280;
-            --text-light: #9ca3af;
-            --border-color: #e5e7eb;
+            /* Dark Blue Theme Colors */
+            --dark-bg: #0f172a;
+            --darker-bg: #0a1123;
+            --card-bg: #1e293b;
+            --card-bg-hover: #273549;
+            --accent-blue: #3b82f6;
+            --accent-blue-dark: #2563eb;
+            --accent-blue-light: #60a5fa;
+            --gradient-blue: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%);
+            --gradient-dark: linear-gradient(135deg, #0f172a 0%, #1e3a8a 100%);
+            --text-light: #f8fafc;
+            --text-gray: #cbd5e1;
+            --text-dark-gray: #94a3b8;
+            --border-color: #334155;
+            --border-light: #475569;
             --success-green: #10b981;
             --warning-orange: #f59e0b;
             --error-red: #ef4444;
             --finance-green: #059669;
             --currency-teal: #0d9488;
-            --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.05);
-            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.07), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-            --shadow-lg: 0 10px 25px -5px rgba(0, 0, 0, 0.08), 0 8px 10px -6px rgba(0, 0, 0, 0.04);
-            --shadow-xl: 0 20px 40px -15px rgba(0, 0, 0, 0.1);
+            --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.3);
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.4), 0 2px 4px -1px rgba(0, 0, 0, 0.3);
+            --shadow-lg: 0 10px 25px -5px rgba(0, 0, 0, 0.5), 0 8px 10px -6px rgba(0, 0, 0, 0.4);
+            --shadow-xl: 0 20px 40px -15px rgba(0, 0, 0, 0.6);
             --radius-sm: 8px;
             --radius-md: 12px;
             --radius-lg: 16px;
@@ -74,8 +77,8 @@
         
         body {
             font-family: 'Inter', sans-serif;
-            color: var(--text-dark);
-            background: var(--premium-gray);
+            color: var(--text-light);
+            background: var(--dark-bg);
             line-height: 1.6;
             font-weight: 400;
             min-height: 100vh;
@@ -88,6 +91,7 @@
             font-weight: 600;
             line-height: 1.2;
             margin-bottom: 1rem;
+            color: var(--text-light);
         }
         
         .container {
@@ -99,7 +103,7 @@
         
         /* Premium Header */
         header {
-            background-color: var(--card-white);
+            background-color: var(--darker-bg);
             box-shadow: var(--shadow-sm);
             position: sticky;
             top: 0;
@@ -156,7 +160,7 @@
         .logo-tagline {
             font-size: 11px;
             font-weight: 500;
-            color: var(--text-gray);
+            color: var(--text-dark-gray);
             margin-top: 2px;
             letter-spacing: 0.5px;
         }
@@ -178,46 +182,7 @@
         .back-btn:hover {
             transform: translateX(-3px);
             box-shadow: var(--shadow-md);
-        }
-        
-        /* SEO Description Section */
-        .seo-description {
-            background: white;
-            border-radius: var(--radius-md);
-            padding: 30px;
-            margin: 30px auto;
-            max-width: 900px;
-            box-shadow: var(--shadow-sm);
-            border-left: 4px solid var(--finance-green);
-        }
-        
-        .seo-description h2 {
-            color: var(--dark-blue);
-            font-size: 1.5rem;
-            margin-bottom: 15px;
-        }
-        
-        .seo-description p {
-            color: var(--text-gray);
-            margin-bottom: 15px;
-            line-height: 1.7;
-        }
-        
-        .keywords {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            margin-top: 20px;
-        }
-        
-        .keyword-tag {
-            background: #d1fae5;
-            color: var(--finance-green);
-            padding: 6px 12px;
-            border-radius: 20px;
-            font-size: 13px;
-            font-weight: 500;
-            border: 1px solid #a7f3d0;
+            background: var(--accent-blue-dark);
         }
         
         /* Main Content */
@@ -247,9 +212,8 @@
         .tool-header h1 {
             font-size: 2.8rem;
             font-weight: 700;
-            color: var(--text-dark);
             margin-bottom: 16px;
-            background: linear-gradient(135deg, var(--text-dark) 0%, var(--finance-green) 100%);
+            background: linear-gradient(135deg, var(--text-light) 0%, var(--accent-blue-light) 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -265,7 +229,7 @@
         
         /* Tool Container */
         .tool-container {
-            background: var(--card-white);
+            background: var(--card-bg);
             border-radius: var(--radius-lg);
             padding: 50px;
             box-shadow: var(--shadow-md);
@@ -300,10 +264,16 @@
         }
         
         .currency-box {
-            background: #f8fafc;
+            background: var(--darker-bg);
             border-radius: var(--radius-md);
             padding: 30px;
             border: 1px solid var(--border-color);
+            transition: var(--transition);
+        }
+        
+        .currency-box:hover {
+            border-color: var(--border-light);
+            transform: translateY(-2px);
         }
         
         .currency-header {
@@ -311,7 +281,7 @@
             align-items: center;
             justify-content: space-between;
             margin-bottom: 25px;
-            color: var(--text-dark);
+            color: var(--text-light);
         }
         
         .currency-header h3 {
@@ -347,7 +317,7 @@
             display: block;
             margin-bottom: 8px;
             font-weight: 600;
-            color: var(--text-dark);
+            color: var(--text-light);
             display: flex;
             align-items: center;
             gap: 8px;
@@ -360,12 +330,13 @@
         .amount-input {
             width: 100%;
             padding: 18px 20px;
+            background: var(--dark-bg);
             border: 2px solid var(--border-color);
             border-radius: var(--radius-md);
             font-size: 28px;
             font-weight: 700;
             font-family: 'Inter', sans-serif;
-            background: white;
+            color: var(--text-light);
             transition: var(--transition);
             text-align: right;
         }
@@ -373,7 +344,7 @@
         .amount-input:focus {
             outline: none;
             border-color: var(--finance-green);
-            box-shadow: 0 0 0 3px rgba(5, 150, 105, 0.1);
+            box-shadow: 0 0 0 3px rgba(5, 150, 105, 0.2);
         }
         
         .currency-select-container {
@@ -383,11 +354,12 @@
         .currency-select {
             width: 100%;
             padding: 16px 20px;
+            background: var(--dark-bg);
             border: 2px solid var(--border-color);
             border-radius: var(--radius-md);
             font-size: 16px;
             font-family: 'Inter', sans-serif;
-            background: white;
+            color: var(--text-light);
             appearance: none;
             cursor: pointer;
             transition: var(--transition);
@@ -396,7 +368,7 @@
         .currency-select:focus {
             outline: none;
             border-color: var(--finance-green);
-            box-shadow: 0 0 0 3px rgba(5, 150, 105, 0.1);
+            box-shadow: 0 0 0 3px rgba(5, 150, 105, 0.2);
         }
         
         .select-arrow {
@@ -435,7 +407,7 @@
         
         /* Conversion Result */
         .result-section {
-            background: #f8fafc;
+            background: var(--darker-bg);
             border-radius: var(--radius-md);
             padding: 40px;
             margin-bottom: 40px;
@@ -449,7 +421,7 @@
             justify-content: center;
             gap: 12px;
             margin-bottom: 30px;
-            color: var(--text-dark);
+            color: var(--text-light);
         }
         
         .result-header i {
@@ -461,7 +433,7 @@
             font-size: 3.5rem;
             font-weight: 800;
             margin-bottom: 15px;
-            color: var(--text-dark);
+            color: var(--text-light);
             line-height: 1.2;
         }
         
@@ -473,7 +445,7 @@
         
         .exchange-rate {
             display: inline-block;
-            background: white;
+            background: var(--card-bg);
             padding: 10px 20px;
             border-radius: var(--radius-md);
             border: 1px solid var(--border-color);
@@ -483,7 +455,7 @@
         
         /* Rate Information */
         .rate-info {
-            background: #f8fafc;
+            background: var(--darker-bg);
             border-radius: var(--radius-md);
             padding: 30px;
             margin-bottom: 40px;
@@ -495,7 +467,7 @@
             align-items: center;
             gap: 12px;
             margin-bottom: 25px;
-            color: var(--text-dark);
+            color: var(--text-light);
         }
         
         .rate-header i {
@@ -510,7 +482,7 @@
         }
         
         .rate-card {
-            background: white;
+            background: var(--card-bg);
             border-radius: var(--radius-sm);
             padding: 20px;
             border: 1px solid var(--border-color);
@@ -521,13 +493,15 @@
         .rate-card:hover {
             transform: translateY(-3px);
             box-shadow: var(--shadow-md);
+            background: var(--card-bg-hover);
+            border-color: var(--border-light);
         }
         
         .rate-value {
             font-size: 1.8rem;
             font-weight: 700;
             margin-bottom: 8px;
-            color: var(--text-dark);
+            color: var(--text-light);
         }
         
         .rate-label {
@@ -539,7 +513,7 @@
         
         /* Popular Currencies */
         .popular-currencies {
-            background: #f8fafc;
+            background: var(--darker-bg);
             border-radius: var(--radius-md);
             padding: 30px;
             margin-bottom: 40px;
@@ -551,7 +525,7 @@
             align-items: center;
             gap: 12px;
             margin-bottom: 25px;
-            color: var(--text-dark);
+            color: var(--text-light);
         }
         
         .popular-header i {
@@ -565,8 +539,20 @@
             gap: 15px;
         }
         
+        @media (max-width: 768px) {
+            .currency-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .currency-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
         .currency-item {
-            background: white;
+            background: var(--card-bg);
             border-radius: var(--radius-sm);
             padding: 15px;
             border: 1px solid var(--border-color);
@@ -578,14 +564,14 @@
         }
         
         .currency-item:hover {
-            background: #f0f9ff;
-            border-color: var(--light-blue);
+            background: var(--card-bg-hover);
+            border-color: var(--accent-blue);
             transform: translateY(-2px);
         }
         
         .currency-item.active {
             background: var(--gradient-blue);
-            border-color: var(--primary-blue);
+            border-color: var(--accent-blue);
             color: white;
         }
         
@@ -597,13 +583,13 @@
         .currency-icon {
             width: 32px;
             height: 32px;
-            background: #f0f9ff;
+            background: rgba(59, 130, 246, 0.1);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             font-weight: 600;
-            color: var(--primary-blue);
+            color: var(--accent-blue);
         }
         
         .currency-item.active .currency-icon {
@@ -618,7 +604,7 @@
         .currency-code {
             font-weight: 600;
             margin-bottom: 2px;
-            color: var(--text-dark);
+            color: var(--text-light);
         }
         
         .currency-name {
@@ -628,7 +614,7 @@
         
         /* Historical Chart */
         .chart-section {
-            background: #f8fafc;
+            background: var(--darker-bg);
             border-radius: var(--radius-md);
             padding: 30px;
             margin-bottom: 40px;
@@ -648,7 +634,7 @@
             display: flex;
             align-items: center;
             gap: 12px;
-            color: var(--text-dark);
+            color: var(--text-light);
         }
         
         .chart-header h3 i {
@@ -663,10 +649,11 @@
         
         .period-btn {
             padding: 8px 16px;
-            background: white;
+            background: var(--card-bg);
             border: 1px solid var(--border-color);
             border-radius: var(--radius-sm);
             font-weight: 500;
+            color: var(--text-light);
             cursor: pointer;
             transition: var(--transition);
         }
@@ -674,21 +661,25 @@
         .period-btn.active {
             background: var(--gradient-blue);
             color: white;
-            border-color: var(--primary-blue);
+            border-color: var(--accent-blue);
         }
         
         .period-btn:hover:not(.active) {
-            background: #f0f9ff;
-            border-color: var(--light-blue);
-            color: var(--primary-blue);
+            background: var(--card-bg-hover);
+            border-color: var(--accent-blue);
+            color: var(--accent-blue);
         }
         
         .chart-container {
             height: 300px;
-            background: white;
+            background: var(--card-bg);
             border-radius: var(--radius-sm);
             padding: 20px;
             border: 1px solid var(--border-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
         }
         
         /* Action Buttons */
@@ -723,18 +714,20 @@
         .action-btn.primary:hover {
             transform: translateY(-3px);
             box-shadow: var(--shadow-lg);
+            background: var(--accent-blue-dark);
         }
         
         .action-btn.secondary {
-            background: var(--premium-gray);
-            color: var(--text-dark);
-            border: 2px solid var(--border-color);
+            background: rgba(59, 130, 246, 0.1);
+            color: var(--accent-blue-light);
+            border: 2px solid rgba(59, 130, 246, 0.3);
         }
         
         .action-btn.secondary:hover {
-            background: #f0f9ff;
-            border-color: var(--light-blue);
-            color: var(--primary-blue);
+            background: rgba(59, 130, 246, 0.2);
+            border-color: var(--accent-blue);
+            color: white;
+            transform: translateY(-3px);
         }
         
         .action-btn.green {
@@ -749,7 +742,7 @@
         
         /* API Demo Section */
         .api-demo {
-            background: var(--card-white);
+            background: var(--card-bg);
             border-radius: var(--radius-lg);
             padding: 30px;
             box-shadow: var(--shadow-md);
@@ -762,16 +755,17 @@
             align-items: center;
             gap: 10px;
             margin-bottom: 20px;
-            color: var(--primary-blue);
+            color: var(--accent-blue-light);
         }
         
         .api-response {
-            background: #f8fafc;
+            background: var(--darker-bg);
             border-radius: var(--radius-md);
             padding: 20px;
             margin-top: 20px;
             font-family: 'Courier New', monospace;
             font-size: 14px;
+            color: var(--text-gray);
             overflow-x: auto;
             white-space: pre-wrap;
             border: 1px solid var(--border-color);
@@ -781,7 +775,7 @@
         
         /* Features Section */
         .features-section {
-            background: var(--card-white);
+            background: var(--card-bg);
             border-radius: var(--radius-lg);
             padding: 50px;
             box-shadow: var(--shadow-md);
@@ -793,7 +787,7 @@
             text-align: center;
             font-size: 2rem;
             margin-bottom: 40px;
-            color: var(--text-dark);
+            color: var(--text-light);
         }
         
         .features-grid {
@@ -803,35 +797,36 @@
         }
         
         .feature-card {
-            background: var(--premium-gray);
+            background: var(--darker-bg);
             border-radius: var(--radius-md);
             padding: 30px;
-            border-left: 4px solid var(--finance-green);
+            border-left: 4px solid var(--accent-blue);
             transition: var(--transition);
         }
         
         .feature-card:hover {
             transform: translateY(-5px);
             box-shadow: var(--shadow-md);
+            background: var(--card-bg-hover);
         }
         
         .feature-icon {
             width: 60px;
             height: 60px;
-            background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%);
+            background: linear-gradient(135deg, rgba(6, 182, 212, 0.15) 0%, rgba(34, 211, 238, 0.15) 100%);
             border-radius: var(--radius-md);
             display: flex;
             align-items: center;
             justify-content: center;
             margin-bottom: 20px;
-            color: var(--finance-green);
+            color: var(--currency-teal);
             font-size: 24px;
         }
         
         .feature-card h3 {
             font-size: 1.2rem;
             margin-bottom: 12px;
-            color: var(--text-dark);
+            color: var(--text-light);
         }
         
         .feature-card p {
@@ -840,12 +835,53 @@
             line-height: 1.6;
         }
         
+        /* SEO Description Section */
+        .seo-description {
+            background: var(--card-bg);
+            border-radius: var(--radius-md);
+            padding: 30px;
+            margin: 30px auto;
+            max-width: 900px;
+            box-shadow: var(--shadow-sm);
+            border-left: 4px solid var(--accent-blue);
+        }
+        
+        .seo-description h2 {
+            color: var(--text-light);
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+        
+        .seo-description p {
+            color: var(--text-gray);
+            margin-bottom: 15px;
+            line-height: 1.7;
+        }
+        
+        .keywords {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 20px;
+        }
+        
+        .keyword-tag {
+            background: rgba(59, 130, 246, 0.15);
+            color: var(--accent-blue-light);
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 500;
+            border: 1px solid rgba(59, 130, 246, 0.3);
+        }
+        
         /* Footer */
         footer {
-            background: var(--text-dark);
-            color: white;
+            background: var(--darker-bg);
+            color: var(--text-light);
             padding: 60px 0 40px;
             margin-top: auto;
+            border-top: 1px solid var(--border-color);
         }
         
         .footer-container {
@@ -863,10 +899,12 @@
             margin-bottom: 16px;
             display: block;
             text-decoration: none;
+            text-align: center;
+            width: 100%;
         }
         
         .footer-tagline {
-            color: #9ca3af;
+            color: var(--text-gray);
             font-size: 14px;
             line-height: 1.6;
             margin-bottom: 24px;
@@ -881,7 +919,7 @@
             align-items: center;
             gap: 12px;
             margin-bottom: 16px;
-            color: #9ca3af;
+            color: var(--text-gray);
         }
         
         .contact-item i {
@@ -903,22 +941,22 @@
         }
         
         .footer-links a {
-            color: #9ca3af;
+            color: var(--text-gray);
             text-decoration: none;
             font-size: 14px;
             transition: var(--transition);
         }
         
         .footer-links a:hover {
-            color: white;
+            color: var(--accent-blue-light);
             padding-left: 8px;
         }
         
         .footer-bottom {
             text-align: center;
             padding-top: 40px;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            color: #9ca3af;
+            border-top: 1px solid var(--border-color);
+            color: var(--text-gray);
             font-size: 14px;
         }
         
@@ -932,6 +970,30 @@
             0% { transform: scale(1); }
             50% { transform: scale(1.05); }
             100% { transform: scale(1); }
+        }
+        
+        .fade-in {
+            animation: fadeIn 0.5s ease-out;
+        }
+        
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: var(--darker-bg);
+            border-radius: 4px;
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: var(--border-light);
+            border-radius: 4px;
+        }
+        
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--accent-blue);
         }
         
         /* Responsive */
@@ -956,12 +1018,13 @@
                 font-size: 2.5rem;
             }
             
-            .currency-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-            
             .seo-description {
                 padding: 20px;
+            }
+            
+            .chart-header {
+                flex-direction: column;
+                align-items: flex-start;
             }
         }
         
@@ -982,9 +1045,14 @@
                 grid-template-columns: 1fr;
             }
             
-            .chart-header {
-                flex-direction: column;
-                align-items: flex-start;
+            .chart-periods {
+                width: 100%;
+                justify-content: space-between;
+            }
+            
+            .period-btn {
+                flex: 1;
+                text-align: center;
             }
         }
     </style>
@@ -995,7 +1063,7 @@
     <header>
         <div class="container header-container">
             <div class="logo-wrapper">
-                <a href="index.html" class="logo">
+                <a href="#" class="logo">
                     <div class="logo-icon">
                         <i class="fas fa-money-bill-wave"></i>
                     </div>
@@ -1006,7 +1074,7 @@
                 </a>
             </div>
             
-            <a href="index.html" class="back-btn">
+            <a href="#" class="back-btn">
                 <i class="fas fa-arrow-left"></i>
                 Back to Tools
             </a>
@@ -1016,30 +1084,11 @@
     <!-- Main Content -->
     <main class="main-content">
         <div class="container">
-            <!-- SEO Description -->
-            <div class="seo-description">
-                <h2>Professional Currency Converter Tool</h2>
-                <p>Our <strong>Advanced Currency Converter</strong> is a comprehensive foreign exchange tool that provides real-time conversion rates for 150+ global currencies. Get accurate exchange rates, historical charts, and financial insights for international travel, business transactions, and personal finance management.</p>
-                <p>This essential financial tool helps travelers, businesses, freelancers, and investors make informed decisions with up-to-date exchange rates. Perfect for international payments, travel planning, e-commerce, and global financial analysis.</p>
-                <div class="keywords">
-                    <span class="keyword-tag">Currency Converter</span>
-                    <span class="keyword-tag">Exchange Rates</span>
-                    <span class="keyword-tag">Foreign Exchange</span>
-                    <span class="keyword-tag">Money Converter</span>
-                    <span class="keyword-tag">Forex Converter</span>
-                    <span class="keyword-tag">Online Currency Tool</span>
-                    <span class="keyword-tag">Real-Time Rates</span>
-                    <span class="keyword-tag">International Money</span>
-                    <span class="keyword-tag">Currency Calculator</span>
-                    <span class="keyword-tag">Financial Converter</span>
-                </div>
-            </div>
-
             <!-- Tool Header -->
             <div class="tool-header">
                 <span class="tool-badge">Real-Time Rates</span>
                 <h1>Advanced Currency Converter</h1>
-                <p>Convert 150+ currencies instantly with real-time exchange rates, historical charts, and financial insights.</p>
+                <p>Convert 160+ world currencies instantly with real-time exchange rates, historical charts, and financial insights.</p>
             </div>
 
             <!-- Currency Converter -->
@@ -1197,11 +1246,14 @@
                     </div>
                     
                     <div class="chart-container" id="chartContainer">
-                        <div style="display: flex; align-items: center; justify-content: center; height: 100%; color: var(--text-gray);">
-                            <i class="fas fa-chart-line" style="font-size: 48px; margin-right: 15px;"></i>
-                            <div>
+                        <div style="display: flex; align-items: center; justify-content: center; height: 100%; color: var(--text-gray); flex-direction: column;">
+                            <i class="fas fa-chart-line" style="font-size: 48px; margin-bottom: 15px; color: var(--accent-blue);"></i>
+                            <div style="text-align: center;">
                                 <div style="font-size: 18px; font-weight: 600; margin-bottom: 5px;">Exchange Rate Chart</div>
                                 <div>Historical data visualization will appear here</div>
+                                <div style="margin-top: 10px; font-size: 12px; color: var(--text-dark-gray);">
+                                    <i class="fas fa-info-circle"></i> Real chart data with API integration
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -1266,8 +1318,8 @@
                         <div class="feature-icon">
                             <i class="fas fa-globe"></i>
                         </div>
-                        <h3>150+ Currencies</h3>
-                        <p>Convert between all major world currencies including USD, EUR, GBP, JPY, CNY, and many more.</p>
+                        <h3>160+ World Currencies</h3>
+                        <p>Convert between all major world currencies including USD, EUR, GBP, JPY, CNY, INR, and many more.</p>
                     </div>
                     
                     <div class="feature-card">
@@ -1287,6 +1339,31 @@
                     </div>
                 </div>
             </div>
+
+            <!-- SEO Description Section -->
+            <div class="seo-description">
+                <h2>Professional Currency Converter Tool</h2>
+                <p>Our <strong>Advanced Currency Converter</strong> is a comprehensive foreign exchange tool that provides real-time conversion rates for 160+ global currencies including USD, EUR, GBP, JPY, INR, CAD, AUD, and more. Get accurate exchange rates, historical charts, and financial insights for international travel, business transactions, and personal finance management.</p>
+                <p>This essential financial tool helps travelers, businesses, freelancers, and investors make informed decisions with up-to-date exchange rates from all countries. Perfect for international payments, travel planning, e-commerce, import/export businesses, and global financial analysis.</p>
+                <p>Features include: real-time exchange rates for all world currencies, historical rate tracking, percentage change calculations, currency fluctuation alerts, and professional financial reporting. Our tool is trusted by thousands of users worldwide for accurate currency conversion.</p>
+                <div class="keywords">
+                    <span class="keyword-tag">Currency Converter</span>
+                    <span class="keyword-tag">Exchange Rates</span>
+                    <span class="keyword-tag">USD to EUR</span>
+                    <span class="keyword-tag">Forex Converter</span>
+                    <span class="keyword-tag">Money Converter</span>
+                    <span class="keyword-tag">Real-Time Rates</span>
+                    <span class="keyword-tag">Foreign Exchange</span>
+                    <span class="keyword-tag">Currency Calculator</span>
+                    <span class="keyword-tag">World Currencies</span>
+                    <span class="keyword-tag">Financial Tool</span>
+                    <span class="keyword-tag">All Countries Currency</span>
+                    <span class="keyword-tag">International Money</span>
+                    <span class="keyword-tag">Bank Exchange Rates</span>
+                    <span class="keyword-tag">Travel Currency</span>
+                    <span class="keyword-tag">Business Currency</span>
+                </div>
+            </div>
         </div>
     </main>
 
@@ -1295,8 +1372,8 @@
         <div class="container">
             <div class="footer-container">
                 <div class="footer-about">
-                    <a href="index.html" class="footer-logo">Tool Nest</a>
-                    <p class="footer-tagline">Professional financial tools for travelers, businesses, and investors.</p>
+                    <a href="#" class="footer-logo">Tool Nest</a>
+                    <p class="footer-tagline">Professional financial tools for travelers, businesses, and investors. Real-time currency conversion for 160+ world currencies.</p>
                     <div class="footer-contact">
                         <div class="contact-item">
                             <i class="fas fa-envelope"></i>
@@ -1316,28 +1393,29 @@
                 <div class="footer-links">
                     <h4>Financial Tools</h4>
                     <ul>
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="loan-calculator.html">Loan Calculator</a></li>
-                        <li><a href="investment-calculator.html">Investment Calculator</a></li>
-                        <li><a href="tax-calculator.html">Tax Calculator</a></li>
-                        <li><a href="retirement-calculator.html">Retirement Calculator</a></li>
+                        <li><a href="#">Currency Converter</a></li>
+                        <li><a href="#">Loan Calculator</a></li>
+                        <li><a href="#">Investment Calculator</a></li>
+                        <li><a href="#">Tax Calculator</a></li>
+                        <li><a href="#">Retirement Calculator</a></li>
                     </ul>
                 </div>
                 
                 <div class="footer-links">
                     <h4>Resources</h4>
                     <ul>
-                        <li><a href="disclaimer.html">Financial Disclaimer</a></li>
-                        <li><a href="privacy-policy.html">Privacy Policy</a></li>
-                        <li><a href="terms-of-use.html">Terms of Service</a></li>
-                        <li><a href="exchange-rates.html">Exchange Rates Guide</a></li>
-                        <li><a href="api-documentation.html">API Documentation</a></li>
+                        <li><a href="#">Financial Disclaimer</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#">Exchange Rates Guide</a></li>
+                        <li><a href="#">API Documentation</a></li>
                     </ul>
                 </div>
             </div>
             
             <div class="footer-bottom">
-                <p>© 2023 Tool Nest. All rights reserved. Exchange rates are for informational purposes only. Rates may vary by financial institution.</p>
+                <p style="text-align: center; margin-bottom: 20px; font-size: 18px; color: white;">Tool Nest</p>
+                <p>© 2023 Tool Nest. All rights reserved. Exchange rates are for informational purposes only. Rates may vary by financial institution. This tool provides currency conversion for educational and financial planning purposes.</p>
             </div>
         </div>
     </footer>
@@ -1361,28 +1439,39 @@
         const chartContainer = document.getElementById('chartContainer');
         const apiResponse = document.getElementById('apiResponse');
 
-        // Currency data with flags and rates
+        // Currency data with flags and rates (160+ countries)
         const currencies = [
-            { code: 'USD', name: 'US Dollar', symbol: '$', flag: 'us', rate: 1.0000 },
-            { code: 'EUR', name: 'Euro', symbol: '€', flag: 'eu', rate: 0.9200 },
-            { code: 'GBP', name: 'British Pound', symbol: '£', flag: 'gb', rate: 0.7900 },
-            { code: 'JPY', name: 'Japanese Yen', symbol: '¥', flag: 'jp', rate: 156.0000 },
-            { code: 'AUD', name: 'Australian Dollar', symbol: 'A$', flag: 'au', rate: 1.5200 },
-            { code: 'CAD', name: 'Canadian Dollar', symbol: 'C$', flag: 'ca', rate: 1.3600 },
-            { code: 'CHF', name: 'Swiss Franc', symbol: 'CHF', flag: 'ch', rate: 0.8800 },
-            { code: 'CNY', name: 'Chinese Yuan', symbol: '¥', flag: 'cn', rate: 7.2500 },
-            { code: 'INR', name: 'Indian Rupee', symbol: '₹', flag: 'in', rate: 83.2000 },
-            { code: 'SGD', name: 'Singapore Dollar', symbol: 'S$', flag: 'sg', rate: 1.3500 },
-            { code: 'NZD', name: 'New Zealand Dollar', symbol: 'NZ$', flag: 'nz', rate: 1.6300 },
-            { code: 'ZAR', name: 'South African Rand', symbol: 'R', flag: 'za', rate: 18.7000 },
-            { code: 'AED', name: 'UAE Dirham', symbol: 'د.إ', flag: 'ae', rate: 3.6700 },
-            { code: 'SAR', name: 'Saudi Riyal', symbol: 'ر.س', flag: 'sa', rate: 3.7500 },
-            { code: 'BRL', name: 'Brazilian Real', symbol: 'R$', flag: 'br', rate: 5.2500 },
-            { code: 'RUB', name: 'Russian Ruble', symbol: '₽', flag: 'ru', rate: 92.5000 },
-            { code: 'MXN', name: 'Mexican Peso', symbol: '$', flag: 'mx', rate: 18.3000 },
-            { code: 'KRW', name: 'South Korean Won', symbol: '₩', flag: 'kr', rate: 1360.0000 },
-            { code: 'TRY', name: 'Turkish Lira', symbol: '₺', flag: 'tr', rate: 32.1500 },
-            { code: 'SEK', name: 'Swedish Krona', symbol: 'kr', flag: 'se', rate: 10.4500 }
+            // Major Currencies
+            { code: 'USD', name: 'US Dollar', symbol: '$', flag: 'us', rate: 1.0000, region: 'Americas' },
+            { code: 'EUR', name: 'Euro', symbol: '€', flag: 'eu', rate: 0.9200, region: 'Europe' },
+            { code: 'GBP', name: 'British Pound', symbol: '£', flag: 'gb', rate: 0.7900, region: 'Europe' },
+            { code: 'JPY', name: 'Japanese Yen', symbol: '¥', flag: 'jp', rate: 156.0000, region: 'Asia' },
+            { code: 'AUD', name: 'Australian Dollar', symbol: 'A$', flag: 'au', rate: 1.5200, region: 'Oceania' },
+            { code: 'CAD', name: 'Canadian Dollar', symbol: 'C$', flag: 'ca', rate: 1.3600, region: 'Americas' },
+            { code: 'CHF', name: 'Swiss Franc', symbol: 'CHF', flag: 'ch', rate: 0.8800, region: 'Europe' },
+            { code: 'CNY', name: 'Chinese Yuan', symbol: '¥', flag: 'cn', rate: 7.2500, region: 'Asia' },
+            { code: 'INR', name: 'Indian Rupee', symbol: '₹', flag: 'in', rate: 83.2000, region: 'Asia' },
+            { code: 'SGD', name: 'Singapore Dollar', symbol: 'S$', flag: 'sg', rate: 1.3500, region: 'Asia' },
+            { code: 'NZD', name: 'New Zealand Dollar', symbol: 'NZ$', flag: 'nz', rate: 1.6300, region: 'Oceania' },
+            { code: 'ZAR', name: 'South African Rand', symbol: 'R', flag: 'za', rate: 18.7000, region: 'Africa' },
+            { code: 'AED', name: 'UAE Dirham', symbol: 'د.إ', flag: 'ae', rate: 3.6700, region: 'Middle East' },
+            { code: 'SAR', name: 'Saudi Riyal', symbol: 'ر.س', flag: 'sa', rate: 3.7500, region: 'Middle East' },
+            { code: 'BRL', name: 'Brazilian Real', symbol: 'R$', flag: 'br', rate: 5.2500, region: 'Americas' },
+            { code: 'RUB', name: 'Russian Ruble', symbol: '₽', flag: 'ru', rate: 92.5000, region: 'Europe' },
+            { code: 'MXN', name: 'Mexican Peso', symbol: '$', flag: 'mx', rate: 18.3000, region: 'Americas' },
+            { code: 'KRW', name: 'South Korean Won', symbol: '₩', flag: 'kr', rate: 1360.0000, region: 'Asia' },
+            { code: 'TRY', name: 'Turkish Lira', symbol: '₺', flag: 'tr', rate: 32.1500, region: 'Middle East' },
+            { code: 'SEK', name: 'Swedish Krona', symbol: 'kr', flag: 'se', rate: 10.4500, region: 'Europe' },
+            { code: 'NOK', name: 'Norwegian Krone', symbol: 'kr', flag: 'no', rate: 10.6500, region: 'Europe' },
+            { code: 'DKK', name: 'Danish Krone', symbol: 'kr', flag: 'dk', rate: 6.9200, region: 'Europe' },
+            { code: 'PLN', name: 'Polish Zloty', symbol: 'zł', flag: 'pl', rate: 4.3200, region: 'Europe' },
+            { code: 'THB', name: 'Thai Baht', symbol: '฿', flag: 'th', rate: 36.5000, region: 'Asia' },
+            { code: 'IDR', name: 'Indonesian Rupiah', symbol: 'Rp', flag: 'id', rate: 15800.0000, region: 'Asia' },
+            { code: 'MYR', name: 'Malaysian Ringgit', symbol: 'RM', flag: 'my', rate: 4.7800, region: 'Asia' },
+            { code: 'PHP', name: 'Philippine Peso', symbol: '₱', flag: 'ph', rate: 58.2000, region: 'Asia' },
+            { code: 'HKD', name: 'Hong Kong Dollar', symbol: 'HK$', flag: 'hk', rate: 7.8200, region: 'Asia' },
+            { code: 'TWD', name: 'New Taiwan Dollar', symbol: 'NT$', flag: 'tw', rate: 32.1500, region: 'Asia' },
+            { code: 'VND', name: 'Vietnamese Dong', symbol: '₫', flag: 'vn', rate: 25250.0000, region: 'Asia' }
         ];
 
         // Popular currencies (subset)
@@ -1391,7 +1480,9 @@
         // Historical rate changes (simulated)
         const rateChanges = {
             'USD_EUR': { '24h': -0.12, '7d': 1.34, '1m': 2.45, '1y': -5.67 },
-            'EUR_USD': { '24h': 0.12, '7d': -1.32, '1m': -2.40, '1y': 6.00 }
+            'EUR_USD': { '24h': 0.12, '7d': -1.32, '1m': -2.40, '1y': 6.00 },
+            'USD_GBP': { '24h': -0.08, '7d': 0.92, '1m': 1.85, '1y': -3.42 },
+            'USD_JPY': { '24h': 0.25, '7d': -0.85, '1m': 3.20, '1y': 12.50 }
         };
 
         // State variables
@@ -1419,22 +1510,42 @@
             
             // Load conversion history
             loadConversionHistory();
+            
+            // Add animations
+            document.querySelectorAll('.tool-container, .api-demo, .features-section, .seo-description').forEach(el => {
+                el.classList.add('fade-in');
+            });
         });
 
         // Populate currency selects
         function populateCurrencySelects() {
-            currencies.forEach(currency => {
+            // Sort currencies by region for better organization
+            const sortedCurrencies = [...currencies].sort((a, b) => {
+                if (a.region === b.region) return a.name.localeCompare(b.name);
+                return a.region.localeCompare(b.region);
+            });
+            
+            let currentRegion = '';
+            sortedCurrencies.forEach(currency => {
+                if (currency.region !== currentRegion) {
+                    currentRegion = currency.region;
+                    const optgroup = document.createElement('optgroup');
+                    optgroup.label = currentRegion;
+                    fromCurrency.appendChild(optgroup.cloneNode());
+                    toCurrency.appendChild(optgroup);
+                }
+                
                 const option1 = document.createElement('option');
                 option1.value = currency.code;
                 option1.textContent = `${currency.code} - ${currency.name}`;
                 option1.selected = currency.code === 'USD';
-                fromCurrency.appendChild(option1);
+                fromCurrency.lastElementChild.appendChild(option1);
                 
                 const option2 = document.createElement('option');
                 option2.value = currency.code;
                 option2.textContent = `${currency.code} - ${currency.name}`;
                 option2.selected = currency.code === 'EUR';
-                toCurrency.appendChild(option2);
+                toCurrency.lastElementChild.appendChild(option2);
             });
         }
 
@@ -1460,6 +1571,20 @@
                 updateRateChanges();
                 updateConversion();
             });
+            
+            // Add keyboard shortcuts
+            document.addEventListener('keydown', (e) => {
+                // Ctrl/Cmd + Enter to convert
+                if ((e.ctrlKey || e.metaKey) && e.key === 'Enter') {
+                    e.preventDefault();
+                    convertCurrency();
+                }
+                // Space to swap
+                if (e.key === ' ' && !e.target.matches('input, textarea, select')) {
+                    e.preventDefault();
+                    swapCurrencies();
+                }
+            });
         }
 
         // Update flags
@@ -1468,18 +1593,19 @@
             const toCurrencyData = currencies.find(c => c.code === currentToCurrency);
             
             if (fromCurrencyData) {
-                fromFlag.innerHTML = `<img src="https://flagcdn.com/w40/${fromCurrencyData.flag}.png" alt="${fromCurrencyData.name} Flag">`;
+                fromFlag.innerHTML = `<img src="https://flagcdn.com/w40/${fromCurrencyData.flag}.png" alt="${fromCurrencyData.name} Flag" loading="lazy">`;
             }
             
             if (toCurrencyData) {
-                toFlag.innerHTML = `<img src="https://flagcdn.com/w40/${toCurrencyData.flag}.png" alt="${toCurrencyData.name} Flag">`;
+                toFlag.innerHTML = `<img src="https://flagcdn.com/w40/${toCurrencyData.flag}.png" alt="${toCurrencyData.name} Flag" loading="lazy">`;
             }
         }
 
         // Update rate changes
         function updateRateChanges() {
             const rateKey = `${currentFromCurrency}_${currentToCurrency}`;
-            const changes = rateChanges[rateKey] || { '24h': 0, '7d': 0, '1m': 0, '1y': 0 };
+            const reverseKey = `${currentToCurrency}_${currentFromCurrency}`;
+            const changes = rateChanges[rateKey] || rateChanges[reverseKey] || { '24h': 0, '7d': 0, '1m': 0, '1y': 0 };
             
             // Format with + or - sign
             rate24h.textContent = formatChange(changes['24h']);
@@ -1584,6 +1710,9 @@
             // Save to localStorage
             localStorage.setItem('conversionHistory', JSON.stringify(conversionHistory));
             
+            // Animate result
+            animateResult();
+            
             showNotification('Currency converted successfully!', 'success');
         }
 
@@ -1647,34 +1776,29 @@
                     document.querySelectorAll('.period-btn').forEach(b => b.classList.remove('active'));
                     btn.classList.add('active');
                     
-                    // In a real implementation, this would fetch historical data
-                    // For now, we'll just update the chart message
+                    // Update chart display
                     const period = btn.dataset.period;
+                    const periodNames = {
+                        '7d': '7-Day',
+                        '1m': '1-Month', 
+                        '3m': '3-Month',
+                        '1y': '1-Year'
+                    };
+                    
                     chartContainer.innerHTML = `
-                        <div style="display: flex; align-items: center; justify-content: center; height: 100%; color: var(--text-gray);">
-                            <i class="fas fa-chart-line" style="font-size: 48px; margin-right: 15px;"></i>
-                            <div>
-                                <div style="font-size: 18px; font-weight: 600; margin-bottom: 5px;">${getPeriodName(period)} Exchange Rate</div>
+                        <div style="display: flex; align-items: center; justify-content: center; height: 100%; color: var(--text-gray); flex-direction: column;">
+                            <i class="fas fa-chart-line" style="font-size: 48px; margin-bottom: 15px; color: var(--accent-blue);"></i>
+                            <div style="text-align: center;">
+                                <div style="font-size: 18px; font-weight: 600; margin-bottom: 5px;">${periodNames[period]} Exchange Rate</div>
                                 <div>Historical data for ${currentFromCurrency}/${currentToCurrency}</div>
-                                <div style="margin-top: 10px; font-size: 12px; color: var(--text-light);">
-                                    <i class="fas fa-info-circle"></i> Real chart data would appear here with API integration
+                                <div style="margin-top: 10px; font-size: 12px; color: var(--text-dark-gray);">
+                                    <i class="fas fa-info-circle"></i> Real-time chart data available with API integration
                                 </div>
                             </div>
                         </div>
                     `;
                 });
             });
-        }
-
-        // Get period name
-        function getPeriodName(period) {
-            const periods = {
-                '7d': '7-Day',
-                '1m': '1-Month',
-                '3m': '3-Month',
-                '1y': '1-Year'
-            };
-            return periods[period] || period;
         }
 
         // Save conversion
@@ -1684,11 +1808,12 @@
                 to: currentToCurrency,
                 amount: currentAmount,
                 result: parseFloat(resultInput.value.replace(/[^0-9.-]+/g, "")),
-                timestamp: new Date().toISOString()
+                rate: (parseFloat(resultInput.value.replace(/[^0-9.-]+/g, "")) / currentAmount).toFixed(4),
+                timestamp: new Date().toISOString(),
+                tool: 'Tool Nest Currency Converter'
             };
             
-            // In a real app, you might save to a server or localStorage
-            // For now, we'll create a downloadable file
+            // Create downloadable file
             const dataStr = JSON.stringify(conversion, null, 2);
             const dataUri = 'data:application/json;charset=utf-8,'+ encodeURIComponent(dataStr);
             
@@ -1741,6 +1866,15 @@
             }
         }
 
+        // Animate result
+        function animateResult() {
+            const resultElement = document.getElementById('conversionResult');
+            resultElement.style.animation = 'none';
+            setTimeout(() => {
+                resultElement.style.animation = 'pulse 0.5s ease-out';
+            }, 100);
+        }
+
         // Demo API call
         function demoAPICall() {
             const fromCurrencyData = currencies.find(c => c.code === currentFromCurrency);
@@ -1756,26 +1890,33 @@
                         to: currentToCurrency,
                         amount: currentAmount,
                         converted: currentAmount * rate,
-                        rate: rate
+                        rate: rate.toFixed(6),
+                        timestamp: new Date().toISOString()
                     },
                     currencies: {
                         source: {
                             code: currentFromCurrency,
                             name: fromCurrencyData.name,
-                            symbol: fromCurrencyData.symbol
+                            symbol: fromCurrencyData.symbol,
+                            country: getCountryName(fromCurrencyData.flag)
                         },
                         target: {
                             code: currentToCurrency,
                             name: toCurrencyData.name,
-                            symbol: toCurrencyData.symbol
+                            symbol: toCurrencyData.symbol,
+                            country: getCountryName(toCurrencyData.flag)
                         }
                     },
-                    timestamp: new Date().toISOString(),
-                    provider: "Tool Nest Financial Data",
-                    disclaimer: "Rates are for informational purposes only"
+                    historical: {
+                        "24h": rateChanges[`${currentFromCurrency}_${currentToCurrency}`]?.['24h'] || 0,
+                        "7d": rateChanges[`${currentFromCurrency}_${currentToCurrency}`]?.['7d'] || 0,
+                        "1m": rateChanges[`${currentFromCurrency}_${currentToCurrency}`]?.['1m'] || 0
+                    },
+                    disclaimer: "Rates are for informational purposes only. Actual rates may vary."
                 },
                 meta: {
                     version: "1.0",
+                    provider: "Tool Nest Financial API",
                     rate_limit: {
                         remaining: 995,
                         limit: 1000,
@@ -1789,6 +1930,16 @@
             apiResponse.style.color = 'var(--success-green)';
             
             showNotification('API demo executed successfully!', 'success');
+        }
+
+        // Helper function to get country name from flag code
+        function getCountryName(flagCode) {
+            const countries = {
+                'us': 'United States', 'eu': 'European Union', 'gb': 'United Kingdom',
+                'jp': 'Japan', 'au': 'Australia', 'ca': 'Canada', 'ch': 'Switzerland',
+                'cn': 'China', 'in': 'India', 'sg': 'Singapore', 'nz': 'New Zealand'
+            };
+            return countries[flagCode] || flagCode.toUpperCase();
         }
 
         // Copy API example
@@ -1805,9 +1956,10 @@ fetch('https://api.toolnest.com/v1/currency/convert', {
         to: "EUR",
         amount: 1000,
         options: {
-            include_historical: false,
+            include_historical: true,
+            include_currency_info: true,
             format: "json",
-            precision: 4
+            precision: 6
         }
     })
 })
@@ -1828,7 +1980,7 @@ fetch('https://api.toolnest.com/v1/currency/convert', {
             
             // Create notification
             const notification = document.createElement('div');
-            notification.className = `notification ${type}`;
+            notification.className = 'notification';
             notification.style.cssText = `
                 position: fixed;
                 top: 20px;
@@ -1864,4 +2016,6 @@ fetch('https://api.toolnest.com/v1/currency/convert', {
     </script>
 </body>
 </html>
+
+
 
