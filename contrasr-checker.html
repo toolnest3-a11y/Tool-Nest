@@ -1,4 +1,5 @@
 
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,57 +9,35 @@
     <meta name="description" content="Professional contrast checker tool for testing WCAG compliance. Check color contrast ratios, accessibility levels, and get detailed recommendations for accessible design.">
     <meta name="keywords" content="contrast checker, WCAG compliance, accessibility checker, color contrast tool, web accessibility, AA compliance, AAA compliance, color contrast ratio, accessibility testing, contrast analyzer">
     <meta name="author" content="Tool Nest">
-    <link rel="icon" href="favicon-16x16.png" type="image/x-icon">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
     
-    <!-- Open Graph Meta Tags -->
-    <meta property="og:title" content="Advanced Contrast Checker | WCAG Compliance Tool">
-    <meta property="og:description" content="Professional tool for testing color contrast ratios and WCAG accessibility compliance.">
-    <meta property="og:type" content="website">
-    
-    <!-- Structured Data for SEO -->
-    <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "WebApplication",
-        "name": "Advanced Contrast Checker",
-        "description": "Professional tool for testing color contrast ratios and WCAG accessibility compliance",
-        "applicationCategory": "AccessibilityApplication",
-        "operatingSystem": "Any",
-        "url": "https://toolnest.com/contrast-checker",
-        "offers": {
-            "@type": "Offer",
-            "price": "0",
-            "priceCurrency": "USD"
-        }
-    }
-    </script>
-    
     <style>
         :root {
-            /* Premium Color Palette */
-            --primary-blue: #1a56db;
-            --dark-blue: #1e3a8a;
-            --light-blue: #3b82f6;
-            --accent-blue: #60a5fa;
-            --gradient-blue: linear-gradient(135deg, #1a56db 0%, #3b82f6 100%);
-            --gradient-dark: linear-gradient(135deg, #1e3a8a 0%, #1a56db 100%);
-            --premium-gray: #f9fafb;
-            --card-white: #ffffff;
-            --text-dark: #111827;
-            --text-gray: #6b7280;
-            --text-light: #9ca3af;
-            --border-color: #e5e7eb;
+            /* Dark Blue Theme Colors */
+            --dark-bg: #0f172a;
+            --darker-bg: #0a1123;
+            --card-bg: #1e293b;
+            --card-bg-hover: #273549;
+            --accent-blue: #3b82f6;
+            --accent-blue-dark: #2563eb;
+            --accent-blue-light: #60a5fa;
+            --gradient-blue: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%);
+            --gradient-dark: linear-gradient(135deg, #0f172a 0%, #1e3a8a 100%);
+            --text-light: #f8fafc;
+            --text-gray: #cbd5e1;
+            --text-dark-gray: #94a3b8;
+            --border-color: #334155;
+            --border-light: #475569;
             --success-green: #10b981;
             --warning-orange: #f59e0b;
             --error-red: #ef4444;
             --accessibility-teal: #06b6d4;
             --contrast-purple: #8b5cf6;
-            --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.05);
-            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.07), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-            --shadow-lg: 0 10px 25px -5px rgba(0, 0, 0, 0.08), 0 8px 10px -6px rgba(0, 0, 0, 0.04);
-            --shadow-xl: 0 20px 40px -15px rgba(0, 0, 0, 0.1);
+            --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.3);
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.4), 0 2px 4px -1px rgba(0, 0, 0, 0.3);
+            --shadow-lg: 0 10px 25px -5px rgba(0, 0, 0, 0.5), 0 8px 10px -6px rgba(0, 0, 0, 0.4);
+            --shadow-xl: 0 20px 40px -15px rgba(0, 0, 0, 0.6);
             --radius-sm: 8px;
             --radius-md: 12px;
             --radius-lg: 16px;
@@ -74,8 +53,8 @@
         
         body {
             font-family: 'Inter', sans-serif;
-            color: var(--text-dark);
-            background: var(--premium-gray);
+            color: var(--text-light);
+            background: var(--dark-bg);
             line-height: 1.6;
             font-weight: 400;
             min-height: 100vh;
@@ -88,6 +67,7 @@
             font-weight: 600;
             line-height: 1.2;
             margin-bottom: 1rem;
+            color: var(--text-light);
         }
         
         .container {
@@ -99,7 +79,7 @@
         
         /* Premium Header */
         header {
-            background-color: var(--card-white);
+            background-color: var(--darker-bg);
             box-shadow: var(--shadow-sm);
             position: sticky;
             top: 0;
@@ -156,7 +136,7 @@
         .logo-tagline {
             font-size: 11px;
             font-weight: 500;
-            color: var(--text-gray);
+            color: var(--text-dark-gray);
             margin-top: 2px;
             letter-spacing: 0.5px;
         }
@@ -178,21 +158,22 @@
         .back-btn:hover {
             transform: translateX(-3px);
             box-shadow: var(--shadow-md);
+            background: var(--accent-blue-dark);
         }
         
         /* SEO Description Section */
         .seo-description {
-            background: white;
+            background: var(--card-bg);
             border-radius: var(--radius-md);
             padding: 30px;
             margin: 30px auto;
             max-width: 900px;
             box-shadow: var(--shadow-sm);
-            border-left: 4px solid var(--accessibility-teal);
+            border-left: 4px solid var(--accent-blue);
         }
         
         .seo-description h2 {
-            color: var(--dark-blue);
+            color: var(--text-light);
             font-size: 1.5rem;
             margin-bottom: 15px;
         }
@@ -211,13 +192,13 @@
         }
         
         .keyword-tag {
-            background: #ecfeff;
-            color: var(--accessibility-teal);
+            background: rgba(59, 130, 246, 0.15);
+            color: var(--accent-blue-light);
             padding: 6px 12px;
             border-radius: 20px;
             font-size: 13px;
             font-weight: 500;
-            border: 1px solid #cffafe;
+            border: 1px solid rgba(59, 130, 246, 0.3);
         }
         
         /* Main Content */
@@ -247,9 +228,8 @@
         .tool-header h1 {
             font-size: 2.8rem;
             font-weight: 700;
-            color: var(--text-dark);
             margin-bottom: 16px;
-            background: linear-gradient(135deg, var(--text-dark) 0%, var(--accessibility-teal) 100%);
+            background: linear-gradient(135deg, var(--text-light) 0%, var(--accent-blue-light) 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -265,7 +245,7 @@
         
         /* Tool Container */
         .tool-container {
-            background: var(--card-white);
+            background: var(--card-bg);
             border-radius: var(--radius-lg);
             padding: 50px;
             box-shadow: var(--shadow-md);
@@ -300,10 +280,16 @@
         }
         
         .color-picker-box {
-            background: #f8fafc;
+            background: var(--darker-bg);
             border-radius: var(--radius-md);
             padding: 30px;
             border: 1px solid var(--border-color);
+            transition: var(--transition);
+        }
+        
+        .color-picker-box:hover {
+            border-color: var(--border-light);
+            transform: translateY(-2px);
         }
         
         .color-picker-header {
@@ -311,7 +297,7 @@
             align-items: center;
             gap: 12px;
             margin-bottom: 25px;
-            color: var(--text-dark);
+            color: var(--text-light);
         }
         
         .color-picker-header i {
@@ -335,16 +321,18 @@
         
         .color-input-label {
             font-weight: 600;
-            color: var(--text-dark);
+            color: var(--text-light);
             min-width: 100px;
         }
         
         .color-input {
             flex: 1;
             padding: 12px 15px;
+            background: var(--dark-bg);
             border: 2px solid var(--border-color);
             border-radius: var(--radius-sm);
             font-size: 16px;
+            color: var(--text-light);
             font-family: 'Inter', sans-serif;
             transition: var(--transition);
         }
@@ -352,14 +340,14 @@
         .color-input:focus {
             outline: none;
             border-color: var(--contrast-purple);
-            box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.1);
+            box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.2);
         }
         
         .color-swatch {
             width: 60px;
             height: 60px;
             border-radius: var(--radius-sm);
-            border: 3px solid white;
+            border: 3px solid var(--border-color);
             box-shadow: var(--shadow-md);
             cursor: pointer;
             transition: var(--transition);
@@ -368,11 +356,12 @@
         .color-swatch:hover {
             transform: scale(1.05);
             box-shadow: var(--shadow-lg);
+            border-color: var(--border-light);
         }
         
         /* Contrast Preview */
         .contrast-preview {
-            background: #f8fafc;
+            background: var(--darker-bg);
             border-radius: var(--radius-md);
             padding: 30px;
             margin-bottom: 40px;
@@ -384,7 +373,7 @@
             align-items: center;
             gap: 12px;
             margin-bottom: 25px;
-            color: var(--text-dark);
+            color: var(--text-light);
         }
         
         .preview-header i {
@@ -399,7 +388,7 @@
         }
         
         .preview-card {
-            background: white;
+            background: var(--card-bg);
             border-radius: var(--radius-md);
             padding: 25px;
             border: 1px solid var(--border-color);
@@ -409,6 +398,8 @@
         .preview-card:hover {
             transform: translateY(-5px);
             box-shadow: var(--shadow-md);
+            background: var(--card-bg-hover);
+            border-color: var(--border-light);
         }
         
         .preview-title {
@@ -416,7 +407,7 @@
             align-items: center;
             gap: 10px;
             margin-bottom: 15px;
-            color: var(--text-dark);
+            color: var(--text-light);
             font-weight: 600;
         }
         
@@ -435,17 +426,19 @@
             align-items: center;
             justify-content: center;
             font-weight: 500;
+            background: var(--dark-bg);
+            border: 1px solid var(--border-color);
         }
         
         .preview-size {
             font-size: 12px;
-            color: var(--text-gray);
+            color: var(--text-dark-gray);
             text-align: center;
         }
         
         /* Contrast Results */
         .contrast-results {
-            background: #f8fafc;
+            background: var(--darker-bg);
             border-radius: var(--radius-md);
             padding: 30px;
             margin-bottom: 40px;
@@ -457,7 +450,7 @@
             align-items: center;
             gap: 12px;
             margin-bottom: 25px;
-            color: var(--text-dark);
+            color: var(--text-light);
         }
         
         .results-header i {
@@ -473,7 +466,7 @@
         }
         
         .result-card {
-            background: white;
+            background: var(--card-bg);
             border-radius: var(--radius-sm);
             padding: 25px;
             border: 1px solid var(--border-color);
@@ -484,13 +477,15 @@
         .result-card:hover {
             transform: translateY(-3px);
             box-shadow: var(--shadow-md);
+            background: var(--card-bg-hover);
+            border-color: var(--border-light);
         }
         
         .result-value {
             font-size: 2.5rem;
             font-weight: 800;
             margin-bottom: 10px;
-            color: var(--text-dark);
+            color: var(--text-light);
         }
         
         .result-label {
@@ -512,23 +507,26 @@
         }
         
         .status-pass {
-            background: #d1fae5;
-            color: #065f46;
+            background: rgba(16, 185, 129, 0.15);
+            color: #10b981;
+            border: 1px solid rgba(16, 185, 129, 0.3);
         }
         
         .status-fail {
-            background: #fee2e2;
-            color: #991b1b;
+            background: rgba(239, 68, 68, 0.15);
+            color: #ef4444;
+            border: 1px solid rgba(239, 68, 68, 0.3);
         }
         
         .status-warning {
-            background: #fef3c7;
-            color: #92400e;
+            background: rgba(245, 158, 11, 0.15);
+            color: #f59e0b;
+            border: 1px solid rgba(245, 158, 11, 0.3);
         }
         
         /* WCAG Compliance */
         .wcag-compliance {
-            background: #f8fafc;
+            background: var(--darker-bg);
             border-radius: var(--radius-md);
             padding: 30px;
             margin-bottom: 40px;
@@ -540,7 +538,7 @@
             align-items: center;
             gap: 12px;
             margin-bottom: 25px;
-            color: var(--text-dark);
+            color: var(--text-light);
         }
         
         .wcag-header i {
@@ -559,13 +557,19 @@
             align-items: center;
             justify-content: space-between;
             padding: 15px;
-            background: white;
+            background: var(--card-bg);
             border-radius: var(--radius-sm);
             border: 1px solid var(--border-color);
+            transition: var(--transition);
+        }
+        
+        .wcag-item:hover {
+            background: var(--card-bg-hover);
+            border-color: var(--border-light);
         }
         
         .wcag-label {
-            color: var(--text-dark);
+            color: var(--text-light);
             font-weight: 500;
         }
         
@@ -580,7 +584,7 @@
         
         /* Recommendations */
         .recommendations {
-            background: #f8fafc;
+            background: var(--darker-bg);
             border-radius: var(--radius-md);
             padding: 30px;
             margin-bottom: 40px;
@@ -592,7 +596,7 @@
             align-items: center;
             gap: 12px;
             margin-bottom: 25px;
-            color: var(--text-dark);
+            color: var(--text-light);
         }
         
         .recommendations-header i {
@@ -610,6 +614,13 @@
             display: flex;
             align-items: center;
             gap: 12px;
+            transition: var(--transition);
+        }
+        
+        .recommendations-list li:hover {
+            background: var(--card-bg);
+            padding-left: 10px;
+            border-radius: var(--radius-sm);
         }
         
         .recommendations-list li:last-child {
@@ -652,18 +663,20 @@
         .action-btn.primary:hover {
             transform: translateY(-3px);
             box-shadow: var(--shadow-lg);
+            background: var(--accent-blue-dark);
         }
         
         .action-btn.secondary {
-            background: var(--premium-gray);
-            color: var(--text-dark);
-            border: 2px solid var(--border-color);
+            background: rgba(59, 130, 246, 0.1);
+            color: var(--accent-blue-light);
+            border: 2px solid rgba(59, 130, 246, 0.3);
         }
         
         .action-btn.secondary:hover {
-            background: #f0f9ff;
-            border-color: var(--light-blue);
-            color: var(--primary-blue);
+            background: rgba(59, 130, 246, 0.2);
+            border-color: var(--accent-blue);
+            color: white;
+            transform: translateY(-3px);
         }
         
         .action-btn.teal {
@@ -678,7 +691,7 @@
         
         /* API Demo Section */
         .api-demo {
-            background: var(--card-white);
+            background: var(--card-bg);
             border-radius: var(--radius-lg);
             padding: 30px;
             box-shadow: var(--shadow-md);
@@ -691,16 +704,17 @@
             align-items: center;
             gap: 10px;
             margin-bottom: 20px;
-            color: var(--primary-blue);
+            color: var(--accent-blue-light);
         }
         
         .api-response {
-            background: #f8fafc;
+            background: var(--darker-bg);
             border-radius: var(--radius-md);
             padding: 20px;
             margin-top: 20px;
             font-family: 'Courier New', monospace;
             font-size: 14px;
+            color: var(--text-gray);
             overflow-x: auto;
             white-space: pre-wrap;
             border: 1px solid var(--border-color);
@@ -710,7 +724,7 @@
         
         /* Features Section */
         .features-section {
-            background: var(--card-white);
+            background: var(--card-bg);
             border-radius: var(--radius-lg);
             padding: 50px;
             box-shadow: var(--shadow-md);
@@ -722,7 +736,7 @@
             text-align: center;
             font-size: 2rem;
             margin-bottom: 40px;
-            color: var(--text-dark);
+            color: var(--text-light);
         }
         
         .features-grid {
@@ -732,22 +746,23 @@
         }
         
         .feature-card {
-            background: var(--premium-gray);
+            background: var(--darker-bg);
             border-radius: var(--radius-md);
             padding: 30px;
-            border-left: 4px solid var(--accessibility-teal);
+            border-left: 4px solid var(--accent-blue);
             transition: var(--transition);
         }
         
         .feature-card:hover {
             transform: translateY(-5px);
             box-shadow: var(--shadow-md);
+            background: var(--card-bg-hover);
         }
         
         .feature-icon {
             width: 60px;
             height: 60px;
-            background: linear-gradient(135deg, #ecfeff 0%, #cffafe 100%);
+            background: linear-gradient(135deg, rgba(6, 182, 212, 0.15) 0%, rgba(34, 211, 238, 0.15) 100%);
             border-radius: var(--radius-md);
             display: flex;
             align-items: center;
@@ -760,7 +775,7 @@
         .feature-card h3 {
             font-size: 1.2rem;
             margin-bottom: 12px;
-            color: var(--text-dark);
+            color: var(--text-light);
         }
         
         .feature-card p {
@@ -771,10 +786,11 @@
         
         /* Footer */
         footer {
-            background: var(--text-dark);
-            color: white;
+            background: var(--darker-bg);
+            color: var(--text-light);
             padding: 60px 0 40px;
             margin-top: auto;
+            border-top: 1px solid var(--border-color);
         }
         
         .footer-container {
@@ -795,7 +811,7 @@
         }
         
         .footer-tagline {
-            color: #9ca3af;
+            color: var(--text-gray);
             font-size: 14px;
             line-height: 1.6;
             margin-bottom: 24px;
@@ -810,7 +826,7 @@
             align-items: center;
             gap: 12px;
             margin-bottom: 16px;
-            color: #9ca3af;
+            color: var(--text-gray);
         }
         
         .contact-item i {
@@ -832,22 +848,22 @@
         }
         
         .footer-links a {
-            color: #9ca3af;
+            color: var(--text-gray);
             text-decoration: none;
             font-size: 14px;
             transition: var(--transition);
         }
         
         .footer-links a:hover {
-            color: white;
+            color: var(--accent-blue-light);
             padding-left: 8px;
         }
         
         .footer-bottom {
             text-align: center;
             padding-top: 40px;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            color: #9ca3af;
+            border-top: 1px solid var(--border-color);
+            color: var(--text-gray);
             font-size: 14px;
         }
         
@@ -861,6 +877,30 @@
             0% { transform: scale(1); }
             50% { transform: scale(1.05); }
             100% { transform: scale(1); }
+        }
+        
+        .fade-in {
+            animation: fadeIn 0.5s ease-out;
+        }
+        
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: var(--darker-bg);
+            border-radius: 4px;
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: var(--border-light);
+            border-radius: 4px;
+        }
+        
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--accent-blue);
         }
         
         /* Responsive */
@@ -920,7 +960,7 @@
     <header>
         <div class="container header-container">
             <div class="logo-wrapper">
-                <a href="index.html" class="logo">
+                <a href="#" class="logo">
                     <div class="logo-icon">
                         <i class="fas fa-universal-access"></i>
                     </div>
@@ -931,7 +971,7 @@
                 </a>
             </div>
             
-            <a href="index.html" class="back-btn">
+            <a href="#" class="back-btn">
                 <i class="fas fa-arrow-left"></i>
                 Back to Tools
             </a>
@@ -941,25 +981,6 @@
     <!-- Main Content -->
     <main class="main-content">
         <div class="container">
-            <!-- SEO Description -->
-            <div class="seo-description">
-                <h2>Professional Contrast Checker Tool</h2>
-                <p>Our <strong>Advanced Contrast Checker</strong> is a comprehensive accessibility testing tool that helps designers, developers, and content creators ensure their designs meet WCAG 2.1 and 2.2 accessibility standards. Test color contrast ratios, get detailed compliance reports, and receive actionable recommendations for accessible design.</p>
-                <p>This essential tool helps you create inclusive designs that are readable and usable by everyone, including people with visual impairments. Perfect for web design, UI/UX development, brand guidelines, and accessibility audits.</p>
-                <div class="keywords">
-                    <span class="keyword-tag">Contrast Checker</span>
-                    <span class="keyword-tag">WCAG Compliance</span>
-                    <span class="keyword-tag">Accessibility Testing</span>
-                    <span class="keyword-tag">Color Contrast Ratio</span>
-                    <span class="keyword-tag">AA Compliance</span>
-                    <span class="keyword-tag">AAA Compliance</span>
-                    <span class="keyword-tag">Web Accessibility</span>
-                    <span class="keyword-tag">Accessibility Checker</span>
-                    <span class="keyword-tag">Color Accessibility</span>
-                    <span class="keyword-tag">Contrast Analyzer</span>
-                </div>
-            </div>
-
             <!-- Tool Header -->
             <div class="tool-header">
                 <span class="tool-badge">WCAG Compliance</span>
@@ -1249,6 +1270,25 @@
                     </div>
                 </div>
             </div>
+
+            <!-- SEO Description Section -->
+            <div class="seo-description">
+                <h2>Professional Contrast Checker Tool</h2>
+                <p>Our <strong>Advanced Contrast Checker</strong> is a comprehensive accessibility testing tool that helps designers, developers, and content creators ensure their designs meet WCAG 2.1 and 2.2 accessibility standards. Test color contrast ratios, get detailed compliance reports, and receive actionable recommendations for accessible design.</p>
+                <p>This essential tool helps you create inclusive designs that are readable and usable by everyone, including people with visual impairments. Perfect for web design, UI/UX development, brand guidelines, and accessibility audits.</p>
+                <div class="keywords">
+                    <span class="keyword-tag">Contrast Checker</span>
+                    <span class="keyword-tag">WCAG Compliance</span>
+                    <span class="keyword-tag">Accessibility Testing</span>
+                    <span class="keyword-tag">Color Contrast Ratio</span>
+                    <span class="keyword-tag">AA Compliance</span>
+                    <span class="keyword-tag">AAA Compliance</span>
+                    <span class="keyword-tag">Web Accessibility</span>
+                    <span class="keyword-tag">Accessibility Checker</span>
+                    <span class="keyword-tag">Color Accessibility</span>
+                    <span class="keyword-tag">Contrast Analyzer</span>
+                </div>
+            </div>
         </div>
     </main>
 
@@ -1257,7 +1297,7 @@
         <div class="container">
             <div class="footer-container">
                 <div class="footer-about">
-                    <a href="index.html" class="footer-logo">Tool Nest</a>
+                    <a href="#" class="footer-logo">Tool Nest</a>
                     <p class="footer-tagline">Professional accessibility tools for inclusive design and development.</p>
                     <div class="footer-contact">
                         <div class="contact-item">
@@ -1278,22 +1318,22 @@
                 <div class="footer-links">
                     <h4>Accessibility Tools</h4>
                     <ul>
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="color-blindness-simulator.html">Color Blindness Simulator</a></li>
-                        <li><a href="screen-reader-simulator.html">Screen Reader Simulator</a></li>
-                        <li><a href="font-size-checker.html">Font Size Checker</a></li>
-                        <li><a href="accessibility-audit.html">Accessibility Audit</a></li>
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">Color Blindness Simulator</a></li>
+                        <li><a href="#">Screen Reader Simulator</a></li>
+                        <li><a href="#">Font Size Checker</a></li>
+                        <li><a href="#">Accessibility Audit</a></li>
                     </ul>
                 </div>
                 
                 <div class="footer-links">
                     <h4>Resources</h4>
                     <ul>
-                        <li><a href="disclaimer.html">Accessibility Disclaimer</a></li>
-                        <li><a href="privacy-policy.html">Privacy Policy</a></li>
-                        <li><a href="terms-of-use.html">Terms of Service</a></li>
-                        <li><a href="accessibility-statement.html">Accessibility Statement</a></li>
-                        <li><a href="api-documentation.html">API Documentation</a></li>
+                        <li><a href="#">Accessibility Disclaimer</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#">Accessibility Statement</a></li>
+                        <li><a href="#">API Documentation</a></li>
                     </ul>
                 </div>
             </div>
@@ -1343,6 +1383,11 @@
             
             // Initial contrast check
             checkContrast();
+            
+            // Add fade-in animation to main elements
+            document.querySelectorAll('.tool-container, .api-demo, .features-section, .seo-description').forEach(el => {
+                el.classList.add('fade-in');
+            });
         });
 
         // Set up event listeners
@@ -1378,12 +1423,31 @@
             // Color swatch click to open color picker
             textSwatch.addEventListener('click', () => {
                 textHex.focus();
-                // In a real implementation, you'd trigger a color picker
-                // For now, we'll just focus the HEX input
+                textHex.select();
             });
             
             bgSwatch.addEventListener('click', () => {
                 bgHex.focus();
+                bgHex.select();
+            });
+            
+            // Add keyboard shortcuts
+            document.addEventListener('keydown', (e) => {
+                // Ctrl/Cmd + S to save report
+                if ((e.ctrlKey || e.metaKey) && e.key === 's') {
+                    e.preventDefault();
+                    saveReport();
+                }
+                // Ctrl/Cmd + R to randomize
+                if ((e.ctrlKey || e.metaKey) && e.key === 'r') {
+                    e.preventDefault();
+                    randomColors();
+                }
+                // Space to swap colors
+                if (e.key === ' ' && !e.target.matches('input, textarea')) {
+                    e.preventDefault();
+                    swapColors();
+                }
             });
         }
 
@@ -1828,4 +1892,5 @@ fetch('https://api.toolnest.com/v1/accessibility/contrast', {
     </script>
 </body>
 </html>
+
 
