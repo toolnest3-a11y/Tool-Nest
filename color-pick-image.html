@@ -1,4 +1,5 @@
 
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -37,28 +38,30 @@
     
     <style>
         :root {
-            /* Premium Color Palette */
-            --primary-blue: #1a56db;
-            --dark-blue: #1e3a8a;
-            --light-blue: #3b82f6;
-            --accent-blue: #60a5fa;
-            --gradient-blue: linear-gradient(135deg, #1a56db 0%, #3b82f6 100%);
-            --gradient-dark: linear-gradient(135deg, #1e3a8a 0%, #1a56db 100%);
-            --premium-gray: #f9fafb;
-            --card-white: #ffffff;
-            --text-dark: #111827;
-            --text-gray: #6b7280;
-            --text-light: #9ca3af;
-            --border-color: #e5e7eb;
+            /* Dark Theme Color Palette */
+            --primary-blue: #3b82f6;
+            --dark-blue: #1e40af;
+            --light-blue: #60a5fa;
+            --accent-blue: #93c5fd;
+            --gradient-blue: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+            --gradient-dark: linear-gradient(135deg, #1e3a8a 0%, #0f172a 100%);
+            --premium-dark: #0f172a;
+            --card-dark: #1e293b;
+            --card-darker: #0f172a;
+            --text-light: #f8fafc;
+            --text-gray: #cbd5e1;
+            --text-dark: #94a3b8;
+            --border-color: #334155;
+            --border-light: #475569;
             --success-green: #10b981;
             --warning-orange: #f59e0b;
             --error-red: #ef4444;
             --design-purple: #8b5cf6;
             --palette-teal: #06b6d4;
-            --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.05);
-            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.07), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-            --shadow-lg: 0 10px 25px -5px rgba(0, 0, 0, 0.08), 0 8px 10px -6px rgba(0, 0, 0, 0.04);
-            --shadow-xl: 0 20px 40px -15px rgba(0, 0, 0, 0.1);
+            --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.3);
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.4), 0 2px 4px -1px rgba(0, 0, 0, 0.3);
+            --shadow-lg: 0 10px 25px -5px rgba(0, 0, 0, 0.5), 0 8px 10px -6px rgba(0, 0, 0, 0.2);
+            --shadow-xl: 0 20px 40px -15px rgba(0, 0, 0, 0.6);
             --radius-sm: 8px;
             --radius-md: 12px;
             --radius-lg: 16px;
@@ -74,8 +77,8 @@
         
         body {
             font-family: 'Inter', sans-serif;
-            color: var(--text-dark);
-            background: var(--premium-gray);
+            color: var(--text-light);
+            background: var(--premium-dark);
             line-height: 1.6;
             font-weight: 400;
             min-height: 100vh;
@@ -88,6 +91,7 @@
             font-weight: 600;
             line-height: 1.2;
             margin-bottom: 1rem;
+            color: var(--text-light);
         }
         
         .container {
@@ -99,8 +103,8 @@
         
         /* Premium Header */
         header {
-            background-color: var(--card-white);
-            box-shadow: var(--shadow-sm);
+            background-color: var(--card-darker);
+            box-shadow: var(--shadow-lg);
             position: sticky;
             top: 0;
             z-index: 1000;
@@ -173,51 +177,13 @@
             font-weight: 500;
             font-size: 14px;
             transition: var(--transition);
+            border: none;
+            cursor: pointer;
         }
         
         .back-btn:hover {
             transform: translateX(-3px);
             box-shadow: var(--shadow-md);
-        }
-        
-        /* SEO Description Section */
-        .seo-description {
-            background: white;
-            border-radius: var(--radius-md);
-            padding: 30px;
-            margin: 30px auto;
-            max-width: 900px;
-            box-shadow: var(--shadow-sm);
-            border-left: 4px solid var(--design-purple);
-        }
-        
-        .seo-description h2 {
-            color: var(--dark-blue);
-            font-size: 1.5rem;
-            margin-bottom: 15px;
-        }
-        
-        .seo-description p {
-            color: var(--text-gray);
-            margin-bottom: 15px;
-            line-height: 1.7;
-        }
-        
-        .keywords {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            margin-top: 20px;
-        }
-        
-        .keyword-tag {
-            background: #f5f3ff;
-            color: var(--design-purple);
-            padding: 6px 12px;
-            border-radius: 20px;
-            font-size: 13px;
-            font-weight: 500;
-            border: 1px solid #ede9fe;
         }
         
         /* Main Content */
@@ -242,14 +208,14 @@
             font-weight: 600;
             margin-bottom: 16px;
             letter-spacing: 0.5px;
+            box-shadow: var(--shadow-md);
         }
         
         .tool-header h1 {
             font-size: 2.8rem;
             font-weight: 700;
-            color: var(--text-dark);
             margin-bottom: 16px;
-            background: linear-gradient(135deg, var(--text-dark) 0%, var(--design-purple) 100%);
+            background: linear-gradient(135deg, var(--text-light) 0%, var(--design-purple) 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -265,10 +231,10 @@
         
         /* Tool Container */
         .tool-container {
-            background: var(--card-white);
+            background: var(--card-dark);
             border-radius: var(--radius-lg);
-            padding: 50px;
-            box-shadow: var(--shadow-md);
+            padding: 40px;
+            box-shadow: var(--shadow-xl);
             border: 1px solid var(--border-color);
             margin-bottom: 60px;
             position: relative;
@@ -287,7 +253,7 @@
         
         /* Upload Section */
         .upload-section {
-            background: #f8fafc;
+            background: var(--card-darker);
             border-radius: var(--radius-md);
             padding: 30px;
             margin-bottom: 40px;
@@ -298,7 +264,7 @@
         
         .upload-section:hover {
             border-color: var(--design-purple);
-            background: #f5f3ff;
+            background: rgba(139, 92, 246, 0.05);
         }
         
         .upload-header {
@@ -327,7 +293,7 @@
         .upload-icon {
             width: 60px;
             height: 60px;
-            background: linear-gradient(135deg, #f5f3ff 0%, #ede9fe 100%);
+            background: linear-gradient(135deg, rgba(139, 92, 246, 0.1) 0%, rgba(139, 92, 246, 0.2) 100%);
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -351,6 +317,7 @@
             font-weight: 600;
             cursor: pointer;
             transition: var(--transition);
+            border: none;
         }
         
         .upload-btn:hover {
@@ -379,11 +346,12 @@
         @media (max-width: 768px) {
             .image-display {
                 grid-template-columns: 1fr;
+                gap: 20px;
             }
         }
         
         .image-container {
-            background: #f8fafc;
+            background: var(--card-darker);
             border-radius: var(--radius-md);
             padding: 20px;
             border: 1px solid var(--border-color);
@@ -394,7 +362,7 @@
             align-items: center;
             gap: 10px;
             margin-bottom: 15px;
-            color: var(--text-dark);
+            color: var(--text-light);
         }
         
         .image-container h3 i {
@@ -415,7 +383,7 @@
             max-height: 400px;
             cursor: crosshair;
             border-radius: var(--radius-sm);
-            background: white;
+            background: var(--card-dark);
         }
         
         .zoom-magnifier {
@@ -426,7 +394,7 @@
             border-radius: 50%;
             pointer-events: none;
             display: none;
-            box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
             overflow: hidden;
             z-index: 10;
         }
@@ -435,7 +403,7 @@
             position: absolute;
             top: 20px;
             right: 20px;
-            background: white;
+            background: var(--card-dark);
             border-radius: var(--radius-sm);
             padding: 15px;
             box-shadow: var(--shadow-lg);
@@ -446,7 +414,7 @@
         
         /* Color Information */
         .color-info {
-            background: #f8fafc;
+            background: var(--card-darker);
             border-radius: var(--radius-md);
             padding: 30px;
             margin-bottom: 40px;
@@ -458,7 +426,7 @@
             align-items: center;
             gap: 12px;
             margin-bottom: 25px;
-            color: var(--text-dark);
+            color: var(--text-light);
         }
         
         .color-info h3 i {
@@ -477,7 +445,7 @@
             width: 80px;
             height: 80px;
             border-radius: var(--radius-md);
-            border: 3px solid white;
+            border: 3px solid var(--card-dark);
             box-shadow: var(--shadow-md);
         }
         
@@ -490,16 +458,18 @@
             display: flex;
             gap: 10px;
             margin-bottom: 20px;
+            flex-wrap: wrap;
         }
         
         .format-tab {
             padding: 8px 20px;
-            background: white;
+            background: var(--card-dark);
             border: 1px solid var(--border-color);
             border-radius: var(--radius-sm);
             cursor: pointer;
             font-weight: 500;
             transition: var(--transition);
+            color: var(--text-gray);
         }
         
         .format-tab.active {
@@ -509,7 +479,7 @@
         }
         
         .format-tab:hover:not(.active) {
-            background: #f0f9ff;
+            background: rgba(59, 130, 246, 0.1);
             border-color: var(--light-blue);
         }
         
@@ -520,7 +490,7 @@
         }
         
         .color-value-item {
-            background: white;
+            background: var(--card-dark);
             padding: 15px;
             border-radius: var(--radius-sm);
             border: 1px solid var(--border-color);
@@ -537,13 +507,13 @@
         .color-value {
             font-family: 'Courier New', monospace;
             font-weight: 600;
-            color: var(--text-dark);
+            color: var(--text-light);
             font-size: 1.1rem;
         }
         
         /* Color Palette */
         .palette-section {
-            background: #f8fafc;
+            background: var(--card-darker);
             border-radius: var(--radius-md);
             padding: 30px;
             margin-bottom: 40px;
@@ -563,7 +533,7 @@
             display: flex;
             align-items: center;
             gap: 12px;
-            color: var(--text-dark);
+            color: var(--text-light);
         }
         
         .palette-header h3 i {
@@ -583,7 +553,7 @@
         }
         
         .palette-color {
-            background: white;
+            background: var(--card-dark);
             border-radius: var(--radius-sm);
             overflow: hidden;
             border: 1px solid var(--border-color);
@@ -609,7 +579,7 @@
             font-family: 'Courier New', monospace;
             font-weight: 600;
             margin-bottom: 5px;
-            color: var(--text-dark);
+            color: var(--text-light);
         }
         
         .palette-rgb {
@@ -619,7 +589,7 @@
         
         /* Recent Colors */
         .recent-colors {
-            background: #f8fafc;
+            background: var(--card-darker);
             border-radius: var(--radius-md);
             padding: 30px;
             margin-bottom: 40px;
@@ -631,7 +601,7 @@
             align-items: center;
             gap: 12px;
             margin-bottom: 25px;
-            color: var(--text-dark);
+            color: var(--text-light);
         }
         
         .recent-header i {
@@ -649,7 +619,7 @@
             height: 40px;
             border-radius: var(--radius-sm);
             cursor: pointer;
-            border: 2px solid white;
+            border: 2px solid var(--card-dark);
             box-shadow: var(--shadow-sm);
             transition: var(--transition);
         }
@@ -694,15 +664,15 @@
         }
         
         .action-btn.secondary {
-            background: var(--premium-gray);
-            color: var(--text-dark);
+            background: var(--card-dark);
+            color: var(--text-light);
             border: 2px solid var(--border-color);
         }
         
         .action-btn.secondary:hover {
-            background: #f0f9ff;
+            background: rgba(59, 130, 246, 0.1);
             border-color: var(--light-blue);
-            color: var(--primary-blue);
+            color: var(--light-blue);
         }
         
         .action-btn.purple {
@@ -717,7 +687,7 @@
         
         /* API Demo Section */
         .api-demo {
-            background: var(--card-white);
+            background: var(--card-dark);
             border-radius: var(--radius-lg);
             padding: 30px;
             box-shadow: var(--shadow-md);
@@ -734,7 +704,7 @@
         }
         
         .api-response {
-            background: #f8fafc;
+            background: var(--card-darker);
             border-radius: var(--radius-md);
             padding: 20px;
             margin-top: 20px;
@@ -745,11 +715,12 @@
             border: 1px solid var(--border-color);
             max-height: 300px;
             overflow-y: auto;
+            color: var(--success-green);
         }
         
         /* Features Section */
         .features-section {
-            background: var(--card-white);
+            background: var(--card-dark);
             border-radius: var(--radius-lg);
             padding: 50px;
             box-shadow: var(--shadow-md);
@@ -761,7 +732,7 @@
             text-align: center;
             font-size: 2rem;
             margin-bottom: 40px;
-            color: var(--text-dark);
+            color: var(--text-light);
         }
         
         .features-grid {
@@ -771,7 +742,7 @@
         }
         
         .feature-card {
-            background: var(--premium-gray);
+            background: var(--card-darker);
             border-radius: var(--radius-md);
             padding: 30px;
             border-left: 4px solid var(--design-purple);
@@ -786,7 +757,7 @@
         .feature-icon {
             width: 60px;
             height: 60px;
-            background: linear-gradient(135deg, #f5f3ff 0%, #ede9fe 100%);
+            background: linear-gradient(135deg, rgba(139, 92, 246, 0.1) 0%, rgba(139, 92, 246, 0.2) 100%);
             border-radius: var(--radius-md);
             display: flex;
             align-items: center;
@@ -799,7 +770,7 @@
         .feature-card h3 {
             font-size: 1.2rem;
             margin-bottom: 12px;
-            color: var(--text-dark);
+            color: var(--text-light);
         }
         
         .feature-card p {
@@ -808,12 +779,53 @@
             line-height: 1.6;
         }
         
+        /* SEO Description Section */
+        .seo-description {
+            background: var(--card-dark);
+            border-radius: var(--radius-md);
+            padding: 30px;
+            margin: 30px auto;
+            max-width: 900px;
+            box-shadow: var(--shadow-sm);
+            border-left: 4px solid var(--design-purple);
+        }
+        
+        .seo-description h2 {
+            color: var(--text-light);
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+        
+        .seo-description p {
+            color: var(--text-gray);
+            margin-bottom: 15px;
+            line-height: 1.7;
+        }
+        
+        .keywords {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 20px;
+        }
+        
+        .keyword-tag {
+            background: rgba(139, 92, 246, 0.1);
+            color: var(--design-purple);
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 500;
+            border: 1px solid rgba(139, 92, 246, 0.2);
+        }
+        
         /* Footer */
         footer {
-            background: var(--text-dark);
-            color: white;
+            background: var(--card-darker);
+            color: var(--text-light);
             padding: 60px 0 40px;
             margin-top: auto;
+            border-top: 1px solid var(--border-color);
         }
         
         .footer-container {
@@ -827,17 +839,20 @@
             font-family: 'Poppins', sans-serif;
             font-size: 28px;
             font-weight: 800;
-            color: white;
+            color: var(--text-light);
             margin-bottom: 16px;
             display: block;
             text-decoration: none;
+            text-align: center;
+            width: 100%;
         }
         
         .footer-tagline {
-            color: #9ca3af;
+            color: var(--text-gray);
             font-size: 14px;
             line-height: 1.6;
             margin-bottom: 24px;
+            text-align: center;
         }
         
         .footer-contact {
@@ -849,7 +864,7 @@
             align-items: center;
             gap: 12px;
             margin-bottom: 16px;
-            color: #9ca3af;
+            color: var(--text-gray);
         }
         
         .contact-item i {
@@ -859,7 +874,7 @@
         .footer-links h4 {
             font-size: 1.1rem;
             margin-bottom: 24px;
-            color: white;
+            color: var(--text-light);
         }
         
         .footer-links ul {
@@ -871,23 +886,37 @@
         }
         
         .footer-links a {
-            color: #9ca3af;
+            color: var(--text-gray);
             text-decoration: none;
             font-size: 14px;
             transition: var(--transition);
         }
         
         .footer-links a:hover {
-            color: white;
+            color: var(--text-light);
             padding-left: 8px;
         }
         
         .footer-bottom {
             text-align: center;
             padding-top: 40px;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            color: #9ca3af;
+            border-top: 1px solid var(--border-color);
+            color: var(--text-gray);
             font-size: 14px;
+        }
+        
+        .site-name {
+            font-family: 'Poppins', sans-serif;
+            font-size: 24px;
+            font-weight: 800;
+            color: var(--text-light);
+            margin-bottom: 20px;
+            background: var(--gradient-blue);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-align: center;
+            width: 100%;
         }
         
         /* Animations */
@@ -909,7 +938,7 @@
             }
             
             .tool-container, .features-section {
-                padding: 30px;
+                padding: 20px;
             }
             
             .action-buttons {
@@ -932,6 +961,14 @@
             .seo-description {
                 padding: 20px;
             }
+            
+            .features-section {
+                padding: 30px;
+            }
+            
+            .palette-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
         }
         
         @media (max-width: 480px) {
@@ -940,12 +977,61 @@
             }
             
             .tool-container, .features-section {
+                padding: 15px;
+            }
+            
+            .upload-section {
+                padding: 20px;
+            }
+            
+            .color-info, .palette-section, .recent-colors {
                 padding: 20px;
             }
             
             .palette-grid {
-                grid-template-columns: repeat(2, 1fr);
+                grid-template-columns: 1fr;
             }
+            
+            .footer-container {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            
+            .footer-links ul {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .contact-item {
+                justify-content: center;
+            }
+        }
+        
+        /* Notification */
+        .notification {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            padding: 15px 20px;
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow-lg);
+            z-index: 10000;
+            animation: fadeIn 0.3s ease-out;
+            font-weight: 500;
+            color: white;
+        }
+        
+        .notification.success {
+            background: var(--success-green);
+        }
+        
+        .notification.error {
+            background: var(--error-red);
+        }
+        
+        .notification.info {
+            background: var(--warning-orange);
         }
     </style>
 </head>
@@ -966,39 +1052,20 @@
                 </a>
             </div>
             
-            <a href="index.html" class="back-btn">
+            <button class="back-btn" onclick="window.location.href='index.html'">
                 <i class="fas fa-arrow-left"></i>
                 Back to Tools
-            </a>
+            </button>
         </div>
     </header>
 
     <!-- Main Content -->
     <main class="main-content">
         <div class="container">
-            <!-- SEO Description -->
-            <div class="seo-description">
-                <h2>Professional Image Color Picker Tool</h2>
-                <p>Our <strong>Advanced Image Color Picker</strong> is a comprehensive design tool that allows you to extract exact color values from any image with pixel-perfect accuracy. Get HEX, RGB, HSL, and CMYK color codes instantly, generate color palettes, and export schemes for your design projects.</p>
-                <p>This essential tool helps designers, developers, and content creators maintain color consistency, extract inspiration from images, and create harmonious color schemes. Perfect for web design, UI/UX projects, branding, and digital art.</p>
-                <div class="keywords">
-                    <span class="keyword-tag">Color Picker from Image</span>
-                    <span class="keyword-tag">Image Color Extractor</span>
-                    <span class="keyword-tag">Color Palette Generator</span>
-                    <span class="keyword-tag">HEX Color Picker</span>
-                    <span class="keyword-tag">RGB Color Extractor</span>
-                    <span class="keyword-tag">Design Color Tool</span>
-                    <span class="keyword-tag">Web Design Colors</span>
-                    <span class="keyword-tag">Color Scheme Generator</span>
-                    <span class="keyword-tag">Pixel Color Picker</span>
-                    <span class="keyword-tag">Image Color Analysis</span>
-                </div>
-            </div>
-
             <!-- Tool Header -->
             <div class="tool-header">
-                <span class="tool-badge">Design Tool</span>
-                <h1>Advanced Image Color Picker</h1>
+                <span class="tool-badge">Advanced Design Tool</span>
+                <h1>Image Color Picker & Palette Generator</h1>
                 <p>Extract exact colors from images with pixel precision. Generate palettes, get color codes, and create harmonious color schemes.</p>
             </div>
 
@@ -1138,7 +1205,7 @@
                     <i class="fas fa-code"></i>
                     <h3>Color Extraction API</h3>
                 </div>
-                <p>Integrate our color extraction capabilities into your application using our REST API:</p>
+                <p style="color: var(--text-gray);">Integrate our color extraction capabilities into your application using our REST API:</p>
                 <div class="action-buttons">
                     <button class="action-btn secondary" onclick="demoAPICall()">
                         <i class="fas fa-play"></i>
@@ -1191,20 +1258,48 @@
                     </div>
                 </div>
             </div>
+
+            <!-- SEO Description -->
+            <div class="seo-description">
+                <h2>Professional Image Color Picker Tool - Advanced Color Extraction</h2>
+                <p><strong>Tool Nest's Advanced Image Color Picker</strong> is a premium design utility that enables precise color extraction from any image with professional-grade accuracy. This sophisticated tool extracts exact HEX, RGB, HSL, and CMYK color codes directly from uploaded images, allowing designers, developers, and content creators to maintain perfect color consistency across their projects.</p>
+                
+                <p>Our color picker features advanced algorithms for automatic palette generation, creating harmonious color schemes from your uploaded images. The tool includes pixel-perfect zoom magnification, real-time color preview, and multiple export options for seamless integration with design workflows. Whether you're working on web design projects, UI/UX interfaces, branding materials, or digital art, this comprehensive color extraction tool provides everything you need for professional color management.</p>
+                
+                <p>The tool supports all major image formats including JPG, PNG, GIF, and WebP, with secure local processing that ensures your images never leave your device. With features like recent color history, palette export capabilities, and API integration options, Tool Nest's Color Picker is the ultimate solution for modern design workflows and professional color extraction needs.</p>
+                
+                <div class="keywords">
+                    <span class="keyword-tag">Color Picker from Image</span>
+                    <span class="keyword-tag">Image Color Extractor</span>
+                    <span class="keyword-tag">Color Palette Generator</span>
+                    <span class="keyword-tag">HEX Color Picker</span>
+                    <span class="keyword-tag">RGB Color Extractor</span>
+                    <span class="keyword-tag">Design Color Tool</span>
+                    <span class="keyword-tag">Web Design Colors</span>
+                    <span class="keyword-tag">Color Scheme Generator</span>
+                    <span class="keyword-tag">Pixel Color Picker</span>
+                    <span class="keyword-tag">Image Color Analysis</span>
+                    <span class="keyword-tag">Online Color Picker</span>
+                    <span class="keyword-tag">Design Tool</span>
+                    <span class="keyword-tag">UI Color Extractor</span>
+                    <span class="keyword-tag">Brand Color Picker</span>
+                    <span class="keyword-tag">Digital Color Tool</span>
+                </div>
+            </div>
         </div>
     </main>
 
     <!-- Footer -->
     <footer>
         <div class="container">
+            <div class="site-name">Tool Nest</div>
             <div class="footer-container">
                 <div class="footer-about">
-                    <a href="index.html" class="footer-logo">Tool Nest</a>
-                    <p class="footer-tagline">Professional design and color tools for creators, designers, and developers.</p>
+                    <p class="footer-tagline">Professional design and color tools for creators, designers, and developers. Premium tools for modern design workflows.</p>
                     <div class="footer-contact">
                         <div class="contact-item">
                             <i class="fas fa-envelope"></i>
-                            <span>toolnest3@gmail.com</span>
+                            <span>contact@toolnest.com</span>
                         </div>
                         <div class="contact-item">
                             <i class="fas fa-palette"></i>
@@ -1241,7 +1336,7 @@
             </div>
             
             <div class="footer-bottom">
-                <p>© 2023 Tool Nest. All rights reserved. All color tools are provided for design and educational purposes.</p>
+                <p>© 2024 Tool Nest. All rights reserved. All color tools are provided for design and educational purposes. Professional design tools for modern creators.</p>
             </div>
         </div>
     </footer>
@@ -1265,37 +1360,54 @@
 
         // State variables
         let currentImage = null;
-        let currentColor = { r: 0, g: 0, b: 0 };
+        let currentColor = { r: 74, g: 144, b: 226 };
         let colorPalette = [];
         let recentColors = [];
         let isMouseOver = false;
 
         // Initialize
         window.addEventListener('load', () => {
-            // Set up event listeners
             setupEventListeners();
-            
-            // Load default color
-            updateColorDisplay({ r: 74, g: 144, b: 226 });
-            
-            // Initialize zoom canvas
+            updateColorDisplay(currentColor);
             zoomCanvas.width = 200;
             zoomCanvas.height = 200;
-            
-            // Load recent colors from storage
             loadRecentColors();
+            initializeSamplePalette();
         });
+
+        // Initialize sample palette for first-time users
+        function initializeSamplePalette() {
+            if (localStorage.getItem('colorPickerInitialized')) return;
+            
+            const sampleColors = [
+                { r: 59, g: 130, b: 246 }, // Blue
+                { r: 139, g: 92, b: 246 }, // Purple
+                { r: 14, g: 165, b: 233 }, // Cyan
+                { r: 34, g: 197, b: 94 },  // Green
+                { r: 249, g: 115, b: 22 }  // Orange
+            ];
+            
+            sampleColors.forEach(color => {
+                colorPalette.push({
+                    hex: rgbToHex(color.r, color.g, color.b),
+                    rgb: color,
+                    hsl: rgbToHsl(color.r, color.g, color.b),
+                    cmyk: rgbToCmyk(color.r, color.g, color.b)
+                });
+            });
+            
+            updatePaletteDisplay();
+            localStorage.setItem('colorPickerInitialized', 'true');
+        }
 
         // Set up event listeners
         function setupEventListeners() {
-            // File input change
             fileInput.addEventListener('change', handleFileSelect);
             
-            // Drag and drop
             dropzone.addEventListener('dragover', (e) => {
                 e.preventDefault();
                 dropzone.style.borderColor = 'var(--design-purple)';
-                dropzone.style.background = '#f5f3ff';
+                dropzone.style.background = 'rgba(139, 92, 246, 0.05)';
             });
             
             dropzone.addEventListener('dragleave', () => {
@@ -1314,15 +1426,8 @@
                 }
             });
             
-            // Click on dropzone to open file dialog
-            dropzone.addEventListener('click', () => {
-                fileInput.click();
-            });
-            
-            // Canvas click for color picking
+            dropzone.addEventListener('click', () => fileInput.click());
             mainCanvas.addEventListener('click', handleCanvasClick);
-            
-            // Canvas mouse move for zoom preview
             mainCanvas.addEventListener('mousemove', handleCanvasMouseMove);
             mainCanvas.addEventListener('mouseenter', () => { isMouseOver = true; });
             mainCanvas.addEventListener('mouseleave', () => {
@@ -1331,7 +1436,6 @@
                 zoomPreview.style.display = 'none';
             });
             
-            // Color format tabs
             document.querySelectorAll('.format-tab').forEach(tab => {
                 tab.addEventListener('click', () => {
                     document.querySelectorAll('.format-tab').forEach(t => t.classList.remove('active'));
@@ -1346,13 +1450,11 @@
             const file = event.target.files[0];
             if (!file) return;
             
-            // Validate file type
             if (!file.type.match('image.*')) {
                 showNotification('Please select an image file', 'error');
                 return;
             }
             
-            // Validate file size (10MB)
             if (file.size > 10 * 1024 * 1024) {
                 showNotification('File size must be less than 10MB', 'error');
                 return;
@@ -1374,7 +1476,6 @@
         function displayImage() {
             if (!currentImage) return;
             
-            // Calculate dimensions to fit canvas
             const maxWidth = 500;
             const maxHeight = 400;
             let width = currentImage.width;
@@ -1390,15 +1491,11 @@
                 height = maxHeight;
             }
             
-            // Set canvas dimensions
             mainCanvas.width = width;
             mainCanvas.height = height;
-            
-            // Draw image
             mainCtx.drawImage(currentImage, 0, 0, width, height);
             
-            // Draw border
-            mainCtx.strokeStyle = 'rgba(0, 0, 0, 0.1)';
+            mainCtx.strokeStyle = 'rgba(255, 255, 255, 0.1)';
             mainCtx.lineWidth = 1;
             mainCtx.strokeRect(0, 0, width, height);
         }
@@ -1414,16 +1511,11 @@
             const x = e.clientX - rect.left;
             const y = e.clientY - rect.top;
             
-            // Get pixel data
             const pixel = mainCtx.getImageData(x, y, 1, 1).data;
             const color = { r: pixel[0], g: pixel[1], b: pixel[2] };
             
-            // Update color display
             updateColorDisplay(color);
-            
-            // Add to recent colors
             addToRecentColors(color);
-            
             showNotification(`Color picked: RGB(${color.r}, ${color.g}, ${color.b})`, 'success');
         }
 
@@ -1435,7 +1527,7 @@
             const x = e.clientX - rect.left;
             const y = e.clientY - rect.top;
             
-            // Update magnifier position
+            // Update magnifier
             const magnifierSize = 120;
             zoomMagnifier.style.width = `${magnifierSize}px`;
             zoomMagnifier.style.height = `${magnifierSize}px`;
@@ -1444,24 +1536,21 @@
             zoomMagnifier.style.display = 'block';
             
             // Update zoom preview
-            const zoomSize = 20; // Area to zoom
-            const zoomScale = 10; // Zoom level
+            const zoomSize = 20;
+            const zoomScale = 10;
             
-            // Draw zoomed area on zoom canvas
             zoomCtx.clearRect(0, 0, zoomCanvas.width, zoomCanvas.height);
             
-            // Calculate source coordinates
             const sx = Math.max(0, Math.min(x - zoomSize/2, mainCanvas.width - zoomSize));
             const sy = Math.max(0, Math.min(y - zoomSize/2, mainCanvas.height - zoomSize));
             
-            // Draw zoomed image
             zoomCtx.drawImage(
                 mainCanvas,
                 sx, sy, zoomSize, zoomSize,
                 0, 0, zoomCanvas.width, zoomCanvas.height
             );
             
-            // Draw crosshair on zoom canvas
+            // Draw crosshair
             const centerX = zoomCanvas.width / 2;
             const centerY = zoomCanvas.height / 2;
             
@@ -1483,20 +1572,18 @@
             zoomCtx.lineTo(zoomCanvas.width, centerY);
             zoomCtx.stroke();
             
-            // Update zoom preview position
+            // Update zoom preview tooltip
             zoomPreview.style.display = 'block';
             zoomPreview.style.left = `${e.clientX + 20}px`;
             zoomPreview.style.top = `${e.clientY + 20}px`;
             
-            // Get color at cursor position
             const pixel = mainCtx.getImageData(x, y, 1, 1).data;
             const hexColor = rgbToHex(pixel[0], pixel[1], pixel[2]);
             
-            // Update zoom preview content
             zoomPreview.innerHTML = `
                 <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 10px;">
                     <div style="width: 20px; height: 20px; background: ${hexColor}; border-radius: 3px;"></div>
-                    <span style="font-family: monospace; font-weight: bold;">${hexColor}</span>
+                    <span style="font-family: monospace; font-weight: bold; color: var(--text-light);">${hexColor}</span>
                 </div>
                 <div style="font-size: 12px; color: var(--text-gray);">
                     RGB: ${pixel[0]}, ${pixel[1]}, ${pixel[2]}
@@ -1509,10 +1596,8 @@
             currentColor = color;
             const hex = rgbToHex(color.r, color.g, color.b);
             
-            // Update color preview
             colorPreview.style.backgroundColor = hex;
             
-            // Update color values based on selected format
             let valuesHtml = '';
             
             if (format === 'hex') {
@@ -1566,13 +1651,11 @@
         function addToPalette() {
             const hex = rgbToHex(currentColor.r, currentColor.g, currentColor.b);
             
-            // Check if color already in palette
             if (colorPalette.some(c => c.hex === hex)) {
                 showNotification('Color already in palette', 'info');
                 return;
             }
             
-            // Add to palette
             colorPalette.push({
                 hex: hex,
                 rgb: currentColor,
@@ -1580,9 +1663,7 @@
                 cmyk: rgbToCmyk(currentColor.r, currentColor.g, currentColor.b)
             });
             
-            // Update palette display
             updatePaletteDisplay();
-            
             showNotification('Color added to palette', 'success');
         }
 
@@ -1593,18 +1674,14 @@
                 return;
             }
             
-            // Clear existing palette
             colorPalette = [];
             
-            // Simple color extraction algorithm
-            // We'll sample colors from different areas of the image
-            
             const samplePoints = [
-                { x: 0.2, y: 0.2 }, // Top-left area
-                { x: 0.8, y: 0.2 }, // Top-right area
-                { x: 0.5, y: 0.5 }, // Center
-                { x: 0.2, y: 0.8 }, // Bottom-left area
-                { x: 0.8, y: 0.8 }, // Bottom-right area
+                { x: 0.2, y: 0.2 },
+                { x: 0.8, y: 0.2 },
+                { x: 0.5, y: 0.5 },
+                { x: 0.2, y: 0.8 },
+                { x: 0.8, y: 0.8 },
             ];
             
             samplePoints.forEach(point => {
@@ -1615,12 +1692,11 @@
                 const color = { r: pixel[0], g: pixel[1], b: pixel[2] };
                 const hex = rgbToHex(color.r, color.g, color.b);
                 
-                // Check if color is significantly different from existing colors
                 const isDifferent = !colorPalette.some(existing => {
                     const dr = Math.abs(existing.rgb.r - color.r);
                     const dg = Math.abs(existing.rgb.g - color.g);
                     const db = Math.abs(existing.rgb.b - color.b);
-                    return (dr + dg + db) < 30; // Threshold for difference
+                    return (dr + dg + db) < 30;
                 });
                 
                 if (isDifferent) {
@@ -1633,11 +1709,9 @@
                 }
             });
             
-            // If we don't have enough colors, add some variations
             if (colorPalette.length < 5) {
                 const baseColor = colorPalette[0] || { rgb: { r: 100, g: 150, b: 200 } };
                 
-                // Create variations (lighter, darker, complementary)
                 const variations = [
                     { r: Math.min(255, baseColor.rgb.r + 50), g: Math.min(255, baseColor.rgb.g + 50), b: Math.min(255, baseColor.rgb.b + 50) },
                     { r: Math.max(0, baseColor.rgb.r - 50), g: Math.max(0, baseColor.rgb.g - 50), b: Math.max(0, baseColor.rgb.b - 50) },
@@ -1656,9 +1730,7 @@
                 });
             }
             
-            // Update palette display
             updatePaletteDisplay();
-            
             showNotification(`Generated ${colorPalette.length} color palette`, 'success');
         }
 
@@ -1717,22 +1789,14 @@
         function addToRecentColors(color) {
             const hex = rgbToHex(color.r, color.g, color.b);
             
-            // Remove if already exists
             recentColors = recentColors.filter(c => c.hex !== hex);
-            
-            // Add to beginning
             recentColors.unshift({
                 hex: hex,
                 rgb: color
             });
             
-            // Keep only last 12 colors
             recentColors = recentColors.slice(0, 12);
-            
-            // Update recent colors display
             updateRecentColorsDisplay();
-            
-            // Save to localStorage
             saveRecentColors();
         }
 
@@ -1775,9 +1839,7 @@
                 try {
                     recentColors = JSON.parse(saved);
                     updateRecentColorsDisplay();
-                } catch (e) {
-                    // Ignore parse errors
-                }
+                } catch (e) {}
             }
         }
 
@@ -1848,23 +1910,15 @@
         // Reset tool
         function resetTool() {
             if (confirm('Are you sure you want to reset everything? This will clear the image, palette, and recent colors.')) {
-                // Clear image
                 currentImage = null;
                 mainCtx.clearRect(0, 0, mainCanvas.width, mainCanvas.height);
                 zoomCtx.clearRect(0, 0, zoomCanvas.width, zoomCanvas.height);
                 
-                // Clear palette
                 colorPalette = [];
                 updatePaletteDisplay();
                 
-                // Clear recent colors (optional)
-                // recentColors = [];
-                // updateRecentColorsDisplay();
-                
-                // Reset file input
                 fileInput.value = '';
                 
-                // Reset color display to default
                 updateColorDisplay({ r: 74, g: 144, b: 226 });
                 
                 showNotification('Tool reset successfully', 'info');
@@ -1889,7 +1943,7 @@
             let h, s, l = (max + min) / 2;
             
             if (max === min) {
-                h = s = 0; // achromatic
+                h = s = 0;
             } else {
                 const d = max - min;
                 s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
@@ -1931,7 +1985,6 @@
 
         // Demo API call
         function demoAPICall() {
-            // Simulate API response
             const simulatedResponse = {
                 status: "success",
                 data: {
@@ -1960,7 +2013,6 @@
                 }
             };
             
-            // Display API response
             apiResponse.textContent = JSON.stringify(simulatedResponse, null, 2);
             apiResponse.style.color = 'var(--success-green)';
             
@@ -1969,7 +2021,7 @@
 
         // Copy API example
         function copyAPIExample() {
-            const exampleCode = `// Example API call to Color Extraction API
+            const exampleCode = `// Example API call to Tool Nest Color Extraction API
 fetch('https://api.toolnest.com/v1/color/extract', {
     method: 'POST',
     headers: {
@@ -1997,11 +2049,9 @@ fetch('https://api.toolnest.com/v1/color/extract', {
 
         // Show notification
         function showNotification(message, type = 'info') {
-            // Remove existing notification
             const existingNotification = document.querySelector('.notification');
             if (existingNotification) existingNotification.remove();
             
-            // Create notification
             const notification = document.createElement('div');
             notification.className = `notification ${type}`;
             notification.style.cssText = `
@@ -2021,7 +2071,6 @@ fetch('https://api.toolnest.com/v1/color/extract', {
             
             document.body.appendChild(notification);
             
-            // Remove after 3 seconds
             setTimeout(() => {
                 notification.style.animation = 'fadeIn 0.3s ease-out reverse';
                 setTimeout(() => notification.remove(), 300);
@@ -2043,4 +2092,6 @@ fetch('https://api.toolnest.com/v1/color/extract', {
     </script>
 </body>
 </html>
+
+
 
