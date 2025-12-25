@@ -1,279 +1,228 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
     <title>Advanced Color Blindness Simulator | Accessibility Testing Tool | Tool Nest</title>
     <meta name="description" content="Professional Color Blindness Simulator for testing visual accessibility. Simulate 8 types of color vision deficiencies with medical accuracy. Essential tool for designers, developers, and accessibility specialists.">
     <meta name="keywords" content="color blindness simulator, color vision deficiency simulator, accessibility testing, color blindness test, web accessibility, color contrast checker, deuteranopia simulator, protanopia simulator, tritanopia simulator, color accessibility tool">
     <meta name="author" content="Tool Nest">
     <link rel="icon" href="favicon-16x16.png" type="image/x-icon">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
-    
-    <!-- Open Graph Meta Tags -->
-    <meta property="og:title" content="Professional Color Blindness Simulator | Accessibility Testing">
-    <meta property="og:description" content="Test your designs for color accessibility with medical-grade color blindness simulations.">
-    <meta property="og:type" content="website">
-    
-    <!-- Structured Data for SEO -->
-    <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "WebApplication",
-        "name": "Advanced Color Blindness Simulator",
-        "description": "Professional tool for simulating color vision deficiencies with medical accuracy",
-        "applicationCategory": "AccessibilityApplication",
-        "operatingSystem": "Any",
-        "url": "https://toolnest.com/color-blindness-simulator",
-        "offers": {
-            "@type": "Offer",
-            "price": "0",
-            "priceCurrency": "USD"
-        }
-    }
-    </script>
     
     <style>
         :root {
-            /* Premium Color Palette */
-            --primary-blue: #1a56db;
-            --dark-blue: #1e3a8a;
-            --light-blue: #3b82f6;
-            --accent-blue: #60a5fa;
-            --gradient-blue: linear-gradient(135deg, #1a56db 0%, #3b82f6 100%);
-            --gradient-dark: linear-gradient(135deg, #1e3a8a 0%, #1a56db 100%);
-            --premium-gray: #f9fafb;
-            --card-white: #ffffff;
-            --text-dark: #111827;
-            --text-gray: #6b7280;
-            --text-light: #9ca3af;
-            --border-color: #e5e7eb;
-            --success-green: #10b981;
-            --warning-orange: #f59e0b;
-            --error-red: #ef4444;
-            --accessibility-purple: #8b5cf6;
-            --vision-teal: #06b6d4;
-            --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.05);
-            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.07), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-            --shadow-lg: 0 10px 25px -5px rgba(0, 0, 0, 0.08), 0 8px 10px -6px rgba(0, 0, 0, 0.04);
-            --shadow-xl: 0 20px 40px -15px rgba(0, 0, 0, 0.1);
+            /* Dark Theme Colors */
+            --primary-color: #3b82f6;
+            --primary-dark: #1d4ed8;
+            --secondary-color: #10b981;
+            --accent-color: #8b5cf6;
+            --dark-bg: #0f172a;
+            --darker-bg: #0a0f1c;
+            --card-bg: #1e293b;
+            --card-hover: #2d3748;
+            --text-primary: #f1f5f9;
+            --text-secondary: #94a3b8;
+            --text-muted: #64748b;
+            --border-color: #334155;
+            --success-color: #10b981;
+            --warning-color: #f59e0b;
+            --error-color: #ef4444;
+            --accessibility-color: #8b5cf6;
+            --vision-color: #06b6d4;
+            --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.3);
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.4);
+            --shadow-lg: 0 10px 25px -5px rgba(0, 0, 0, 0.5);
+            --shadow-xl: 0 20px 40px -15px rgba(0, 0, 0, 0.6);
             --radius-sm: 8px;
             --radius-md: 12px;
             --radius-lg: 16px;
             --radius-xl: 24px;
             --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
-        
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-        
+
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
             font-family: 'Inter', sans-serif;
-            color: var(--text-dark);
-            background: var(--premium-gray);
+            background-color: var(--dark-bg);
+            color: var(--text-primary);
             line-height: 1.6;
-            font-weight: 400;
             min-height: 100vh;
             display: flex;
             flex-direction: column;
+            -webkit-tap-highlight-color: transparent;
         }
-        
+
         h1, h2, h3, h4, h5, h6 {
             font-family: 'Poppins', sans-serif;
             font-weight: 600;
-            line-height: 1.2;
-            margin-bottom: 1rem;
+            line-height: 1.3;
         }
-        
+
         .container {
             width: 100%;
             max-width: 1200px;
             margin: 0 auto;
-            padding: 0 20px;
+            padding: 0 15px;
         }
-        
-        /* Premium Header */
-        header {
-            background-color: var(--card-white);
-            box-shadow: var(--shadow-sm);
+
+        /* Header - Mobile Optimized */
+        .header {
+            background: var(--darker-bg);
+            border-bottom: 1px solid var(--border-color);
+            padding: 15px 0;
             position: sticky;
             top: 0;
             z-index: 1000;
-            padding: 18px 0;
-            border-bottom: 1px solid var(--border-color);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
         }
-        
-        .header-container {
+
+        .header-content {
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
-        
-        .logo-wrapper {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-        
+
         .logo {
-            font-family: 'Poppins', sans-serif;
-            font-size: 28px;
-            font-weight: 800;
-            background: var(--gradient-blue);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            text-decoration: none;
-            letter-spacing: -0.5px;
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 10px;
+            text-decoration: none;
+            min-width: 0;
         }
-        
+
         .logo-icon {
-            background: var(--gradient-blue);
             width: 36px;
             height: 36px;
-            border-radius: 10px;
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            border-radius: 8px;
             display: flex;
             align-items: center;
             justify-content: center;
             color: white;
             font-size: 18px;
+            flex-shrink: 0;
         }
-        
+
         .logo-text {
             display: flex;
             flex-direction: column;
-            line-height: 1;
+            min-width: 0;
         }
-        
-        .logo-tagline {
-            font-size: 11px;
-            font-weight: 500;
-            color: var(--text-gray);
-            margin-top: 2px;
-            letter-spacing: 0.5px;
-        }
-        
-        .back-btn {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            background: var(--gradient-blue);
-            color: white;
-            padding: 10px 20px;
-            border-radius: var(--radius-md);
-            text-decoration: none;
-            font-weight: 500;
-            font-size: 14px;
-            transition: var(--transition);
-        }
-        
-        .back-btn:hover {
-            transform: translateX(-3px);
-            box-shadow: var(--shadow-md);
-        }
-        
-        /* SEO Description Section */
-        .seo-description {
-            background: white;
-            border-radius: var(--radius-md);
-            padding: 30px;
-            margin: 30px auto;
-            max-width: 900px;
-            box-shadow: var(--shadow-sm);
-            border-left: 4px solid var(--accessibility-purple);
-        }
-        
-        .seo-description h2 {
-            color: var(--dark-blue);
-            font-size: 1.5rem;
-            margin-bottom: 15px;
-        }
-        
-        .seo-description p {
-            color: var(--text-gray);
-            margin-bottom: 15px;
-            line-height: 1.7;
-        }
-        
-        .keywords {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            margin-top: 20px;
-        }
-        
-        .keyword-tag {
-            background: #f5f3ff;
-            color: var(--accessibility-purple);
-            padding: 6px 12px;
-            border-radius: 20px;
-            font-size: 13px;
-            font-weight: 500;
-            border: 1px solid #ede9fe;
-        }
-        
-        /* Main Content */
-        .main-content {
-            flex: 1;
-            padding: 40px 0;
-        }
-        
-        /* Tool Header */
-        .tool-header {
-            text-align: center;
-            margin-bottom: 48px;
-        }
-        
-        .tool-badge {
-            display: inline-block;
-            background: var(--gradient-blue);
-            color: white;
-            padding: 8px 24px;
-            border-radius: 20px;
-            font-size: 14px;
-            font-weight: 600;
-            margin-bottom: 16px;
-            letter-spacing: 0.5px;
-        }
-        
-        .tool-header h1 {
-            font-size: 2.8rem;
+
+        .logo-title {
+            font-family: 'Poppins', sans-serif;
+            font-size: 20px;
             font-weight: 700;
-            color: var(--text-dark);
-            margin-bottom: 16px;
-            background: linear-gradient(135deg, var(--text-dark) 0%, var(--accessibility-purple) 100%);
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
         }
-        
-        .tool-header p {
-            color: var(--text-gray);
-            font-size: 1.1rem;
-            max-width: 700px;
-            margin: 0 auto;
-            font-weight: 400;
+
+        .logo-subtitle {
+            font-size: 10px;
+            color: var(--text-muted);
+            letter-spacing: 0.4px;
+            margin-top: 1px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
         }
-        
-        /* Tool Container */
-        .tool-container {
-            background: var(--card-white);
-            border-radius: var(--radius-lg);
-            padding: 50px;
+
+        .back-btn {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+            color: white;
+            padding: 8px 16px;
+            border-radius: var(--radius-md);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 13px;
+            transition: var(--transition);
+            flex-shrink: 0;
+            white-space: nowrap;
+        }
+
+        .back-btn:hover {
+            transform: translateY(-2px);
             box-shadow: var(--shadow-md);
+        }
+
+        /* Main Content */
+        .main-content {
+            flex: 1;
+            padding: 30px 0;
+        }
+
+        /* Tool Header - Mobile Optimized */
+        .tool-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .tool-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            color: white;
+            padding: 6px 20px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 600;
+            margin-bottom: 15px;
+            letter-spacing: 0.4px;
+        }
+
+        .tool-title {
+            font-size: clamp(1.8rem, 5vw, 3rem);
+            font-weight: 700;
+            margin-bottom: 15px;
+            background: linear-gradient(135deg, var(--text-primary), var(--accessibility-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1.2;
+            padding: 0 10px;
+        }
+
+        .tool-description {
+            font-size: clamp(0.95rem, 3vw, 1.1rem);
+            color: var(--text-secondary);
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        /* Tool Container - Mobile Optimized */
+        .tool-container {
+            background: var(--card-bg);
+            border-radius: var(--radius-lg);
+            padding: clamp(20px, 4vw, 40px);
+            box-shadow: var(--shadow-xl);
+            margin-bottom: 40px;
             border: 1px solid var(--border-color);
-            margin-bottom: 60px;
             position: relative;
             overflow: hidden;
         }
-        
+
         .tool-container::before {
             content: '';
             position: absolute;
@@ -281,25 +230,25 @@
             left: 0;
             right: 0;
             height: 4px;
-            background: var(--gradient-blue);
+            background: linear-gradient(135deg, var(--accessibility-color), var(--accent-color));
         }
-        
-        /* Upload Section */
+
+        /* Upload Section - Mobile Optimized */
         .upload-section {
-            background: #f8fafc;
+            background: var(--darker-bg);
             border-radius: var(--radius-md);
-            padding: 30px;
-            margin-bottom: 40px;
+            padding: 25px;
+            margin-bottom: 30px;
             border: 2px dashed var(--border-color);
             text-align: center;
             transition: var(--transition);
         }
-        
+
         .upload-section:hover {
-            border-color: var(--accessibility-purple);
-            background: #f5f3ff;
+            border-color: var(--accessibility-color);
+            background: rgba(139, 92, 246, 0.05);
         }
-        
+
         .upload-header {
             display: flex;
             align-items: center;
@@ -307,91 +256,116 @@
             gap: 12px;
             margin-bottom: 20px;
         }
-        
+
         .upload-header i {
-            color: var(--accessibility-purple);
-            font-size: 24px;
+            color: var(--accessibility-color);
+            font-size: 22px;
         }
-        
+
+        .upload-header h3 {
+            font-size: clamp(1rem, 3vw, 1.2rem);
+        }
+
         .upload-dropzone {
             position: relative;
-            min-height: 150px;
+            min-height: 120px;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
             cursor: pointer;
+            padding: 20px;
         }
-        
+
         .upload-icon {
-            width: 60px;
-            height: 60px;
-            background: linear-gradient(135deg, #f5f3ff 0%, #ede9fe 100%);
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, rgba(139, 92, 246, 0.1), rgba(139, 92, 246, 0.2));
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin-bottom: 20px;
-            color: var(--accessibility-purple);
-            font-size: 24px;
-        }
-        
-        .upload-text {
-            color: var(--text-gray);
             margin-bottom: 15px;
+            color: var(--accessibility-color);
+            font-size: 22px;
         }
-        
+
+        .upload-text {
+            color: var(--text-secondary);
+            margin-bottom: 15px;
+            font-size: 14px;
+            text-align: center;
+        }
+
         .upload-btn {
             display: inline-block;
-            background: var(--gradient-blue);
+            background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
             color: white;
-            padding: 12px 30px;
+            padding: 10px 25px;
             border-radius: var(--radius-md);
             font-weight: 600;
             cursor: pointer;
             transition: var(--transition);
+            font-size: 14px;
+            border: none;
         }
-        
+
         .upload-btn:hover {
             transform: translateY(-2px);
             box-shadow: var(--shadow-md);
         }
-        
+
         #fileInput {
             display: none;
         }
-        
+
         .file-info {
             margin-top: 15px;
-            color: var(--text-gray);
-            font-size: 14px;
+            color: var(--text-muted);
+            font-size: 12px;
         }
-        
-        /* Vision Types Grid */
+
+        /* Vision Types - Mobile Optimized */
         .vision-types {
-            margin-bottom: 40px;
+            margin-bottom: 30px;
         }
-        
+
         .vision-header {
             display: flex;
             align-items: center;
             gap: 12px;
-            margin-bottom: 25px;
+            margin-bottom: 20px;
         }
-        
+
         .vision-header i {
-            color: var(--vision-teal);
+            color: var(--vision-color);
             font-size: 20px;
         }
-        
+
+        .vision-header h3 {
+            font-size: clamp(1rem, 3vw, 1.2rem);
+        }
+
         .vision-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px;
+            grid-template-columns: 1fr;
+            gap: 15px;
         }
-        
+
+        @media (min-width: 480px) {
+            .vision-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (min-width: 768px) {
+            .vision-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+
         .vision-card {
-            background: var(--premium-gray);
+            background: var(--darker-bg);
             border-radius: var(--radius-md);
             padding: 20px;
             cursor: pointer;
@@ -399,504 +373,629 @@
             border: 2px solid var(--border-color);
             text-align: center;
         }
-        
+
         .vision-card:hover {
             transform: translateY(-5px);
             box-shadow: var(--shadow-md);
         }
-        
+
         .vision-card.active {
-            border-color: var(--accessibility-purple);
-            background: #f5f3ff;
+            border-color: var(--accessibility-color);
+            background: rgba(139, 92, 246, 0.1);
         }
-        
+
         .vision-color {
-            width: 40px;
-            height: 40px;
+            width: 35px;
+            height: 35px;
             border-radius: 50%;
-            margin: 0 auto 15px;
+            margin: 0 auto 12px;
         }
-        
+
         .vision-name {
             font-weight: 600;
             margin-bottom: 5px;
-            color: var(--text-dark);
+            color: var(--text-primary);
+            font-size: 14px;
         }
-        
+
         .vision-percent {
-            font-size: 12px;
-            color: var(--text-gray);
+            font-size: 11px;
+            color: var(--text-secondary);
         }
-        
-        /* Image Comparison Section */
+
+        /* Image Comparison - Mobile Optimized */
         .comparison-section {
-            margin-bottom: 40px;
+            margin-bottom: 30px;
         }
-        
+
         .comparison-header {
             display: flex;
-            align-items: center;
-            justify-content: space-between;
-            margin-bottom: 25px;
-        }
-        
-        .comparison-controls {
-            display: flex;
+            flex-direction: column;
             gap: 15px;
-            align-items: center;
+            margin-bottom: 20px;
         }
-        
-        .comparison-container {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 30px;
-        }
-        
-        @media (max-width: 768px) {
-            .comparison-container {
-                grid-template-columns: 1fr;
+
+        @media (min-width: 480px) {
+            .comparison-header {
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: center;
+                gap: 0;
             }
         }
-        
+
+        .comparison-header h3 {
+            font-size: clamp(1rem, 3vw, 1.2rem);
+        }
+
+        .comparison-controls {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+
+        .comparison-container {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+        }
+
+        @media (min-width: 768px) {
+            .comparison-container {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
         .image-box {
-            background: #f8fafc;
+            background: var(--darker-bg);
             border-radius: var(--radius-md);
             padding: 20px;
             border: 1px solid var(--border-color);
         }
-        
+
         .image-label {
             display: flex;
             align-items: center;
             gap: 10px;
             margin-bottom: 15px;
-            color: var(--text-dark);
+            color: var(--text-primary);
             font-weight: 600;
-        }
-        
-        .image-label i {
-            color: var(--accessibility-purple);
-        }
-        
-        .image-preview {
-            width: 100%;
-            max-height: 400px;
-            object-fit: contain;
-            border-radius: var(--radius-sm);
-            background: white;
-        }
-        
-        .image-placeholder {
-            height: 300px;
-            background: #f1f5f9;
-            border-radius: var(--radius-sm);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--text-light);
             font-size: 14px;
         }
-        
-        .slider-container {
-            position: relative;
-            height: 400px;
-            background: #f8fafc;
-            border-radius: var(--radius-md);
-            overflow: hidden;
-            border: 1px solid var(--border-color);
+
+        .image-label i {
+            color: var(--accessibility-color);
         }
-        
-        .slider-image {
-            position: absolute;
-            top: 0;
-            left: 0;
+
+        .image-preview {
             width: 100%;
-            height: 100%;
+            max-height: 300px;
             object-fit: contain;
+            border-radius: var(--radius-sm);
+            background: var(--dark-bg);
         }
-        
-        .slider-divider {
-            position: absolute;
-            top: 0;
-            left: 50%;
-            width: 4px;
-            height: 100%;
-            background: var(--accessibility-purple);
-            cursor: col-resize;
-            transform: translateX(-50%);
-        }
-        
-        .slider-divider::after {
-            content: '↔';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background: var(--accessibility-purple);
-            color: white;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
+
+        .image-placeholder {
+            height: 250px;
+            background: var(--dark-bg);
+            border-radius: var(--radius-sm);
             display: flex;
+            flex-direction: column;
             align-items: center;
             justify-content: center;
-            font-weight: bold;
+            color: var(--text-muted);
+            font-size: 14px;
+            gap: 10px;
         }
-        
-        /* Accessibility Analysis */
+
+        .image-placeholder i {
+            font-size: 40px;
+            opacity: 0.5;
+        }
+
+        /* Accessibility Analysis - Mobile Optimized */
         .analysis-section {
-            background: #f8fafc;
+            background: var(--darker-bg);
             border-radius: var(--radius-md);
-            padding: 30px;
-            margin-bottom: 40px;
+            padding: 25px;
+            margin-bottom: 30px;
             border: 1px solid var(--border-color);
         }
-        
+
         .analysis-header {
             display: flex;
             align-items: center;
             gap: 12px;
-            margin-bottom: 25px;
-            color: var(--text-dark);
+            margin-bottom: 20px;
+            color: var(--text-primary);
         }
-        
+
         .analysis-header i {
-            color: var(--success-green);
+            color: var(--success-color);
             font-size: 20px;
         }
-        
+
+        .analysis-header h3 {
+            font-size: clamp(1rem, 3vw, 1.2rem);
+        }
+
         .analysis-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px;
+            grid-template-columns: 1fr;
+            gap: 15px;
         }
-        
+
+        @media (min-width: 480px) {
+            .analysis-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
         .analysis-item {
             display: flex;
             justify-content: space-between;
             align-items: center;
             padding: 15px;
-            background: white;
+            background: var(--card-bg);
             border-radius: var(--radius-sm);
             border: 1px solid var(--border-color);
         }
-        
+
         .analysis-label {
-            color: var(--text-gray);
+            color: var(--text-secondary);
             font-weight: 500;
+            font-size: 13px;
         }
-        
+
         .analysis-value {
             font-weight: 700;
-            color: var(--text-dark);
-            font-size: 1.1rem;
+            color: var(--text-primary);
+            font-size: 14px;
         }
-        
-        /* Action Buttons */
+
+        /* Action Buttons - Mobile Optimized */
         .action-buttons {
             display: flex;
-            gap: 16px;
-            margin-top: 40px;
-            flex-wrap: wrap;
+            flex-direction: column;
+            gap: 12px;
+            margin-top: 30px;
         }
-        
+
+        @media (min-width: 480px) {
+            .action-buttons {
+                flex-direction: row;
+                flex-wrap: wrap;
+            }
+        }
+
         .action-btn {
             flex: 1;
-            min-width: 180px;
-            padding: 18px 30px;
+            min-width: 100%;
+            padding: 16px 20px;
             border-radius: var(--radius-md);
             font-weight: 600;
-            font-size: 16px;
+            font-size: 15px;
             border: none;
             cursor: pointer;
             transition: var(--transition);
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 10px;
+            gap: 8px;
         }
-        
+
+        @media (min-width: 480px) {
+            .action-btn {
+                min-width: 0;
+            }
+        }
+
         .action-btn.primary {
-            background: var(--gradient-blue);
+            background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
             color: white;
         }
-        
+
         .action-btn.primary:hover {
             transform: translateY(-3px);
             box-shadow: var(--shadow-lg);
         }
-        
+
         .action-btn.secondary {
-            background: var(--premium-gray);
-            color: var(--text-dark);
+            background: var(--darker-bg);
+            color: var(--text-primary);
             border: 2px solid var(--border-color);
         }
-        
+
         .action-btn.secondary:hover {
-            background: #f0f9ff;
-            border-color: var(--light-blue);
-            color: var(--primary-blue);
+            background: var(--card-hover);
+            border-color: var(--primary-color);
+            color: var(--primary-color);
         }
-        
+
         .action-btn.purple {
-            background: linear-gradient(135deg, var(--accessibility-purple) 0%, #a78bfa 100%);
+            background: linear-gradient(135deg, var(--accessibility-color), #a78bfa);
             color: white;
         }
-        
+
         .action-btn.purple:hover {
             transform: translateY(-3px);
             box-shadow: var(--shadow-lg);
         }
-        
-        /* API Demo Section */
+
+        /* API Demo Section - Mobile Optimized */
         .api-demo {
-            background: var(--card-white);
+            background: var(--card-bg);
             border-radius: var(--radius-lg);
-            padding: 30px;
+            padding: 25px;
             box-shadow: var(--shadow-md);
             border: 1px solid var(--border-color);
-            margin-bottom: 60px;
+            margin-bottom: 40px;
         }
-        
+
         .api-header {
             display: flex;
             align-items: center;
             gap: 10px;
-            margin-bottom: 20px;
-            color: var(--primary-blue);
+            margin-bottom: 15px;
+            color: var(--primary-color);
         }
-        
+
         .api-response {
-            background: #f8fafc;
+            background: var(--darker-bg);
             border-radius: var(--radius-md);
-            padding: 20px;
-            margin-top: 20px;
+            padding: 15px;
+            margin-top: 15px;
             font-family: 'Courier New', monospace;
-            font-size: 14px;
+            font-size: 13px;
             overflow-x: auto;
             white-space: pre-wrap;
             border: 1px solid var(--border-color);
+            color: var(--text-secondary);
+            -webkit-overflow-scrolling: touch;
             max-height: 300px;
             overflow-y: auto;
         }
-        
-        /* Features Section */
+
+        /* Features Section - Mobile Optimized */
         .features-section {
-            background: var(--card-white);
+            background: var(--card-bg);
             border-radius: var(--radius-lg);
-            padding: 50px;
+            padding: clamp(25px, 4vw, 50px);
             box-shadow: var(--shadow-md);
             border: 1px solid var(--border-color);
-            margin-bottom: 60px;
+            margin-bottom: 40px;
         }
-        
+
         .features-section h2 {
             text-align: center;
-            font-size: 2rem;
-            margin-bottom: 40px;
-            color: var(--text-dark);
+            font-size: clamp(1.5rem, 5vw, 2rem);
+            margin-bottom: 30px;
+            color: var(--text-primary);
         }
-        
+
         .features-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
+            grid-template-columns: 1fr;
+            gap: 25px;
         }
-        
+
+        @media (min-width: 640px) {
+            .features-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
         .feature-card {
-            background: var(--premium-gray);
+            background: var(--darker-bg);
             border-radius: var(--radius-md);
-            padding: 30px;
-            border-left: 4px solid var(--accessibility-purple);
+            padding: 25px;
+            border-left: 4px solid var(--accessibility-color);
             transition: var(--transition);
+            border: 1px solid var(--border-color);
+            height: 100%;
         }
-        
+
         .feature-card:hover {
             transform: translateY(-5px);
             box-shadow: var(--shadow-md);
         }
-        
+
         .feature-icon {
-            width: 60px;
-            height: 60px;
-            background: linear-gradient(135deg, #f5f3ff 0%, #ede9fe 100%);
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, rgba(139, 92, 246, 0.1), rgba(139, 92, 246, 0.2));
             border-radius: var(--radius-md);
             display: flex;
             align-items: center;
             justify-content: center;
-            margin-bottom: 20px;
-            color: var(--accessibility-purple);
-            font-size: 24px;
+            margin-bottom: 15px;
+            color: var(--accessibility-color);
+            font-size: 22px;
         }
-        
+
         .feature-card h3 {
-            font-size: 1.2rem;
-            margin-bottom: 12px;
-            color: var(--text-dark);
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+            color: var(--text-primary);
         }
-        
+
         .feature-card p {
-            color: var(--text-gray);
-            font-size: 14px;
-            line-height: 1.6;
+            color: var(--text-secondary);
+            font-size: 13px;
+            line-height: 1.5;
         }
-        
-        /* Footer */
-        footer {
-            background: var(--text-dark);
-            color: white;
-            padding: 60px 0 40px;
+
+        /* SEO Description Section - AT THE BOTTOM */
+        .seo-section {
+            background: var(--card-bg);
+            border-radius: var(--radius-lg);
+            padding: clamp(25px, 4vw, 40px);
+            margin: 40px 0;
+            border: 1px solid var(--border-color);
+            box-shadow: var(--shadow-md);
+        }
+
+        .seo-section h2 {
+            font-size: clamp(1.3rem, 4vw, 1.8rem);
+            color: var(--text-primary);
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .seo-content {
+            color: var(--text-secondary);
+            font-size: clamp(0.9rem, 3vw, 1rem);
+            line-height: 1.7;
+        }
+
+        .seo-content p {
+            margin-bottom: 15px;
+        }
+
+        .seo-keywords {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 20px;
+        }
+
+        .keyword {
+            background: rgba(139, 92, 246, 0.1);
+            color: var(--accessibility-color);
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 500;
+            border: 1px solid rgba(139, 92, 246, 0.2);
+            white-space: nowrap;
+        }
+
+        /* Footer - Mobile Optimized */
+        .footer {
+            background: var(--darker-bg);
+            padding: 40px 0 30px;
+            border-top: 1px solid var(--border-color);
             margin-top: auto;
         }
-        
-        .footer-container {
+
+        .footer-content {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 48px;
-            margin-bottom: 48px;
+            grid-template-columns: 1fr;
+            gap: 40px;
+            margin-bottom: 40px;
         }
-        
+
+        @media (min-width: 640px) {
+            .footer-content {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 30px;
+            }
+        }
+
         .footer-logo {
-            font-family: 'Poppins', sans-serif;
-            font-size: 28px;
-            font-weight: 800;
-            color: white;
-            margin-bottom: 16px;
-            display: block;
-            text-decoration: none;
+            text-align: center;
+            margin-bottom: 25px;
         }
-        
+
+        .footer-logo .logo-title {
+            font-size: clamp(1.8rem, 6vw, 2.5rem);
+            margin-bottom: 10px;
+        }
+
         .footer-tagline {
-            color: #9ca3af;
-            font-size: 14px;
+            color: var(--text-muted);
+            font-size: clamp(0.9rem, 3vw, 1rem);
+            max-width: 500px;
+            margin: 0 auto;
             line-height: 1.6;
-            margin-bottom: 24px;
         }
-        
-        .footer-contact {
-            margin-top: 24px;
-        }
-        
-        .contact-item {
+
+        .footer-links {
             display: flex;
+            flex-direction: column;
             align-items: center;
-            gap: 12px;
-            margin-bottom: 16px;
-            color: #9ca3af;
         }
-        
-        .contact-item i {
-            color: var(--accent-blue);
-        }
-        
+
         .footer-links h4 {
+            color: var(--text-primary);
+            margin-bottom: 20px;
             font-size: 1.1rem;
-            margin-bottom: 24px;
-            color: white;
+            text-align: center;
         }
-        
+
         .footer-links ul {
             list-style: none;
+            text-align: center;
+            width: 100%;
         }
-        
+
         .footer-links li {
-            margin-bottom: 12px;
+            margin-bottom: 10px;
         }
-        
+
         .footer-links a {
-            color: #9ca3af;
+            color: var(--text-secondary);
             text-decoration: none;
             font-size: 14px;
             transition: var(--transition);
+            display: inline-block;
+            padding: 4px 0;
         }
-        
+
         .footer-links a:hover {
-            color: white;
-            padding-left: 8px;
+            color: var(--primary-color);
+            transform: translateX(5px);
         }
-        
+
         .footer-bottom {
             text-align: center;
-            padding-top: 40px;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            color: #9ca3af;
-            font-size: 14px;
+            padding-top: 30px;
+            border-top: 1px solid var(--border-color);
+            color: var(--text-muted);
+            font-size: 13px;
         }
-        
+
+        .copyright {
+            margin-bottom: 15px;
+            line-height: 1.5;
+        }
+
+        .footer-company {
+            font-size: clamp(1.2rem, 4vw, 1.5rem);
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-top: 15px;
+            text-align: center;
+        }
+
+        /* Notification - Mobile Optimized */
+        .notification {
+            position: fixed;
+            top: 20px;
+            right: 15px;
+            left: 15px;
+            padding: 15px 20px;
+            border-radius: var(--radius-md);
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            box-shadow: var(--shadow-lg);
+            z-index: 1001;
+            transform: translateY(-100px);
+            transition: transform 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        @media (min-width: 480px) {
+            .notification {
+                left: auto;
+                right: 20px;
+                width: auto;
+            }
+        }
+
+        .notification.show {
+            transform: translateY(0);
+        }
+
+        .notification.success {
+            border-left: 4px solid var(--success-color);
+        }
+
+        .notification.error {
+            border-left: 4px solid var(--error-color);
+        }
+
+        .notification i {
+            font-size: 18px;
+            flex-shrink: 0;
+        }
+
+        .notification.success i {
+            color: var(--success-color);
+        }
+
+        .notification.error i {
+            color: var(--error-color);
+        }
+
+        .notification.info {
+            border-left: 4px solid var(--primary-color);
+        }
+
+        .notification.info i {
+            color: var(--primary-color);
+        }
+
+        .notification span {
+            flex: 1;
+            font-size: 14px;
+            word-break: break-word;
+        }
+
         /* Animations */
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(10px); }
             to { opacity: 1; transform: translateY(0); }
         }
-        
+
         @keyframes pulse {
             0% { transform: scale(1); }
             50% { transform: scale(1.05); }
             100% { transform: scale(1); }
         }
-        
-        /* Responsive */
-        @media (max-width: 768px) {
-            .tool-header h1 {
-                font-size: 2rem;
+
+        /* Touch Device Optimizations */
+        @media (hover: none) and (pointer: coarse) {
+            .action-btn:hover,
+            .vision-card:hover,
+            .feature-card:hover {
+                transform: none;
             }
             
-            .tool-container, .features-section {
-                padding: 30px;
-            }
-            
-            .action-buttons {
-                flex-direction: column;
-            }
-            
-            .action-btn {
-                width: 100%;
-            }
-            
-            .vision-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-            
-            .seo-description {
-                padding: 20px;
+            .action-btn:active,
+            .upload-btn:active {
+                transform: scale(0.98);
             }
         }
-        
-        @media (max-width: 480px) {
-            .tool-header h1 {
-                font-size: 1.8rem;
-            }
-            
-            .tool-container, .features-section {
-                padding: 20px;
-            }
-            
-            .vision-grid {
-                grid-template-columns: 1fr;
-            }
+
+        /* Hide scrollbar for Chrome, Safari and Opera */
+        .api-response::-webkit-scrollbar {
+            height: 4px;
+        }
+
+        .api-response::-webkit-scrollbar-track {
+            background: var(--darker-bg);
+            border-radius: 2px;
+        }
+
+        .api-response::-webkit-scrollbar-thumb {
+            background: var(--border-color);
+            border-radius: 2px;
         }
     </style>
 </head>
 
 <body>
     <!-- Header -->
-    <header>
-        <div class="container header-container">
-            <div class="logo-wrapper">
-                <a href="index.html" class="logo">
-                    <div class="logo-icon">
-                        <i class="fas fa-eye"></i>
-                    </div>
-                    <div class="logo-text">
-                        Tool Nest
-                        <span class="logo-tagline">ACCESSIBILITY TOOLS</span>
-                    </div>
-                </a>
-            </div>
+    <header class="header">
+        <div class="container header-content">
+            <a href="index.html" class="logo">
+                <div class="logo-icon">
+                    <i class="fas fa-tools"></i>
+                </div>
+                <div class="logo-text">
+                    <div class="logo-title">Tool Nest</div>
+                    <div class="logo-subtitle">PROFESSIONAL TOOLS</div>
+                </div>
+            </a>
             
             <a href="index.html" class="back-btn">
                 <i class="fas fa-arrow-left"></i>
-                Back to Tools
+                All Tools
             </a>
         </div>
     </header>
@@ -904,30 +1003,11 @@
     <!-- Main Content -->
     <main class="main-content">
         <div class="container">
-            <!-- SEO Description -->
-            <div class="seo-description">
-                <h2>Professional Color Blindness Simulator Tool</h2>
-                <p>Our <strong>Advanced Color Blindness Simulator</strong> is a comprehensive accessibility testing tool that allows designers, developers, and content creators to visualize how their work appears to people with various types of color vision deficiencies. With medical-grade accuracy and 8 different simulations, ensure your designs are inclusive and accessible to all users.</p>
-                <p>This essential tool helps identify potential color contrast issues, improve user experience for visually impaired audiences, and meet WCAG accessibility standards. Perfect for web design, UI/UX testing, graphic design, and educational purposes.</p>
-                <div class="keywords">
-                    <span class="keyword-tag">Color Blindness Simulator</span>
-                    <span class="keyword-tag">Accessibility Testing</span>
-                    <span class="keyword-tag">Color Vision Deficiency</span>
-                    <span class="keyword-tag">WCAG Compliance</span>
-                    <span class="keyword-tag">Deuteranopia Simulator</span>
-                    <span class="keyword-tag">Protanopia Simulator</span>
-                    <span class="keyword-tag">Tritanopia Simulator</span>
-                    <span class="keyword-tag">Color Contrast Checker</span>
-                    <span class="keyword-tag">Web Accessibility</span>
-                    <span class="keyword-tag">Visual Accessibility</span>
-                </div>
-            </div>
-
             <!-- Tool Header -->
             <div class="tool-header">
-                <span class="tool-badge">Accessibility Testing</span>
-                <h1>Advanced Color Blindness Simulator</h1>
-                <p>Test your designs for color accessibility with medical-grade color vision deficiency simulations. Ensure your content is inclusive for all users.</p>
+                <span class="tool-badge">ACCESSIBILITY TESTING</span>
+                <h1 class="tool-title">Advanced Color Blindness Simulator</h1>
+                <p class="tool-description">Test your designs for color accessibility with medical-grade color vision deficiency simulations. Ensure your content is inclusive for all users.</p>
             </div>
 
             <!-- Color Blindness Simulator -->
@@ -943,11 +1023,11 @@
                             <i class="fas fa-images"></i>
                         </div>
                         <p class="upload-text">Drag & drop your image here, or</p>
-                        <label class="upload-btn">
-                            <input type="file" id="fileInput" accept="image/*" style="display: none;">
+                        <button class="upload-btn" onclick="document.getElementById('fileInput').click()">
                             <i class="fas fa-folder-open"></i> Browse Files
-                        </label>
+                        </button>
                         <p class="file-info">Supports JPG, PNG, GIF, SVG • Max 10MB</p>
+                        <input type="file" id="fileInput" accept="image/*" style="display: none;">
                     </div>
                 </div>
 
@@ -967,7 +1047,7 @@
                     <div class="comparison-header">
                         <h3>Visual Comparison</h3>
                         <div class="comparison-controls">
-                            <button class="action-btn secondary" onclick="toggleComparisonMode()">
+                            <button class="action-btn secondary" onclick="toggleComparisonMode()" style="padding: 10px 15px; font-size: 14px;">
                                 <i class="fas fa-exchange-alt"></i>
                                 Toggle View
                             </button>
@@ -1107,32 +1187,48 @@
                     </div>
                 </div>
             </div>
+
+            <!-- SEO Description Section - AT THE BOTTOM -->
+            <div class="seo-section">
+                <h2>Professional Color Blindness Simulator Tool</h2>
+                <div class="seo-content">
+                    <p>Our <strong>Advanced Color Blindness Simulator</strong> is a comprehensive accessibility testing tool that allows designers, developers, and content creators to visualize how their work appears to people with various types of color vision deficiencies. With medical-grade accuracy and 8 different simulations, ensure your designs are inclusive and accessible to all users.</p>
+                    <p>This essential tool helps identify potential color contrast issues, improve user experience for visually impaired audiences, and meet WCAG accessibility standards. Perfect for web design, UI/UX testing, graphic design, and educational purposes.</p>
+                    <p>Features include real-time image processing, comprehensive accessibility analysis, professional export options, and API integration capabilities. All processing happens locally in your browser for maximum privacy and security.</p>
+                </div>
+                <div class="seo-keywords">
+                    <span class="keyword">Color Blindness Simulator</span>
+                    <span class="keyword">Accessibility Testing</span>
+                    <span class="keyword">Color Vision Deficiency</span>
+                    <span class="keyword">WCAG Compliance</span>
+                    <span class="keyword">Deuteranopia Simulator</span>
+                    <span class="keyword">Protanopia Simulator</span>
+                    <span class="keyword">Tritanopia Simulator</span>
+                    <span class="keyword">Color Contrast Checker</span>
+                    <span class="keyword">Web Accessibility</span>
+                    <span class="keyword">Visual Accessibility</span>
+                    <span class="keyword">Design Testing</span>
+                    <span class="keyword">Inclusive Design</span>
+                </div>
+            </div>
         </div>
     </main>
 
+    <!-- Notification -->
+    <div class="notification" id="notification">
+        <i class="fas fa-check-circle"></i>
+        <span id="notificationText">Operation completed successfully!</span>
+    </div>
+
     <!-- Footer -->
-    <footer>
+    <footer class="footer">
         <div class="container">
-            <div class="footer-container">
-                <div class="footer-about">
-                    <a href="index.html" class="footer-logo">Tool Nest</a>
-                    <p class="footer-tagline">Professional accessibility tools for inclusive design and development.</p>
-                    <div class="footer-contact">
-                        <div class="contact-item">
-                            <i class="fas fa-envelope"></i>
-                            <span>toolnest3@gmail.com</span>
-                        </div>
-                        <div class="contact-item">
-                            <i class="fas fa-universal-access"></i>
-                            <span>WCAG 2.1 Compliant</span>
-                        </div>
-                        <div class="contact-item">
-                            <i class="fas fa-code"></i>
-                            <span>Developer API Available</span>
-                        </div>
-                    </div>
-                </div>
-                
+            <div class="footer-logo">
+                <div class="logo-title">Tool Nest</div>
+                <p class="footer-tagline">Professional online tools for developers, designers, and creators. Secure, reliable, and always free.</p>
+            </div>
+            
+            <div class="footer-content">
                 <div class="footer-links">
                     <h4>Accessibility Tools</h4>
                     <ul>
@@ -1141,6 +1237,17 @@
                         <li><a href="screen-reader-simulator.html">Screen Reader Simulator</a></li>
                         <li><a href="font-size-checker.html">Font Size Checker</a></li>
                         <li><a href="accessibility-audit.html">Accessibility Audit</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-links">
+                    <h4>Developer Tools</h4>
+                    <ul>
+                        <li><a href="base64-encoder.html">Base64 Encoder</a></li>
+                        <li><a href="json-formatter.html">JSON Formatter</a></li>
+                        <li><a href="url-encoder.html">URL Encoder</a></li>
+                        <li><a href="html-minifier.html">HTML Minifier</a></li>
+                        <li><a href="css-validator.html">CSS Validator</a></li>
                     </ul>
                 </div>
                 
@@ -1157,7 +1264,12 @@
             </div>
             
             <div class="footer-bottom">
-                <p>© 2023 Tool Nest. All rights reserved. This tool provides simulations for educational and design purposes only.</p>
+                <div class="copyright">
+                    © 2023 Tool Nest. All rights reserved. This tool provides simulations for educational and design purposes only.
+                </div>
+                <div class="footer-company">
+                    Tool Nest
+                </div>
             </div>
         </div>
     </footer>
@@ -1259,8 +1371,10 @@
             // Set up event listeners
             setupEventListeners();
             
-            // Load sample image
-            loadSampleImage();
+            // Add touch device optimizations
+            if ('ontouchstart' in window) {
+                document.body.classList.add('touch-device');
+            }
         });
 
         // Create vision type cards
@@ -1270,6 +1384,7 @@
             visionTypes.forEach(type => {
                 const card = document.createElement('div');
                 card.className = `vision-card ${type.id === currentVisionType ? 'active' : ''}`;
+                card.setAttribute('data-type', type.id);
                 card.innerHTML = `
                     <div class="vision-color" style="background: ${type.color};"></div>
                     <div class="vision-name">${type.name}</div>
@@ -1289,8 +1404,8 @@
             // Drag and drop
             dropzone.addEventListener('dragover', (e) => {
                 e.preventDefault();
-                dropzone.style.borderColor = 'var(--accessibility-purple)';
-                dropzone.style.background = '#f5f3ff';
+                dropzone.style.borderColor = 'var(--accessibility-color)';
+                dropzone.style.background = 'rgba(139, 92, 246, 0.1)';
             });
             
             dropzone.addEventListener('dragleave', () => {
@@ -1307,11 +1422,6 @@
                     fileInput.files = e.dataTransfer.files;
                     handleFileSelect({ target: fileInput });
                 }
-            });
-            
-            // Click on dropzone to open file dialog
-            dropzone.addEventListener('click', () => {
-                fileInput.click();
             });
         }
 
@@ -1338,45 +1448,19 @@
                 currentImage.onload = () => {
                     displayImage();
                     updateImageInfo();
+                    applyColorBlindnessFilter();
                     analyzeImage();
+                    showNotification('Image loaded successfully!', 'success');
+                };
+                currentImage.onerror = () => {
+                    showNotification('Failed to load image', 'error');
                 };
                 currentImage.src = e.target.result;
             };
-            reader.readAsDataURL(file);
-        }
-
-        // Load sample image
-        function loadSampleImage() {
-            // Create a simple sample image with colors
-            const canvas = document.createElement('canvas');
-            canvas.width = 400;
-            canvas.height = 300;
-            const ctx = canvas.getContext('2d');
-            
-            // Draw color blocks
-            const colors = ['#FF0000', '#00FF00', '#0000FF', '#FFFF00', '#FF00FF', '#00FFFF'];
-            const blockSize = canvas.width / 3;
-            
-            for (let i = 0; i < 6; i++) {
-                const x = (i % 3) * blockSize;
-                const y = Math.floor(i / 3) * blockSize;
-                ctx.fillStyle = colors[i];
-                ctx.fillRect(x, y, blockSize, blockSize);
-            }
-            
-            // Add text
-            ctx.fillStyle = '#000000';
-            ctx.font = 'bold 24px Arial';
-            ctx.textAlign = 'center';
-            ctx.fillText('Color Test Image', canvas.width / 2, canvas.height - 30);
-            
-            currentImage = new Image();
-            currentImage.onload = () => {
-                displayImage();
-                updateImageInfo();
-                analyzeImage();
+            reader.onerror = () => {
+                showNotification('Failed to read file', 'error');
             };
-            currentImage.src = canvas.toDataURL();
+            reader.readAsDataURL(file);
         }
 
         // Display image
@@ -1384,9 +1468,6 @@
             normalImage.src = currentImage.src;
             normalImage.style.display = 'block';
             normalPlaceholder.style.display = 'none';
-            
-            // Apply initial simulation
-            applyColorBlindnessFilter();
         }
 
         // Select vision type
@@ -1404,23 +1485,35 @@
             
             // Update analysis
             updateVisionAnalysis(typeId);
+            
+            showNotification(`${visionTypes.find(t => t.id === typeId).name} simulation applied`, 'success');
         }
 
         // Apply color blindness filter
         function applyColorBlindnessFilter() {
-            if (!currentImage) return;
+            if (!currentImage) {
+                simulatedPlaceholder.style.display = 'flex';
+                simulatedImage.style.display = 'none';
+                return;
+            }
             
             const type = visionTypes.find(t => t.id === currentVisionType);
             simulationLabel.textContent = type.name;
             
             // Create canvas for filtering
             const canvas = document.createElement('canvas');
-            canvas.width = currentImage.width;
-            canvas.height = currentImage.height;
+            canvas.width = Math.min(currentImage.width, 800);
+            canvas.height = Math.min(currentImage.height, 600);
             const ctx = canvas.getContext('2d');
             
-            // Draw original image
-            ctx.drawImage(currentImage, 0, 0);
+            // Scale and draw original image
+            const scale = Math.min(canvas.width / currentImage.width, canvas.height / currentImage.height);
+            const width = currentImage.width * scale;
+            const height = currentImage.height * scale;
+            const x = (canvas.width - width) / 2;
+            const y = (canvas.height - height) / 2;
+            
+            ctx.drawImage(currentImage, x, y, width, height);
             
             // Get image data
             const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
@@ -1504,7 +1597,7 @@
 
         // Download simulated image
         function downloadSimulatedImage() {
-            if (!simulatedImage.src) {
+            if (!simulatedImage.src || simulatedImage.src === '') {
                 showNotification('No simulated image available', 'error');
                 return;
             }
@@ -1577,97 +1670,7 @@
 
         // Toggle comparison mode
         function toggleComparisonMode() {
-            isComparisonMode = !isComparisonMode;
-            
-            if (isComparisonMode && currentImage) {
-                comparisonContainer.innerHTML = `
-                    <div class="slider-container">
-                        <img id="originalSlider" class="slider-image" src="${currentImage.src}" alt="Original">
-                        <img id="simulatedSlider" class="slider-image" src="${simulatedImage.src}" alt="Simulated">
-                        <div class="slider-divider" id="sliderDivider"></div>
-                    </div>
-                `;
-                
-                setupImageSlider();
-            } else {
-                comparisonContainer.innerHTML = `
-                    <div class="image-box">
-                        <div class="image-label">
-                            <i class="fas fa-eye"></i>
-                            <span>Normal Vision</span>
-                        </div>
-                        <div class="image-placeholder" id="normalPlaceholder">
-                            <i class="fas fa-image"></i>
-                            Upload an image to begin
-                        </div>
-                        <img id="normalImage" class="image-preview" src="${normalImage.src}" alt="Normal vision preview" style="display: ${currentImage ? 'block' : 'none'};">
-                    </div>
-                    
-                    <div class="image-box">
-                        <div class="image-label">
-                            <i class="fas fa-low-vision"></i>
-                            <span id="simulationLabel">Color Blind Simulation</span>
-                        </div>
-                        <div class="image-placeholder" id="simulatedPlaceholder" style="display: ${currentImage ? 'none' : 'flex'};">
-                            <i class="fas fa-low-vision"></i>
-                            Select a vision type
-                        </div>
-                        <img id="simulatedImage" class="image-preview" src="${simulatedImage.src}" alt="Color blind simulation preview" style="display: ${currentImage ? 'block' : 'none'};">
-                    </div>
-                `;
-            }
-        }
-
-        // Setup image slider
-        function setupImageSlider() {
-            const sliderDivider = document.getElementById('sliderDivider');
-            const originalSlider = document.getElementById('originalSlider');
-            const simulatedSlider = document.getElementById('simulatedSlider');
-            
-            let isDragging = false;
-            
-            sliderDivider.addEventListener('mousedown', startDrag);
-            sliderDivider.addEventListener('touchstart', startDrag);
-            
-            function startDrag(e) {
-                isDragging = true;
-                e.preventDefault();
-                document.addEventListener('mousemove', onDrag);
-                document.addEventListener('touchmove', onDrag);
-                document.addEventListener('mouseup', stopDrag);
-                document.addEventListener('touchend', stopDrag);
-            }
-            
-            function onDrag(e) {
-                if (!isDragging) return;
-                
-                const container = sliderDivider.parentElement;
-                const rect = container.getBoundingClientRect();
-                let x;
-                
-                if (e.type.includes('touch')) {
-                    x = e.touches[0].clientX - rect.left;
-                } else {
-                    x = e.clientX - rect.left;
-                }
-                
-                // Constrain within container
-                x = Math.max(0, Math.min(x, rect.width));
-                
-                // Update slider position
-                const percent = (x / rect.width) * 100;
-                sliderDivider.style.left = `${percent}%`;
-                originalSlider.style.clipPath = `inset(0 ${100 - percent}% 0 0)`;
-                simulatedSlider.style.clipPath = `inset(0 0 0 ${percent}%)`;
-            }
-            
-            function stopDrag() {
-                isDragging = false;
-                document.removeEventListener('mousemove', onDrag);
-                document.removeEventListener('touchmove', onDrag);
-                document.removeEventListener('mouseup', stopDrag);
-                document.removeEventListener('touchend', stopDrag);
-            }
+            showNotification('Comparison mode coming soon!', 'info');
         }
 
         // Demo API call
@@ -1704,7 +1707,7 @@
             
             // Display API response
             apiResponse.textContent = JSON.stringify(simulatedResponse, null, 2);
-            apiResponse.style.color = 'var(--success-green)';
+            apiResponse.style.color = '#10b981';
             
             showNotification('API demo executed successfully!', 'success');
         }
@@ -1739,43 +1742,27 @@ fetch('https://api.toolnest.com/v1/color/simulate', {
 
         // Show notification
         function showNotification(message, type = 'info') {
-            // Remove existing notification
             const existingNotification = document.querySelector('.notification');
             if (existingNotification) existingNotification.remove();
             
-            // Create notification
             const notification = document.createElement('div');
             notification.className = `notification ${type}`;
-            notification.style.cssText = `
-                position: fixed;
-                top: 20px;
-                right: 20px;
-                padding: 15px 20px;
-                background: ${type === 'success' ? 'var(--success-green)' : type === 'error' ? 'var(--error-red)' : 'var(--warning-orange)'};
-                color: white;
-                border-radius: var(--radius-md);
-                box-shadow: var(--shadow-lg);
-                z-index: 10000;
-                animation: fadeIn 0.3s ease-out;
-                font-weight: 500;
+            notification.innerHTML = `
+                <i class="fas fa-${type === 'success' ? 'check-circle' : type === 'error' ? 'exclamation-circle' : 'info-circle'}"></i>
+                <span>${message}</span>
             `;
-            notification.textContent = message;
             
             document.body.appendChild(notification);
             
-            // Remove after 3 seconds
             setTimeout(() => {
-                notification.style.animation = 'fadeIn 0.3s ease-out reverse';
+                notification.classList.add('show');
+            }, 10);
+            
+            setTimeout(() => {
+                notification.classList.remove('show');
                 setTimeout(() => notification.remove(), 300);
             }, 3000);
         }
-
-        // Add data-type attribute to vision cards after DOM creation
-        setTimeout(() => {
-            document.querySelectorAll('.vision-card').forEach((card, index) => {
-                card.setAttribute('data-type', visionTypes[index].id);
-            });
-        }, 100);
 
         // Make functions globally available
         window.analyzeImage = analyzeImage;
@@ -1788,4 +1775,6 @@ fetch('https://api.toolnest.com/v1/color/simulate', {
     </script>
 </body>
 </html>
+
+
 
