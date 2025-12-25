@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,34 +7,36 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>eSign PDF Tool – Professional Digital Signature Solution | Tool Nest</title>
     <meta name="description" content="Sign PDF documents online with our professional eSign PDF tool. Add digital signatures, initials, and text annotations securely. Free, no registration required.">
-    <meta name="keywords" content="esign pdf, digital signature, sign pdf online, pdf signer, electronic signature, document signing">
+    <meta name="keywords" content="esign pdf, digital signature, sign pdf online, pdf signer, electronic signature, document signing, pdf editor, sign documents, esignature">
     <meta name="author" content="Tool Nest">
     <link rel="icon" href="favicon-16x16.png" type="image/x-icon">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&family=Great+Vibes&family=Pacifico&family=Courgette&display=swap" rel="stylesheet">
     
     <style>
         :root {
-            /* Premium Color Palette */
-            --primary-blue: #1a56db;
-            --dark-blue: #1e3a8a;
-            --light-blue: #3b82f6;
-            --accent-blue: #60a5fa;
-            --gradient-blue: linear-gradient(135deg, #1a56db 0%, #3b82f6 100%);
-            --gradient-dark: linear-gradient(135deg, #1e3a8a 0%, #1a56db 100%);
-            --premium-gray: #f9fafb;
-            --card-white: #ffffff;
-            --text-dark: #111827;
-            --text-gray: #6b7280;
-            --text-light: #9ca3af;
-            --border-color: #e5e7eb;
+            /* Dark Theme Premium Color Palette */
+            --primary-blue: #3b82f6;
+            --dark-blue: #1e40af;
+            --light-blue: #60a5fa;
+            --accent-blue: #93c5fd;
+            --gradient-blue: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+            --gradient-dark: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+            --bg-dark: #0f172a;
+            --card-dark: #1e293b;
+            --card-darker: #1e293b;
+            --text-light: #f8fafc;
+            --text-gray: #94a3b8;
+            --text-dark: #cbd5e1;
+            --border-color: #334155;
             --success-green: #10b981;
             --warning-orange: #f59e0b;
             --error-red: #ef4444;
-            --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.05);
-            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.07), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-            --shadow-lg: 0 10px 25px -5px rgba(0, 0, 0, 0.08), 0 8px 10px -6px rgba(0, 0, 0, 0.04);
-            --shadow-xl: 0 20px 40px -15px rgba(0, 0, 0, 0.1);
+            --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.3);
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.4), 0 2px 4px -1px rgba(0, 0, 0, 0.3);
+            --shadow-lg: 0 10px 25px -5px rgba(0, 0, 0, 0.5), 0 8px 10px -6px rgba(0, 0, 0, 0.4);
+            --shadow-xl: 0 20px 40px -15px rgba(0, 0, 0, 0.6);
             --radius-sm: 8px;
             --radius-md: 12px;
             --radius-lg: 16px;
@@ -49,7 +53,7 @@
         body {
             font-family: 'Inter', sans-serif;
             color: var(--text-dark);
-            background: var(--premium-gray);
+            background: var(--bg-dark);
             line-height: 1.6;
             font-weight: 400;
             min-height: 100vh;
@@ -62,6 +66,7 @@
             font-weight: 600;
             line-height: 1.2;
             margin-bottom: 1rem;
+            color: var(--text-light);
         }
         
         .container {
@@ -73,8 +78,8 @@
         
         /* Premium Header */
         header {
-            background-color: var(--card-white);
-            box-shadow: var(--shadow-sm);
+            background: var(--gradient-dark);
+            box-shadow: var(--shadow-lg);
             position: sticky;
             top: 0;
             z-index: 1000;
@@ -98,7 +103,7 @@
             font-family: 'Poppins', sans-serif;
             font-size: 28px;
             font-weight: 800;
-            background: var(--gradient-blue);
+            background: linear-gradient(135deg, var(--accent-blue) 0%, var(--primary-blue) 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -130,7 +135,7 @@
         .logo-tagline {
             font-size: 11px;
             font-weight: 500;
-            color: var(--text-gray);
+            color: var(--accent-blue);
             margin-top: 2px;
             letter-spacing: 0.5px;
         }
@@ -181,12 +186,11 @@
         .tool-header h1 {
             font-size: 2.8rem;
             font-weight: 700;
-            color: var(--text-dark);
-            margin-bottom: 16px;
-            background: linear-gradient(135deg, var(--text-dark) 0%, var(--primary-blue) 100%);
+            background: linear-gradient(135deg, var(--accent-blue) 0%, var(--primary-blue) 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
+            margin-bottom: 16px;
         }
         
         .tool-header p {
@@ -213,7 +217,7 @@
         
         /* Upload Section */
         .upload-section {
-            background: var(--card-white);
+            background: var(--card-dark);
             border-radius: var(--radius-lg);
             padding: 40px;
             box-shadow: var(--shadow-md);
@@ -223,7 +227,6 @@
         .upload-section h2 {
             font-size: 1.5rem;
             margin-bottom: 24px;
-            color: var(--text-dark);
             display: flex;
             align-items: center;
             gap: 10px;
@@ -240,17 +243,17 @@
             text-align: center;
             transition: var(--transition);
             cursor: pointer;
-            background: var(--premium-gray);
+            background: rgba(30, 41, 59, 0.5);
         }
         
         .upload-area:hover {
             border-color: var(--primary-blue);
-            background: #f0f9ff;
+            background: rgba(59, 130, 246, 0.1);
         }
         
         .upload-area.dragover {
             border-color: var(--success-green);
-            background: #f0fdf4;
+            background: rgba(16, 185, 129, 0.1);
         }
         
         .upload-icon {
@@ -262,7 +265,7 @@
         .upload-text h3 {
             font-size: 1.2rem;
             margin-bottom: 8px;
-            color: var(--text-dark);
+            color: var(--text-light);
         }
         
         .upload-text p {
@@ -303,9 +306,24 @@
             box-shadow: var(--shadow-md);
         }
         
+        .file-info {
+            margin-top: 16px;
+            padding: 12px;
+            background: rgba(30, 41, 59, 0.7);
+            border-radius: var(--radius-sm);
+            color: var(--text-gray);
+            font-size: 14px;
+            border-left: 3px solid var(--border-color);
+        }
+        
+        .file-info.uploaded {
+            color: var(--success-green);
+            border-left-color: var(--success-green);
+        }
+        
         /* Signature Section */
         .signature-section {
-            background: var(--card-white);
+            background: var(--card-dark);
             border-radius: var(--radius-lg);
             padding: 40px;
             box-shadow: var(--shadow-md);
@@ -315,7 +333,6 @@
         .signature-section h2 {
             font-size: 1.5rem;
             margin-bottom: 24px;
-            color: var(--text-dark);
             display: flex;
             align-items: center;
             gap: 10px;
@@ -333,7 +350,7 @@
         }
         
         .control-btn {
-            background: var(--premium-gray);
+            background: rgba(30, 41, 59, 0.7);
             border: 1px solid var(--border-color);
             padding: 10px 20px;
             border-radius: var(--radius-md);
@@ -348,7 +365,7 @@
         }
         
         .control-btn:hover {
-            background: #f0f9ff;
+            background: rgba(59, 130, 246, 0.1);
             border-color: var(--light-blue);
             color: var(--primary-blue);
         }
@@ -363,7 +380,7 @@
             border: 2px solid var(--border-color);
             border-radius: var(--radius-md);
             padding: 20px;
-            background: white;
+            background: rgba(15, 23, 42, 0.5);
             margin-bottom: 24px;
         }
         
@@ -372,6 +389,8 @@
             height: 200px;
             touch-action: none;
             cursor: crosshair;
+            background: white;
+            border-radius: 4px;
         }
         
         .signature-preview {
@@ -384,7 +403,7 @@
             padding: 16px;
             border: 1px solid var(--border-color);
             border-radius: var(--radius-md);
-            background: var(--premium-gray);
+            background: rgba(30, 41, 59, 0.7);
         }
         
         .preview-item h4 {
@@ -395,10 +414,33 @@
             letter-spacing: 0.5px;
         }
         
+        .preview-item input,
+        .preview-item select {
+            background: rgba(15, 23, 42, 0.7);
+            border: 1px solid var(--border-color);
+            color: var(--text-dark);
+            padding: 12px;
+            border-radius: var(--radius-sm);
+            width: 100%;
+        }
+        
+        #signaturePreview {
+            height: 100px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 36px;
+            font-family: 'Brush Script MT', cursive;
+            color: var(--primary-blue);
+            background: rgba(15, 23, 42, 0.5);
+            border-radius: var(--radius-sm);
+            border: 1px solid var(--border-color);
+        }
+        
         /* Actions Section */
         .actions-section {
             grid-column: 1 / -1;
-            background: var(--card-white);
+            background: var(--card-dark);
             border-radius: var(--radius-lg);
             padding: 40px;
             box-shadow: var(--shadow-md);
@@ -408,7 +450,6 @@
         .actions-section h2 {
             font-size: 1.5rem;
             margin-bottom: 24px;
-            color: var(--text-dark);
             display: flex;
             align-items: center;
             gap: 10px;
@@ -451,13 +492,13 @@
         }
         
         .action-btn.secondary {
-            background: var(--premium-gray);
+            background: rgba(30, 41, 59, 0.7);
             color: var(--text-dark);
             border: 2px solid var(--border-color);
         }
         
         .action-btn.secondary:hover {
-            background: #f0f9ff;
+            background: rgba(59, 130, 246, 0.1);
             border-color: var(--light-blue);
             color: var(--primary-blue);
         }
@@ -469,9 +510,53 @@
             box-shadow: none !important;
         }
         
+        /* SEO Description Section */
+        .seo-description {
+            background: var(--card-dark);
+            border-radius: var(--radius-lg);
+            padding: 50px;
+            box-shadow: var(--shadow-md);
+            border: 1px solid var(--border-color);
+            margin-bottom: 60px;
+        }
+        
+        .seo-description h2 {
+            font-size: 1.8rem;
+            margin-bottom: 30px;
+            text-align: center;
+            background: linear-gradient(135deg, var(--accent-blue) 0%, var(--primary-blue) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .seo-content {
+            color: var(--text-gray);
+            line-height: 1.8;
+            font-size: 16px;
+        }
+        
+        .seo-content h3 {
+            color: var(--text-light);
+            margin: 25px 0 15px;
+            font-size: 1.3rem;
+        }
+        
+        .seo-content p {
+            margin-bottom: 20px;
+        }
+        
+        .keyword-highlight {
+            color: var(--accent-blue);
+            font-weight: 600;
+            background: rgba(59, 130, 246, 0.1);
+            padding: 2px 8px;
+            border-radius: 4px;
+        }
+        
         /* Features Section */
         .features-section {
-            background: var(--card-white);
+            background: var(--card-dark);
             border-radius: var(--radius-lg);
             padding: 50px;
             box-shadow: var(--shadow-md);
@@ -483,7 +568,10 @@
             text-align: center;
             font-size: 2rem;
             margin-bottom: 40px;
-            color: var(--text-dark);
+            background: linear-gradient(135deg, var(--accent-blue) 0%, var(--primary-blue) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
         
         .features-grid {
@@ -493,22 +581,24 @@
         }
         
         .feature-card {
-            background: var(--premium-gray);
+            background: rgba(30, 41, 59, 0.7);
             border-radius: var(--radius-md);
             padding: 30px;
             border-left: 4px solid var(--primary-blue);
             transition: var(--transition);
+            border: 1px solid var(--border-color);
         }
         
         .feature-card:hover {
             transform: translateY(-5px);
             box-shadow: var(--shadow-md);
+            border-color: var(--primary-blue);
         }
         
         .feature-icon {
             width: 60px;
             height: 60px;
-            background: linear-gradient(135deg, #f0f9ff 0%, #dbeafe 100%);
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.1) 0%, rgba(29, 78, 216, 0.1) 100%);
             border-radius: var(--radius-md);
             display: flex;
             align-items: center;
@@ -521,7 +611,7 @@
         .feature-card h3 {
             font-size: 1.2rem;
             margin-bottom: 12px;
-            color: var(--text-dark);
+            color: var(--text-light);
         }
         
         .feature-card p {
@@ -532,7 +622,7 @@
         
         /* Footer */
         footer {
-            background: var(--text-dark);
+            background: var(--gradient-dark);
             color: white;
             padding: 60px 0 40px;
             margin-top: auto;
@@ -545,18 +635,27 @@
             margin-bottom: 48px;
         }
         
+        .footer-brand {
+            text-align: center;
+            grid-column: 1 / -1;
+            margin-bottom: 20px;
+        }
+        
         .footer-logo {
             font-family: 'Poppins', sans-serif;
-            font-size: 28px;
+            font-size: 32px;
             font-weight: 800;
-            color: white;
-            margin-bottom: 16px;
-            display: block;
+            background: linear-gradient(135deg, var(--accent-blue) 0%, var(--primary-blue) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
             text-decoration: none;
+            display: inline-block;
+            margin-bottom: 16px;
         }
         
         .footer-tagline {
-            color: #9ca3af;
+            color: var(--accent-blue);
             font-size: 14px;
             line-height: 1.6;
             margin-bottom: 24px;
@@ -571,7 +670,8 @@
             align-items: center;
             gap: 12px;
             margin-bottom: 16px;
-            color: #9ca3af;
+            color: var(--text-gray);
+            justify-content: center;
         }
         
         .contact-item i {
@@ -581,11 +681,13 @@
         .footer-links h4 {
             font-size: 1.1rem;
             margin-bottom: 24px;
-            color: white;
+            color: var(--text-light);
+            text-align: center;
         }
         
         .footer-links ul {
             list-style: none;
+            text-align: center;
         }
         
         .footer-links li {
@@ -593,7 +695,7 @@
         }
         
         .footer-links a {
-            color: #9ca3af;
+            color: var(--text-gray);
             text-decoration: none;
             font-size: 14px;
             transition: var(--transition);
@@ -608,7 +710,7 @@
             text-align: center;
             padding-top: 40px;
             border-top: 1px solid rgba(255, 255, 255, 0.1);
-            color: #9ca3af;
+            color: var(--text-gray);
             font-size: 14px;
         }
         
@@ -619,7 +721,7 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: rgba(255, 255, 255, 0.9);
+            background: rgba(15, 23, 42, 0.95);
             display: none;
             align-items: center;
             justify-content: center;
@@ -646,7 +748,7 @@
             right: 20px;
             padding: 16px 24px;
             border-radius: var(--radius-md);
-            background: white;
+            background: var(--card-dark);
             box-shadow: var(--shadow-lg);
             border-left: 4px solid var(--primary-blue);
             display: none;
@@ -654,6 +756,7 @@
             gap: 12px;
             z-index: 3000;
             animation: slideIn 0.3s ease-out;
+            color: var(--text-light);
         }
         
         @keyframes slideIn {
@@ -687,7 +790,7 @@
                 font-size: 2rem;
             }
             
-            .upload-section, .signature-section, .actions-section, .features-section {
+            .upload-section, .signature-section, .actions-section, .features-section, .seo-description {
                 padding: 30px;
             }
             
@@ -702,6 +805,10 @@
             .features-grid {
                 grid-template-columns: 1fr;
             }
+            
+            .tool-container {
+                gap: 20px;
+            }
         }
         
         @media (max-width: 480px) {
@@ -709,12 +816,31 @@
                 font-size: 1.8rem;
             }
             
-            .upload-section, .signature-section, .actions-section, .features-section {
+            .upload-section, .signature-section, .actions-section, .features-section, .seo-description {
                 padding: 20px;
             }
             
             .tool-container {
                 gap: 20px;
+            }
+            
+            .signature-controls {
+                flex-direction: column;
+            }
+            
+            .control-btn {
+                width: 100%;
+                justify-content: center;
+            }
+            
+            .header-container {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .back-btn {
+                width: 100%;
+                justify-content: center;
             }
         }
     </style>
@@ -809,11 +935,11 @@
                     <div class="signature-preview" id="typeSignatureContainer" style="display: none;">
                         <div class="preview-item">
                             <h4>Signature Text</h4>
-                            <input type="text" id="signatureText" placeholder="Enter your name" class="control-btn" style="width: 100%; padding: 12px; font-size: 18px;">
+                            <input type="text" id="signatureText" placeholder="Enter your name" style="background: rgba(15, 23, 42, 0.7); border: 1px solid var(--border-color); color: var(--text-dark); padding: 12px; border-radius: var(--radius-sm); width: 100%;">
                         </div>
                         <div class="preview-item">
                             <h4>Font Style</h4>
-                            <select id="fontSelect" class="control-btn" style="width: 100%; padding: 12px;">
+                            <select id="fontSelect" style="background: rgba(15, 23, 42, 0.7); border: 1px solid var(--border-color); color: var(--text-dark); padding: 12px; border-radius: var(--radius-sm); width: 100%;">
                                 <option value="'Brush Script MT', cursive">Brush Script</option>
                                 <option value="'Dancing Script', cursive">Dancing Script</option>
                                 <option value="'Great Vibes', cursive">Great Vibes</option>
@@ -823,7 +949,7 @@
                         </div>
                         <div class="preview-item">
                             <h4>Preview</h4>
-                            <div id="signaturePreview" style="height: 100px; display: flex; align-items: center; justify-content: center; font-size: 36px; font-family: 'Brush Script MT', cursive; color: #1a56db;">
+                            <div id="signaturePreview" style="height: 100px; display: flex; align-items: center; justify-content: center; font-size: 36px; font-family: 'Brush Script MT', cursive; color: var(--primary-blue); background: rgba(15, 23, 42, 0.5); border-radius: var(--radius-sm); border: 1px solid var(--border-color);">
                                 Your Signature
                             </div>
                         </div>
@@ -847,6 +973,26 @@
                             Reset All
                         </button>
                     </div>
+                </div>
+            </div>
+
+            <!-- SEO Description Section -->
+            <div class="seo-description">
+                <h2>Professional eSign PDF Tool - Secure Digital Signature Solution</h2>
+                <div class="seo-content">
+                    <p>Welcome to Tool Nest's <span class="keyword-highlight">eSign PDF tool</span> - your premier solution for adding <span class="keyword-highlight">digital signatures</span> to PDF documents. Our advanced online <span class="keyword-highlight">PDF signer</span> provides a seamless, secure, and professional way to sign documents electronically without compromising security or quality.</p>
+                    
+                    <h3>Secure & Professional PDF eSignatures</h3>
+                    <p>Our <span class="keyword-highlight">electronic signature</span> tool is designed for professionals who need reliable document signing capabilities. Whether you're signing contracts, agreements, forms, or official documents, our <span class="keyword-highlight">PDF signer online</span> ensures your signatures look professional and maintain document integrity. All processing happens locally in your browser, guaranteeing complete privacy and security.</p>
+                    
+                    <h3>Key Features of Our Digital Signature Tool</h3>
+                    <p>The Tool Nest <span class="keyword-highlight">esign PDF</span> solution offers multiple signature creation methods: draw your signature with a mouse or touchscreen, type your signature with beautiful cursive fonts, or upload an existing signature image. Our <span class="keyword-highlight">document signing</span> tool supports all PDF formats and preserves original document quality while adding your digital signature.</p>
+                    
+                    <h3>Why Choose Our Online Signature Tool?</h3>
+                    <p>Unlike other <span class="keyword-highlight">sign PDF online</span> services, we offer 100% browser-based processing, meaning your documents never leave your computer. This ensures maximum security for sensitive documents. Our tool is completely free, requires no registration, and works on all devices including desktop computers, tablets, and smartphones.</p>
+                    
+                    <h3>Perfect for Business & Personal Use</h3>
+                    <p>Whether you're a business professional needing to sign contracts, a student submitting assignments, or an individual handling official paperwork, our <span class="keyword-highlight">PDF eSign</span> tool provides enterprise-grade features without the enterprise price tag. Experience the convenience of <span class="keyword-highlight">digital document signing</span> with Tool Nest's reliable, fast, and secure solution.</p>
                 </div>
             </div>
 
@@ -893,26 +1039,26 @@
     <!-- Footer -->
     <footer>
         <div class="container">
-            <div class="footer-container">
-                <div class="footer-about">
-                    <a href="index.html" class="footer-logo">Tool Nest</a>
-                    <p class="footer-tagline">Your trusted partner for premium online tools. Professional solutions for modern workflows.</p>
-                    <div class="footer-contact">
-                        <div class="contact-item">
-                            <i class="fas fa-envelope"></i>
-                            <span>toolnest3@gmail.com</span>
-                        </div>
-                        <div class="contact-item">
-                            <i class="fas fa-shield-alt"></i>
-                            <span>100% Secure & Private</span>
-                        </div>
-                        <div class="contact-item">
-                            <i class="fas fa-bolt"></i>
-                            <span>Lightning Fast Processing</span>
-                        </div>
+            <div class="footer-brand">
+                <a href="index.html" class="footer-logo">Tool Nest</a>
+                <p class="footer-tagline">Your trusted partner for premium online tools. Professional solutions for modern workflows.</p>
+                <div class="footer-contact">
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <span>toolnest3@gmail.com</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-shield-alt"></i>
+                        <span>100% Secure & Private</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-bolt"></i>
+                        <span>Lightning Fast Processing</span>
                     </div>
                 </div>
-                
+            </div>
+            
+            <div class="footer-container">
                 <div class="footer-links">
                     <h4>Quick Links</h4>
                     <ul>
@@ -1039,7 +1185,9 @@
             
             // Update active button
             [drawBtn, typeBtn, uploadSigBtn].forEach(btn => btn.classList.remove('active'));
-            event.target.classList.add('active');
+            if (mode === 'draw') drawBtn.classList.add('active');
+            else if (mode === 'type') typeBtn.classList.add('active');
+            else if (mode === 'upload') uploadSigBtn.classList.add('active');
             
             // Show/hide containers
             if (mode === 'draw') {
@@ -1103,7 +1251,7 @@
                         await PDFLib.PDFDocument.load(pdfDocBytes);
                         
                         fileInfo.textContent = `✓ ${file.name} (${(file.size / 1024).toFixed(1)} KB)`;
-                        fileInfo.style.color = '#10b981';
+                        fileInfo.className = 'file-info uploaded';
                         downloadBtn.disabled = false;
                         
                         showAlert('PDF loaded successfully! You can now add your signature.', 'success');
@@ -1222,10 +1370,28 @@
             pdfInput.value = '';
             pdfDocBytes = null;
             fileInfo.textContent = 'No file selected';
-            fileInfo.style.color = '';
+            fileInfo.className = 'file-info';
             downloadBtn.disabled = true;
             showAlert('All fields reset', 'info');
         }
+
+        // API Integration for advanced features (commented out but ready to use)
+        // const eSignAPI = {
+        //     async validateSignature(signatureData) {
+        //         // This would connect to a backend service for signature validation
+        //         return { valid: true, timestamp: new Date().toISOString() };
+        //     },
+            
+        //     async addDigitalCertificate(pdfBytes, certificateData) {
+        //         // This would add digital certificates for enhanced security
+        //         return pdfBytes;
+        //     },
+            
+        //     async timestampDocument(pdfBytes) {
+        //         // This would add trusted timestamp to the document
+        //         return { pdfBytes, timestamp: new Date().toISOString() };
+        //     }
+        // };
 
         // Event Listeners
         window.addEventListener('load', initializeSignaturePad);
@@ -1276,6 +1442,18 @@
 
         // Initialize
         initializeSignaturePad();
+        
+        // Mobile optimization
+        if ('ontouchstart' in window) {
+            document.body.classList.add('touch-device');
+            // Adjust canvas for touch devices
+            if (signaturePad) {
+                signaturePad.minWidth = 2;
+                signaturePad.maxWidth = 4;
+            }
+        }
     </script>
 </body>
 </html>
+
+
