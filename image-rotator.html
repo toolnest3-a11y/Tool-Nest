@@ -1,27 +1,31 @@
-  
- <!DOCTYPE html>
+
+
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Advanced Image Rotator & Flipper | Rotate & Flip Images Online</title>
-  <meta name="description" content="Free professional image rotation and flipping tool. Rotate images 90°, 180°, 270°, flip horizontally and vertically. Batch processing, precise angle control, and real-time preview.">
-  <meta name="keywords" content="image rotator, rotate image online, flip image, image flipping tool, photo rotator, image editor, rotate photo, flip horizontal, flip vertical, free image editor, online photo editor">
+  <title>Advanced Image Rotator & Flipper | Professional Online Image Editor</title>
+  <meta name="description" content="Free professional image rotation and flipping tool. Rotate images 90°, 180°, 270°, flip horizontally and vertically. Batch processing, precise angle control, and real-time preview. No registration required.">
+  <meta name="keywords" content="image rotator, rotate image online, flip image, image flipping tool, photo rotator, image editor, rotate photo, flip horizontal, flip vertical, free image editor, online photo editor, image orientation, picture rotation tool">
   <link rel="icon" href="favicon-16x16.png" type="image/x-icon">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
     :root {
-      --primary: #2563eb;
-      --primary-dark: #1d4ed8;
-      --primary-light: #3b82f6;
-      --secondary: #1e293b;
-      --light: #f8fafc;
-      --gray: #64748b;
+      --primary: #3b82f6;
+      --primary-dark: #2563eb;
+      --primary-light: #60a5fa;
+      --secondary: #0f172a;
+      --dark-bg: #0f172a;
+      --dark-card: #1e293b;
+      --dark-border: #334155;
+      --light-text: #f8fafc;
+      --gray-text: #94a3b8;
       --success: #10b981;
       --warning: #f59e0b;
-      --border: #e2e8f0;
-      --shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
-      --shadow-lg: 0 20px 40px -10px rgba(0, 0, 0, 0.15);
+      --shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+      --shadow-lg: 0 20px 40px rgba(0, 0, 0, 0.4);
     }
 
     * {
@@ -32,8 +36,8 @@
 
     body {
       font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
-      background: linear-gradient(135deg, #f0f9ff 0%, #f1f5f9 100%);
-      color: var(--secondary);
+      background: var(--dark-bg);
+      color: var(--light-text);
       line-height: 1.6;
       min-height: 100vh;
       padding: 20px;
@@ -46,7 +50,7 @@
 
     header {
       text-align: center;
-      padding: 50px 20px 30px;
+      padding: 40px 20px 30px;
     }
 
     .logo {
@@ -55,6 +59,7 @@
       justify-content: center;
       gap: 15px;
       margin-bottom: 20px;
+      flex-wrap: wrap;
     }
 
     .logo-icon {
@@ -67,87 +72,108 @@
       align-items: center;
       justify-content: center;
       font-size: 28px;
-      box-shadow: 0 6px 12px rgba(37, 99, 235, 0.2);
+      box-shadow: 0 6px 12px rgba(37, 99, 235, 0.3);
     }
 
     h1 {
-      font-size: 3rem;
+      font-size: 2.5rem;
       font-weight: 800;
       background: linear-gradient(to right, var(--primary), var(--primary-light));
       -webkit-background-clip: text;
       background-clip: text;
       color: transparent;
-      margin-bottom: 12px;
+      margin-bottom: 10px;
+    }
+
+    @media (max-width: 768px) {
+      h1 {
+        font-size: 2rem;
+      }
     }
 
     .tagline {
-      font-size: 1.25rem;
-      color: var(--gray);
+      font-size: 1.1rem;
+      color: var(--gray-text);
       max-width: 700px;
-      margin: 0 auto 40px;
+      margin: 0 auto 30px;
       font-weight: 500;
     }
 
     .main-content {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 50px;
-      margin-bottom: 70px;
+      gap: 30px;
+      margin-bottom: 50px;
     }
 
     @media (max-width: 1024px) {
       .main-content {
         grid-template-columns: 1fr;
-        gap: 40px;
+        gap: 30px;
       }
     }
 
-    .control-panel {
-      background: white;
-      border-radius: 24px;
-      padding: 40px;
-      box-shadow: var(--shadow-lg);
-      border: 1px solid var(--border);
+    .control-panel, .preview-panel {
+      background: var(--dark-card);
+      border-radius: 20px;
+      padding: 30px;
+      box-shadow: var(--shadow);
+      border: 1px solid var(--dark-border);
+    }
+
+    @media (max-width: 640px) {
+      .control-panel, .preview-panel {
+        padding: 20px;
+      }
     }
 
     .upload-area {
-      border: 3px dashed #cbd5e1;
-      border-radius: 18px;
-      padding: 60px 30px;
+      border: 3px dashed var(--dark-border);
+      border-radius: 16px;
+      padding: 40px 20px;
       text-align: center;
       cursor: pointer;
       transition: all 0.3s ease;
-      margin-bottom: 40px;
-      background: #f8fafc;
+      margin-bottom: 30px;
+      background: rgba(30, 41, 59, 0.5);
     }
 
     .upload-area:hover, .upload-area.dragover {
       border-color: var(--primary);
-      background-color: #eff6ff;
+      background-color: rgba(37, 99, 235, 0.1);
       transform: translateY(-2px);
     }
 
     .upload-icon {
-      font-size: 56px;
+      font-size: 48px;
       color: var(--primary);
-      margin-bottom: 25px;
-      opacity: 0.8;
+      margin-bottom: 20px;
+      opacity: 0.9;
     }
 
     .file-input {
       display: none;
     }
 
-    .rotation-controls {
-      margin-bottom: 35px;
+    .section-title {
+      font-size: 1.2rem;
+      margin-bottom: 20px;
+      color: var(--light-text);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .section-title i {
+      color: var(--primary);
     }
 
     .angle-controls {
-      margin: 30px 0;
+      margin: 25px 0;
     }
 
     .slider-container {
-      margin: 25px 0;
+      margin: 20px 0;
     }
 
     .slider-label {
@@ -155,137 +181,63 @@
       justify-content: space-between;
       margin-bottom: 10px;
       font-weight: 500;
+      color: var(--light-text);
     }
 
     .slider {
       width: 100%;
       height: 8px;
       border-radius: 4px;
-      background: #e2e8f0;
+      background: var(--dark-border);
       outline: none;
       -webkit-appearance: none;
     }
 
     .slider::-webkit-slider-thumb {
       -webkit-appearance: none;
-      width: 24px;
-      height: 24px;
+      width: 22px;
+      height: 22px;
       border-radius: 50%;
       background: var(--primary);
       cursor: pointer;
-      border: 3px solid white;
-      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+      border: 3px solid var(--dark-card);
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.5);
     }
 
     .angle-display {
       text-align: center;
-      font-size: 2.5rem;
+      font-size: 2.2rem;
       font-weight: 700;
       color: var(--primary);
-      margin: 20px 0;
-      height: 60px;
+      margin: 15px 0;
+      height: 50px;
       display: flex;
       align-items: center;
       justify-content: center;
     }
 
-    .quick-actions {
+    .preset-grid {
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 15px;
-      margin-bottom: 30px;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+      margin-bottom: 25px;
     }
 
-    .action-btn {
-      border: 2px solid var(--border);
-      border-radius: 14px;
-      padding: 20px 15px;
-      text-align: center;
-      cursor: pointer;
-      transition: all 0.2s ease;
-      background: white;
-      font-weight: 500;
-    }
-
-    .action-btn:hover {
-      border-color: var(--primary);
-      transform: translateY(-3px);
-      box-shadow: 0 6px 12px rgba(0,0,0,0.08);
-    }
-
-    .action-btn.active {
-      border-color: var(--primary);
-      background: linear-gradient(135deg, #eff6ff, #dbeafe);
-      color: var(--primary);
-      font-weight: 600;
-    }
-
-    .action-icon {
-      font-size: 28px;
-      margin-bottom: 10px;
-      color: var(--primary);
-    }
-
-    .flip-controls {
-      margin-bottom: 35px;
-    }
-
-    .flip-buttons {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 15px;
-    }
-
-    .flip-btn {
-      border: 2px solid var(--border);
-      border-radius: 14px;
-      padding: 20px 15px;
-      text-align: center;
-      cursor: pointer;
-      transition: all 0.2s ease;
-      background: white;
-      font-weight: 500;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .flip-btn:hover {
-      border-color: var(--primary);
-      transform: translateY(-3px);
-      box-shadow: 0 6px 12px rgba(0,0,0,0.08);
-    }
-
-    .flip-btn.active {
-      border-color: var(--primary);
-      background: linear-gradient(135deg, #eff6ff, #dbeafe);
-      color: var(--primary);
-      font-weight: 600;
-    }
-
-    .flip-icon {
-      font-size: 28px;
-      margin-bottom: 10px;
-      color: var(--primary);
-    }
-
-    .preset-rotations {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
-      gap: 15px;
-      margin-bottom: 35px;
+    @media (max-width: 480px) {
+      .preset-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
     }
 
     .preset-btn {
-      border: 2px solid var(--border);
+      border: 2px solid var(--dark-border);
       border-radius: 12px;
       padding: 15px 10px;
       text-align: center;
       cursor: pointer;
       transition: all 0.2s ease;
-      background: white;
-      font-weight: 500;
+      background: var(--dark-card);
+      color: var(--light-text);
     }
 
     .preset-btn:hover {
@@ -295,51 +247,132 @@
 
     .preset-btn.active {
       border-color: var(--primary);
-      background: linear-gradient(135deg, #eff6ff, #dbeafe);
-      color: var(--primary);
-      font-weight: 600;
+      background: linear-gradient(135deg, rgba(37, 99, 235, 0.2), rgba(59, 130, 246, 0.1));
+      color: var(--primary-light);
     }
 
-    .action-buttons {
+    .flip-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 15px;
+      margin-bottom: 25px;
+    }
+
+    .flip-btn {
+      border: 2px solid var(--dark-border);
+      border-radius: 12px;
+      padding: 20px 15px;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      background: var(--dark-card);
+      color: var(--light-text);
+    }
+
+    .flip-btn:hover {
+      border-color: var(--primary);
+      transform: translateY(-3px);
+    }
+
+    .flip-btn.active {
+      border-color: var(--primary);
+      background: linear-gradient(135deg, rgba(37, 99, 235, 0.2), rgba(59, 130, 246, 0.1));
+      color: var(--primary-light);
+    }
+
+    .flip-icon {
+      font-size: 24px;
+      margin-bottom: 10px;
+      color: var(--primary);
+    }
+
+    .action-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 15px;
+      margin-bottom: 25px;
+    }
+
+    .action-btn {
+      border: 2px solid var(--dark-border);
+      border-radius: 12px;
+      padding: 20px 15px;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      background: var(--dark-card);
+      color: var(--light-text);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .action-btn:hover {
+      border-color: var(--primary);
+      transform: translateY(-3px);
+    }
+
+    .action-btn.active {
+      border-color: var(--primary);
+      background: linear-gradient(135deg, rgba(37, 99, 235, 0.2), rgba(59, 130, 246, 0.1));
+      color: var(--primary-light);
+    }
+
+    .action-icon {
+      font-size: 24px;
+      margin-bottom: 10px;
+      color: var(--primary);
+    }
+
+    .button-group {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 20px;
+      gap: 15px;
+      margin-top: 30px;
     }
 
     .btn {
-      padding: 18px 30px;
-      border-radius: 14px;
+      padding: 16px 24px;
+      border-radius: 12px;
       font-weight: 600;
-      font-size: 1.05rem;
+      font-size: 1rem;
       border: none;
       cursor: pointer;
       transition: all 0.3s ease;
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 12px;
+      gap: 10px;
+    }
+
+    @media (max-width: 480px) {
+      .btn {
+        padding: 14px 20px;
+        font-size: 0.95rem;
+      }
     }
 
     .btn-primary {
-      background: linear-gradient(135deg, var(--primary), var(--primary-light));
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
       color: white;
-      box-shadow: 0 6px 12px rgba(37, 99, 235, 0.2);
+      box-shadow: 0 6px 12px rgba(37, 99, 235, 0.3);
     }
 
-    .btn-primary:hover {
-      background: linear-gradient(135deg, var(--primary-dark), var(--primary));
+    .btn-primary:hover:not(:disabled) {
+      background: linear-gradient(135deg, var(--primary-dark), #1d4ed8);
       transform: translateY(-3px);
-      box-shadow: 0 10px 20px rgba(37, 99, 235, 0.3);
+      box-shadow: 0 10px 20px rgba(37, 99, 235, 0.4);
     }
 
     .btn-secondary {
-      background: white;
-      color: var(--secondary);
-      border: 2px solid var(--border);
+      background: var(--dark-card);
+      color: var(--light-text);
+      border: 2px solid var(--dark-border);
     }
 
-    .btn-secondary:hover {
-      background: #f8fafc;
+    .btn-secondary:hover:not(:disabled) {
+      background: var(--dark-border);
       border-color: var(--primary);
       transform: translateY(-3px);
     }
@@ -350,22 +383,14 @@
       transform: none !important;
     }
 
-    .preview-panel {
-      background: white;
-      border-radius: 24px;
-      padding: 40px;
-      box-shadow: var(--shadow-lg);
-      border: 1px solid var(--border);
-    }
-
     .preview-container {
       position: relative;
       border-radius: 16px;
       overflow: hidden;
-      margin-bottom: 30px;
-      background: #f8fafc;
-      border: 2px dashed var(--border);
-      min-height: 400px;
+      margin-bottom: 25px;
+      background: rgba(30, 41, 59, 0.5);
+      border: 2px dashed var(--dark-border);
+      min-height: 300px;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -373,86 +398,119 @@
 
     .preview-placeholder {
       text-align: center;
-      color: #94a3b8;
-      padding: 40px;
+      color: var(--gray-text);
+      padding: 30px;
     }
 
     .preview-icon {
-      font-size: 64px;
-      margin-bottom: 20px;
+      font-size: 48px;
+      margin-bottom: 15px;
       opacity: 0.5;
       color: var(--primary);
     }
 
     #image-preview {
       max-width: 100%;
-      max-height: 400px;
+      max-height: 350px;
       display: none;
-      border-radius: 12px;
-      box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+      border-radius: 10px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
       transition: transform 0.5s ease;
     }
 
-    .transformation-info {
+    .info-grid {
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 20px;
-      background: #f1f5f9;
-      padding: 25px;
-      border-radius: 16px;
-      margin-bottom: 30px;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 15px;
+      background: rgba(30, 41, 59, 0.5);
+      padding: 20px;
+      border-radius: 12px;
+      margin-bottom: 25px;
     }
 
-    @media (max-width: 768px) {
-      .transformation-info {
-        grid-template-columns: repeat(2, 1fr);
+    @media (max-width: 480px) {
+      .info-grid {
+        grid-template-columns: 1fr;
       }
     }
 
     .info-item {
       text-align: center;
+      padding: 10px;
     }
 
     .info-label {
       display: block;
-      font-size: 0.95rem;
-      color: var(--gray);
-      margin-bottom: 8px;
+      font-size: 0.9rem;
+      color: var(--gray-text);
+      margin-bottom: 5px;
       font-weight: 500;
     }
 
     .info-value {
       font-weight: 700;
-      font-size: 1.25rem;
-      color: var(--secondary);
+      font-size: 1.1rem;
+      color: var(--light-text);
     }
 
     .download-section {
       text-align: center;
     }
 
+    .format-grid {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 20px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .format-btn {
+      padding: 10px 20px;
+      border: 2px solid var(--dark-border);
+      border-radius: 8px;
+      background: var(--dark-card);
+      color: var(--light-text);
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .format-btn.active {
+      border-color: var(--primary);
+      background: rgba(37, 99, 235, 0.2);
+      color: var(--primary-light);
+    }
+
     .btn-download {
-      background: linear-gradient(135deg, var(--primary), var(--primary-light));
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
       color: white;
-      padding: 20px 40px;
-      border-radius: 14px;
+      padding: 18px 30px;
+      border-radius: 12px;
       font-weight: 600;
-      font-size: 1.1rem;
+      font-size: 1rem;
       border: none;
       cursor: pointer;
       transition: all 0.3s ease;
       display: inline-flex;
       align-items: center;
-      gap: 12px;
-      box-shadow: 0 6px 12px rgba(37, 99, 235, 0.2);
+      gap: 10px;
+      box-shadow: 0 6px 12px rgba(37, 99, 235, 0.3);
       text-decoration: none;
-      min-width: 280px;
+      min-width: 250px;
       justify-content: center;
     }
 
-    .btn-download:hover {
+    @media (max-width: 480px) {
+      .btn-download {
+        min-width: 100%;
+        padding: 16px 20px;
+      }
+    }
+
+    .btn-download:hover:not(:disabled) {
       transform: translateY(-3px);
-      box-shadow: 0 10px 20px rgba(37, 99, 235, 0.3);
+      box-shadow: 0 10px 20px rgba(37, 99, 235, 0.4);
     }
 
     .btn-download:disabled {
@@ -461,147 +519,160 @@
       transform: none !important;
     }
 
-    .format-options {
-      display: flex;
-      gap: 15px;
-      margin-top: 20px;
-      justify-content: center;
-      flex-wrap: wrap;
-    }
-
-    .format-btn {
-      padding: 10px 20px;
-      border: 2px solid var(--border);
-      border-radius: 10px;
-      background: white;
-      font-weight: 500;
-      cursor: pointer;
-      transition: all 0.2s;
-    }
-
-    .format-btn.active {
-      border-color: var(--primary);
-      background: #eff6ff;
-      color: var(--primary);
-    }
-
     .seo-content {
-      background: white;
-      border-radius: 24px;
-      padding: 50px;
+      background: var(--dark-card);
+      border-radius: 20px;
+      padding: 40px;
       box-shadow: var(--shadow);
-      border: 1px solid var(--border);
-      margin-bottom: 70px;
+      border: 1px solid var(--dark-border);
+      margin-bottom: 50px;
+    }
+
+    @media (max-width: 768px) {
+      .seo-content {
+        padding: 25px;
+      }
     }
 
     .seo-content h2 {
-      font-size: 2.2rem;
-      color: var(--secondary);
-      margin-bottom: 25px;
+      font-size: 1.8rem;
+      color: var(--light-text);
+      margin-bottom: 20px;
       text-align: center;
     }
 
     .seo-content p {
-      font-size: 1.1rem;
-      line-height: 1.8;
-      color: #475569;
-      margin-bottom: 25px;
-      text-align: justify;
+      font-size: 1rem;
+      line-height: 1.7;
+      color: var(--gray-text);
+      margin-bottom: 20px;
+      text-align: left;
     }
 
-    .keywords {
+    .keyword-grid {
       display: flex;
       flex-wrap: wrap;
-      gap: 12px;
-      margin-top: 30px;
+      gap: 10px;
+      margin-top: 25px;
       justify-content: center;
     }
 
     .keyword-tag {
-      background: #dbeafe;
-      color: var(--primary);
-      padding: 10px 20px;
+      background: rgba(37, 99, 235, 0.2);
+      color: var(--primary-light);
+      padding: 8px 16px;
       border-radius: 50px;
       font-weight: 500;
-      font-size: 0.95rem;
+      font-size: 0.9rem;
+      border: 1px solid rgba(59, 130, 246, 0.3);
     }
 
     .api-section {
       background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
       color: white;
-      padding: 60px 50px;
-      border-radius: 24px;
-      margin-bottom: 70px;
+      padding: 40px;
+      border-radius: 20px;
+      margin-bottom: 50px;
+      border: 1px solid var(--dark-border);
     }
 
     .api-section h2 {
       color: white;
       margin-bottom: 20px;
-      font-size: 2.2rem;
+      font-size: 1.8rem;
     }
 
     .api-section p {
       opacity: 0.9;
-      margin-bottom: 30px;
-      font-size: 1.1rem;
+      margin-bottom: 25px;
+      font-size: 1rem;
+      color: var(--gray-text);
     }
 
     .code-block {
-      background: rgba(255,255,255,0.1);
-      padding: 25px;
-      border-radius: 12px;
+      background: rgba(255,255,255,0.05);
+      padding: 20px;
+      border-radius: 10px;
       font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
-      margin-bottom: 30px;
+      margin-bottom: 25px;
       overflow-x: auto;
       border-left: 4px solid var(--primary);
+      color: #e2e8f0;
+      font-size: 0.9rem;
+      line-height: 1.5;
     }
 
-    .use-cases {
+    .use-case-grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-      gap: 30px;
-      margin-top: 50px;
+      gap: 20px;
+      margin-top: 40px;
+    }
+
+    @media (max-width: 768px) {
+      .use-case-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 480px) {
+      .use-case-grid {
+        grid-template-columns: 1fr;
+      }
     }
 
     .use-case-card {
-      background: white;
+      background: var(--dark-card);
       border-radius: 16px;
-      padding: 30px;
+      padding: 25px;
       text-align: center;
       box-shadow: var(--shadow);
-      border: 1px solid var(--border);
+      border: 1px solid var(--dark-border);
+      transition: transform 0.3s ease;
+    }
+
+    .use-case-card:hover {
+      transform: translateY(-5px);
     }
 
     .use-case-icon {
-      font-size: 40px;
-      margin-bottom: 20px;
+      font-size: 32px;
+      margin-bottom: 15px;
       color: var(--primary);
     }
 
     footer {
       text-align: center;
-      padding: 50px 20px;
-      color: var(--gray);
-      border-top: 1px solid var(--border);
+      padding: 40px 20px;
+      color: var(--gray-text);
+      border-top: 1px solid var(--dark-border);
       margin-top: 40px;
     }
 
     .footer-links {
       display: flex;
       justify-content: center;
-      gap: 30px;
-      margin-bottom: 25px;
+      gap: 20px;
+      margin-bottom: 20px;
       flex-wrap: wrap;
     }
 
     .footer-links a {
-      color: var(--gray);
+      color: var(--gray-text);
       text-decoration: none;
       transition: color 0.2s;
+      font-size: 0.95rem;
     }
 
     .footer-links a:hover {
+      color: var(--primary-light);
+    }
+
+    .footer-brand {
+      font-size: 1.2rem;
+      font-weight: 700;
       color: var(--primary);
+      margin-bottom: 10px;
     }
 
     .loading {
@@ -613,10 +684,10 @@
     }
 
     .spinner {
-      width: 50px;
-      height: 50px;
-      border: 5px solid #f3f3f3;
-      border-top: 5px solid var(--primary);
+      width: 40px;
+      height: 40px;
+      border: 4px solid rgba(255, 255, 255, 0.1);
+      border-top: 4px solid var(--primary);
       border-radius: 50%;
       animation: spin 1s linear infinite;
     }
@@ -636,7 +707,7 @@
         </div>
         <h1>Advanced Image Rotator & Flipper</h1>
       </div>
-      <p class="tagline">Rotate and flip images with precision control. Perfect for correcting orientation and creating mirror effects.</p>
+      <p class="tagline">Professional-grade image rotation and flipping tool with precise controls, real-time preview, and batch processing capabilities</p>
     </header>
 
     <div class="main-content">
@@ -645,14 +716,17 @@
           <div class="upload-icon">
             <i class="fas fa-cloud-upload-alt"></i>
           </div>
-          <h3 style="margin-bottom: 10px;">Drag & Drop Your Image</h3>
-          <p>or click to browse files</p>
-          <p style="color: var(--gray); margin-top: 15px; font-size: 0.95rem;">Supports JPG, PNG, WebP, GIF, BMP (Max 50MB)</p>
+          <h3 style="margin-bottom: 10px; color: var(--light-text);">Drag & Drop Your Image</h3>
+          <p style="color: var(--gray-text);">or click to browse files</p>
+          <p style="color: var(--gray-text); margin-top: 15px; font-size: 0.9rem;">Supports JPG, PNG, WebP, GIF, BMP (Max 50MB)</p>
           <input type="file" id="image-upload" class="file-input" accept="image/*">
         </div>
 
         <div class="rotation-controls">
-          <h3 style="margin-bottom: 20px; color: var(--secondary);">Rotation</h3>
+          <div class="section-title">
+            <i class="fas fa-redo-alt"></i>
+            <span>Rotation Controls</span>
+          </div>
           
           <div class="angle-controls">
             <div class="slider-container">
@@ -661,7 +735,7 @@
                 <span id="angleValue">0°</span>
               </div>
               <input type="range" min="0" max="360" value="0" class="slider" id="angleSlider">
-              <div style="display: flex; justify-content: space-between; font-size: 0.8rem; color: var(--gray); margin-top: 5px;">
+              <div style="display: flex; justify-content: space-between; font-size: 0.8rem; color: var(--gray-text); margin-top: 5px;">
                 <span>0°</span>
                 <span>90°</span>
                 <span>180°</span>
@@ -675,66 +749,79 @@
             </div>
           </div>
 
-          <div class="preset-rotations">
+          <div class="section-title" style="margin-top: 25px;">
+            <i class="fas fa-bolt"></i>
+            <span>Quick Presets</span>
+          </div>
+          <div class="preset-grid">
             <div class="preset-btn" data-angle="90">
               <div style="font-weight: 600;">90° Right</div>
-              <div style="font-size: 0.9rem; color: var(--gray);">Quarter Turn</div>
+              <div style="font-size: 0.85rem; color: var(--gray-text);">Clockwise</div>
             </div>
             <div class="preset-btn" data-angle="180">
               <div style="font-weight: 600;">180°</div>
-              <div style="font-size: 0.9rem; color: var(--gray);">Upside Down</div>
+              <div style="font-size: 0.85rem; color: var(--gray-text);">Upside Down</div>
             </div>
             <div class="preset-btn" data-angle="270">
               <div style="font-weight: 600;">90° Left</div>
-              <div style="font-size: 0.9rem; color: var(--gray);">Quarter Turn</div>
+              <div style="font-size: 0.85rem; color: var(--gray-text);">Counter-clockwise</div>
             </div>
             <div class="preset-btn" data-angle="0">
               <div style="font-weight: 600;">Reset</div>
-              <div style="font-size: 0.9rem; color: var(--gray);">Original</div>
+              <div style="font-size: 0.85rem; color: var(--gray-text);">Original</div>
             </div>
           </div>
         </div>
 
         <div class="flip-controls">
-          <h3 style="margin-bottom: 20px; color: var(--secondary);">Flip & Mirror</h3>
-          <div class="flip-buttons">
+          <div class="section-title">
+            <i class="fas fa-arrows-alt-h"></i>
+            <span>Flip & Mirror</span>
+          </div>
+          <div class="flip-grid">
             <div class="flip-btn" id="flip-horizontal">
               <div class="flip-icon">
                 <i class="fas fa-arrows-alt-h"></i>
               </div>
               <div>Flip Horizontal</div>
-              <div style="font-size: 0.9rem; color: var(--gray);">Mirror Effect</div>
+              <div style="font-size: 0.85rem; color: var(--gray-text);">Mirror Effect</div>
             </div>
             <div class="flip-btn" id="flip-vertical">
               <div class="flip-icon">
                 <i class="fas fa-arrows-alt-v"></i>
               </div>
               <div>Flip Vertical</div>
-              <div style="font-size: 0.9rem; color: var(--gray);">Upside Down</div>
+              <div style="font-size: 0.85rem; color: var(--gray-text);">Upside Down</div>
             </div>
           </div>
         </div>
 
         <div class="quick-actions">
-          <div class="action-btn" id="rotate-left">
-            <div class="action-icon">
-              <i class="fas fa-undo"></i>
-            </div>
-            <div>Rotate Left</div>
-            <div style="font-size: 0.9rem; color: var(--gray);">-90°</div>
+          <div class="section-title">
+            <i class="fas fa-fast-forward"></i>
+            <span>Quick Actions</span>
           </div>
-          <div class="action-btn" id="rotate-right">
-            <div class="action-icon">
-              <i class="fas fa-redo"></i>
+          <div class="action-grid">
+            <div class="action-btn" id="rotate-left">
+              <div class="action-icon">
+                <i class="fas fa-undo"></i>
+              </div>
+              <div>Rotate Left</div>
+              <div style="font-size: 0.85rem; color: var(--gray-text);">-90°</div>
             </div>
-            <div>Rotate Right</div>
-            <div style="font-size: 0.9rem; color: var(--gray);">+90°</div>
+            <div class="action-btn" id="rotate-right">
+              <div class="action-icon">
+                <i class="fas fa-redo"></i>
+              </div>
+              <div>Rotate Right</div>
+              <div style="font-size: 0.85rem; color: var(--gray-text);">+90°</div>
+            </div>
           </div>
         </div>
 
-        <div class="action-buttons">
+        <div class="button-group">
           <button id="applyBtn" class="btn btn-primary" disabled>
-            <i class="fas fa-check-circle"></i> Apply Transformations
+            <i class="fas fa-check-circle"></i> Apply
           </button>
           <button id="resetBtn" class="btn btn-secondary" disabled>
             <i class="fas fa-redo"></i> Reset All
@@ -748,8 +835,8 @@
             <div class="preview-icon">
               <i class="fas fa-image"></i>
             </div>
-            <h3 style="margin-bottom: 10px; color: #475569;">Image Preview</h3>
-            <p style="color: #94a3b8;">Upload an image to see transformations</p>
+            <h3 style="margin-bottom: 10px; color: var(--light-text);">Image Preview</h3>
+            <p style="color: var(--gray-text);">Upload an image to see transformations</p>
           </div>
           <img id="image-preview" src="" alt="Image Preview">
           <div class="loading" id="loading">
@@ -757,7 +844,7 @@
           </div>
         </div>
 
-        <div class="transformation-info">
+        <div class="info-grid">
           <div class="info-item">
             <span class="info-label">Rotation</span>
             <span class="info-value" id="currentRotation">0°</span>
@@ -777,7 +864,7 @@
         </div>
 
         <div class="download-section">
-          <div class="format-options">
+          <div class="format-grid">
             <div class="format-btn active" data-format="png">PNG</div>
             <div class="format-btn" data-format="jpeg">JPG</div>
             <div class="format-btn" data-format="webp">WebP</div>
@@ -791,14 +878,14 @@
     </div>
 
     <div class="seo-content">
-      <h2>Professional Image Rotation & Flipping Tool</h2>
-      <p>Our Advanced Image Rotator & Flipper is a comprehensive online solution for adjusting image orientation with precision control. Whether you need to correct photos taken at the wrong angle, create mirror effects for design projects, or prepare images for social media and websites, our tool provides seamless rotation and flipping capabilities with real-time preview.</p>
+      <h2>Advanced Image Rotation & Flipping Tool - Professional Photo Orientation Editor</h2>
+      <p>Our <strong>Advanced Image Rotator & Flipper</strong> is a comprehensive, professional-grade online solution for all your image orientation needs. Whether you're a photographer correcting camera misalignments, a graphic designer creating symmetrical compositions, or a social media manager optimizing visual content, our tool provides precise control over image rotation and flipping operations with instant visual feedback.</p>
       
-      <p>The tool supports all major image formats including JPEG, PNG, WebP, GIF, and BMP. With precise angle control (0-360°), preset rotations (90°, 180°, 270°), horizontal and vertical flipping, and batch processing capabilities, you can efficiently adjust multiple images for any purpose. All processing happens locally in your browser, ensuring complete privacy and security for your images.</p>
+      <p>This powerful <strong>image rotation tool</strong> supports all major image formats including JPEG, PNG, WebP, GIF, and BMP files up to 50MB. Features include precise 0-360° angle control, preset rotations (90°, 180°, 270°), horizontal and vertical flipping capabilities, and real-time preview. All image processing occurs locally in your browser, ensuring complete privacy and security for your sensitive images without any server uploads.</p>
       
-      <p>Perfect for photographers, graphic designers, social media managers, e-commerce store owners, and content creators who need to optimize image orientation for better presentation. Correct landscape/portrait issues, create symmetrical designs, prepare images for printing, or simply fix incorrectly oriented photos from your camera or smartphone.</p>
+      <p>Perfect for e-commerce product image standardization, social media content preparation, print material design, and general photo correction. Our <strong>free online image editor</strong> eliminates the need for complex software installations while providing professional results comparable to desktop applications. The intuitive interface makes it accessible for beginners while offering advanced features for professional users.</p>
       
-      <div class="keywords">
+      <div class="keyword-grid">
         <span class="keyword-tag">image rotator</span>
         <span class="keyword-tag">rotate image online</span>
         <span class="keyword-tag">flip image</span>
@@ -811,42 +898,45 @@
         <span class="keyword-tag">free image editor</span>
         <span class="keyword-tag">online photo editor</span>
         <span class="keyword-tag">image orientation tool</span>
+        <span class="keyword-tag">picture rotation</span>
+        <span class="keyword-tag">photo orientation</span>
+        <span class="keyword-tag">mirror image</span>
       </div>
     </div>
 
-    <div class="use-cases">
+    <div class="use-case-grid">
       <div class="use-case-card">
         <div class="use-case-icon">
           <i class="fas fa-camera"></i>
         </div>
         <h4>Photo Correction</h4>
-        <p style="color: var(--gray); font-size: 0.95rem;">Fix photos taken at wrong angles or orientations</p>
+        <p style="color: var(--gray-text); font-size: 0.9rem;">Fix photos taken at wrong angles or orientations</p>
       </div>
       <div class="use-case-card">
         <div class="use-case-icon">
           <i class="fas fa-paint-brush"></i>
         </div>
         <h4>Graphic Design</h4>
-        <p style="color: var(--gray); font-size: 0.95rem;">Create mirror effects and symmetrical designs</p>
+        <p style="color: var(--gray-text); font-size: 0.9rem;">Create mirror effects and symmetrical designs</p>
       </div>
       <div class="use-case-card">
         <div class="use-case-icon">
           <i class="fas fa-shopping-cart"></i>
         </div>
         <h4>E-commerce</h4>
-        <p style="color: var(--gray); font-size: 0.95rem;">Standardize product image orientations</p>
+        <p style="color: var(--gray-text); font-size: 0.9rem;">Standardize product image orientations</p>
       </div>
       <div class="use-case-card">
         <div class="use-case-icon">
           <i class="fas fa-print"></i>
         </div>
         <h4>Print Preparation</h4>
-        <p style="color: var(--gray); font-size: 0.95rem;">Prepare images for brochures and marketing materials</p>
+        <p style="color: var(--gray-text); font-size: 0.9rem;">Prepare images for brochures and marketing materials</p>
       </div>
     </div>
 
     <div class="api-section">
-      <h2>Image Transformation API</h2>
+      <h2>Image Transformation API for Developers</h2>
       <p>Integrate our powerful image rotation and flipping functionality into your applications with our REST API. Perfect for developers building photo editing apps, CMS platforms, or digital asset management solutions.</p>
       
       <div class="code-block">
@@ -872,12 +962,13 @@
         }
       </div>
       
-      <button class="btn btn-primary" onclick="alert('API documentation would open in production')" style="background: white; color: #111827;">
+      <button class="btn btn-primary" onclick="alert('API documentation would open in production')" style="background: white; color: var(--secondary); border: none;">
         <i class="fas fa-code"></i> View Full API Documentation
       </button>
     </div>
 
     <footer>
+      <div class="footer-brand">Tool Nest</div>
       <div class="footer-links">
         <a href="#">Home</a>
         <a href="#">Features</a>
@@ -887,7 +978,7 @@
         <a href="#">Contact</a>
       </div>
       <p>© 2023 Advanced Image Rotator & Flipper. All rights reserved.</p>
-      <p style="margin-top: 10px; font-size: 0.95rem;">Free online tool for rotating and flipping images. No uploads to external servers.</p>
+      <p style="margin-top: 10px; font-size: 0.9rem; color: var(--gray-text);">Free online tool for rotating and flipping images. No uploads to external servers - all processing happens locally.</p>
     </footer>
   </div>
 
@@ -954,6 +1045,8 @@
     // Preset rotation buttons
     presetButtons.forEach(btn => {
       btn.addEventListener('click', () => {
+        presetButtons.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
         const angle = parseInt(btn.dataset.angle);
         rotation = angle;
         angleSlider.value = angle;
@@ -1025,19 +1118,19 @@
 
     function toggleFlipHorizontal() {
       flipH = !flipH;
+      flipHorizontalBtn.classList.toggle('active', flipH);
       updateFlipButtons();
       updatePreview();
     }
 
     function toggleFlipVertical() {
       flipV = !flipV;
+      flipVerticalBtn.classList.toggle('active', flipV);
       updateFlipButtons();
       updatePreview();
     }
 
     function updateFlipButtons() {
-      flipHorizontalBtn.classList.toggle('active', flipH);
-      flipVerticalBtn.classList.toggle('active', flipV);
       horizontalFlip.textContent = flipH ? 'Yes' : 'No';
       verticalFlip.textContent = flipV ? 'Yes' : 'No';
     }
@@ -1051,7 +1144,6 @@
     function updatePreview() {
       if (!imagePreview.src) return;
       
-      // Update CSS transform for visual preview
       imagePreview.style.transform = `
         rotate(${rotation}deg)
         scaleX(${flipH ? -1 : 1})
@@ -1073,7 +1165,6 @@
           const canvas = document.createElement('canvas');
           const ctx = canvas.getContext('2d');
           
-          // Calculate canvas size based on rotation
           let width = img.width;
           let height = img.height;
           
@@ -1092,7 +1183,6 @@
           
           transformedCanvas = canvas;
           
-          // Update download link
           const mimeType = `image/${selectedFormat === 'jpg' ? 'jpeg' : selectedFormat}`;
           canvas.toBlob((blob) => {
             const url = URL.createObjectURL(blob);
@@ -1100,7 +1190,6 @@
             downloadLink.download = `transformed-image.${selectedFormat}`;
             downloadLink.disabled = false;
             
-            // Update preview with transformed image
             imagePreview.src = url;
             
             applyBtn.disabled = false;
@@ -1138,3 +1227,7 @@
   </script>
 </body>
 </html>
+
+
+
+
