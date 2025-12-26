@@ -1,4 +1,6 @@
 
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,18 +13,20 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
     :root {
-      --primary: #2563eb;
-      --primary-dark: #1d4ed8;
-      --primary-light: #3b82f6;
-      --secondary: #1e293b;
-      --light: #f8fafc;
-      --gray: #64748b;
+      --primary: #6366f1;
+      --primary-dark: #4f46e5;
+      --primary-light: #818cf8;
+      --secondary: #0f172a;
+      --dark-bg: #0f172a;
+      --dark-card: #1e293b;
+      --dark-border: #334155;
+      --light-text: #f1f5f9;
+      --gray-text: #94a3b8;
       --success: #10b981;
       --warning: #f59e0b;
       --error: #ef4444;
-      --border: #e2e8f0;
-      --shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
-      --shadow-lg: 0 20px 40px -10px rgba(0, 0, 0, 0.15);
+      --shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3);
+      --shadow-lg: 0 20px 40px -10px rgba(0, 0, 0, 0.4);
     }
 
     * {
@@ -33,8 +37,8 @@
 
     body {
       font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
-      background: linear-gradient(135deg, #f0f9ff 0%, #f1f5f9 100%);
-      color: var(--secondary);
+      background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+      color: var(--light-text);
       line-height: 1.6;
       min-height: 100vh;
       padding: 20px;
@@ -47,7 +51,7 @@
 
     header {
       text-align: center;
-      padding: 50px 20px 30px;
+      padding: 40px 20px 30px;
     }
 
     .logo {
@@ -68,11 +72,11 @@
       align-items: center;
       justify-content: center;
       font-size: 28px;
-      box-shadow: 0 6px 12px rgba(37, 99, 235, 0.2);
+      box-shadow: 0 6px 12px rgba(99, 102, 241, 0.3);
     }
 
     h1 {
-      font-size: 3rem;
+      font-size: 2.8rem;
       font-weight: 800;
       background: linear-gradient(to right, var(--primary), var(--primary-light));
       -webkit-background-clip: text;
@@ -81,56 +85,83 @@
       margin-bottom: 12px;
     }
 
+    @media (max-width: 768px) {
+      h1 {
+        font-size: 2.2rem;
+      }
+    }
+
     .tagline {
       font-size: 1.25rem;
-      color: var(--gray);
+      color: var(--gray-text);
       max-width: 700px;
       margin: 0 auto 40px;
       font-weight: 500;
     }
 
+    @media (max-width: 768px) {
+      .tagline {
+        font-size: 1.1rem;
+      }
+    }
+
     .main-content {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 50px;
-      margin-bottom: 70px;
+      gap: 40px;
+      margin-bottom: 60px;
     }
 
     @media (max-width: 1024px) {
       .main-content {
         grid-template-columns: 1fr;
-        gap: 40px;
+        gap: 30px;
       }
     }
 
-    .input-section {
-      background: white;
-      border-radius: 24px;
-      padding: 40px;
+    .input-section, .output-section {
+      background: var(--dark-card);
+      border-radius: 20px;
+      padding: 30px;
       box-shadow: var(--shadow-lg);
-      border: 1px solid var(--border);
+      border: 1px solid var(--dark-border);
     }
 
-    .editor-header {
+    @media (max-width: 640px) {
+      .input-section, .output-section {
+        padding: 20px;
+      }
+    }
+
+    .editor-header, .output-header {
       display: flex;
       justify-content: space-between;
       align-items: center;
       margin-bottom: 25px;
     }
 
-    .editor-actions {
-      display: flex;
-      gap: 15px;
+    @media (max-width: 768px) {
+      .editor-header, .output-header {
+        flex-direction: column;
+        gap: 15px;
+        align-items: flex-start;
+      }
     }
 
-    .action-btn {
-      background: white;
-      border: 2px solid var(--border);
+    .editor-actions, .view-options {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .action-btn, .view-btn {
+      background: var(--dark-card);
+      border: 2px solid var(--dark-border);
       border-radius: 10px;
-      padding: 10px 20px;
+      padding: 10px 18px;
       font-size: 0.95rem;
       font-weight: 500;
-      color: var(--secondary);
+      color: var(--gray-text);
       cursor: pointer;
       transition: all 0.2s ease;
       display: flex;
@@ -138,39 +169,45 @@
       gap: 8px;
     }
 
-    .action-btn:hover {
+    .action-btn:hover, .view-btn:hover {
       border-color: var(--primary);
-      color: var(--primary);
+      color: var(--primary-light);
       transform: translateY(-2px);
     }
 
-    .action-btn.active {
-      background: linear-gradient(135deg, #eff6ff, #dbeafe);
+    .action-btn.active, .view-btn.active {
+      background: linear-gradient(135deg, rgba(99, 102, 241, 0.2), rgba(79, 70, 229, 0.1));
       border-color: var(--primary);
-      color: var(--primary);
+      color: var(--primary-light);
       font-weight: 600;
     }
 
-    .json-editor {
+    .json-editor, .json-output {
       position: relative;
-      border: 2px solid var(--border);
+      border: 2px solid var(--dark-border);
       border-radius: 16px;
       overflow: hidden;
-      background: #f8fafc;
-      margin-bottom: 30px;
-      min-height: 400px;
+      background: rgba(15, 23, 42, 0.7);
+      margin-bottom: 25px;
+      min-height: 350px;
+    }
+
+    @media (max-width: 768px) {
+      .json-editor, .json-output {
+        min-height: 300px;
+      }
     }
 
     #jsonInput {
       width: 100%;
-      min-height: 400px;
+      min-height: 350px;
       padding: 20px;
       font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
       font-size: 14px;
       line-height: 1.5;
       border: none;
       background: transparent;
-      color: var(--secondary);
+      color: var(--light-text);
       resize: vertical;
       outline: none;
       white-space: pre;
@@ -178,24 +215,40 @@
       overflow-x: auto;
     }
 
+    @media (max-width: 768px) {
+      #jsonInput {
+        min-height: 300px;
+      }
+    }
+
     .placeholder {
       position: absolute;
       top: 20px;
       left: 20px;
-      color: #94a3b8;
+      color: var(--gray-text);
       font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
       font-size: 14px;
       pointer-events: none;
+      opacity: 0.7;
     }
 
     .validation-status {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      background: #f1f5f9;
+      background: rgba(30, 41, 59, 0.8);
       padding: 20px;
       border-radius: 14px;
-      margin-bottom: 30px;
+      margin-bottom: 25px;
+      border: 1px solid var(--dark-border);
+    }
+
+    @media (max-width: 480px) {
+      .validation-status {
+        flex-direction: column;
+        gap: 15px;
+        align-items: flex-start;
+      }
     }
 
     .status-indicator {
@@ -208,7 +261,7 @@
       width: 12px;
       height: 12px;
       border-radius: 50%;
-      background: var(--gray);
+      background: var(--gray-text);
     }
 
     .status-dot.valid {
@@ -226,109 +279,60 @@
       50% { opacity: 0.5; }
     }
 
-    .action-buttons {
+    .action-buttons, .output-actions {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 20px;
+      gap: 15px;
     }
 
-    .btn {
-      padding: 18px 30px;
-      border-radius: 14px;
+    @media (max-width: 480px) {
+      .action-buttons, .output-actions {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .btn, .output-btn {
+      padding: 16px 25px;
+      border-radius: 12px;
       font-weight: 600;
-      font-size: 1.05rem;
+      font-size: 1rem;
       border: none;
       cursor: pointer;
       transition: all 0.3s ease;
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 12px;
+      gap: 10px;
     }
 
-    .btn-primary {
-      background: linear-gradient(135deg, var(--primary), var(--primary-light));
+    .btn-primary, .output-btn {
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
       color: white;
-      box-shadow: 0 6px 12px rgba(37, 99, 235, 0.2);
+      box-shadow: 0 6px 12px rgba(99, 102, 241, 0.3);
     }
 
-    .btn-primary:hover {
+    .btn-primary:hover:not(:disabled), .output-btn:hover:not(:disabled) {
       background: linear-gradient(135deg, var(--primary-dark), var(--primary));
       transform: translateY(-3px);
-      box-shadow: 0 10px 20px rgba(37, 99, 235, 0.3);
+      box-shadow: 0 10px 20px rgba(99, 102, 241, 0.4);
     }
 
-    .btn-secondary {
-      background: white;
-      color: var(--secondary);
-      border: 2px solid var(--border);
+    .btn-secondary, .output-btn.secondary {
+      background: var(--dark-card);
+      color: var(--light-text);
+      border: 2px solid var(--dark-border);
     }
 
-    .btn-secondary:hover {
-      background: #f8fafc;
+    .btn-secondary:hover:not(:disabled), .output-btn.secondary:hover:not(:disabled) {
+      background: rgba(99, 102, 241, 0.1);
       border-color: var(--primary);
       transform: translateY(-3px);
     }
 
-    .btn:disabled {
+    .btn:disabled, .output-btn:disabled {
       opacity: 0.5;
       cursor: not-allowed;
       transform: none !important;
-    }
-
-    .output-section {
-      background: white;
-      border-radius: 24px;
-      padding: 40px;
-      box-shadow: var(--shadow-lg);
-      border: 1px solid var(--border);
-    }
-
-    .output-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 25px;
-    }
-
-    .view-options {
-      display: flex;
-      gap: 15px;
-    }
-
-    .view-btn {
-      background: white;
-      border: 2px solid var(--border);
-      border-radius: 10px;
-      padding: 10px 20px;
-      font-size: 0.95rem;
-      font-weight: 500;
-      color: var(--secondary);
-      cursor: pointer;
-      transition: all 0.2s ease;
-    }
-
-    .view-btn:hover {
-      border-color: var(--primary);
-      color: var(--primary);
-    }
-
-    .view-btn.active {
-      background: linear-gradient(135deg, #eff6ff, #dbeafe);
-      border-color: var(--primary);
-      color: var(--primary);
-      font-weight: 600;
-    }
-
-    .json-output {
-      border: 2px solid var(--border);
-      border-radius: 16px;
-      overflow: hidden;
-      background: #f8fafc;
-      margin-bottom: 30px;
-      min-height: 400px;
-      max-height: 400px;
-      overflow-y: auto;
     }
 
     #jsonOutput {
@@ -339,6 +343,7 @@
       white-space: pre;
       overflow-wrap: normal;
       overflow-x: auto;
+      color: var(--light-text);
     }
 
     .json-tree {
@@ -346,6 +351,7 @@
       font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
       font-size: 14px;
       line-height: 1.5;
+      color: var(--light-text);
     }
 
     .tree-node {
@@ -360,35 +366,37 @@
       top: 0;
       bottom: 0;
       width: 1px;
-      background: var(--border);
+      background: var(--dark-border);
     }
 
     .tree-key {
-      color: var(--primary);
+      color: var(--primary-light);
       font-weight: 600;
     }
 
     .tree-value {
-      color: var(--secondary);
+      color: var(--light-text);
     }
 
     .tree-type {
-      color: var(--gray);
+      color: var(--gray-text);
       font-size: 0.85em;
       margin-left: 8px;
+      font-style: italic;
     }
 
     .statistics {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
-      gap: 20px;
-      background: #f1f5f9;
-      padding: 25px;
-      border-radius: 16px;
-      margin-bottom: 30px;
+      gap: 15px;
+      background: rgba(30, 41, 59, 0.8);
+      padding: 20px;
+      border-radius: 14px;
+      margin-bottom: 25px;
+      border: 1px solid var(--dark-border);
     }
 
-    @media (max-width: 768px) {
+    @media (max-width: 640px) {
       .statistics {
         grid-template-columns: repeat(2, 1fr);
       }
@@ -400,8 +408,8 @@
 
     .stat-label {
       display: block;
-      font-size: 0.95rem;
-      color: var(--gray);
+      font-size: 0.9rem;
+      color: var(--gray-text);
       margin-bottom: 8px;
       font-weight: 500;
     }
@@ -409,147 +417,148 @@
     .stat-value {
       font-weight: 700;
       font-size: 1.5rem;
-      color: var(--secondary);
+      color: var(--light-text);
     }
 
     .output-actions {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 15px;
+      gap: 12px;
+      margin-top: 25px;
     }
 
     @media (max-width: 768px) {
+      .output-actions {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 480px) {
       .output-actions {
         grid-template-columns: 1fr;
       }
     }
 
-    .output-btn {
-      background: linear-gradient(135deg, var(--primary), var(--primary-light));
-      color: white;
-      padding: 15px 20px;
-      border-radius: 12px;
-      font-weight: 600;
-      font-size: 1rem;
-      border: none;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-      box-shadow: 0 4px 8px rgba(37, 99, 235, 0.2);
-      text-decoration: none;
-    }
-
-    .output-btn:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 6px 12px rgba(37, 99, 235, 0.3);
-    }
-
-    .output-btn:disabled {
-      opacity: 0.5;
-      cursor: not-allowed;
-      transform: none !important;
-    }
-
-    .output-btn.secondary {
-      background: white;
-      color: var(--secondary);
-      border: 2px solid var(--border);
-    }
-
-    .output-btn.secondary:hover {
-      border-color: var(--primary);
-    }
-
     .seo-content {
-      background: white;
-      border-radius: 24px;
-      padding: 50px;
+      background: var(--dark-card);
+      border-radius: 20px;
+      padding: 40px;
       box-shadow: var(--shadow);
-      border: 1px solid var(--border);
-      margin-bottom: 70px;
+      border: 1px solid var(--dark-border);
+      margin-bottom: 50px;
+    }
+
+    @media (max-width: 768px) {
+      .seo-content {
+        padding: 30px 20px;
+      }
     }
 
     .seo-content h2 {
-      font-size: 2.2rem;
-      color: var(--secondary);
-      margin-bottom: 25px;
+      font-size: 2rem;
+      color: var(--light-text);
+      margin-bottom: 20px;
       text-align: center;
     }
 
     .seo-content p {
-      font-size: 1.1rem;
-      line-height: 1.8;
-      color: #475569;
-      margin-bottom: 25px;
+      font-size: 1.05rem;
+      line-height: 1.7;
+      color: #cbd5e1;
+      margin-bottom: 20px;
       text-align: justify;
     }
 
     .keywords {
       display: flex;
       flex-wrap: wrap;
-      gap: 12px;
-      margin-top: 30px;
+      gap: 10px;
+      margin-top: 25px;
       justify-content: center;
     }
 
     .keyword-tag {
-      background: #dbeafe;
-      color: var(--primary);
-      padding: 10px 20px;
+      background: rgba(99, 102, 241, 0.15);
+      color: var(--primary-light);
+      padding: 8px 16px;
       border-radius: 50px;
       font-weight: 500;
-      font-size: 0.95rem;
+      font-size: 0.9rem;
+      border: 1px solid rgba(99, 102, 241, 0.3);
     }
 
     .api-section {
       background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
       color: white;
-      padding: 60px 50px;
-      border-radius: 24px;
-      margin-bottom: 70px;
+      padding: 50px 40px;
+      border-radius: 20px;
+      margin-bottom: 50px;
+      border: 1px solid var(--dark-border);
+    }
+
+    @media (max-width: 768px) {
+      .api-section {
+        padding: 40px 20px;
+      }
     }
 
     .api-section h2 {
       color: white;
       margin-bottom: 20px;
-      font-size: 2.2rem;
+      font-size: 2rem;
       text-align: center;
     }
 
     .api-section p {
       opacity: 0.9;
-      margin-bottom: 30px;
-      font-size: 1.1rem;
+      margin-bottom: 25px;
+      font-size: 1.05rem;
       text-align: center;
     }
 
     .code-block {
-      background: rgba(255,255,255,0.1);
-      padding: 25px;
-      border-radius: 12px;
+      background: rgba(15, 23, 42, 0.8);
+      padding: 20px;
+      border-radius: 10px;
       font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
-      margin-bottom: 30px;
+      margin-bottom: 25px;
       overflow-x: auto;
       border-left: 4px solid var(--primary);
+      font-size: 0.9rem;
+      color: #cbd5e1;
     }
 
     .use-cases {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-      gap: 30px;
-      margin-top: 50px;
+      gap: 25px;
+      margin-top: 40px;
+    }
+
+    @media (max-width: 768px) {
+      .use-cases {
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      }
+    }
+
+    @media (max-width: 480px) {
+      .use-cases {
+        grid-template-columns: 1fr;
+      }
     }
 
     .use-case-card {
-      background: white;
+      background: var(--dark-card);
       border-radius: 16px;
-      padding: 30px;
+      padding: 25px;
       text-align: center;
       box-shadow: var(--shadow);
-      border: 1px solid var(--border);
+      border: 1px solid var(--dark-border);
+      transition: transform 0.3s ease;
+    }
+
+    .use-case-card:hover {
+      transform: translateY(-5px);
     }
 
     .use-case-icon {
@@ -560,28 +569,35 @@
 
     footer {
       text-align: center;
-      padding: 50px 20px;
-      color: var(--gray);
-      border-top: 1px solid var(--border);
+      padding: 40px 20px;
+      color: var(--gray-text);
+      border-top: 1px solid var(--dark-border);
       margin-top: 40px;
     }
 
     .footer-links {
       display: flex;
       justify-content: center;
-      gap: 30px;
-      margin-bottom: 25px;
+      gap: 25px;
+      margin-bottom: 20px;
       flex-wrap: wrap;
     }
 
     .footer-links a {
-      color: var(--gray);
+      color: var(--gray-text);
       text-decoration: none;
       transition: color 0.2s;
     }
 
     .footer-links a:hover {
+      color: var(--primary-light);
+    }
+
+    .footer-logo {
+      font-size: 1.5rem;
+      font-weight: 700;
       color: var(--primary);
+      margin-bottom: 10px;
     }
 
     .loading {
@@ -595,7 +611,7 @@
     .spinner {
       width: 50px;
       height: 50px;
-      border: 5px solid #f3f3f3;
+      border: 5px solid rgba(255,255,255,0.1);
       border-top: 5px solid var(--primary);
       border-radius: 50%;
       animation: spin 1s linear infinite;
@@ -607,14 +623,37 @@
     }
 
     /* JSON Syntax Highlighting */
-    .json-key { color: var(--primary); }
-    .json-string { color: var(--success); }
-    .json-number { color: var(--warning); }
-    .json-boolean { color: var(--error); }
-    .json-null { color: var(--gray); }
-    .json-bracket { color: var(--secondary); font-weight: 600; }
-    .json-colon { color: var(--secondary); }
-    .json-comma { color: var(--secondary); }
+    .json-key { color: #818cf8; font-weight: 600; }
+    .json-string { color: #10b981; }
+    .json-number { color: #f59e0b; }
+    .json-boolean { color: #ef4444; }
+    .json-null { color: #94a3b8; }
+    .json-bracket { color: #f1f5f9; font-weight: 600; }
+    .json-colon { color: #f1f5f9; }
+    .json-comma { color: #f1f5f9; }
+
+    h3, h4 {
+      color: var(--light-text);
+    }
+
+    h3 {
+      font-size: 1.2rem;
+      margin-bottom: 15px;
+    }
+
+    h4 {
+      font-size: 1.1rem;
+      margin-bottom: 10px;
+    }
+
+    p {
+      color: var(--gray-text);
+    }
+
+    label {
+      color: var(--gray-text);
+      cursor: pointer;
+    }
   </style>
 </head>
 <body>
@@ -624,7 +663,7 @@
         <div class="logo-icon">
           <i class="fas fa-code"></i>
         </div>
-        <h1>Advanced JSON Formatter & Validator</h1>
+        <h1>Advanced JSON Formatter</h1>
       </div>
       <p class="tagline">Beautify, validate, and analyze JSON data with advanced formatting options and real-time validation.</p>
     </header>
@@ -632,13 +671,13 @@
     <div class="main-content">
       <div class="input-section">
         <div class="editor-header">
-          <h3 style="color: var(--secondary);">JSON Input</h3>
+          <h3>JSON Input</h3>
           <div class="editor-actions">
             <button class="action-btn" id="clearBtn">
               <i class="fas fa-trash-alt"></i> Clear
             </button>
             <button class="action-btn" id="exampleBtn">
-              <i class="fas fa-file-code"></i> Load Example
+              <i class="fas fa-file-code"></i> Example
             </button>
             <button class="action-btn active" id="formatBtn">
               <i class="fas fa-indent"></i> Format
@@ -670,7 +709,7 @@
             <div class="status-dot" id="statusDot"></div>
             <span id="statusText">Ready for JSON input</span>
           </div>
-          <div id="errorCount" style="color: var(--gray); font-size: 0.95rem;">0 errors</div>
+          <div id="errorCount" style="color: var(--gray-text); font-size: 0.95rem;">0 errors</div>
         </div>
 
         <div class="action-buttons">
@@ -685,7 +724,7 @@
 
       <div class="output-section">
         <div class="output-header">
-          <h3 style="color: var(--secondary);">Formatted Output</h3>
+          <h3>Formatted Output</h3>
           <div class="view-options">
             <button class="view-btn active" data-view="pretty">Pretty View</button>
             <button class="view-btn" data-view="tree">Tree View</button>
@@ -761,28 +800,28 @@
           <i class="fas fa-laptop-code"></i>
         </div>
         <h4>API Development</h4>
-        <p style="color: var(--gray); font-size: 0.95rem;">Format and validate API responses, debug JSON payloads, and ensure data integrity in web services</p>
+        <p>Format and validate API responses, debug JSON payloads, and ensure data integrity in web services</p>
       </div>
       <div class="use-case-card">
         <div class="use-case-icon">
           <i class="fas fa-database"></i>
         </div>
         <h4>Data Analysis</h4>
-        <p style="color: var(--gray); font-size: 0.95rem;">Analyze JSON datasets, understand data structures, and prepare JSON for processing and visualization</p>
+        <p>Analyze JSON datasets, understand data structures, and prepare JSON for processing and visualization</p>
       </div>
       <div class="use-case-card">
         <div class="use-case-icon">
           <i class="fas fa-cogs"></i>
         </div>
         <h4>Configuration Files</h4>
-        <p style="color: var(--gray); font-size: 0.95rem;">Validate and format JSON configuration files for applications, servers, and infrastructure</p>
+        <p>Validate and format JSON configuration files for applications, servers, and infrastructure</p>
       </div>
       <div class="use-case-card">
         <div class="use-case-icon">
           <i class="fas fa-file-code"></i>
         </div>
         <h4>Documentation</h4>
-        <p style="color: var(--gray); font-size: 0.95rem;">Create clean, readable JSON examples for technical documentation and API references</p>
+        <p>Create clean, readable JSON examples for technical documentation and API references</p>
       </div>
     </div>
 
@@ -824,16 +863,17 @@ Response:
       </div>
       
       <div style="text-align: center;">
-        <button class="btn btn-primary" onclick="alert('API documentation would open in production')" style="background: white; color: #111827; margin-right: 15px;">
+        <button class="btn btn-primary" onclick="alert('API documentation would open in production')" style="background: var(--dark-card); color: var(--light-text); margin-right: 15px;">
           <i class="fas fa-book"></i> API Documentation
         </button>
-        <button class="btn btn-primary" onclick="alert('API key generation would open in production')" style="background: var(--primary); color: white;">
+        <button class="btn btn-primary" onclick="alert('API key generation would open in production')">
           <i class="fas fa-key"></i> Get API Key
         </button>
       </div>
     </div>
 
     <footer>
+      <div class="footer-logo">Tool Nest</div>
       <div class="footer-links">
         <a href="#"><i class="fas fa-home"></i> Home</a>
         <a href="#"><i class="fas fa-star"></i> Features</a>
@@ -842,10 +882,10 @@ Response:
         <a href="#"><i class="fas fa-file-contract"></i> Terms</a>
         <a href="#"><i class="fas fa-envelope"></i> Contact</a>
       </div>
-      <p>© 2024 Advanced JSON Formatter & Validator. All rights reserved.</p>
-      <p style="margin-top: 10px; font-size: 0.95rem; color: var(--gray); max-width: 600px; margin: 15px auto 0;">
+      <p style="margin-top: 20px; max-width: 600px; margin: 20px auto 0;">
         <i class="fas fa-lock" style="margin-right: 5px;"></i> Free online tool for formatting and validating JSON. All processing happens locally in your browser - no data sent to external servers.
       </p>
+      <p style="margin-top: 20px;">© 2024 Tool Nest. All rights reserved.</p>
     </footer>
   </div>
 
@@ -967,15 +1007,15 @@ Response:
       statusText.textContent = message;
       statusText.style.color = valid ? '#10b981' : '#ef4444';
       errorCount.textContent = valid ? '0 errors' : '1 error';
-      errorCount.style.color = valid ? 'var(--gray)' : '#ef4444';
+      errorCount.style.color = valid ? 'var(--gray-text)' : '#ef4444';
     }
 
     function resetValidation() {
       statusDot.className = 'status-dot';
       statusText.textContent = 'Ready for JSON input';
-      statusText.style.color = '';
+      statusText.style.color = 'var(--gray-text)';
       errorCount.textContent = '0 errors';
-      errorCount.style.color = 'var(--gray)';
+      errorCount.style.color = 'var(--gray-text)';
       resetStatistics();
     }
 
@@ -1242,4 +1282,5 @@ Response:
 </body>
 </html>
 
-  
+
+
