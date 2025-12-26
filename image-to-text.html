@@ -1,4 +1,6 @@
-  
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,17 +13,20 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
     :root {
-      --primary: #2563eb;
-      --primary-dark: #1d4ed8;
-      --primary-light: #3b82f6;
-      --secondary: #1e293b;
-      --light: #f8fafc;
-      --gray: #64748b;
+      --primary: #6366f1;
+      --primary-dark: #4f46e5;
+      --primary-light: #818cf8;
+      --secondary: #0f172a;
+      --dark-bg: #0f172a;
+      --dark-card: #1e293b;
+      --dark-border: #334155;
+      --light-text: #f1f5f9;
+      --gray-text: #94a3b8;
       --success: #10b981;
       --warning: #f59e0b;
-      --border: #e2e8f0;
-      --shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
-      --shadow-lg: 0 20px 40px -10px rgba(0, 0, 0, 0.15);
+      --danger: #ef4444;
+      --shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3);
+      --shadow-lg: 0 20px 40px -10px rgba(0, 0, 0, 0.4);
     }
 
     * {
@@ -32,8 +37,8 @@
 
     body {
       font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
-      background: linear-gradient(135deg, #f0f9ff 0%, #f1f5f9 100%);
-      color: var(--secondary);
+      background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+      color: var(--light-text);
       line-height: 1.6;
       min-height: 100vh;
       padding: 20px;
@@ -46,7 +51,7 @@
 
     header {
       text-align: center;
-      padding: 50px 20px 30px;
+      padding: 40px 20px 30px;
     }
 
     .logo {
@@ -67,11 +72,11 @@
       align-items: center;
       justify-content: center;
       font-size: 28px;
-      box-shadow: 0 6px 12px rgba(37, 99, 235, 0.2);
+      box-shadow: 0 6px 12px rgba(99, 102, 241, 0.3);
     }
 
     h1 {
-      font-size: 3rem;
+      font-size: 2.8rem;
       font-weight: 800;
       background: linear-gradient(to right, var(--primary), var(--primary-light));
       -webkit-background-clip: text;
@@ -80,58 +85,76 @@
       margin-bottom: 12px;
     }
 
+    @media (max-width: 768px) {
+      h1 {
+        font-size: 2.2rem;
+      }
+    }
+
     .tagline {
       font-size: 1.25rem;
-      color: var(--gray);
+      color: var(--gray-text);
       max-width: 700px;
       margin: 0 auto 40px;
       font-weight: 500;
     }
 
+    @media (max-width: 768px) {
+      .tagline {
+        font-size: 1.1rem;
+      }
+    }
+
     .main-content {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 50px;
-      margin-bottom: 70px;
+      gap: 40px;
+      margin-bottom: 60px;
     }
 
     @media (max-width: 1024px) {
       .main-content {
         grid-template-columns: 1fr;
-        gap: 40px;
+        gap: 30px;
       }
     }
 
-    .control-panel {
-      background: white;
-      border-radius: 24px;
-      padding: 40px;
+    .control-panel, .preview-panel {
+      background: var(--dark-card);
+      border-radius: 20px;
+      padding: 30px;
       box-shadow: var(--shadow-lg);
-      border: 1px solid var(--border);
+      border: 1px solid var(--dark-border);
+    }
+
+    @media (max-width: 640px) {
+      .control-panel, .preview-panel {
+        padding: 20px;
+      }
     }
 
     .upload-area {
-      border: 3px dashed #cbd5e1;
-      border-radius: 18px;
-      padding: 60px 30px;
+      border: 3px dashed #475569;
+      border-radius: 16px;
+      padding: 50px 25px;
       text-align: center;
       cursor: pointer;
       transition: all 0.3s ease;
-      margin-bottom: 40px;
-      background: #f8fafc;
+      margin-bottom: 30px;
+      background: rgba(30, 41, 59, 0.5);
     }
 
     .upload-area:hover, .upload-area.dragover {
       border-color: var(--primary);
-      background-color: #eff6ff;
+      background-color: rgba(99, 102, 241, 0.1);
       transform: translateY(-2px);
     }
 
     .upload-icon {
       font-size: 56px;
       color: var(--primary);
-      margin-bottom: 25px;
-      opacity: 0.8;
+      margin-bottom: 20px;
+      opacity: 0.9;
     }
 
     .file-input {
@@ -139,37 +162,37 @@
     }
 
     .language-selector {
-      margin-bottom: 35px;
+      margin-bottom: 30px;
     }
 
     .language-grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
-      gap: 15px;
-      margin-top: 20px;
+      gap: 12px;
+      margin-top: 15px;
     }
 
     .language-option {
-      border: 2px solid var(--border);
+      border: 2px solid var(--dark-border);
       border-radius: 12px;
-      padding: 15px 10px;
+      padding: 12px 8px;
       text-align: center;
       cursor: pointer;
       transition: all 0.2s ease;
-      background: white;
+      background: rgba(30, 41, 59, 0.7);
       font-weight: 500;
     }
 
     .language-option:hover {
       border-color: var(--primary);
       transform: translateY(-3px);
-      box-shadow: 0 6px 12px rgba(0,0,0,0.08);
+      box-shadow: 0 6px 12px rgba(0,0,0,0.2);
     }
 
     .language-option.active {
       border-color: var(--primary);
-      background: linear-gradient(135deg, #eff6ff, #dbeafe);
-      color: var(--primary);
+      background: linear-gradient(135deg, rgba(99, 102, 241, 0.2), rgba(129, 140, 248, 0.1));
+      color: var(--primary-light);
       font-weight: 600;
     }
 
@@ -180,17 +203,18 @@
     }
 
     .ocr-settings {
-      background: #f1f5f9;
-      padding: 25px;
-      border-radius: 16px;
-      margin-bottom: 35px;
+      background: rgba(30, 41, 59, 0.8);
+      padding: 20px;
+      border-radius: 14px;
+      margin-bottom: 25px;
+      border: 1px solid var(--dark-border);
     }
 
     .setting-options {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-      gap: 15px;
-      margin-top: 15px;
+      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+      gap: 12px;
+      margin-top: 12px;
     }
 
     .setting-option {
@@ -206,60 +230,66 @@
     }
 
     .batch-section {
-      background: linear-gradient(135deg, #eff6ff, #dbeafe);
-      padding: 25px;
-      border-radius: 16px;
-      margin-bottom: 30px;
-      border: 2px solid var(--border);
+      background: linear-gradient(135deg, rgba(99, 102, 241, 0.1), rgba(79, 70, 229, 0.05));
+      padding: 20px;
+      border-radius: 14px;
+      margin-bottom: 25px;
+      border: 2px solid var(--dark-border);
     }
 
     .batch-header {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-bottom: 15px;
+      margin-bottom: 10px;
     }
 
     .action-buttons {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 20px;
+      gap: 15px;
+    }
+
+    @media (max-width: 480px) {
+      .action-buttons {
+        grid-template-columns: 1fr;
+      }
     }
 
     .btn {
-      padding: 18px 30px;
-      border-radius: 14px;
+      padding: 16px 25px;
+      border-radius: 12px;
       font-weight: 600;
-      font-size: 1.05rem;
+      font-size: 1rem;
       border: none;
       cursor: pointer;
       transition: all 0.3s ease;
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 12px;
+      gap: 10px;
     }
 
     .btn-primary {
-      background: linear-gradient(135deg, var(--primary), var(--primary-light));
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
       color: white;
-      box-shadow: 0 6px 12px rgba(37, 99, 235, 0.2);
+      box-shadow: 0 6px 12px rgba(99, 102, 241, 0.3);
     }
 
-    .btn-primary:hover {
+    .btn-primary:hover:not(:disabled) {
       background: linear-gradient(135deg, var(--primary-dark), var(--primary));
       transform: translateY(-3px);
-      box-shadow: 0 10px 20px rgba(37, 99, 235, 0.3);
+      box-shadow: 0 10px 20px rgba(99, 102, 241, 0.4);
     }
 
     .btn-secondary {
-      background: white;
-      color: var(--secondary);
-      border: 2px solid var(--border);
+      background: var(--dark-card);
+      color: var(--light-text);
+      border: 2px solid var(--dark-border);
     }
 
-    .btn-secondary:hover {
-      background: #f8fafc;
+    .btn-secondary:hover:not(:disabled) {
+      background: rgba(99, 102, 241, 0.1);
       border-color: var(--primary);
       transform: translateY(-3px);
     }
@@ -270,19 +300,11 @@
       transform: none !important;
     }
 
-    .preview-panel {
-      background: white;
-      border-radius: 24px;
-      padding: 40px;
-      box-shadow: var(--shadow-lg);
-      border: 1px solid var(--border);
-    }
-
     .preview-container {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 30px;
-      margin-bottom: 30px;
+      gap: 25px;
+      margin-bottom: 25px;
     }
 
     @media (max-width: 768px) {
@@ -291,35 +313,21 @@
       }
     }
 
-    .image-card {
+    .image-card, .text-card {
       border-radius: 16px;
       overflow: hidden;
-      background: #f8fafc;
-      padding: 25px;
-      text-align: center;
-      border: 2px solid var(--border);
-      height: 300px;
+      background: rgba(30, 41, 59, 0.8);
+      padding: 20px;
+      border: 2px solid var(--dark-border);
+      height: 280px;
       display: flex;
       flex-direction: column;
+    }
+
+    .image-card {
       align-items: center;
       justify-content: center;
-    }
-
-    .text-card {
-      border-radius: 16px;
-      overflow: hidden;
-      background: #f8fafc;
-      padding: 25px;
-      border: 2px solid var(--border);
-      height: 300px;
-      display: flex;
-      flex-direction: column;
-    }
-
-    .image-card h3, .text-card h3 {
-      margin-bottom: 15px;
-      color: var(--secondary);
-      font-size: 1.2rem;
+      text-align: center;
     }
 
     .preview-img {
@@ -328,7 +336,7 @@
       border-radius: 12px;
       margin-bottom: 15px;
       display: none;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
     }
 
     .placeholder {
@@ -336,7 +344,7 @@
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      color: #94a3b8;
+      color: var(--gray-text);
       height: 100%;
     }
 
@@ -349,10 +357,10 @@
 
     #text-output {
       flex: 1;
-      background: white;
-      border-radius: 12px;
+      background: rgba(15, 23, 42, 0.7);
+      border-radius: 10px;
       padding: 15px;
-      border: 1px solid var(--border);
+      border: 1px solid var(--dark-border);
       font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
       font-size: 0.95rem;
       line-height: 1.5;
@@ -360,6 +368,7 @@
       white-space: pre-wrap;
       word-wrap: break-word;
       display: none;
+      color: var(--light-text);
     }
 
     .empty-text {
@@ -367,21 +376,22 @@
       align-items: center;
       justify-content: center;
       height: 100%;
-      color: #94a3b8;
+      color: var(--gray-text);
       font-style: italic;
     }
 
     .ocr-stats {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
-      gap: 20px;
-      background: #f1f5f9;
-      padding: 25px;
-      border-radius: 16px;
-      margin-bottom: 30px;
+      gap: 15px;
+      background: rgba(30, 41, 59, 0.8);
+      padding: 20px;
+      border-radius: 14px;
+      margin-bottom: 25px;
+      border: 1px solid var(--dark-border);
     }
 
-    @media (max-width: 768px) {
+    @media (max-width: 640px) {
       .ocr-stats {
         grid-template-columns: repeat(2, 1fr);
       }
@@ -393,8 +403,8 @@
 
     .stat-label {
       display: block;
-      font-size: 0.95rem;
-      color: var(--gray);
+      font-size: 0.9rem;
+      color: var(--gray-text);
       margin-bottom: 8px;
       font-weight: 500;
     }
@@ -402,43 +412,43 @@
     .stat-value {
       font-weight: 700;
       font-size: 1.25rem;
-      color: var(--secondary);
+      color: var(--light-text);
     }
 
     .action-section {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 15px;
-      margin-top: 30px;
+      gap: 12px;
+      margin-top: 25px;
     }
 
-    @media (max-width: 768px) {
+    @media (max-width: 640px) {
       .action-section {
         grid-template-columns: 1fr;
       }
     }
 
     .action-btn {
-      background: linear-gradient(135deg, var(--primary), var(--primary-light));
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
       color: white;
-      padding: 15px 20px;
-      border-radius: 12px;
+      padding: 14px 18px;
+      border-radius: 10px;
       font-weight: 600;
-      font-size: 1rem;
+      font-size: 0.95rem;
       border: none;
       cursor: pointer;
       transition: all 0.3s ease;
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 10px;
-      box-shadow: 0 4px 8px rgba(37, 99, 235, 0.2);
+      gap: 8px;
+      box-shadow: 0 4px 8px rgba(99, 102, 241, 0.2);
       text-decoration: none;
     }
 
-    .action-btn:hover {
+    .action-btn:hover:not(:disabled) {
       transform: translateY(-2px);
-      box-shadow: 0 6px 12px rgba(37, 99, 235, 0.3);
+      box-shadow: 0 6px 12px rgba(99, 102, 241, 0.3);
     }
 
     .action-btn:disabled {
@@ -448,102 +458,136 @@
     }
 
     .action-btn.secondary {
-      background: white;
-      color: var(--secondary);
-      border: 2px solid var(--border);
+      background: var(--dark-card);
+      color: var(--light-text);
+      border: 2px solid var(--dark-border);
     }
 
-    .action-btn.secondary:hover {
+    .action-btn.secondary:hover:not(:disabled) {
       border-color: var(--primary);
+      background: rgba(99, 102, 241, 0.1);
     }
 
     .seo-content {
-      background: white;
-      border-radius: 24px;
-      padding: 50px;
+      background: var(--dark-card);
+      border-radius: 20px;
+      padding: 40px;
       box-shadow: var(--shadow);
-      border: 1px solid var(--border);
-      margin-bottom: 70px;
+      border: 1px solid var(--dark-border);
+      margin-bottom: 50px;
+    }
+
+    @media (max-width: 768px) {
+      .seo-content {
+        padding: 30px 20px;
+      }
     }
 
     .seo-content h2 {
-      font-size: 2.2rem;
-      color: var(--secondary);
-      margin-bottom: 25px;
+      font-size: 2rem;
+      color: var(--light-text);
+      margin-bottom: 20px;
       text-align: center;
     }
 
     .seo-content p {
-      font-size: 1.1rem;
-      line-height: 1.8;
-      color: #475569;
-      margin-bottom: 25px;
+      font-size: 1.05rem;
+      line-height: 1.7;
+      color: #cbd5e1;
+      margin-bottom: 20px;
       text-align: justify;
     }
 
     .keywords {
       display: flex;
       flex-wrap: wrap;
-      gap: 12px;
-      margin-top: 30px;
+      gap: 10px;
+      margin-top: 25px;
       justify-content: center;
     }
 
     .keyword-tag {
-      background: #dbeafe;
-      color: var(--primary);
-      padding: 10px 20px;
+      background: rgba(99, 102, 241, 0.15);
+      color: var(--primary-light);
+      padding: 8px 16px;
       border-radius: 50px;
       font-weight: 500;
-      font-size: 0.95rem;
+      font-size: 0.9rem;
+      border: 1px solid rgba(99, 102, 241, 0.3);
     }
 
     .api-section {
       background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
       color: white;
-      padding: 60px 50px;
-      border-radius: 24px;
-      margin-bottom: 70px;
+      padding: 50px 40px;
+      border-radius: 20px;
+      margin-bottom: 50px;
+      border: 1px solid var(--dark-border);
+    }
+
+    @media (max-width: 768px) {
+      .api-section {
+        padding: 40px 20px;
+      }
     }
 
     .api-section h2 {
       color: white;
       margin-bottom: 20px;
-      font-size: 2.2rem;
+      font-size: 2rem;
       text-align: center;
     }
 
     .api-section p {
       opacity: 0.9;
-      margin-bottom: 30px;
-      font-size: 1.1rem;
+      margin-bottom: 25px;
+      font-size: 1.05rem;
       text-align: center;
     }
 
     .code-block {
-      background: rgba(255,255,255,0.1);
-      padding: 25px;
-      border-radius: 12px;
+      background: rgba(15, 23, 42, 0.8);
+      padding: 20px;
+      border-radius: 10px;
       font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
-      margin-bottom: 30px;
+      margin-bottom: 25px;
       overflow-x: auto;
       border-left: 4px solid var(--primary);
+      font-size: 0.9rem;
+      color: #cbd5e1;
     }
 
     .use-cases {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-      gap: 30px;
-      margin-top: 50px;
+      gap: 25px;
+      margin-top: 40px;
+    }
+
+    @media (max-width: 768px) {
+      .use-cases {
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      }
+    }
+
+    @media (max-width: 480px) {
+      .use-cases {
+        grid-template-columns: 1fr;
+      }
     }
 
     .use-case-card {
-      background: white;
+      background: var(--dark-card);
       border-radius: 16px;
-      padding: 30px;
+      padding: 25px;
       text-align: center;
       box-shadow: var(--shadow);
-      border: 1px solid var(--border);
+      border: 1px solid var(--dark-border);
+      transition: transform 0.3s ease;
+    }
+
+    .use-case-card:hover {
+      transform: translateY(-5px);
     }
 
     .use-case-icon {
@@ -554,28 +598,35 @@
 
     footer {
       text-align: center;
-      padding: 50px 20px;
-      color: var(--gray);
-      border-top: 1px solid var(--border);
+      padding: 40px 20px;
+      color: var(--gray-text);
+      border-top: 1px solid var(--dark-border);
       margin-top: 40px;
     }
 
     .footer-links {
       display: flex;
       justify-content: center;
-      gap: 30px;
-      margin-bottom: 25px;
+      gap: 25px;
+      margin-bottom: 20px;
       flex-wrap: wrap;
     }
 
     .footer-links a {
-      color: var(--gray);
+      color: var(--gray-text);
       text-decoration: none;
       transition: color 0.2s;
     }
 
     .footer-links a:hover {
+      color: var(--primary-light);
+    }
+
+    .footer-logo {
+      font-size: 1.5rem;
+      font-weight: 700;
       color: var(--primary);
+      margin-bottom: 10px;
     }
 
     .loading {
@@ -589,7 +640,7 @@
     .spinner {
       width: 50px;
       height: 50px;
-      border: 5px solid #f3f3f3;
+      border: 5px solid rgba(255,255,255,0.1);
       border-top: 5px solid var(--primary);
       border-radius: 50%;
       animation: spin 1s linear infinite;
@@ -598,6 +649,27 @@
     @keyframes spin {
       0% { transform: rotate(0deg); }
       100% { transform: rotate(360deg); }
+    }
+
+    h3 {
+      color: var(--light-text);
+      margin-bottom: 15px;
+      font-size: 1.2rem;
+    }
+
+    h4 {
+      color: var(--light-text);
+      margin-bottom: 10px;
+      font-size: 1.1rem;
+    }
+
+    label {
+      color: var(--gray-text);
+      cursor: pointer;
+    }
+
+    p {
+      color: var(--gray-text);
     }
   </style>
 </head>
@@ -608,7 +680,7 @@
         <div class="logo-icon">
           <i class="fas fa-text-height"></i>
         </div>
-        <h1>Advanced Image to Text Converter</h1>
+        <h1>Image to Text Converter</h1>
       </div>
       <p class="tagline">Extract text from images with advanced OCR technology. Convert photos, scans, and documents into editable text instantly.</p>
     </header>
@@ -621,60 +693,60 @@
           </div>
           <h3 style="margin-bottom: 10px;">Drag & Drop Your Images</h3>
           <p>or click to browse files</p>
-          <p style="color: var(--gray); margin-top: 15px; font-size: 0.95rem;">Supports JPG, PNG, BMP, PDF, TIFF (Max 20MB)</p>
+          <p style="color: var(--gray-text); margin-top: 15px; font-size: 0.95rem;">Supports JPG, PNG, BMP, PDF, TIFF (Max 20MB)</p>
           <input type="file" id="imageInput" class="file-input" accept="image/*,.pdf" multiple>
         </div>
 
         <div class="language-selector">
-          <h3 style="margin-bottom: 20px; color: var(--secondary);">Language Recognition</h3>
+          <h3>Language Recognition</h3>
           <div class="language-grid">
             <div class="language-option active" data-lang="eng">
               <div class="language-icon">
                 <i class="fas fa-language"></i>
               </div>
               <div>English</div>
-              <div style="font-size: 0.9rem; color: var(--gray);">Most Common</div>
+              <div style="font-size: 0.9rem; color: var(--gray-text);">Most Common</div>
             </div>
             <div class="language-option" data-lang="spa">
               <div class="language-icon">
                 <i class="fas fa-language"></i>
               </div>
               <div>Spanish</div>
-              <div style="font-size: 0.9rem; color: var(--gray);">Español</div>
+              <div style="font-size: 0.9rem; color: var(--gray-text);">Español</div>
             </div>
             <div class="language-option" data-lang="fra">
               <div class="language-icon">
                 <i class="fas fa-language"></i>
               </div>
               <div>French</div>
-              <div style="font-size: 0.9rem; color: var(--gray);">Français</div>
+              <div style="font-size: 0.9rem; color: var(--gray-text);">Français</div>
             </div>
             <div class="language-option" data-lang="deu">
               <div class="language-icon">
                 <i class="fas fa-language"></i>
               </div>
               <div>German</div>
-              <div style="font-size: 0.9rem; color: var(--gray);">Deutsch</div>
+              <div style="font-size: 0.9rem; color: var(--gray-text);">Deutsch</div>
             </div>
             <div class="language-option" data-lang="chi_sim">
               <div class="language-icon">
                 <i class="fas fa-language"></i>
               </div>
               <div>Chinese</div>
-              <div style="font-size: 0.9rem; color: var(--gray);">简体中文</div>
+              <div style="font-size: 0.9rem; color: var(--gray-text);">简体中文</div>
             </div>
             <div class="language-option" data-lang="jpn">
               <div class="language-icon">
                 <i class="fas fa-language"></i>
               </div>
               <div>Japanese</div>
-              <div style="font-size: 0.9rem; color: var(--gray);">日本語</div>
+              <div style="font-size: 0.9rem; color: var(--gray-text);">日本語</div>
             </div>
           </div>
         </div>
 
         <div class="ocr-settings">
-          <h3 style="margin-bottom: 15px; color: var(--secondary);">OCR Settings</h3>
+          <h3>OCR Settings</h3>
           <div class="setting-options">
             <div class="setting-option">
               <input type="checkbox" id="preserveFormatting" checked>
@@ -697,10 +769,10 @@
 
         <div class="batch-section">
           <div class="batch-header">
-            <h3 style="color: var(--secondary);">Batch Processing</h3>
-            <span id="fileCount" style="color: var(--gray);">0 files selected</span>
+            <h3>Batch Processing</h3>
+            <span id="fileCount" style="color: var(--gray-text);">0 files selected</span>
           </div>
-          <p style="color: var(--gray); font-size: 0.95rem;">Process multiple images at once. Upload up to 10 images simultaneously.</p>
+          <p style="color: var(--gray-text); font-size: 0.95rem;">Process multiple images at once. Upload up to 10 images simultaneously.</p>
         </div>
 
         <div class="action-buttons">
@@ -729,7 +801,7 @@
           <div class="text-card">
             <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
               <h3>Extracted Text</h3>
-              <span id="charCount" style="color: var(--gray); font-size: 0.9rem;">0 characters</span>
+              <span id="charCount" style="color: var(--gray-text); font-size: 0.9rem;">0 characters</span>
             </div>
             <div class="placeholder" id="textPlaceholder">
               <div class="placeholder-icon">
@@ -804,28 +876,28 @@
           <i class="fas fa-graduation-cap"></i>
         </div>
         <h4>Education & Research</h4>
-        <p style="color: var(--gray); font-size: 0.95rem;">Digitize textbooks, research papers, and handwritten notes for study and reference</p>
+        <p>Digitize textbooks, research papers, and handwritten notes for study and reference</p>
       </div>
       <div class="use-case-card">
         <div class="use-case-icon">
           <i class="fas fa-briefcase"></i>
         </div>
         <h4>Business & Office</h4>
-        <p style="color: var(--gray); font-size: 0.95rem;">Convert scanned documents, receipts, invoices, and forms into editable digital files</p>
+        <p>Convert scanned documents, receipts, invoices, and forms into editable digital files</p>
       </div>
       <div class="use-case-card">
         <div class="use-case-icon">
           <i class="fas fa-globe"></i>
         </div>
         <h4>Translation & Localization</h4>
-        <p style="color: var(--gray); font-size: 0.95rem;">Extract text from foreign language documents for translation and localization projects</p>
+        <p>Extract text from foreign language documents for translation and localization projects</p>
       </div>
       <div class="use-case-card">
         <div class="use-case-icon">
           <i class="fas fa-archive"></i>
         </div>
         <h4>Document Archiving</h4>
-        <p style="color: var(--gray); font-size: 0.95rem;">Create searchable digital archives from printed materials and historical documents</p>
+        <p>Create searchable digital archives from printed materials and historical documents</p>
       </div>
     </div>
 
@@ -861,16 +933,17 @@ Response:
       </div>
       
       <div style="text-align: center;">
-        <button class="btn btn-primary" onclick="alert('API documentation would open in production')" style="background: white; color: #111827; margin-right: 15px;">
+        <button class="btn btn-primary" onclick="alert('API documentation would open in production')" style="background: var(--dark-card); color: var(--light-text); margin-right: 15px;">
           <i class="fas fa-book"></i> API Documentation
         </button>
-        <button class="btn btn-primary" onclick="alert('API key generation would open in production')" style="background: var(--primary); color: white;">
+        <button class="btn btn-primary" onclick="alert('API key generation would open in production')">
           <i class="fas fa-key"></i> Get API Key
         </button>
       </div>
     </div>
 
     <footer>
+      <div class="footer-logo">Tool Nest</div>
       <div class="footer-links">
         <a href="#"><i class="fas fa-home"></i> Home</a>
         <a href="#"><i class="fas fa-star"></i> Features</a>
@@ -879,10 +952,10 @@ Response:
         <a href="#"><i class="fas fa-shield-alt"></i> Privacy</a>
         <a href="#"><i class="fas fa-envelope"></i> Contact</a>
       </div>
-      <p>© 2024 Advanced Image to Text Converter. All rights reserved.</p>
-      <p style="margin-top: 10px; font-size: 0.95rem; color: var(--gray); max-width: 600px; margin: 15px auto 0;">
+      <p style="margin-top: 20px; max-width: 600px; margin: 20px auto 0;">
         <i class="fas fa-lock" style="margin-right: 5px;"></i> Free online OCR tool for extracting text from images. All processing happens locally in your browser - no uploads to external servers.
       </p>
+      <p style="margin-top: 20px;">© 2024 Tool Nest. All rights reserved.</p>
     </footer>
   </div>
 
@@ -903,7 +976,6 @@ Response:
     const fileCount = document.getElementById('fileCount');
     const charCount = document.getElementById('charCount');
     const languageOptions = document.querySelectorAll('.language-option');
-    const presetButtons = document.querySelectorAll('.preset-btn');
 
     // Stats elements
     const statChars = document.getElementById('statChars');
@@ -1123,4 +1195,6 @@ Response:
   </script>
 </body>
 </html>
+
+
 
