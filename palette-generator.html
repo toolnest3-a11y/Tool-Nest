@@ -14,9 +14,9 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
     :root {
-      --primary: #ec4899;
-      --primary-dark: #db2777;
-      --primary-light: #f472b6;
+      --primary: #6366f1;
+      --primary-dark: #4f46e5;
+      --primary-light: #818cf8;
       --secondary: #0f172a;
       --dark-bg: #0f172a;
       --dark-card: #1e293b;
@@ -73,7 +73,7 @@
       align-items: center;
       justify-content: center;
       font-size: 28px;
-      box-shadow: 0 6px 12px rgba(236, 72, 153, 0.3);
+      box-shadow: 0 6px 12px rgba(99, 102, 241, 0.3);
     }
 
     h1 {
@@ -306,7 +306,7 @@
     select:focus, input[type="number"]:focus {
       border-color: var(--primary);
       outline: none;
-      box-shadow: 0 0 0 3px rgba(236, 72, 153, 0.1);
+      box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
     }
 
     input[type="color"] {
@@ -358,13 +358,13 @@
     .btn-primary {
       background: linear-gradient(135deg, var(--primary), var(--primary-dark));
       color: white;
-      box-shadow: 0 6px 12px rgba(236, 72, 153, 0.3);
+      box-shadow: 0 6px 12px rgba(99, 102, 241, 0.3);
     }
 
     .btn-primary:hover:not(:disabled) {
       background: linear-gradient(135deg, var(--primary-dark), var(--primary));
       transform: translateY(-3px);
-      box-shadow: 0 10px 20px rgba(236, 72, 153, 0.4);
+      box-shadow: 0 10px 20px rgba(99, 102, 241, 0.4);
     }
 
     .btn-secondary {
@@ -374,7 +374,7 @@
     }
 
     .btn-secondary:hover:not(:disabled) {
-      background: rgba(236, 72, 153, 0.1);
+      background: rgba(99, 102, 241, 0.1);
       border-color: var(--primary);
       transform: translateY(-3px);
     }
@@ -403,9 +403,9 @@
     .info-note {
       margin-top: 25px;
       padding: 20px;
-      background: linear-gradient(135deg, rgba(236, 72, 153, 0.1), rgba(236, 72, 153, 0.05));
+      background: linear-gradient(135deg, rgba(99, 102, 241, 0.1), rgba(99, 102, 241, 0.05));
       border-radius: 12px;
-      border: 1px solid rgba(236, 72, 153, 0.3);
+      border: 1px solid rgba(99, 102, 241, 0.3);
       color: var(--gray-text);
       font-size: 0.95rem;
       display: flex;
@@ -467,9 +467,9 @@
     .keywords {
       margin-top: 25px;
       padding: 25px;
-      background: linear-gradient(135deg, rgba(236, 72, 153, 0.1), rgba(236, 72, 153, 0.05));
+      background: linear-gradient(135deg, rgba(99, 102, 241, 0.1), rgba(99, 102, 241, 0.05));
       border-radius: 14px;
-      border: 1px solid rgba(236, 72, 153, 0.3);
+      border: 1px solid rgba(99, 102, 241, 0.3);
     }
 
     .keywords strong {
@@ -486,12 +486,12 @@
     }
 
     .keyword-tag {
-      background: rgba(236, 72, 153, 0.15);
+      background: rgba(99, 102, 241, 0.15);
       color: var(--primary-light);
       padding: 8px 16px;
       border-radius: 50px;
       font-size: 0.9rem;
-      border: 1px solid rgba(236, 72, 153, 0.3);
+      border: 1px solid rgba(99, 102, 241, 0.3);
     }
 
     .api-section {
@@ -663,7 +663,7 @@
 
           <div class="control-group">
             <label for="baseColor"><i class="fas fa-eye-dropper"></i> Base Color</label>
-            <input type="color" id="baseColor" value="#ec4899">
+            <input type="color" id="baseColor" value="#6366f1">
           </div>
         </div>
 
@@ -739,7 +739,7 @@ Content-Type: application/json
 Parameters:
 {
   "harmony": "complementary",
-  "base_color": "#ec4899",
+  "base_color": "#6366f1",
   "count": 5,
   "format": "hex",
   "include_names": true,
@@ -753,20 +753,20 @@ Response:
     "name": "Complementary Palette",
     "colors": [
       {
-        "hex": "#EC4899",
-        "rgb": "rgb(236, 72, 153)",
-        "name": "Pink Rose",
+        "hex": "#6366F1",
+        "rgb": "rgb(99, 102, 241)",
+        "name": "Indigo Blue",
         "position": 0
       },
       {
-        "hex": "#4899EC",
-        "rgb": "rgb(72, 153, 236)",
-        "name": "Azure Blue",
+        "hex": "#F16366",
+        "rgb": "rgb(241, 99, 102)",
+        "name": "Coral Pink",
         "position": 1
       }
     ],
     "harmony": "complementary",
-    "base_color": "#EC4899",
+    "base_color": "#6366F1",
     "generated_at": "2024-01-15T10:30:00Z"
   },
   "analysis": {
@@ -832,28 +832,26 @@ Response:
     let currentPalette = [];
     let draggedColor = null;
 
-    // Color name database
+    // Color name database - updated with blue/indigo colors
     const colorNames = {
-      '#FF6B6B': 'Coral Red',
-      '#4ECDC4': 'Turquoise',
-      '#FFD166': 'Sunshine Yellow',
-      '#06D6A0': 'Emerald Green',
-      '#118AB2': 'Ocean Blue',
-      '#073B4C': 'Deep Navy',
-      '#EF476F': 'Watermelon',
-      '#7209B7': 'Purple Majesty',
-      '#F72585': 'Magenta',
-      '#3A86FF': 'Azure Blue',
-      '#FB5607': 'Orange',
-      '#8338EC': 'Electric Purple',
-      '#FF006E': 'Rose',
-      '#FFBE0B': 'Amber',
-      '#EC4899': 'Pink Rose',
+      '#6366F1': 'Indigo Blue',
+      '#4F46E5': 'Deep Indigo',
+      '#818CF8': 'Light Indigo',
       '#8B5CF6': 'Violet',
+      '#A78BFA': 'Light Violet',
       '#10B981': 'Emerald',
+      '#34D399': 'Mint Green',
       '#F59E0B': 'Amber',
+      '#FBBF24': 'Golden Yellow',
       '#EF4444': 'Red',
-      '#3B82F6': 'Blue'
+      '#F87171': 'Light Red',
+      '#3B82F6': 'Blue',
+      '#60A5FA': 'Light Blue',
+      '#06B6D4': 'Cyan',
+      '#22D3EE': 'Light Cyan',
+      '#8B5CF6': 'Purple',
+      '#EC4899': 'Pink',
+      '#F472B6': 'Light Pink'
     };
 
     // Initialize
@@ -1266,6 +1264,7 @@ Response:
   </script>
 </body>
 </html>
+
 
 
 
