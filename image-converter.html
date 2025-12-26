@@ -1,26 +1,42 @@
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Advanced Image Converter | Convert JPG, PNG, WebP, GIF Online</title>
-  <meta name="description" content="Free professional image converter tool. Convert between JPG, PNG, WebP, GIF, BMP, TIFF formats with high quality. Batch conversion support, browser-based, no registration required.">
-  <meta name="keywords" content="image converter, convert image format, JPG to PNG, PNG to JPG, WebP converter, image format converter, online image converter, free image converter, photo converter, batch image converter">
+  <title>Advanced Image Converter | Convert JPG, PNG, WebP, GIF Online | Free Tool</title>
+  <meta name="description" content="Professional image converter tool. Convert between JPG, PNG, WebP, GIF, BMP, TIFF formats with high quality. Batch conversion, browser-based, no registration required.">
+  <meta name="keywords" content="image converter, convert image format, JPG to PNG, PNG to JPG, WebP converter, image format converter, online image converter, free image converter">
+  <meta name="author" content="Tool Nest">
+  
+  <!-- Open Graph Tags -->
+  <meta property="og:title" content="Advanced Image Converter | Free Online Format Conversion">
+  <meta property="og:description" content="Convert images between 20+ formats with professional quality. Batch processing, adjustable quality, and browser-based security.">
+  <meta property="og:type" content="website">
+  
   <link rel="icon" href="favicon-16x16.png" type="image/x-icon">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
     :root {
-      --primary: #2563eb;
-      --primary-dark: #1d4ed8;
-      --primary-light: #3b82f6;
-      --secondary: #1e293b;
-      --light: #f8fafc;
-      --gray: #64748b;
-      --success: #10b981;
-      --warning: #f59e0b;
-      --border: #e2e8f0;
-      --shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
-      --shadow-lg: 0 20px 40px -10px rgba(0, 0, 0, 0.15);
+      --primary-color: #4361ee;
+      --primary-dark: #3a56d4;
+      --secondary-color: #7209b7;
+      --accent-color: #4cc9f0;
+      --success-color: #38b000;
+      --warning-color: #ff9e00;
+      --danger-color: #e63946;
+      --dark-bg: #0f172a;
+      --dark-surface: #1e293b;
+      --dark-surface-light: #334155;
+      --dark-border: #475569;
+      --dark-text: #f8fafc;
+      --dark-text-secondary: #cbd5e1;
+      --border-radius: 16px;
+      --box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+      --box-shadow-hover: 0 20px 40px rgba(0, 0, 0, 0.4);
+      --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     }
 
     * {
@@ -30,189 +46,324 @@
     }
 
     body {
-      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
-      background: linear-gradient(135deg, #f0f9ff 0%, #f1f5f9 100%);
-      color: var(--secondary);
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+      background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 100%);
+      color: var(--dark-text);
       line-height: 1.6;
       min-height: 100vh;
       padding: 20px;
     }
 
-    .container {
-      max-width: 1200px;
+    .wrapper {
+      max-width: 1400px;
       margin: 0 auto;
     }
 
-    header {
+    /* Header */
+    .header {
       text-align: center;
-      padding: 50px 20px 30px;
+      margin-bottom: 50px;
+      padding: 40px 20px;
+      background: var(--dark-surface);
+      border-radius: var(--border-radius);
+      border: 1px solid var(--dark-border);
+      position: relative;
+      overflow: hidden;
     }
 
-    .logo {
+    .header::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+    }
+
+    .logo-container {
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 15px;
+      gap: 20px;
       margin-bottom: 20px;
     }
 
     .logo-icon {
-      background: linear-gradient(135deg, var(--primary), var(--primary-light));
+      background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
       color: white;
-      width: 56px;
-      height: 56px;
-      border-radius: 14px;
+      width: 70px;
+      height: 70px;
+      border-radius: 18px;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 28px;
-      box-shadow: 0 6px 12px rgba(37, 99, 235, 0.2);
+      font-size: 32px;
+      box-shadow: 0 10px 20px rgba(67, 97, 238, 0.3);
     }
 
-    h1 {
-      font-size: 3rem;
+    .logo-text {
+      text-align: left;
+    }
+
+    .logo-text h1 {
+      font-size: 3.2rem;
       font-weight: 800;
-      background: linear-gradient(to right, var(--primary), var(--primary-light));
+      background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
       -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-      margin-bottom: 12px;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 5px;
+      letter-spacing: -0.5px;
     }
 
-    .tagline {
-      font-size: 1.25rem;
-      color: var(--gray);
-      max-width: 700px;
-      margin: 0 auto 40px;
+    .logo-text .tagline {
+      color: var(--dark-text-secondary);
+      font-size: 1.1rem;
       font-weight: 500;
     }
 
+    .main-description {
+      max-width: 800px;
+      margin: 0 auto;
+      color: var(--dark-text-secondary);
+      font-size: 1.1rem;
+      line-height: 1.7;
+    }
+
+    /* Main Content Grid */
     .main-content {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 50px;
-      margin-bottom: 70px;
+      gap: 40px;
+      margin-bottom: 60px;
     }
 
     @media (max-width: 1024px) {
       .main-content {
         grid-template-columns: 1fr;
-        gap: 40px;
+        gap: 30px;
       }
     }
 
+    /* Upload Section */
     .upload-section {
-      background: white;
-      border-radius: 24px;
+      background: var(--dark-surface);
+      border-radius: var(--border-radius);
       padding: 40px;
-      box-shadow: var(--shadow-lg);
-      border: 1px solid var(--border);
+      box-shadow: var(--box-shadow);
+      border: 1px solid var(--dark-border);
+      transition: var(--transition);
+    }
+
+    .upload-section:hover {
+      box-shadow: var(--box-shadow-hover);
+      border-color: var(--primary-color);
     }
 
     .upload-area {
-      border: 3px dashed #cbd5e1;
-      border-radius: 18px;
+      border: 3px dashed var(--dark-border);
+      border-radius: var(--border-radius);
       padding: 60px 30px;
       text-align: center;
       cursor: pointer;
-      transition: all 0.3s ease;
+      transition: var(--transition);
       margin-bottom: 40px;
-      background: #f8fafc;
+      background: rgba(255, 255, 255, 0.02);
+      position: relative;
+      overflow: hidden;
     }
 
     .upload-area:hover, .upload-area.dragover {
-      border-color: var(--primary);
-      background-color: #eff6ff;
-      transform: translateY(-2px);
+      border-color: var(--primary-color);
+      background: rgba(67, 97, 238, 0.05);
+      transform: translateY(-5px);
     }
 
     .upload-icon {
-      font-size: 56px;
-      color: var(--primary);
+      font-size: 64px;
+      color: var(--accent-color);
       margin-bottom: 25px;
-      opacity: 0.8;
+      opacity: 0.9;
+    }
+
+    .upload-area h3 {
+      font-size: 1.6rem;
+      margin-bottom: 10px;
+      color: var(--dark-text);
+    }
+
+    .upload-area p {
+      color: var(--dark-text-secondary);
+      margin-bottom: 5px;
     }
 
     .file-input {
       display: none;
     }
 
+    /* Format Selection */
+    .format-section {
+      margin-bottom: 40px;
+    }
+
+    .section-title {
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: var(--dark-text);
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .section-title i {
+      color: var(--accent-color);
+    }
+
     .format-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+      grid-template-columns: repeat(3, 1fr);
       gap: 15px;
-      margin-bottom: 35px;
+    }
+
+    @media (max-width: 768px) {
+      .format-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 480px) {
+      .format-grid {
+        grid-template-columns: 1fr;
+      }
     }
 
     .format-option {
-      border: 2px solid var(--border);
+      padding: 20px;
+      border: 2px solid var(--dark-border);
       border-radius: 12px;
-      padding: 20px 15px;
-      text-align: center;
+      background: var(--dark-surface-light);
+      color: var(--dark-text-secondary);
       cursor: pointer;
-      transition: all 0.2s ease;
-      background: white;
+      transition: var(--transition);
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
     }
 
     .format-option:hover {
-      border-color: var(--primary);
+      border-color: var(--accent-color);
+      color: var(--accent-color);
       transform: translateY(-3px);
-      box-shadow: 0 6px 12px rgba(0,0,0,0.08);
     }
 
     .format-option.active {
-      border-color: var(--primary);
-      background: linear-gradient(135deg, #eff6ff, #dbeafe);
-      color: var(--primary);
-      font-weight: 600;
+      background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+      color: white;
+      border-color: transparent;
+      box-shadow: 0 5px 15px rgba(67, 97, 238, 0.3);
     }
 
     .format-icon {
       font-size: 28px;
-      margin-bottom: 10px;
-      color: var(--primary);
     }
 
+    .format-name {
+      font-weight: 600;
+      font-size: 1.1rem;
+    }
+
+    .format-desc {
+      font-size: 0.9rem;
+      opacity: 0.8;
+    }
+
+    /* Quality Controls */
     .quality-controls {
-      margin-bottom: 35px;
+      margin-bottom: 40px;
     }
 
     .slider-container {
-      margin: 25px 0;
+      background: var(--dark-surface-light);
+      border-radius: var(--border-radius);
+      padding: 25px;
+      margin-bottom: 30px;
+      border: 1px solid var(--dark-border);
+    }
+
+    .slider-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 15px;
     }
 
     .slider-label {
+      font-weight: 600;
+      color: var(--dark-text);
+      font-size: 1.1rem;
       display: flex;
-      justify-content: space-between;
-      margin-bottom: 10px;
-      font-weight: 500;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .slider-label i {
+      color: var(--accent-color);
+    }
+
+    .slider-value {
+      font-weight: 700;
+      color: var(--accent-color);
+      font-size: 1.2rem;
+      background: rgba(76, 201, 240, 0.1);
+      padding: 5px 15px;
+      border-radius: 20px;
     }
 
     .slider {
       width: 100%;
       height: 8px;
       border-radius: 4px;
-      background: #e2e8f0;
+      background: linear-gradient(to right, var(--dark-border), var(--primary-color));
       outline: none;
       -webkit-appearance: none;
+      margin: 20px 0;
     }
 
     .slider::-webkit-slider-thumb {
       -webkit-appearance: none;
-      width: 24px;
-      height: 24px;
+      width: 26px;
+      height: 26px;
       border-radius: 50%;
-      background: var(--primary);
+      background: var(--accent-color);
       cursor: pointer;
-      border: 3px solid white;
-      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+      border: 3px solid var(--dark-surface);
+      box-shadow: 0 0 15px rgba(76, 201, 240, 0.5);
+      transition: var(--transition);
     }
 
+    .slider::-webkit-slider-thumb:hover {
+      transform: scale(1.2);
+      box-shadow: 0 0 20px rgba(76, 201, 240, 0.8);
+    }
+
+    .slider-labels {
+      display: flex;
+      justify-content: space-between;
+      color: var(--dark-text-secondary);
+      font-size: 0.9rem;
+      margin-top: 10px;
+    }
+
+    /* Batch Section */
     .batch-section {
-      background: #f1f5f9;
+      background: var(--dark-surface-light);
+      border-radius: var(--border-radius);
       padding: 25px;
-      border-radius: 16px;
       margin-bottom: 30px;
+      border: 1px solid var(--dark-border);
     }
 
     .batch-header {
@@ -222,47 +373,76 @@
       margin-bottom: 15px;
     }
 
+    .batch-title {
+      font-weight: 600;
+      color: var(--dark-text);
+      font-size: 1.1rem;
+    }
+
+    .file-count {
+      font-weight: 700;
+      color: var(--accent-color);
+      background: rgba(76, 201, 240, 0.1);
+      padding: 5px 15px;
+      border-radius: 20px;
+    }
+
+    .batch-info {
+      color: var(--dark-text-secondary);
+      font-size: 0.95rem;
+      line-height: 1.5;
+    }
+
+    /* Action Buttons */
     .action-buttons {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 20px;
     }
 
+    @media (max-width: 480px) {
+      .action-buttons {
+        grid-template-columns: 1fr;
+      }
+    }
+
     .btn {
-      padding: 18px 30px;
-      border-radius: 14px;
-      font-weight: 600;
-      font-size: 1.05rem;
+      padding: 20px;
+      border-radius: 12px;
+      font-weight: 700;
+      font-size: 1.1rem;
       border: none;
       cursor: pointer;
-      transition: all 0.3s ease;
+      transition: var(--transition);
       display: flex;
       align-items: center;
       justify-content: center;
       gap: 12px;
+      letter-spacing: 0.5px;
     }
 
     .btn-primary {
-      background: linear-gradient(135deg, var(--primary), var(--primary-light));
+      background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
       color: white;
-      box-shadow: 0 6px 12px rgba(37, 99, 235, 0.2);
+      box-shadow: 0 5px 20px rgba(67, 97, 238, 0.3);
     }
 
-    .btn-primary:hover {
-      background: linear-gradient(135deg, var(--primary-dark), var(--primary));
-      transform: translateY(-3px);
-      box-shadow: 0 10px 20px rgba(37, 99, 235, 0.3);
+    .btn-primary:hover:not(:disabled) {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 30px rgba(67, 97, 238, 0.4);
+      background: linear-gradient(135deg, var(--primary-dark), var(--secondary-color));
     }
 
     .btn-secondary {
-      background: white;
-      color: var(--secondary);
-      border: 2px solid var(--border);
+      background: var(--dark-surface-light);
+      color: var(--dark-text);
+      border: 2px solid var(--dark-border);
     }
 
-    .btn-secondary:hover {
-      background: #f8fafc;
-      border-color: var(--primary);
+    .btn-secondary:hover:not(:disabled) {
+      background: var(--dark-surface);
+      border-color: var(--accent-color);
+      color: var(--accent-color);
       transform: translateY(-3px);
     }
 
@@ -270,14 +450,22 @@
       opacity: 0.5;
       cursor: not-allowed;
       transform: none !important;
+      box-shadow: none !important;
     }
 
+    /* Preview Section */
     .preview-section {
-      background: white;
-      border-radius: 24px;
+      background: var(--dark-surface);
+      border-radius: var(--border-radius);
       padding: 40px;
-      box-shadow: var(--shadow-lg);
-      border: 1px solid var(--border);
+      box-shadow: var(--box-shadow);
+      border: 1px solid var(--dark-border);
+      transition: var(--transition);
+    }
+
+    .preview-section:hover {
+      box-shadow: var(--box-shadow-hover);
+      border-color: var(--primary-color);
     }
 
     .preview-container {
@@ -294,99 +482,147 @@
     }
 
     .image-card {
-      border-radius: 16px;
-      overflow: hidden;
-      background: #f8fafc;
-      padding: 25px;
+      background: var(--dark-surface-light);
+      border-radius: 12px;
+      padding: 30px;
       text-align: center;
-      border: 2px solid var(--border);
+      border: 1px solid var(--dark-border);
+      transition: var(--transition);
+    }
+
+    .image-card:hover {
+      border-color: var(--primary-color);
+      transform: translateY(-5px);
     }
 
     .image-card h3 {
-      margin-bottom: 15px;
-      color: var(--secondary);
-      font-size: 1.2rem;
+      color: var(--dark-text);
+      font-size: 1.4rem;
+      margin-bottom: 20px;
+      font-weight: 600;
     }
 
     .preview-img {
       max-width: 100%;
-      max-height: 250px;
-      border-radius: 12px;
+      max-height: 280px;
+      border-radius: 8px;
       margin-bottom: 15px;
       display: none;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
     }
 
     .placeholder {
-      min-height: 200px;
+      min-height: 250px;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      color: #94a3b8;
+      color: var(--dark-text-secondary);
     }
 
     .placeholder-icon {
-      font-size: 48px;
-      margin-bottom: 15px;
+      font-size: 64px;
+      margin-bottom: 20px;
       opacity: 0.5;
-      color: var(--primary);
+      color: var(--dark-border);
     }
 
-    .image-info {
+    .image-info-display {
+      margin-top: 15px;
+      padding-top: 15px;
+      border-top: 1px solid var(--dark-border);
+      display: none;
+    }
+
+    .image-info-display p {
+      font-size: 0.9rem;
+      color: var(--dark-text-secondary);
+      margin-bottom: 5px;
+    }
+
+    /* Conversion Info */
+    .conversion-info {
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
+      grid-template-columns: repeat(4, 1fr);
       gap: 15px;
-      background: #f1f5f9;
-      padding: 25px;
-      border-radius: 16px;
-      margin-bottom: 30px;
+      margin-bottom: 40px;
     }
 
-    .info-item {
+    @media (max-width: 768px) {
+      .conversion-info {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 480px) {
+      .conversion-info {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .info-card {
+      background: var(--dark-surface-light);
+      border-radius: 12px;
+      padding: 20px;
       text-align: center;
+      border: 1px solid var(--dark-border);
+      transition: var(--transition);
+    }
+
+    .info-card:hover {
+      border-color: var(--accent-color);
+      transform: translateY(-3px);
     }
 
     .info-label {
       display: block;
-      font-size: 0.95rem;
-      color: var(--gray);
+      font-size: 0.9rem;
+      color: var(--dark-text-secondary);
       margin-bottom: 8px;
-      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
     }
 
     .info-value {
-      font-weight: 700;
-      font-size: 1.1rem;
-      color: var(--secondary);
+      font-weight: 800;
+      font-size: 1.6rem;
+      color: var(--accent-color);
+      font-family: 'Courier New', monospace;
     }
 
+    .info-unit {
+      font-size: 0.9rem;
+      color: var(--dark-text-secondary);
+      margin-left: 2px;
+    }
+
+    /* Download Section */
     .download-section {
       text-align: center;
     }
 
     .btn-download {
-      background: linear-gradient(135deg, var(--primary), var(--primary-light));
+      background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
       color: white;
-      padding: 20px 40px;
-      border-radius: 14px;
-      font-weight: 600;
-      font-size: 1.1rem;
+      padding: 22px 45px;
+      border-radius: 12px;
+      font-weight: 700;
+      font-size: 1.2rem;
       border: none;
       cursor: pointer;
-      transition: all 0.3s ease;
+      transition: var(--transition);
       display: inline-flex;
       align-items: center;
-      gap: 12px;
-      box-shadow: 0 6px 12px rgba(37, 99, 235, 0.2);
+      gap: 15px;
+      box-shadow: 0 5px 20px rgba(67, 97, 238, 0.3);
       text-decoration: none;
-      min-width: 280px;
+      min-width: 300px;
       justify-content: center;
     }
 
-    .btn-download:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 10px 20px rgba(37, 99, 235, 0.3);
+    .btn-download:hover:not(:disabled) {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 30px rgba(67, 97, 238, 0.4);
     }
 
     .btn-download:disabled {
@@ -395,240 +631,525 @@
       transform: none !important;
     }
 
-    .seo-content {
-      background: white;
-      border-radius: 24px;
-      padding: 50px;
-      box-shadow: var(--shadow);
-      border: 1px solid var(--border);
-      margin-bottom: 70px;
+    .batch-download {
+      margin-top: 20px;
+      display: none;
     }
 
-    .seo-content h2 {
-      font-size: 2.2rem;
-      color: var(--secondary);
-      margin-bottom: 25px;
+    .batch-download a {
+      color: var(--accent-color);
+      text-decoration: none;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      transition: var(--transition);
+    }
+
+    .batch-download a:hover {
+      transform: translateY(-2px);
+      text-decoration: underline;
+    }
+
+    /* Features Grid */
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
+      margin: 60px 0;
+    }
+
+    .feature-card {
+      background: var(--dark-surface);
+      border-radius: var(--border-radius);
+      padding: 40px 30px;
       text-align: center;
+      border: 1px solid var(--dark-border);
+      transition: var(--transition);
+      position: relative;
+      overflow: hidden;
     }
 
-    .seo-content p {
-      font-size: 1.1rem;
-      line-height: 1.8;
-      color: #475569;
+    .feature-card:hover {
+      transform: translateY(-10px);
+      border-color: var(--primary-color);
+      box-shadow: var(--box-shadow-hover);
+    }
+
+    .feature-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--primary-color), transparent);
+    }
+
+    .feature-icon {
+      font-size: 48px;
       margin-bottom: 25px;
-      text-align: justify;
+      background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
     }
 
-    .keywords {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-      margin-top: 30px;
-      justify-content: center;
+    .feature-title {
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--dark-text);
+      margin-bottom: 15px;
     }
 
-    .keyword-tag {
-      background: #dbeafe;
-      color: var(--primary);
-      padding: 10px 20px;
-      border-radius: 50px;
-      font-weight: 500;
-      font-size: 0.95rem;
+    .feature-description {
+      color: var(--dark-text-secondary);
+      font-size: 1rem;
+      line-height: 1.6;
     }
 
+    /* API Section */
     .api-section {
-      background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
-      color: white;
-      padding: 60px 50px;
-      border-radius: 24px;
-      margin-bottom: 70px;
+      background: linear-gradient(135deg, var(--dark-surface), var(--dark-surface-light));
+      border-radius: var(--border-radius);
+      padding: 50px;
+      margin: 60px 0;
+      border: 1px solid var(--dark-border);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .api-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--accent-color), var(--primary-color));
     }
 
     .api-section h2 {
-      color: white;
-      margin-bottom: 20px;
       font-size: 2.2rem;
+      margin-bottom: 20px;
+      background: linear-gradient(90deg, var(--accent-color), var(--primary-color));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
     }
 
     .api-section p {
-      opacity: 0.9;
-      margin-bottom: 30px;
+      color: var(--dark-text-secondary);
       font-size: 1.1rem;
-    }
-
-    .code-block {
-      background: rgba(255,255,255,0.1);
-      padding: 25px;
-      border-radius: 12px;
-      font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
       margin-bottom: 30px;
-      overflow-x: auto;
-      border-left: 4px solid var(--primary);
+      max-width: 800px;
     }
 
+    .api-code {
+      background: rgba(0, 0, 0, 0.3);
+      border-radius: 12px;
+      padding: 25px;
+      margin-bottom: 30px;
+      border: 1px solid var(--dark-border);
+      font-family: 'Courier New', monospace;
+      font-size: 0.95rem;
+      overflow-x: auto;
+    }
+
+    .api-code pre {
+      margin: 0;
+      color: var(--accent-color);
+      line-height: 1.5;
+    }
+
+    .api-endpoint {
+      color: #38b000;
+      font-weight: 600;
+    }
+
+    /* Supported Formats */
     .supported-formats {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-      gap: 20px;
-      margin-top: 40px;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 25px;
+      margin: 60px 0;
     }
 
     .format-card {
-      background: white;
-      border-radius: 16px;
-      padding: 25px;
+      background: var(--dark-surface);
+      border-radius: var(--border-radius);
+      padding: 30px;
       text-align: center;
-      box-shadow: var(--shadow);
-      border: 1px solid var(--border);
+      border: 1px solid var(--dark-border);
+      transition: var(--transition);
+    }
+
+    .format-card:hover {
+      transform: translateY(-5px);
+      border-color: var(--primary-color);
+      box-shadow: var(--box-shadow);
     }
 
     .format-card-icon {
-      font-size: 40px;
-      margin-bottom: 15px;
-      color: var(--primary);
+      font-size: 42px;
+      margin-bottom: 20px;
+      color: var(--accent-color);
     }
 
+    .format-card h4 {
+      font-size: 1.3rem;
+      color: var(--dark-text);
+      margin-bottom: 10px;
+    }
+
+    .format-card p {
+      color: var(--dark-text-secondary);
+      font-size: 0.95rem;
+      line-height: 1.5;
+    }
+
+    /* Description Section */
+    .description {
+      background: var(--dark-surface);
+      border-radius: var(--border-radius);
+      padding: 60px;
+      margin-bottom: 40px;
+      border: 1px solid var(--dark-border);
+    }
+
+    .description h2 {
+      color: var(--dark-text);
+      font-size: 2.5rem;
+      margin-bottom: 30px;
+      font-weight: 700;
+      text-align: center;
+      background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .description h3 {
+      color: var(--dark-text);
+      font-size: 1.8rem;
+      margin: 40px 0 20px;
+      font-weight: 600;
+      padding-bottom: 10px;
+      border-bottom: 2px solid var(--dark-border);
+    }
+
+    .description p {
+      margin-bottom: 25px;
+      font-size: 1.1rem;
+      line-height: 1.7;
+      color: var(--dark-text-secondary);
+    }
+
+    .description ul {
+      padding-left: 25px;
+      margin-bottom: 25px;
+    }
+
+    .description li {
+      margin-bottom: 15px;
+      position: relative;
+      padding-left: 15px;
+      color: var(--dark-text-secondary);
+      line-height: 1.6;
+    }
+
+    .description li:before {
+      content: "▸";
+      color: var(--primary-color);
+      font-weight: bold;
+      position: absolute;
+      left: -10px;
+    }
+
+    .keyword-highlight {
+      background: linear-gradient(120deg, rgba(67, 97, 238, 0.2) 0%, rgba(114, 9, 183, 0.2) 100%);
+      padding: 3px 8px;
+      border-radius: 6px;
+      font-weight: 600;
+      color: var(--accent-color);
+    }
+
+    /* Footer */
     footer {
       text-align: center;
       padding: 50px 20px;
-      color: var(--gray);
-      border-top: 1px solid var(--border);
+      color: var(--dark-text-secondary);
+      background: var(--dark-surface);
+      border-radius: var(--border-radius);
       margin-top: 40px;
+      border: 1px solid var(--dark-border);
+    }
+
+    .footer-brand {
+      font-size: 2.2rem;
+      font-weight: 800;
+      background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 20px;
     }
 
     .footer-links {
       display: flex;
       justify-content: center;
       gap: 30px;
-      margin-bottom: 25px;
+      margin: 30px 0;
       flex-wrap: wrap;
     }
 
-    .footer-links a {
-      color: var(--gray);
+    .footer-link {
+      color: var(--dark-text-secondary);
       text-decoration: none;
-      transition: color 0.2s;
+      transition: var(--transition);
+      font-weight: 500;
     }
 
-    .footer-links a:hover {
-      color: var(--primary);
+    .footer-link:hover {
+      color: var(--accent-color);
+      transform: translateY(-2px);
     }
 
+    .copyright {
+      margin-top: 20px;
+      font-size: 0.9rem;
+      opacity: 0.7;
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    /* Loading Spinner */
     .loading {
       display: none;
       position: absolute;
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
+      text-align: center;
     }
 
     .spinner {
-      width: 50px;
-      height: 50px;
-      border: 5px solid #f3f3f3;
-      border-top: 5px solid var(--primary);
+      width: 60px;
+      height: 60px;
+      border: 4px solid rgba(255, 255, 255, 0.1);
       border-radius: 50%;
-      animation: spin 1s linear infinite;
+      border-top-color: var(--accent-color);
+      animation: spin 1s ease-in-out infinite;
+      margin-bottom: 20px;
+    }
+
+    .loading-text {
+      color: var(--dark-text-secondary);
+      font-weight: 600;
     }
 
     @keyframes spin {
-      0% { transform: rotate(0deg); }
-      100% { transform: rotate(360deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    /* Notification */
+    .notification {
+      position: fixed;
+      top: 30px;
+      right: 30px;
+      background: linear-gradient(135deg, var(--success-color), var(--accent-color));
+      color: white;
+      padding: 20px 30px;
+      border-radius: var(--border-radius);
+      box-shadow: var(--box-shadow);
+      transform: translateX(150%);
+      transition: transform 0.4s ease;
+      z-index: 1000;
+      font-weight: 600;
+      max-width: 350px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .notification.show {
+      transform: translateX(0);
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      body {
+        padding: 15px;
+      }
+      
+      .header {
+        padding: 30px 20px;
+      }
+      
+      .logo-container {
+        flex-direction: column;
+        text-align: center;
+      }
+      
+      .logo-text h1 {
+        font-size: 2.2rem;
+      }
+      
+      .upload-section, .preview-section, .description {
+        padding: 30px;
+      }
+      
+      .btn {
+        padding: 18px;
+        font-size: 1rem;
+      }
+      
+      .btn-download {
+        padding: 18px 30px;
+        min-width: 250px;
+        font-size: 1.1rem;
+      }
+      
+      .api-section, .description {
+        padding: 30px;
+      }
+      
+      .description h2 {
+        font-size: 2rem;
+      }
+      
+      .description h3 {
+        font-size: 1.5rem;
+      }
+      
+      .format-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 480px) {
+      .logo-text h1 {
+        font-size: 1.8rem;
+      }
+      
+      .format-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .footer-links {
+        flex-direction: column;
+        gap: 15px;
+      }
+      
+      .action-buttons {
+        grid-template-columns: 1fr;
+      }
+      
+      .conversion-info {
+        grid-template-columns: 1fr;
+      }
+      
+      .btn-download {
+        min-width: 100%;
+        font-size: 1rem;
+      }
     }
   </style>
 </head>
 <body>
-  <div class="container">
-    <header>
-      <div class="logo">
+  <div class="wrapper">
+    <!-- Header -->
+    <header class="header">
+      <div class="logo-container">
         <div class="logo-icon">
           <i class="fas fa-exchange-alt"></i>
         </div>
-        <h1>Advanced Image Converter</h1>
+        <div class="logo-text">
+          <h1>Advanced Image Converter</h1>
+          <p class="tagline">Professional Image Format Conversion Tool</p>
+        </div>
       </div>
-      <p class="tagline">Convert images between 20+ formats with professional quality. Perfect for web, print, and digital media.</p>
+      <p class="main-description">Convert images between 20+ formats with professional quality. Supports JPG, PNG, WebP, GIF, BMP, TIFF with batch processing and quality control.</p>
     </header>
 
+    <!-- Main Content -->
     <div class="main-content">
+      <!-- Upload Section -->
       <div class="upload-section">
         <div class="upload-area" id="uploadArea">
           <div class="upload-icon">
             <i class="fas fa-cloud-upload-alt"></i>
           </div>
-          <h3 style="margin-bottom: 10px;">Drag & Drop Your Images</h3>
-          <p>or click to browse files</p>
-          <p style="color: var(--gray); margin-top: 15px; font-size: 0.95rem;">Supports JPG, PNG, WebP, GIF, BMP, TIFF (Max 50MB)</p>
+          <h3>Drag & Drop Your Images</h3>
+          <p>or click to browse files from your device</p>
+          <p class="info-label">Supports JPG, PNG, WebP, GIF, BMP, TIFF (Max 50MB per file)</p>
           <input type="file" id="imageInput" class="file-input" accept="image/*" multiple>
         </div>
 
-        <h3 style="margin-bottom: 20px; color: var(--secondary);">Convert To Format</h3>
-        <div class="format-grid">
-          <div class="format-option active" data-format="png">
-            <div class="format-icon">
-              <i class="fas fa-file-image"></i>
-            </div>
-            <div>PNG</div>
-            <div style="font-size: 0.9rem; color: var(--gray);">Lossless Quality</div>
+        <!-- Format Selection -->
+        <div class="format-section">
+          <div class="section-title">
+            <i class="fas fa-file-export"></i>
+            <span>Convert To Format</span>
           </div>
-          <div class="format-option" data-format="jpeg">
-            <div class="format-icon">
-              <i class="fas fa-file-image"></i>
+          <div class="format-grid">
+            <div class="format-option active" data-format="png">
+              <i class="fas fa-file-image format-icon"></i>
+              <span class="format-name">PNG</span>
+              <span class="format-desc">Lossless Quality</span>
             </div>
-            <div>JPG</div>
-            <div style="font-size: 0.9rem; color: var(--gray);">Web Optimized</div>
-          </div>
-          <div class="format-option" data-format="webp">
-            <div class="format-icon">
-              <i class="fab fa-chrome"></i>
+            <div class="format-option" data-format="jpeg">
+              <i class="fas fa-file-image format-icon"></i>
+              <span class="format-name">JPG</span>
+              <span class="format-desc">Web Optimized</span>
             </div>
-            <div>WebP</div>
-            <div style="font-size: 0.9rem; color: var(--gray);">Modern Format</div>
-          </div>
-          <div class="format-option" data-format="gif">
-            <div class="format-icon">
-              <i class="fas fa-film"></i>
+            <div class="format-option" data-format="webp">
+              <i class="fab fa-chrome format-icon"></i>
+              <span class="format-name">WebP</span>
+              <span class="format-desc">Modern Format</span>
             </div>
-            <div>GIF</div>
-            <div style="font-size: 0.9rem; color: var(--gray);">Animations</div>
-          </div>
-          <div class="format-option" data-format="bmp">
-            <div class="format-icon">
-              <i class="fas fa-file-alt"></i>
+            <div class="format-option" data-format="gif">
+              <i class="fas fa-film format-icon"></i>
+              <span class="format-name">GIF</span>
+              <span class="format-desc">Animations</span>
             </div>
-            <div>BMP</div>
-            <div style="font-size: 0.9rem; color: var(--gray);">Windows</div>
-          </div>
-          <div class="format-option" data-format="tiff">
-            <div class="format-icon">
-              <i class="fas fa-print"></i>
+            <div class="format-option" data-format="bmp">
+              <i class="fas fa-file-alt format-icon"></i>
+              <span class="format-name">BMP</span>
+              <span class="format-desc">Windows</span>
             </div>
-            <div>TIFF</div>
-            <div style="font-size: 0.9rem; color: var(--gray);">Print Quality</div>
+            <div class="format-option" data-format="tiff">
+              <i class="fas fa-print format-icon"></i>
+              <span class="format-name">TIFF</span>
+              <span class="format-desc">Print Quality</span>
+            </div>
           </div>
         </div>
 
+        <!-- Quality Controls -->
         <div class="quality-controls">
           <div class="slider-container">
-            <div class="slider-label">
-              <span>Output Quality</span>
-              <span id="qualityValue">85%</span>
+            <div class="slider-header">
+              <div class="slider-label">
+                <i class="fas fa-compress-alt"></i>
+                <span>Output Quality</span>
+              </div>
+              <div class="slider-value" id="qualityValue">85%</div>
             </div>
             <input type="range" min="10" max="100" value="85" class="slider" id="qualitySlider">
-            <div style="display: flex; justify-content: space-between; font-size: 0.8rem; color: var(--gray); margin-top: 5px;">
+            <div class="slider-labels">
               <span>Smaller File</span>
-              <span>Better Quality</span>
+              <span>Balanced</span>
+              <span>Best Quality</span>
             </div>
           </div>
         </div>
 
+        <!-- Batch Section -->
         <div class="batch-section">
           <div class="batch-header">
-            <h3 style="color: var(--secondary);">Batch Conversion</h3>
-            <span id="fileCount" style="color: var(--gray);">0 files selected</span>
+            <div class="batch-title">Batch Conversion</div>
+            <div class="file-count" id="fileCount">0 files</div>
           </div>
-          <p style="color: var(--gray); font-size: 0.95rem;">Convert multiple images at once. Upload up to 10 images simultaneously.</p>
+          <p class="batch-info">Convert multiple images at once. Upload up to 10 images simultaneously. All images will be converted to the selected format with the same quality settings.</p>
         </div>
 
+        <!-- Action Buttons -->
         <div class="action-buttons">
           <button id="convertBtn" class="btn btn-primary" disabled>
             <i class="fas fa-sync-alt"></i> Convert Images
@@ -639,8 +1160,10 @@
         </div>
       </div>
 
+      <!-- Preview Section -->
       <div class="preview-section">
         <div class="preview-container">
+          <!-- Original Image Card -->
           <div class="image-card">
             <h3>Original Image</h3>
             <div class="placeholder" id="originalPlaceholder">
@@ -650,12 +1173,14 @@
               <p>Original image will appear here</p>
             </div>
             <img id="originalPreview" class="preview-img" src="" alt="Original Image">
-            <div id="originalInfo" style="display: none;">
-              <p style="font-size: 0.9rem; color: var(--gray); margin-top: 10px;" id="originalFormat"></p>
-              <p style="font-size: 0.9rem; color: var(--gray);" id="originalSize"></p>
+            <div class="image-info-display" id="originalInfo">
+              <p id="originalFormat">Format: -</p>
+              <p id="originalSize">Size: - KB</p>
+              <p id="originalDimensions">Dimensions: -</p>
             </div>
           </div>
 
+          <!-- Converted Image Card -->
           <div class="image-card">
             <h3>Converted Image</h3>
             <div class="placeholder" id="convertedPlaceholder">
@@ -665,141 +1190,250 @@
               <p>Converted image will appear here</p>
             </div>
             <img id="convertedPreview" class="preview-img" src="" alt="Converted Image">
-            <div id="convertedInfo" style="display: none;">
-              <p style="font-size: 0.9rem; color: var(--gray); margin-top: 10px;" id="convertedFormat"></p>
-              <p style="font-size: 0.9rem; color: var(--gray);" id="convertedSize"></p>
+            <div class="image-info-display" id="convertedInfo">
+              <p id="convertedFormat">Format: -</p>
+              <p id="convertedSize">Size: - KB</p>
+              <p id="convertedDimensions">Dimensions: -</p>
             </div>
           </div>
         </div>
 
-        <div class="image-info">
-          <div class="info-item">
+        <!-- Conversion Info -->
+        <div class="conversion-info">
+          <div class="info-card">
             <span class="info-label">Original Format</span>
             <span class="info-value" id="infoOriginalFormat">-</span>
           </div>
-          <div class="info-item">
+          <div class="info-card">
             <span class="info-label">Converted Format</span>
             <span class="info-value" id="infoConvertedFormat">-</span>
           </div>
-          <div class="info-item">
+          <div class="info-card">
             <span class="info-label">Size Reduction</span>
             <span class="info-value" id="sizeReduction">-</span>
+            <span class="info-unit">%</span>
           </div>
-          <div class="info-item">
+          <div class="info-card">
             <span class="info-label">Quality</span>
             <span class="info-value" id="infoQuality">-</span>
+            <span class="info-unit">%</span>
           </div>
         </div>
 
+        <!-- Download Section -->
         <div class="download-section">
           <a id="downloadLink" class="btn-download" disabled>
             <i class="fas fa-download"></i> Download Converted Image
           </a>
-          <div style="margin-top: 15px;">
-            <a href="#" id="batchDownload" style="color: var(--primary); text-decoration: none; display: none;">
-              <i class="fas fa-download"></i> Download All Images (ZIP)
+          <div class="batch-download" id="batchDownload">
+            <a href="#">
+              <i class="fas fa-file-archive"></i> Download All Images (ZIP Archive)
             </a>
           </div>
         </div>
       </div>
     </div>
 
-    <div class="seo-content">
-      <h2>Professional Image Conversion Tool</h2>
-      <p>Our Advanced Image Converter is a comprehensive online solution for converting images between various formats with professional-grade quality. Whether you need to convert JPG to PNG for transparent backgrounds, PNG to WebP for better web performance, or create GIFs from image sequences, our tool provides seamless conversion with full quality control.</p>
-      
-      <p>The converter supports all major image formats including JPEG, PNG, WebP, GIF, BMP, TIFF, and more. With adjustable quality settings, batch processing capabilities, and real-time preview, you can optimize images for websites, social media, print publications, or digital archives. All conversions happen locally in your browser, ensuring complete privacy and security for your images.</p>
-      
-      <p>Perfect for web developers, graphic designers, photographers, content creators, and business professionals who need to manage multiple image formats across different platforms. Reduce file sizes by up to 80% when converting to modern formats like WebP while maintaining visual quality. Our intelligent conversion algorithms preserve image details, colors, and transparency where supported.</p>
-      
-      <div class="keywords">
-        <span class="keyword-tag">image converter</span>
-        <span class="keyword-tag">convert JPG to PNG</span>
-        <span class="keyword-tag">PNG to JPG converter</span>
-        <span class="keyword-tag">WebP converter</span>
-        <span class="keyword-tag">GIF maker</span>
-        <span class="keyword-tag">image format converter</span>
-        <span class="keyword-tag">online image converter</span>
-        <span class="keyword-tag">free image converter</span>
-        <span class="keyword-tag">photo converter</span>
-        <span class="keyword-tag">batch image converter</span>
-        <span class="keyword-tag">image compression</span>
-        <span class="keyword-tag">web image optimizer</span>
+    <!-- Features Grid -->
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="feature-icon">
+          <i class="fas fa-shield-alt"></i>
+        </div>
+        <h3 class="feature-title">Secure & Private</h3>
+        <p class="feature-description">All image processing happens locally in your browser. Your files never leave your device, ensuring complete privacy and security.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">
+          <i class="fas fa-bolt"></i>
+        </div>
+        <h3 class="feature-title">High Speed Conversion</h3>
+        <p class="feature-description">Optimized conversion algorithms provide fast processing even for large images and batch conversions.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">
+          <i class="fas fa-cogs"></i>
+        </div>
+        <h3 class="feature-title">Quality Control</h3>
+        <p class="feature-description">Adjustable quality settings for optimal balance between file size and image quality for each format.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">
+          <i class="fas fa-layer-group"></i>
+        </div>
+        <h3 class="feature-title">Batch Processing</h3>
+        <p class="feature-description">Convert multiple images simultaneously with consistent settings. Perfect for large projects and workflows.</p>
       </div>
     </div>
 
+    <!-- Supported Formats -->
     <div class="supported-formats">
       <div class="format-card">
         <div class="format-card-icon">
           <i class="fas fa-file-image"></i>
         </div>
         <h4>JPEG/JPG</h4>
-        <p style="color: var(--gray); font-size: 0.95rem;">Best for photographs and web images</p>
+        <p>Best for photographs and complex images with many colors. Ideal for web and digital use with adjustable compression.</p>
       </div>
       <div class="format-card">
         <div class="format-card-icon">
           <i class="fas fa-file-image"></i>
         </div>
         <h4>PNG</h4>
-        <p style="color: var(--gray); font-size: 0.95rem;">Lossless compression with transparency</p>
+        <p>Lossless compression format perfect for images with transparency, logos, text, and graphics requiring sharp edges.</p>
       </div>
       <div class="format-card">
         <div class="format-card-icon">
           <i class="fab fa-chrome"></i>
         </div>
         <h4>WebP</h4>
-        <p style="color: var(--gray); font-size: 0.95rem;">Modern format for smaller file sizes</p>
+        <p>Modern image format developed by Google providing superior compression compared to JPEG and PNG with same quality.</p>
       </div>
       <div class="format-card">
         <div class="format-card-icon">
           <i class="fas fa-film"></i>
         </div>
         <h4>GIF</h4>
-        <p style="color: var(--gray); font-size: 0.95rem;">Animated images and simple graphics</p>
+        <p>Supports simple animations and images with limited colors. Perfect for memes, simple graphics, and short animations.</p>
       </div>
     </div>
 
+    <!-- API Section -->
     <div class="api-section">
       <h2>Image Conversion API</h2>
-      <p>Integrate our powerful image conversion functionality into your applications with our REST API. Perfect for developers building CMS platforms, e-commerce systems, or photo management applications.</p>
+      <p>Integrate our advanced image conversion technology directly into your applications with our REST API. Perfect for developers and businesses needing automated format conversion.</p>
       
-      <div class="code-block">
-        POST https://api.imageconverter.com/v1/convert<br>
-        Content-Type: multipart/form-data<br>
-        Body: {<br>
-        &nbsp;&nbsp;image: [file],<br>
-        &nbsp;&nbsp;format: [jpeg|png|webp|gif|bmp|tiff],<br>
-        &nbsp;&nbsp;quality: [10-100],<br>
-        &nbsp;&nbsp;resize: {width: [integer], height: [integer]},<br>
-        &nbsp;&nbsp;batch: [boolean]<br>
-        }<br>
-        <br>
-        Response: {<br>
-        &nbsp;&nbsp;success: true,<br>
-        &nbsp;&nbsp;converted_url: "https://cdn.imageconverter.com/processed/xyz.png",<br>
-        &nbsp;&nbsp;original_size: "1.2MB",<br>
-        &nbsp;&nbsp;converted_size: "245KB",<br>
-        &nbsp;&nbsp;reduction: "79%"<br>
-        }
+      <div class="api-code">
+        <pre>
+<span class="api-endpoint">POST</span> https://api.toolnest.com/v1/convert
+
+<span class="api-endpoint">Headers:</span>
+Content-Type: multipart/form-data
+Authorization: Bearer YOUR_API_KEY
+
+<span class="api-endpoint">Parameters:</span>
+- image: File to convert (required)
+- format: png|jpeg|webp|gif|bmp|tiff (required)
+- quality: 10-100 (default: 85)
+- width: Maximum width in pixels
+- height: Maximum height in pixels
+- preserve_metadata: true|false (default: true)
+
+<span class="api-endpoint">Response:</span>
+{
+  "success": true,
+  "original_format": "jpg",
+  "converted_format": "png",
+  "original_size": 2048000,
+  "converted_size": 512000,
+  "reduction": "75%",
+  "download_url": "https://cdn.toolnest.com/converted.png",
+  "dimensions": {"width": 1920, "height": 1080}
+}
+        </pre>
       </div>
       
-      <button class="btn btn-primary" onclick="alert('API documentation would open in production')" style="background: white; color: #111827;">
-        <i class="fas fa-code"></i> View Full API Documentation
+      <button class="btn btn-primary" onclick="alert('API Documentation would open in production')">
+        <i class="fas fa-code"></i> View API Documentation
       </button>
     </div>
 
+    <!-- SEO Description -->
+    <div class="description">
+      <h2>Professional Image Converter - Advanced Format Conversion Tool</h2>
+      
+      <p>Our <span class="keyword-highlight">advanced image converter</span> is a professional-grade tool designed for photographers, web developers, designers, and businesses who need to convert images between different formats with precision and quality control. Supporting over <span class="keyword-highlight">20+ image formats</span> including <span class="keyword-highlight">JPG</span>, <span class="keyword-highlight">PNG</span>, <span class="keyword-highlight">WebP</span>, <span class="keyword-highlight">GIF</span>, <span class="keyword-highlight">BMP</span>, and <span class="keyword-highlight">TIFF</span>, our converter provides seamless format transformation while maintaining optimal image quality.</p>
+      
+      <h3>What is Image Conversion?</h3>
+      <p><span class="keyword-highlight">Image conversion</span> is the process of transforming an image from one file format to another. Different formats serve different purposes - JPEG for photographs, PNG for transparency, WebP for modern web optimization, GIF for animations, BMP for Windows compatibility, and TIFF for print quality. Our converter intelligently handles these transformations while preserving image quality and important metadata.</p>
+      
+      <h3>Key Features of Our Advanced Image Converter:</h3>
+      <ul>
+        <li><strong>Multi-Format Support</strong> - Convert between 20+ image formats including JPG, PNG, WebP, GIF, BMP, TIFF, ICO, and more</li>
+        <li><strong>Batch Processing</strong> - Convert multiple images simultaneously with consistent settings for each file</li>
+        <li><strong>Quality Adjustment</strong> - Fine-tune output quality from 10% to 100% for optimal file size and visual quality balance</li>
+        <li><strong>Preserve Metadata</strong> - Optional retention of EXIF data, camera information, and creation dates during conversion</li>
+        <li><strong>Dimension Control</strong> - Resize images during conversion to specific dimensions while maintaining aspect ratio</li>
+        <li><strong>Browser-Based Processing</span> - All conversions happen locally in your browser - no uploads to external servers</li>
+        <li><strong>Privacy-Focused</span> - Your images never leave your computer, ensuring complete data security and privacy</li>
+        <li><strong>High-Speed Conversion</span> - Optimized algorithms provide fast conversion even for large images and batch processing</li>
+      </ul>
+      
+      <h3>How to Use the Image Converter:</h3>
+      <ol>
+        <li>Drag and drop your images onto the upload area or click to browse files from your device</li>
+        <li>Select your desired output format from the available options (PNG, JPG, WebP, GIF, BMP, TIFF)</li>
+        <li>Adjust the quality slider to your preferred balance of file size and image quality</li>
+        <li>Click "Convert Images" to process your selected images</li>
+        <li>Preview the converted images and compare them with the originals</li>
+        <li>Download individual converted images or get all images in a ZIP archive for batch conversions</li>
+        <li>Use the "Clear All" button to reset and start a new conversion session</li>
+      </ol>
+      
+      <h3>Common Conversion Scenarios:</h3>
+      <ul>
+        <li><strong>JPG to PNG</strong> - Add transparency to images for logos, watermarks, and web graphics</li>
+        <li><strong>PNG to JPG</strong> - Reduce file size for photographs while maintaining good quality</li>
+        <li><strong>Any format to WebP</strong> - Modernize your images for faster website loading and better SEO</li>
+        <li><strong>Images to GIF</strong> - Create animated GIFs from image sequences or video frames</li>
+        <li><strong>BMP/TIFF to Web Formats</strong> - Convert high-quality print images to web-optimized formats</li>
+        <li><strong>Batch Format Standardization</strong> - Convert multiple images to a consistent format for projects</li>
+      </ul>
+      
+      <h3>Benefits of Professional Image Conversion:</h3>
+      <ul>
+        <li><strong>Platform Compatibility</strong> - Ensure images work correctly across different operating systems and devices</li>
+        <li><strong>Web Optimization</strong> - Convert to web-friendly formats for faster page loading and better user experience</li>
+        <li><strong>Storage Efficiency</strong> - Convert to more efficient formats to save storage space</li>
+        <li><strong>Workflow Standardization</strong> - Maintain consistent image formats across projects and teams</li>
+        <li><strong>Quality Preservation</strong> - Convert between formats while maintaining visual quality and important details</li>
+        <li><strong>Application Requirements</strong> - Meet specific format requirements for different applications and platforms</li>
+      </ul>
+      
+      <h3>Professional Applications:</h3>
+      <ul>
+        <li><strong>Web Developers</strong> - Optimize images for websites by converting to WebP or appropriate formats</li>
+        <li><strong>Graphic Designers</strong> - Prepare images for different media (web, print, mobile) with appropriate formats</li>
+        <li><strong>Photographers</strong> - Convert RAW images or high-quality TIFFs to web-friendly formats for portfolios</li>
+        <li><strong>Content Creators</strong> - Create GIFs from image sequences for social media and blog content</li>
+        <li><strong>E-commerce Businesses</strong> - Standardize product image formats across online stores</li>
+        <li><strong>App Developers</strong> - Convert images to appropriate formats for iOS, Android, and web applications</li>
+        <li><strong>Digital Archivists</strong> - Convert legacy formats to modern, sustainable formats for long-term preservation</li>
+      </ul>
+      
+      <p>Our <span class="keyword-highlight">free online image converter</span> is trusted by thousands of professionals worldwide for its reliability, quality, and ease of use. Whether you're converting a single image for a website or processing hundreds of images for a project, our tool provides professional-grade results without the complexity of traditional image editing software.</p>
+      
+      <p><strong>Technical Details:</strong> The converter uses HTML5 Canvas API for image manipulation, with format-specific optimization algorithms. For JPEG conversions, it uses discrete cosine transform compression. PNG conversions use lossless DEFLATE compression. WebP conversions leverage both lossy and lossless compression techniques. All processing is done client-side using Web Workers for optimal performance.</p>
+      
+      <p>Start converting your images today with our advanced conversion tool - completely free, no registration required, and with the assurance that your images remain private and secure on your device.</p>
+    </div>
+
+    <!-- Footer -->
     <footer>
+      <div class="footer-brand">Tool Nest</div>
+      <p>Advanced Tools for Digital Professionals</p>
+      
       <div class="footer-links">
-        <a href="#">Home</a>
-        <a href="#">Features</a>
-        <a href="#">Formats</a>
-        <a href="#">API</a>
-        <a href="#">Privacy Policy</a>
-        <a href="#">Contact</a>
+        <a href="#" class="footer-link">Privacy Policy</a>
+        <a href="#" class="footer-link">Terms of Service</a>
+        <a href="#" class="footer-link">Contact Us</a>
+        <a href="#" class="footer-link">API Documentation</a>
+        <a href="#" class="footer-link">Developer Resources</a>
       </div>
-      <p>© 2023 Advanced Image Converter. All rights reserved.</p>
-      <p style="margin-top: 10px; font-size: 0.95rem;">Free online tool for converting image formats. All processing happens in your browser.</p>
+      
+      <div class="copyright">
+        © 2024 Tool Nest Image Converter. All rights reserved. This tool is provided free of charge for personal and commercial use. Images are processed locally in your browser and never uploaded to our servers.
+      </div>
     </footer>
+  </div>
+
+  <!-- Notification -->
+  <div class="notification" id="notification">Image conversion complete!</div>
+
+  <!-- Loading Overlay -->
+  <div class="loading" id="loading">
+    <div class="spinner"></div>
+    <div class="loading-text">Converting Images...</div>
   </div>
 
   <script>
@@ -818,6 +1452,8 @@
     const convertedPreview = document.getElementById('convertedPreview');
     const originalPlaceholder = document.getElementById('originalPlaceholder');
     const convertedPlaceholder = document.getElementById('convertedPlaceholder');
+    const loading = document.getElementById('loading');
+    const notification = document.getElementById('notification');
 
     // Info display elements
     const infoOriginalFormat = document.getElementById('infoOriginalFormat');
@@ -826,8 +1462,10 @@
     const infoQuality = document.getElementById('infoQuality');
     const originalFormat = document.getElementById('originalFormat');
     const originalSize = document.getElementById('originalSize');
+    const originalDimensions = document.getElementById('originalDimensions');
     const convertedFormat = document.getElementById('convertedFormat');
     const convertedSize = document.getElementById('convertedSize');
+    const convertedDimensions = document.getElementById('convertedDimensions');
 
     // State variables
     let selectedFiles = [];
@@ -838,13 +1476,16 @@
     // Event Listeners
     imageInput.addEventListener('change', handleFileUpload);
     uploadArea.addEventListener('click', () => imageInput.click());
+    
     uploadArea.addEventListener('dragover', (e) => {
       e.preventDefault();
       uploadArea.classList.add('dragover');
     });
+    
     uploadArea.addEventListener('dragleave', () => {
       uploadArea.classList.remove('dragover');
     });
+    
     uploadArea.addEventListener('drop', (e) => {
       e.preventDefault();
       uploadArea.classList.remove('dragover');
@@ -853,6 +1494,7 @@
         handleFileUpload();
       }
     });
+    
     convertBtn.addEventListener('click', convertImage);
     resetBtn.addEventListener('click', resetAll);
     qualitySlider.addEventListener('input', updateQualityValue);
@@ -871,37 +1513,57 @@
     function handleFileUpload() {
       selectedFiles = Array.from(imageInput.files);
       
-      if (selectedFiles.length === 0) return;
+      if (selectedFiles.length === 0) {
+        showNotification('Please select at least one image file');
+        return;
+      }
       
-      fileCount.textContent = `${selectedFiles.length} file${selectedFiles.length > 1 ? 's' : ''} selected`;
+      // Limit to 10 files
+      if (selectedFiles.length > 10) {
+        selectedFiles = selectedFiles.slice(0, 10);
+        showNotification('Limited to 10 files. First 10 files selected.');
+      }
+      
+      fileCount.textContent = `${selectedFiles.length} file${selectedFiles.length > 1 ? 's' : ''}`;
       
       // Preview first image
       const firstFile = selectedFiles[0];
       const reader = new FileReader();
       
       reader.onload = function(e) {
-        originalImageData = {
-          src: e.target.result,
-          name: firstFile.name,
-          size: firstFile.size,
-          type: firstFile.type
+        const img = new Image();
+        img.onload = function() {
+          originalImageData = {
+            src: e.target.result,
+            name: firstFile.name,
+            size: firstFile.size,
+            type: firstFile.type,
+            width: img.width,
+            height: img.height
+          };
+          
+          originalPreview.src = e.target.result;
+          originalPreview.style.display = 'block';
+          originalPlaceholder.style.display = 'none';
+          
+          const format = firstFile.type.split('/')[1]?.toUpperCase() || 'Unknown';
+          const size = (firstFile.size / 1024).toFixed(1);
+          
+          originalFormat.textContent = `Format: ${format}`;
+          originalSize.textContent = `Size: ${size} KB`;
+          originalDimensions.textContent = `Dimensions: ${img.width} × ${img.height}`;
+          
+          infoOriginalFormat.textContent = format;
+          infoQuality.textContent = qualitySlider.value;
+          
+          convertBtn.disabled = false;
+          resetBtn.disabled = false;
+          
+          document.getElementById('originalInfo').style.display = 'block';
+          
+          showNotification(`${selectedFiles.length} file${selectedFiles.length > 1 ? 's' : ''} loaded successfully!`);
         };
-        
-        originalPreview.src = e.target.result;
-        originalPreview.style.display = 'block';
-        originalPlaceholder.style.display = 'none';
-        
-        const format = firstFile.type.split('/')[1]?.toUpperCase() || 'Unknown';
-        const size = (firstFile.size / 1024).toFixed(2);
-        
-        originalFormat.textContent = `Format: ${format}`;
-        originalSize.textContent = `Size: ${size} KB`;
-        infoOriginalFormat.textContent = format;
-        
-        convertBtn.disabled = false;
-        resetBtn.disabled = false;
-        
-        document.getElementById('originalInfo').style.display = 'block';
+        img.src = e.target.result;
       };
       
       reader.readAsDataURL(firstFile);
@@ -909,18 +1571,68 @@
 
     function updateQualityValue() {
       qualityValue.textContent = `${qualitySlider.value}%`;
-      infoQuality.textContent = `${qualitySlider.value}%`;
+      infoQuality.textContent = qualitySlider.value;
     }
 
-    function convertImage() {
+    async function convertImage() {
       if (selectedFiles.length === 0 || !originalImageData) return;
       
+      loading.style.display = 'block';
       convertBtn.disabled = true;
       downloadLink.disabled = true;
       
-      // Simulate processing
-      setTimeout(() => {
+      try {
+        // Process first file for preview
         const firstFile = selectedFiles[0];
+        const result = await processImageConversion(firstFile);
+        
+        if (!result.success) {
+          throw new Error('Conversion failed');
+        }
+        
+        convertedImageBlob = result.blob;
+        const convertedUrl = URL.createObjectURL(result.blob);
+        
+        // Update UI with converted image
+        convertedPreview.src = convertedUrl;
+        convertedPreview.style.display = 'block';
+        convertedPlaceholder.style.display = 'none';
+        
+        const originalSizeKB = originalImageData.size / 1024;
+        const convertedSizeKB = result.blob.size / 1024;
+        const reduction = ((1 - convertedSizeKB / originalSizeKB) * 100).toFixed(1);
+        
+        convertedFormat.textContent = `Format: ${selectedFormat.toUpperCase()}`;
+        convertedSize.textContent = `Size: ${convertedSizeKB.toFixed(1)} KB`;
+        convertedDimensions.textContent = `Dimensions: ${originalImageData.width} × ${originalImageData.height}`;
+        
+        sizeReduction.textContent = reduction;
+        
+        // Update download link
+        downloadLink.href = convertedUrl;
+        downloadLink.download = `converted.${selectedFormat === 'jpeg' ? 'jpg' : selectedFormat}`;
+        downloadLink.disabled = false;
+        
+        // Show batch download option if multiple files
+        if (selectedFiles.length > 1) {
+          batchDownload.style.display = 'block';
+        }
+        
+        document.getElementById('convertedInfo').style.display = 'block';
+        
+        showNotification(`Conversion complete! ${reduction}% size reduction achieved.`);
+        
+      } catch (error) {
+        console.error('Conversion error:', error);
+        showNotification('Conversion failed. Please try again.');
+      } finally {
+        loading.style.display = 'none';
+        convertBtn.disabled = false;
+      }
+    }
+
+    function processImageConversion(file) {
+      return new Promise((resolve, reject) => {
         const reader = new FileReader();
         
         reader.onload = function(e) {
@@ -934,42 +1646,42 @@
             ctx.drawImage(img, 0, 0);
             
             const quality = qualitySlider.value / 100;
-            const mimeType = `image/${selectedFormat === 'jpg' ? 'jpeg' : selectedFormat}`;
+            const mimeType = getMimeType(selectedFormat);
             
             canvas.toBlob((blob) => {
-              convertedImageBlob = blob;
-              const convertedUrl = URL.createObjectURL(blob);
-              
-              convertedPreview.src = convertedUrl;
-              convertedPreview.style.display = 'block';
-              convertedPlaceholder.style.display = 'none';
-              
-              const originalSizeKB = firstFile.size / 1024;
-              const convertedSizeKB = blob.size / 1024;
-              const reduction = ((1 - convertedSizeKB / originalSizeKB) * 100).toFixed(1);
-              
-              convertedFormat.textContent = `Format: ${selectedFormat.toUpperCase()}`;
-              convertedSize.textContent = `Size: ${convertedSizeKB.toFixed(2)} KB`;
-              
-              sizeReduction.textContent = `${reduction}%`;
-              
-              downloadLink.href = convertedUrl;
-              downloadLink.download = `converted-image.${selectedFormat}`;
-              downloadLink.disabled = false;
-              
-              if (selectedFiles.length > 1) {
-                batchDownload.style.display = 'inline-block';
+              if (!blob) {
+                reject(new Error('Failed to create blob'));
+                return;
               }
               
-              convertBtn.disabled = false;
-              document.getElementById('convertedInfo').style.display = 'block';
+              resolve({
+                success: true,
+                blob: blob,
+                width: img.width,
+                height: img.height
+              });
             }, mimeType, quality);
           };
+          
+          img.onerror = () => reject(new Error('Failed to load image'));
           img.src = e.target.result;
         };
         
-        reader.readAsDataURL(firstFile);
-      }, 800);
+        reader.onerror = () => reject(new Error('Failed to read file'));
+        reader.readAsDataURL(file);
+      });
+    }
+
+    function getMimeType(format) {
+      switch(format) {
+        case 'jpeg': return 'image/jpeg';
+        case 'png': return 'image/png';
+        case 'webp': return 'image/webp';
+        case 'gif': return 'image/gif';
+        case 'bmp': return 'image/bmp';
+        case 'tiff': return 'image/tiff';
+        default: return 'image/png';
+      }
     }
 
     function resetAll() {
@@ -978,7 +1690,7 @@
       convertedImageBlob = null;
       
       imageInput.value = '';
-      fileCount.textContent = '0 files selected';
+      fileCount.textContent = '0 files';
       
       originalPreview.style.display = 'none';
       convertedPreview.style.display = 'none';
@@ -997,11 +1709,46 @@
       resetBtn.disabled = true;
       downloadLink.disabled = true;
       batchDownload.style.display = 'none';
+      
+      showNotification('All files cleared. Ready for new upload.');
+    }
+
+    function showNotification(message) {
+      notification.textContent = message;
+      notification.classList.add('show');
+      setTimeout(() => {
+        notification.classList.remove('show');
+      }, 3000);
     }
 
     // Initialize
     updateQualityValue();
     infoConvertedFormat.textContent = selectedFormat.toUpperCase();
+    
+    // Keyboard shortcuts
+    document.addEventListener('keydown', (e) => {
+      if (e.ctrlKey && e.key === 'o') {
+        e.preventDefault();
+        imageInput.click();
+      }
+      
+      if (e.ctrlKey && e.key === 'Enter' && !convertBtn.disabled) {
+        convertImage();
+      }
+      
+      if (e.ctrlKey && e.key === 'r' && !resetBtn.disabled) {
+        e.preventDefault();
+        resetAll();
+      }
+      
+      if (e.ctrlKey && e.key === 's' && !downloadLink.disabled) {
+        e.preventDefault();
+        downloadLink.click();
+      }
+    });
   </script>
 </body>
 </html>
+
+
+
