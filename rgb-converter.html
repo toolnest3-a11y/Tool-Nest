@@ -1,5 +1,7 @@
-  
- <!DOCTYPE html>
+
+
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -9,82 +11,126 @@
   <meta name="keywords" content="HEX to RGB converter, color converter, hex to rgb, color conversion tool, web design tool, color picker, hex color converter, rgb values, color code converter, digital design tool">
   <meta name="author" content="Tool Nest">
   <link rel="icon" href="favicon-16x16.png" type="image/x-icon">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
+    /* Base Reset */
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    /* Dark Blue Theme Variables */
+    :root {
+      --primary-dark: #0f172a;
+      --primary-blue: #1e3a8a;
+      --secondary-blue: #3b82f6;
+      --accent-blue: #60a5fa;
+      --dark-blue: #1e293b;
+      --medium-blue: #334155;
+      --light-blue: #93c5fd;
+      --text-light: #f8fafc;
+      --text-gray: #cbd5e1;
+      --text-dark: #1e293b;
+      --success: #10b981;
+      --error: #ef4444;
+      --warning: #f59e0b;
+      --gradient-primary: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+      --gradient-accent: linear-gradient(135deg, #3b82f6 0%, #60a5fa 100%);
+      --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.2);
+      --shadow-md: 0 4px 8px rgba(0, 0, 0, 0.3);
+      --shadow-lg: 0 8px 16px rgba(0, 0, 0, 0.4);
+      --radius-sm: 8px;
+      --radius-md: 12px;
+      --radius-lg: 16px;
+      --transition: all 0.3s ease;
     }
 
     body {
-      background-color: #0f172a;
-      color: #e2e8f0;
+      background-color: var(--primary-dark);
+      color: var(--text-light);
       min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      padding: 20px;
+      line-height: 1.6;
+      padding: 0;
       background-image: 
-        radial-gradient(circle at 15% 15%, rgba(15, 23, 42, 0.9) 0%, transparent 25%),
-        radial-gradient(circle at 85% 85%, rgba(30, 41, 59, 0.8) 0%, transparent 25%);
+        radial-gradient(circle at 10% 10%, rgba(30, 58, 138, 0.2) 0%, transparent 20%),
+        radial-gradient(circle at 90% 90%, rgba(59, 130, 246, 0.15) 0%, transparent 20%);
     }
 
     .container {
       width: 100%;
-      max-width: 1100px;
+      max-width: 1200px;
       margin: 0 auto;
+      padding: 0 20px;
     }
 
+    /* Header */
     header {
       text-align: center;
-      margin-bottom: 40px;
+      padding: 2rem 0 1rem;
+      position: relative;
     }
 
     .logo {
-      font-size: 2.5rem;
+      font-size: clamp(1.8rem, 5vw, 2.5rem);
       font-weight: 800;
-      background: linear-gradient(90deg, #8b5cf6, #ec4899);
+      background: linear-gradient(90deg, var(--accent-blue), var(--light-blue));
       -webkit-background-clip: text;
       background-clip: text;
       color: transparent;
-      margin-bottom: 10px;
-      letter-spacing: 1px;
+      margin-bottom: 0.5rem;
+      letter-spacing: 0.5px;
     }
 
     .tagline {
-      font-size: 1.1rem;
-      color: #94a3b8;
-      margin-bottom: 30px;
+      font-size: clamp(0.9rem, 3vw, 1.1rem);
+      color: var(--text-gray);
+      margin-bottom: 1.5rem;
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+      padding: 0 1rem;
     }
 
+    /* Main Card */
     .main-card {
-      background: linear-gradient(145deg, #1e293b, #0f172a);
-      border-radius: 20px;
-      padding: 40px;
-      box-shadow: 
-        0 10px 30px rgba(0, 0, 0, 0.3),
-        0 0 0 1px rgba(255, 255, 255, 0.05),
-        inset 0 1px 0 rgba(255, 255, 255, 0.1);
-      margin-bottom: 40px;
-      transition: transform 0.3s ease;
+      background: linear-gradient(145deg, var(--dark-blue), var(--primary-dark));
+      border-radius: var(--radius-lg);
+      padding: clamp(1.5rem, 4vw, 2.5rem);
+      box-shadow: var(--shadow-lg);
+      border: 1px solid rgba(59, 130, 246, 0.1);
+      margin-bottom: 2rem;
+      transition: var(--transition);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .main-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: var(--gradient-primary);
     }
 
     .main-card:hover {
-      transform: translateY(-5px);
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-lg);
     }
 
     h2 {
-      color: #f1f5f9;
-      font-size: 1.8rem;
-      margin-bottom: 25px;
+      color: var(--text-light);
+      font-size: clamp(1.5rem, 4vw, 1.8rem);
+      margin-bottom: 1.5rem;
       text-align: center;
       position: relative;
-      padding-bottom: 15px;
+      padding-bottom: 0.75rem;
     }
 
-    h2:after {
+    h2::after {
       content: '';
       position: absolute;
       bottom: 0;
@@ -92,356 +138,432 @@
       transform: translateX(-50%);
       width: 80px;
       height: 3px;
-      background: linear-gradient(90deg, #8b5cf6, #ec4899);
+      background: var(--gradient-accent);
       border-radius: 2px;
     }
 
+    /* Converter Section */
     .converter-section {
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 40px;
-      margin-bottom: 40px;
+      grid-template-columns: 1fr;
+      gap: 2rem;
+      margin-bottom: 2rem;
     }
 
-    @media (max-width: 768px) {
+    @media (min-width: 768px) {
       .converter-section {
-        grid-template-columns: 1fr;
+        grid-template-columns: 1fr 1fr;
+        gap: 3rem;
       }
     }
 
-    .input-section, .output-section {
+    .input-section,
+    .output-section {
       display: flex;
       flex-direction: column;
     }
 
-    .input-section label, .output-section label {
-      margin-bottom: 12px;
+    .section-label {
+      margin-bottom: 0.75rem;
       font-weight: 600;
-      color: #cbd5e1;
+      color: var(--text-gray);
       font-size: 1.1rem;
       display: flex;
       align-items: center;
-      gap: 8px;
+      gap: 0.5rem;
     }
 
-    .input-section label i, .output-section label i {
-      color: #8b5cf6;
+    .section-label i {
+      color: var(--accent-blue);
+      font-size: 1.2rem;
     }
 
+    /* Input Container */
     .input-container {
       position: relative;
+      margin-bottom: 1.5rem;
     }
 
     #hexInput {
       width: 100%;
-      padding: 18px 20px;
-      background-color: #0f172a;
-      border: 2px solid #475569;
-      border-radius: 12px;
-      color: #f1f5f9;
-      font-size: 1.2rem;
+      padding: 1rem 1rem 1rem 2.5rem;
+      background-color: rgba(15, 23, 42, 0.8);
+      border: 2px solid var(--medium-blue);
+      border-radius: var(--radius-md);
+      color: var(--text-light);
+      font-size: 1.1rem;
       font-weight: 600;
       letter-spacing: 1px;
-      transition: all 0.3s ease;
+      transition: var(--transition);
       text-transform: uppercase;
-      text-align: center;
     }
 
     #hexInput:focus {
       outline: none;
-      border-color: #8b5cf6;
-      box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.2);
+      border-color: var(--accent-blue);
+      box-shadow: 0 0 0 3px rgba(96, 165, 250, 0.2);
     }
 
     .hex-prefix {
       position: absolute;
-      left: 20px;
+      left: 1rem;
       top: 50%;
       transform: translateY(-50%);
-      color: #94a3b8;
-      font-size: 1.2rem;
+      color: var(--text-gray);
+      font-size: 1.1rem;
       font-weight: 600;
       pointer-events: none;
+    }
+
+    /* Color Preview */
+    .color-preview-container {
+      margin: 1.5rem 0;
     }
 
     .color-display {
       width: 100%;
       height: 120px;
-      border-radius: 12px;
-      margin-top: 20px;
-      border: 2px solid #334155;
-      transition: all 0.3s ease;
+      border-radius: var(--radius-md);
+      border: 2px solid var(--medium-blue);
+      transition: var(--transition);
       display: flex;
       align-items: center;
       justify-content: center;
-      font-weight: 600;
+      font-weight: 700;
       font-size: 1.1rem;
-      text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+      text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+      padding: 1rem;
+      text-align: center;
+      word-break: break-all;
     }
 
     .color-display.light {
-      color: #0f172a;
+      color: var(--text-dark);
     }
 
     .color-display.dark {
-      color: #f1f5f9;
+      color: var(--text-light);
     }
 
+    /* Buttons */
+    .button-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      margin: 1.5rem 0;
+    }
+
+    @media (min-width: 480px) {
+      .button-group {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+    }
+
+    button {
+      padding: 0.875rem 1.5rem;
+      border: none;
+      border-radius: var(--radius-md);
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: var(--transition);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      min-width: 140px;
+      flex: 1;
+    }
+
+    @media (min-width: 480px) {
+      button {
+        flex: 0 1 auto;
+      }
+    }
+
+    .convert-btn {
+      background: var(--gradient-primary);
+      color: white;
+    }
+
+    .convert-btn:hover {
+      background: var(--gradient-accent);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+    }
+
+    .clear-btn {
+      background-color: var(--medium-blue);
+      color: var(--text-light);
+    }
+
+    .clear-btn:hover {
+      background-color: var(--accent-blue);
+      transform: translateY(-2px);
+    }
+
+    /* Output Container */
     .output-container {
-      background-color: #0f172a;
-      border-radius: 12px;
-      padding: 25px;
-      border: 2px solid #475569;
+      background-color: rgba(15, 23, 42, 0.8);
+      border-radius: var(--radius-md);
+      padding: 1.5rem;
+      border: 2px solid var(--medium-blue);
     }
 
     .color-values {
       display: flex;
       flex-direction: column;
-      gap: 15px;
+      gap: 0.75rem;
     }
 
     .color-value-item {
       display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 15px;
-      background-color: #1e293b;
-      border-radius: 10px;
-      border: 1px solid #334155;
-      transition: all 0.2s ease;
+      flex-direction: column;
+      gap: 0.5rem;
+      padding: 1rem;
+      background-color: var(--dark-blue);
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--medium-blue);
+      transition: var(--transition);
+    }
+
+    @media (min-width: 480px) {
+      .color-value-item {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+      }
     }
 
     .color-value-item:hover {
-      border-color: #8b5cf6;
+      border-color: var(--accent-blue);
       transform: translateY(-2px);
     }
 
     .color-label {
       display: flex;
       align-items: center;
-      gap: 10px;
+      gap: 0.5rem;
       font-weight: 600;
-      color: #cbd5e1;
+      color: var(--text-gray);
+      font-size: 0.95rem;
     }
 
     .color-value {
       font-family: 'Monaco', 'Courier New', monospace;
-      font-size: 1.3rem;
+      font-size: 1rem;
       font-weight: 700;
-      color: #8b5cf6;
-      padding: 8px 15px;
-      background-color: #0f172a;
-      border-radius: 8px;
-      border: 1px solid #334155;
-      min-width: 180px;
+      color: var(--accent-blue);
+      padding: 0.5rem 0.75rem;
+      background-color: rgba(15, 23, 42, 0.9);
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--medium-blue);
       text-align: center;
+      word-break: break-all;
     }
 
     .copy-btn {
-      background-color: #334155;
-      color: #e2e8f0;
+      background-color: var(--medium-blue);
+      color: var(--text-light);
       border: none;
-      border-radius: 8px;
-      padding: 8px 15px;
+      border-radius: var(--radius-sm);
+      padding: 0.5rem 1rem;
       cursor: pointer;
-      transition: all 0.2s ease;
+      transition: var(--transition);
       display: flex;
       align-items: center;
-      gap: 5px;
-      font-size: 0.9rem;
+      gap: 0.25rem;
+      font-size: 0.875rem;
+      margin-top: 0.5rem;
+    }
+
+    @media (min-width: 480px) {
+      .copy-btn {
+        margin-top: 0;
+      }
     }
 
     .copy-btn:hover {
-      background-color: #475569;
+      background-color: var(--accent-blue);
     }
 
-    .button-group {
-      display: flex;
-      gap: 15px;
-      margin: 30px 0;
-      justify-content: center;
-      flex-wrap: wrap;
-    }
-
-    button {
-      padding: 16px 28px;
-      border: none;
-      border-radius: 12px;
-      font-size: 1.1rem;
-      font-weight: 600;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-      min-width: 180px;
-    }
-
-    .convert-btn {
-      background: linear-gradient(90deg, #8b5cf6, #ec4899);
-      color: white;
-    }
-
-    .convert-btn:hover {
-      background: linear-gradient(90deg, #7c3aed, #db2777);
-      box-shadow: 0 5px 15px rgba(139, 92, 246, 0.3);
-      transform: translateY(-2px);
-    }
-
-    .clear-btn {
-      background-color: #334155;
-      color: #e2e8f0;
-    }
-
-    .clear-btn:hover {
-      background-color: #475569;
-      transform: translateY(-2px);
-    }
-
+    /* Color Palette */
     .color-palette {
-      background-color: #1e293b;
-      border-radius: 12px;
-      padding: 25px;
-      margin-top: 30px;
-      border: 1px solid #334155;
+      background-color: var(--dark-blue);
+      border-radius: var(--radius-md);
+      padding: 1.5rem;
+      margin: 1.5rem 0;
+      border: 1px solid var(--medium-blue);
     }
 
     .color-palette h3 {
-      color: #f1f5f9;
+      color: var(--text-light);
       font-size: 1.3rem;
-      margin-bottom: 20px;
+      margin-bottom: 1rem;
       display: flex;
       align-items: center;
-      gap: 10px;
+      gap: 0.5rem;
     }
 
     .palette-grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
-      gap: 15px;
+      gap: 0.75rem;
+    }
+
+    @media (max-width: 480px) {
+      .palette-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
     }
 
     .palette-item {
-      height: 100px;
-      border-radius: 10px;
+      aspect-ratio: 1;
+      border-radius: var(--radius-sm);
       display: flex;
       align-items: center;
       justify-content: center;
       cursor: pointer;
-      transition: transform 0.2s ease;
+      transition: var(--transition);
       border: 2px solid transparent;
+      position: relative;
+      overflow: hidden;
     }
 
     .palette-item:hover {
       transform: scale(1.05);
-      border-color: #f1f5f9;
+      border-color: var(--text-light);
     }
 
     .palette-hex {
-      background-color: rgba(15, 23, 42, 0.8);
-      padding: 5px 10px;
-      border-radius: 6px;
+      background-color: rgba(15, 23, 42, 0.85);
+      padding: 0.25rem 0.5rem;
+      border-radius: 4px;
       font-weight: 600;
-      font-size: 0.9rem;
+      font-size: 0.75rem;
       color: white;
+      text-align: center;
     }
 
+    /* API Section */
     .api-section {
-      background-color: #1e293b;
-      border-radius: 15px;
-      padding: 25px;
-      margin-top: 30px;
-      border: 1px solid #334155;
+      background-color: var(--dark-blue);
+      border-radius: var(--radius-md);
+      padding: 1.5rem;
+      margin: 1.5rem 0;
+      border: 1px solid var(--medium-blue);
     }
 
     .api-section h3 {
-      color: #f1f5f9;
+      color: var(--text-light);
       font-size: 1.3rem;
-      margin-bottom: 15px;
+      margin-bottom: 0.75rem;
       display: flex;
       align-items: center;
-      gap: 10px;
+      gap: 0.5rem;
     }
 
     .api-code {
-      background-color: #0f172a;
-      border-radius: 8px;
-      padding: 15px;
+      background-color: rgba(15, 23, 42, 0.9);
+      border-radius: var(--radius-sm);
+      padding: 1rem;
       font-family: 'Courier New', monospace;
-      color: #22c55e;
+      color: var(--success);
       overflow-x: auto;
-      margin-top: 10px;
-      border: 1px solid #334155;
-      font-size: 0.9rem;
+      margin-top: 0.75rem;
+      border: 1px solid var(--medium-blue);
+      font-size: 0.875rem;
+      line-height: 1.5;
     }
 
+    /* SEO Description */
     .seo-description {
-      background-color: #1e293b;
-      border-radius: 15px;
-      padding: 30px;
-      margin-bottom: 40px;
-      border-left: 4px solid #8b5cf6;
+      background-color: var(--dark-blue);
+      border-radius: var(--radius-lg);
+      padding: 2rem;
+      margin-bottom: 2rem;
+      border-left: 4px solid var(--accent-blue);
     }
 
     .seo-description h3 {
-      color: #f1f5f9;
+      color: var(--text-light);
       font-size: 1.5rem;
-      margin-bottom: 15px;
+      margin-bottom: 1rem;
     }
 
     .seo-description p {
-      color: #94a3b8;
+      color: var(--text-gray);
       line-height: 1.7;
-      margin-bottom: 15px;
+      margin-bottom: 1rem;
     }
 
     .seo-keywords {
       display: flex;
       flex-wrap: wrap;
-      gap: 10px;
-      margin-top: 20px;
+      gap: 0.5rem;
+      margin-top: 1.5rem;
     }
 
     .keyword {
-      background-color: #334155;
-      color: #cbd5e1;
-      padding: 5px 12px;
+      background-color: var(--medium-blue);
+      color: var(--text-gray);
+      padding: 0.375rem 0.75rem;
       border-radius: 20px;
-      font-size: 0.9rem;
+      font-size: 0.875rem;
+      transition: var(--transition);
     }
 
+    .keyword:hover {
+      background-color: var(--accent-blue);
+      color: var(--text-light);
+    }
+
+    /* Footer */
     footer {
       text-align: center;
-      color: #64748b;
-      padding: 20px;
+      color: var(--text-gray);
+      padding: 2rem 1rem;
       width: 100%;
-      border-top: 1px solid #334155;
-      margin-top: 20px;
+      border-top: 1px solid var(--medium-blue);
+      margin-top: 1rem;
     }
 
     .footer-logo {
       font-size: 1.8rem;
       font-weight: 800;
-      color: #8b5cf6;
-      margin-bottom: 10px;
+      color: var(--accent-blue);
+      margin-bottom: 0.5rem;
+    }
+
+    footer p {
+      font-size: 0.9rem;
+      line-height: 1.6;
+      margin-bottom: 0.5rem;
     }
 
     /* Notification */
     .notification {
       position: fixed;
-      top: 20px;
-      right: 20px;
-      background-color: #10b981;
+      top: 1rem;
+      right: 1rem;
+      background-color: var(--success);
       color: white;
-      padding: 12px 20px;
-      border-radius: 8px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+      padding: 0.875rem 1.25rem;
+      border-radius: var(--radius-sm);
+      box-shadow: var(--shadow-lg);
       z-index: 1000;
       display: none;
       align-items: center;
-      gap: 10px;
+      gap: 0.5rem;
       animation: slideIn 0.3s ease;
+      max-width: calc(100% - 2rem);
+      word-break: break-word;
+    }
+
+    .notification.error {
+      background-color: var(--error);
     }
 
     @keyframes slideIn {
@@ -452,6 +574,107 @@
       to {
         transform: translateX(0);
         opacity: 1;
+      }
+    }
+
+    /* Responsive Adjustments */
+    @media (max-width: 768px) {
+      .container {
+        padding: 0 15px;
+      }
+      
+      .main-card {
+        padding: 1.25rem;
+      }
+      
+      .color-display {
+        height: 100px;
+        font-size: 1rem;
+      }
+      
+      .color-value {
+        font-size: 0.9rem;
+        padding: 0.5rem;
+      }
+      
+      .seo-description {
+        padding: 1.5rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .container {
+        padding: 0 10px;
+      }
+      
+      .main-card {
+        padding: 1rem;
+      }
+      
+      .logo {
+        font-size: 1.6rem;
+      }
+      
+      .tagline {
+        font-size: 0.9rem;
+      }
+      
+      h2 {
+        font-size: 1.3rem;
+      }
+      
+      button {
+        padding: 0.75rem 1rem;
+        font-size: 0.9rem;
+        min-width: 120px;
+      }
+      
+      .color-display {
+        height: 80px;
+        font-size: 0.9rem;
+      }
+      
+      .color-palette,
+      .api-section {
+        padding: 1rem;
+      }
+      
+      .palette-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      
+      .seo-description {
+        padding: 1.25rem;
+      }
+      
+      .seo-description h3 {
+        font-size: 1.3rem;
+      }
+    }
+
+    /* Touch-friendly improvements */
+    @media (hover: none) and (pointer: coarse) {
+      button,
+      .copy-btn,
+      .palette-item {
+        min-height: 44px;
+      }
+      
+      .color-value-item {
+        padding: 1.25rem;
+      }
+      
+      #hexInput {
+        font-size: 16px; /* Prevents zoom on iOS */
+        padding: 1rem 1rem 1rem 2.5rem;
+        height: 50px;
+      }
+    }
+
+    /* Dark mode optimization */
+    @media (prefers-color-scheme: dark) {
+      body {
+        background-color: var(--primary-dark);
       }
     }
   </style>
@@ -468,67 +691,73 @@
       
       <div class="converter-section">
         <div class="input-section">
-          <label for="hexInput"><i>🎨</i> HEX Color Code</label>
+          <label class="section-label">
+            <i class="fas fa-palette"></i> HEX Color Code
+          </label>
           <div class="input-container">
             <div class="hex-prefix">#</div>
             <input type="text" id="hexInput" placeholder="FF5733" value="FF5733" maxlength="6" />
           </div>
           
-          <div class="color-display" id="colorPreview" style="background-color: #FF5733;">
-            #FF5733
+          <div class="color-preview-container">
+            <div class="color-display" id="colorPreview" style="background-color: #FF5733;">
+              #FF5733
+            </div>
           </div>
           
           <div class="button-group">
             <button class="convert-btn" onclick="convertHexToRgb()">
-              <span>🔄</span> Convert HEX to RGB
+              <i class="fas fa-sync-alt"></i> Convert HEX to RGB
             </button>
             <button class="clear-btn" onclick="clearAll()">
-              <span>🗑️</span> Clear All
+              <i class="fas fa-trash-alt"></i> Clear All
             </button>
           </div>
         </div>
         
         <div class="output-section">
-          <label><i>📊</i> Conversion Results</label>
+          <label class="section-label">
+            <i class="fas fa-chart-bar"></i> Conversion Results
+          </label>
           <div class="output-container">
             <div class="color-values">
               <div class="color-value-item">
                 <div class="color-label">
-                  <span>🔴</span> RGB Value
+                  <i class="fas fa-circle" style="color: #ef4444;"></i> RGB Value
                 </div>
                 <div class="color-value" id="rgbResult">rgb(255, 87, 51)</div>
                 <button class="copy-btn" onclick="copyToClipboard('rgbResult')">
-                  <span>📋</span> Copy
+                  <i class="far fa-copy"></i> Copy
                 </button>
               </div>
               
               <div class="color-value-item">
                 <div class="color-label">
-                  <span>🎯</span> HEX Value
+                  <i class="fas fa-hashtag"></i> HEX Value
                 </div>
                 <div class="color-value" id="hexResult">#FF5733</div>
                 <button class="copy-btn" onclick="copyToClipboard('hexResult')">
-                  <span>📋</span> Copy
+                  <i class="far fa-copy"></i> Copy
                 </button>
               </div>
               
               <div class="color-value-item">
                 <div class="color-label">
-                  <span>🌈</span> HSL Value
+                  <i class="fas fa-sliders-h"></i> HSL Value
                 </div>
                 <div class="color-value" id="hslResult">hsl(10, 100%, 60%)</div>
                 <button class="copy-btn" onclick="copyToClipboard('hslResult')">
-                  <span>📋</span> Copy
+                  <i class="far fa-copy"></i> Copy
                 </button>
               </div>
               
               <div class="color-value-item">
                 <div class="color-label">
-                  <span>🖥️</span> CSS Value
+                  <i class="fas fa-code"></i> CSS Value
                 </div>
                 <div class="color-value" id="cssResult">color: #FF5733;</div>
                 <button class="copy-btn" onclick="copyToClipboard('cssResult')">
-                  <span>📋</span> Copy
+                  <i class="far fa-copy"></i> Copy
                 </button>
               </div>
             </div>
@@ -537,14 +766,14 @@
       </div>
       
       <div class="color-palette">
-        <h3><span>🎨</span> Color Palette Suggestions</h3>
+        <h3><i class="fas fa-palette"></i> Color Palette Suggestions</h3>
         <div class="palette-grid" id="colorPalette">
           <!-- Palette items will be generated by JavaScript -->
         </div>
       </div>
       
       <div class="api-section">
-        <h3><span>🔧</span> Color Conversion API</h3>
+        <h3><i class="fas fa-code"></i> Color Conversion API</h3>
         <p>Use our API to convert color codes programmatically:</p>
         <div class="api-code">
 // API Endpoint: GET /api/convert-hex-to-rgb?hex=FF5733<br>
@@ -590,7 +819,6 @@
     // Initialize with sample color
     document.addEventListener('DOMContentLoaded', () => {
       convertHexToRgb();
-      generateColorPalette('#FF5733');
     });
     
     // Main conversion function
@@ -757,6 +985,12 @@
       const element = document.getElementById(elementId);
       const text = element.textContent;
       
+      // Fallback for older browsers
+      if (!navigator.clipboard) {
+        fallbackCopyTextToClipboard(text);
+        return;
+      }
+      
       navigator.clipboard.writeText(text).then(() => {
         showNotification(`${elementId.replace('Result', '')} copied to clipboard!`, 'success');
       }).catch(err => {
@@ -764,10 +998,30 @@
       });
     }
     
+    // Fallback copy method
+    function fallbackCopyTextToClipboard(text) {
+      const textArea = document.createElement("textarea");
+      textArea.value = text;
+      textArea.style.position = "fixed";
+      document.body.appendChild(textArea);
+      textArea.focus();
+      textArea.select();
+      
+      try {
+        const successful = document.execCommand('copy');
+        const msg = successful ? 'success' : 'error';
+        showNotification(`${msg === 'success' ? 'Copied' : 'Failed to copy'} to clipboard!`, msg);
+      } catch (err) {
+        showNotification('Failed to copy text', 'error');
+      }
+      
+      document.body.removeChild(textArea);
+    }
+    
     // Clear all
     function clearAll() {
       document.getElementById('hexInput').value = '';
-      document.getElementById('colorPreview').style.backgroundColor = '#1e293b';
+      document.getElementById('colorPreview').style.backgroundColor = 'var(--dark-blue)';
       document.getElementById('colorPreview').textContent = 'Enter HEX code';
       document.getElementById('colorPreview').className = 'color-display';
       
@@ -785,7 +1039,7 @@
     function showNotification(message, type) {
       const notification = document.getElementById('notification');
       notification.textContent = message;
-      notification.style.backgroundColor = type === 'success' ? '#10b981' : '#ef4444';
+      notification.className = `notification ${type === 'error' ? 'error' : ''}`;
       notification.style.display = 'flex';
       
       setTimeout(() => {
@@ -815,6 +1069,16 @@
         convertHexToRgb();
       }
     });
+    
+    // Touch device optimization
+    if ('ontouchstart' in window) {
+      document.querySelectorAll('button, .copy-btn, .palette-item').forEach(element => {
+        element.style.cursor = 'pointer';
+      });
+    }
   </script>
 </body>
 </html>
+
+
+
