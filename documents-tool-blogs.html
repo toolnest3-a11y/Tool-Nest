@@ -1,0 +1,1378 @@
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document Tools Blog - Tool Nest</title>
+    <link rel="icon" href="favicon-16x16.png" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --deep-blue: #0a192f;
+            --dark-blue: #112240;
+            --medium-blue: #1d4ed8;
+            --light-blue: #3b82f6;
+            --accent-blue: #60a5fa;
+            --text-primary: #f8fafc;
+            --text-secondary: #cbd5e1;
+            --border-color: #334155;
+            --card-bg: rgba(15, 23, 42, 0.8);
+            --gradient-blue: linear-gradient(135deg, #0a192f 0%, #1e3a8a 100%);
+            --hover-blue: rgba(59, 130, 246, 0.1);
+            
+            /* Document Tools Category Colors */
+            --document-tools: #10b981;
+            --pdf-word: #3b82f6;
+            --pdf-compressor: #ef4444;
+            --pdf-merger: #8b5cf6;
+            --doc-converter: #f59e0b;
+            --pdf-lock: #06b6d4;
+            --esign-pdf: #ec4899;
+        }
+
+        body {
+            background: var(--gradient-blue);
+            color: var(--text-primary);
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            line-height: 1.6;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        /* Header & Navigation */
+        .header {
+            background-color: rgba(17, 34, 64, 0.95);
+            border-bottom: 1px solid var(--border-color);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            text-decoration: none;
+        }
+
+        .logo-icon {
+            color: var(--accent-blue);
+            font-size: 1.8rem;
+        }
+
+        .logo-text {
+            font-size: 1.5rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--accent-blue), var(--light-blue));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        /* Mobile Menu Toggle */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--text-secondary);
+            font-size: 1.5rem;
+            cursor: pointer;
+            padding: 0.5rem;
+            z-index: 1001;
+        }
+
+        /* Main Navigation */
+        .main-nav {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .nav-link {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.5rem 0;
+            position: relative;
+            transition: color 0.3s ease;
+        }
+
+        .nav-link:hover {
+            color: var(--accent-blue);
+        }
+
+        .nav-link.active {
+            color: var(--accent-blue);
+        }
+
+        .nav-link.active::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: var(--accent-blue);
+        }
+
+        /* Dropdown Menu */
+        .dropdown {
+            position: relative;
+        }
+
+        .dropdown-btn {
+            background: none;
+            border: none;
+            color: var(--accent-blue);
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            padding: 0.5rem 0;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: color 0.3s ease;
+        }
+
+        .dropdown-btn:hover {
+            color: var(--light-blue);
+        }
+
+        .dropdown-btn.active {
+            color: var(--light-blue);
+        }
+
+        .dropdown-content {
+            position: absolute;
+            top: 100%;
+            left: -1rem;
+            background-color: var(--dark-blue);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 0.75rem 0;
+            min-width: 220px;
+            display: none;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            z-index: 1000;
+        }
+
+        .dropdown-content.show {
+            display: block;
+        }
+
+        .dropdown-link {
+            display: block;
+            color: var(--text-secondary);
+            text-decoration: none;
+            padding: 0.75rem 1.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .dropdown-link:hover {
+            background-color: var(--hover-blue);
+            color: var(--accent-blue);
+            padding-left: 2rem;
+        }
+
+        /* Breadcrumb */
+        .breadcrumb {
+            padding: 1.5rem 0 0.5rem;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .breadcrumb a {
+            color: var(--accent-blue);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .breadcrumb a:hover {
+            color: var(--light-blue);
+        }
+
+        .breadcrumb span {
+            margin: 0 0.5rem;
+        }
+
+        /* Page Header */
+        .page-header {
+            padding: 2rem 0;
+            text-align: center;
+        }
+
+        .page-title {
+            font-size: 2.8rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--document-tools), #34d399);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .page-subtitle {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            max-width: 800px;
+            margin: 0 auto 2rem;
+            line-height: 1.6;
+        }
+
+        /* Stats Section */
+        .stats-section {
+            padding: 1rem 0 2rem;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .stat-card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            padding: 1.5rem;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--document-tools);
+            box-shadow: 0 10px 25px rgba(16, 185, 129, 0.2);
+        }
+
+        .stat-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--document-tools);
+        }
+
+        .stat-number {
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Categories Section */
+        .categories-section {
+            padding: 3rem 0;
+        }
+
+        .section-title {
+            font-size: 2.2rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+
+        .section-subtitle {
+            font-size: 1rem;
+            color: var(--text-secondary);
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 2.5rem;
+            line-height: 1.6;
+        }
+
+        .categories-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        /* Category Card */
+        .category-card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 1.5rem;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .category-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            transition: height 0.3s ease;
+        }
+
+        .category-card.pdf-word::before { background-color: var(--pdf-word); }
+        .category-card.pdf-compressor::before { background-color: var(--pdf-compressor); }
+        .category-card.pdf-merger::before { background-color: var(--pdf-merger); }
+        .category-card.doc-converter::before { background-color: var(--doc-converter); }
+        .category-card.pdf-lock::before { background-color: var(--pdf-lock); }
+        .category-card.esign-pdf::before { background-color: var(--esign-pdf); }
+
+        .category-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--document-tools);
+            box-shadow: 0 15px 35px rgba(16, 185, 129, 0.2);
+        }
+
+        .category-card:hover::before {
+            height: 100%;
+            opacity: 0.05;
+        }
+
+        .category-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.25rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .category-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+        }
+
+        .category-card.pdf-word .category-icon { 
+            background-color: rgba(59, 130, 246, 0.1);
+            color: var(--pdf-word);
+        }
+        .category-card.pdf-compressor .category-icon { 
+            background-color: rgba(239, 68, 68, 0.1);
+            color: var(--pdf-compressor);
+        }
+        .category-card.pdf-merger .category-icon { 
+            background-color: rgba(139, 92, 246, 0.1);
+            color: var(--pdf-merger);
+        }
+        .category-card.doc-converter .category-icon { 
+            background-color: rgba(245, 158, 11, 0.1);
+            color: var(--doc-converter);
+        }
+        .category-card.pdf-lock .category-icon { 
+            background-color: rgba(6, 182, 212, 0.1);
+            color: var(--pdf-lock);
+        }
+        .category-card.esign-pdf .category-icon { 
+            background-color: rgba(236, 72, 153, 0.1);
+            color: var(--esign-pdf);
+        }
+
+        .category-info {
+            flex: 1;
+        }
+
+        .category-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .category-count {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            position: relative;
+            z-index: 1;
+        }
+
+        .category-description {
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+            font-size: 0.95rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .read-more-btn {
+            background-color: transparent;
+            border: 2px solid var(--border-color);
+            color: var(--text-primary);
+            padding: 0.75rem 1.5rem;
+            border-radius: 6px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            position: relative;
+            z-index: 1;
+            font-size: 0.95rem;
+            width: 100%;
+            justify-content: center;
+        }
+
+        .category-card.pdf-word .read-more-btn:hover {
+            background-color: var(--pdf-word);
+            border-color: var(--pdf-word);
+        }
+
+        .category-card.pdf-compressor .read-more-btn:hover {
+            background-color: var(--pdf-compressor);
+            border-color: var(--pdf-compressor);
+        }
+
+        .category-card.pdf-merger .read-more-btn:hover {
+            background-color: var(--pdf-merger);
+            border-color: var(--pdf-merger);
+        }
+
+        .category-card.doc-converter .read-more-btn:hover {
+            background-color: var(--doc-converter);
+            border-color: var(--doc-converter);
+        }
+
+        .category-card.pdf-lock .read-more-btn:hover {
+            background-color: var(--pdf-lock);
+            border-color: var(--pdf-lock);
+        }
+
+        .category-card.esign-pdf .read-more-btn:hover {
+            background-color: var(--esign-pdf);
+            border-color: var(--esign-pdf);
+        }
+
+        /* Popular Tools Section */
+        .tools-section {
+            padding: 3rem 0;
+            background-color: rgba(17, 34, 64, 0.5);
+            border-top: 1px solid var(--border-color);
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .tool-card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 1.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .tool-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--document-tools);
+            box-shadow: 0 10px 30px rgba(16, 185, 129, 0.2);
+        }
+
+        .tool-category {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .tool-card.pdf-word .tool-category { 
+            background-color: rgba(59, 130, 246, 0.1);
+            color: var(--pdf-word);
+        }
+        .tool-card.esign-pdf .tool-category { 
+            background-color: rgba(236, 72, 153, 0.1);
+            color: var(--esign-pdf);
+        }
+        .tool-card.pdf-compressor .tool-category { 
+            background-color: rgba(239, 68, 68, 0.1);
+            color: var(--pdf-compressor);
+        }
+
+        .tool-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+            line-height: 1.3;
+        }
+
+        .tool-description {
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+            line-height: 1.6;
+            font-size: 0.95rem;
+        }
+
+        .tool-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+            padding-top: 1rem;
+            border-top: 1px solid var(--border-color);
+        }
+
+        /* Footer */
+        .footer {
+            background-color: var(--dark-blue);
+            border-top: 1px solid var(--border-color);
+            padding: 3rem 0 2rem;
+            margin-top: 2rem;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 1rem;
+            text-decoration: none;
+        }
+
+        .footer-logo-text {
+            font-size: 1.5rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--accent-blue), var(--light-blue));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .footer-description {
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+            font-size: 0.95rem;
+        }
+
+        .footer-heading {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 1.25rem;
+            color: var(--text-primary);
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-link {
+            color: var(--text-secondary);
+            text-decoration: none;
+            margin-bottom: 0.75rem;
+            display: block;
+            transition: color 0.3s ease;
+            font-size: 0.95rem;
+        }
+
+        .footer-link:hover {
+            color: var(--accent-blue);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .social-link {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .social-link:hover {
+            background-color: var(--document-tools);
+            color: white;
+            transform: translateY(-3px);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid var(--border-color);
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        /* Newsletter Form */
+        .newsletter-form {
+            margin-top: 1rem;
+        }
+
+        .newsletter-input {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            margin-bottom: 1rem;
+            border-radius: 6px;
+            border: 1px solid var(--border-color);
+            background-color: rgba(255, 255, 255, 0.1);
+            color: var(--text-primary);
+            font-size: 0.95rem;
+        }
+
+        .newsletter-input:focus {
+            outline: none;
+            border-color: var(--document-tools);
+        }
+
+        .newsletter-btn {
+            width: 100%;
+            padding: 0.75rem;
+            border-radius: 6px;
+            border: none;
+            background-color: var(--document-tools);
+            color: white;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            font-size: 0.95rem;
+        }
+
+        .newsletter-btn:hover {
+            background-color: #0da271;
+        }
+
+        /* ==================== MOBILE STYLES ==================== */
+        @media (max-width: 768px) {
+            /* Container adjustments */
+            .container {
+                padding: 0 1rem;
+            }
+
+            /* Mobile menu button */
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            /* Navigation - mobile */
+            .main-nav {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 100%;
+                height: 100vh;
+                background-color: var(--dark-blue);
+                flex-direction: column;
+                justify-content: flex-start;
+                padding-top: 5rem;
+                gap: 1.5rem;
+                transition: right 0.3s ease;
+                z-index: 999;
+                overflow-y: auto;
+            }
+
+            .main-nav.active {
+                right: 0;
+            }
+
+            .nav-link, .dropdown-btn {
+                font-size: 1.1rem;
+                padding: 0.75rem 1.5rem;
+                width: 100%;
+                text-align: left;
+            }
+
+            .dropdown {
+                width: 100%;
+            }
+
+            .dropdown-btn {
+                justify-content: space-between;
+            }
+
+            /* Dropdown content - mobile */
+            .dropdown-content {
+                position: static;
+                background: none;
+                border: none;
+                box-shadow: none;
+                padding: 0.5rem 0 0 2rem;
+                display: none;
+                width: 100%;
+                min-width: auto;
+            }
+
+            .dropdown-content.show {
+                display: block;
+            }
+
+            .dropdown-link {
+                padding: 0.5rem 0;
+                font-size: 1rem;
+            }
+
+            /* Page header adjustments */
+            .page-header {
+                padding: 1.5rem 0;
+            }
+
+            .page-title {
+                font-size: 2rem;
+            }
+
+            .page-subtitle {
+                font-size: 1rem;
+                padding: 0 0.5rem;
+            }
+
+            /* Stats section adjustments */
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1rem;
+            }
+
+            .stat-card {
+                padding: 1.25rem;
+            }
+
+            .stat-icon {
+                font-size: 2rem;
+            }
+
+            .stat-number {
+                font-size: 1.8rem;
+            }
+
+            /* Categories section adjustments */
+            .categories-section {
+                padding: 2rem 0;
+            }
+
+            .section-title {
+                font-size: 1.8rem;
+                margin-bottom: 0.75rem;
+            }
+
+            .section-subtitle {
+                font-size: 0.95rem;
+                margin-bottom: 2rem;
+                padding: 0 0.5rem;
+            }
+
+            .categories-grid {
+                grid-template-columns: 1fr;
+                gap: 1.25rem;
+            }
+
+            .category-card {
+                padding: 1.25rem;
+            }
+
+            .category-header {
+                gap: 0.75rem;
+            }
+
+            .category-icon {
+                width: 50px;
+                height: 50px;
+                font-size: 1.5rem;
+            }
+
+            .category-title {
+                font-size: 1.2rem;
+            }
+
+            /* Tools section adjustments */
+            .tools-section {
+                padding: 2rem 0;
+            }
+
+            .tools-grid {
+                grid-template-columns: 1fr;
+                gap: 1.25rem;
+                margin-top: 1.5rem;
+            }
+
+            .tool-card {
+                padding: 1.25rem;
+            }
+
+            /* Footer adjustments */
+            .footer {
+                padding: 2.5rem 0 1.5rem;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .footer-heading {
+                font-size: 1.1rem;
+                margin-bottom: 1rem;
+            }
+        }
+
+        /* Small mobile devices */
+        @media (max-width: 480px) {
+            .page-title {
+                font-size: 1.8rem;
+            }
+
+            .page-subtitle {
+                font-size: 0.95rem;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr;
+                gap: 0.75rem;
+            }
+
+            .section-title {
+                font-size: 1.6rem;
+            }
+
+            .category-card {
+                padding: 1rem;
+            }
+
+            .read-more-btn {
+                padding: 0.65rem 1.25rem;
+                font-size: 0.9rem;
+            }
+
+            .logo-text {
+                font-size: 1.3rem;
+            }
+        }
+
+        /* Tablet adjustments */
+        @media (min-width: 769px) and (max-width: 1024px) {
+            .categories-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .tools-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .page-title {
+                font-size: 2.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header & Navigation -->
+    <header class="header">
+        <div class="container">
+            <div class="nav-container">
+                <a href="index.html" class="logo">
+                    <i class="fas fa-tools logo-icon"></i>
+                    <span class="logo-text">Tool Nest</span>
+                </a>
+
+                <button class="mobile-menu-btn" id="mobileMenuBtn">
+                    <i class="fas fa-bars"></i>
+                </button>
+
+                <nav class="main-nav" id="mainNav">
+                    <a href="index.html" class="nav-link">Home</a>
+                    
+                    <div class="dropdown">
+                        <button class="dropdown-btn active" id="dropdownBtn">
+                            Blogs <i class="fas fa-chevron-down"></i>
+                        </button>
+                        <div class="dropdown-content" id="dropdownContent">
+                            <a href="image-tools.html" class="dropdown-link">Image Tools Blog</a>
+                            <a href="document-tools.html" class="dropdown-link active">Document Tools Blog</a>
+                            <a href="calculator-tools.html" class="dropdown-link">Calculator Tools Blog</a>
+                            <a href="text-tools.html" class="dropdown-link">Text Tools Blog</a>
+                            <a href="developer-tools.html" class="dropdown-link">Developer Tools Blog</a>
+                            <a href="color-tools.html" class="dropdown-link">Color Tools Blog</a>
+                            <a href="seo-tools.html" class="dropdown-link">SEO Tools Blog</a>
+                            <a href="utility-tools.html" class="dropdown-link">Utility Tools Blog</a>
+                        </div>
+                    </div>
+                    
+                    <a href="contact.html" class="nav-link">Contact</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Breadcrumb -->
+    <div class="container">
+        <div class="breadcrumb">
+            <a href="index.html">Home</a>
+            <span>/</span>
+            <a href="blogs.html">Blogs</a>
+            <span>/</span>
+            <span>Document Tools Blog</span>
+        </div>
+    </div>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1 class="page-title">Document Tools Blog</h1>
+            <p class="page-subtitle">
+                Discover comprehensive guides, tutorials, and reviews of the best document processing tools. 
+                From PDF management to document conversion, find everything you need for efficient document handling.
+            </p>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats-section">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-file-pdf"></i>
+                    </div>
+                    <div class="stat-number">120+</div>
+                    <div class="stat-label">Document Tools</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-book-open"></i>
+                    </div>
+                    <div class="stat-number">65</div>
+                    <div class="stat-label">Tutorials</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <div class="stat-number">30K+</div>
+                    <div class="stat-label">Monthly Readers</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <div class="stat-number">4.7/5</div>
+                    <div class="stat-label">Average Rating</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Categories Section -->
+    <section class="categories-section">
+        <div class="container">
+            <h2 class="section-title">Document Tools Categories</h2>
+            <p class="section-subtitle">
+                Browse our comprehensive guides and tutorials organized by specific document tool categories.
+            </p>
+            
+            <div class="categories-grid">
+                <!-- PDF to Word / Word to PDF -->
+                <div class="category-card pdf-word">
+                    <div class="category-header">
+                        <div class="category-icon">
+                            <i class="fas fa-exchange-alt"></i>
+                        </div>
+                        <div class="category-info">
+                            <h3 class="category-title">PDF to Word / Word to PDF</h3>
+                            <div class="category-count">22 Tools • 18 Guides</div>
+                        </div>
+                    </div>
+                    <p class="category-description">
+                        Advanced tools for converting between PDF and Word formats while preserving formatting, 
+                        images, and document structure with high accuracy.
+                    </p>
+                    <button class="read-more-btn">
+                        Explore Conversion Tools <i class="fas fa-arrow-right"></i>
+                    </button>
+                </div>
+
+                <!-- PDF Compressor -->
+                <div class="category-card pdf-compressor">
+                    <div class="category-header">
+                        <div class="category-icon">
+                            <i class="fas fa-compress-alt"></i>
+                        </div>
+                        <div class="category-info">
+                            <h3 class="category-title">PDF Compressor</h3>
+                            <div class="category-count">18 Tools • 14 Guides</div>
+                        </div>
+                    </div>
+                    <p class="category-description">
+                        Reduce PDF file sizes significantly without losing quality. Tools for compressing 
+                        large PDFs for email, web, and storage optimization.
+                    </p>
+                    <button class="read-more-btn">
+                        Explore Compressors <i class="fas fa-arrow-right"></i>
+                    </button>
+                </div>
+
+                <!-- PDF Merger & Splitter -->
+                <div class="category-card pdf-merger">
+                    <div class="category-header">
+                        <div class="category-icon">
+                            <i class="fas fa-object-group"></i>
+                        </div>
+                        <div class="category-info">
+                            <h3 class="category-title">PDF Merger & Splitter</h3>
+                            <div class="category-count">25 Tools • 20 Guides</div>
+                        </div>
+                    </div>
+                    <p class="category-description">
+                        Combine multiple PDFs into one document or split large PDFs into smaller files. 
+                        Tools with drag-and-drop interface and batch processing.
+                    </p>
+                    <button class="read-more-btn">
+                        Explore Merger/Splitter <i class="fas fa-arrow-right"></i>
+                    </button>
+                </div>
+
+                <!-- Document Converter -->
+                <div class="category-card doc-converter">
+                    <div class="category-header">
+                        <div class="category-icon">
+                            <i class="fas fa-file-export"></i>
+                        </div>
+                        <div class="category-info">
+                            <h3 class="category-title">Document Converter</h3>
+                            <div class="category-count">28 Tools • 22 Guides</div>
+                        </div>
+                    </div>
+                    <p class="category-description">
+                        Convert between various document formats including DOC, DOCX, ODT, RTF, TXT, and more. 
+                        Batch conversion and cloud integration supported.
+                    </p>
+                    <button class="read-more-btn">
+                        Explore Converters <i class="fas fa-arrow-right"></i>
+                    </button>
+                </div>
+
+                <!-- PDF Lock/Unlock -->
+                <div class="category-card pdf-lock">
+                    <div class="category-header">
+                        <div class="category-icon">
+                            <i class="fas fa-lock"></i>
+                        </div>
+                        <div class="category-info">
+                            <h3 class="category-title">PDF Lock/Unlock</h3>
+                            <div class="category-count">16 Tools • 12 Guides</div>
+                        </div>
+                    </div>
+                    <p class="category-description">
+                        Add password protection to PDFs or remove restrictions from locked PDFs. 
+                        Tools for securing sensitive documents and managing permissions.
+                    </p>
+                    <button class="read-more-btn">
+                        Explore Security Tools <i class="fas fa-arrow-right"></i>
+                    </button>
+                </div>
+
+                <!-- eSign PDF -->
+                <div class="category-card esign-pdf">
+                    <div class="category-header">
+                        <div class="category-icon">
+                            <i class="fas fa-signature"></i>
+                        </div>
+                        <div class="category-info">
+                            <h3 class="category-title">eSign PDF</h3>
+                            <div class="category-count">20 Tools • 16 Guides</div>
+                        </div>
+                    </div>
+                    <p class="category-description">
+                        Electronically sign PDF documents with legally binding signatures. 
+                        Tools with signature creation, timestamping, and audit trail features.
+                    </p>
+                    <button class="read-more-btn">
+                        Explore eSign Tools <i class="fas fa-arrow-right"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <!-- Company Info -->
+                <div class="footer-column">
+                    <a href="index.html" class="footer-logo">
+                        <i class="fas fa-tools"></i>
+                        <span class="footer-logo-text">Tool Nest</span>
+                    </a>
+                    <p class="footer-description">
+                        Your comprehensive resource for developer tools, utilities, and productivity solutions. 
+                        We provide in-depth reviews, tutorials, and guides to help you work smarter.
+                    </p>
+                    <div class="social-links">
+                        <a href="#" class="social-link">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="social-link">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        <a href="#" class="social-link">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                        <a href="#" class="social-link">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Quick Links -->
+                <div class="footer-column">
+                    <h3 class="footer-heading">Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html" class="footer-link">Home</a></li>
+                        <li><a href="About-us.html" class="footer-link">About Us</a></li>
+                        <li><a href="privacy-policy.html" class="footer-link">Privacy Policy</a></li>
+                    </ul>
+                </div>
+
+                <!-- Document Tool Categories -->
+                <div class="footer-column">
+                    <h3 class="footer-heading">Document Tool Categories</h3>
+                    <ul class="footer-links">
+                        <li><a href="pdf-to-word.html" class="footer-link">PDF to Word Tools</a></li>
+                        <li><a href="pdf-converter.html" class="footer-link">PDF Compressors</a></li>
+                        <li><a href="pdf-merger.html" class="footer-link">PDF Merger & Splitter</a></li>
+                        <li><a href="doc-converter.html" class="footer-link">Document Converters</a></li>
+                        <li><a href="esignpdf.html" class="footer-link">eSign PDF Tools</a></li>
+                    </ul>
+                </div>
+
+                <!-- Newsletter -->
+                <div class="footer-column">
+                    <h3 class="footer-heading">Newsletter</h3>
+                    <p class="footer-description">
+                        Subscribe to get the latest document tool reviews and tutorials.
+                    </p>
+                    <form class="newsletter-form" id="newsletterForm">
+                        <input type="email" placeholder="Your email address" required class="newsletter-input">
+                        <button type="submit" class="newsletter-btn">
+                            Subscribe
+                        </button>
+                    </form>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2023 Tool Nest. All rights reserved. | Document Tools Specialists</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // DOM Elements
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mainNav = document.getElementById('mainNav');
+        const dropdownBtn = document.getElementById('dropdownBtn');
+        const dropdownContent = document.getElementById('dropdownContent');
+        
+        // Mobile Menu Toggle
+        mobileMenuBtn.addEventListener('click', () => {
+            mainNav.classList.toggle('active');
+            
+            // Change icon based on menu state
+            if (mainNav.classList.contains('active')) {
+                mobileMenuBtn.innerHTML = '<i class="fas fa-times"></i>';
+                // Close dropdown when opening mobile menu
+                dropdownContent.classList.remove('show');
+                dropdownBtn.classList.remove('active');
+            } else {
+                mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+            }
+        });
+
+        // Dropdown Toggle
+        dropdownBtn.addEventListener('click', (e) => {
+            e.stopPropagation(); // Prevent closing when clicking dropdown button
+            
+            // Toggle dropdown visibility
+            dropdownContent.classList.toggle('show');
+            dropdownBtn.classList.toggle('active');
+            
+            // Change chevron icon
+            const chevron = dropdownBtn.querySelector('i');
+            if (dropdownContent.classList.contains('show')) {
+                chevron.classList.remove('fa-chevron-down');
+                chevron.classList.add('fa-chevron-up');
+            } else {
+                chevron.classList.remove('fa-chevron-up');
+                chevron.classList.add('fa-chevron-down');
+            }
+        });
+
+        // Close dropdown when clicking outside
+        document.addEventListener('click', (event) => {
+            // Close dropdown if click is outside dropdown
+            if (!event.target.closest('.dropdown')) {
+                dropdownContent.classList.remove('show');
+                dropdownBtn.classList.remove('active');
+                
+                // Reset chevron icon
+                const chevron = dropdownBtn.querySelector('i');
+                chevron.classList.remove('fa-chevron-up');
+                chevron.classList.add('fa-chevron-down');
+            }
+            
+            // Close mobile menu when clicking outside on mobile
+            if (window.innerWidth <= 768) {
+                if (!event.target.closest('.main-nav') && !event.target.closest('.mobile-menu-btn')) {
+                    mainNav.classList.remove('active');
+                    mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+                }
+            }
+        });
+
+        // Category card click events
+        document.querySelectorAll('.read-more-btn').forEach(button => {
+            button.addEventListener('click', function() {
+                const categoryTitle = this.closest('.category-card').querySelector('.category-title').textContent;
+                alert(`Loading ${categoryTitle}\n\nThis would navigate to the detailed category page with all tools and tutorials.`);
+            });
+        });
+
+        // Tool card click events
+        document.querySelectorAll('.tool-card').forEach(card => {
+            card.addEventListener('click', function() {
+                const toolTitle = this.querySelector('.tool-title').textContent;
+                alert(`Loading detailed review for: ${toolTitle}\n\nThis would open the complete tool review page.`);
+            });
+        });
+
+        // Newsletter form submission
+        const newsletterForm = document.getElementById('newsletterForm');
+        newsletterForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const email = this.querySelector('.newsletter-input').value;
+            alert(`Thank you for subscribing to Document Tools Blog with: ${email}\n\nYou'll receive our latest document tool reviews and tutorials!`);
+            this.reset();
+        });
+
+        // Nav link click events
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                // Remove active class from all links
+                document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
+                // Add active class to clicked link
+                this.classList.add('active');
+                
+                const page = this.textContent;
+                if (page === 'Contact') {
+                    alert(`This would open the Contact page with a contact form and information.`);
+                } else if (page === 'Home') {
+                    alert(`Navigating to Home page...`);
+                }
+            });
+        });
+
+        // Dropdown link click events
+        document.querySelectorAll('.dropdown-link').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const category = this.textContent;
+                
+                // Remove active class from all dropdown links
+                document.querySelectorAll('.dropdown-link').forEach(l => l.classList.remove('active'));
+                // Add active class to clicked link
+                this.classList.add('active');
+                
+                if (category !== 'Document Tools Blog') {
+                    alert(`Loading ${category}\n\nThis would navigate to the selected blog category.`);
+                }
+            });
+        });
+
+        // Footer link click events
+        document.querySelectorAll('.footer-link').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const page = this.textContent;
+                if (page === 'Document Tools') {
+                    // Already on document tools page
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                } else {
+                    alert(`Loading ${page} page\n\nThis would navigate to the selected page.`);
+                }
+            });
+        });
+
+        // Handle window resize
+        window.addEventListener('resize', () => {
+            // Reset mobile menu state on larger screens
+            if (window.innerWidth > 768) {
+                mainNav.classList.remove('active');
+                mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+            }
+        });
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            // Add touch-friendly class for mobile
+            if ('ontouchstart' in window) {
+                document.body.classList.add('touch-device');
+            }
+            
+            // Make sure current page is marked as active
+            document.querySelectorAll('.dropdown-link').forEach(link => {
+                if (link.textContent === 'Document Tools Blog') {
+                    link.classList.add('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
+
+
+
