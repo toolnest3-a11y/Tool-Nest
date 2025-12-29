@@ -1,10 +1,11 @@
 
 
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Advanced CSS Gradient Generator | Create Beautiful Gradients Online | Free Tool</title>
     <meta name="description" content="Professional CSS gradient generator with advanced controls. Create linear, radial, and conic gradients with multiple color stops, angles, and effects. Export CSS, SCSS, and Tailwind code.">
     <meta name="keywords" content="CSS gradient generator, linear gradient generator, CSS gradient maker, background gradient generator, color gradient tool, gradient creator, CSS gradient code, web design tool, UI gradient generator, color palette generator">
@@ -14,6 +15,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
     
     <style>
+        /* Mobile-First Dark Blue Theme */
         :root {
             /* Dark Theme Premium Color Palette */
             --primary-blue: #3b82f6;
@@ -38,7 +40,6 @@
             --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.3);
             --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.4), 0 2px 4px -1px rgba(0, 0, 0, 0.3);
             --shadow-lg: 0 10px 25px -5px rgba(0, 0, 0, 0.5), 0 8px 10px -6px rgba(0, 0, 0, 0.4);
-            --shadow-xl: 0 20px 40px -15px rgba(0, 0, 0, 0.6);
             --radius-sm: 8px;
             --radius-md: 12px;
             --radius-lg: 16px;
@@ -50,6 +51,11 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+        
+        html {
+            font-size: 16px;
         }
         
         body {
@@ -61,6 +67,10 @@
             min-height: 100vh;
             display: flex;
             flex-direction: column;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            touch-action: manipulation;
+            overflow-x: hidden;
         }
         
         h1, h2, h3, h4, h5, h6 {
@@ -75,57 +85,73 @@
             width: 100%;
             max-width: 1200px;
             margin: 0 auto;
-            padding: 0 20px;
+            padding: 0 1rem;
         }
         
-        /* Premium Header */
+        /* Premium Header - Mobile Optimized */
         header {
             background: var(--gradient-dark);
-            box-shadow: var(--shadow-lg);
+            box-shadow: var(--shadow-md);
             position: sticky;
             top: 0;
             z-index: 1000;
-            padding: 18px 0;
+            padding: 1rem 0;
             border-bottom: 1px solid var(--border-color);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
         }
         
         .header-container {
             display: flex;
-            justify-content: space-between;
+            flex-direction: column;
             align-items: center;
+            gap: 1rem;
+        }
+        
+        @media (min-width: 768px) {
+            .header-container {
+                flex-direction: row;
+                justify-content: space-between;
+            }
         }
         
         .logo-wrapper {
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: 0.75rem;
         }
         
         .logo {
             font-family: 'Poppins', sans-serif;
-            font-size: 28px;
+            font-size: 1.5rem;
             font-weight: 800;
             background: linear-gradient(135deg, var(--accent-blue) 0%, var(--primary-blue) 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
             text-decoration: none;
-            letter-spacing: -0.5px;
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 0.5rem;
+        }
+        
+        @media (min-width: 768px) {
+            .logo {
+                font-size: 1.75rem;
+            }
         }
         
         .logo-icon {
             background: var(--gradient-blue);
-            width: 36px;
-            height: 36px;
-            border-radius: 10px;
+            width: 2rem;
+            height: 2rem;
+            border-radius: 0.5rem;
             display: flex;
             align-items: center;
             justify-content: center;
             color: white;
-            font-size: 18px;
+            font-size: 1rem;
+            flex-shrink: 0;
         }
         
         .logo-text {
@@ -135,130 +161,170 @@
         }
         
         .logo-tagline {
-            font-size: 11px;
+            font-size: 0.625rem;
             font-weight: 500;
             color: var(--accent-blue);
-            margin-top: 2px;
+            margin-top: 0.125rem;
             letter-spacing: 0.5px;
         }
         
         .back-btn {
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 0.5rem;
             background: var(--gradient-blue);
             color: white;
-            padding: 10px 20px;
+            padding: 0.75rem 1.5rem;
             border-radius: var(--radius-md);
             text-decoration: none;
             font-weight: 500;
-            font-size: 14px;
+            font-size: 0.875rem;
             transition: var(--transition);
+            width: 100%;
+            justify-content: center;
         }
         
-        .back-btn:hover {
+        @media (min-width: 768px) {
+            .back-btn {
+                width: auto;
+            }
+        }
+        
+        .back-btn:hover, .back-btn:active {
             transform: translateX(-3px);
             box-shadow: var(--shadow-md);
         }
         
-        /* Main Content */
+        /* Main Content - Mobile Optimized */
         .main-content {
             flex: 1;
-            padding: 60px 0;
+            padding: 2rem 0;
         }
         
-        /* Tool Header */
+        @media (min-width: 768px) {
+            .main-content {
+                padding: 3rem 0;
+            }
+        }
+        
+        /* Tool Header - Mobile Optimized */
         .tool-header {
             text-align: center;
-            margin-bottom: 48px;
+            margin-bottom: 2rem;
+        }
+        
+        @media (min-width: 768px) {
+            .tool-header {
+                margin-bottom: 3rem;
+            }
         }
         
         .tool-badge {
             display: inline-block;
             background: var(--gradient-blue);
             color: white;
-            padding: 8px 24px;
-            border-radius: 20px;
-            font-size: 14px;
+            padding: 0.5rem 1.5rem;
+            border-radius: 1.25rem;
+            font-size: 0.75rem;
             font-weight: 600;
-            margin-bottom: 16px;
+            margin-bottom: 1rem;
             letter-spacing: 0.5px;
         }
         
         .tool-header h1 {
-            font-size: 2.8rem;
+            font-size: clamp(1.75rem, 5vw, 2.5rem);
             font-weight: 700;
             background: linear-gradient(135deg, var(--accent-blue) 0%, var(--primary-blue) 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            margin-bottom: 16px;
+            margin-bottom: 1rem;
         }
         
         .tool-header p {
             color: var(--text-gray);
-            font-size: 1.1rem;
+            font-size: clamp(0.875rem, 3vw, 1rem);
             max-width: 700px;
             margin: 0 auto;
             font-weight: 400;
+            line-height: 1.5;
         }
         
-        /* Generator Container */
+        /* Generator Container - Mobile Optimized */
         .generator-container {
-            display: grid;
-            grid-template-columns: 1fr 1.2fr;
-            gap: 40px;
-            margin-bottom: 60px;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
         }
         
-        @media (max-width: 992px) {
+        @media (min-width: 992px) {
             .generator-container {
-                grid-template-columns: 1fr;
+                display: grid;
+                grid-template-columns: 1fr 1.2fr;
+                gap: 2.5rem;
+                margin-bottom: 3rem;
             }
         }
         
-        /* Controls Panel */
+        /* Controls Panel - Mobile Optimized */
         .controls-panel {
             background: var(--card-dark);
             border-radius: var(--radius-lg);
-            padding: 40px;
+            padding: 1.5rem;
             box-shadow: var(--shadow-md);
             border: 1px solid var(--border-color);
+            order: 2;
+        }
+        
+        @media (min-width: 992px) {
+            .controls-panel {
+                order: 1;
+                padding: 2.5rem;
+            }
         }
         
         .controls-panel h2 {
-            font-size: 1.5rem;
-            margin-bottom: 30px;
+            font-size: 1.25rem;
+            margin-bottom: 1.5rem;
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 0.5rem;
         }
         
         .controls-panel h2 i {
             color: var(--primary-blue);
+            font-size: 1.25rem;
         }
         
         .control-group {
-            margin-bottom: 30px;
+            margin-bottom: 1.5rem;
         }
         
         .control-label {
             display: block;
             font-weight: 600;
             color: var(--text-light);
-            margin-bottom: 12px;
-            font-size: 0.95rem;
+            margin-bottom: 0.75rem;
+            font-size: 0.875rem;
         }
         
         .gradient-type-selector {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 12px;
-            margin-bottom: 20px;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        @media (max-width: 480px) {
+            .gradient-type-selector {
+                grid-template-columns: 1fr;
+                gap: 0.75rem;
+            }
         }
         
         .type-btn {
-            padding: 14px;
+            padding: 0.875rem 0.5rem;
             border: 2px solid var(--border-color);
             border-radius: var(--radius-md);
             background: rgba(15, 23, 42, 0.7);
@@ -267,17 +333,22 @@
             transition: var(--transition);
             text-align: center;
             font-weight: 600;
-            font-size: 14px;
+            font-size: 0.75rem;
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 8px;
+            gap: 0.5rem;
+            min-height: 4rem;
+            user-select: none;
+        }
+        
+        .type-btn:active {
+            transform: scale(0.98);
         }
         
         .type-btn:hover {
             border-color: var(--primary-blue);
             color: var(--primary-blue);
-            transform: translateY(-2px);
         }
         
         .type-btn.active {
@@ -287,79 +358,107 @@
         }
         
         .type-btn i {
-            font-size: 20px;
+            font-size: 1.25rem;
         }
         
         .color-picker-group {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
-            gap: 15px;
-            margin-bottom: 20px;
+            gap: 0.75rem;
+            margin-bottom: 1rem;
+        }
+        
+        @media (max-width: 480px) {
+            .color-picker-group {
+                grid-template-columns: repeat(2, 1fr);
+            }
         }
         
         .color-picker-item {
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 10px;
+            gap: 0.5rem;
         }
         
         .color-picker {
-            width: 50px;
-            height: 50px;
+            width: 2.5rem;
+            height: 2.5rem;
             border: 3px solid var(--border-color);
             border-radius: 50%;
             cursor: pointer;
             transition: var(--transition);
             background: transparent;
+            -webkit-appearance: none;
+            appearance: none;
+            padding: 0;
         }
         
-        .color-picker:hover {
+        .color-picker::-webkit-color-swatch-wrapper {
+            padding: 0;
+        }
+        
+        .color-picker::-webkit-color-swatch {
+            border: none;
+            border-radius: 50%;
+        }
+        
+        .color-picker:hover, .color-picker:focus {
             transform: scale(1.1);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, 0.3);
             border-color: var(--primary-blue);
         }
         
         .color-input {
             width: 100%;
-            padding: 10px;
+            padding: 0.5rem;
             border: 2px solid var(--border-color);
             border-radius: var(--radius-sm);
             background: rgba(15, 23, 42, 0.7);
             color: var(--text-dark);
             text-align: center;
             font-family: monospace;
-            font-size: 14px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+        
+        .color-input:focus {
+            outline: none;
+            border-color: var(--primary-blue);
         }
         
         .position-slider {
             width: 100%;
-            height: 6px;
+            height: 0.375rem;
             -webkit-appearance: none;
             background: var(--border-color);
-            border-radius: 3px;
+            border-radius: 0.1875rem;
             outline: none;
-            margin-top: 5px;
+            margin-top: 0.25rem;
         }
         
         .position-slider::-webkit-slider-thumb {
             -webkit-appearance: none;
-            width: 18px;
-            height: 18px;
+            width: 1.125rem;
+            height: 1.125rem;
             background: var(--primary-blue);
             border-radius: 50%;
             cursor: pointer;
             transition: var(--transition);
+            border: 2px solid white;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
         }
         
-        .position-slider::-webkit-slider-thumb:hover {
+        .position-slider::-webkit-slider-thumb:hover,
+        .position-slider::-webkit-slider-thumb:active {
             background: var(--light-blue);
             transform: scale(1.2);
         }
         
         .add-color-btn {
             width: 100%;
-            padding: 14px;
+            padding: 0.875rem;
             background: rgba(15, 23, 42, 0.7);
             border: 2px dashed var(--border-color);
             border-radius: var(--radius-md);
@@ -370,10 +469,12 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 8px;
+            gap: 0.5rem;
+            font-size: 0.875rem;
+            margin-top: 0.5rem;
         }
         
-        .add-color-btn:hover {
+        .add-color-btn:hover, .add-color-btn:active {
             background: var(--gradient-blue);
             color: white;
             border-style: solid;
@@ -381,54 +482,63 @@
         }
         
         .slider-container {
-            margin: 20px 0;
+            margin: 1rem 0;
         }
         
         .slider {
             width: 100%;
-            height: 6px;
+            height: 0.375rem;
             -webkit-appearance: none;
             background: linear-gradient(to right, var(--border-color), var(--primary-blue));
-            border-radius: 3px;
+            border-radius: 0.1875rem;
             outline: none;
         }
         
         .slider::-webkit-slider-thumb {
             -webkit-appearance: none;
-            width: 22px;
-            height: 22px;
+            width: 1.375rem;
+            height: 1.375rem;
             background: white;
             border: 3px solid var(--primary-blue);
             border-radius: 50%;
             cursor: pointer;
             transition: var(--transition);
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
         }
         
-        .slider::-webkit-slider-thumb:hover {
+        .slider::-webkit-slider-thumb:hover,
+        .slider::-webkit-slider-thumb:active {
             transform: scale(1.2);
             box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.2);
         }
         
         .slider-value {
             text-align: center;
-            margin-top: 8px;
+            margin-top: 0.5rem;
             font-weight: 600;
             color: var(--text-light);
             background: rgba(15, 23, 42, 0.7);
-            padding: 6px 12px;
+            padding: 0.375rem 0.75rem;
             border-radius: var(--radius-sm);
             display: inline-block;
+            font-size: 0.875rem;
         }
         
         .control-buttons {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: 15px;
-            margin-top: 30px;
+            gap: 0.75rem;
+            margin-top: 1.5rem;
+        }
+        
+        @media (max-width: 480px) {
+            .control-buttons {
+                grid-template-columns: 1fr;
+            }
         }
         
         .btn {
-            padding: 16px;
+            padding: 0.875rem 1rem;
             border: none;
             border-radius: var(--radius-md);
             font-weight: 600;
@@ -437,8 +547,14 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 10px;
-            font-size: 15px;
+            gap: 0.5rem;
+            font-size: 0.875rem;
+            min-height: 2.75rem;
+            user-select: none;
+        }
+        
+        .btn:active {
+            transform: translateY(2px);
         }
         
         .btn-primary {
@@ -446,8 +562,8 @@
             color: white;
         }
         
-        .btn-primary:hover {
-            transform: translateY(-3px);
+        .btn-primary:hover, .btn-primary:focus {
+            transform: translateY(-2px);
             box-shadow: var(--shadow-lg);
             background: var(--gradient-purple);
         }
@@ -458,7 +574,7 @@
             border: 2px solid var(--border-color);
         }
         
-        .btn-secondary:hover {
+        .btn-secondary:hover, .btn-secondary:focus {
             background: rgba(59, 130, 246, 0.1);
             border-color: var(--light-blue);
             color: var(--primary-blue);
@@ -466,13 +582,20 @@
         
         .select-control {
             width: 100%;
-            padding: 12px;
+            padding: 0.75rem;
             border: 2px solid var(--border-color);
             border-radius: var(--radius-sm);
             background: rgba(15, 23, 42, 0.7);
             color: var(--text-dark);
-            font-size: 14px;
+            font-size: 0.875rem;
             cursor: pointer;
+            appearance: none;
+            -webkit-appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%2394a3b8' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 0.75rem center;
+            background-size: 1rem;
+            padding-right: 2.5rem;
         }
         
         .select-control:focus {
@@ -480,42 +603,70 @@
             border-color: var(--primary-blue);
         }
         
-        /* Preview Panel */
+        /* Quick Action Buttons */
+        .quick-actions {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+            margin: 1rem 0;
+        }
+        
+        .quick-action-btn {
+            flex: 1;
+            min-width: 0;
+        }
+        
+        /* Preview Panel - Mobile Optimized */
         .preview-panel {
             background: var(--card-dark);
             border-radius: var(--radius-lg);
-            padding: 40px;
+            padding: 1.5rem;
             box-shadow: var(--shadow-md);
             border: 1px solid var(--border-color);
             display: flex;
             flex-direction: column;
-            gap: 30px;
+            gap: 1.5rem;
+            order: 1;
+        }
+        
+        @media (min-width: 992px) {
+            .preview-panel {
+                order: 2;
+                padding: 2.5rem;
+            }
         }
         
         .preview-panel h2 {
-            font-size: 1.5rem;
+            font-size: 1.25rem;
             margin-bottom: 0;
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 0.5rem;
         }
         
         .preview-panel h2 i {
             color: var(--primary-blue);
+            font-size: 1.25rem;
         }
         
         .gradient-preview {
-            flex: 1;
             border-radius: var(--radius-lg);
             background: linear-gradient(135deg, #ff7f50, #1e90ff);
             box-shadow: var(--shadow-lg);
-            min-height: 250px;
+            min-height: 12rem;
             display: flex;
             align-items: center;
             justify-content: center;
             overflow: hidden;
             position: relative;
             border: 2px solid var(--border-color);
+            aspect-ratio: 16/9;
+        }
+        
+        @media (min-width: 768px) {
+            .gradient-preview {
+                min-height: 15rem;
+            }
         }
         
         .gradient-preview.animated {
@@ -531,35 +682,53 @@
         
         .preview-text {
             color: white;
-            font-size: 1.8rem;
+            font-size: clamp(1.25rem, 4vw, 1.5rem);
             font-weight: 700;
-            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
-            padding: 20px 30px;
+            text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);
+            padding: 1rem 1.5rem;
             background: rgba(0, 0, 0, 0.3);
             border-radius: var(--radius-md);
             backdrop-filter: blur(10px);
             text-align: center;
+            max-width: 90%;
+            word-break: break-word;
         }
         
         .code-output {
             background: rgba(15, 23, 42, 0.7);
             border-radius: var(--radius-md);
-            padding: 25px;
+            padding: 1rem;
             font-family: 'Courier New', monospace;
             color: #f8f9fa;
             overflow-x: auto;
             border: 1px solid var(--border-color);
+            font-size: 0.75rem;
+        }
+        
+        @media (min-width: 768px) {
+            .code-output {
+                padding: 1.5rem;
+                font-size: 0.875rem;
+            }
         }
         
         .code-header {
             display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 15px;
+            flex-direction: column;
+            gap: 0.5rem;
+            margin-bottom: 0.75rem;
+        }
+        
+        @media (min-width: 480px) {
+            .code-header {
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: center;
+            }
         }
         
         .code-title {
-            font-size: 1.1rem;
+            font-size: 0.875rem;
             font-weight: 600;
             color: var(--accent-blue);
         }
@@ -568,37 +737,54 @@
             background: var(--gradient-blue);
             color: white;
             border: none;
-            padding: 8px 16px;
+            padding: 0.5rem 1rem;
             border-radius: var(--radius-sm);
             cursor: pointer;
             transition: var(--transition);
-            font-size: 14px;
+            font-size: 0.75rem;
             font-weight: 600;
             display: flex;
             align-items: center;
-            gap: 6px;
+            gap: 0.375rem;
+            min-height: 2.25rem;
+            user-select: none;
         }
         
-        .copy-btn:hover {
+        .copy-btn:hover, .copy-btn:active {
             background: var(--gradient-purple);
             transform: translateY(-2px);
         }
         
         .code-content {
-            font-size: 14px;
-            line-height: 1.6;
+            font-size: 0.75rem;
+            line-height: 1.4;
             color: #e2e8f0;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+        
+        @media (min-width: 768px) {
+            .code-content {
+                font-size: 0.875rem;
+                line-height: 1.6;
+            }
         }
         
         .presets-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
-            gap: 15px;
-            margin-top: 15px;
+            grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+            gap: 0.75rem;
+            margin-top: 0.75rem;
+        }
+        
+        @media (max-width: 480px) {
+            .presets-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
         }
         
         .preset-item {
-            height: 80px;
+            height: 4rem;
             border-radius: var(--radius-md);
             cursor: pointer;
             transition: var(--transition);
@@ -607,8 +793,12 @@
             border: 2px solid var(--border-color);
         }
         
-        .preset-item:hover {
-            transform: translateY(-5px);
+        .preset-item:active {
+            transform: scale(0.98);
+        }
+        
+        .preset-item:hover, .preset-item:focus {
+            transform: translateY(-3px);
             box-shadow: var(--shadow-lg);
             border-color: var(--primary-blue);
         }
@@ -620,36 +810,55 @@
             right: 0;
             background: rgba(0, 0, 0, 0.8);
             color: white;
-            padding: 6px;
-            font-size: 12px;
+            padding: 0.375rem;
+            font-size: 0.625rem;
             text-align: center;
             font-weight: 500;
         }
         
-        /* Examples Section */
+        /* Examples Section - Mobile Optimized */
         .examples-section {
             background: var(--card-dark);
             border-radius: var(--radius-lg);
-            padding: 50px;
+            padding: 1.5rem;
             box-shadow: var(--shadow-md);
             border: 1px solid var(--border-color);
-            margin-bottom: 60px;
+            margin-bottom: 2rem;
+        }
+        
+        @media (min-width: 768px) {
+            .examples-section {
+                padding: 2.5rem;
+                margin-bottom: 3rem;
+            }
         }
         
         .examples-section h2 {
             text-align: center;
-            font-size: 2rem;
-            margin-bottom: 40px;
+            font-size: clamp(1.5rem, 4vw, 1.75rem);
+            margin-bottom: 1.5rem;
             background: linear-gradient(135deg, var(--accent-blue) 0%, var(--primary-blue) 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
         }
         
+        @media (min-width: 768px) {
+            .examples-section h2 {
+                margin-bottom: 2rem;
+            }
+        }
+        
         .examples-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 30px;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1rem;
+        }
+        
+        @media (max-width: 480px) {
+            .examples-grid {
+                grid-template-columns: 1fr;
+            }
         }
         
         .example-card {
@@ -661,52 +870,63 @@
             border: 1px solid var(--border-color);
         }
         
-        .example-card:hover {
-            transform: translateY(-5px);
+        .example-card:active {
+            transform: scale(0.98);
+        }
+        
+        .example-card:hover, .example-card:focus {
+            transform: translateY(-3px);
             box-shadow: var(--shadow-lg);
             border-color: var(--primary-blue);
         }
         
         .example-preview {
-            height: 150px;
+            height: 6rem;
             width: 100%;
         }
         
         .example-info {
-            padding: 20px;
+            padding: 1rem;
         }
         
         .example-name {
             font-weight: 600;
-            margin-bottom: 10px;
+            margin-bottom: 0.5rem;
             color: var(--text-light);
-            font-size: 1.1rem;
+            font-size: 0.875rem;
         }
         
         .example-code {
             font-family: monospace;
-            font-size: 13px;
+            font-size: 0.75rem;
             color: var(--text-gray);
             background: rgba(15, 23, 42, 0.7);
-            padding: 10px;
-            border-radius: 6px;
-            margin-top: 10px;
+            padding: 0.5rem;
+            border-radius: 0.375rem;
+            margin-top: 0.5rem;
             overflow-x: auto;
         }
         
-        /* SEO Description Section */
+        /* SEO Description Section - Mobile Optimized */
         .seo-description {
             background: var(--card-dark);
             border-radius: var(--radius-lg);
-            padding: 50px;
+            padding: 1.5rem;
             box-shadow: var(--shadow-md);
             border: 1px solid var(--border-color);
-            margin-bottom: 60px;
+            margin-bottom: 2rem;
+        }
+        
+        @media (min-width: 768px) {
+            .seo-description {
+                padding: 2.5rem;
+                margin-bottom: 3rem;
+            }
         }
         
         .seo-description h2 {
-            font-size: 1.8rem;
-            margin-bottom: 30px;
+            font-size: clamp(1.25rem, 4vw, 1.5rem);
+            margin-bottom: 1rem;
             text-align: center;
             background: linear-gradient(135deg, var(--accent-blue) 0%, var(--primary-blue) 100%);
             -webkit-background-clip: text;
@@ -716,39 +936,47 @@
         
         .seo-content {
             color: var(--text-gray);
-            line-height: 1.8;
-            font-size: 16px;
+            line-height: 1.6;
+            font-size: 0.875rem;
+        }
+        
+        @media (min-width: 768px) {
+            .seo-content {
+                font-size: 1rem;
+                line-height: 1.8;
+            }
         }
         
         .seo-content h3 {
             color: var(--text-light);
-            margin: 25px 0 15px;
-            font-size: 1.3rem;
+            margin: 1.5rem 0 0.75rem;
+            font-size: 1.125rem;
         }
         
         .seo-content p {
-            margin-bottom: 20px;
+            margin-bottom: 1rem;
         }
         
         .keyword-highlight {
             color: var(--accent-blue);
             font-weight: 600;
             background: rgba(59, 130, 246, 0.1);
-            padding: 2px 8px;
-            border-radius: 4px;
-            border-left: 3px solid var(--primary-blue);
+            padding: 0.125rem 0.5rem;
+            border-radius: 0.25rem;
+            border-left: 2px solid var(--primary-blue);
         }
         
         .seo-content ul {
-            padding-left: 25px;
-            margin-bottom: 20px;
+            padding-left: 1.25rem;
+            margin-bottom: 1rem;
         }
         
         .seo-content li {
-            margin-bottom: 12px;
+            margin-bottom: 0.5rem;
             position: relative;
-            padding-left: 10px;
+            padding-left: 0.5rem;
             color: var(--text-gray);
+            font-size: 0.875rem;
         }
         
         .seo-content li:before {
@@ -756,33 +984,31 @@
             color: var(--primary-blue);
             font-weight: bold;
             position: absolute;
-            left: -15px;
+            left: -0.75rem;
         }
         
-        /* Footer */
+        /* Footer - Mobile Optimized */
         footer {
             background: var(--gradient-dark);
             color: white;
-            padding: 60px 0 40px;
+            padding: 2rem 0;
             margin-top: auto;
         }
         
-        .footer-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 48px;
-            margin-bottom: 48px;
+        @media (min-width: 768px) {
+            footer {
+                padding: 3rem 0 2rem;
+            }
         }
         
         .footer-brand {
             text-align: center;
-            grid-column: 1 / -1;
-            margin-bottom: 20px;
+            margin-bottom: 1.5rem;
         }
         
         .footer-logo {
             font-family: 'Poppins', sans-serif;
-            font-size: 32px;
+            font-size: 1.5rem;
             font-weight: 800;
             background: linear-gradient(135deg, var(--accent-blue) 0%, var(--primary-blue) 100%);
             -webkit-background-clip: text;
@@ -790,36 +1016,53 @@
             background-clip: text;
             text-decoration: none;
             display: inline-block;
-            margin-bottom: 16px;
+            margin-bottom: 0.5rem;
         }
         
         .footer-tagline {
             color: var(--accent-blue);
-            font-size: 14px;
-            line-height: 1.6;
-            margin-bottom: 24px;
+            font-size: 0.75rem;
+            line-height: 1.4;
+            margin-bottom: 1rem;
         }
         
         .footer-contact {
-            margin-top: 24px;
+            margin-top: 1rem;
         }
         
         .contact-item {
             display: flex;
             align-items: center;
-            gap: 12px;
-            margin-bottom: 16px;
+            gap: 0.5rem;
+            margin-bottom: 0.75rem;
             color: var(--text-gray);
             justify-content: center;
+            font-size: 0.75rem;
         }
         
         .contact-item i {
             color: var(--accent-blue);
+            font-size: 0.875rem;
+        }
+        
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        @media (min-width: 768px) {
+            .footer-container {
+                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+                gap: 3rem;
+                margin-bottom: 3rem;
+            }
         }
         
         .footer-links h4 {
-            font-size: 1.1rem;
-            margin-bottom: 24px;
+            font-size: 0.875rem;
+            margin-bottom: 1rem;
             color: var(--text-light);
             text-align: center;
         }
@@ -830,27 +1073,29 @@
         }
         
         .footer-links li {
-            margin-bottom: 12px;
+            margin-bottom: 0.5rem;
         }
         
         .footer-links a {
             color: var(--text-gray);
             text-decoration: none;
-            font-size: 14px;
+            font-size: 0.75rem;
             transition: var(--transition);
+            display: inline-block;
+            padding: 0.25rem 0;
         }
         
-        .footer-links a:hover {
+        .footer-links a:hover, .footer-links a:focus {
             color: white;
-            padding-left: 8px;
+            padding-left: 0.5rem;
         }
         
         .footer-bottom {
             text-align: center;
-            padding-top: 40px;
+            padding-top: 1.5rem;
             border-top: 1px solid rgba(255, 255, 255, 0.1);
             color: var(--text-gray);
-            font-size: 14px;
+            font-size: 0.75rem;
         }
         
         /* Loading Overlay */
@@ -868,8 +1113,8 @@
         }
         
         .loading-spinner {
-            width: 60px;
-            height: 60px;
+            width: 3rem;
+            height: 3rem;
             border: 4px solid var(--border-color);
             border-top-color: var(--primary-blue);
             border-radius: 50%;
@@ -880,27 +1125,37 @@
             to { transform: rotate(360deg); }
         }
         
-        /* Alert */
+        /* Alert - Mobile Optimized */
         .alert {
             position: fixed;
-            top: 20px;
-            right: 20px;
-            padding: 16px 24px;
+            top: 1rem;
+            right: 1rem;
+            left: 1rem;
+            padding: 1rem;
             border-radius: var(--radius-md);
             background: var(--card-dark);
             box-shadow: var(--shadow-lg);
             border-left: 4px solid var(--primary-blue);
             display: none;
             align-items: center;
-            gap: 12px;
+            gap: 0.75rem;
             z-index: 3000;
             animation: slideIn 0.3s ease-out;
             color: var(--text-light);
+            max-width: calc(100% - 2rem);
         }
         
         @keyframes slideIn {
-            from { transform: translateX(100%); opacity: 0; }
-            to { transform: translateX(0); opacity: 1; }
+            from { transform: translateY(-100%); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+        
+        @media (min-width: 480px) {
+            .alert {
+                left: auto;
+                width: auto;
+                max-width: 24rem;
+            }
         }
         
         .alert.success {
@@ -912,7 +1167,8 @@
         }
         
         .alert-icon {
-            font-size: 20px;
+            font-size: 1.25rem;
+            flex-shrink: 0;
         }
         
         .alert.success .alert-icon {
@@ -923,62 +1179,51 @@
             color: var(--error-red);
         }
         
-        /* Responsive */
-        @media (max-width: 768px) {
-            .tool-header h1 {
-                font-size: 2rem;
+        /* Touch Device Optimizations */
+        @media (hover: none) and (pointer: coarse) {
+            .type-btn:hover,
+            .color-picker:hover,
+            .btn-primary:hover,
+            .btn-secondary:hover,
+            .copy-btn:hover,
+            .preset-item:hover,
+            .example-card:hover {
+                transform: none;
             }
             
-            .controls-panel, .preview-panel, .examples-section, .seo-description {
-                padding: 30px;
+            .type-btn:active,
+            .color-picker:active,
+            .btn-primary:active,
+            .btn-secondary:active,
+            .copy-btn:active,
+            .preset-item:active,
+            .example-card:active {
+                transform: scale(0.98);
             }
             
-            .control-buttons {
-                grid-template-columns: 1fr;
+            button, 
+            .copy-btn,
+            .type-btn,
+            .preset-item,
+            .example-card {
+                min-height: 44px;
+                touch-action: manipulation;
             }
             
-            .gradient-type-selector {
-                grid-template-columns: repeat(2, 1fr);
-            }
-            
-            .generator-container {
-                gap: 20px;
+            input,
+            select {
+                font-size: 16px !important; /* Prevents zoom on iOS */
             }
         }
         
-        @media (max-width: 480px) {
-            .tool-header h1 {
-                font-size: 1.8rem;
-            }
-            
-            .controls-panel, .preview-panel, .examples-section, .seo-description {
-                padding: 20px;
-            }
-            
-            .gradient-type-selector {
-                grid-template-columns: 1fr;
-            }
-            
-            .color-picker-group {
-                grid-template-columns: repeat(2, 1fr);
-            }
-            
-            .header-container {
-                flex-direction: column;
-                gap: 15px;
-            }
-            
-            .back-btn {
-                width: 100%;
-                justify-content: center;
-            }
-            
-            .examples-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .presets-grid {
-                grid-template-columns: repeat(2, 1fr);
+        /* Performance Optimizations */
+        @media (prefers-reduced-motion: reduce) {
+            *,
+            *::before,
+            *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
             }
         }
     </style>
@@ -1018,6 +1263,44 @@
 
             <!-- Generator Container -->
             <div class="generator-container">
+                <!-- Preview Panel -->
+                <div class="preview-panel">
+                    <h2><i class="fas fa-eye"></i> Live Preview</h2>
+                    
+                    <div class="gradient-preview" id="gradientPreview">
+                        <div class="preview-text" id="previewText">Your Gradient Preview</div>
+                    </div>
+
+                    <div class="code-output">
+                        <div class="code-header">
+                            <div class="code-title">CSS Code</div>
+                            <button class="copy-btn" id="copyCssBtn">
+                                <i class="far fa-copy"></i>
+                                Copy CSS
+                            </button>
+                        </div>
+                        <pre class="code-content" id="cssCode">background: linear-gradient(135deg, #ff7f50, #1e90ff);</pre>
+                    </div>
+
+                    <div class="code-output">
+                        <div class="code-header">
+                            <div class="code-title">Tailwind CSS</div>
+                            <button class="copy-btn" id="copyTailwindBtn">
+                                <i class="far fa-copy"></i>
+                                Copy
+                            </button>
+                        </div>
+                        <pre class="code-content" id="tailwindCode">bg-gradient-to-r from-[#ff7f50] to-[#1e90ff]</pre>
+                    </div>
+
+                    <div>
+                        <label class="control-label">Popular Presets</label>
+                        <div class="presets-grid" id="presetsGrid">
+                            <!-- Presets will be added dynamically -->
+                        </div>
+                    </div>
+                </div>
+
                 <!-- Controls Panel -->
                 <div class="controls-panel">
                     <h2><i class="fas fa-sliders-h"></i> Gradient Controls</h2>
@@ -1067,23 +1350,21 @@
                             <option value="overlay">Overlay</option>
                             <option value="darken">Darken</option>
                             <option value="lighten">Lighten</option>
-                            <option value="color-dodge">Color Dodge</option>
-                            <option value="color-burn">Color Burn</option>
                         </select>
                     </div>
 
                     <div class="control-group">
-                        <label class="control-label">Effects & Options</label>
-                        <div style="display: flex; gap: 10px; flex-wrap: wrap;">
-                            <button class="btn-secondary" id="animateBtn" style="flex: 1;">
+                        <label class="control-label">Quick Actions</label>
+                        <div class="quick-actions">
+                            <button class="btn-secondary quick-action-btn" id="animateBtn">
                                 <i class="fas fa-play"></i>
                                 Animate
                             </button>
-                            <button class="btn-secondary" id="randomBtn" style="flex: 1;">
+                            <button class="btn-secondary quick-action-btn" id="randomBtn">
                                 <i class="fas fa-random"></i>
                                 Random
                             </button>
-                            <button class="btn-secondary" id="reverseBtn" style="flex: 1;">
+                            <button class="btn-secondary quick-action-btn" id="reverseBtn">
                                 <i class="fas fa-exchange-alt"></i>
                                 Reverse
                             </button>
@@ -1093,50 +1374,12 @@
                     <div class="control-buttons">
                         <button class="btn btn-primary" id="generateBtn">
                             <i class="fas fa-magic"></i>
-                            Generate Gradient
+                            Generate
                         </button>
                         <button class="btn btn-secondary" id="resetBtn">
                             <i class="fas fa-redo"></i>
-                            Reset All
+                            Reset
                         </button>
-                    </div>
-                </div>
-
-                <!-- Preview Panel -->
-                <div class="preview-panel">
-                    <h2><i class="fas fa-eye"></i> Live Preview</h2>
-                    
-                    <div class="gradient-preview" id="gradientPreview">
-                        <div class="preview-text" id="previewText">Your Gradient Preview</div>
-                    </div>
-
-                    <div class="code-output">
-                        <div class="code-header">
-                            <div class="code-title">CSS Code</div>
-                            <button class="copy-btn" id="copyCssBtn">
-                                <i class="far fa-copy"></i>
-                                Copy CSS
-                            </button>
-                        </div>
-                        <pre class="code-content" id="cssCode">background: linear-gradient(135deg, #ff7f50, #1e90ff);</pre>
-                    </div>
-
-                    <div class="code-output">
-                        <div class="code-header">
-                            <div class="code-title">Tailwind CSS</div>
-                            <button class="copy-btn" id="copyTailwindBtn">
-                                <i class="far fa-copy"></i>
-                                Copy
-                            </button>
-                        </div>
-                        <pre class="code-content" id="tailwindCode">bg-gradient-to-r from-[#ff7f50] to-[#1e90ff]</pre>
-                    </div>
-
-                    <div>
-                        <label class="control-label">Popular Presets</label>
-                        <div class="presets-grid" id="presetsGrid">
-                            <!-- Presets will be added dynamically -->
-                        </div>
                     </div>
                 </div>
             </div>
@@ -1154,68 +1397,39 @@
                 <h2>Professional CSS Gradient Generator - Create Stunning Web Backgrounds</h2>
                 
                 <div class="seo-content">
-                    <p>Our <span class="keyword-highlight">Advanced CSS Gradient Generator</span> is a comprehensive tool designed for web designers, UI/UX professionals, and developers who need to create beautiful, performant gradients for modern web applications. Unlike basic gradient tools, our professional generator supports <span class="keyword-highlight">linear gradients</span>, <span class="keyword-highlight">radial gradients</span>, and <span class="keyword-highlight">conic gradients</span> with unlimited color stops, custom angles, and advanced effects.</p>
+                    <p>Our <span class="keyword-highlight">Advanced CSS Gradient Generator</span> is a comprehensive tool designed for web designers, UI/UX professionals, and developers who need to create beautiful, performant gradients for modern web applications.</p>
                     
-                    <h3>Why Choose Our Professional Gradient Generator?</h3>
-                    <p>As a <span class="keyword-highlight">professional gradient tool</span>, we offer features that set us apart from basic generators:</p>
+                    <h3>Key Features</h3>
                     <ul>
-                        <li><strong>Multiple Gradient Types:</strong> Create linear, radial, and conic gradients with precise control over direction and shape</li>
-                        <li><strong>Unlimited Color Stops:</strong> Add as many colors as needed with percentage-based positioning for complete creative freedom</li>
-                        <li><strong>Real-time Preview:</strong> See your gradient update instantly as you adjust colors, angles, and effects</li>
-                        <li><strong>Cross-Format Export:</strong> Generate code for CSS, Tailwind CSS, SCSS, and JavaScript frameworks</li>
-                        <li><strong>Advanced Effects:</strong> Apply blend modes, animation effects, and transparency controls</li>
-                        <li><strong>Professional Presets:</strong> Access curated gradient collections for different design styles and industries</li>
+                        <li><strong>Multiple Gradient Types:</strong> Create linear, radial, and conic gradients</li>
+                        <li><strong>Unlimited Color Stops:</strong> Add as many colors as needed with percentage-based positioning</li>
+                        <li><strong>Real-time Preview:</strong> See your gradient update instantly</li>
+                        <li><strong>Cross-Format Export:</strong> Generate code for CSS and Tailwind CSS</li>
+                        <li><strong>Advanced Effects:</strong> Apply blend modes and animation effects</li>
+                        <li><strong>Professional Presets:</strong> Access curated gradient collections</li>
                     </ul>
                     
-                    <h3>Applications of CSS Gradients in Modern Web Design</h3>
-                    <p><span class="keyword-highlight">CSS gradients</span> are essential in modern web design for creating visually appealing backgrounds, buttons, text effects, data visualizations, and UI components. They provide smooth color transitions that enhance user experience and create depth without using large image files that slow down page load times.</p>
-                    
-                    <h3>How to Use Our Advanced Gradient Generator</h3>
+                    <h3>How to Use</h3>
                     <ol>
-                        <li>Select your gradient type (linear, radial, or conic) based on your design needs</li>
-                        <li>Add color stops by clicking the color pickers or using the "Add Color Stop" button</li>
-                        <li>Adjust the angle, direction, and position of each color stop using the sliders</li>
-                        <li>Experiment with blend modes for unique color interactions and visual effects</li>
-                        <li>Preview your gradient in real-time and make adjustments as needed</li>
-                        <li>Copy the generated code in your preferred format (CSS, Tailwind, etc.)</li>
-                        <li>Apply the gradient to your website, application, or design project</li>
+                        <li>Select gradient type (linear, radial, or conic)</li>
+                        <li>Add color stops using color pickers</li>
+                        <li>Adjust angle and position sliders</li>
+                        <li>Experiment with blend modes</li>
+                        <li>Preview in real-time</li>
+                        <li>Copy generated code</li>
+                        <li>Apply to your project</li>
                     </ol>
                     
-                    <h3>Technical Features and Capabilities</h3>
+                    <h3>Best Practices</h3>
                     <ul>
-                        <li><strong>Linear Gradients:</strong> Create smooth transitions along a straight line with custom angles from 0-360 degrees</li>
-                        <li><strong>Radial Gradients:</strong> Generate circular gradients with customizable shape, size, and position</li>
-                        <li><strong>Conic Gradients:</strong> Create angular gradients that rotate around a center point for modern UI effects</li>
-                        <li><strong>Color Stop Control:</strong> Precise percentage-based positioning of each color with individual sliders</li>
-                        <li><strong>Opacity Support:</strong> Use rgba() or hsla() colors for transparent gradients and overlay effects</li>
-                        <li><strong>CSS Variables:</strong> Generate code with CSS custom properties for easy theming and dynamic updates</li>
-                        <li><strong>Animation Ready:</strong> Create animated gradients for dynamic backgrounds and hover effects</li>
+                        <li>Use CSS gradients instead of images for faster loading</li>
+                        <li>Ensure sufficient color contrast for accessibility</li>
+                        <li>Test on different devices and screen sizes</li>
+                        <li>Use CSS variables for easy theme switching</li>
+                        <li>Provide fallback colors for older browsers</li>
                     </ul>
                     
-                    <h3>Professional Design Features</h3>
-                    <p>Our generator includes advanced features like <span class="keyword-highlight">gradient animation</span> for dynamic backgrounds, <span class="keyword-highlight">blend modes</span> for complex color interactions, and <span class="keyword-highlight">preset libraries</span> for quick inspiration. These tools are essential for creating modern, responsive web designs that perform well across all devices.</p>
-                    
-                    <h3>Optimization Tips for Web Developers</h3>
-                    <p>For optimal performance and accessibility, consider these best practices:</p>
-                    <ul>
-                        <li>Use CSS gradients instead of background images for faster loading times and better performance</li>
-                        <li>Limit complex gradients on mobile devices to ensure smooth scrolling and interactions</li>
-                        <li>Test gradient visibility on different screen brightness levels and in various lighting conditions</li>
-                        <li>Ensure sufficient color contrast for accessibility compliance (WCAG 2.1 standards)</li>
-                        <li>Use CSS variables for gradients to enable easy theme switching and dynamic updates</li>
-                        <li>Consider fallback solid colors for browsers that don't support advanced gradient features</li>
-                    </ul>
-                    
-                    <h3>API Integration for Advanced Use Cases</h3>
-                    <p>For developers and teams needing programmatic access, our gradient generator offers API integration for:</p>
-                    <ul>
-                        <li><strong>Batch Gradient Generation:</strong> Create multiple gradients programmatically for design systems</li>
-                        <li><strong>Dynamic Gradient Creation:</strong> Generate gradients based on user preferences or data inputs</li>
-                        <li><strong>Theme Management:</strong> Create and manage gradient libraries for consistent brand styling</li>
-                        <li><strong>Real-time Collaboration:</strong> Share and collaborate on gradient designs with team members</li>
-                    </ul>
-                    
-                    <p>Whether you're designing a <span class="keyword-highlight">website background</span>, <span class="keyword-highlight">button hover effects</span>, <span class="keyword-highlight">text gradients</span>, <span class="keyword-highlight">data visualization</span> elements, or <span class="keyword-highlight">UI components</span>, our professional gradient generator provides all the tools you need. Start creating beautiful, performant gradients today - no design experience required!</p>
+                    <p>Start creating beautiful, performant gradients today - no design experience required!</p>
                 </div>
             </div>
         </div>
@@ -1228,10 +1442,6 @@
                 <a href="index.html" class="footer-logo">Tool Nest</a>
                 <p class="footer-tagline">Premium Design Tools for Creative Professionals</p>
                 <div class="footer-contact">
-                    <div class="contact-item">
-                        <i class="fas fa-envelope"></i>
-                        <span>toolnest3@gmail.com</span>
-                    </div>
                     <div class="contact-item">
                         <i class="fas fa-shield-alt"></i>
                         <span>100% Secure & Browser-Based</span>
@@ -1248,7 +1458,6 @@
                     <h4>Design Tools</h4>
                     <ul>
                         <li><a href="index.html">Home</a></li>
-                        <li><a href="index.html#design-tools-section">All Design Tools</a></li>
                         <li><a href="color-picker.html">Color Picker</a></li>
                         <li><a href="box-shadow-generator.html">Shadow Generator</a></li>
                         <li><a href="border-radius.html">Border Radius</a></li>
@@ -1258,7 +1467,6 @@
                 <div class="footer-links">
                     <h4>Resources</h4>
                     <ul>
-                        <li><a href="gradient-examples.html">Gradient Examples</a></li>
                         <li><a href="css-gradient-guide.html">CSS Gradient Guide</a></li>
                         <li><a href="web-design-tools.html">Web Design Tools</a></li>
                         <li><a href="color-palettes.html">Color Palettes</a></li>
@@ -1270,7 +1478,6 @@
                     <ul>
                         <li><a href="privacy-policy.html">Privacy Policy</a></li>
                         <li><a href="terms-of-use.html">Terms of Service</a></li>
-                        <li><a href="cookies.html">Cookie Policy</a></li>
                     </ul>
                 </div>
             </div>
@@ -1333,9 +1540,7 @@
             { name: 'Mint', colors: ['#56ab2f', '#a8e063'], type: 'linear', angle: 120 },
             { name: 'Berry', colors: ['#8a2387', '#f27121'], type: 'linear', angle: 45 },
             { name: 'Midnight', colors: ['#0f0c29', '#302b63'], type: 'linear', angle: 135 },
-            { name: 'Coral', colors: ['#ff9966', '#ff5e62'], type: 'linear', angle: 90 },
-            { name: 'Forest', colors: ['#56ccf2', '#2f80ed'], type: 'linear', angle: 135 },
-            { name: 'Radial Glow', colors: ['#667eea', '#764ba2'], type: 'radial', angle: 0 }
+            { name: 'Coral', colors: ['#ff9966', '#ff5e62'], type: 'linear', angle: 90 }
         ];
 
         // Example gradients
@@ -1348,7 +1553,7 @@
             },
             {
                 name: 'Deep Ocean',
-                colors: ['#2193b0', '#6dd5ed', '#2193b0'],
+                colors: ['#2193b0', '#6dd5ed'],
                 angle: 90,
                 type: 'linear'
             },
@@ -1357,18 +1562,6 @@
                 colors: ['#667eea', '#764ba2'],
                 angle: 0,
                 type: 'radial'
-            },
-            {
-                name: 'Conic Rainbow',
-                colors: ['#ff0000', '#ffff00', '#00ff00', '#00ffff', '#0000ff', '#ff00ff', '#ff0000'],
-                angle: 0,
-                type: 'conic'
-            },
-            {
-                name: 'UI Button Gradient',
-                colors: ['#667eea', '#764ba2'],
-                angle: 90,
-                type: 'linear'
             },
             {
                 name: 'Dark Theme',
@@ -1386,6 +1579,16 @@
             updateGradient();
             setupEventListeners();
             showAlert('Gradient Generator Ready! Start creating beautiful gradients.', 'success');
+            
+            // Prevent double-tap zoom on mobile
+            let lastTouchEnd = 0;
+            document.addEventListener('touchend', function(event) {
+                const now = (new Date()).getTime();
+                if (now - lastTouchEnd <= 300) {
+                    event.preventDefault();
+                }
+                lastTouchEnd = now;
+            }, false);
         }
 
         // Show alert
@@ -1396,7 +1599,7 @@
             
             setTimeout(() => {
                 alert.style.display = 'none';
-            }, 4000);
+            }, 3000);
         }
 
         // Show loading
@@ -1433,7 +1636,7 @@
                            value="${color.position}"
                            class="position-slider"
                            data-index="${index}">
-                    <div style="font-size: 0.8rem; color: var(--text-gray);">
+                    <div style="font-size: 0.75rem; color: var(--text-gray);">
                         Position: ${color.position}%
                     </div>
                 `;
@@ -1592,8 +1795,8 @@
             
             previewText.style.color = brightness > 128 ? '#000000' : '#ffffff';
             previewText.style.textShadow = brightness > 128 
-                ? '2px 2px 4px rgba(255, 255, 255, 0.5)' 
-                : '2px 2px 4px rgba(0, 0, 0, 0.5)';
+                ? '1px 1px 3px rgba(255, 255, 255, 0.5)' 
+                : '1px 1px 3px rgba(0, 0, 0, 0.5)';
         }
 
         // Copy to clipboard
@@ -1692,7 +1895,7 @@
                     updateGradient();
                     hideLoading();
                     showAlert('Gradient updated successfully!', 'success');
-                }, 300);
+                }, 200);
             });
 
             // Reset button
@@ -1771,66 +1974,26 @@
 
             // Blend mode
             blendMode.addEventListener('change', updateGradient);
+            
+            // Prevent form submission on enter
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter' && e.target.tagName === 'INPUT') {
+                    e.preventDefault();
+                }
+            });
+            
+            // Handle orientation change
+            window.addEventListener('orientationchange', () => {
+                setTimeout(updateGradient, 100);
+            });
         }
-
-        // API Integration (commented out for production use)
-        /*
-        class GradientAPI {
-            constructor(baseURL = 'https://api.toolnest.com/v1') {
-                this.baseURL = baseURL;
-            }
-
-            async saveGradient(gradientData) {
-                const response = await fetch(`${this.baseURL}/gradients`, {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'Authorization': `Bearer ${this.apiKey}`
-                    },
-                    body: JSON.stringify({
-                        name: gradientData.name,
-                        colors: gradientData.colors,
-                        type: gradientData.type,
-                        angle: gradientData.angle,
-                        blendMode: gradientData.blendMode,
-                        isAnimated: gradientData.isAnimated
-                    })
-                });
-                
-                if (!response.ok) throw new Error('Failed to save gradient');
-                return await response.json();
-            }
-
-            async getGradient(id) {
-                const response = await fetch(`${this.baseURL}/gradients/${id}`);
-                if (!response.ok) throw new Error('Failed to fetch gradient');
-                return await response.json();
-            }
-
-            async listGradients(limit = 20, offset = 0) {
-                const response = await fetch(`${this.baseURL}/gradients?limit=${limit}&offset=${offset}`);
-                if (!response.ok) throw new Error('Failed to fetch gradients');
-                return await response.json();
-            }
-
-            async deleteGradient(id) {
-                const response = await fetch(`${this.baseURL}/gradients/${id}`, {
-                    method: 'DELETE',
-                    headers: {
-                        'Authorization': `Bearer ${this.apiKey}`
-                    }
-                });
-                if (!response.ok) throw new Error('Failed to delete gradient');
-                return true;
-            }
-        }
-        */
 
         // Initialize on load
         document.addEventListener('DOMContentLoaded', init);
     </script>
 </body>
 </html>
+
 
 
 
