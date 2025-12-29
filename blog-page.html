@@ -46,6 +46,7 @@
             font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
             line-height: 1.6;
             min-height: 100vh;
+            overflow-x: hidden;
         }
 
         /* Container */
@@ -91,6 +92,18 @@
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
+        }
+
+        /* Mobile Menu Toggle */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--text-secondary);
+            font-size: 1.5rem;
+            cursor: pointer;
+            padding: 0.5rem;
+            z-index: 1001;
         }
 
         /* Main Navigation */
@@ -150,6 +163,10 @@
             color: var(--accent-blue);
         }
 
+        .dropdown-btn.active {
+            color: var(--accent-blue);
+        }
+
         .dropdown-content {
             position: absolute;
             top: 100%;
@@ -164,7 +181,7 @@
             z-index: 1000;
         }
 
-        .dropdown:hover .dropdown-content {
+        .dropdown-content.show {
             display: block;
         }
 
@@ -182,19 +199,9 @@
             padding-left: 2rem;
         }
 
-        /* Mobile Menu Toggle */
-        .mobile-menu-btn {
-            display: none;
-            background: none;
-            border: none;
-            color: var(--text-secondary);
-            font-size: 1.5rem;
-            cursor: pointer;
-        }
-
         /* Hero Section */
         .hero {
-            padding: 5rem 0;
+            padding: 4rem 0;
             text-align: center;
             position: relative;
             overflow: hidden;
@@ -212,7 +219,7 @@
         }
 
         .hero-title {
-            font-size: 3.5rem;
+            font-size: 2.8rem;
             font-weight: 800;
             margin-bottom: 1.5rem;
             line-height: 1.1;
@@ -223,7 +230,7 @@
         }
 
         .hero-subtitle {
-            font-size: 1.25rem;
+            font-size: 1.1rem;
             color: var(--text-secondary);
             max-width: 700px;
             margin: 0 auto 2rem;
@@ -233,17 +240,19 @@
         .hero-stats {
             display: flex;
             justify-content: center;
-            gap: 3rem;
-            margin-top: 3rem;
+            gap: 2rem;
+            margin-top: 2.5rem;
             flex-wrap: wrap;
         }
 
         .stat-item {
             text-align: center;
+            padding: 1rem;
+            min-width: 120px;
         }
 
         .stat-number {
-            font-size: 2.5rem;
+            font-size: 2.2rem;
             font-weight: 700;
             color: var(--accent-blue);
             margin-bottom: 0.25rem;
@@ -258,32 +267,32 @@
 
         /* Blog Categories Section */
         .categories-section {
-            padding: 4rem 0;
+            padding: 3rem 0;
             background-color: rgba(17, 34, 64, 0.5);
             border-top: 1px solid var(--border-color);
             border-bottom: 1px solid var(--border-color);
         }
 
         .section-title {
-            font-size: 2.5rem;
+            font-size: 2.2rem;
             font-weight: 700;
             text-align: center;
             margin-bottom: 1rem;
         }
 
         .section-subtitle {
-            font-size: 1.1rem;
+            font-size: 1rem;
             color: var(--text-secondary);
             text-align: center;
             max-width: 700px;
-            margin: 0 auto 3rem;
+            margin: 0 auto 2.5rem;
             line-height: 1.6;
         }
 
         .categories-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
+            gap: 1.5rem;
         }
 
         /* Category Card */
@@ -291,11 +300,12 @@
             background-color: var(--card-bg);
             border: 1px solid var(--border-color);
             border-radius: 12px;
-            padding: 2rem;
+            padding: 1.5rem;
             text-align: center;
             transition: all 0.3s ease;
             position: relative;
             overflow: hidden;
+            cursor: pointer;
         }
 
         .category-card::before {
@@ -318,9 +328,9 @@
         .category-card.utility::before { background-color: var(--utility-tools); }
 
         .category-card:hover {
-            transform: translateY(-10px);
+            transform: translateY(-5px);
             border-color: var(--accent-blue);
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
         }
 
         .category-card:hover::before {
@@ -329,8 +339,8 @@
         }
 
         .category-icon {
-            font-size: 2.5rem;
-            margin-bottom: 1.5rem;
+            font-size: 2.2rem;
+            margin-bottom: 1rem;
             position: relative;
             z-index: 1;
         }
@@ -345,17 +355,18 @@
         .category-card.utility .category-icon { color: var(--utility-tools); }
 
         .category-title {
-            font-size: 1.5rem;
+            font-size: 1.3rem;
             font-weight: 600;
-            margin-bottom: 1rem;
+            margin-bottom: 0.75rem;
             position: relative;
             z-index: 1;
         }
 
         .category-description {
             color: var(--text-secondary);
-            margin-bottom: 1.5rem;
+            margin-bottom: 1.25rem;
             line-height: 1.6;
+            font-size: 0.95rem;
             position: relative;
             z-index: 1;
         }
@@ -374,6 +385,7 @@
             gap: 0.5rem;
             position: relative;
             z-index: 1;
+            font-size: 0.95rem;
         }
 
         .category-card.image .read-more-btn:hover {
@@ -416,105 +428,19 @@
             border-color: var(--utility-tools);
         }
 
-        /* Featured Blogs Section */
-        .featured-section {
-            padding: 4rem 0;
-        }
-
-        .featured-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-
-        .featured-card {
-            background-color: var(--card-bg);
-            border: 1px solid var(--border-color);
-            border-radius: 12px;
-            overflow: hidden;
-            transition: all 0.3s ease;
-        }
-
-        .featured-card:hover {
-            transform: translateY(-5px);
-            border-color: var(--accent-blue);
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
-        }
-
-        .featured-header {
-            padding: 1.5rem 1.5rem 1rem;
-            border-bottom: 1px solid var(--border-color);
-        }
-
-        .featured-category {
-            display: inline-block;
-            padding: 0.25rem 1rem;
-            border-radius: 20px;
-            font-size: 0.85rem;
-            font-weight: 600;
-            margin-bottom: 1rem;
-        }
-
-        .featured-title {
-            font-size: 1.4rem;
-            font-weight: 700;
-            line-height: 1.3;
-            margin-bottom: 0.75rem;
-        }
-
-        .featured-excerpt {
-            color: var(--text-secondary);
-            margin-bottom: 1.5rem;
-            line-height: 1.6;
-        }
-
-        .featured-meta {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            color: var(--text-secondary);
-            font-size: 0.85rem;
-        }
-
-        .featured-footer {
-            padding: 1rem 1.5rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .featured-read-btn {
-            background-color: var(--medium-blue);
-            color: white;
-            border: none;
-            padding: 0.75rem 1.5rem;
-            border-radius: 6px;
-            font-weight: 600;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            transition: background-color 0.3s;
-        }
-
-        .featured-read-btn:hover {
-            background-color: var(--light-blue);
-        }
-
         /* Footer */
         .footer {
             background-color: var(--dark-blue);
             border-top: 1px solid var(--border-color);
-            padding: 4rem 0 2rem;
-            margin-top: 4rem;
+            padding: 3rem 0 2rem;
+            margin-top: 2rem;
         }
 
         .footer-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 3rem;
-            margin-bottom: 3rem;
+            gap: 2rem;
+            margin-bottom: 2.5rem;
         }
 
         .footer-logo {
@@ -538,12 +464,13 @@
             color: var(--text-secondary);
             line-height: 1.6;
             margin-bottom: 1.5rem;
+            font-size: 0.95rem;
         }
 
         .footer-heading {
             font-size: 1.2rem;
             font-weight: 600;
-            margin-bottom: 1.5rem;
+            margin-bottom: 1.25rem;
             color: var(--text-primary);
         }
 
@@ -557,6 +484,7 @@
             margin-bottom: 0.75rem;
             display: block;
             transition: color 0.3s ease;
+            font-size: 0.95rem;
         }
 
         .footer-link:hover {
@@ -596,103 +524,248 @@
             font-size: 0.9rem;
         }
 
-        /* Responsive Design */
-        @media (max-width: 992px) {
-            .hero-title {
-                font-size: 2.8rem;
-            }
-            
-            .section-title {
-                font-size: 2.2rem;
-            }
+        /* Newsletter Form */
+        .newsletter-form {
+            margin-top: 1rem;
         }
 
+        .newsletter-input {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            margin-bottom: 1rem;
+            border-radius: 6px;
+            border: 1px solid var(--border-color);
+            background-color: rgba(255, 255, 255, 0.1);
+            color: var(--text-primary);
+            font-size: 0.95rem;
+        }
+
+        .newsletter-input:focus {
+            outline: none;
+            border-color: var(--accent-blue);
+        }
+
+        .newsletter-btn {
+            width: 100%;
+            padding: 0.75rem;
+            border-radius: 6px;
+            border: none;
+            background-color: var(--medium-blue);
+            color: white;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            font-size: 0.95rem;
+        }
+
+        .newsletter-btn:hover {
+            background-color: var(--light-blue);
+        }
+
+        /* ==================== MOBILE STYLES ==================== */
         @media (max-width: 768px) {
+            /* Container adjustments */
+            .container {
+                padding: 0 1rem;
+            }
+
+            /* Mobile menu button */
             .mobile-menu-btn {
                 display: block;
             }
 
+            /* Navigation - mobile */
             .main-nav {
                 position: fixed;
-                top: 70px;
-                left: 0;
-                right: 0;
+                top: 0;
+                right: -100%;
+                width: 100%;
+                height: 100vh;
                 background-color: var(--dark-blue);
                 flex-direction: column;
-                padding: 2rem;
+                justify-content: flex-start;
+                padding-top: 5rem;
                 gap: 1.5rem;
-                border-bottom: 1px solid var(--border-color);
-                display: none;
+                transition: right 0.3s ease;
                 z-index: 999;
+                overflow-y: auto;
             }
 
             .main-nav.active {
-                display: flex;
+                right: 0;
             }
 
+            .nav-link, .dropdown-btn {
+                font-size: 1.1rem;
+                padding: 0.75rem 1.5rem;
+                width: 100%;
+                text-align: left;
+            }
+
+            .dropdown {
+                width: 100%;
+            }
+
+            .dropdown-btn {
+                justify-content: space-between;
+            }
+
+            /* Dropdown content - mobile */
             .dropdown-content {
                 position: static;
                 background: none;
                 border: none;
                 box-shadow: none;
-                padding: 0.5rem 0 0 1rem;
+                padding: 0.5rem 0 0 2rem;
                 display: none;
+                width: 100%;
+                min-width: auto;
             }
 
-            .dropdown:hover .dropdown-content {
+            .dropdown-content.show {
                 display: block;
             }
 
-            .hero-title {
-                font-size: 2.2rem;
+            .dropdown-link {
+                padding: 0.5rem 0;
+                font-size: 1rem;
             }
 
-            .hero-subtitle {
-                font-size: 1.1rem;
-            }
-
-            .hero-stats {
-                gap: 2rem;
-            }
-
-            .stat-number {
-                font-size: 2rem;
-            }
-
-            .section-title {
-                font-size: 2rem;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .container {
-                padding: 0 1rem;
-            }
-
+            /* Hero section adjustments */
             .hero {
                 padding: 3rem 0;
             }
 
             .hero-title {
-                font-size: 1.8rem;
+                font-size: 2.2rem;
+                margin-bottom: 1rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1rem;
+                padding: 0 0.5rem;
             }
 
             .hero-stats {
-                gap: 1.5rem;
+                gap: 1rem;
+                margin-top: 2rem;
+            }
+
+            .stat-item {
+                min-width: 100px;
+                padding: 0.75rem;
             }
 
             .stat-number {
                 font-size: 1.8rem;
             }
 
-            .categories-grid,
-            .featured-grid {
+            .stat-label {
+                font-size: 0.8rem;
+            }
+
+            /* Categories section adjustments */
+            .categories-section {
+                padding: 2.5rem 0;
+            }
+
+            .section-title {
+                font-size: 1.8rem;
+                margin-bottom: 0.75rem;
+            }
+
+            .section-subtitle {
+                font-size: 0.95rem;
+                margin-bottom: 2rem;
+                padding: 0 0.5rem;
+            }
+
+            .categories-grid {
                 grid-template-columns: 1fr;
+                gap: 1.25rem;
+            }
+
+            .category-card {
+                padding: 1.25rem;
+            }
+
+            .category-icon {
+                font-size: 2rem;
+            }
+
+            .category-title {
+                font-size: 1.2rem;
+            }
+
+            .category-description {
+                font-size: 0.9rem;
+            }
+
+            /* Footer adjustments */
+            .footer {
+                padding: 2.5rem 0 1.5rem;
             }
 
             .footer-grid {
                 grid-template-columns: 1fr;
                 gap: 2rem;
+            }
+
+            .footer-heading {
+                font-size: 1.1rem;
+                margin-bottom: 1rem;
+            }
+        }
+
+        /* Small mobile devices */
+        @media (max-width: 480px) {
+            .hero-title {
+                font-size: 1.8rem;
+            }
+
+            .hero-subtitle {
+                font-size: 0.95rem;
+            }
+
+            .hero-stats {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+
+            .stat-item {
+                min-width: 90%;
+            }
+
+            .section-title {
+                font-size: 1.6rem;
+            }
+
+            .category-card {
+                padding: 1rem;
+            }
+
+            .read-more-btn {
+                padding: 0.65rem 1.25rem;
+                font-size: 0.9rem;
+            }
+
+            .logo-text {
+                font-size: 1.3rem;
+            }
+        }
+
+        /* Tablet adjustments */
+        @media (min-width: 769px) and (max-width: 1024px) {
+            .categories-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .hero-title {
+                font-size: 2.5rem;
+            }
+
+            .hero-stats {
+                gap: 1.5rem;
             }
         }
     </style>
@@ -715,10 +788,10 @@
                     <a href="#" class="nav-link active">Home</a>
                     
                     <div class="dropdown">
-                        <button class="dropdown-btn">
+                        <button class="dropdown-btn" id="dropdownBtn">
                             Blogs <i class="fas fa-chevron-down"></i>
                         </button>
-                        <div class="dropdown-content">
+                        <div class="dropdown-content" id="dropdownContent">
                             <a href="#" class="dropdown-link">Image Tools Blog</a>
                             <a href="#" class="dropdown-link">Document Tools Blog</a>
                             <a href="#" class="dropdown-link">Calculator Tools Blog</a>
@@ -887,84 +960,6 @@
         </div>
     </section>
 
-    <!-- Featured Blogs Section -->
-    <section class="featured-section">
-        <div class="container">
-            <h2 class="section-title">Featured Articles</h2>
-            <p class="section-subtitle">
-                Discover our most popular and recent articles about developer tools and productivity solutions.
-            </p>
-            
-            <div class="featured-grid">
-                <!-- Featured Article 1 -->
-                <article class="featured-card">
-                    <div class="featured-header">
-                        <span class="featured-category" style="background-color: rgba(59, 130, 246, 0.1); color: var(--developer-tools);">
-                            Developer Tools
-                        </span>
-                        <h3 class="featured-title">Top 10 VS Code Extensions for 2023</h3>
-                        <p class="featured-excerpt">
-                            Discover the most useful Visual Studio Code extensions that will boost your productivity and streamline your development workflow.
-                        </p>
-                        <div class="featured-meta">
-                            <span><i class="far fa-calendar"></i> May 15, 2023</span>
-                            <span><i class="far fa-clock"></i> 8 min read</span>
-                        </div>
-                    </div>
-                    <div class="featured-footer">
-                        <button class="featured-read-btn">
-                            Read Article <i class="fas fa-arrow-right"></i>
-                        </button>
-                    </div>
-                </article>
-
-                <!-- Featured Article 2 -->
-                <article class="featured-card">
-                    <div class="featured-header">
-                        <span class="featured-category" style="background-color: rgba(239, 68, 68, 0.1); color: var(--image-tools);">
-                            Image Tools
-                        </span>
-                        <h3 class="featured-title">Optimizing Images for Web Performance</h3>
-                        <p class="featured-excerpt">
-                            Learn the best practices and tools for optimizing images to improve your website's loading speed and performance.
-                        </p>
-                        <div class="featured-meta">
-                            <span><i class="far fa-calendar"></i> May 12, 2023</span>
-                            <span><i class="far fa-clock"></i> 6 min read</span>
-                        </div>
-                    </div>
-                    <div class="featured-footer">
-                        <button class="featured-read-btn">
-                            Read Article <i class="fas fa-arrow-right"></i>
-                        </button>
-                    </div>
-                </article>
-
-                <!-- Featured Article 3 -->
-                <article class="featured-card">
-                    <div class="featured-header">
-                        <span class="featured-category" style="background-color: rgba(6, 182, 212, 0.1); color: var(--seo-tools);">
-                            SEO Tools
-                        </span>
-                        <h3 class="featured-title">Essential SEO Tools for Developers</h3>
-                        <p class="featured-excerpt">
-                            A comprehensive guide to the most important SEO tools that every developer should know about and use regularly.
-                        </p>
-                        <div class="featured-meta">
-                            <span><i class="far fa-calendar"></i> May 10, 2023</span>
-                            <span><i class="far fa-clock"></i> 10 min read</span>
-                        </div>
-                    </div>
-                    <div class="featured-footer">
-                        <button class="featured-read-btn">
-                            Read Article <i class="fas fa-arrow-right"></i>
-                        </button>
-                    </div>
-                </article>
-            </div>
-        </div>
-    </section>
-
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
@@ -1026,10 +1021,8 @@
                         Subscribe to our newsletter to receive the latest tool reviews and productivity tips.
                     </p>
                     <form class="newsletter-form" id="newsletterForm">
-                        <input type="email" placeholder="Your email address" required
-                               style="width: 100%; padding: 0.75rem; margin-bottom: 1rem; border-radius: 6px; border: 1px solid var(--border-color); background-color: rgba(255,255,255,0.1); color: var(--text-primary);">
-                        <button type="submit" 
-                                style="width: 100%; padding: 0.75rem; border-radius: 6px; border: none; background-color: var(--medium-blue); color: white; font-weight: 600; cursor: pointer;">
+                        <input type="email" placeholder="Your email address" required class="newsletter-input">
+                        <button type="submit" class="newsletter-btn">
                             Subscribe
                         </button>
                     </form>
@@ -1043,23 +1036,85 @@
     </footer>
 
     <script>
-        // Mobile Menu Toggle
+        // DOM Elements
         const mobileMenuBtn = document.getElementById('mobileMenuBtn');
         const mainNav = document.getElementById('mainNav');
-
+        const dropdownBtn = document.getElementById('dropdownBtn');
+        const dropdownContent = document.getElementById('dropdownContent');
+        
+        // Mobile Menu Toggle
         mobileMenuBtn.addEventListener('click', () => {
             mainNav.classList.toggle('active');
-            mobileMenuBtn.innerHTML = mainNav.classList.contains('active') 
-                ? '<i class="fas fa-times"></i>' 
-                : '<i class="fas fa-bars"></i>';
-        });
-
-        // Close mobile menu when clicking outside
-        document.addEventListener('click', (event) => {
-            if (!event.target.closest('.main-nav') && !event.target.closest('.mobile-menu-btn')) {
-                mainNav.classList.remove('active');
+            
+            // Change icon based on menu state
+            if (mainNav.classList.contains('active')) {
+                mobileMenuBtn.innerHTML = '<i class="fas fa-times"></i>';
+                // Close dropdown when opening mobile menu
+                dropdownContent.classList.remove('show');
+                dropdownBtn.classList.remove('active');
+            } else {
                 mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
             }
+        });
+
+        // Dropdown Toggle
+        dropdownBtn.addEventListener('click', (e) => {
+            e.stopPropagation(); // Prevent closing when clicking dropdown button
+            
+            // Toggle dropdown visibility
+            dropdownContent.classList.toggle('show');
+            dropdownBtn.classList.toggle('active');
+            
+            // Change chevron icon
+            const chevron = dropdownBtn.querySelector('i');
+            if (dropdownContent.classList.contains('show')) {
+                chevron.classList.remove('fa-chevron-down');
+                chevron.classList.add('fa-chevron-up');
+            } else {
+                chevron.classList.remove('fa-chevron-up');
+                chevron.classList.add('fa-chevron-down');
+            }
+        });
+
+        // Close dropdown when clicking outside
+        document.addEventListener('click', (event) => {
+            // Close dropdown if click is outside dropdown
+            if (!event.target.closest('.dropdown')) {
+                dropdownContent.classList.remove('show');
+                dropdownBtn.classList.remove('active');
+                
+                // Reset chevron icon
+                const chevron = dropdownBtn.querySelector('i');
+                chevron.classList.remove('fa-chevron-up');
+                chevron.classList.add('fa-chevron-down');
+            }
+            
+            // Close mobile menu when clicking outside on mobile
+            if (window.innerWidth <= 768) {
+                if (!event.target.closest('.main-nav') && !event.target.closest('.mobile-menu-btn')) {
+                    mainNav.classList.remove('active');
+                    mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+                }
+            }
+        });
+
+        // Close mobile menu when clicking a nav link
+        document.querySelectorAll('.nav-link, .dropdown-link').forEach(link => {
+            link.addEventListener('click', () => {
+                if (window.innerWidth <= 768) {
+                    mainNav.classList.remove('active');
+                    mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+                    
+                    // Close dropdown on mobile after link click
+                    dropdownContent.classList.remove('show');
+                    dropdownBtn.classList.remove('active');
+                    
+                    // Reset chevron icon
+                    const chevron = dropdownBtn.querySelector('i');
+                    chevron.classList.remove('fa-chevron-up');
+                    chevron.classList.add('fa-chevron-down');
+                }
+            });
         });
 
         // Category card click events
@@ -1070,30 +1125,13 @@
             });
         });
 
-        // Featured article click events
-        document.querySelectorAll('.featured-read-btn').forEach(button => {
-            button.addEventListener('click', function() {
-                const articleTitle = this.closest('.featured-card').querySelector('.featured-title').textContent;
-                alert(`Loading article: "${articleTitle}"\n\nThis would open the full article page.`);
-            });
-        });
-
         // Newsletter form submission
         const newsletterForm = document.getElementById('newsletterForm');
         newsletterForm.addEventListener('submit', function(e) {
             e.preventDefault();
-            const email = this.querySelector('input[type="email"]').value;
+            const email = this.querySelector('.newsletter-input').value;
             alert(`Thank you for subscribing with: ${email}\n\nYou'll receive our next newsletter soon!`);
             this.reset();
-        });
-
-        // Dropdown link click events
-        document.querySelectorAll('.dropdown-link').forEach(link => {
-            link.addEventListener('click', function(e) {
-                e.preventDefault();
-                const category = this.textContent;
-                alert(`Loading ${category}\n\nThis would navigate to the selected blog category.`);
-            });
         });
 
         // Nav link click events
@@ -1114,22 +1152,44 @@
             });
         });
 
-        // Add smooth scrolling for anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
+        // Dropdown link click events
+        document.querySelectorAll('.dropdown-link').forEach(link => {
+            link.addEventListener('click', function(e) {
                 e.preventDefault();
-                const targetId = this.getAttribute('href');
-                if (targetId === '#') return;
-                
-                const targetElement = document.querySelector(targetId);
-                if (targetElement) {
-                    targetElement.scrollIntoView({ behavior: 'smooth' });
-                }
+                const category = this.textContent;
+                alert(`Loading ${category}\n\nThis would navigate to the selected blog category.`);
             });
+        });
+
+        // Footer link click events
+        document.querySelectorAll('.footer-link').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const page = this.textContent;
+                alert(`Loading ${page} page\n\nThis would navigate to the selected page.`);
+            });
+        });
+
+        // Handle window resize
+        window.addEventListener('resize', () => {
+            // Reset mobile menu state on larger screens
+            if (window.innerWidth > 768) {
+                mainNav.classList.remove('active');
+                mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+            }
+        });
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            // Add touch-friendly class for mobile
+            if ('ontouchstart' in window) {
+                document.body.classList.add('touch-device');
+            }
         });
     </script>
 </body>
 </html>
+
 
 
 
